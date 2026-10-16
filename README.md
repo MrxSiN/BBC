@@ -4,8 +4,6 @@
 
 - 🧠 Eight commands, `><+-.,[]`. No ninth instruction, no hidden C or Python code generator doing the real work
 - 🔁 Compiles its own source into a native Linux x86-64 ELF, then that ELF compiles the source again, byte for byte
-- 📱 Generated AArch64 programs have run on a real Pixel 8 Pro. The compiler itself is still learning to live there
-- 🪟 Windows PE32+ output exists, but has only run on Linux with fake Win32 shims. Windows has not been consulted
 - 🧾 Every claim has a test or an evidence file. If it says **unverified**, nobody ran it on the real thing
 
 ---
@@ -41,7 +39,7 @@ sh tools/verify_release.sh
 python3 tools/check_docs.py
 ```
 
-Python here only moves bytes around and checks results. It does not parse BF or write machine code. That part is Brainfuck's problem, and it took it personally.
+Python here only moves bytes around and checks results. It does not parse BF or write machine code. That part is Brainfuck's problem.
 
 ---
 
