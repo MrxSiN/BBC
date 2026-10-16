@@ -1,0 +1,76 @@
+{
+  "BF_compiler_source_changed": false,
+  "Linux_selfhost": {
+    "cold_bootstrap": "INCOMPLETE_FULL_REPLAY_TIMED_OUT_AFTER_STAGE1",
+    "native_compiler_generations_byte_identical": true,
+    "partial_cold_seed_and_stages": "ALT_SEED_STAGE0_STAGE1_IDENTICAL_LOGGED",
+    "prior_59_evidence_retained": "evidence/selfhost.json",
+    "sha256": "e95ec4e028a28f18d955f908cf40e2f9b9fbe650b6ebfd4df6d819c3f6f6cea8"
+  },
+  "active_goal": "RESOURCE_SCALED_FULL_DYNAMIC_CALLABLE_COMPILATION",
+  "bf_codegen_stage_changed": false,
+  "date": "2026-10-14",
+  "docs_consistency": "PASS_152_FILES",
+  "execution_mode": "LINUX_HOST_EXECUTED_PLUS_AARCH64_INSTRUCTION_SIMULATION",
+  "external_dependencies": {
+    "Android_NDK": "NOT_AVAILABLE",
+    "C_compiler": "host-only loader and JNI test fixtures",
+    "Java_JVM": "Linux JNI test only",
+    "Python": "opaque transport/tests",
+    "adb_device": "NOT_AVAILABLE",
+    "readelf": "structural ELF checks"
+  },
+  "generated_DSO_fixtures": 9,
+  "host_DSO_native_dlopen_stub": "PASS_TEST_ONLY_C_STUB",
+  "host_JVM_JNI_bridge": "PASS_EXTENDED_ZERO_LENGTH_ALIAS_INVALID_ARGS_TEST_ONLY_C_STUB",
+  "host_dlopen_missing_library": "PASS",
+  "host_transport_modified": [
+    "tools/android_bfp1_bridge/bfp1_jni_bridge.c"
+  ],
+  "independent_BF_vs_AArch64_simulator_comparisons": 9,
+  "iteration": 60,
+  "iteration58_regression": {
+    "atomic_failure_checks": 8,
+    "cases": 59,
+    "deep_nesting": 1030,
+    "simulator_runs": 354
+  },
+  "iteration59_regression": {
+    "DSOs_checked": 13,
+    "code_byte_parity": 13,
+    "independent_cross_linker": "PASS",
+    "native_header_BF_rebuild_identical": true,
+    "simulator_runs": 52,
+    "wide_header_size_cases": 15
+  },
+  "legacy_fallback_retained": true,
+  "new_device_adapter": "tools/android_bfp1_bridge/device_acceptance60.py",
+  "new_device_probe": "tools/android_bfp1_bridge/device_loader_probe60.c",
+  "next": "Run device_loader_probe60 on arm64 Android; if dlopen succeeds test JNI inside APK app namespace; then pinned policy app parity and Android native BF compiler S2",
+  "numeric_100m_target_retired": true,
+  "original_policy_sources_currently_available": 3,
+  "original_policy_sources_required": 11,
+  "readelf_DSO_checks": 9,
+  "release_files": {
+    "tests/verify_android_loader_probe60.py": "c1021c738e88c5a92c4ebd04fcf3880a80429233dd309557976aba9ad57a4b29",
+    "tests/verify_iteration60_native_stage_parity.py": "673f1df17107bb18961fad70889eb4a12007dd961866d8f449dcd72b30115b56",
+    "tools/android_bfp1_bridge/bfp1_jni_bridge.c": "268c319559d221e223a802e86409bb03784af3f54e6d77df23dc85109c34a7eb",
+    "tools/android_bfp1_bridge/device_acceptance60.py": "157374c6d8482bd5027c8611b5f8e31d89d11da904d9c645705383596492b201",
+    "tools/android_bfp1_bridge/device_loader_probe60.c": "fb427d7502f9ef294848e407692c646960a72af71043bce750dec59629e7a8bc"
+  },
+  "source_comment_checks": "PASS_4_VALID_7_INVALID_10_INVARIANCE",
+  "stage_source_sha256": {
+    "android_callable_dso_header59": "6f55400775daad511194e0f5aa55e7a8317ae68ddd6590953fcb56f3931a5671",
+    "android_callable_ledger58": "78bc940b7e9e2ef9b10a3babf497464589c9db1b81a4a24a9f49934eb3ab1210",
+    "android_callable_linear57": "79dc62484cba9e207fd1e711eaab4fd604a8c24835456385d26500d05eef5c01",
+    "android_callable_slots58": "ea7c8259237a33ea58b34badcbe2f91f562907033af3cfec08f2d6c382e9d5aa"
+  },
+  "status": "ANDROID_DEVICE_LOADER_PROBE_PREPARED_NOT_EXECUTED",
+  "target_tests": {
+    "aarch64_android_device": false,
+    "android_application_parity": false,
+    "android_dlopen": false,
+    "android_jni_BF_generated_policy": false,
+    "android_native_selfhost_dynamic": false
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-13",
+  "iteration": 29,
+  "classification": "EXECUTED fresh native Linux Stage 1 then generated Stage 2; independent cold Stage 0 not rerun",
+  "source_sha256": "f73a9b7ddc9d6f1971435251edefd85e3bb81a0dda23e8b11630a2d7cf7407e9",
+  "installed_compiler_sha256": "e95ec4e028a28f18d955f908cf40e2f9b9fbe650b6ebfd4df6d819c3f6f6cea8",
+  "stages": [
+    {
+      "stage": 1,
+      "executed_binary_sha256": "e95ec4e028a28f18d955f908cf40e2f9b9fbe650b6ebfd4df6d819c3f6f6cea8",
+      "emitted_compiler_sha256": "e95ec4e028a28f18d955f908cf40e2f9b9fbe650b6ebfd4df6d819c3f6f6cea8",
+      "artifact_bytes": 475703,
+      "byte_identical_to_installed": true
+    },
+    {
+      "stage": 2,
+      "executed_binary_sha256": "e95ec4e028a28f18d955f908cf40e2f9b9fbe650b6ebfd4df6d819c3f6f6cea8",
+      "emitted_compiler_sha256": "e95ec4e028a28f18d955f908cf40e2f9b9fbe650b6ebfd4df6d819c3f6f6cea8",
+      "artifact_bytes": 475703,
+      "byte_identical_to_installed": true
+    }
+  ],
+  "cold_stage0": "NOT_RERUN",
+  "android_stage_execution": "NOT_RERUN_ON_DEVICE"
+}

@@ -1,0 +1,7 @@
+gradle.afterProject { p, state ->
+  if (p.path == ':app') {
+    def a = p.extensions.getByName('android')
+    a.defaultConfig.applicationId = 'io.github.mrxsin.gmailhideads.nativebf'
+    a.defaultConfig.ndk.abiFilters.add('arm64-v8a')
+  }
+}

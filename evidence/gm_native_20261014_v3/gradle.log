@@ -1,0 +1,105 @@
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preReleaseBuild UP-TO-DATE
+> Task :app:configureCMakeRelWithDebInfo[arm64-v8a]
+> Task :app:buildCMakeRelWithDebInfo[arm64-v8a]
+> Task :app:mergeReleaseJniLibFolders
+> Task :app:checkReleaseDuplicateClasses
+> Task :app:generateReleaseBuildConfig
+> Task :app:mergeReleaseNativeLibs
+> Task :app:generateReleaseResources
+> Task :app:packageReleaseResources
+> Task :app:processReleaseNavigationResources
+> Task :app:stripReleaseDebugSymbols
+> Task :app:javaPreCompileRelease
+> Task :app:parseReleaseLocalResources
+> Task :app:checkReleaseAarMetadata
+> Task :app:mapReleaseSourceSetPaths
+> Task :app:generateReleaseRFile
+> Task :app:compileReleaseNavigationResources
+> Task :app:extractReleaseNativeSymbolTables
+> Task :app:compileReleaseKotlin NO-SOURCE
+> Task :app:mergeReleaseNativeDebugMetadata
+> Task :app:compileReleaseJavaWithJavac
+> Task :app:createReleaseCompatibleScreenManifests
+> Task :app:mergeReleaseResources
+> Task :app:extractDeepLinksRelease
+> Task :app:processReleaseMainManifest
+> Task :app:processReleaseManifest
+> Task :app:desugarReleaseFileDependencies
+> Task :app:mergeReleaseStartupProfile
+> Task :app:generateReleaseAssets UP-TO-DATE
+> Task :app:mergeReleaseArtProfile
+> Task :app:mergeReleaseAssets
+> Task :app:compressReleaseAssets
+> Task :app:extractReleaseVersionControlInfo
+> Task :app:extractProguardFiles
+> Task :app:generateReleaseLintVitalReportModel
+> Task :app:mergeExtDexRelease
+> Task :app:processReleaseJavaRes
+> Task :app:processReleaseManifestForPackage
+> Task :app:collectReleaseDependencies
+> Task :app:sdkReleaseDependencyData
+> Task :app:validateSigningRelease
+> Task :app:writeReleaseAppMetadata
+> Task :app:writeReleaseSigningConfigVersions
+> Task :app:preReleaseAndroidTestBuild SKIPPED
+> Task :app:mergeReleaseJavaResource
+> Task :app:processReleaseAndroidTestManifest
+> Task :app:generateReleaseAndroidTestBuildConfig
+> Task :app:generateReleaseAndroidTestResources
+> Task :app:packageReleaseAndroidTestResources
+> Task :app:processReleaseAndroidTestNavigationResources
+> Task :app:generateReleaseAndroidTestAssets UP-TO-DATE
+> Task :app:parseReleaseAndroidTestLocalResources
+> Task :app:javaPreCompileReleaseAndroidTest
+> Task :app:mergeReleaseAndroidTestAssets
+> Task :app:compressReleaseAndroidTestAssets
+> Task :app:generateReleaseAndroidTestRFile
+> Task :app:checkReleaseAndroidTestDuplicateClasses
+> Task :app:checkReleaseAndroidTestAarMetadata
+> Task :app:mapReleaseAndroidTestSourceSetPaths
+> Task :app:compileReleaseAndroidTestNavigationResources
+> Task :app:desugarReleaseAndroidTestFileDependencies
+> Task :app:mergeReleaseAndroidTestResources
+> Task :app:processReleaseResources
+> Task :app:dexBuilderRelease
+> Task :app:mergeReleaseGlobalSynthetics
+> Task :app:bundleReleaseClassesToCompileJar
+> Task :app:mergeReleaseAndroidTestJniLibFolders
+> Task :app:compileReleaseAndroidTestKotlin NO-SOURCE
+> Task :app:processReleaseAndroidTestResources
+> Task :app:mergeExtDexReleaseAndroidTest
+> Task :app:mergeDexRelease
+> Task :app:compileReleaseAndroidTestJavaWithJavac
+> Task :app:compileReleaseArtProfile
+> Task :app:dexBuilderReleaseAndroidTest
+> Task :app:optimizeReleaseResources
+> Task :app:processReleaseAndroidTestJavaRes NO-SOURCE
+> Task :app:mergeReleaseAndroidTestGlobalSynthetics
+> Task :app:mergeReleaseAndroidTestNativeLibs NO-SOURCE
+> Task :app:stripReleaseAndroidTestDebugSymbols NO-SOURCE
+> Task :app:validateSigningReleaseAndroidTest
+> Task :app:writeReleaseAndroidTestSigningConfigVersions
+> Task :app:mergeReleaseAndroidTestJavaResource
+> Task :app:mergeDexReleaseAndroidTest
+> Task :app:packageReleaseAndroidTest
+> Task :app:createReleaseAndroidTestApkListingFileRedirect
+> Task :app:assembleReleaseAndroidTest
+> Task :app:lintVitalAnalyzeRelease
+> Task :app:lintVitalReportRelease
+> Task :app:lintVitalRelease
+> Task :app:packageRelease
+> Task :app:createReleaseApkListingFileRedirect
+> Task :app:assembleRelease
+
+[Incubating] Problems report is available at: file:///D:/GitHub/brainfuckC/evidence/gm_native_20261014_v3/GM/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.6.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 9s
+81 actionable tasks: 81 executed
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.6.1/userguide/configuration_cache_enabling.html

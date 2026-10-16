@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-13",
+  "iteration": 27,
+  "completion": "PARTIAL_SOURCE_SCANNER_ONLY",
+  "classification": "LINUX_HOSTED_BF_SCANNER_EXECUTED_NOT_GENERAL_ANDROID_COMPILER",
+  "files": {
+    "compiler/core.bf": "f73a9b7ddc9d6f1971435251edefd85e3bb81a0dda23e8b11630a2d7cf7407e9",
+    "build/compiler_x86_64_linux.elf": "e95ec4e028a28f18d955f908cf40e2f9b9fbe650b6ebfd4df6d819c3f6f6cea8",
+    "experiments/android_source_scan.bf": "c9a6b7c9d3e4f17f0802fa64b382cc5bfda37027aaf6ee277cc1432787b18bf2",
+    "build/android_source_scan_x86_64_linux.elf": "3f3a5a216c386e5cf051c2f67ab261f6cadc6c5250ce75e35b0d758cd2d9f06f",
+    "bootstrap/run_android_loops.py": "495e8f13dbc573687c47040bf8fc2c25c52c8b5d152d079c1b997f2e70688cab",
+    "tests/verify_android_source_scan.py": "5420648902ab091835525d85ba6e7b5659157cbf2047c1b46d2940b44dfb4d4a",
+    "tests/verify_android_source_scan_integration.py": "e5ff51e01a8999e43f422e9f46871092ba8b2079116287b6c05a6eaadb8eeae9",
+    "experiments/android_source_scan.bf.notes.md": "f2e6a9ec5d181dff77d0cc56fa04d5b739b9776190a9831b390f56a45e44adb9",
+    "docs/ITERATION27_REPORT.md": "03e20b2b4671a5f1d971f3a60b66cdd6367614cab8ce5e4b26a85a4e92d4760b",
+    "docs/ANDROID_COMPILER_PROTOCOL_V1.md": "8123240dafa85982bf88fafb7ed286a78e0b7f7b552f217310abd6d496aa13db",
+    "evidence/iteration27_source_scan.json": "952593c871dbebc9be356915804da25b1959a0853d492f0ef6f98fa3566a4f8b",
+    "evidence/iteration27_scan_integration.json": "fd74380842d1022f05d94fbb0480210b7e015dbc52c07abd640e4c88d451e7b5",
+    "status/CONFORMANCE_MATRIX.json": "d28eaad69fb365484e3345745515f21b8d64f3521802d416612e612162853854",
+    "status/ROADMAP.json": "3f7ef189c5ad4fa01b4537a89d8ed85a89c51d1e72be121a803b27f3f861e532"
+  },
+  "tests_passed": {
+    "source_scan_cases_printed_pass": 37,
+    "independent_seed_checks": 6,
+    "invalid_transport_cases": 6,
+    "matched_android_elf_images_on_linux": 9,
+    "invalid_android_elf_pipeline_cases": 4,
+    "android_contract_v1": "PASS",
+    "source_comments": "PASS",
+    "target_workloads": "PASS",
+    "documentation_links_and_state": "PASS",
+    "linux_native_selfhosting_replay": "INCOMPLETE_EXECUTION_LIMIT",
+    "cold_bootstrap_stage0": "NOT_RERUN",
+    "android_device_execution": "NOT_RERUN",
+    "windows_execution": "NOT_RUN",
+    "full_release_suite": "NOT_RUN"
+  },
+  "note": "Immutable historical BUILD_MANIFEST.json belongs to earlier release evidence. This new manifest is a partial change-set supplement, not a fresh full release manifest."
+}

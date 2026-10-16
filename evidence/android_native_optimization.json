@@ -1,0 +1,51 @@
+{
+  "date": "2026-10-12",
+  "classification": "EXECUTED native optimized static PIE on Android; Linux optimizer ELF cross-built, not executed here",
+  "optimizers": {
+    "optimize": {
+      "source_sha256": "811f45ca94f513b1ecb3659680ab23a826c8c09bcde189656c1c4d7b5e4c9af8",
+      "source_instructions": 15595,
+      "linux_optimizer_sha256": "6ac50b20f4725817e46fce6d81a9596391080b6c69e7f8fc9a078a12a6e0703e",
+      "linux_optimizer_bytes": 499255
+    },
+    "resources": {
+      "source_sha256": "4874b23e0bc5d8356b4783368fe43df40f774b5f0f0e91198b0023671fefb014",
+      "source_instructions": 15767,
+      "linux_optimizer_sha256": "ad2fcf7dede802f3dab952caf9417933a1aea3540face051b8bc07e3273ddcc7",
+      "linux_optimizer_bytes": 504759
+    }
+  },
+  "independent_seed_images": 37,
+  "simulated_comparisons": 444,
+  "simulated_boundary_checks": 24,
+  "android_executions": 1032,
+  "transfer_instruction_reduction": {
+    "input_hex": "ff",
+    "old_instructions": 11287,
+    "optimized_instructions": 31,
+    "ratio": 364.0967741935484
+  },
+  "static_pie_loader_executed": true,
+  "source_limit_commands": 10,
+  "limitations": [
+    "Bounded prototype, no general affine analysis or Android compiler selfhosting",
+    "Upstream BF validation supplies ten-command source and complete trusted images",
+    "Linux release gates unavailable on this Windows host; production core.bf unchanged"
+  ],
+  "compiler_source_sha256": "f73a9b7ddc9d6f1971435251edefd85e3bb81a0dda23e8b11630a2d7cf7407e9",
+  "seed_execution_host": "Windows x86-64, MSVC /O2 independent BF interpreters",
+  "seed_source_sha256": {
+    "seed_interpreter.c": "2e59fdca386fda2811973feeee5dab1104a25d30e12da9b0d29d020d77473b33",
+    "seed_interpreter_alt.c": "8e97271bfb3e9c3da13f0c9f8d25bf48f8e0636e097b76f57e5de76e26c4f695"
+  },
+  "native_image_sha256": {
+    "transfer0": "d8a6cbf6034f4079355910349d1215aafb05b8495bcf4cb892206e80d527cd63",
+    "transfer1": "360cc249ffc896eeda75df0f842f07584a2435d5f97492ebaa2669fc222746da",
+    "transfer2": "a794feb26f1f668926ff3c9ab9c948240e65be47d708f2e8ec4bfbba625553d1",
+    "transfer3": "b652a755f4dc8b13e9fc9ee8d8cf169d909a916cd3ac6eaa7448b3c338d06ad3",
+    "empty": "1b335dabb71153615d5d3c28aeae298d6d2275d856b041270a348fdb8b6918a9",
+    "nested": "73c4482918f8b9874811a86cf80d69de493b16a28a3d2e986137edaf1df92565",
+    "left": "d0359ea109221dc8d977deb2ccdaf8e0602b4799bfd55ae55c775991e25f882b",
+    "right": "1d1ddf6cfb952e162bf89a4423f22f1477c747c78079babc468ce85cbf3656e3"
+  }
+}

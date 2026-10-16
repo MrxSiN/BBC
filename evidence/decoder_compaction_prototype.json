@@ -1,0 +1,632 @@
+{
+  "date": "2026-10-12",
+  "classification": "PROTOTYPE: BF-only in-core decoder insertion, NOT production or S2",
+  "canonical_source_sha256": "42c9496c22a4746dc43b698688dd13d9e8c92a7e0d32719bebc44e613e4ecf51",
+  "canonical_elf_sha256": "21d3a66baf21d88bfabfce60d2837b3147702b2920eef3fd789adbef407b9652",
+  "decoder_patch_source_sha256": "b199f46d113b5bfd372e5b65665cbd841f47fab87b52e99a3be6f57ed5194c48",
+  "patch_bf_instructions": 1045,
+  "insertion_bf_offset": 1145,
+  "derived_compiler_bf_instructions": 16952,
+  "selfcompilation_instruction_limit": 16128,
+  "instructions_above_limit": 824,
+  "canonical_core_unchanged": true,
+  "native_stage_zero_executed_via_independent_bf_seed": true,
+  "byte_identical_to_native_command_only_compilation_for_each_test": true,
+  "cases_passed": 85,
+  "decoder_count_lane_audit_cases": 85,
+  "decoder_count_lane_audit_visits": 89314,
+  "count_lanes_preserved_during_executed_decoder_passes": true,
+  "backup_scratch_cells_cleared_during_executed_decoder_passes": true,
+  "intentionally_mutated_count_restore_rejected": true,
+  "independent_alternate_seed_cases": 6,
+  "malformed_wire_rejections": 5,
+  "patched_core_rejected_selfcompilation": true,
+  "runtime_checks": {
+    "output_matches_reference": 10,
+    "bounds_trap": 1,
+    "inconclusive_reference_limit": 0
+  },
+  "cases": [
+    {
+      "name": "empty",
+      "raw_bytes": 0,
+      "filtered_commands": 0,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 215
+    },
+    {
+      "name": "ignored_only",
+      "raw_bytes": 14,
+      "filtered_commands": 0,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 215
+    },
+    {
+      "name": "byte_wrap",
+      "raw_bytes": 7,
+      "filtered_commands": 7,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 439
+    },
+    {
+      "name": "comment_in_nested_loop",
+      "raw_bytes": 25,
+      "filtered_commands": 21,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 887
+    },
+    {
+      "name": "echo_eof",
+      "raw_bytes": 4,
+      "filtered_commands": 4,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 343
+    },
+    {
+      "name": "zero_loop",
+      "raw_bytes": 17,
+      "filtered_commands": 17,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 759
+    },
+    {
+      "name": "pointer_left_trap",
+      "raw_bytes": 1,
+      "filtered_commands": 1,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 247
+    },
+    {
+      "name": "pointer_right_trap",
+      "raw_bytes": 4,
+      "filtered_commands": 4,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 343
+    },
+    {
+      "name": "unmatched_close",
+      "raw_bytes": 7,
+      "filtered_commands": 1,
+      "compiler_status": 1,
+      "emitted_elf_bytes": null
+    },
+    {
+      "name": "unmatched_open",
+      "raw_bytes": 7,
+      "filtered_commands": 1,
+      "compiler_status": 1,
+      "emitted_elf_bytes": null
+    },
+    {
+      "name": "depth_255",
+      "raw_bytes": 512,
+      "filtered_commands": 512,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 16599
+    },
+    {
+      "name": "depth_256_rejected",
+      "raw_bytes": 512,
+      "filtered_commands": 512,
+      "compiler_status": 1,
+      "emitted_elf_bytes": null
+    },
+    {
+      "name": "count_255",
+      "raw_bytes": 256,
+      "filtered_commands": 256,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 8407
+    },
+    {
+      "name": "count_256",
+      "raw_bytes": 257,
+      "filtered_commands": 257,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 8439
+    },
+    {
+      "name": "count_512",
+      "raw_bytes": 513,
+      "filtered_commands": 513,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 16631
+    },
+    {
+      "name": "count_1024",
+      "raw_bytes": 1025,
+      "filtered_commands": 1025,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 33015
+    },
+    {
+      "name": "count_16128",
+      "raw_bytes": 16128,
+      "filtered_commands": 16128,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 516311
+    },
+    {
+      "name": "count_16129_rejected",
+      "raw_bytes": 16129,
+      "filtered_commands": 16129,
+      "compiler_status": 1,
+      "emitted_elf_bytes": null
+    },
+    {
+      "name": "ignored_above_raw_limit",
+      "raw_bytes": 16202,
+      "filtered_commands": 2,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 279
+    },
+    {
+      "name": "near_limit_with_comments",
+      "raw_bytes": 16553,
+      "filtered_commands": 16128,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 516311
+    },
+    {
+      "name": "annotated_core",
+      "raw_bytes": 16016,
+      "filtered_commands": 15907,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 509239
+    },
+    {
+      "name": "deterministic_00",
+      "raw_bytes": 52,
+      "filtered_commands": 11,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 567
+    },
+    {
+      "name": "deterministic_01",
+      "raw_bytes": 25,
+      "filtered_commands": 2,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 279
+    },
+    {
+      "name": "deterministic_02",
+      "raw_bytes": 23,
+      "filtered_commands": 6,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 407
+    },
+    {
+      "name": "deterministic_03",
+      "raw_bytes": 52,
+      "filtered_commands": 14,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 663
+    },
+    {
+      "name": "deterministic_04",
+      "raw_bytes": 70,
+      "filtered_commands": 13,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 631
+    },
+    {
+      "name": "deterministic_05",
+      "raw_bytes": 21,
+      "filtered_commands": 5,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 375
+    },
+    {
+      "name": "deterministic_06",
+      "raw_bytes": 137,
+      "filtered_commands": 40,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 1495
+    },
+    {
+      "name": "deterministic_07",
+      "raw_bytes": 140,
+      "filtered_commands": 37,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 1399
+    },
+    {
+      "name": "deterministic_08",
+      "raw_bytes": 163,
+      "filtered_commands": 39,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 1463
+    },
+    {
+      "name": "deterministic_09",
+      "raw_bytes": 155,
+      "filtered_commands": 33,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 1271
+    },
+    {
+      "name": "deterministic_10",
+      "raw_bytes": 148,
+      "filtered_commands": 35,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 1335
+    },
+    {
+      "name": "deterministic_11",
+      "raw_bytes": 128,
+      "filtered_commands": 33,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 1271
+    },
+    {
+      "name": "deterministic_12",
+      "raw_bytes": 125,
+      "filtered_commands": 35,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 1335
+    },
+    {
+      "name": "deterministic_13",
+      "raw_bytes": 115,
+      "filtered_commands": 35,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 1335
+    },
+    {
+      "name": "deterministic_14",
+      "raw_bytes": 120,
+      "filtered_commands": 31,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 1207
+    },
+    {
+      "name": "deterministic_15",
+      "raw_bytes": 16,
+      "filtered_commands": 5,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 375
+    },
+    {
+      "name": "deterministic_16",
+      "raw_bytes": 116,
+      "filtered_commands": 29,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 1143
+    },
+    {
+      "name": "deterministic_17",
+      "raw_bytes": 42,
+      "filtered_commands": 10,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 535
+    },
+    {
+      "name": "deterministic_18",
+      "raw_bytes": 65,
+      "filtered_commands": 15,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 695
+    },
+    {
+      "name": "deterministic_19",
+      "raw_bytes": 20,
+      "filtered_commands": 5,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 375
+    },
+    {
+      "name": "deterministic_20",
+      "raw_bytes": 82,
+      "filtered_commands": 23,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 951
+    },
+    {
+      "name": "deterministic_21",
+      "raw_bytes": 96,
+      "filtered_commands": 17,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 759
+    },
+    {
+      "name": "deterministic_22",
+      "raw_bytes": 30,
+      "filtered_commands": 8,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 471
+    },
+    {
+      "name": "deterministic_23",
+      "raw_bytes": 94,
+      "filtered_commands": 22,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 919
+    },
+    {
+      "name": "deterministic_24",
+      "raw_bytes": 68,
+      "filtered_commands": 10,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 535
+    },
+    {
+      "name": "deterministic_25",
+      "raw_bytes": 93,
+      "filtered_commands": 27,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 1079
+    },
+    {
+      "name": "deterministic_26",
+      "raw_bytes": 110,
+      "filtered_commands": 32,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 1239
+    },
+    {
+      "name": "deterministic_27",
+      "raw_bytes": 40,
+      "filtered_commands": 8,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 471
+    },
+    {
+      "name": "deterministic_28",
+      "raw_bytes": 63,
+      "filtered_commands": 10,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 535
+    },
+    {
+      "name": "deterministic_29",
+      "raw_bytes": 45,
+      "filtered_commands": 10,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 535
+    },
+    {
+      "name": "deterministic_30",
+      "raw_bytes": 24,
+      "filtered_commands": 1,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 247
+    },
+    {
+      "name": "deterministic_31",
+      "raw_bytes": 149,
+      "filtered_commands": 44,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 1623
+    },
+    {
+      "name": "deterministic_32",
+      "raw_bytes": 88,
+      "filtered_commands": 20,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 855
+    },
+    {
+      "name": "deterministic_33",
+      "raw_bytes": 99,
+      "filtered_commands": 20,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 855
+    },
+    {
+      "name": "deterministic_34",
+      "raw_bytes": 95,
+      "filtered_commands": 22,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 919
+    },
+    {
+      "name": "deterministic_35",
+      "raw_bytes": 75,
+      "filtered_commands": 22,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 919
+    },
+    {
+      "name": "deterministic_36",
+      "raw_bytes": 85,
+      "filtered_commands": 23,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 951
+    },
+    {
+      "name": "deterministic_37",
+      "raw_bytes": 70,
+      "filtered_commands": 16,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 727
+    },
+    {
+      "name": "deterministic_38",
+      "raw_bytes": 82,
+      "filtered_commands": 14,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 663
+    },
+    {
+      "name": "deterministic_39",
+      "raw_bytes": 35,
+      "filtered_commands": 7,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 439
+    },
+    {
+      "name": "deterministic_40",
+      "raw_bytes": 58,
+      "filtered_commands": 10,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 535
+    },
+    {
+      "name": "deterministic_41",
+      "raw_bytes": 66,
+      "filtered_commands": 18,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 791
+    },
+    {
+      "name": "deterministic_42",
+      "raw_bytes": 42,
+      "filtered_commands": 4,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 343
+    },
+    {
+      "name": "deterministic_43",
+      "raw_bytes": 39,
+      "filtered_commands": 6,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 407
+    },
+    {
+      "name": "deterministic_44",
+      "raw_bytes": 31,
+      "filtered_commands": 2,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 279
+    },
+    {
+      "name": "deterministic_45",
+      "raw_bytes": 44,
+      "filtered_commands": 10,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 535
+    },
+    {
+      "name": "deterministic_46",
+      "raw_bytes": 62,
+      "filtered_commands": 9,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 503
+    },
+    {
+      "name": "deterministic_47",
+      "raw_bytes": 101,
+      "filtered_commands": 19,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 823
+    },
+    {
+      "name": "deterministic_48",
+      "raw_bytes": 73,
+      "filtered_commands": 10,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 535
+    },
+    {
+      "name": "deterministic_49",
+      "raw_bytes": 78,
+      "filtered_commands": 19,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 823
+    },
+    {
+      "name": "deterministic_50",
+      "raw_bytes": 92,
+      "filtered_commands": 19,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 823
+    },
+    {
+      "name": "deterministic_51",
+      "raw_bytes": 117,
+      "filtered_commands": 31,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 1207
+    },
+    {
+      "name": "deterministic_52",
+      "raw_bytes": 60,
+      "filtered_commands": 14,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 663
+    },
+    {
+      "name": "deterministic_53",
+      "raw_bytes": 82,
+      "filtered_commands": 23,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 951
+    },
+    {
+      "name": "deterministic_54",
+      "raw_bytes": 114,
+      "filtered_commands": 28,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 1111
+    },
+    {
+      "name": "deterministic_55",
+      "raw_bytes": 60,
+      "filtered_commands": 12,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 599
+    },
+    {
+      "name": "deterministic_56",
+      "raw_bytes": 76,
+      "filtered_commands": 19,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 823
+    },
+    {
+      "name": "deterministic_57",
+      "raw_bytes": 128,
+      "filtered_commands": 33,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 1271
+    },
+    {
+      "name": "deterministic_58",
+      "raw_bytes": 172,
+      "filtered_commands": 49,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 1783
+    },
+    {
+      "name": "deterministic_59",
+      "raw_bytes": 68,
+      "filtered_commands": 13,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 631
+    },
+    {
+      "name": "deterministic_60",
+      "raw_bytes": 92,
+      "filtered_commands": 21,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 887
+    },
+    {
+      "name": "deterministic_61",
+      "raw_bytes": 73,
+      "filtered_commands": 15,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 695
+    },
+    {
+      "name": "deterministic_62",
+      "raw_bytes": 115,
+      "filtered_commands": 28,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 1111
+    },
+    {
+      "name": "deterministic_63",
+      "raw_bytes": 26,
+      "filtered_commands": 7,
+      "compiler_status": 0,
+      "emitted_elf_bytes": 439
+    }
+  ],
+  "limitations": [
+    "Only the derived interpreter-executed compiler contains the patch",
+    "Patch has no verified native Stage 1-2 self-hosting",
+    "The current 4-cell buffer remains capped at 16128 commands",
+    "No formal static proof of all tape scratch lifetimes"
+  ]
+}

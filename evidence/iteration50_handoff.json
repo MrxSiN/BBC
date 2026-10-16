@@ -1,0 +1,35 @@
+{
+  "iteration": 50,
+  "date": "2026-10-13",
+  "focus": "android_dynamic_scaling_stages",
+  "classification": "EXECUTED_LINUX_STANDARD_BF_PARTIAL_PIPELINE_NOT_COMPLETE_ANDROID_ELF",
+  "compact_stream": "evidence/iteration50_android_compact_stream.json",
+  "million_linear_stress": "evidence/iteration50_million_linear.json",
+  "disk_backed_pairing": "evidence/iteration50_android_dynamic_stack.json",
+  "linux_selfhost_replay": "evidence/iteration50_linux_selfhost_replay.json",
+  "verified": {
+    "compact_stream_bf_operations": ["+", "-", ">", "<", ".", ","],
+    "compact_stream_commands_stressed": 1000000,
+    "compact_stream_bytes_output": 12000000,
+    "pairing_stack_max_tested": 4096,
+    "wide_loop_closing_position": 100000001,
+    "wide_loop_source_bytes": 100000002,
+    "bf_owned_pairs": true,
+    "general_memory_device_is_host_backed": true,
+    "source_scanner_bits": 32,
+    "stack_opaque_position_bits": 64,
+    "fresh_linux_selfhost_stages_1_and_2_identical": true
+  },
+  "not_verified": [
+    "Eight-instruction dynamic native AArch64 ELF image",
+    "Native long-branch relocation for variable length code",
+    "Source offsets wider than the upstream 32-bit scanner",
+    "JNI-compatible Android dynamic shared library",
+    "Original eleven real Android application policies",
+    "Android loader/device execution of new stages",
+    "100 million command native Android compilation",
+    "Android compiler native S2 at general capacity"
+  ],
+  "existing_complete_aarch64_elf_command_limit": 2719,
+  "no_new_android_hardware_execution": true
+}

@@ -1,0 +1,9 @@
+{
+  "classification": "EXECUTED Linux native stages 1->2 (not cold Stage0)",
+  "source_sha256": "f73a9b7ddc9d6f1971435251edefd85e3bb81a0dda23e8b11630a2d7cf7407e9",
+  "native_elf_sha256": "e95ec4e028a28f18d955f908cf40e2f9b9fbe650b6ebfd4df6d819c3f6f6cea8",
+  "native_elf_bytes": 475703,
+  "stage1_identical": true,
+  "stage2_identical": true,
+  "independent_cold_stage0_rerun": false
+}

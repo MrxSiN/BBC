@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-12",
+  "iteration": 16,
+  "classification": "EXECUTED smaller BF-owned experimental stream filter; authoritative decoder unchanged",
+  "implemented": [
+    "BF comparison sequence with cumulative ASCII deltas and early exit for common low-byte instructions",
+    "Historical 1031-command raw BF filter retained for native differential verification",
+    "390 valid and 10 malformed byte-stream cross-version executed comparisons",
+    "Two non-gating BF filter microbenchmarks, nine interleaved repetitions per executable",
+    "Sixteenth mandatory release evidence gate"
+  ],
+  "authoritative_core_modified": false,
+  "canonical_source_sha256": "42c9496c22a4746dc43b698688dd13d9e8c92a7e0d32719bebc44e613e4ecf51",
+  "native_compiler_elf_sha256": "21d3a66baf21d88bfabfce60d2837b3147702b2920eef3fd789adbef407b9652",
+  "previous_filter_commands": 1031,
+  "current_filter_commands": 816,
+  "previous_filter_elf_bytes": 34839,
+  "current_filter_elf_bytes": 27959,
+  "historical_source_sha256": "e4e2fb953367b9af61b419b247a4810968d4ff71af8e89b0b9c1b78c00aa8e77",
+  "current_filter_source_sha256": "6ec46f09fb70713c98e9436be4711b0d977b8b8f075ef798301f3dc3ff6a2687",
+  "current_filter_elf_sha256": "573021dc1092824f7e482e7246cdbf6a716c2d841d319092f5c572fbff4ff68f",
+  "valid_cases_cross_version": 390,
+  "invalid_transport_cases_cross_version": 10,
+  "native_selfhosting": "EXECUTED Stage 0 == Stage 1 == Stage 2, Linux x86-64",
+  "release_verification_gates": 16,
+  "limitations": [
+    "Stream filter remains a second native BF executable",
+    "The Python filtered file adapter remains a disclosed transport dependency",
+    "Compiled native binaries retain fixed 32-byte instruction slots",
+    "Complete compiler-tape nonoverlap proof, required Windows/Android native support and optimized C/Rust baselines absent"
+  ],
+  "next_priority": "Integrate a BF-owned stream filter into the single authoritative compiler with verified self-hosting, source-capacity, and ELF relocation invariants"
+}

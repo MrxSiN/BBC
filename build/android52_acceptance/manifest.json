@@ -1,0 +1,109 @@
+{
+  "classification": "DEVICE_ACCEPTANCE_PENDING_EXECUTION",
+  "iteration": 52,
+  "android_device_executed": false,
+  "abi": "aarch64",
+  "elf_type": "ET_DYN_FREESTANDING",
+  "hosted_verified": "readelf_and_linux_AARCH64_simulator",
+  "cases": [
+    {
+      "case": "empty",
+      "source_bytes": 0,
+      "source_commands": 0,
+      "elf_bytes": 131100,
+      "elf_sha256": "040b978c5325e5e0e79b14b11bfdc69c9a6c8ab1eafb75214f6c8c96dedb26e2",
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected_stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected_stdout_hex": "",
+      "expected_exit_code": 0
+    },
+    {
+      "case": "ascii_A",
+      "source_bytes": 66,
+      "source_commands": 66,
+      "elf_bytes": 131920,
+      "elf_sha256": "1e82791b74186cf0e2f4dfbfc36c62ade7eecbe93ee7c6fcd8f9eaacf868a15c",
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected_stdout_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd",
+      "expected_stdout_hex": "41",
+      "expected_exit_code": 0
+    },
+    {
+      "case": "simple_loop",
+      "source_bytes": 25,
+      "source_commands": 25,
+      "elf_bytes": 131476,
+      "elf_sha256": "701cbb5b4ca2390ded910bfc3a8273cf862c3f8ff5ddb9f244f4711858d1759d",
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected_stdout_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd",
+      "expected_stdout_hex": "41",
+      "expected_exit_code": 0
+    },
+    {
+      "case": "nested_loop",
+      "source_bytes": 19,
+      "source_commands": 19,
+      "elf_bytes": 131452,
+      "elf_sha256": "02618f4aafadaba012805a99a9bd9286de77220d716559801fa4acecb1e83a6b",
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected_stdout_sha256": "67586e98fad27da0b9968bc039a1ef34c939b9b8e523a8bef89d478608c5ecf6",
+      "expected_stdout_hex": "06",
+      "expected_exit_code": 0
+    },
+    {
+      "case": "binary_io",
+      "source_bytes": 4,
+      "source_commands": 4,
+      "elf_bytes": 131276,
+      "elf_sha256": "e0d5623772ba7ac46c508f3271efb65d19427929ece81a6ddf6d1a700f1699c6",
+      "stdin_sha256": "06eb7d6a69ee19e5fbdf749018d3d2abfa04bcbd1365db312eb86dc7169389b8",
+      "expected_stdout_sha256": "06eb7d6a69ee19e5fbdf749018d3d2abfa04bcbd1365db312eb86dc7169389b8",
+      "expected_stdout_hex": "00ff",
+      "expected_exit_code": 0
+    },
+    {
+      "case": "eof_zero",
+      "source_bytes": 3,
+      "source_commands": 3,
+      "elf_bytes": 131200,
+      "elf_sha256": "09adc6deac5af2741d5652950e9ddef4563d91e27943ccbff7c559992ea7c400",
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected_stdout_sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+      "expected_stdout_hex": "00",
+      "expected_exit_code": 0
+    },
+    {
+      "case": "pointer_underflow",
+      "source_bytes": 1,
+      "source_commands": 1,
+      "elf_bytes": 131128,
+      "elf_sha256": "425f1e23c6800a88df3aff25c89f5df9711b19aed120b6436a3266a6f4e6a9bb",
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected_stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected_stdout_hex": "",
+      "expected_exit_code": 2
+    },
+    {
+      "case": "large_transfer",
+      "source_bytes": 3028,
+      "source_commands": 3028,
+      "elf_bytes": 167512,
+      "elf_sha256": "1ecf7a19e4d89973036babab8deef7a089d14688540b3899a2b90c943c7d7c23",
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected_stdout_sha256": "1dd8312636f6a0bf3d21fa2855e63072507453e93a5ced4301b364e91c9d87d6",
+      "expected_stdout_hex": "cc",
+      "expected_exit_code": 0
+    },
+    {
+      "case": "deep_nesting",
+      "source_bytes": 640,
+      "source_commands": 640,
+      "elf_bytes": 138780,
+      "elf_sha256": "d640656df0184d49168dffbabe2b20da4f646822583c3ce90b021e2e3ab63cfb",
+      "stdin_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected_stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected_stdout_hex": "",
+      "expected_exit_code": 0
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "iteration": 13,
+  "date": "2026-10-12",
+  "classification": "EXECUTED experimental standalone BF stream filter; production compiler unchanged",
+  "source_compliance": "The only production compiler remains standard annotated BF; new standalone BF filter uses the same eight instructions",
+  "compiler_source_sha256": "42c9496c22a4746dc43b698688dd13d9e8c92a7e0d32719bebc44e613e4ecf51",
+  "native_compiler_sha256": "21d3a66baf21d88bfabfce60d2837b3147702b2920eef3fd789adbef407b9652",
+  "stream_filter_sha256": "e4e2fb953367b9af61b419b247a4810968d4ff71af8e89b0b9c1b78c00aa8e77",
+  "stream_filter_commands": 1031,
+  "tests": {
+    "valid_filter_cases": 189,
+    "independent_seed_comparisons": 16,
+    "malformed_escape_rejections": 6,
+    "paired_comment_equivalence_compilations": 3,
+    "experimental_filtered_selfhosting": true
+  },
+  "source_changes": [
+    "experiments/stream_filter.bf",
+    "tests/verify_stream_filter.py"
+  ],
+  "unchanged": [
+    "compiler/core.bf",
+    "build/compiler_x86_64_linux.elf"
+  ],
+  "limitations": [
+    "Production input still has 16128 decoded-byte ceiling including ignored chars",
+    "Production ELF emitted per raw byte; comments still consume native slots",
+    "Two-process BF experiment is not shipping compiler input filtering",
+    "No new Windows or Android implementation, optimizer, safety proof, or performance baseline"
+  ],
+  "next_priority": "BF compiler input decoder integration with a single compacted command count and a reproducible S2 bootstrap"
+}

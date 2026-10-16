@@ -1,0 +1,304 @@
+{
+  "acceptance_definition": "docs/PLATFORM_ACCEPTANCE.md",
+  "active_compilation_objective": {
+    "active_roadmap": "docs/ANDROID_DYNAMIC_CALLABLE_ROADMAP.md",
+    "current_state": "LINEAR_SIX_OPERATORS_LINUX_NATIVE_BF_STAGES_SIMULATOR_ONLY",
+    "evidence": "evidence/iteration57_dynamic_callable_linear.json",
+    "fixed_compilation_command_target": null,
+    "full_dynamic_compilation_complete": false,
+    "legacy_paths": "FALLBACK_UNTIL_VERIFIED_REPLACEMENT",
+    "numeric_100m_milestone_retired": true,
+    "target": "FULLY_DYNAMIC_CALLABLE_AARCH64_WITH_BF_OWNED_IR_BRACKETS_RELOCATION"
+  },
+  "android_device_performance_followup": "evidence/android_followup_20261013/summary.json",
+  "android_iteration50_dynamic_stages": {
+    "android_device_loader_executed_this_iteration": false,
+    "classification": "LINUX_NATIVE_BF_STAGE_AND_AARCH64_SIMULATOR_PARTIAL",
+    "compact_linear_source_commands_tested": 1000000,
+    "compact_native_code_bytes": 12000000,
+    "dynamic_pairing_nesting_tested": 4096,
+    "eight_instruction_elf_generation_capacity_unmodified": 2719,
+    "evidence": [
+      "evidence/iteration50_android_compact_stream.json",
+      "evidence/iteration50_android_dynamic_stack.json",
+      "evidence/iteration50_million_linear.json"
+    ],
+    "generic_stack_record_bits": 64,
+    "scanner_offset_bits": 32,
+    "source_large_loop_span_checked": 100000001,
+    "target_app_policy_sources_compiled": 0
+  },
+  "android_iteration51_compact_relocation_bundle": {
+    "android_loader_executed": false,
+    "branch_words_patched": false,
+    "classification": "LINUX_NATIVE_EXECUTED_BF_STAGES_AND_INDEPENDENT_ORACLES_NOT_ANDROID_ELF",
+    "dynamic_nesting_levels_tested": 1025,
+    "evidence": "evidence/iteration51_android_compact_relocation_bundle.json",
+    "loadable_elf": false,
+    "native_code_generated": true,
+    "original_app_policies_compiled": 0,
+    "source_commands_tested": 7502
+  },
+  "android_iteration52_dynamic_elf": {
+    "android_native_loader_executed": false,
+    "classification": "BF_STAGES_EXECUTED_LINUX_NATIVE_PLUS_AARCH64_SIMULATOR",
+    "evidence": [
+      "evidence/iteration52_android_dynamic_elf_tests.json",
+      "evidence/iteration52_large_synthetic.json"
+    ],
+    "freestanding_executable_not_jni_dso": true,
+    "original_application_sources_compiled": 0,
+    "simulator_executions_small_programs": 110,
+    "synthetic_source_commands_structurally_accepted": 296307,
+    "unhandled_direct_branch_reach": true
+  },
+  "android_iteration53_long_branches": {
+    "android_device_executed": false,
+    "classification": "BF_OWNED_PC_RELATIVE_64BIT_ELF_LINUX_SIMULATED_NOT_ANDROID_LOADER",
+    "evidence": [
+      "evidence/iteration53_android_far_elf_tests.json",
+      "evidence/iteration53_large_synthetic.json"
+    ],
+    "large_structural_commands": 296307,
+    "large_structural_elf_bytes": 3686824,
+    "original_app_policies_compiled": 0,
+    "small_aarch64_simulator_runs": 114
+  },
+  "android_iteration55_policy_constant_stores": {
+    "classification": "LINUX_BF_NATIVE_STAGE_EXECUTION_AND_GMAIL_IR_ORACLES",
+    "evidence": "evidence/iteration55_policy_valuefold.json",
+    "hundred_million_command_native_compilation": false,
+    "new_android_device_execution": false,
+    "new_apk_parity": false,
+    "runtime_speedup_verified": false,
+    "twitter_threads_original_policies_compiled": false,
+    "two_original_gmail_policies_compiled": true
+  },
+  "android_iteration56_twitter_action": {
+    "android_device_run": false,
+    "bf_source_instructions": 24616,
+    "callable_aarch64_image_bytes": 15300,
+    "classification": "LINUX_STANDARD_BF_PREPASS_PLUS_CALLABLE_AARCH64_CODEGEN_NOT_ANDROID_EXECUTION",
+    "evidence": "evidence/iteration56_policy_clear.json",
+    "hundred_million_compilation": false,
+    "independent_bf_interpreter_frame_parity": 10,
+    "independent_machine_byte_oracle": true,
+    "jni_module_integrated": false,
+    "legacy_max_records_removed": false,
+    "original_twitter_source_compiled": "brainfuck/src/action.bf",
+    "rle_records_after": 3819,
+    "rle_records_before": 4723
+  },
+  "android_iteration57_dynamic_callable_linear": {
+    "all_eight_operators": false,
+    "android_device_executed": false,
+    "classification": "LINUX_NATIVE_BF_DYNAMIC_CALLABLE_LINEAR_PLUS_AARCH64_SIMULATOR",
+    "evidence": "evidence/iteration57_dynamic_callable_linear.json",
+    "jni_loader_integrated": false,
+    "no_record_ceiling_in_new_linear_lane": true,
+    "simulator_runs": 240,
+    "source_program_tests": 60
+  },
+  "android_native_selfhosting": "RECORDED_NATIVE_S2_ON_PIXEL8PRO_BOUNDED_16128; GENERAL_300000_UNIMPLEMENTED",
+  "android_performance_objective": "NOT_ESTABLISHED: native BF slower than strongest C transfer baseline; existing GM BF/JNI slower than warmed Java",
+  "android_resumed_iteration45": {
+    "android_device_loader_for_new_images": "NOT_RUN",
+    "android_native_s2_capacity": "ARCHIVED_BOUNDED_16128_INPUT",
+    "compiler_elf_generated_program_commands": 2719,
+    "evidence": "evidence/iteration45_android_class8.json",
+    "execution_class": "LINUX_BF_NATIVE_AND_SIMULATED_AARCH64",
+    "next_gate": "ANDROID_CLASS8_DEVICE_EXECUTION_AND_MULTI_BYTE_STREAMING_ELF"
+  },
+  "as_of": "2026-10-14",
+  "authoritative_detailed_plan": "docs/IMPLEMENTATION_ROADMAP.md",
+  "baseline": "Iteration 25 plus unnumbered Android BF-owned optimization evidence dated 2026-10-12",
+  "classification": "PLANNING_ONLY_NOT_EXECUTION_EVIDENCE",
+  "contingency_total_high": 34,
+  "contingency_total_low": 28,
+  "current_evidence_iteration": 57,
+  "current_focus": "RESOURCE_SCALED_BF_OWNED_CALLABLE_AARCH64_CODEGEN_DYNAMIC_LOOPS_NEXT",
+  "current_product_acceptance_override": {
+    "actual_support": "UNIMPLEMENTED",
+    "as_of": "2026-10-13",
+    "classification": "PLANNING_ONLY",
+    "first_gate": "COMPILE_ALL_ELEVEN_ORIGINAL_BF_SOURCES",
+    "numeric_capacity_goal": "RETIRED_REPLACED_BY_RESOURCE_SCALED_CALLABLE_COMPILATION",
+    "observed_total_commands": 1312912,
+    "priority": "ALL_ELEVEN_ORIGINAL_BF_POLICIES_PLUS_ANDROID_ABI_PARITY_ON_DYNAMIC_CALLABLE_LANE",
+    "source": "docs/ANDROID_APPLICATION_ACCEPTANCE.md",
+    "target_programs": 11
+  },
+  "documentation_iteration": "D0 (completed before I26)",
+  "iteration26_evidence": "evidence/iteration26_contract.json",
+  "iteration26_state": "CONTRACT_AND_HOSTED_REGRESSIONS_EXECUTED; cold Linux Stage 0 and full release suite not rerun to completion",
+  "iteration29_followup": "BF_NATIVE_74_SLOT_LOOP_PATCH_AND_AARCH64_SIMULATION_EXECUTED; NO_ANDROID_DEVICE_OR_NATIVE_COMPILER",
+  "iteration34_evidence": "evidence/iteration34_multiclass_elf.json",
+  "iteration34_progress": "BF_NATIVE_FOUR_PAGE_CLASSES_1024_LOOP_COMMANDS_AARCH64_SIMULATED_ONLY; FULL_GENERAL_LAYOUT_NOT_COMPLETE",
+  "iteration37_evidence": "evidence/android_device_20261013/device_verification.json",
+  "iteration37_gate_status": "GENERATED_PROGRAM_DEVICE_GATE_PASSED; ANDROID_NATIVE_COMPILER_S2_UNIMPLEMENTED",
+  "iteration37_preflight_evidence": "evidence/iteration37_android_acceptance_preflight.json",
+  "iteration37_progress": "ANDROID_GENERATED_PROGRAM_LOADER_13_OF_13_EXECUTED_USB_PIXEL8PRO_API37_THROUGH_2000_COMMANDS; OTHER_DEVICE_MATRIX_AND_ANDROID_NATIVE_COMPILER_S2_OPEN",
+  "iteration38_evidence": "evidence/iteration38_transition.json",
+  "iteration38_progress": "ANDROID_NATIVE_S2_ARCHIVED_STAGES0_TO3_OFFLINE_AUDITED; WINDOWS_BF_PE32_FIXED_EXIT_EMITTER_STRUCTURAL_NOT_WINDOWS_EXECUTED",
+  "iteration40_evidence": "evidence/iteration40_windows_linear_io.json",
+  "iteration40_progress": "SIX_COMMAND_BF_PE_WINDOWS_IO_EMITTED_AND_OFFLINE_INSPECTED_WINDOWS_RUNTIME_NOT_VERIFIED",
+  "iteration48_100m_pairing": {
+    "android_codegen_limit": 2719,
+    "classification": "EXECUTED_LINUX_BF_32BIT_PAIRING_NOT_NATIVE_ANDROID_CODEGEN",
+    "evidence": "evidence/iteration48_android_100m_pairing.json",
+    "next_gate": "BF_OWNED_32BIT_SOURCE_TO_CODE_OFFSET_MAPPING"
+  },
+  "iteration_27_progress": "BF-only 24-bit source scan EXECUTED on Linux up to 300001 commands; general Android codegen still limited to 10 and milestone incomplete",
+  "latest_verified_slice": "LINUX_NATIVE_STANDARD_BF_DYNAMIC_LINEAR_CALLABLE_AARCH64_SIMULATED_NO_ANDROID_DEVICE",
+  "next_implementation_iteration": 58,
+  "optional_expansions": {
+    "additional_android_abis": "4-8 iterations per ABI estimated",
+    "alternate_semantic_profile": "separately estimated, not in baseline",
+    "apk_or_host_integration": "3-6+ iterations per integration pattern estimated"
+  },
+  "phases": [
+    {
+      "items": [
+        {
+          "deliverable": "Versioned V0 and Android compilation contract",
+          "iteration": 26,
+          "state": "CONTRACT_IMPLEMENTED_LINUX_TESTS_EXECUTED; FULL_COLD_BOOTSTRAP_NOT_RERUN"
+        },
+        {
+          "deliverable": "Scalable BF-owned source ingestion beyond ten commands",
+          "iteration": 27,
+          "state": "PARTIAL: LINUX_EXECUTED_WIDE_BF_SOURCE_SCAN; GENERAL_ANDROID_CODEGEN_NOT_IMPLEMENTED"
+        },
+        {
+          "deliverable": "General BF-owned bracket matching and relocations",
+          "iteration": 28,
+          "state": "PARTIAL: WIDE_BF_BRACKET_PAIRS_AND_AARCH64_B_RECORDS_EXECUTED_LINUX; ELF_PATCHER_AND_DYNAMIC_EMISSION_NOT_IMPLEMENTED"
+        },
+        {
+          "deliverable": "AArch64 branch reach and long-distance code layout",
+          "evidence": "evidence/iteration29_wide_slot_patch.json",
+          "iteration": 29,
+          "state": "PARTIAL: BF_LINUX_NATIVE_74_COMMAND_LOOP_ELF_SIMULATED; DYNAMIC_ELF_AND_ANDROID_DEVICE_GATE_OPEN"
+        },
+        {
+          "deliverable": "Dynamic Android ELF PIE and actual loader validation",
+          "iteration": 30,
+          "state": "PLANNED_NOT_VERIFIED"
+        },
+        {
+          "deliverable": "All eight BF operations including robust byte I/O and safety",
+          "iteration": 31,
+          "state": "PLANNED_NOT_VERIFIED"
+        },
+        {
+          "deliverable": "Consolidated BF-only compilation logic and transport contract",
+          "evidence": "evidence/iteration32_wide_slot_patch_255.json",
+          "iteration": 32,
+          "state": "PARTIAL: BF_255_SLOT_LOOP_PATCH_LINUX_EXECUTED; COMPILER_CONSOLIDATION_AND_ANDROID_NATIVE_EXECUTION_OPEN"
+        },
+        {
+          "deliverable": "Android-native executable BF compiler",
+          "evidence": "evidence/iteration33_wide_slot_patch_512.json",
+          "iteration": 33,
+          "state": "PARTIAL: BF_LINUX_NATIVE_512_COMMAND_LOOPS_AND_FIRST_ELF_PAGE_CROSSING_SIMULATED; ANDROID_LOADER_AND_S2_NOT_EXECUTED"
+        },
+        {
+          "deliverable": "Android-native complete Stage 0 to 2 self-hosting",
+          "iteration": 34,
+          "state": "PLANNED_NOT_VERIFIED"
+        },
+        {
+          "deliverable": "Compiler safety and negative/differential hardening",
+          "iteration": 35,
+          "state": "PLANNED_NOT_VERIFIED"
+        },
+        {
+          "deliverable": "At least 300000 executable-command acceptance workload",
+          "iteration": 36,
+          "state": "PLANNED_NOT_VERIFIED"
+        },
+        {
+          "deliverable": "Android API and supported shell compatibility matrix",
+          "iteration": 37,
+          "state": "PLANNED_NOT_VERIFIED"
+        },
+        {
+          "deliverable": "Optimization with repeated native baselines",
+          "iteration": 38,
+          "state": "PLANNED_NOT_VERIFIED"
+        },
+        {
+          "deliverable": "Android AArch64 release acceptance",
+          "iteration": 39,
+          "state": "PLANNED_NOT_VERIFIED"
+        }
+      ],
+      "iteration_count": 14,
+      "iteration_end": 39,
+      "iteration_start": 26,
+      "name": "android_aarch64"
+    },
+    {
+      "items": [
+        {
+          "deliverable": "PE32+ and Win32 x64 ABI contract",
+          "iteration": 40,
+          "state": "PARTIAL: LINUX_EXECUTED_BF_PE_6_OPERATOR_IMPORT_AND_ABI_GLUE_WINDOWS_RUNTIME_NOT_RUN"
+        },
+        {
+          "deliverable": "BF-owned Windows PE executable emission",
+          "iteration": 41,
+          "state": "PLANNED_NOT_VERIFIED"
+        },
+        {
+          "deliverable": "Full BF command semantics with Windows byte I/O",
+          "iteration": 42,
+          "state": "PLANNED_NOT_VERIFIED"
+        },
+        {
+          "deliverable": "Scalable native Windows compiler integration",
+          "iteration": 43,
+          "state": "PLANNED_NOT_VERIFIED"
+        },
+        {
+          "deliverable": "Windows-native complete Stage 0 to 2 self-hosting",
+          "iteration": 44,
+          "state": "PLANNED_NOT_VERIFIED"
+        },
+        {
+          "deliverable": "Windows hardening and baseline measurements",
+          "iteration": 45,
+          "state": "PLANNED_NOT_VERIFIED"
+        }
+      ],
+      "iteration_count": 6,
+      "iteration_end": 45,
+      "iteration_start": 40,
+      "name": "windows_x86_64"
+    },
+    {
+      "items": [
+        {
+          "deliverable": "Three-platform independent semantic and safety qualification",
+          "iteration": 46,
+          "state": "PLANNED_NOT_VERIFIED"
+        },
+        {
+          "deliverable": "Reproducible evidence-backed three-platform release",
+          "iteration": 47,
+          "state": "PLANNED_NOT_VERIFIED"
+        }
+      ],
+      "iteration_count": 2,
+      "iteration_end": 47,
+      "iteration_start": 46,
+      "name": "shared_release"
+    }
+  ],
+  "plan_vs_execution": "Historical numbered schedule retained. Android native S2 archived, but the general 300000-command goal is open. Windows Iteration40 is six-command linear prototype only; real Windows runtime and S2 pending.",
+  "proposed_large_source_acceptance_commands": 300000,
+  "scope": "Android arm64-v8a shell compiler first, Windows x86-64 console compiler second; V0 semantic profile; Linux S2 retained",
+  "total_baseline_iterations": 22,
+  "windows_current": "BF_NATIVE_LINUX_EXECUTED_6_OF_8_OP_LINEAR_64_COMMAND_PE32_WITH_WIN32_IO_WINDOWS_LOADER_NOT_RUN",
+  "windows_native_selfhosting": "UNIMPLEMENTED_AT_BASELINE"
+}

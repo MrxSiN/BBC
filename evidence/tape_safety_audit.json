@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-12",
+  "classification": "STRUCTURAL template-invariant audit + EXECUTED boundary witnesses; not a formal proof of the whole compiler",
+  "core_sha256": "f73a9b7ddc9d6f1971435251edefd85e3bb81a0dda23e8b11630a2d7cf7407e9",
+  "native_compiler_sha256": "e95ec4e028a28f18d955f908cf40e2f9b9fbe650b6ebfd4df6d819c3f6f6cea8",
+  "profile": "Unsigned wrapping 8-bit cells; 65,536-cell fixed tape; pointer movement traps at both boundaries",
+  "static_templates_checked": 6,
+  "abstract_guard_transitions_checked": 131072,
+  "abstract_invalid_boundary_transitions": 2,
+  "native_witnesses_passed": 9,
+  "negative_mutations_rejected": 10,
+  "compiler_self_slots_checked": 14859,
+  "compiler_self_branches_checked": 1650,
+  "claims_excluded": [
+    "No proof of compiler-internal tape region separation",
+    "No proof for alternate or future backends",
+    "Assumes Linux x86-64 instruction and syscall semantics",
+    "No proof against malicious host or kernel"
+  ],
+  "witnesses": [
+    {
+      "case": "left_immediate",
+      "native_exit": 2,
+      "output_hex": "",
+      "verified_slots": 1
+    },
+    {
+      "case": "left_after_right",
+      "native_exit": 2,
+      "output_hex": "",
+      "verified_slots": 3
+    },
+    {
+      "case": "left_in_loop",
+      "native_exit": 2,
+      "output_hex": "",
+      "verified_slots": 4
+    },
+    {
+      "case": "right_at_tape_end",
+      "native_exit": 2,
+      "output_hex": "",
+      "verified_slots": 5
+    },
+    {
+      "case": "valid_pointer_shuttle",
+      "native_exit": 0,
+      "output_hex": "02",
+      "verified_slots": 10
+    },
+    {
+      "case": "zero_cell_skip",
+      "native_exit": 0,
+      "output_hex": "00",
+      "verified_slots": 4
+    },
+    {
+      "case": "input_output_cell",
+      "native_exit": 0,
+      "output_hex": "ff00",
+      "verified_slots": 4
+    },
+    {
+      "case": "nested_loop_branches",
+      "native_exit": 0,
+      "output_hex": "0c",
+      "verified_slots": 20
+    },
+    {
+      "case": "large_valid_source",
+      "native_exit": 0,
+      "output_hex": "",
+      "verified_slots": 16128
+    }
+  ]
+}

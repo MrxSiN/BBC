@@ -1,0 +1,34 @@
+{
+  "classification": "LINUX_EXECUTED_BF_COMPILER_REPLAY_MATCHES_ARCHIVED_ANDROID_IMAGES",
+  "device_executed_in_this_run": false,
+  "compiler_algorithms_implemented_by": "unchanged_standard_brainfuck_policy_stages",
+  "linux_seed_role": "C interpreter executes BF stage instructions, does not translate BF to machine code",
+  "linux_native_stage_role": "self-hosted Linux BF compiler compiles stage BF to Linux ELF, which then executes",
+  "archived_device_build_evidence": "evidence/gm_native_20261014_v4/build.json",
+  "archived_device_execution_evidence": "evidence/gm_native_device_20261014_v4/report.json",
+  "original_policy_images": {
+    "row": {
+      "source_commands": 18748,
+      "source_sha256": "773beec4d9098ac78faed538427fc9e04546136504d41100e906cb748f211414",
+      "elf_sha256": "c66bb638c2da02ec21936f5168efdad11d2c60ac72e01ff9c6d7e665aa2b6ffb",
+      "elf_bytes": 13064,
+      "exact_android_image_match": true,
+      "linux_cold_interpreter_wall_s": 0.744
+    },
+    "scope": {
+      "source_commands": 18192,
+      "source_sha256": "6a67a60c79031e3d78ce77f08d95618d16e4985075c8fda77cb32b56e91c185c",
+      "elf_sha256": "e6f468abf3b79a07abdb51081509935fc5dda053f69265bd9f71d2efa30c302c",
+      "elf_bytes": 13168,
+      "exact_android_image_match": true,
+      "linux_cold_interpreter_wall_s": 0.725
+    }
+  },
+  "native_stage_parity": "3 early native stages verified separately by tests/verify_linux_policy_stages.py",
+  "independent_seed_differentials": "independently verified by tests/verify_policy_seed_runs.py",
+  "linux_elf_compiler_sha256": "e95ec4e028a28f18d955f908cf40e2f9b9fbe650b6ebfd4df6d819c3f6f6cea8",
+  "original_gm_apk_rebuilt_on_linux": false,
+  "android_device_runtime_performance_retested": false,
+  "twitter_threads_compiled": false,
+  "hundred_million_command_native_compilation": false
+}

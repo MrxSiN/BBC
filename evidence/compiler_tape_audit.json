@@ -1,0 +1,284 @@
+{
+  "date": "2026-10-12",
+  "classification": "EXECUTED compiler tape access witnesses; bounded phase footprints, not a formal nonoverlap proof",
+  "source_sha256": "f73a9b7ddc9d6f1971435251edefd85e3bb81a0dda23e8b11630a2d7cf7407e9",
+  "native_compiler_sha256": "e95ec4e028a28f18d955f908cf40e2f9b9fbe650b6ebfd4df6d819c3f6f6cea8",
+  "audit_only_seed": "bootstrap/seed_interpreter.c",
+  "header_scratch_audit": {
+    "cases_with_clean_entry_exit": 8,
+    "header_bf_offsets": [
+      2848,
+      4277
+    ],
+    "entry_and_exit_pointer": 60,
+    "scratch_cell": 61,
+    "entry_and_exit_scratch_value": 0,
+    "header_entry_exit_checks": 16,
+    "classification": "EXECUTED witnesses, not a proof of the entry precondition for all possible source"
+  },
+  "source_buffer_base_cell": 68,
+  "source_buffer_stride_cells": 4,
+  "compiler_tape_cells": 65536,
+  "source_storage_normalization": "Only the eight command bytes are retained; escaped 00 and FF are discarded",
+  "decode_end_bf_instruction": 2462,
+  "generation_end_bf_instruction": 14854,
+  "cases_passed": 8,
+  "source_oracle_mutations_rejected": 1,
+  "limitations": [
+    "Observed high-water cells on the listed executions are not static proof for every possible source",
+    "Compacted command lanes are temporarily written during native emission and restored; the audit checks only phase boundaries",
+    "Other scratch metadata, loop stack and compiler-internal capacity separation are not proven disjoint",
+    "Scratch cell 61 header-entry precondition is only witnessed, not statically proven from decoder control flow",
+    "C audit seed is a test-only Brainfuck interpreter and does not generate native machine code"
+  ],
+  "cases": [
+    {
+      "case": "empty",
+      "input_bytes": 0,
+      "filtered_commands": 0,
+      "compiler_elf_bytes": 215,
+      "emitted_binary_sha256": "5f54822c6f763add3a8b8dc7ff677a4ad375b83707bdbb9ea726124339322a5b",
+      "phase_trace": [
+        {
+          "phase": 0,
+          "steps": 238,
+          "accesses": 64,
+          "writes": 15,
+          "source_lane_writes": 0,
+          "low": 0,
+          "high": 71
+        },
+        {
+          "phase": 1,
+          "steps": 6790,
+          "accesses": 5797,
+          "writes": 4821,
+          "source_lane_writes": 0,
+          "low": 60,
+          "high": 77
+        }
+      ],
+      "normalized_source_verified_after_decode_and_at_exit": true,
+      "byte_identical_to_native_compiler": true,
+      "header_scratch_entry_and_exit_clean": true,
+      "header_scratch_checkpoints": 2
+    },
+    {
+      "case": "simple",
+      "input_bytes": 25,
+      "filtered_commands": 25,
+      "compiler_elf_bytes": 1015,
+      "emitted_binary_sha256": "871eabdf63f3626c52f192607e6f4e2acce9e879324f8e3d5cae97b3a2131b86",
+      "phase_trace": [
+        {
+          "phase": 0,
+          "steps": 1045849,
+          "accesses": 385863,
+          "writes": 253358,
+          "source_lane_writes": 0,
+          "low": 0,
+          "high": 189
+        },
+        {
+          "phase": 1,
+          "steps": 751232,
+          "accesses": 344247,
+          "writes": 223541,
+          "source_lane_writes": 32816,
+          "low": 60,
+          "high": 171
+        }
+      ],
+      "normalized_source_verified_after_decode_and_at_exit": true,
+      "byte_identical_to_native_compiler": true,
+      "header_scratch_entry_and_exit_clean": true,
+      "header_scratch_checkpoints": 2
+    },
+    {
+      "case": "comments_and_binary",
+      "input_bytes": 29,
+      "filtered_commands": 10,
+      "compiler_elf_bytes": 535,
+      "emitted_binary_sha256": "e19faf80501c5dd512f30999d41892abc3cd3b0b7ac492ebcb9833e38df6a6c1",
+      "phase_trace": [
+        {
+          "phase": 0,
+          "steps": 862622,
+          "accesses": 325394,
+          "writes": 213161,
+          "source_lane_writes": 0,
+          "low": 0,
+          "high": 129
+        },
+        {
+          "phase": 1,
+          "steps": 277010,
+          "accesses": 129455,
+          "writes": 87057,
+          "source_lane_writes": 14240,
+          "low": 60,
+          "high": 111
+        }
+      ],
+      "normalized_source_verified_after_decode_and_at_exit": true,
+      "byte_identical_to_native_compiler": true,
+      "header_scratch_entry_and_exit_clean": true,
+      "header_scratch_checkpoints": 2
+    },
+    {
+      "case": "deep_loops",
+      "input_bytes": 512,
+      "filtered_commands": 512,
+      "compiler_elf_bytes": 16599,
+      "emitted_binary_sha256": "afda5578847f2e4c8259c80481cb8ca1f403b8ecb1ab43713c62784f762a377c",
+      "phase_trace": [
+        {
+          "phase": 0,
+          "steps": 12803966,
+          "accesses": 4670310,
+          "writes": 3054719,
+          "source_lane_writes": 0,
+          "low": 0,
+          "high": 2137
+        },
+        {
+          "phase": 1,
+          "steps": 2300813839,
+          "accesses": 771050528,
+          "writes": 518982753,
+          "source_lane_writes": 96468944,
+          "low": 60,
+          "high": 2119
+        }
+      ],
+      "normalized_source_verified_after_decode_and_at_exit": true,
+      "byte_identical_to_native_compiler": true,
+      "header_scratch_entry_and_exit_clean": true,
+      "header_scratch_checkpoints": 2
+    },
+    {
+      "case": "compiler_self_source",
+      "input_bytes": 15559,
+      "filtered_commands": 14859,
+      "compiler_elf_bytes": 475703,
+      "emitted_binary_sha256": "e95ec4e028a28f18d955f908cf40e2f9b9fbe650b6ebfd4df6d819c3f6f6cea8",
+      "phase_trace": [
+        {
+          "phase": 0,
+          "steps": 609466127,
+          "accesses": 221120641,
+          "writes": 145063452,
+          "source_lane_writes": 0,
+          "low": 0,
+          "high": 59525
+        },
+        {
+          "phase": 1,
+          "steps": 1086229643,
+          "accesses": 428552342,
+          "writes": 280859151,
+          "source_lane_writes": 41094160,
+          "low": 60,
+          "high": 59507
+        }
+      ],
+      "normalized_source_verified_after_decode_and_at_exit": true,
+      "byte_identical_to_native_compiler": true,
+      "header_scratch_entry_and_exit_clean": true,
+      "header_scratch_checkpoints": 2
+    },
+    {
+      "case": "source_ceiling_commands",
+      "input_bytes": 16128,
+      "filtered_commands": 16128,
+      "compiler_elf_bytes": 516311,
+      "emitted_binary_sha256": "ced65df451d84ed10be71dcef7a6c9f10a25d22189db0dce81bfcab2e3c6032a",
+      "phase_trace": [
+        {
+          "phase": 0,
+          "steps": 903806239,
+          "accesses": 323239267,
+          "writes": 212955387,
+          "source_lane_writes": 0,
+          "low": 0,
+          "high": 64601
+        },
+        {
+          "phase": 1,
+          "steps": 377955501,
+          "accesses": 168583976,
+          "writes": 107470501,
+          "source_lane_writes": 11096064,
+          "low": 60,
+          "high": 64583
+        }
+      ],
+      "normalized_source_verified_after_decode_and_at_exit": true,
+      "byte_identical_to_native_compiler": true,
+      "header_scratch_entry_and_exit_clean": true,
+      "header_scratch_checkpoints": 2
+    },
+    {
+      "case": "source_ceiling_comments",
+      "input_bytes": 32256,
+      "filtered_commands": 0,
+      "compiler_elf_bytes": 215,
+      "emitted_binary_sha256": "5f54822c6f763add3a8b8dc7ff677a4ad375b83707bdbb9ea726124339322a5b",
+      "phase_trace": [
+        {
+          "phase": 0,
+          "steps": 1609090435,
+          "accesses": 598897117,
+          "writes": 394039245,
+          "source_lane_writes": 0,
+          "low": 0,
+          "high": 89
+        },
+        {
+          "phase": 1,
+          "steps": 6790,
+          "accesses": 5797,
+          "writes": 4821,
+          "source_lane_writes": 0,
+          "low": 60,
+          "high": 77
+        }
+      ],
+      "normalized_source_verified_after_decode_and_at_exit": true,
+      "byte_identical_to_native_compiler": true,
+      "header_scratch_entry_and_exit_clean": true,
+      "header_scratch_checkpoints": 2
+    },
+    {
+      "case": "source_ceiling_zero_and_ff",
+      "input_bytes": 32256,
+      "filtered_commands": 0,
+      "compiler_elf_bytes": 215,
+      "emitted_binary_sha256": "5f54822c6f763add3a8b8dc7ff677a4ad375b83707bdbb9ea726124339322a5b",
+      "phase_trace": [
+        {
+          "phase": 0,
+          "steps": 1439037155,
+          "accesses": 560319037,
+          "writes": 369121549,
+          "source_lane_writes": 0,
+          "low": 0,
+          "high": 89
+        },
+        {
+          "phase": 1,
+          "steps": 6790,
+          "accesses": 5797,
+          "writes": 4821,
+          "source_lane_writes": 0,
+          "low": 60,
+          "high": 77
+        }
+      ],
+      "normalized_source_verified_after_decode_and_at_exit": true,
+      "byte_identical_to_native_compiler": true,
+      "header_scratch_entry_and_exit_clean": true,
+      "header_scratch_checkpoints": 2
+    }
+  ]
+}

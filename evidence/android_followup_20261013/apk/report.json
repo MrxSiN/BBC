@@ -1,0 +1,375 @@
+{
+  "date": "2026-10-13",
+  "serial": "38021FDJG00610",
+  "package": "io.github.mrxsin.gmailhideads.codexbench",
+  "test_package": "io.github.mrxsin.gmailhideads.codexbench.test",
+  "classification": "ANDROID_DEVICE_EXECUTED existing GM BF-to-C AOT plus JNI; separate from brainfuckC backend",
+  "build_command": "gradlew.bat -I D:/GitHub/brainfuckC/benchmarks/gm_benchmark.init.gradle -PbenchmarkRelease :app:assembleRelease :app:assembleReleaseAndroidTest --console=plain",
+  "apk_sha256": {
+    "app.apk": "49582963397ea949e0afa59a78dbcab303bee3f9e5e67f5d965703debf9d3e09",
+    "test.apk": "4e689f4f340a71f3d20223ac82d18959b292f1ba277bd90164e3faae54875047"
+  },
+  "art_modes": {
+    "verify": {
+      "runs": [
+        {
+          "tests_passed": 16,
+          "rows": {
+            "legacy ordinary class": {
+              "p50_us": 0.41,
+              "p95_us": 0.65,
+              "p99_us": 0.69
+            },
+            "brainfuck ordinary class": {
+              "p50_us": 2.89,
+              "p95_us": 3.09,
+              "p99_us": 3.17
+            },
+            "legacy derived ad row": {
+              "p50_us": 0.53,
+              "p95_us": 0.57,
+              "p99_us": 0.57
+            },
+            "brainfuck derived ad row": {
+              "p50_us": 2.93,
+              "p95_us": 3.66,
+              "p99_us": 3.74
+            },
+            "legacy scope": {
+              "p50_us": 0.9,
+              "p95_us": 0.9,
+              "p99_us": 0.94
+            },
+            "brainfuck scope": {
+              "p50_us": 1.79,
+              "p95_us": 1.87,
+              "p99_us": 1.91
+            },
+            "cached verdict (the addView path)": {
+              "p50_us": 0.24,
+              "p95_us": 0.25,
+              "p99_us": 0.29
+            }
+          }
+        },
+        {
+          "tests_passed": 1,
+          "rows": {
+            "legacy ordinary class": {
+              "p50_us": 0.41,
+              "p95_us": 0.65,
+              "p99_us": 0.69
+            },
+            "brainfuck ordinary class": {
+              "p50_us": 3.42,
+              "p95_us": 3.54,
+              "p99_us": 3.66
+            },
+            "legacy derived ad row": {
+              "p50_us": 0.65,
+              "p95_us": 0.69,
+              "p99_us": 0.69
+            },
+            "brainfuck derived ad row": {
+              "p50_us": 4.23,
+              "p95_us": 4.48,
+              "p99_us": 4.6
+            },
+            "legacy scope": {
+              "p50_us": 0.37,
+              "p95_us": 0.41,
+              "p99_us": 0.45
+            },
+            "brainfuck scope": {
+              "p50_us": 1.38,
+              "p95_us": 1.42,
+              "p99_us": 1.47
+            },
+            "cached verdict (the addView path)": {
+              "p50_us": 0.24,
+              "p95_us": 0.25,
+              "p99_us": 0.29
+            }
+          }
+        },
+        {
+          "tests_passed": 1,
+          "rows": {
+            "legacy ordinary class": {
+              "p50_us": 0.37,
+              "p95_us": 0.65,
+              "p99_us": 0.69
+            },
+            "brainfuck ordinary class": {
+              "p50_us": 2.93,
+              "p95_us": 3.13,
+              "p99_us": 3.26
+            },
+            "legacy derived ad row": {
+              "p50_us": 0.53,
+              "p95_us": 0.57,
+              "p99_us": 0.61
+            },
+            "brainfuck derived ad row": {
+              "p50_us": 3.46,
+              "p95_us": 3.7,
+              "p99_us": 3.83
+            },
+            "legacy scope": {
+              "p50_us": 0.9,
+              "p95_us": 0.94,
+              "p99_us": 0.94
+            },
+            "brainfuck scope": {
+              "p50_us": 1.83,
+              "p95_us": 2.04,
+              "p99_us": 2.12
+            },
+            "cached verdict (the addView path)": {
+              "p50_us": 0.24,
+              "p95_us": 0.25,
+              "p99_us": 0.29
+            }
+          }
+        }
+      ],
+      "median_p50_us": {
+        "legacy ordinary class": 0.41,
+        "brainfuck ordinary class": 2.93,
+        "legacy derived ad row": 0.53,
+        "brainfuck derived ad row": 3.46,
+        "legacy scope": 0.9,
+        "brainfuck scope": 1.79,
+        "cached verdict (the addView path)": 0.24
+      }
+    },
+    "speed": {
+      "runs": [
+        {
+          "tests_passed": 1,
+          "rows": {
+            "legacy ordinary class": {
+              "p50_us": 0.33,
+              "p95_us": 0.37,
+              "p99_us": 0.37
+            },
+            "brainfuck ordinary class": {
+              "p50_us": 2.89,
+              "p95_us": 3.13,
+              "p99_us": 3.21
+            },
+            "legacy derived ad row": {
+              "p50_us": 0.49,
+              "p95_us": 0.53,
+              "p99_us": 0.53
+            },
+            "brainfuck derived ad row": {
+              "p50_us": 3.83,
+              "p95_us": 3.91,
+              "p99_us": 3.99
+            },
+            "legacy scope": {
+              "p50_us": 0.12,
+              "p95_us": 0.16,
+              "p99_us": 0.16
+            },
+            "brainfuck scope": {
+              "p50_us": 1.91,
+              "p95_us": 2.03,
+              "p99_us": 2.08
+            },
+            "cached verdict (the addView path)": {
+              "p50_us": 0.16,
+              "p95_us": 0.16,
+              "p99_us": 0.16
+            }
+          }
+        },
+        {
+          "tests_passed": 1,
+          "rows": {
+            "legacy ordinary class": {
+              "p50_us": 0.61,
+              "p95_us": 0.61,
+              "p99_us": 0.61
+            },
+            "brainfuck ordinary class": {
+              "p50_us": 2.93,
+              "p95_us": 3.3,
+              "p99_us": 3.38
+            },
+            "legacy derived ad row": {
+              "p50_us": 0.49,
+              "p95_us": 0.53,
+              "p99_us": 0.53
+            },
+            "brainfuck derived ad row": {
+              "p50_us": 3.22,
+              "p95_us": 3.99,
+              "p99_us": 4.03
+            },
+            "legacy scope": {
+              "p50_us": 0.2,
+              "p95_us": 0.2,
+              "p99_us": 0.2
+            },
+            "brainfuck scope": {
+              "p50_us": 1.95,
+              "p95_us": 2.08,
+              "p99_us": 2.16
+            },
+            "cached verdict (the addView path)": {
+              "p50_us": 0.16,
+              "p95_us": 0.16,
+              "p99_us": 0.16
+            }
+          }
+        },
+        {
+          "tests_passed": 1,
+          "rows": {
+            "legacy ordinary class": {
+              "p50_us": 0.57,
+              "p95_us": 0.61,
+              "p99_us": 0.65
+            },
+            "brainfuck ordinary class": {
+              "p50_us": 3.01,
+              "p95_us": 3.3,
+              "p99_us": 3.46
+            },
+            "legacy derived ad row": {
+              "p50_us": 0.49,
+              "p95_us": 0.53,
+              "p99_us": 0.53
+            },
+            "brainfuck derived ad row": {
+              "p50_us": 3.21,
+              "p95_us": 3.95,
+              "p99_us": 4.11
+            },
+            "legacy scope": {
+              "p50_us": 0.16,
+              "p95_us": 0.16,
+              "p99_us": 0.16
+            },
+            "brainfuck scope": {
+              "p50_us": 1.95,
+              "p95_us": 2.16,
+              "p99_us": 2.28
+            },
+            "cached verdict (the addView path)": {
+              "p50_us": 0.16,
+              "p95_us": 0.16,
+              "p99_us": 0.16
+            }
+          }
+        }
+      ],
+      "median_p50_us": {
+        "legacy ordinary class": 0.57,
+        "brainfuck ordinary class": 2.93,
+        "legacy derived ad row": 0.49,
+        "brainfuck derived ad row": 3.22,
+        "legacy scope": 0.16,
+        "brainfuck scope": 1.95,
+        "cached verdict (the addView path)": 0.16
+      }
+    }
+  },
+  "instrumentation_tests_passed": 21,
+  "warmup_calls_per_case": 20000,
+  "timed_calls_per_case": 20000,
+  "source_sha256": {
+    "app\\src\\main\\cpp\\generated\\bf_programs.generated.c": "037cc0e2dcc998281afcadc0c92f137bdcb97581405cd49a188ff0312365606b",
+    "app\\src\\main\\cpp\\bf_engine.c": "877e5b9df0025ce88cf36c9d527ceb54064d625ab44f703c915b904f679407b3",
+    "app\\src\\main\\cpp\\bf_jni.c": "e43f5166bf836c6814633e80c2bfdc5f754e320b00eaa2c27754476ab0af9c80",
+    "app\\src\\test\\java\\my\\MrxSiN\\gmailhideads\\policy\\PolicyBenchmarkTest.java": "e0fc768239538e9288baf0ae1727365b9f396f5b0d2aaa3d047ec37c8943c887"
+  },
+  "logs_sha256": {
+    "app.apk.install.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "app.apk.install.stdout": "c4aa470acafcf8576c15b0f0b5ae7e852d1ec5413372d0e6a9272e788e1306d3",
+    "speed.0.benchmark.txt": "a90e0d626d81ddf8ccb77199d27ef62f167a9908402b24ad28f2aa7d3d3b979c",
+    "speed.0.force-stop.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "speed.0.force-stop.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "speed.0.instrument.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "speed.0.instrument.stdout": "a152e3d345db9e5bdfc39a191f62f4b3f02983cf2cd80f7ee6f24a75d65cd938",
+    "speed.0.logcat.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "speed.0.logcat.stdout": "30e7b50c5b676cb700461ad30f98d08d8052291b9875c4ad0a2729715e65c49b",
+    "speed.0.start.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "speed.0.start.stdout": "24dd51c2e9837b07d56b1c35e4e2befc1d89d054ae7ef23ae9af050decc8af3c",
+    "speed.1.benchmark.txt": "a859f94d6e0850bd8125100700e7ab42942a422bd5307d3dba5b91b3af890680",
+    "speed.1.force-stop.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "speed.1.force-stop.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "speed.1.instrument.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "speed.1.instrument.stdout": "81a11f0be021534a19e8bd224c0012318a54b09c735a4c8499044bb1898a43c9",
+    "speed.1.logcat.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "speed.1.logcat.stdout": "a9c2fe459690e7d1a390548df33534bd32278978c2a81ad65664f6fee5efbbfd",
+    "speed.1.start.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "speed.1.start.stdout": "e3201ba3c314848b6f85764daad93dd45e25a276d4efdf4ed55e2592e7e44ffc",
+    "speed.2.benchmark.txt": "75c201a109fc97646c8bb5b29499f40f7c14a516bedf2641f2f3524dca0b8a70",
+    "speed.2.force-stop.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "speed.2.force-stop.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "speed.2.instrument.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "speed.2.instrument.stdout": "47b3374fc69bb26ae99ed1b6932c8ec7e9232e1e420314394bf36a4a298abeb4",
+    "speed.2.logcat.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "speed.2.logcat.stdout": "e0293af81a380738e49fc462663d1c146553adedf89f98141bb54ee7c0622bed",
+    "speed.2.start.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "speed.2.start.stdout": "f2c0b6066ba3d7d0b840332c787f3e9ea81a631b48236b2cbf2a4ac7bf9e1bc1",
+    "speed.io.github.mrxsin.gmailhideads.codexbench.compile.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "speed.io.github.mrxsin.gmailhideads.codexbench.compile.stdout": "df5f678c3e897e8db27b8c5de5ae1938a25aa084aeee89a1a44958f104316b3d",
+    "speed.io.github.mrxsin.gmailhideads.codexbench.test.compile.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "speed.io.github.mrxsin.gmailhideads.codexbench.test.compile.stdout": "df5f678c3e897e8db27b8c5de5ae1938a25aa084aeee89a1a44958f104316b3d",
+    "speed.package.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "speed.package.stdout": "78a2b627e14b365c9d525e3fc7b97eba6b9877f3855be9f39585ff600554e205",
+    "test.apk.install.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "test.apk.install.stdout": "c4aa470acafcf8576c15b0f0b5ae7e852d1ec5413372d0e6a9272e788e1306d3",
+    "verify.0.benchmark.txt": "64cbd971a732064661c6f42bb1397530802be7e8dc75c75978ae1f12a926a263",
+    "verify.0.force-stop.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verify.0.force-stop.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verify.0.instrument.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verify.0.instrument.stdout": "0ebb2d1829197ed6fc7300c971c46229aede4e4f2fee6a0d9cb0e2fd67cbdbcd",
+    "verify.0.logcat.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verify.0.logcat.stdout": "af92cd35b6ede0eaf599c989fe4949b1c95a69a109b77ad110cfa448aeb8bc6d",
+    "verify.0.start.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verify.0.start.stdout": "c67ec566b5263d93f263ed01db12df84bf143c0751c3bbec06f184b21f437159",
+    "verify.1.benchmark.txt": "d186fdfc59d57a358b4559265269ac57dbdab5cda220a682a15a23df2b351023",
+    "verify.1.force-stop.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verify.1.force-stop.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verify.1.instrument.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verify.1.instrument.stdout": "59c59bbb7cfb2e566f31b5d5b66d3113db6940270fb4d7ad9876fb58ddf1812f",
+    "verify.1.logcat.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verify.1.logcat.stdout": "2da898339581f31764f062380f9274e6ca82d14a73114ebceff6bb4ebcaf79eb",
+    "verify.1.start.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verify.1.start.stdout": "b8eeebd06f6b8ec2608e65c88b6d1d58de45a9d6c35607ed3539440d2fab7fbc",
+    "verify.2.benchmark.txt": "e9e0088fbeaabed69eea4c69ac50197fe1c43aacbfe13785e2461b5200ada625",
+    "verify.2.force-stop.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verify.2.force-stop.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verify.2.instrument.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verify.2.instrument.stdout": "99ac6f14812028d2872f1d3abbd1e0b12dca2697d294d0285644121c506045e8",
+    "verify.2.logcat.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verify.2.logcat.stdout": "f4e60746b4f3ae10a387a6756979d0458b011f06b692ac7ec6dad696800ad5a7",
+    "verify.2.start.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verify.2.start.stdout": "06c2d19da989b45723cc0f8548ec7a33c7d1cb5b41944b9834467970cdb764c9",
+    "verify.io.github.mrxsin.gmailhideads.codexbench.compile.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verify.io.github.mrxsin.gmailhideads.codexbench.compile.stdout": "df5f678c3e897e8db27b8c5de5ae1938a25aa084aeee89a1a44958f104316b3d",
+    "verify.io.github.mrxsin.gmailhideads.codexbench.reset.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verify.io.github.mrxsin.gmailhideads.codexbench.reset.stdout": "df5f678c3e897e8db27b8c5de5ae1938a25aa084aeee89a1a44958f104316b3d",
+    "verify.io.github.mrxsin.gmailhideads.codexbench.test.compile.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verify.io.github.mrxsin.gmailhideads.codexbench.test.compile.stdout": "df5f678c3e897e8db27b8c5de5ae1938a25aa084aeee89a1a44958f104316b3d",
+    "verify.io.github.mrxsin.gmailhideads.codexbench.test.reset.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verify.io.github.mrxsin.gmailhideads.codexbench.test.reset.stdout": "df5f678c3e897e8db27b8c5de5ae1938a25aa084aeee89a1a44958f104316b3d",
+    "verify.package.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verify.package.stdout": "1cdcfd55c8dcc0f38a675ea0a19b17ae114bc34d122757701bfbded3405ead60"
+  },
+  "harness_sha256": "60b0539f558da816f06780c1018cc677c2d105395ac716d8df3a5d64a78ce73d",
+  "limitations": [
+    "verify mode plus warmup permits JIT but does not prove method-level JIT compilation",
+    "speed mode explicitly requests ART AOT for both packages",
+    "Three process runs per mode; fixed inputs and case order; uncontrolled frequency/thermals",
+    "Per-call timer, volatile sink, encoding, JNI and validation are included",
+    "Cached verdict performs no new BF execution",
+    "Existing GM compiler emits C; brainfuckC cannot compile these full policies or a JNI library",
+    "No same-device HotSpot JVM, no actual Gmail/Xposed hook execution"
+  ]
+}

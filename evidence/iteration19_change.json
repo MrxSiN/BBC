@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-12",
+  "iteration": 19,
+  "classification": "EXECUTED: Linux x86-64 in-core Brainfuck source compaction and native S2 bootstrap; dynamic tape safety, not formal proof",
+  "authoritative_source": "compiler/core.bf",
+  "source_bytes": 15559,
+  "source_instructions": 14859,
+  "source_sha256": "f73a9b7ddc9d6f1971435251edefd85e3bb81a0dda23e8b11630a2d7cf7407e9",
+  "ELF_bytes": 475703,
+  "ELF_sha256": "e95ec4e028a28f18d955f908cf40e2f9b9fbe650b6ebfd4df6d819c3f6f6cea8",
+  "previous_source_instructions": 15907,
+  "previous_elf_bytes": 512727,
+  "decoder_patch_instructions": 1045,
+  "header_constant_replacements": 39,
+  "header_constant_instruction_savings": 2093,
+  "bootstrap_stage0_1_2_identical": true,
+  "independent_seed_equivalence": true,
+  "input_capacity_filtered_commands": 16128,
+  "filtered_source_comment_invariance": true,
+  "checks": {
+    "semantic": 178,
+    "adversarial": 345,
+    "integrated_vs_archived_native": 91,
+    "header_arithmetic_equivalence": 9984,
+    "tape_witnesses": 8,
+    "safety_abstract_pointer_transitions": 131072,
+    "release_gates": 18
+  },
+  "limitations": [
+    "Linux x86-64 only",
+    "complete compiler memory ownership and nonoverlap proof still outstanding",
+    "Windows and Android required native backends unimplemented",
+    "no general native code optimizer or C/Rust competitive benchmarks"
+  ],
+  "evidence_paths": [
+    "evidence/selfhost.json",
+    "evidence/integrated_filter.json",
+    "evidence/header_literal_reduction.json",
+    "evidence/compiler_tape_audit.json",
+    "evidence/release_gate.json"
+  ]
+}

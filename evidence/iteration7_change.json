@@ -1,0 +1,67 @@
+{
+  "date": "2026-10-12",
+  "iteration": 7,
+  "change": "Brainfuck-generated native x86-64 write EINTR retry inside a fixed 32-byte slot; compact literal byte emitter; corrected Hello World example",
+  "evidence_class": "EXECUTED for tests and bootstrap; not a formal proof",
+  "previous_source_commands": 15811,
+  "current_source_commands": 15768,
+  "source_command_delta": -43,
+  "current_source_headroom": 360,
+  "previous_compiler_elf_bytes": 1030447,
+  "current_compiler_elf_bytes": 1029071,
+  "compiler_elf_bytes_saved": 1376,
+  "previous_source_sha256": "fe70b98bb310abd5fbc82548c649c3d87b59dc0720be9a12cb7e87961641c9b1",
+  "current_source_sha256": "954415d48939ed88238699800050620389157e094bcc0c54780957f0c191dc35",
+  "current_compiler_elf_sha256": "888eb9cbf8667700e604a1bf42a958ab2ffbc845bd1ecbf0d6129a48edae7661",
+  "bf_instruction_set": "><+-.,[]",
+  "native_write_32_byte_template_hex": "6a01586a015f4c89e66a015a0f0583f8fc74ed85c07f086a035f6a3c580f0590",
+  "bootstrap": {
+    "separate_seeds_agree": true,
+    "stage_hashes": [
+      "888eb9cbf8667700e604a1bf42a958ab2ffbc845bd1ecbf0d6129a48edae7661",
+      "888eb9cbf8667700e604a1bf42a958ab2ffbc845bd1ecbf0d6129a48edae7661",
+      "888eb9cbf8667700e604a1bf42a958ab2ffbc845bd1ecbf0d6129a48edae7661"
+    ],
+    "native_behavior_probes_passed": 7
+  },
+  "checks": {
+    "semantic_passed": 178,
+    "semantic_failed": 0,
+    "native_artifacts_verified": 30,
+    "native_slots_verified": 34024,
+    "branch_displacements_verified": 2040,
+    "mutations_rejected": 8,
+    "syscall_fault_cases": 9,
+    "hello_world_native_output_hex": "48656c6c6f20576f726c64210a"
+  },
+  "fault_injection": {
+    "injected_write_eintr": {
+      "case": "injected_write_eintr",
+      "native_exit": 0,
+      "syscall_attempts": 2,
+      "observed_output_hex": "01",
+      "classification": "PASS: interrupted write retried, exactly one byte delivered"
+    },
+    "injected_write_eagain": {
+      "case": "injected_write_eagain",
+      "native_exit": 3,
+      "syscall_attempts": 1,
+      "observed_output_hex": "",
+      "classification": "PASS: write EAGAIN remains exit(3)"
+    },
+    "injected_read_eintr": {
+      "case": "injected_read_eintr",
+      "native_exit": 4,
+      "syscall_attempts": 1,
+      "observed_output_hex": "",
+      "classification": "LIMITATION: read EINTR exits(4); retry not implemented"
+    }
+  },
+  "limitations": [
+    "Read EINTR still returns exit(4)",
+    "EAGAIN fails fast",
+    "Fixed 524280-byte ELF suffix remains; variable-length ELF not implemented",
+    "Source capacity remains 16128 commands",
+    "No formal memory-safety proof or C/Rust benchmark claim"
+  ]
+}

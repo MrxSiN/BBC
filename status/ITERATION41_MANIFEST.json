@@ -1,0 +1,36 @@
+{
+  "iteration": 41,
+  "classification": "LINUX_EXECUTED_BF_ALL_EIGHT_PE_WINDOWS_EXECUTION_UNVERIFIED",
+  "compiler_source": "compiler/core.bf",
+  "source_stages": [
+    {
+      "source": "experiments/windows_x64_loop_rel32.bf",
+      "instructions": 1738,
+      "sha256": "fb0ff203630242ea344e4c5c12c3899af4c471107b743b40776c8d4ce61f07d5",
+      "native_bytes": 55831,
+      "native_sha256": "9ef80090a362c06628887f1ec4aa6862ab2206bd67180fe631fb61d77ec43c41",
+      "filtered_sha256": "7a454925d6927777b2274e637cfe9b6be601705a2230d8c876b3bcb5adf035e5"
+    },
+    {
+      "source": "experiments/windows_loop_slots_pe_64.bf",
+      "instructions": 11120,
+      "sha256": "a74d5d31bfe3a44ea6d7efd984bc45148dd3a2cd32bd70f5adc756380cfa8bb4",
+      "native_bytes": 356055,
+      "native_sha256": "2214805ff54c077149f823f5ed2750fc9317c8c75b9c684a017ae0226fbfee6d",
+      "filtered_sha256": "fa5677ff351495651d0831d5b89046da71850eee40243e99426a605a857515ee"
+    },
+    {
+      "source": "experiments/windows_x64_loop_patch_pe.bf",
+      "instructions": 5364,
+      "sha256": "a1de797099e810302effc790b17d0d05ae5fe6c11ffb62758d1c4564553a3842",
+      "native_bytes": 171863,
+      "native_sha256": "1959d6d25fd4a7ed1e66916bfb71df323a116c3185582ec9d767cab379eee454",
+      "filtered_sha256": "d189e42c376c20921147a18d2233e0dffdd07b6b7d66e6aaeffdf808feb132c2"
+    }
+  ],
+  "evidence_files": [
+    "evidence/iteration41_windows_full64.json",
+    "evidence/iteration41_linux_selfhost.json"
+  ],
+  "windows_target_execution": "NOT_RUN"
+}

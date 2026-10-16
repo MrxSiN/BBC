@@ -1,0 +1,42 @@
+{
+  "iteration": 58,
+  "classification": "LINUX_BF_NATIVE_AARCH64_CALLABLE_ALL8_SIMULATOR",
+  "stages": {
+    "android_callable_slots58": {
+      "bf_commands": 7346,
+      "source_sha256": "ea7c8259237a33ea58b34badcbe2f91f562907033af3cfec08f2d6c382e9d5aa",
+      "native_sha256": "b497f422420c923f8347bf18ef6d297513f9d72b7523ddbf676fa9095ee68436",
+      "rebuild_identical": true
+    },
+    "android_callable_ledger58": {
+      "bf_commands": 10978,
+      "source_sha256": "78bc940b7e9e2ef9b10a3babf497464589c9db1b81a4a24a9f49934eb3ab1210",
+      "native_sha256": "8f58cb7bda28e02d3df725884ae4e2689cfac99187a1e4f9fbb0b7c2348cf8fd",
+      "rebuild_identical": true
+    }
+  },
+  "cases": 59,
+  "simulator_runs": 354,
+  "invalid_brackets": 6,
+  "wide_branch_patches": 2772,
+  "largest_nesting": 1030,
+  "large_structural": {
+    "records6000": {
+      "source_bytes": 6006,
+      "elf_bytes": 72372,
+      "pairs": 1
+    },
+    "ignored_above_1m": {
+      "source_bytes": 1048599,
+      "elf_bytes": 384,
+      "pairs": 1
+    }
+  },
+  "independent_interpreter_checks": 4,
+  "linear_byte_identical_cases": 6,
+  "android_device_executed": false,
+  "jni_loader_executed": false,
+  "fully_dynamic_callable_completed": false,
+  "atomic_rejections": 8,
+  "elapsed_seconds": 25.64
+}

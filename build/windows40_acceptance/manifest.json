@@ -1,0 +1,80 @@
+{
+  "iteration": 40,
+  "status": "PREPARED_NOT_WINDOWS_EXECUTED",
+  "platform": "Windows x86-64 PE32+ console",
+  "note": "These files were compiled from BF sources by the Linux-native BF Windows writer. Run verify_windows40.ps1 on a Windows x64 system before upgrading maturity.",
+  "programs": [
+    {
+      "name": "empty",
+      "executable": "empty.exe",
+      "sha256": "4a69e1b7ae903b4d5c3a572feafc8329aadf1d8b9855dc05f28a423ee5efef87",
+      "brainfuck": "",
+      "stdin_hex": "",
+      "expected_stdout_hex": "",
+      "expected_exit": "zero"
+    },
+    {
+      "name": "one_byte",
+      "executable": "one_byte.exe",
+      "sha256": "6b46af69b7ff174760212d3be38b854ac62cee71db66ddee084178d30ed7a504",
+      "brainfuck": "+++.",
+      "stdin_hex": "",
+      "expected_stdout_hex": "03",
+      "expected_exit": "zero"
+    },
+    {
+      "name": "wraparound",
+      "executable": "wraparound.exe",
+      "sha256": "33b869053a69fd70af6f1402ae7ee4933ba81412688f31af43fc7dfd8b57d0dc",
+      "brainfuck": "-.",
+      "stdin_hex": "",
+      "expected_stdout_hex": "ff",
+      "expected_exit": "zero"
+    },
+    {
+      "name": "echo_binary",
+      "executable": "echo_binary.exe",
+      "sha256": "9eff8ab548f949497bb4c3650faf7e84cc6b4ef02b12af5e0e251700964ac7cc",
+      "brainfuck": ",.,.",
+      "stdin_hex": "00ff",
+      "expected_stdout_hex": "00ff",
+      "expected_exit": "zero"
+    },
+    {
+      "name": "eof_zero",
+      "executable": "eof_zero.exe",
+      "sha256": "e5af03ab2e3e68c76db4fa4a00d632839d3a316baf356b8af8fddf3a7e99bbd3",
+      "brainfuck": ",.",
+      "stdin_hex": "",
+      "expected_stdout_hex": "00",
+      "expected_exit": "zero"
+    },
+    {
+      "name": "read_then_increment",
+      "executable": "read_then_increment.exe",
+      "sha256": "9cce264c4ed044e6639dab6a64c20a9cb9775ce2bd57cd5f348ebd9033226163",
+      "brainfuck": ",+.",
+      "stdin_hex": "ff",
+      "expected_stdout_hex": "00",
+      "expected_exit": "zero"
+    },
+    {
+      "name": "tape_second_cell",
+      "executable": "tape_second_cell.exe",
+      "sha256": "65ffe3ab08eade7649fc52d3bbe105a9f498a09ebe06b0e1cdb655190468ce30",
+      "brainfuck": ">,.<+.",
+      "stdin_hex": "7f",
+      "expected_stdout_hex": "7f01",
+      "expected_exit": "zero"
+    },
+    {
+      "name": "pointer_underflow",
+      "executable": "pointer_underflow.exe",
+      "sha256": "2e1d6db6d635fc3e2f30c94df004d4fc1c13cdec9cee6d38d0b14753f96871cc",
+      "brainfuck": "<",
+      "stdin_hex": "",
+      "expected_stdout_hex": "",
+      "expected_exit": "trap_nonzero"
+    }
+  ]
+}

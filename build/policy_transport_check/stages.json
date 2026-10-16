@@ -1,0 +1,62 @@
+{
+  "policy_rle": {
+    "source_sha256": "ae283a888ba052040ee6efe78809c46843444927e2effa904390d3c53c8cc483",
+    "stage_execution": "C_RLE_SEED_INTERPRETS_STANDARD_BF",
+    "source_commands": 1162
+  },
+  "policy_resolve": {
+    "source_sha256": "6fffbc5bf34336db48a1a305eed5b7ad114990e157300d3d99ec8e7c91c09594",
+    "stage_execution": "C_RLE_SEED_INTERPRETS_STANDARD_BF",
+    "source_commands": 5115
+  },
+  "policy_optimize": {
+    "source_sha256": "fb48b0e82c28e41d2b29e3e0026adb57bc7ba59c1f72876990d741f5d36f8f8f",
+    "stage_execution": "C_RLE_SEED_INTERPRETS_STANDARD_BF",
+    "source_commands": 13604
+  },
+  "policy_affine": {
+    "source_sha256": "7ddd77dc6401f3abaff0af37c65be75768987ef17be71ea2eb8410d61e75c892",
+    "stage_execution": "C_RLE_SEED_INTERPRETS_STANDARD_BF",
+    "source_commands": 15769
+  },
+  "policy_oneshot": {
+    "source_sha256": "8d9a838e71cee3369d761a951bfad220956634d3d463ffe18584fd2389af071a",
+    "stage_execution": "C_RLE_SEED_INTERPRETS_STANDARD_BF",
+    "source_commands": 11297
+  },
+  "policy_clear56": {
+    "source_sha256": "069fd93964a2dc6081d6f3f92041b6d79808594a7cf7b5ae7d8d74eed15b8504",
+    "stage_execution": "C_RLE_SEED_INTERPRETS_STANDARD_BF",
+    "source_commands": 3631
+  },
+  "policy_operands": {
+    "source_sha256": "28fc3ac7257ea4a02c5c3ba6fcfadc645bc5bc56ffe2a46b270cab205a43ecbf",
+    "stage_execution": "C_RLE_SEED_INTERPRETS_STANDARD_BF",
+    "source_commands": 7613
+  },
+  "policy_codegen": {
+    "source_sha256": "330a458bc598e73078c369a75ee76f29012e20728d27c2c7e43cb4a792e7fbd1",
+    "stage_execution": "C_RLE_SEED_INTERPRETS_STANDARD_BF",
+    "source_commands": 15374
+  },
+  "policy_elf": {
+    "source_sha256": "fab65513af7951f23f61d438a947397978239d9e69f311f5a88e903b40c53416",
+    "stage_execution": "C_RLE_SEED_INTERPRETS_STANDARD_BF",
+    "source_commands": 2690
+  },
+  "policy_valuefold55": {
+    "source_sha256": "50e820aaab4079a272dcf6c6f09b5b4a7a0fa3da0bf8969e65cb032d79e2d51e",
+    "stage_execution": "C_RLE_SEED_INTERPRETS_STANDARD_BF",
+    "source_commands": 4733
+  },
+  "policy_oneshot55": {
+    "source_sha256": "987622eb8b8124810ae1bf0960e91c10b77de47b72ba82d3ab845a7b82054ea8",
+    "stage_execution": "C_RLE_SEED_INTERPRETS_STANDARD_BF",
+    "source_commands": 11638
+  },
+  "policy_codegen55": {
+    "source_sha256": "e232a8650310839d9f51a60c24e4644ff0e54c7735c184772f28ed87920d6d7f",
+    "stage_execution": "C_RLE_SEED_INTERPRETS_STANDARD_BF",
+    "source_commands": 16078
+  }
+}

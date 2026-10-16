@@ -1,0 +1,53 @@
+{
+  "classification": "LINUX_BF_STAGE_EXECUTION_AND_INDEPENDENT_AARCH64_BYTE_ORACLE",
+  "device_executed": false,
+  "tests_passed": 109,
+  "constant_store_instances_in_cases": 35,
+  "stages": [
+    {
+      "stage": "policy_valuefold55",
+      "source_commands": 4733,
+      "source_sha256": "50e820aaab4079a272dcf6c6f09b5b4a7a0fa3da0bf8969e65cb032d79e2d51e",
+      "elf_sha256": "8e571436e310fe6c9156923732a5ab67278bcd4ff53977014811e821e923ce12",
+      "elf_bytes": 151671
+    },
+    {
+      "stage": "policy_oneshot55",
+      "source_commands": 11638,
+      "source_sha256": "987622eb8b8124810ae1bf0960e91c10b77de47b72ba82d3ab845a7b82054ea8",
+      "elf_sha256": "4f47bc8d950550c6d03e932d60fc6be5ffc2720c2d713ac38a85db9ede98a2ab",
+      "elf_bytes": 372631
+    },
+    {
+      "stage": "policy_codegen55",
+      "source_commands": 16078,
+      "source_sha256": "e232a8650310839d9f51a60c24e4644ff0e54c7735c184772f28ed87920d6d7f",
+      "elf_sha256": "d6b208dc9aed645f685b9ac1551a371e0ea089da6053cea0e105d0935c55c4cf",
+      "elf_bytes": 514711
+    }
+  ],
+  "gmail": {
+    "row": {
+      "original_sha256": "c66bb638c2da02ec21936f5168efdad11d2c60ac72e01ff9c6d7e665aa2b6ffb",
+      "new_sha256": "a618211f791a288dc4a4ccf108a22ca8210e9915d63c363fbbccd15db76d7b6e",
+      "original_bytes": 13064,
+      "new_bytes": 12772,
+      "direct_constant_stores": 73,
+      "not_android_executed": true
+    },
+    "scope": {
+      "original_sha256": "e6f468abf3b79a07abdb51081509935fc5dda053f69265bd9f71d2efa30c302c",
+      "new_sha256": "e803deabe31e9d470c44326457d611993d8346d18dd80c32d848f8d3904481db",
+      "original_bytes": 13168,
+      "new_bytes": 12964,
+      "direct_constant_stores": 51,
+      "not_android_executed": true
+    }
+  },
+  "independent_bf_interpreter_cases": 2,
+  "full_original_gmail_source_to_native_images": 2,
+  "performance_improvement_verified": false,
+  "apk_parity_rerun": false,
+  "baseline_gmail_images_remain_unchanged": true,
+  "source_algorithm": "BF-owned record analysis policy_valuefold.bf"
+}

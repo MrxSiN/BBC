@@ -1,0 +1,57 @@
+{
+  "classification": "EXECUTED Linux-hosted native BF pipeline; AArch64 instruction simulated, NOT Android-executed",
+  "source_limit_commands": 10,
+  "image_bytes": 4192,
+  "input_source_cases": 166,
+  "loop_containing_cases": 163,
+  "invalid_rejections": 11,
+  "independent_seed_cases": 8,
+  "separate_bf_compilation_stages": 6,
+  "supported_instructions": "><+-.,[]",
+  "limitations": [
+    "Not a single self-hosted Android compiler",
+    "No Android hardware or Android loader execution verified",
+    "Only ten Brainfuck commands and 65536 wrapping byte cells",
+    "External Python adapter performs process and byte transport",
+    "Generated Android binary loader compatibility remains unverified",
+    "Not yet compatible with four required external applications"
+  ],
+  "stages": {
+    "filter": {
+      "source_sha256": "6ec46f09fb70713c98e9436be4711b0d977b8b8f075ef798301f3dc3ff6a2687",
+      "elf_sha256": "d33b0cb94dbbe3d6b3a16f6bec848368cfe3254acf5f6d9ec1aa8476a3f5a40f",
+      "source_instructions": 816,
+      "elf_bytes": 26327
+    },
+    "resolve": {
+      "source_sha256": "0aeb1a64b84d89b76067a47a278d0c75d84a37d3d6131647d669333b6a20668d",
+      "elf_sha256": "104a129f40fef7322e36ddca1cf01b4014de5986e6b6f669fcf63b47ecf7fdf2",
+      "source_instructions": 2252,
+      "elf_bytes": 72279
+    },
+    "encode": {
+      "source_sha256": "59362b00612d0c9063f1f478a494c3049b507822c2cea4c2de867e1e4f1f083e",
+      "elf_sha256": "50367af2b9ee998ea4676b6eb5ad69bfab224db479a67ecdc5188e92934ddc4a",
+      "source_instructions": 751,
+      "elf_bytes": 24247
+    },
+    "mask": {
+      "source_sha256": "1bf1c71fcf949fe96153eebd3f9ba1558c6e5f1313859e9b4b1d96dd2703d68b",
+      "elf_sha256": "2a3aff0638d9d605623c83a1ca7802d13c688a0fb4398d6022189855c60d5f6b",
+      "source_instructions": 397,
+      "elf_bytes": 12919
+    },
+    "emit": {
+      "source_sha256": "f4aee9d8ff43df8d31fd6591eb037f57ddb390d34439c625e6054d47afc356d1",
+      "elf_sha256": "9ff099467a43afc2674d7047d04bbc0b8c9b524b4a4b93e565c6408b34db3c47",
+      "source_instructions": 15441,
+      "elf_bytes": 494327
+    },
+    "apply": {
+      "source_sha256": "7909710c5907d6079fb3e3bb8f5bb1920c2dcb6e2bb6208b1d495cf819a6dbbf",
+      "elf_sha256": "3b658f5bfde117351c9602b7dbd44280ce87cf11e1a467feaa1c3fda240ecbdc",
+      "source_instructions": 8242,
+      "elf_bytes": 263959
+    }
+  }
+}

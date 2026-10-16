@@ -1,0 +1,75 @@
+{
+  "date": "2026-10-12",
+  "scope": "Direct Linux syscall failure paths in native BF executables",
+  "compiler_source_sha256": "f73a9b7ddc9d6f1971435251edefd85e3bb81a0dda23e8b11630a2d7cf7407e9",
+  "native_compiler_sha256": "e95ec4e028a28f18d955f908cf40e2f9b9fbe650b6ebfd4df6d819c3f6f6cea8",
+  "classification": "EXECUTED: ten Linux I/O cases; both read and write retry EINTR; both EAGAIN cases fail fast; not a general asynchronous I/O guarantee.",
+  "cases_executed": 10,
+  "known_defect_cases": [],
+  "observations": [
+    {
+      "case": "ordinary_io",
+      "native_exit": 0,
+      "observed_output_hex": "5a",
+      "classification": "normal I/O confirmed"
+    },
+    {
+      "case": "closed_stdin",
+      "native_exit": 4,
+      "observed_output_hex": "",
+      "classification": "PASS: read error exits(4), not EOF"
+    },
+    {
+      "case": "closed_stdout",
+      "native_exit": 3,
+      "classification": "PASS: failed write exits(3), not silent success"
+    },
+    {
+      "case": "nonblocking_stdout_full",
+      "native_exit": 3,
+      "pipe_initial_bytes": 65536,
+      "pipe_final_bytes": 65536,
+      "output_byte_unwritten": true,
+      "classification": "PASS: EAGAIN exits(3), reports unwritten output byte; no retry"
+    },
+    {
+      "case": "nonblocking_stdin_empty",
+      "native_exit": 4,
+      "observed_output_hex": "",
+      "classification": "PASS: read EAGAIN exits(4), not EOF; no retry"
+    },
+    {
+      "case": "injected_write_eintr",
+      "native_exit": 0,
+      "syscall_attempts": 2,
+      "observed_output_hex": "01",
+      "classification": "PASS: interrupted write retried, exactly one byte delivered"
+    },
+    {
+      "case": "injected_write_eagain",
+      "native_exit": 3,
+      "syscall_attempts": 1,
+      "observed_output_hex": "",
+      "classification": "PASS: write EAGAIN remains exit(3)"
+    },
+    {
+      "case": "injected_read_eintr",
+      "native_exit": 0,
+      "syscall_attempts": 2,
+      "observed_output_hex": "5a",
+      "classification": "PASS: interrupted read retried, exactly one byte consumed"
+    },
+    {
+      "case": "injected_read_eintr_then_eof",
+      "native_exit": 0,
+      "syscall_attempts": 2,
+      "observed_output_hex": "00",
+      "classification": "PASS: interrupted read retried; EOF still stores zero"
+    },
+    {
+      "case": "broken_pipe",
+      "native_exit": -13,
+      "classification": "PASS: kernel default SIGPIPE on Linux; process terminates via signal"
+    }
+  ]
+}

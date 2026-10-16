@@ -1,0 +1,19 @@
+{
+  "success": 162,
+  "expected_traps": 2,
+  "source_cases": 164,
+  "output_bytes": 436,
+  "max_commands": 64,
+  "binary_inputs": 97,
+  "malformed_rejections": 4,
+  "archived_windows41_smoke": 11,
+  "iteration": 42,
+  "cpu_arch": "x86_64",
+  "execution_host": "Linux x86-64 native CPU + test-only Win32 API shim",
+  "windows_loader": "NOT_RUN",
+  "windows_native_S2": "UNIMPLEMENTED",
+  "production_BF_modules_modified": false,
+  "harness_source_sha256": "02ea0f434ccb68d79c0d30380410ec37b5bdf71e23f172ef133e63f86f639a18",
+  "harness_binary_sha256": "809c481ce1c2d61abddaeab3056d0266664c4aa8c4be096aeccd19513c4b40c4",
+  "harness_runtime_sec": 0.755
+}

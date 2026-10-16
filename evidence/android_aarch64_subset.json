@@ -1,0 +1,36 @@
+{
+  "classification": "STRUCTURAL AArch64 PIE + SIMULATED native instructions; NOT Android execution",
+  "target": "aarch64-linux-android21 (shell prototype; actual minimum API untested)",
+  "source_sha256": "f4aee9d8ff43df8d31fd6591eb037f57ddb390d34439c625e6054d47afc356d1",
+  "host_emitter_sha256": "9ff099467a43afc2674d7047d04bbc0b8c9b524b4a4b93e565c6408b34db3c47",
+  "source_instructions": 15441,
+  "host_emitter_bytes": 494327,
+  "aarch64_image_bytes": 4192,
+  "accepted_sources_tested": 110,
+  "rejected_sources_tested": 15,
+  "independent_seed_comparisons": 20,
+  "aslr_base_values_tested": [
+    "0x00000000",
+    "0x40000000"
+  ],
+  "linker_metadata": "PT_INTERP PT_DYNAMIC DT_HASH DT_STRTAB DT_SYMTAB DT_STRSZ DT_SYMENT",
+  "supported_commands": [
+    "+",
+    "-",
+    ".",
+    ">",
+    "<",
+    ","
+  ],
+  "boundary_witnesses": 4,
+  "read_eof_witnesses": 6,
+  "read_failure_witnesses": 2,
+  "unverified": [
+    "Android loader acceptance",
+    "execution on actual Android",
+    "all 8 BF operations",
+    "Bionic/host syscall behavior",
+    "native Android compiler execution",
+    "Android native selfhosting"
+  ]
+}

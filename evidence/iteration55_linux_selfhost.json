@@ -1,0 +1,19 @@
+{
+  "classification": "FRESH_LINUX_STAGE1_STAGE2_EXECUTED_BYTE_IDENTICAL",
+  "native_stage_runs": [
+    {
+      "stage": 1,
+      "elf_bytes": 475703,
+      "sha256": "e95ec4e028a28f18d955f908cf40e2f9b9fbe650b6ebfd4df6d819c3f6f6cea8",
+      "exact_installed_match": true
+    },
+    {
+      "stage": 2,
+      "elf_bytes": 475703,
+      "sha256": "e95ec4e028a28f18d955f908cf40e2f9b9fbe650b6ebfd4df6d819c3f6f6cea8",
+      "exact_installed_match": true
+    }
+  ],
+  "cold_stage0_rerun": false,
+  "android_execution": false
+}

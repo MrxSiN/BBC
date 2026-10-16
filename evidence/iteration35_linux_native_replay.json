@@ -1,0 +1,13 @@
+{
+  "iteration": 35,
+  "classification": "EXECUTED_NATIVE_LINUX_STAGE1_TO_STAGE2_BYTE_IDENTICAL",
+  "compiler_source_sha256": "f73a9b7ddc9d6f1971435251edefd85e3bb81a0dda23e8b11630a2d7cf7407e9",
+  "installed_binary_sha256": "e95ec4e028a28f18d955f908cf40e2f9b9fbe650b6ebfd4df6d819c3f6f6cea8",
+  "installed_binary_bytes": 475703,
+  "stage1_sha256": "e95ec4e028a28f18d955f908cf40e2f9b9fbe650b6ebfd4df6d819c3f6f6cea8",
+  "stage2_sha256": "e95ec4e028a28f18d955f908cf40e2f9b9fbe650b6ebfd4df6d819c3f6f6cea8",
+  "byte_identical": true,
+  "independent_cold_stage0": "NOT_RERUN",
+  "elapsed_stage1_seconds": 1.32,
+  "elapsed_stage2_seconds": 1.31
+}

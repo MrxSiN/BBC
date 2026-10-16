@@ -1,0 +1,62 @@
+{
+  "date": "2026-10-12",
+  "iteration": 8,
+  "change": "Implement native read EINTR retry in the Brainfuck-authored x86-64 ELF emitter without widening the instruction slot",
+  "authority": "compiler/core.bf, original eight Brainfuck commands only",
+  "previous_source_commands": 15768,
+  "current_source_commands": 15518,
+  "source_command_difference": -250,
+  "previous_source_sha256": "954415d48939ed88238699800050620389157e094bcc0c54780957f0c191dc35",
+  "source_sha256": "43f961bbc51eaf203afb5462abc9834bc07f0a3e4f2847e33b85fa0f6c5b7977",
+  "previous_compiler_elf_bytes": 1029071,
+  "native_compiler_elf_bytes": 1021071,
+  "native_compiler_sha256": "005ebabc778ce09620e5a9fe7b48b8020d6d32df1dbb30605c7b1d5e4d997f4d",
+  "elf_byte_difference": -8000,
+  "source_limit_commands": 16128,
+  "current_source_headroom": 610,
+  "source_changes": [
+    "Startup derives r14 = r13 + 65536 using LEA, initializes rdx=1 within the same original 30-byte startup extent",
+    "The comma instruction emitter now outputs a 32-byte read template that retries -EINTR after restoring syscall number zero",
+    "Brainfuck literal-emission block uses two existing scratch cells; no authoritative foreign-language compilation code"
+  ],
+  "verification": {
+    "independent_seeds_agree": true,
+    "bootstrap_stage_0_1_2_byte_identical": true,
+    "native_runtime_probes": 7,
+    "semantic_passed": 178,
+    "semantic_failed": 0,
+    "native_elf_artifacts": 30,
+    "native_instruction_slots": 33774,
+    "native_branches": 2108,
+    "corruption_mutations_rejected": 10,
+    "linux_io_fault_assertions": 10,
+    "read_eintr_then_byte": {
+      "case": "injected_read_eintr",
+      "native_exit": 0,
+      "syscall_attempts": 2,
+      "observed_output_hex": "5a",
+      "classification": "PASS: interrupted read retried, exactly one byte consumed"
+    },
+    "read_eintr_then_eof": {
+      "case": "injected_read_eintr_then_eof",
+      "native_exit": 0,
+      "syscall_attempts": 2,
+      "observed_output_hex": "00",
+      "classification": "PASS: interrupted read retried; EOF still stores zero"
+    },
+    "write_eintr": {
+      "case": "injected_write_eintr",
+      "native_exit": 0,
+      "syscall_attempts": 2,
+      "observed_output_hex": "01",
+      "classification": "PASS: interrupted write retried, exactly one byte delivered"
+    }
+  },
+  "unchanged_limits": [
+    "Fixed 524280-byte ELF padding",
+    "EAGAIN fails fast; no readiness waiting",
+    "Compiler input limit 16128 Brainfuck commands",
+    "No formal memory-safety proof or optimized C/Rust performance measurements"
+  ],
+  "evidence_classification": "EXECUTED self-hosting, semantic and I/O tests; STRUCTURAL native instruction verification; not a formal proof"
+}

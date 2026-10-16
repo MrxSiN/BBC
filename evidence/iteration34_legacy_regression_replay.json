@@ -1,0 +1,25 @@
+{
+  "tests/verify_android_wide_slot_512.py": {
+    "status": "PASS",
+    "source_programs": 66,
+    "bracket_pairs": 3707,
+    "aarch64_simulations": 132,
+    "elapsed_seconds": 21.54
+  },
+  "tests/verify_android_page_class_elf.py": {
+    "status": "PASS",
+    "linear_programs": 78,
+    "loop_programs": 4,
+    "aarch64_simulations": 164,
+    "elapsed_seconds": 7.91
+  },
+  "tests/verify_android_wide_slot_255.py": {
+    "status": "INCOMPLETE_RUN_NO_FINAL_RESULT",
+    "included_in_pass_count": false
+  },
+  "tests/verify_android_extended_loops.py": {
+    "status": "NOT_COMPLETED_IN_COMBINED_RUN",
+    "included_in_pass_count": false
+  },
+  "historical_evidence_restored": true
+}

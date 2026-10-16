@@ -1,0 +1,34 @@
+{
+  "iteration": 51,
+  "classification": "BF_OWNED_COMPACT_ALL8_UNRELOCATED_CODE_PLUS_BF_64BIT_WORD_OFFSET_LEDGER_AND_DYNAMIC_PAIRS",
+  "stage_integrity": {
+    "experiments/android_streaming_compact_all8.bf": {
+      "bf_commands": 6289,
+      "source_sha256": "af6cb5e40bcac60266d89ff1f4b59ba89e25bea2f625b4d04204163b932b2de5",
+      "linux_native_sha256": "ca890fe15b6d26687dff51a9736c2d707d7964397ce3b1886b62d110b3df8d90",
+      "linux_native_bytes": 201463
+    },
+    "experiments/android_compact_native_offset_ledger51.bf": {
+      "bf_commands": 10968,
+      "source_sha256": "e52f7bdfd90bebbfe494f28a25b8e69ed2b88e89c955c5445b8d10cf10713b76",
+      "linux_native_sha256": "45f63a54cb9a386719aa22331780e88d34ccd594195da3163627fbcc934a2862",
+      "linux_native_bytes": 351191
+    }
+  },
+  "total_accepted_cases": 86,
+  "maximum_source_commands_tested": 7502,
+  "maximum_nesting_depth_tested": 1025,
+  "total_bracket_pairs_checked": 1901,
+  "expected_atomic_rejections": 5,
+  "independent_seed_stage_matches": 4,
+  "native_slots_compact": true,
+  "all_eight_brainfuck_instructions_recognized": true,
+  "native_word_offsets_64bit": true,
+  "dynamic_nested_pair_storage": true,
+  "native_branch_words_patched": false,
+  "dynamic_loadable_elf_generated": false,
+  "full_android_native_selfhosting": false,
+  "original_eleven_app_policies_compiled": false,
+  "android_device_executed": false,
+  "elapsed_seconds": 4.311
+}

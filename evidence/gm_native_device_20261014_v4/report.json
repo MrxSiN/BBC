@@ -1,0 +1,459 @@
+{
+  "date": "2026-10-14",
+  "serial": "adb-38021FDJG00610-NIdGHK._adb-tls-connect._tcp",
+  "package": "io.github.mrxsin.gmailhideads.nativebf",
+  "test_package": "io.github.mrxsin.gmailhideads.nativebf.test",
+  "classification": "ANDROID_DEVICE_EXECUTED direct BF-owned native GM policies",
+  "build_command": [
+    "D:\\GitHub\\brainfuckC\\evidence\\gm_native_20261014_v4\\GM\\gradlew.bat",
+    "--offline",
+    "-I",
+    "D:\\GitHub\\brainfuckC\\evidence\\gm_native_20261014_v4\\native.init.gradle",
+    "-PbenchmarkRelease",
+    ":app:assembleRelease",
+    ":app:assembleReleaseAndroidTest",
+    "--console=plain"
+  ],
+  "apk_sha256": {
+    "app.apk": "83ee05db717b07eb7a6f35237823e7d52a92862ac2ab274ae5bb00f5450b97e8",
+    "test.apk": "f198cd45e537e87793d1cfde5fee1975498ce6d9f7a6b7f36d9b909874fde348"
+  },
+  "art_modes": {
+    "verify": {
+      "runs": [
+        {
+          "tests_passed": 16,
+          "rows": {
+            "legacy ordinary class": {
+              "p50_us": 0.57,
+              "p95_us": 1.14,
+              "p99_us": 1.26
+            },
+            "brainfuck ordinary class": {
+              "p50_us": 21.65,
+              "p95_us": 21.81,
+              "p99_us": 30.07
+            },
+            "legacy derived ad row": {
+              "p50_us": 0.24,
+              "p95_us": 0.29,
+              "p99_us": 0.29
+            },
+            "brainfuck derived ad row": {
+              "p50_us": 47.08,
+              "p95_us": 47.53,
+              "p99_us": 55.46
+            },
+            "legacy scope": {
+              "p50_us": 0.41,
+              "p95_us": 0.41,
+              "p99_us": 0.45
+            },
+            "brainfuck scope": {
+              "p50_us": 6.63,
+              "p95_us": 6.71,
+              "p99_us": 6.8
+            },
+            "cached verdict (the addView path)": {
+              "p50_us": 0.12,
+              "p95_us": 0.12,
+              "p99_us": 0.12
+            }
+          }
+        },
+        {
+          "tests_passed": 1,
+          "rows": {
+            "legacy ordinary class": {
+              "p50_us": 0.57,
+              "p95_us": 1.3,
+              "p99_us": 1.34
+            },
+            "brainfuck ordinary class": {
+              "p50_us": 21.65,
+              "p95_us": 21.77,
+              "p99_us": 21.97
+            },
+            "legacy derived ad row": {
+              "p50_us": 0.25,
+              "p95_us": 0.29,
+              "p99_us": 0.29
+            },
+            "brainfuck derived ad row": {
+              "p50_us": 47.08,
+              "p95_us": 47.49,
+              "p99_us": 60.02
+            },
+            "legacy scope": {
+              "p50_us": 0.41,
+              "p95_us": 0.41,
+              "p99_us": 0.45
+            },
+            "brainfuck scope": {
+              "p50_us": 6.63,
+              "p95_us": 6.75,
+              "p99_us": 6.8
+            },
+            "cached verdict (the addView path)": {
+              "p50_us": 0.12,
+              "p95_us": 0.12,
+              "p99_us": 0.12
+            }
+          }
+        },
+        {
+          "tests_passed": 1,
+          "rows": {
+            "legacy ordinary class": {
+              "p50_us": 0.81,
+              "p95_us": 1.3,
+              "p99_us": 1.34
+            },
+            "brainfuck ordinary class": {
+              "p50_us": 21.65,
+              "p95_us": 21.77,
+              "p99_us": 21.93
+            },
+            "legacy derived ad row": {
+              "p50_us": 0.25,
+              "p95_us": 0.29,
+              "p99_us": 0.29
+            },
+            "brainfuck derived ad row": {
+              "p50_us": 47.08,
+              "p95_us": 47.49,
+              "p99_us": 55.42
+            },
+            "legacy scope": {
+              "p50_us": 0.41,
+              "p95_us": 0.41,
+              "p99_us": 0.45
+            },
+            "brainfuck scope": {
+              "p50_us": 6.63,
+              "p95_us": 6.75,
+              "p99_us": 6.8
+            },
+            "cached verdict (the addView path)": {
+              "p50_us": 0.12,
+              "p95_us": 0.12,
+              "p99_us": 0.12
+            }
+          }
+        }
+      ],
+      "median_p50_us": {
+        "legacy ordinary class": 0.57,
+        "brainfuck ordinary class": 21.65,
+        "legacy derived ad row": 0.25,
+        "brainfuck derived ad row": 47.08,
+        "legacy scope": 0.41,
+        "brainfuck scope": 6.63,
+        "cached verdict (the addView path)": 0.12
+      }
+    },
+    "speed": {
+      "runs": [
+        {
+          "tests_passed": 1,
+          "rows": {
+            "legacy ordinary class": {
+              "p50_us": 0.37,
+              "p95_us": 0.41,
+              "p99_us": 0.41
+            },
+            "brainfuck ordinary class": {
+              "p50_us": 21.69,
+              "p95_us": 21.85,
+              "p99_us": 22.1
+            },
+            "legacy derived ad row": {
+              "p50_us": 0.24,
+              "p95_us": 0.25,
+              "p99_us": 0.25
+            },
+            "brainfuck derived ad row": {
+              "p50_us": 47.08,
+              "p95_us": 47.61,
+              "p99_us": 56.52
+            },
+            "legacy scope": {
+              "p50_us": 0.08,
+              "p95_us": 0.08,
+              "p99_us": 0.08
+            },
+            "brainfuck scope": {
+              "p50_us": 6.71,
+              "p95_us": 6.84,
+              "p99_us": 6.88
+            },
+            "cached verdict (the addView path)": {
+              "p50_us": 0.08,
+              "p95_us": 0.08,
+              "p99_us": 0.08
+            }
+          }
+        },
+        {
+          "tests_passed": 1,
+          "rows": {
+            "legacy ordinary class": {
+              "p50_us": 0.77,
+              "p95_us": 0.98,
+              "p99_us": 0.98
+            },
+            "brainfuck ordinary class": {
+              "p50_us": 21.73,
+              "p95_us": 21.89,
+              "p99_us": 22.01
+            },
+            "legacy derived ad row": {
+              "p50_us": 0.24,
+              "p95_us": 0.25,
+              "p99_us": 0.25
+            },
+            "brainfuck derived ad row": {
+              "p50_us": 47.08,
+              "p95_us": 47.61,
+              "p99_us": 55.83
+            },
+            "legacy scope": {
+              "p50_us": 0.08,
+              "p95_us": 0.08,
+              "p99_us": 0.08
+            },
+            "brainfuck scope": {
+              "p50_us": 6.71,
+              "p95_us": 6.8,
+              "p99_us": 6.84
+            },
+            "cached verdict (the addView path)": {
+              "p50_us": 0.08,
+              "p95_us": 0.08,
+              "p99_us": 0.08
+            }
+          }
+        },
+        {
+          "tests_passed": 1,
+          "rows": {
+            "legacy ordinary class": {
+              "p50_us": 0.65,
+              "p95_us": 0.73,
+              "p99_us": 0.77
+            },
+            "brainfuck ordinary class": {
+              "p50_us": 21.73,
+              "p95_us": 21.85,
+              "p99_us": 22.01
+            },
+            "legacy derived ad row": {
+              "p50_us": 0.24,
+              "p95_us": 0.25,
+              "p99_us": 0.25
+            },
+            "brainfuck derived ad row": {
+              "p50_us": 47.08,
+              "p95_us": 47.61,
+              "p99_us": 56.4
+            },
+            "legacy scope": {
+              "p50_us": 0.08,
+              "p95_us": 0.08,
+              "p99_us": 0.08
+            },
+            "brainfuck scope": {
+              "p50_us": 6.71,
+              "p95_us": 6.84,
+              "p99_us": 6.88
+            },
+            "cached verdict (the addView path)": {
+              "p50_us": 0.08,
+              "p95_us": 0.08,
+              "p99_us": 0.08
+            }
+          }
+        }
+      ],
+      "median_p50_us": {
+        "legacy ordinary class": 0.65,
+        "brainfuck ordinary class": 21.73,
+        "legacy derived ad row": 0.24,
+        "brainfuck derived ad row": 47.08,
+        "legacy scope": 0.08,
+        "brainfuck scope": 6.71,
+        "cached verdict (the addView path)": 0.08
+      }
+    }
+  },
+  "instrumentation_tests_passed": 21,
+  "warmup_calls_per_case": 20000,
+  "timed_calls_per_case": 20000,
+  "native_build": {
+    "backend": "STANDARD_BRAINFUCK_CALLABLE_AARCH64_WITH_NEW_PLATFORM_JNI_BRIDGE",
+    "original_gm_modified": false,
+    "old_bf_to_c_backend_linked": false,
+    "compiler_stages_android_native": true,
+    "affine_fusion": true,
+    "proved_single_iteration_loops": true,
+    "sources": {
+      "row": {
+        "source_sha256": "773beec4d9098ac78faed538427fc9e04546136504d41100e906cb748f211414",
+        "elf_sha256": "c66bb638c2da02ec21936f5168efdad11d2c60ac72e01ff9c6d7e665aa2b6ffb",
+        "elf_bytes": 13064
+      },
+      "scope": {
+        "source_sha256": "6a67a60c79031e3d78ce77f08d95618d16e4985075c8fda77cb32b56e91c185c",
+        "elf_sha256": "e6f468abf3b79a07abdb51081509935fc5dda053f69265bd9f71d2efa30c302c",
+        "elf_bytes": 13168
+      }
+    },
+    "stages": {
+      "policy_rle": {
+        "source_sha256": "ae283a888ba052040ee6efe78809c46843444927e2effa904390d3c53c8cc483",
+        "android_native_elf_sha256": "33cee9f89c01ff701d9e4d0cea3dd21d68b1efd60b1d0be20c0a7e47d7da146b"
+      },
+      "policy_resolve": {
+        "source_sha256": "6fffbc5bf34336db48a1a305eed5b7ad114990e157300d3d99ec8e7c91c09594",
+        "android_native_elf_sha256": "e0cec5acd816d27281e479f1c3cd6c787cd2c9ead9035a470484736d234e8031"
+      },
+      "policy_optimize": {
+        "source_sha256": "fb48b0e82c28e41d2b29e3e0026adb57bc7ba59c1f72876990d741f5d36f8f8f",
+        "android_native_elf_sha256": "de9dacfe0ffea54fca8ece9fbcab6e0a05c45ee282292b37e5d3b819f674a8d3"
+      },
+      "policy_affine": {
+        "source_sha256": "7ddd77dc6401f3abaff0af37c65be75768987ef17be71ea2eb8410d61e75c892",
+        "android_native_elf_sha256": "7671c1478623de641bca5f417037d7f862247869aac125f20941cbf121808a73"
+      },
+      "policy_oneshot": {
+        "source_sha256": "8d9a838e71cee3369d761a951bfad220956634d3d463ffe18584fd2389af071a",
+        "android_native_elf_sha256": "28067b3d117ede29bcd54d75ddbb52160641283a115865882fa3a742319adf45"
+      },
+      "policy_operands": {
+        "source_sha256": "28fc3ac7257ea4a02c5c3ba6fcfadc645bc5bc56ffe2a46b270cab205a43ecbf",
+        "android_native_elf_sha256": "5d04ee79a7f42a92c88322387a31b54e120a8d9e0f282c3195f11691e28eb3e5"
+      },
+      "policy_codegen": {
+        "source_sha256": "330a458bc598e73078c369a75ee76f29012e20728d27c2c7e43cb4a792e7fbd1",
+        "android_native_elf_sha256": "4b5416a382ca598d0292d503b687f07e7c9deec578126da6ed8f919d75901f99"
+      },
+      "policy_elf": {
+        "source_sha256": "fab65513af7951f23f61d438a947397978239d9e69f311f5a88e903b40c53416",
+        "android_native_elf_sha256": "575298a3db92c87ee545e300356aeab1ca076123ffae42ae9df588e93afd8707"
+      }
+    },
+    "apk_sha256": "83ee05db717b07eb7a6f35237823e7d52a92862ac2ab274ae5bb00f5450b97e8",
+    "test_apk_sha256": "f198cd45e537e87793d1cfde5fee1975498ce6d9f7a6b7f36d9b909874fde348",
+    "native_library_sha256": "b1adf70b86b8a593179f56bb70026ee7e48b56d2a054976c5f4f7c17b710a481",
+    "bf_elf_bytes_embedded_unchanged": true,
+    "build_command": [
+      "D:\\GitHub\\brainfuckC\\evidence\\gm_native_20261014_v4\\GM\\gradlew.bat",
+      "--offline",
+      "-I",
+      "D:\\GitHub\\brainfuckC\\evidence\\gm_native_20261014_v4\\native.init.gradle",
+      "-PbenchmarkRelease",
+      ":app:assembleRelease",
+      ":app:assembleReleaseAndroidTest",
+      "--console=plain"
+    ],
+    "device_tests_executed": false
+  },
+  "source_sha256": {
+    "row": {
+      "source_sha256": "773beec4d9098ac78faed538427fc9e04546136504d41100e906cb748f211414",
+      "elf_sha256": "c66bb638c2da02ec21936f5168efdad11d2c60ac72e01ff9c6d7e665aa2b6ffb",
+      "elf_bytes": 13064
+    },
+    "scope": {
+      "source_sha256": "6a67a60c79031e3d78ce77f08d95618d16e4985075c8fda77cb32b56e91c185c",
+      "elf_sha256": "e6f468abf3b79a07abdb51081509935fc5dda053f69265bd9f71d2efa30c302c",
+      "elf_bytes": 13168
+    }
+  },
+  "logs_sha256": {
+    "app.apk.install.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "app.apk.install.stdout": "c4aa470acafcf8576c15b0f0b5ae7e852d1ec5413372d0e6a9272e788e1306d3",
+    "speed.0.benchmark.txt": "692aa168c76aa3b4edd905cf63d375c0e23623dc3247c410bc0c4a8e22e1cfad",
+    "speed.0.force-stop.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "speed.0.force-stop.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "speed.0.instrument.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "speed.0.instrument.stdout": "f3f1adcbde03bf2ac9b936a0ba6d8c2d18e5b24345188e47a1423fb5ea1c0358",
+    "speed.0.logcat.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "speed.0.logcat.stdout": "fa7f4921ee46b3e61d778113f8dbb7253f043539818cb6030910b8fe9dbc3bc7",
+    "speed.0.start.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "speed.0.start.stdout": "5591fcb0c6c19ffb2b6a1be8702b80e6dc9bc97717acd4713a29bfe8dd23aed8",
+    "speed.1.benchmark.txt": "05d75128c7717933dcc1d2efdcf918941f2230331dd19155490ea8897c91a8b0",
+    "speed.1.force-stop.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "speed.1.force-stop.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "speed.1.instrument.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "speed.1.instrument.stdout": "2997e756d3c6c98711905ae161cf15ebfe4cd6d80ce1c33854d1f4b774b853a9",
+    "speed.1.logcat.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "speed.1.logcat.stdout": "289d87397d99358cca2b01569c1543b678b34b3aeff7ffa5ad7473ab5c9d02dc",
+    "speed.1.start.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "speed.1.start.stdout": "1b4e7a6f92954efe8fa45cad3fcfabf7e685410e50d98b762b52e35de576c7fa",
+    "speed.2.benchmark.txt": "f6d953461d6ee8cd4051da07c7485f0227c57a1d70d422906503c86e1d845b09",
+    "speed.2.force-stop.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "speed.2.force-stop.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "speed.2.instrument.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "speed.2.instrument.stdout": "3f78c3a8f0d1f98de5b8dfce07e75e879a36e35ac043ed22c7b011379c7b2d93",
+    "speed.2.logcat.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "speed.2.logcat.stdout": "1b46c6abc8b012c189747a6727fc05d2633ee5b5cb3ef2a9db476f37cd0a763c",
+    "speed.2.start.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "speed.2.start.stdout": "6d4e1765ec74033d20beb059a59a792f0a709291a6ad4abd0096e59ed881b53b",
+    "speed.io.github.mrxsin.gmailhideads.nativebf.compile.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "speed.io.github.mrxsin.gmailhideads.nativebf.compile.stdout": "df5f678c3e897e8db27b8c5de5ae1938a25aa084aeee89a1a44958f104316b3d",
+    "speed.io.github.mrxsin.gmailhideads.nativebf.test.compile.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "speed.io.github.mrxsin.gmailhideads.nativebf.test.compile.stdout": "df5f678c3e897e8db27b8c5de5ae1938a25aa084aeee89a1a44958f104316b3d",
+    "speed.package.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "speed.package.stdout": "edeae772bbef7700d21dcf6d315109f84d92a1b4171041e8623aac18d2af76ef",
+    "test.apk.install.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "test.apk.install.stdout": "c4aa470acafcf8576c15b0f0b5ae7e852d1ec5413372d0e6a9272e788e1306d3",
+    "verify.0.benchmark.txt": "1c0ae0723645a7611d0b78deb04bc6161e0c77e04808671c7d1b5ec79ce72c4f",
+    "verify.0.force-stop.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verify.0.force-stop.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verify.0.instrument.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verify.0.instrument.stdout": "5187306b3266ca5e61b5b303774d148d4c05438f9d6a6f6cd69edfd7b12686f7",
+    "verify.0.logcat.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verify.0.logcat.stdout": "516089fea4280193f0c3a3c325a4da9f80de5a336b6ea1c329d11475080c4513",
+    "verify.0.start.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verify.0.start.stdout": "ffadfdef2d67c89e0b7b00583b82b4b4ded438cd08c1fe6b020b94d7acc90b57",
+    "verify.1.benchmark.txt": "a65a6cbb085c7bbb93fdda598eacfb80a280026a4c56640270ef2c78f813e9b9",
+    "verify.1.force-stop.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verify.1.force-stop.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verify.1.instrument.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verify.1.instrument.stdout": "2997e756d3c6c98711905ae161cf15ebfe4cd6d80ce1c33854d1f4b774b853a9",
+    "verify.1.logcat.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verify.1.logcat.stdout": "02a3df17ed39eb74a80cd90172863ddef41ae10e866233f3daa008c39cf6da6e",
+    "verify.1.start.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verify.1.start.stdout": "f63904d28191d45bd36ea9367e1b18c19b9ae4de1d1152ee62b76141361c7537",
+    "verify.2.benchmark.txt": "64b28e41d4380253675067f6b13a1d41d21e1aed88925548f16b9700c4ed9b70",
+    "verify.2.force-stop.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verify.2.force-stop.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verify.2.instrument.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verify.2.instrument.stdout": "f84ae61be7945e885d3c2aa21e1805bf9e59472ffe3509a90fcd3ba166c0551d",
+    "verify.2.logcat.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verify.2.logcat.stdout": "17cfa9f8190c3073b28221acd18e8650b4f9e6513992137270841e716ed23506",
+    "verify.2.start.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verify.2.start.stdout": "d59f1b3c21ec2ee448b41e05557fa38b1e089bbdadab52e7ed9bd522075128ae",
+    "verify.io.github.mrxsin.gmailhideads.nativebf.compile.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verify.io.github.mrxsin.gmailhideads.nativebf.compile.stdout": "df5f678c3e897e8db27b8c5de5ae1938a25aa084aeee89a1a44958f104316b3d",
+    "verify.io.github.mrxsin.gmailhideads.nativebf.reset.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verify.io.github.mrxsin.gmailhideads.nativebf.reset.stdout": "df5f678c3e897e8db27b8c5de5ae1938a25aa084aeee89a1a44958f104316b3d",
+    "verify.io.github.mrxsin.gmailhideads.nativebf.test.compile.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verify.io.github.mrxsin.gmailhideads.nativebf.test.compile.stdout": "df5f678c3e897e8db27b8c5de5ae1938a25aa084aeee89a1a44958f104316b3d",
+    "verify.io.github.mrxsin.gmailhideads.nativebf.test.reset.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verify.io.github.mrxsin.gmailhideads.nativebf.test.reset.stdout": "df5f678c3e897e8db27b8c5de5ae1938a25aa084aeee89a1a44958f104316b3d",
+    "verify.package.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verify.package.stdout": "142db79b169e7c975f8c56e7aa3415bc02094aa6c621d02c8f0afad9f3650ee7"
+  },
+  "harness_sha256": "f0f215981d2444753bafc0ffb8cb61a6bed7652dfd19e7e1b08303842e42d083",
+  "limitations": [
+    "verify mode plus warmup permits JIT but does not prove method-level JIT compilation",
+    "speed mode explicitly requests ART AOT for both packages",
+    "Three process runs per mode; fixed inputs and case order; uncontrolled frequency/thermals",
+    "Per-call timer, volatile sink, encoding, JNI and validation are included",
+    "Cached verdict performs no new BF execution",
+    "New JNI bridge embeds BF-produced callable bytes; NDK only builds the platform library",
+    "No same-device HotSpot JVM, no actual Gmail/Xposed hook execution"
+  ]
+}

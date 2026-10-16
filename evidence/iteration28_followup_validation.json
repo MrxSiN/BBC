@@ -1,0 +1,48 @@
+{
+  "classification": "FOLLOWUP_LOCAL_VALIDATION_NO_ANDROID_DEVICE",
+  "results": [
+    {
+      "test": "wide_branch_encoding",
+      "status": "PASS",
+      "seconds": 20.69,
+      "output": "BF wide branch encoding validated 171 pairs, 8 source stage cases, 6 bounded ELFs, 4 independent BF seeds\n"
+    },
+    {
+      "test": "android_contract_v1",
+      "status": "PASS",
+      "seconds": 2.15,
+      "output": "PASS I26 Android contract: 8 BF-owned stages, 256 raw bytes, 6 wire rejections, 9 ELF images, 14 simulated AArch64 reference differentials, 6 negative source cases, atomic CLI\n"
+    },
+    {
+      "test": "android_source_scan_integration",
+      "status": "PASS",
+      "seconds": 2.11,
+      "output": "PASS 9 native AArch64 image parity cases, 4 rejected source cases and atomic scanner CLI\n"
+    },
+    {
+      "test": "android_aarch64_loops",
+      "status": "PASS",
+      "seconds": 3.09,
+      "output": "PASS Android BF branch pipeline: 166 native ELF compilations (163 loop cases), 11 rejections, 8 independent BF seed checks\n"
+    },
+    {
+      "test": "check_docs",
+      "status": "PASS",
+      "seconds": 0.65,
+      "output": "PASS 48 maintained Markdown files, local links, source count, annotation hash and ELF size\n"
+    },
+    {
+      "test": "source_comments",
+      "status": "PASS",
+      "seconds": 0.84,
+      "output": "PASS 4 valid annotation cases, 7 unsafe cases rejected, 10 independent BF source-comment invariance checks\n"
+    }
+  ],
+  "linux_native_selfhost_fresh_replay": "NOT_RUN",
+  "independent_cold_bootstrap": "NOT_RUN",
+  "android_device_execution": "NOT_RUN",
+  "cli_wide_branches_success_and_failure_preserves_existing_file": "PASS",
+  "unchanged_linux_core_source_sha256": "f73a9b7ddc9d6f1971435251edefd85e3bb81a0dda23e8b11630a2d7cf7407e9",
+  "unchanged_linux_compiler_elf_sha256": "e95ec4e028a28f18d955f908cf40e2f9b9fbe650b6ebfd4df6d819c3f6f6cea8",
+  "replay_of_previous_wide_bracket_full_test": "INCOMPLETE_TIMEOUT_200_SECONDS"
+}

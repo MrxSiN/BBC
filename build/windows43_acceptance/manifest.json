@@ -1,0 +1,127 @@
+{
+  "iteration": 43,
+  "profile": "windows-x86_64-PE32+-128slots",
+  "platform": "native Windows x64 required",
+  "cases": [
+    {
+      "name": "empty",
+      "source": "empty.bf",
+      "executable": "empty.exe",
+      "commands": 0,
+      "stdin_hex": "",
+      "expected_stdout_hex": "",
+      "expected_exit": "zero",
+      "sha256": "fea33a7d31e123acc5e272aa33982cef35d199d041e9c6a539708948a0f98cd6"
+    },
+    {
+      "name": "binary_eof",
+      "source": "binary_eof.bf",
+      "executable": "binary_eof.exe",
+      "commands": 4,
+      "stdin_hex": "ff",
+      "expected_stdout_hex": "ff00",
+      "expected_exit": "zero",
+      "sha256": "98dfb54e822d999adec59da19a855bdbd5935340d42b500a3b3566017f7815e8"
+    },
+    {
+      "name": "zero_input",
+      "source": "zero_input.bf",
+      "executable": "zero_input.exe",
+      "commands": 2,
+      "stdin_hex": "",
+      "expected_stdout_hex": "00",
+      "expected_exit": "zero",
+      "sha256": "f8585dee9b55d0dc1b822946fed0eb7b0ab5f549fd5993c9d7297eceb831c70f"
+    },
+    {
+      "name": "wraparound",
+      "source": "wraparound.bf",
+      "executable": "wraparound.exe",
+      "commands": 2,
+      "stdin_hex": "",
+      "expected_stdout_hex": "ff",
+      "expected_exit": "zero",
+      "sha256": "a40034bad5283fa071282604b81caea78d07c0fdeb57de3c045a79e145408668"
+    },
+    {
+      "name": "large_linear_128",
+      "source": "large_linear_128.bf",
+      "executable": "large_linear_128.exe",
+      "commands": 128,
+      "stdin_hex": "",
+      "expected_stdout_hex": "7f",
+      "expected_exit": "zero",
+      "sha256": "bfcc82d2410ede6218e574c2ace7861b8c377cd58d91ae64e6148c06b125d5e0"
+    },
+    {
+      "name": "loop_across_slot64",
+      "source": "loop_across_slot64.bf",
+      "executable": "loop_across_slot64.exe",
+      "commands": 72,
+      "stdin_hex": "",
+      "expected_stdout_hex": "40",
+      "expected_exit": "zero",
+      "sha256": "593d0cad52d3c4a70e84da1b9b52f7012127dbadbf5442d5403c2a5c3e77c834"
+    },
+    {
+      "name": "sequential_loops",
+      "source": "sequential_loops.bf",
+      "executable": "sequential_loops.exe",
+      "commands": 76,
+      "stdin_hex": "",
+      "expected_stdout_hex": "00",
+      "expected_exit": "zero",
+      "sha256": "208be5f193d6759f0f90593c918e3aa5812b57afb92049a3e738a429a71f997e"
+    },
+    {
+      "name": "nested_loop",
+      "source": "nested_loop.bf",
+      "executable": "nested_loop.exe",
+      "commands": 84,
+      "stdin_hex": "",
+      "expected_stdout_hex": "88",
+      "expected_exit": "zero",
+      "sha256": "30e6830c071a934628485f4bef7b94f185629f8c02160654199c762f157115f4"
+    },
+    {
+      "name": "max_128_nested_skip",
+      "source": "max_128_nested_skip.bf",
+      "executable": "max_128_nested_skip.exe",
+      "commands": 128,
+      "stdin_hex": "",
+      "expected_stdout_hex": "",
+      "expected_exit": "zero",
+      "sha256": "407e183a97c568f912d9245856dd132dc3b96c3a5d292c6db4abe2f7641a7315"
+    },
+    {
+      "name": "binary_loop",
+      "source": "binary_loop.bf",
+      "executable": "binary_loop.exe",
+      "commands": 83,
+      "stdin_hex": "03",
+      "expected_stdout_hex": "0046",
+      "expected_exit": "zero",
+      "sha256": "e9b77ff8b4d8b0b8a9379bc3bc25a392e5efef44280631ac85a0904a33ad5125"
+    },
+    {
+      "name": "pointer_underflow",
+      "source": "pointer_underflow.bf",
+      "executable": "pointer_underflow.exe",
+      "commands": 71,
+      "stdin_hex": "",
+      "expected_stdout_hex": "",
+      "expected_exit": "nonzero",
+      "sha256": "194fd79dfa27f4054c6e1356a0714476cc161b32a5c88fb2a7b48ab317bc01aa"
+    },
+    {
+      "name": "pointer_underflow_loop",
+      "source": "pointer_underflow_loop.bf",
+      "executable": "pointer_underflow_loop.exe",
+      "commands": 74,
+      "stdin_hex": "",
+      "expected_stdout_hex": "",
+      "expected_exit": "nonzero",
+      "sha256": "c8eca5c30223aa1146b3536cb67252fc1c4c697464a228945080a551f0d52f95"
+    }
+  ]
+}

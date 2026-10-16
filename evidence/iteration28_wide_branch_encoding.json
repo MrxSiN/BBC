@@ -1,0 +1,105 @@
+{
+  "iteration": 28,
+  "classification": "EXECUTED_LINUX_NATIVE_BF_LONG_BRANCH_RECORDS_ONLY",
+  "source": "experiments/android_wide_branch_encoding.bf",
+  "native_linux_elf": "build/android_wide_branch_encoding_x86_64_linux.elf",
+  "source_sha256": "94054133a519078fda5636047afd5eb8ab1aa5f498480898b6ec660cf908de96",
+  "filtered_sha256": "f5914356d17146367f183dd4fb0b9228be4a0164bb766722c39a2e3f4fce22b0",
+  "brainfuck_instructions": 13985,
+  "linux_native_elf_sha256": "3b0edc45da4a9724492900d85e20e7c0f61c96de73fe17665aea3bb51882bfd2",
+  "linux_native_elf_bytes": 447735,
+  "output_bytes_per_pair": 15,
+  "aarch64_veneer_instructions": {
+    "load": "0x39400269",
+    "open_skip": "0x35000049",
+    "close_skip": "0x34000049",
+    "unconditional_base": "0x14000000"
+  },
+  "maximum_supported_bracket_separation": 2796201,
+  "random_and_boundary_valid_pairs": 171,
+  "multi_record_cases": 34,
+  "rejected_cases": [
+    {
+      "case": "bad_tag",
+      "status": 1
+    },
+    {
+      "case": "zero_open",
+      "status": 1
+    },
+    {
+      "case": "equal",
+      "status": 1
+    },
+    {
+      "case": "reversed",
+      "status": 1
+    },
+    {
+      "case": "beyond_imm26",
+      "status": 4
+    },
+    {
+      "case": "upstream_error",
+      "status": 3
+    }
+  ],
+  "wide_metadata_pair_encoder_cases": [
+    {
+      "commands": 0,
+      "pairs": 0,
+      "record_sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "commands": 2,
+      "pairs": 1,
+      "record_sha256": "618c183be52fb69622843cb1493ea8530f2083ea837cebac476813827dbf8089"
+    },
+    {
+      "commands": 4,
+      "pairs": 2,
+      "record_sha256": "ef604c3732ce85c7e323323e0bb4334fbc5fa55f69bf38db341bf9478adbc936"
+    },
+    {
+      "commands": 10,
+      "pairs": 1,
+      "record_sha256": "7816ee37c362cee78c5a4f8921812a3f8bbed9f59a97cbee9205e4e944e45201"
+    },
+    {
+      "commands": 300000,
+      "pairs": 1,
+      "record_sha256": "5350322a6e6c89853b6b755f04fc0335cee8802b368c74406b88687b283e70e0"
+    },
+    {
+      "commands": 510,
+      "pairs": 255,
+      "record_sha256": "02ea222340a44aef3db46976291165de5d7ad372cf6c74e6ffdc084a9f4b8124"
+    },
+    {
+      "commands": 8000,
+      "pairs": 4000,
+      "record_sha256": "856e144e08e6e65e3466ac58890568bf1a9f50cdab5418b3738e6e549ceeea21"
+    },
+    {
+      "commands": 65540,
+      "pairs": 1,
+      "record_sha256": "0796e1ad0ebac360e6adfdc004956b8e097bf564add2e9f64b28de648fb3638a"
+    }
+  ],
+  "independent_bf_seed_checks": 4,
+  "comment_invariance": true,
+  "linux_native_selfhost_not_rerun_by_this_test": true,
+  "android_native_generated_executables_tested": false,
+  "android_native_compiler_selfhosting": false,
+  "dynamic_android_elf_emitter_available": false,
+  "elapsed_seconds": 19.509,
+  "bounded_android_elf_byte_identical_cases": 6,
+  "bounded_android_elf_sha256": [
+    "94b9d3cbf2f931795f302301dc898f395aa6297b437c0d1cf007fa098e4fae25",
+    "b8f6ab8220e8f97af115f6968d37533881a305e0365d4618c7519bf5703c593f",
+    "51551688e827f62337a7302765eff41227b435a4f917fa1b362ca5cc788b52ec",
+    "29e447b70cdbd42ec87418f2b85751410abe2f64825669681141a814b6d683a1",
+    "9d09bef57f710340b1402227a4590567f6c242e4757cc85ff405332da3522d46",
+    "91574cb9a6fd81d2d6768d131a095efd4399fb145a7d05637dde9529298c14c5"
+  ]
+}

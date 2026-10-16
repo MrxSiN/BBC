@@ -1,0 +1,19 @@
+{
+  "iteration": 58,
+  "compiler_source_unchanged": true,
+  "verification": "FRESH_STAGE0_STAGE1_STAGE2_BYTE_IDENTICAL",
+  "source_sha256": "f73a9b7ddc9d6f1971435251edefd85e3bb81a0dda23e8b11630a2d7cf7407e9",
+  "native_compiler_sha256": "e95ec4e028a28f18d955f908cf40e2f9b9fbe650b6ebfd4df6d819c3f6f6cea8",
+  "stage_output_sha256": [
+    "e95ec4e028a28f18d955f908cf40e2f9b9fbe650b6ebfd4df6d819c3f6f6cea8",
+    "e95ec4e028a28f18d955f908cf40e2f9b9fbe650b6ebfd4df6d819c3f6f6cea8",
+    "e95ec4e028a28f18d955f908cf40e2f9b9fbe650b6ebfd4df6d819c3f6f6cea8"
+  ],
+  "stage_seconds": [
+    2.704,
+    1.21,
+    1.215
+  ],
+  "probe_count": 7,
+  "new_callable_stages_selfhosted_on_android": false
+}

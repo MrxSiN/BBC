@@ -1,0 +1,42 @@
+{
+  "android_dlopen_verified": false,
+  "classification": "BF_OWNED_ELF_DSO_STRUCTURAL_NOT_ANDROID_EXECUTED",
+  "iteration": 59,
+  "original_policy_count": 3,
+  "policies": {
+    "gmail_row": {
+      "android_device_executed": false,
+      "bracket_pairs": 717,
+      "dso_bytes": 551668,
+      "dso_sha256": "880ec712428ecb2eb35bb36a945c15cbbc6afbc7d485f50c1bab7c34380567ad",
+      "filtered_commands": 18748,
+      "native_code_bytes": 550644,
+      "readelf_validated": true,
+      "source_sha256": "773beec4d9098ac78faed538427fc9e04546136504d41100e906cb748f211414",
+      "symbol": "bfc_call_v1"
+    },
+    "gmail_scope": {
+      "android_device_executed": false,
+      "bracket_pairs": 723,
+      "dso_bytes": 549764,
+      "dso_sha256": "5b8d4bf2d6495ba4a98e78b33ff140ac54bdbad2c9f2dfa68428b8b512437e21",
+      "filtered_commands": 18192,
+      "native_code_bytes": 548740,
+      "readelf_validated": true,
+      "source_sha256": "6a67a60c79031e3d78ce77f08d95618d16e4985075c8fda77cb32b56e91c185c",
+      "symbol": "bfc_call_v1"
+    },
+    "twitter_action": {
+      "android_device_executed": false,
+      "bracket_pairs": 878,
+      "dso_bytes": 697076,
+      "dso_sha256": "7b3bf5bac4d8801d3cfdef6740bf0b22c4af017ccfd637312d64db2cbe22c6a2",
+      "filtered_commands": 24616,
+      "native_code_bytes": 696052,
+      "readelf_validated": true,
+      "source_sha256": "a422986cc484115f489d1e8caec5adf439f06346e3c82a4f8e61a3c332e54d24",
+      "symbol": "bfc_call_v1"
+    }
+  },
+  "remaining_original_source_count": 8
+}

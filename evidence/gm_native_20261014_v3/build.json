@@ -1,0 +1,64 @@
+{
+  "backend": "STANDARD_BRAINFUCK_CALLABLE_AARCH64_WITH_NEW_PLATFORM_JNI_BRIDGE",
+  "original_gm_modified": false,
+  "old_bf_to_c_backend_linked": false,
+  "compiler_stages_android_native": true,
+  "affine_fusion": true,
+  "sources": {
+    "row": {
+      "source_sha256": "773beec4d9098ac78faed538427fc9e04546136504d41100e906cb748f211414",
+      "elf_sha256": "4a2dfc9899be85c031bf1d37d2a5062ccc5d132e68e503fd55c6998e147214f9",
+      "elf_bytes": 15864
+    },
+    "scope": {
+      "source_sha256": "6a67a60c79031e3d78ce77f08d95618d16e4985075c8fda77cb32b56e91c185c",
+      "elf_sha256": "6e4d5010caacc78e259d64baa8a892db851f7e2d58e2e56427cf83e9718f05fa",
+      "elf_bytes": 16112
+    }
+  },
+  "stages": {
+    "policy_rle": {
+      "source_sha256": "ae283a888ba052040ee6efe78809c46843444927e2effa904390d3c53c8cc483",
+      "android_native_elf_sha256": "33cee9f89c01ff701d9e4d0cea3dd21d68b1efd60b1d0be20c0a7e47d7da146b"
+    },
+    "policy_resolve": {
+      "source_sha256": "6fffbc5bf34336db48a1a305eed5b7ad114990e157300d3d99ec8e7c91c09594",
+      "android_native_elf_sha256": "e0cec5acd816d27281e479f1c3cd6c787cd2c9ead9035a470484736d234e8031"
+    },
+    "policy_optimize": {
+      "source_sha256": "fb48b0e82c28e41d2b29e3e0026adb57bc7ba59c1f72876990d741f5d36f8f8f",
+      "android_native_elf_sha256": "de9dacfe0ffea54fca8ece9fbcab6e0a05c45ee282292b37e5d3b819f674a8d3"
+    },
+    "policy_affine": {
+      "source_sha256": "7ddd77dc6401f3abaff0af37c65be75768987ef17be71ea2eb8410d61e75c892",
+      "android_native_elf_sha256": "7671c1478623de641bca5f417037d7f862247869aac125f20941cbf121808a73"
+    },
+    "policy_operands": {
+      "source_sha256": "28fc3ac7257ea4a02c5c3ba6fcfadc645bc5bc56ffe2a46b270cab205a43ecbf",
+      "android_native_elf_sha256": "5d04ee79a7f42a92c88322387a31b54e120a8d9e0f282c3195f11691e28eb3e5"
+    },
+    "policy_codegen": {
+      "source_sha256": "913b115e9bc1907471cf2c00f3013bd1b24d067bcecb2944893edaa04c26633d",
+      "android_native_elf_sha256": "fcb284a2800a60d0323fdf37a4e90867e493954709803e9a4ba048c0ca6accbb"
+    },
+    "policy_elf": {
+      "source_sha256": "fab65513af7951f23f61d438a947397978239d9e69f311f5a88e903b40c53416",
+      "android_native_elf_sha256": "575298a3db92c87ee545e300356aeab1ca076123ffae42ae9df588e93afd8707"
+    }
+  },
+  "apk_sha256": "26407a5a00cfb5a6b434b2e31209f02670e5c1266ef6ec0e63375661f185b3e6",
+  "test_apk_sha256": "f198cd45e537e87793d1cfde5fee1975498ce6d9f7a6b7f36d9b909874fde348",
+  "native_library_sha256": "71318828d18142ac4a62bf73adae5511308d9e75d8a2381705cfbfb31f095ac7",
+  "bf_elf_bytes_embedded_unchanged": true,
+  "build_command": [
+    "D:\\GitHub\\brainfuckC\\evidence\\gm_native_20261014_v3\\GM\\gradlew.bat",
+    "--offline",
+    "-I",
+    "D:\\GitHub\\brainfuckC\\evidence\\gm_native_20261014_v3\\native.init.gradle",
+    "-PbenchmarkRelease",
+    ":app:assembleRelease",
+    ":app:assembleReleaseAndroidTest",
+    "--console=plain"
+  ],
+  "device_tests_executed": false
+}

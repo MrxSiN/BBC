@@ -1,0 +1,29 @@
+{
+  "iteration": 35,
+  "classification": "LINUX_NATIVE_BF_STAGE_AARCH64_SIMULATED_ONLY",
+  "source": "experiments/android_tape_rebase.bf",
+  "source_sha256": "8ef1d311478a710bd491687250af1e80f64e893302e4d824004185dc0cd4982f",
+  "filtered_sha256": "14d034db66ce08d4e8408f5a492141aec20a3b08a6745c27d2544ca7bf472ed3",
+  "bf_instructions": 3061,
+  "native_linux_elf": "build/android_tape_rebase_x86_64_linux.elf",
+  "native_linux_elf_sha256": "c9b8e16a2c3f24ff26d92ec65e433ca0199cddf4a2f13fd5fcfcdbbaee88a12d",
+  "native_linux_elf_bytes": 98167,
+  "max_linear_commands": 2000,
+  "max_loop_commands": 1024,
+  "android_device_executed": false,
+  "android_native_compiler_execution": false,
+  "android_native_selfhosting": false,
+  "verified": {
+    "stage_source_variants_byte_identical": 2,
+    "size_boundaries_checked": 23,
+    "programs_compared": 34,
+    "aarch64_simulator_runs": 68,
+    "reference_expected_tape_traps": 15,
+    "expected_rejections": 5,
+    "cli_atomic_failure_preservation": true,
+    "readelf_checked": true,
+    "android_loader_execution": false,
+    "independent_cold_linux_bootstrap": "NOT_RERUN",
+    "elapsed_seconds": 30.271
+  }
+}

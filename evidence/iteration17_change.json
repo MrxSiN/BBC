@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-12",
+  "iteration": 17,
+  "classification": "PROTOTYPE decoder insertion, production S2 unchanged",
+  "implemented": [
+    "A raw standard-Brainfuck in-core decoder classifier/compactor insertion prototype",
+    "85 BF-seed executions compared byte-for-byte against the installed native compiler on stripped source",
+    "6 second-seed cross-checks, 5 malformed transport rejections and 11 native semantic witnesses",
+    "Source-capacity tests including 255/256 count carry, 16128 accepted, 16129 rejected",
+    "Seventeenth release gate and synchronized conformance documentation"
+  ],
+  "source": "experiments/decoder_compaction_insertion.bf",
+  "source_sha256": "9122a468acda5e93dd3c8f5b9b2feab37d294fe25feda5f93f516aa0e764375b",
+  "bf_instructions": 1665,
+  "candidate_total_bf_instructions": 17572,
+  "selfcompilation_max_source_bytes": 16128,
+  "selfcompilation_shortfall_instructions": 1444,
+  "byte_identical_compilations": 85,
+  "independent_seed_comparisons": 6,
+  "error_cases": 5,
+  "executed_native_behavior_probes": 11,
+  "source_compiler_changed": false,
+  "production_native_elf_changed": false,
+  "source_filter_integrated_in_production": false,
+  "production_selfhosting_status": "S2 (existing core) reverified separately",
+  "prototype_selfhosting_status": "FAILED: source exceeds existing bounded decoder",
+  "next_priority": "Reduce BF insertion or source size by at least 1444 BF bytes with a validated non-overlap and capacity proof, then rerun native Stage 0-2"
+}

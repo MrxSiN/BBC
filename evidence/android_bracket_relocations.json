@@ -1,0 +1,19 @@
+{
+  "classification": "EXECUTED independent Linux native Brainfuck bracket-span stage; not integrated Android codegen",
+  "source_sha256": "0aeb1a64b84d89b76067a47a278d0c75d84a37d3d6131647d669333b6a20668d",
+  "linux_native_elf_sha256": "104a129f40fef7322e36ddca1cf01b4014de5986e6b6f669fcf63b47ecf7fdf2",
+  "brainfuck_instructions": 2252,
+  "linux_native_elf_bytes": 72279,
+  "valid_streams_passed": 448,
+  "invalid_streams_rejected": 2145,
+  "independent_interpreter_equivalences": 44,
+  "input_protocol": "prefiltered non-NUL command stream up to 10 commands",
+  "output_protocol": "each matched close emits (span, one-based close index); zero terminator then status byte",
+  "semantic_limits": [
+    "Only relocation metadata, not Android machine code",
+    "NUL terminates input",
+    "Untrusted input must be independently length bounded",
+    "No Android device execution",
+    "No AArch64 compiler selfhosting"
+  ]
+}

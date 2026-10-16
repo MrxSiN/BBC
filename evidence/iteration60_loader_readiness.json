@@ -1,0 +1,72 @@
+{
+  "android_jni_execution": false,
+  "android_loader_dlopen": false,
+  "android_native_selfhost": false,
+  "cases": {
+    "empty": {
+      "bf_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "nested_depth": 0,
+      "so_bytes": 1092,
+      "so_sha256": "6ece77a309cb2641a3feb60fb561627dadcf78c46674853abac3546e15789466"
+    },
+    "gas_trap": {
+      "bf_sha256": "495cf38390594beceba12978554544ef02e918078dd496832ce65fd12a11ac7d",
+      "nested_depth": 1,
+      "so_bytes": 1204,
+      "so_sha256": "514130621533b6471ed6c9d4b0d1117a87f9b4598b0b5d36373f25333fc2241d"
+    },
+    "io_eof": {
+      "bf_sha256": "2df8caea5b3a6d8333ead391cb354b5d6e2a719b5da6f70410556d44889423ab",
+      "nested_depth": 0,
+      "so_bytes": 1260,
+      "so_sha256": "ad350244361d6192d14c280bec72d78ebfb78b90c33c5b23f36023ee17b79eaf"
+    },
+    "nested": {
+      "bf_sha256": "fa532face85b2358f50e1357b9e4f029d869fd91d10d8413659793ae864bebb3",
+      "nested_depth": 2,
+      "so_bytes": 1584,
+      "so_sha256": "8231472b62a38011fcddec50c1cbcb7b308258c71e51514c66c844a36ba54280"
+    },
+    "output_full": {
+      "bf_sha256": "5fa6534d1d4dd879ff7924a8e0030e4814cddfa5466e58601573651afd366239",
+      "nested_depth": 0,
+      "so_bytes": 1132,
+      "so_sha256": "eb9289472699d2adc1e7b037cc2b62e5cbc1bbe10ecef7ef9ebc364e395669f3"
+    },
+    "persistent": {
+      "bf_sha256": "5fa6534d1d4dd879ff7924a8e0030e4814cddfa5466e58601573651afd366239",
+      "nested_depth": 0,
+      "so_bytes": 1132,
+      "so_sha256": "eb9289472699d2adc1e7b037cc2b62e5cbc1bbe10ecef7ef9ebc364e395669f3"
+    },
+    "pointer_trap": {
+      "bf_sha256": "0f02c6bad08d9ff1858d26cf1af766e336d71e34c2e74e8c7d417b3550cbfc44",
+      "nested_depth": 0,
+      "so_bytes": 1156,
+      "so_sha256": "f5e4a5d2ebcabbd4d48d230d4c2d719f70c165885b43b7b3e71ccf4475d60fec"
+    },
+    "transfer": {
+      "bf_sha256": "9da344fadf9c566f96a6ab769e4aba43a14245ac949231176f38695d4c2a33bb",
+      "nested_depth": 1,
+      "so_bytes": 1340,
+      "so_sha256": "26ed7022bcf9aacd15cba43c2474e4697dddb1c392def4dc47e3805774287ec0"
+    },
+    "zero_skip": {
+      "bf_sha256": "3a638015b6ee86624d36ff2ac18185ff44f528c2d85803595e65d0d513cd5207",
+      "nested_depth": 1,
+      "so_bytes": 1192,
+      "so_sha256": "33892c8f61cd610bd1841c89ee7d7fd97c66ef7f8a7cfeaf0a0d7d06da7114c0"
+    }
+  },
+  "classification": "STRUCTURAL_AND_SIMULATED_ONLY",
+  "device_execution": false,
+  "device_probe_source": "tools/android_bfp1_bridge/device_loader_probe60.c",
+  "generated_BF_DSO_fixtures": 9,
+  "host_missing_library_error": "PASS",
+  "host_test_stub_dlopen_dlsym": "PASS",
+  "independent_simulator_comparisons": 9,
+  "iteration": 60,
+  "jni_device_execution": false,
+  "note": "No device claims from this preparation phase",
+  "readelf_library_checks": 9
+}

@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-12",
+  "classification": "EXECUTED legacy source-equivalence for unchanged three-instruction subset; not Android device execution",
+  "old_source_sha256": "43685b1988edb182df8d57321a684bcecfb5b5dd2188862dc48749715105cfb7",
+  "new_source_sha256": "f4aee9d8ff43df8d31fd6591eb037f57ddb390d34439c625e6054d47afc356d1",
+  "old_native_elf_sha256": "e1319dc0f0376e30ada665bccc5ffcd113e925b2ef0c3c0c6907e2e075b9cacd",
+  "new_native_elf_sha256": "9ff099467a43afc2674d7047d04bbc0b8c9b524b4a4b93e565c6408b34db3c47",
+  "identical_image_cases": 128,
+  "legacy_commands": "+-.",
+  "new_commands": "+-.><,",
+  "old_instruction_count": 14771,
+  "new_instruction_count": 13891,
+  "output_artifact_bytes": 4192,
+  "limitations": [
+    "No Android device execution",
+    "Source subset limited to 10 commands",
+    "New emitter supports input and pointer movement, but no loops",
+    "Old and new semantics differ for pointer movement because old version rejected it"
+  ]
+}

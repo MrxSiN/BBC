@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-12",
+  "iteration": 21,
+  "classification": "STRUCTURAL and SIMULATED Android AArch64 backend prototype; Linux S2 production unchanged",
+  "authoritative_compiler_changed": false,
+  "experimental_bf_backend_source": "experiments/android_aarch64_pie_subset.bf",
+  "host_compiled_bf_elf": "build/android_pie_emitter_linux_x86_64.elf",
+  "android_execution": "UNVERIFIED",
+  "android_native_selfhosting": "UNIMPLEMENTED",
+  "implemented": [
+    "Standard Brainfuck AArch64 ELF PIE subset code emitter",
+    "Five ELF program headers with dynamic symbol and hash records",
+    "48 byte AArch64 instruction slots for increment decrement output",
+    "65,536 byte zero tape and binary status protocol",
+    "Linux-native BF emitter bootstrap through selfhosted Linux compiler",
+    "Independent byte comparison and bounded AArch64 instruction simulation",
+    "Transport adapter rejecting failures without overwriting output"
+  ],
+  "evidence": [
+    "evidence/android_aarch64_subset.json",
+    "evidence/release_gate.json"
+  ],
+  "remaining": [
+    "Android shell loading and execution untested",
+    "Five of eight Brainfuck operations are not yet implemented",
+    "NUL binary source handling not implemented",
+    "No EINTR retry for output",
+    "No pointer movement or bracket relocation",
+    "Windows PE32+ remains unimplemented",
+    "Compiler wide memory safety proof and native C Rust comparisons remain open"
+  ]
+}

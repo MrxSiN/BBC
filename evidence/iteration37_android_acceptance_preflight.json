@@ -1,0 +1,50 @@
+{
+  "iteration": 37,
+  "classification": "PREPARED_AND_TESTED_OFFLINE_NOT_ANDROID_EXECUTED",
+  "date": "2026-10-13",
+  "compiler_native_stage_logic": "STANDARD_BRAINFUCK_UNCHANGED",
+  "max_linear_commands": 2000,
+  "max_loop_commands": 2000,
+  "device_loader_execution": "NOT_RUN_NO_ADB_OR_DEVICE",
+  "native_android_compiler_execution": "NOT_IMPLEMENTED",
+  "android_native_selfhosting": "NOT_IMPLEMENTED",
+  "windows_backend": "NOT_IMPLEMENTED",
+  "android_300000_command_artifact": "NOT_IMPLEMENTED",
+  "independent_cold_linux_stage0": "NOT_RERUN",
+  "source_paths": [
+    "tools/android_device_acceptance.py",
+    "tests/verify_android_device_acceptance.py"
+  ],
+  "source_sha256": {
+    "tools/android_device_acceptance.py": "f84cffbe407d38f08e3e15fc145a95e5d3513ff9d0961d550370b353b82ccb86",
+    "tests/verify_android_device_acceptance.py": "da379a3ce8598d80ec22ebf4d23c67798f96788d5bb5482a7340831329d1af20"
+  },
+  "bundle_manifest": "build/android_device_acceptance_37/manifest.json",
+  "bundle_manifest_sha256": "1365ffbac36b6ebcd40d3958e8ebdaf38aa4ec5b56d2047d06ee49bdb80b4bcf",
+  "bundle_shell_sha256": "c81b70e96ee436e8fafc76dde3c7e78006c5f319474e1c939deb364ca143d03e",
+  "prepared_executable_fixtures": 13,
+  "six_page_classes": true,
+  "linux_hosted_aarch64_simulator_runs": 24,
+  "reference_pointer_traps": 2,
+  "binary_io_including_nul_and_ff_verified": true,
+  "synthetic_audit_corruption_and_missing_file_rejected": true,
+  "missing_adb_does_not_claim_device_success": true,
+  "elf_artifacts": {
+    "empty": "6c3c869783a1501a788e1edad2ac03796b498a4b63d2dcab6636e2b2238e3cc2",
+    "binary_echo": "e72b5f50732c611ec7b54ef274a8a4a643f84c9eba968db2570b712df7907dc5",
+    "eof_zero": "e48cb87ac6fe0219a0c379beffb5d85275ae2745c9c790e3314760876ee166d9",
+    "nested_loops": "5d4fe4cd080189a5f7ebb9c50cc2c851e8b440598ee8d01cc9cba144da26b625",
+    "page_331": "fba0cb24881890ce4493a8831e894fe471c7741660cbddcdd67be30585bfe1a2",
+    "page_672": "40d2db46276d8d1b32c35bd0f893088c5143307b3b5ed83b8f13e05baadc2e9b",
+    "page_1013": "de2403c1bcba3cfddab82a46bc3c9c65e8ca13699e4b5bb5a6cac3fbd3006eaf",
+    "page_1355": "50f8032fcc08c4994a576e498f4592714d5ec6a41bde940b9521aa90dea37554",
+    "page_1696": "13c42e2811263f86993c553bf4f344c1f11bfdcc0b7ae4f9b7cb52a7c1232b10",
+    "loop_2000": "9e96ab257d659682861f398621e7eb4797f36ba164a57f34afcd3b7079c72de3",
+    "max_nesting": "d6d596c6f18c279d19b3c77a332816b0a3500bde87c11bc74b522d410587b3da",
+    "left_trap": "13842afdf7910797ccc0e7bf77ccbd4e26bb99532eae82b659c503ecb62834f8",
+    "right_trap": "c614a490dce0fa6760eda9505c9d308ad6f2b4acd24c77571258a1c401f9ad61"
+  },
+  "linux_s2_replay": "PASS_NATIVE_STAGE1_STAGE2_BYTE_IDENTICAL",
+  "linux_replay_evidence": "evidence/iteration37_linux_replay.json",
+  "note": "Synthetic audit results are never actual device evidence. No device run was performed."
+}

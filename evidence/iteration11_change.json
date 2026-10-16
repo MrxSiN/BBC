@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-12",
+  "iteration": 11,
+  "classification": "EXECUTED development verification, not an implementation-level memory safety proof",
+  "canonical_source": "compiler/core.bf",
+  "canonical_source_modified": false,
+  "canonical_source_sha256": "2776b71d33144515a37cef20fd4745e3d30975394ae99abe8c8fb3c80bf8d018",
+  "native_compiler_elf_sha256": "fca82395e7fe099dbb22053665c0220ad64323db26038a65ce9ae6f02226f287",
+  "compiler_elf_bytes": 509239,
+  "user_supplied_requirements_sha256": "f06653e0225b95ffffe65ac55a97ef1e9f95f338bf2deb03856689156b75d59e",
+  "previous_requirements_copy_sha256": "4531ba8a866158526aa821c919e9f65cf2374b4ec2e483fe8067325f34dcdefd",
+  "changes": [
+    "Added audit-only compiler tape tracing to independent C Brainfuck seed",
+    "Added eight-case compiler internal source-buffer and pointer-footprint verification gate",
+    "Recorded escaped 00 and FF input normalization to ignored 01 in internal buffer",
+    "Updated the supplied requirements and maintained documentation, including mandatory Windows and Android targets",
+    "Added shell release gate runner and evidence cross-checks"
+  ],
+  "verification": {
+    "release_gates_passed": 11,
+    "linux_native_selfhost": "Stage 0, 1, 2 exact byte-identical",
+    "semantic_cases_passed": 178,
+    "adversarial_cases_passed": 345,
+    "compiler_tape_witnesses_passed": 8,
+    "highest_compiler_tape_cell_observed": 64583
+  },
+  "source_requirement_blockers": [
+    "Safe inline comments and comment-independent compiler artifacts",
+    "Compiler-internal full memory-region proof",
+    "Native Windows x86-64 backend and on-target selfhosting",
+    "Native Android AArch64 backend and on-target selfhosting",
+    "Native C and Rust performance baselines"
+  ],
+  "artifact": "evidence/compiler_tape_audit.json"
+}

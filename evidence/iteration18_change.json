@@ -1,0 +1,30 @@
+{
+  "iteration": 18,
+  "date": "2026-10-12",
+  "classification": "PROTOTYPE improvement: BF-only decoder insertion not selfhosting",
+  "baseline_repository": "brainfuck-native-iteration17.zip",
+  "authoritative_core_unchanged": true,
+  "canonical_source_sha256": "42c9496c22a4746dc43b698688dd13d9e8c92a7e0d32719bebc44e613e4ecf51",
+  "canonical_native_elf_sha256": "21d3a66baf21d88bfabfce60d2837b3147702b2920eef3fd789adbef407b9652",
+  "previous_prototype_source_sha256": "9122a468acda5e93dd3c8f5b9b2feab37d294fe25feda5f93f516aa0e764375b",
+  "new_prototype_source_sha256": "b199f46d113b5bfd372e5b65665cbd841f47fab87b52e99a3be6f57ed5194c48",
+  "previous_prototype_bf_instructions": 1665,
+  "new_prototype_bf_instructions": 1045,
+  "patch_instruction_saving": 620,
+  "derived_compiler_bf_instructions": 16952,
+  "decoded_compiler_source_limit": 16128,
+  "selfhosting_instruction_excess": 824,
+  "prototype_cases_compared": 85,
+  "independent_seed_comparisons": 6,
+  "malformed_transports_rejected": 5,
+  "native_runtime_witnesses": 11,
+  "decoder_visits_audited": 89314,
+  "intentionally_omitted_restore_rejected": true,
+  "limitations": [
+    "Derived compiler exceeds input capacity and cannot compile itself",
+    "Patch executes only under BF seed and does not have native Stage 1 and Stage 2 proof",
+    "Dynamic ownership audit does not establish compiler memory safety for every path",
+    "Linux canonical compiler source and generated binary unchanged",
+    "Windows and Android native compiler selfhosting unimplemented"
+  ]
+}

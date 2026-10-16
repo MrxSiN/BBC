@@ -1,0 +1,75 @@
+{
+  "iteration": 38,
+  "date": "2026-10-13",
+  "android_native_s2": {
+    "classification": "EXECUTED_ON_RECORDED_PIXEL8PRO_API37_AUDITED_OFFLINE",
+    "evidence_record": "evidence/android_native_selfhost_20261013_v3/report.json",
+    "archive_offline_audit": {
+      "classification": "ARCHIVED_DEVICE_EVIDENCE_OFFLINE_AUDITED",
+      "device_execution_replayed_in_this_environment": false,
+      "native_compiler_stages_checked": 4,
+      "native_program_output_cases_checked": 14,
+      "malformed_source_records_checked": 7,
+      "compiler_bf_instructions": 14575,
+      "compiler_image_bytes": 933008,
+      "compiler_image_sha256": "11782dea43d79697b248f164a1313ef5219e94105023c4456e4aa7ed28f1827c",
+      "source_sha256": "7dd565fad8860eb9b5be0a4b61f228fa6ba94803d78811bf26dc9c38fe90e17d",
+      "recorded_device": {
+        "ro.product.model": "Pixel 8 Pro",
+        "ro.product.cpu.abi": "arm64-v8a",
+        "ro.build.version.release": "17",
+        "ro.build.version.sdk": "37",
+        "ro.build.fingerprint": "google/husky/husky:17/CP3A.261005.005/16271449:user/release-keys"
+      }
+    },
+    "execution_replayed_on_device_this_iteration": false,
+    "on_device_stage0_stage1_stage2_stage3_byte_identical_recorded": true,
+    "independent_seed_agreement_recorded": true,
+    "source_cap_commands": 16128,
+    "general_300000_command_compiler": "UNIMPLEMENTED"
+  },
+  "windows_pe_exit_seed": {
+    "classification": "STRUCTURAL_LINUX_EXECUTED_BF_BYTE_EMITTER_NOT_WINDOWS_EXECUTED",
+    "bf_instructions": 6194,
+    "native_linux_stage_bytes": 198423,
+    "pe_bytes": 1536,
+    "independent_interpreter_steps": 6194,
+    "output_sha256": "dad4128b16b931b0f140ec5aa0880f7198e390a74c79509973e4e262a4bc218e",
+    "source": "experiments/windows_pe_exit_seed.bf",
+    "source_sha256": "2a3546eef24f17ff16c01cbe63f627ac8425a9e384fd64a7b2ba2ce76cd72a73",
+    "native_linux_emitter": "build/windows_pe_exit_seed_x86_64_linux.elf",
+    "native_linux_emitter_sha256": "c8613c7d3b995b81741f443a9076655211c04a6382e3d8c8808dc0b5a14f932e",
+    "output": "build/windows_pe_exit_seed_x86_64.exe",
+    "windows_device_execution": "NOT_RUN_NO_WINDOWS_RUNTIME",
+    "brainfuck_compiler_backend": "UNIMPLEMENTED",
+    "import": "KERNEL32.dll!ExitProcess",
+    "pe_subsystem": "console",
+    "source_program_input": "NOT_IMPLEMENTED",
+    "generator": "tools/author_windows_seed.py",
+    "host_generator_is_development_only": true
+  },
+  "linux_baseline": {
+    "compiler_source_sha256": "f73a9b7ddc9d6f1971435251edefd85e3bb81a0dda23e8b11630a2d7cf7407e9",
+    "compiler_binary_sha256": "e95ec4e028a28f18d955f908cf40e2f9b9fbe650b6ebfd4df6d819c3f6f6cea8",
+    "fresh_stage1_stage2_replay": "PASS_NATIVE_STAGE1_AND_STAGE2_BYTE_IDENTICAL"
+  },
+  "environment": {
+    "windows_runtime_available": false,
+    "android_device_available": false
+  },
+  "verification_gates": {
+    "offline_android_native_s2_archive_audit": "PASS_4_STAGES_14_PROGRAM_OUTPUTS_7_REJECTIONS",
+    "android_device_execution_this_iteration": "NOT_RERUN",
+    "windows_pe_bf_interpreter_vs_native_emission": "PASS_BYTE_IDENTICAL_1536_BYTES",
+    "windows_objdump_pe_import_inspection": "PASS_STRUCTURAL",
+    "windows_loader_execution": "NOT_RUN_NO_WINDOWS",
+    "linux_native_selfhosting_stages1_and2": "PASS_BYTE_IDENTICAL",
+    "linux_independent_cold_bootstrap": "NOT_RERUN",
+    "source_comments": "PASS",
+    "android_v1_transport_regression": "PASS",
+    "android_followup_harness_validation": "PASS",
+    "documentation_and_status_check": "PASS_74_MARKDOWN_FILES",
+    "production_compiler_BF_source_changed": false,
+    "full_release_suite": "NOT_RERUN"
+  }
+}

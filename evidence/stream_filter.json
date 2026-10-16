@@ -1,0 +1,989 @@
+{
+  "date": "2026-10-12",
+  "classification": "EXECUTED separate BF stream filter and experimental BF-to-BF compiler chain; production integration now implemented separately inside core.bf",
+  "source_sha256": "6ec46f09fb70713c98e9436be4711b0d977b8b8f075ef798301f3dc3ff6a2687",
+  "compiler_source_sha256": "f73a9b7ddc9d6f1971435251edefd85e3bb81a0dda23e8b11630a2d7cf7407e9",
+  "native_filter_sha256": "d33b0cb94dbbe3d6b3a16f6bec848368cfe3254acf5f6d9ec1aa8476a3f5a40f",
+  "native_compiler_sha256": "e95ec4e028a28f18d955f908cf40e2f9b9fbe650b6ebfd4df6d819c3f6f6cea8",
+  "bf_command_count": 816,
+  "malformed_transport_rejections": 6,
+  "compiled_filter_elf_bytes": 26327,
+  "cases_passed": 189,
+  "seed_comparisons": 16,
+  "byte_values_tested": 256,
+  "comment_invariant_pair_compilations": [
+    {
+      "case": "comment_invariance",
+      "filtered_bytes": 4,
+      "native_sha256": "548754772fd2f5526a720d8a00ec148a5e012577180b72dbcfbac781dc15edc4",
+      "native_program_executed": true
+    },
+    {
+      "case": "large_comments",
+      "filtered_bytes": 6,
+      "native_sha256": "f7da5ec963ca077472bd0138bfca56c278b8e3e0f006cd289dec32fe78a997b3",
+      "native_program_executed": true
+    },
+    {
+      "case": "core",
+      "filtered_bytes": 14859,
+      "native_sha256": "e95ec4e028a28f18d955f908cf40e2f9b9fbe650b6ebfd4df6d819c3f6f6cea8",
+      "native_program_executed": false
+    }
+  ],
+  "experimental_filtered_selfhost": true,
+  "input_protocol": "existing FF01/FF02 byte-stuffed source; EOF terminates input",
+  "limitations": [
+    "The BF lexer is a second process, not part of compiler/core.bf",
+    "Raw literal NUL is indistinguishable from EOF; only the FF01/FF02 transport is accepted",
+    "Production compiler still emits slots for comments and counts decoded raw bytes",
+    "The external stream chain is an experiment, not the accepted single-compiler entry point"
+  ],
+  "cases": [
+    {
+      "name": "empty",
+      "raw_bytes": 0,
+      "commands": 0
+    },
+    {
+      "name": "all_bytes",
+      "raw_bytes": 256,
+      "commands": 8
+    },
+    {
+      "name": "all_commands",
+      "raw_bytes": 216,
+      "commands": 216
+    },
+    {
+      "name": "all_noncommands",
+      "raw_bytes": 248,
+      "commands": 0
+    },
+    {
+      "name": "nul_ff_escape",
+      "raw_bytes": 12,
+      "commands": 5
+    },
+    {
+      "name": "repetitive_comments",
+      "raw_bytes": 21006,
+      "commands": 6
+    },
+    {
+      "name": "large_program",
+      "raw_bytes": 16001,
+      "commands": 16001
+    },
+    {
+      "name": "large_mixed",
+      "raw_bytes": 25506,
+      "commands": 1506
+    },
+    {
+      "name": "core_annotated",
+      "raw_bytes": 15559,
+      "commands": 14859
+    },
+    {
+      "name": "random_000",
+      "raw_bytes": 147,
+      "commands": 6
+    },
+    {
+      "name": "random_001",
+      "raw_bytes": 221,
+      "commands": 8
+    },
+    {
+      "name": "random_002",
+      "raw_bytes": 328,
+      "commands": 10
+    },
+    {
+      "name": "random_003",
+      "raw_bytes": 372,
+      "commands": 14
+    },
+    {
+      "name": "random_004",
+      "raw_bytes": 97,
+      "commands": 3
+    },
+    {
+      "name": "random_005",
+      "raw_bytes": 538,
+      "commands": 21
+    },
+    {
+      "name": "random_006",
+      "raw_bytes": 406,
+      "commands": 18
+    },
+    {
+      "name": "random_007",
+      "raw_bytes": 525,
+      "commands": 21
+    },
+    {
+      "name": "random_008",
+      "raw_bytes": 28,
+      "commands": 0
+    },
+    {
+      "name": "random_009",
+      "raw_bytes": 801,
+      "commands": 19
+    },
+    {
+      "name": "random_010",
+      "raw_bytes": 798,
+      "commands": 28
+    },
+    {
+      "name": "random_011",
+      "raw_bytes": 676,
+      "commands": 29
+    },
+    {
+      "name": "random_012",
+      "raw_bytes": 148,
+      "commands": 3
+    },
+    {
+      "name": "random_013",
+      "raw_bytes": 278,
+      "commands": 7
+    },
+    {
+      "name": "random_014",
+      "raw_bytes": 497,
+      "commands": 18
+    },
+    {
+      "name": "random_015",
+      "raw_bytes": 832,
+      "commands": 29
+    },
+    {
+      "name": "random_016",
+      "raw_bytes": 603,
+      "commands": 24
+    },
+    {
+      "name": "random_017",
+      "raw_bytes": 809,
+      "commands": 29
+    },
+    {
+      "name": "random_018",
+      "raw_bytes": 157,
+      "commands": 4
+    },
+    {
+      "name": "random_019",
+      "raw_bytes": 114,
+      "commands": 3
+    },
+    {
+      "name": "random_020",
+      "raw_bytes": 316,
+      "commands": 6
+    },
+    {
+      "name": "random_021",
+      "raw_bytes": 493,
+      "commands": 16
+    },
+    {
+      "name": "random_022",
+      "raw_bytes": 94,
+      "commands": 5
+    },
+    {
+      "name": "random_023",
+      "raw_bytes": 79,
+      "commands": 5
+    },
+    {
+      "name": "random_024",
+      "raw_bytes": 67,
+      "commands": 2
+    },
+    {
+      "name": "random_025",
+      "raw_bytes": 696,
+      "commands": 23
+    },
+    {
+      "name": "random_026",
+      "raw_bytes": 337,
+      "commands": 10
+    },
+    {
+      "name": "random_027",
+      "raw_bytes": 748,
+      "commands": 26
+    },
+    {
+      "name": "random_028",
+      "raw_bytes": 668,
+      "commands": 19
+    },
+    {
+      "name": "random_029",
+      "raw_bytes": 761,
+      "commands": 28
+    },
+    {
+      "name": "random_030",
+      "raw_bytes": 415,
+      "commands": 17
+    },
+    {
+      "name": "random_031",
+      "raw_bytes": 181,
+      "commands": 5
+    },
+    {
+      "name": "random_032",
+      "raw_bytes": 768,
+      "commands": 22
+    },
+    {
+      "name": "random_033",
+      "raw_bytes": 339,
+      "commands": 5
+    },
+    {
+      "name": "random_034",
+      "raw_bytes": 51,
+      "commands": 0
+    },
+    {
+      "name": "random_035",
+      "raw_bytes": 504,
+      "commands": 10
+    },
+    {
+      "name": "random_036",
+      "raw_bytes": 217,
+      "commands": 6
+    },
+    {
+      "name": "random_037",
+      "raw_bytes": 475,
+      "commands": 13
+    },
+    {
+      "name": "random_038",
+      "raw_bytes": 686,
+      "commands": 22
+    },
+    {
+      "name": "random_039",
+      "raw_bytes": 518,
+      "commands": 9
+    },
+    {
+      "name": "random_040",
+      "raw_bytes": 436,
+      "commands": 17
+    },
+    {
+      "name": "random_041",
+      "raw_bytes": 346,
+      "commands": 12
+    },
+    {
+      "name": "random_042",
+      "raw_bytes": 241,
+      "commands": 9
+    },
+    {
+      "name": "random_043",
+      "raw_bytes": 299,
+      "commands": 12
+    },
+    {
+      "name": "random_044",
+      "raw_bytes": 454,
+      "commands": 16
+    },
+    {
+      "name": "random_045",
+      "raw_bytes": 375,
+      "commands": 10
+    },
+    {
+      "name": "random_046",
+      "raw_bytes": 510,
+      "commands": 14
+    },
+    {
+      "name": "random_047",
+      "raw_bytes": 525,
+      "commands": 16
+    },
+    {
+      "name": "random_048",
+      "raw_bytes": 92,
+      "commands": 3
+    },
+    {
+      "name": "random_049",
+      "raw_bytes": 452,
+      "commands": 18
+    },
+    {
+      "name": "random_050",
+      "raw_bytes": 225,
+      "commands": 12
+    },
+    {
+      "name": "random_051",
+      "raw_bytes": 754,
+      "commands": 17
+    },
+    {
+      "name": "random_052",
+      "raw_bytes": 804,
+      "commands": 17
+    },
+    {
+      "name": "random_053",
+      "raw_bytes": 392,
+      "commands": 8
+    },
+    {
+      "name": "random_054",
+      "raw_bytes": 24,
+      "commands": 2
+    },
+    {
+      "name": "random_055",
+      "raw_bytes": 710,
+      "commands": 22
+    },
+    {
+      "name": "random_056",
+      "raw_bytes": 438,
+      "commands": 12
+    },
+    {
+      "name": "random_057",
+      "raw_bytes": 634,
+      "commands": 13
+    },
+    {
+      "name": "random_058",
+      "raw_bytes": 391,
+      "commands": 13
+    },
+    {
+      "name": "random_059",
+      "raw_bytes": 181,
+      "commands": 7
+    },
+    {
+      "name": "random_060",
+      "raw_bytes": 549,
+      "commands": 19
+    },
+    {
+      "name": "random_061",
+      "raw_bytes": 49,
+      "commands": 2
+    },
+    {
+      "name": "random_062",
+      "raw_bytes": 346,
+      "commands": 10
+    },
+    {
+      "name": "random_063",
+      "raw_bytes": 97,
+      "commands": 4
+    },
+    {
+      "name": "random_064",
+      "raw_bytes": 339,
+      "commands": 11
+    },
+    {
+      "name": "random_065",
+      "raw_bytes": 656,
+      "commands": 27
+    },
+    {
+      "name": "random_066",
+      "raw_bytes": 206,
+      "commands": 3
+    },
+    {
+      "name": "random_067",
+      "raw_bytes": 109,
+      "commands": 2
+    },
+    {
+      "name": "random_068",
+      "raw_bytes": 232,
+      "commands": 7
+    },
+    {
+      "name": "random_069",
+      "raw_bytes": 248,
+      "commands": 9
+    },
+    {
+      "name": "random_070",
+      "raw_bytes": 197,
+      "commands": 5
+    },
+    {
+      "name": "random_071",
+      "raw_bytes": 670,
+      "commands": 24
+    },
+    {
+      "name": "random_072",
+      "raw_bytes": 307,
+      "commands": 12
+    },
+    {
+      "name": "random_073",
+      "raw_bytes": 185,
+      "commands": 5
+    },
+    {
+      "name": "random_074",
+      "raw_bytes": 24,
+      "commands": 1
+    },
+    {
+      "name": "random_075",
+      "raw_bytes": 153,
+      "commands": 3
+    },
+    {
+      "name": "random_076",
+      "raw_bytes": 800,
+      "commands": 27
+    },
+    {
+      "name": "random_077",
+      "raw_bytes": 395,
+      "commands": 16
+    },
+    {
+      "name": "random_078",
+      "raw_bytes": 640,
+      "commands": 17
+    },
+    {
+      "name": "random_079",
+      "raw_bytes": 543,
+      "commands": 17
+    },
+    {
+      "name": "random_080",
+      "raw_bytes": 539,
+      "commands": 20
+    },
+    {
+      "name": "random_081",
+      "raw_bytes": 96,
+      "commands": 4
+    },
+    {
+      "name": "random_082",
+      "raw_bytes": 167,
+      "commands": 4
+    },
+    {
+      "name": "random_083",
+      "raw_bytes": 702,
+      "commands": 23
+    },
+    {
+      "name": "random_084",
+      "raw_bytes": 406,
+      "commands": 12
+    },
+    {
+      "name": "random_085",
+      "raw_bytes": 104,
+      "commands": 2
+    },
+    {
+      "name": "random_086",
+      "raw_bytes": 733,
+      "commands": 19
+    },
+    {
+      "name": "random_087",
+      "raw_bytes": 756,
+      "commands": 18
+    },
+    {
+      "name": "random_088",
+      "raw_bytes": 576,
+      "commands": 14
+    },
+    {
+      "name": "random_089",
+      "raw_bytes": 145,
+      "commands": 3
+    },
+    {
+      "name": "random_090",
+      "raw_bytes": 623,
+      "commands": 31
+    },
+    {
+      "name": "random_091",
+      "raw_bytes": 698,
+      "commands": 18
+    },
+    {
+      "name": "random_092",
+      "raw_bytes": 95,
+      "commands": 2
+    },
+    {
+      "name": "random_093",
+      "raw_bytes": 137,
+      "commands": 3
+    },
+    {
+      "name": "random_094",
+      "raw_bytes": 200,
+      "commands": 5
+    },
+    {
+      "name": "random_095",
+      "raw_bytes": 598,
+      "commands": 19
+    },
+    {
+      "name": "random_096",
+      "raw_bytes": 809,
+      "commands": 29
+    },
+    {
+      "name": "random_097",
+      "raw_bytes": 172,
+      "commands": 0
+    },
+    {
+      "name": "random_098",
+      "raw_bytes": 506,
+      "commands": 15
+    },
+    {
+      "name": "random_099",
+      "raw_bytes": 758,
+      "commands": 23
+    },
+    {
+      "name": "random_100",
+      "raw_bytes": 454,
+      "commands": 16
+    },
+    {
+      "name": "random_101",
+      "raw_bytes": 288,
+      "commands": 5
+    },
+    {
+      "name": "random_102",
+      "raw_bytes": 647,
+      "commands": 17
+    },
+    {
+      "name": "random_103",
+      "raw_bytes": 793,
+      "commands": 28
+    },
+    {
+      "name": "random_104",
+      "raw_bytes": 482,
+      "commands": 11
+    },
+    {
+      "name": "random_105",
+      "raw_bytes": 669,
+      "commands": 17
+    },
+    {
+      "name": "random_106",
+      "raw_bytes": 795,
+      "commands": 24
+    },
+    {
+      "name": "random_107",
+      "raw_bytes": 813,
+      "commands": 29
+    },
+    {
+      "name": "random_108",
+      "raw_bytes": 792,
+      "commands": 30
+    },
+    {
+      "name": "random_109",
+      "raw_bytes": 194,
+      "commands": 7
+    },
+    {
+      "name": "random_110",
+      "raw_bytes": 322,
+      "commands": 10
+    },
+    {
+      "name": "random_111",
+      "raw_bytes": 517,
+      "commands": 13
+    },
+    {
+      "name": "random_112",
+      "raw_bytes": 118,
+      "commands": 3
+    },
+    {
+      "name": "random_113",
+      "raw_bytes": 197,
+      "commands": 9
+    },
+    {
+      "name": "random_114",
+      "raw_bytes": 685,
+      "commands": 22
+    },
+    {
+      "name": "random_115",
+      "raw_bytes": 696,
+      "commands": 21
+    },
+    {
+      "name": "random_116",
+      "raw_bytes": 493,
+      "commands": 12
+    },
+    {
+      "name": "random_117",
+      "raw_bytes": 313,
+      "commands": 14
+    },
+    {
+      "name": "random_118",
+      "raw_bytes": 229,
+      "commands": 10
+    },
+    {
+      "name": "random_119",
+      "raw_bytes": 675,
+      "commands": 29
+    },
+    {
+      "name": "random_120",
+      "raw_bytes": 761,
+      "commands": 15
+    },
+    {
+      "name": "random_121",
+      "raw_bytes": 295,
+      "commands": 11
+    },
+    {
+      "name": "random_122",
+      "raw_bytes": 27,
+      "commands": 1
+    },
+    {
+      "name": "random_123",
+      "raw_bytes": 723,
+      "commands": 24
+    },
+    {
+      "name": "random_124",
+      "raw_bytes": 370,
+      "commands": 11
+    },
+    {
+      "name": "random_125",
+      "raw_bytes": 696,
+      "commands": 17
+    },
+    {
+      "name": "random_126",
+      "raw_bytes": 397,
+      "commands": 11
+    },
+    {
+      "name": "random_127",
+      "raw_bytes": 649,
+      "commands": 18
+    },
+    {
+      "name": "random_128",
+      "raw_bytes": 364,
+      "commands": 7
+    },
+    {
+      "name": "random_129",
+      "raw_bytes": 799,
+      "commands": 21
+    },
+    {
+      "name": "random_130",
+      "raw_bytes": 806,
+      "commands": 23
+    },
+    {
+      "name": "random_131",
+      "raw_bytes": 610,
+      "commands": 15
+    },
+    {
+      "name": "random_132",
+      "raw_bytes": 794,
+      "commands": 26
+    },
+    {
+      "name": "random_133",
+      "raw_bytes": 411,
+      "commands": 12
+    },
+    {
+      "name": "random_134",
+      "raw_bytes": 88,
+      "commands": 2
+    },
+    {
+      "name": "random_135",
+      "raw_bytes": 544,
+      "commands": 18
+    },
+    {
+      "name": "random_136",
+      "raw_bytes": 247,
+      "commands": 9
+    },
+    {
+      "name": "random_137",
+      "raw_bytes": 354,
+      "commands": 11
+    },
+    {
+      "name": "random_138",
+      "raw_bytes": 382,
+      "commands": 7
+    },
+    {
+      "name": "random_139",
+      "raw_bytes": 55,
+      "commands": 3
+    },
+    {
+      "name": "random_140",
+      "raw_bytes": 848,
+      "commands": 25
+    },
+    {
+      "name": "random_141",
+      "raw_bytes": 465,
+      "commands": 14
+    },
+    {
+      "name": "random_142",
+      "raw_bytes": 836,
+      "commands": 29
+    },
+    {
+      "name": "random_143",
+      "raw_bytes": 204,
+      "commands": 11
+    },
+    {
+      "name": "random_144",
+      "raw_bytes": 655,
+      "commands": 27
+    },
+    {
+      "name": "random_145",
+      "raw_bytes": 191,
+      "commands": 10
+    },
+    {
+      "name": "random_146",
+      "raw_bytes": 255,
+      "commands": 7
+    },
+    {
+      "name": "random_147",
+      "raw_bytes": 260,
+      "commands": 6
+    },
+    {
+      "name": "random_148",
+      "raw_bytes": 622,
+      "commands": 21
+    },
+    {
+      "name": "random_149",
+      "raw_bytes": 447,
+      "commands": 12
+    },
+    {
+      "name": "random_150",
+      "raw_bytes": 417,
+      "commands": 16
+    },
+    {
+      "name": "random_151",
+      "raw_bytes": 126,
+      "commands": 2
+    },
+    {
+      "name": "random_152",
+      "raw_bytes": 133,
+      "commands": 7
+    },
+    {
+      "name": "random_153",
+      "raw_bytes": 229,
+      "commands": 6
+    },
+    {
+      "name": "random_154",
+      "raw_bytes": 549,
+      "commands": 17
+    },
+    {
+      "name": "random_155",
+      "raw_bytes": 155,
+      "commands": 4
+    },
+    {
+      "name": "random_156",
+      "raw_bytes": 498,
+      "commands": 16
+    },
+    {
+      "name": "random_157",
+      "raw_bytes": 406,
+      "commands": 16
+    },
+    {
+      "name": "random_158",
+      "raw_bytes": 413,
+      "commands": 17
+    },
+    {
+      "name": "random_159",
+      "raw_bytes": 626,
+      "commands": 19
+    },
+    {
+      "name": "random_160",
+      "raw_bytes": 156,
+      "commands": 3
+    },
+    {
+      "name": "random_161",
+      "raw_bytes": 10,
+      "commands": 2
+    },
+    {
+      "name": "random_162",
+      "raw_bytes": 58,
+      "commands": 0
+    },
+    {
+      "name": "random_163",
+      "raw_bytes": 388,
+      "commands": 12
+    },
+    {
+      "name": "random_164",
+      "raw_bytes": 838,
+      "commands": 27
+    },
+    {
+      "name": "random_165",
+      "raw_bytes": 563,
+      "commands": 17
+    },
+    {
+      "name": "random_166",
+      "raw_bytes": 487,
+      "commands": 13
+    },
+    {
+      "name": "random_167",
+      "raw_bytes": 706,
+      "commands": 15
+    },
+    {
+      "name": "random_168",
+      "raw_bytes": 25,
+      "commands": 0
+    },
+    {
+      "name": "random_169",
+      "raw_bytes": 447,
+      "commands": 13
+    },
+    {
+      "name": "random_170",
+      "raw_bytes": 791,
+      "commands": 26
+    },
+    {
+      "name": "random_171",
+      "raw_bytes": 781,
+      "commands": 29
+    },
+    {
+      "name": "random_172",
+      "raw_bytes": 576,
+      "commands": 15
+    },
+    {
+      "name": "random_173",
+      "raw_bytes": 286,
+      "commands": 9
+    },
+    {
+      "name": "random_174",
+      "raw_bytes": 423,
+      "commands": 14
+    },
+    {
+      "name": "random_175",
+      "raw_bytes": 847,
+      "commands": 33
+    },
+    {
+      "name": "random_176",
+      "raw_bytes": 752,
+      "commands": 23
+    },
+    {
+      "name": "random_177",
+      "raw_bytes": 123,
+      "commands": 4
+    },
+    {
+      "name": "random_178",
+      "raw_bytes": 777,
+      "commands": 19
+    },
+    {
+      "name": "random_179",
+      "raw_bytes": 780,
+      "commands": 12
+    }
+  ]
+}

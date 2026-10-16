@@ -1,0 +1,24 @@
+{
+  "iteration": 33,
+  "classification": "EXECUTED_NATIVE_LINUX_STAGE1_STAGE2_REPLAY",
+  "stage0_cold_bootstrap": "NOT_RERUN",
+  "source_sha256": "f73a9b7ddc9d6f1971435251edefd85e3bb81a0dda23e8b11630a2d7cf7407e9",
+  "source_bytes": 15559,
+  "installed_sha256": "e95ec4e028a28f18d955f908cf40e2f9b9fbe650b6ebfd4df6d819c3f6f6cea8",
+  "stages": [
+    {
+      "stage": 1,
+      "identical_to_installed": true,
+      "sha256": "e95ec4e028a28f18d955f908cf40e2f9b9fbe650b6ebfd4df6d819c3f6f6cea8",
+      "size": 475703
+    },
+    {
+      "stage": 2,
+      "identical_to_installed": true,
+      "sha256": "e95ec4e028a28f18d955f908cf40e2f9b9fbe650b6ebfd4df6d819c3f6f6cea8",
+      "size": 475703
+    }
+  ],
+  "elapsed_seconds": 2.815,
+  "android_native_selfhosting": false
+}

@@ -1,0 +1,325 @@
+{
+  "date": "2026-10-12",
+  "classification": "EXECUTED: independent BF reference for the now-integrated exact-size calculation",
+  "primitive_sha256": "ff4a84751c3bbb592e50f2a4f3a5305159367f988761dc9683cd12def7f44711",
+  "primitive_commands": 251,
+  "source_purity": "PASS",
+  "cases": 62,
+  "passed": 62,
+  "formula": "206 + (32 * number_of_source_commands) + 9",
+  "input_contract": "canonical BF commands only; zero-valued EOF; noninstruction bytes not filtered",
+  "production_status": "Exact ELF size is implemented independently in core.bf. This experimental program is not linked, included, or authoritative.",
+  "remaining_limitation": "This standalone calculation counts nonzero input bytes; production counts buffered decoded bytes, including noncommands.",
+  "cases_detail": [
+    {
+      "instructions": 0,
+      "elf_file_bytes": 215,
+      "python_reference_checked": true
+    },
+    {
+      "instructions": 1,
+      "elf_file_bytes": 247,
+      "python_reference_checked": true
+    },
+    {
+      "instructions": 2,
+      "elf_file_bytes": 279,
+      "python_reference_checked": true
+    },
+    {
+      "instructions": 3,
+      "elf_file_bytes": 311,
+      "python_reference_checked": true
+    },
+    {
+      "instructions": 7,
+      "elf_file_bytes": 439,
+      "python_reference_checked": true
+    },
+    {
+      "instructions": 8,
+      "elf_file_bytes": 471,
+      "python_reference_checked": true
+    },
+    {
+      "instructions": 9,
+      "elf_file_bytes": 503,
+      "python_reference_checked": true
+    },
+    {
+      "instructions": 10,
+      "elf_file_bytes": 535,
+      "python_reference_checked": true
+    },
+    {
+      "instructions": 255,
+      "elf_file_bytes": 8375,
+      "python_reference_checked": true
+    },
+    {
+      "instructions": 256,
+      "elf_file_bytes": 8407,
+      "python_reference_checked": true
+    },
+    {
+      "instructions": 257,
+      "elf_file_bytes": 8439,
+      "python_reference_checked": true
+    },
+    {
+      "instructions": 2040,
+      "elf_file_bytes": 65495,
+      "python_reference_checked": false
+    },
+    {
+      "instructions": 2041,
+      "elf_file_bytes": 65527,
+      "python_reference_checked": false
+    },
+    {
+      "instructions": 2042,
+      "elf_file_bytes": 65559,
+      "python_reference_checked": false
+    },
+    {
+      "instructions": 2048,
+      "elf_file_bytes": 65751,
+      "python_reference_checked": false
+    },
+    {
+      "instructions": 4095,
+      "elf_file_bytes": 131255,
+      "python_reference_checked": false
+    },
+    {
+      "instructions": 4096,
+      "elf_file_bytes": 131287,
+      "python_reference_checked": false
+    },
+    {
+      "instructions": 251,
+      "elf_file_bytes": 8247,
+      "python_reference_checked": true
+    },
+    {
+      "instructions": 15559,
+      "elf_file_bytes": 498103,
+      "python_reference_checked": false
+    },
+    {
+      "instructions": 16000,
+      "elf_file_bytes": 512215,
+      "python_reference_checked": false
+    },
+    {
+      "instructions": 16127,
+      "elf_file_bytes": 516279,
+      "python_reference_checked": false
+    },
+    {
+      "instructions": 16128,
+      "elf_file_bytes": 516311,
+      "python_reference_checked": false
+    },
+    {
+      "instructions": 6662,
+      "elf_file_bytes": 213399,
+      "python_reference_checked": false
+    },
+    {
+      "instructions": 129,
+      "elf_file_bytes": 4343,
+      "python_reference_checked": true
+    },
+    {
+      "instructions": 12928,
+      "elf_file_bytes": 413911,
+      "python_reference_checked": false
+    },
+    {
+      "instructions": 826,
+      "elf_file_bytes": 26647,
+      "python_reference_checked": false
+    },
+    {
+      "instructions": 23,
+      "elf_file_bytes": 951,
+      "python_reference_checked": true
+    },
+    {
+      "instructions": 15909,
+      "elf_file_bytes": 509303,
+      "python_reference_checked": false
+    },
+    {
+      "instructions": 706,
+      "elf_file_bytes": 22807,
+      "python_reference_checked": false
+    },
+    {
+      "instructions": 9205,
+      "elf_file_bytes": 294775,
+      "python_reference_checked": false
+    },
+    {
+      "instructions": 13383,
+      "elf_file_bytes": 428471,
+      "python_reference_checked": false
+    },
+    {
+      "instructions": 12460,
+      "elf_file_bytes": 398935,
+      "python_reference_checked": false
+    },
+    {
+      "instructions": 8701,
+      "elf_file_bytes": 278647,
+      "python_reference_checked": false
+    },
+    {
+      "instructions": 10957,
+      "elf_file_bytes": 350839,
+      "python_reference_checked": false
+    },
+    {
+      "instructions": 1124,
+      "elf_file_bytes": 36183,
+      "python_reference_checked": false
+    },
+    {
+      "instructions": 15439,
+      "elf_file_bytes": 494263,
+      "python_reference_checked": false
+    },
+    {
+      "instructions": 3646,
+      "elf_file_bytes": 116887,
+      "python_reference_checked": false
+    },
+    {
+      "instructions": 6452,
+      "elf_file_bytes": 206679,
+      "python_reference_checked": false
+    },
+    {
+      "instructions": 822,
+      "elf_file_bytes": 26519,
+      "python_reference_checked": false
+    },
+    {
+      "instructions": 2798,
+      "elf_file_bytes": 89751,
+      "python_reference_checked": false
+    },
+    {
+      "instructions": 3767,
+      "elf_file_bytes": 120759,
+      "python_reference_checked": false
+    },
+    {
+      "instructions": 9114,
+      "elf_file_bytes": 291863,
+      "python_reference_checked": false
+    },
+    {
+      "instructions": 14559,
+      "elf_file_bytes": 466103,
+      "python_reference_checked": false
+    },
+    {
+      "instructions": 14437,
+      "elf_file_bytes": 462199,
+      "python_reference_checked": false
+    },
+    {
+      "instructions": 9171,
+      "elf_file_bytes": 293687,
+      "python_reference_checked": false
+    },
+    {
+      "instructions": 3817,
+      "elf_file_bytes": 122359,
+      "python_reference_checked": false
+    },
+    {
+      "instructions": 1223,
+      "elf_file_bytes": 39351,
+      "python_reference_checked": false
+    },
+    {
+      "instructions": 9950,
+      "elf_file_bytes": 318615,
+      "python_reference_checked": false
+    },
+    {
+      "instructions": 8956,
+      "elf_file_bytes": 286807,
+      "python_reference_checked": false
+    },
+    {
+      "instructions": 14831,
+      "elf_file_bytes": 474807,
+      "python_reference_checked": false
+    },
+    {
+      "instructions": 10746,
+      "elf_file_bytes": 344087,
+      "python_reference_checked": false
+    },
+    {
+      "instructions": 5173,
+      "elf_file_bytes": 165751,
+      "python_reference_checked": false
+    },
+    {
+      "instructions": 7167,
+      "elf_file_bytes": 229559,
+      "python_reference_checked": false
+    },
+    {
+      "instructions": 1877,
+      "elf_file_bytes": 60279,
+      "python_reference_checked": false
+    },
+    {
+      "instructions": 12053,
+      "elf_file_bytes": 385911,
+      "python_reference_checked": false
+    },
+    {
+      "instructions": 8841,
+      "elf_file_bytes": 283127,
+      "python_reference_checked": false
+    },
+    {
+      "instructions": 2093,
+      "elf_file_bytes": 67191,
+      "python_reference_checked": false
+    },
+    {
+      "instructions": 1362,
+      "elf_file_bytes": 43799,
+      "python_reference_checked": false
+    },
+    {
+      "instructions": 14373,
+      "elf_file_bytes": 460151,
+      "python_reference_checked": false
+    },
+    {
+      "instructions": 5617,
+      "elf_file_bytes": 179959,
+      "python_reference_checked": false
+    },
+    {
+      "instructions": 13951,
+      "elf_file_bytes": 446647,
+      "python_reference_checked": false
+    },
+    {
+      "instructions": 4527,
+      "elf_file_bytes": 145079,
+      "python_reference_checked": false
+    }
+  ]
+}

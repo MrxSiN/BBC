@@ -1,0 +1,110 @@
+{
+  "date": "2026-10-12",
+  "classification": "EXECUTED: all listed release gates in the current checkout",
+  "iteration": 25,
+  "gate_execution_note": "Linux S2 retained; six Linux-native BF stages jointly generate AArch64 PIE loop machine code; simulated only; no Android execution or native target selfhosting",
+  "source_sha256": "f73a9b7ddc9d6f1971435251edefd85e3bb81a0dda23e8b11630a2d7cf7407e9",
+  "native_compiler_sha256": "e95ec4e028a28f18d955f908cf40e2f9b9fbe650b6ebfd4df6d819c3f6f6cea8",
+  "command_filter_sha256": "d71055100503a0fc26858b3c134f688f452dc1e88afb68230516d266cdc772bd",
+  "stream_filter_sha256": "6ec46f09fb70713c98e9436be4711b0d977b8b8f075ef798301f3dc3ff6a2687",
+  "android_prototype_source_sha256": "f4aee9d8ff43df8d31fd6591eb037f57ddb390d34439c625e6054d47afc356d1",
+  "android_bracket_relocations_sha256": "0aeb1a64b84d89b76067a47a278d0c75d84a37d3d6131647d669333b6a20668d",
+  "android_loop_evidence_sha256": "873fd809a2e12fb2da5be8b4c27eaf099660c5d604e240ea227881712364a68a",
+  "gates_passed": 23,
+  "gates_failed": 0,
+  "separation": "Brainfuck-only compaction is now integrated into core.bf; BF decoder and native code generator self-host together. External stream filter and transport adapter are optional.",
+  "gates": [
+    {
+      "gate": "annotations",
+      "result": "PASS"
+    },
+    {
+      "gate": "source_annotations",
+      "result": "PASS"
+    },
+    {
+      "gate": "compiler_tape_audit",
+      "result": "PASS"
+    },
+    {
+      "gate": "header_scratch_proof",
+      "result": "PASS"
+    },
+    {
+      "gate": "selfhosting",
+      "result": "PASS"
+    },
+    {
+      "gate": "semantics",
+      "result": "PASS"
+    },
+    {
+      "gate": "adversarial",
+      "result": "PASS"
+    },
+    {
+      "gate": "native_emission",
+      "result": "PASS"
+    },
+    {
+      "gate": "io_faults",
+      "result": "PASS"
+    },
+    {
+      "gate": "elf_size_arithmetic",
+      "result": "PASS"
+    },
+    {
+      "gate": "bf_filter_prototype",
+      "result": "PASS"
+    },
+    {
+      "gate": "bf_stream_filter_prototype",
+      "result": "PASS"
+    },
+    {
+      "gate": "stream_filter_equivalence",
+      "result": "PASS"
+    },
+    {
+      "gate": "bf_filtered_adapter",
+      "result": "PASS"
+    },
+    {
+      "gate": "filtered_integration_contract",
+      "result": "PASS"
+    },
+    {
+      "gate": "integrated_source_filter",
+      "result": "PASS"
+    },
+    {
+      "gate": "header_literal_reduction",
+      "result": "PASS"
+    },
+    {
+      "gate": "tape_safety_audit",
+      "result": "PASS"
+    },
+    {
+      "gate": "android_aarch64_subset",
+      "result": "PASS"
+    },
+    {
+      "gate": "android_aarch64_legacy_equivalence",
+      "result": "PASS"
+    },
+    {
+      "gate": "android_bracket_relocations",
+      "result": "PASS"
+    },
+    {
+      "gate": "android_aarch64_loops",
+      "result": "PASS"
+    },
+    {
+      "gate": "documentation",
+      "result": "PASS"
+    }
+  ]
+}

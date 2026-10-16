@@ -1,0 +1,38 @@
+{
+  "iteration": 48,
+  "date": "2026-10-13",
+  "classification": "EXECUTED_LINUX_BF_32BIT_PAIRING_NOT_NATIVE_ANDROID_CODEGEN",
+  "stages": {
+    "framed_scanner": {
+      "bf_source": "experiments/android_100m_rle_scan_framed.bf",
+      "brainfuck_instructions": 14886,
+      "source_sha256": "c0bc82ae62d5f880164aa54a4f200e5b9b84c5f678f3619b52fd06c3dad9a13b",
+      "filtered_sha256": "667ee7bc37b40495682b0b44788d64e79d2e8b2c7a13e56f5ead10ee899335fd",
+      "native_linux_elf_sha256": "d7e91ed30150b1f9047035a1164bc4fcec1cb659f24a1d3b5d490303ab1d515c",
+      "native_linux_elf_bytes": 476567
+    },
+    "wide_pairing": {
+      "bf_source": "experiments/android_100m_bracket_pairs.bf",
+      "brainfuck_instructions": 2017,
+      "source_sha256": "edffda9342c8a69384701edba697dc488ec3ba4dd09044b81ee38fd1258b4905",
+      "filtered_sha256": "c2db5ff4804cbdbef368ed0c73480c10fe9a31286db86d75c6c6d6a88c5346e5",
+      "native_linux_elf_sha256": "deded49433bfd80d24cfa03d7d93395bfdd41593e7d11a5a82ec0402f78e5004",
+      "native_linux_elf_bytes": 64759
+    }
+  },
+  "tests": {
+    "valid": 146,
+    "invalid": 27,
+    "original_scanner_parity": 173
+  },
+  "hundred_million_far_pair": true,
+  "real_raw_source_bytes": 100000002,
+  "real_raw_source_bracket_pairs": 1,
+  "max_nesting_supported": 255,
+  "nesting_depth_256_rejected": true,
+  "independent_seed_comparisons": 6,
+  "input_output_preservation": true,
+  "android_native_codegen_max_commands": 2719,
+  "android_100m_native_compilation": "UNIMPLEMENTED",
+  "elapsed_seconds": 7.187
+}

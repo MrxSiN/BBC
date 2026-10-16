@@ -1,0 +1,40 @@
+{
+  "iteration": 34,
+  "classification": "EXECUTED_LINUX_NATIVE_BF_STAGES_AARCH64_SIMULATED_NOT_ANDROID_DEVICE",
+  "source": "experiments/android_multiclass_elf_relayout.bf",
+  "source_sha256": "d3adcf1e5578f91202f6f19430fb9f8954cac50ce4618834e962a7cc32908d42",
+  "filtered_sha256": "f7d312b0b8daac149dfc40dd4acda23baa21e47018d930fcefdb3e46b812b67b",
+  "bf_instructions": 4486,
+  "native_linux_elf": "build/android_multiclass_elf_relayout_x86_64_linux.elf",
+  "native_linux_elf_sha256": "34d599225aa8a1060c20614e98c7f51311826cbfa6f67ff7f992392ba9223955",
+  "native_linux_elf_bytes": 143767,
+  "maximum_commands_planned_for_test": 1024,
+  "android_device_executed": false,
+  "android_native_selfhosting": false,
+  "verified": {
+    "source_variants_compiled_identically": 2,
+    "direct_boundary_counts_checked": 26,
+    "programs_checked": 71,
+    "aarch64_simulator_runs": 142,
+    "bracket_pairs_checked": 8137,
+    "third_size_class_programs": 32,
+    "fourth_size_class_programs": 13,
+    "legacy_page_class_byte_parity_cases": 6,
+    "pointer_traps": 1,
+    "invalid_rejections": 6,
+    "atomic_output_preservation": true,
+    "independent_seed_matches": 0,
+    "independent_seed_gate": "INCONCLUSIVE_75M_STEP_LIMIT_ON_FIRST_SEED",
+    "readelf_checked": true,
+    "elapsed_seconds": 87.094
+  },
+  "sample_1024_loop_elf": "build/android_multiclass_1024_loop_demo_aarch64.elf",
+  "sample_1024_loop_sha256": "3897a2d884da6e8d5c81722c5f3bdb54b6a9fbc068223fef600b4c9b0c3c9be8",
+  "sample_1024_source": "examples/android_1024_loop_demo.bf",
+  "sample_1024_output_hex": "f8",
+  "sample_1024_simulated_load_biases": [
+    0,
+    1073741824
+  ],
+  "sample_1024_size_bytes": 65632
+}

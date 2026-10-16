@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-12",
+  "change": "Iteration 9: Brainfuck-calculated exact ELF p_filesz; fixed padding removed",
+  "classification": "EXECUTED for the documented Linux x86-64 bounded BF compiler; formal proof not claimed",
+  "previous_source_sha256": "43f961bbc51eaf203afb5462abc9834bc07f0a3e4f2847e33b85fa0f6c5b7977",
+  "current_source_sha256": "2776b71d33144515a37cef20fd4745e3d30975394ae99abe8c8fb3c80bf8d018",
+  "previous_source_commands": 15518,
+  "current_source_commands": 15907,
+  "source_limit_decoded_bytes": 16128,
+  "previous_native_elf_sha256": "005ebabc778ce09620e5a9fe7b48b8020d6d32df1dbb30605c7b1d5e4d997f4d",
+  "current_native_elf_sha256": "fca82395e7fe099dbb22053665c0220ad64323db26038a65ce9ae6f02226f287",
+  "previous_native_elf_bytes": 1021071,
+  "current_native_elf_bytes": 509239,
+  "elf_bytes_saved": 511832,
+  "old_fixed_trailing_zeros": 524280,
+  "new_fixed_trailing_zeros": 0,
+  "elf_file_size_formula": "215 + 32 * decoded input bytes; comments have NOP-only slots",
+  "elf_rx_p_memsz_bytes": 524288,
+  "elf_rw_tape_bytes": 65536,
+  "self_host_stages_byte_identical": true,
+  "independent_seed_agreement": true,
+  "semantic_tests_passed": 178,
+  "adversarial_tests_passed": 345,
+  "elf_artifacts_verified": 32,
+  "native_slot_templates_verified": 34185,
+  "branch_displacements_verified": 2146,
+  "negative_elf_mutations_rejected": 11,
+  "syscall_fault_assertions_passed": 10,
+  "independent_bf_size_arithmetic_cases": 62,
+  "important_regressions_caught_during_development": [
+    "Compiler status was incorrectly forced to success when zero padding was first removed.",
+    "Pending overflow/malformed framing error bit was clobbered by temporary ELF header counters."
+  ],
+  "accepted_fix": "restore real error status and save/restore pending input-error flag around dynamic header arithmetic",
+  "known_limitations": [
+    "16,128 decoded-byte input ceiling, including comments",
+    "fixed 32-byte native slots, including NOP slots",
+    "EAGAIN remains fail-fast",
+    "compiler-tape nonoverlap and safety have executed checks, not formal proof",
+    "no native C/Rust performance baselines"
+  ]
+}

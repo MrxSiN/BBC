@@ -1,0 +1,20 @@
+{
+  "iteration": 42,
+  "source_sha256": "f73a9b7ddc9d6f1971435251edefd85e3bb81a0dda23e8b11630a2d7cf7407e9",
+  "original_elf_sha256": "e95ec4e028a28f18d955f908cf40e2f9b9fbe650b6ebfd4df6d819c3f6f6cea8",
+  "native_stage_replay": [
+    {
+      "stage": 1,
+      "size": 475703,
+      "sha256": "e95ec4e028a28f18d955f908cf40e2f9b9fbe650b6ebfd4df6d819c3f6f6cea8",
+      "duration_s": 1.179
+    },
+    {
+      "stage": 2,
+      "size": 475703,
+      "sha256": "e95ec4e028a28f18d955f908cf40e2f9b9fbe650b6ebfd4df6d819c3f6f6cea8",
+      "duration_s": 1.155
+    }
+  ],
+  "cold_stage0": "NOT_RERUN"
+}

@@ -1,0 +1,23 @@
+{
+  "android_device_executed": false,
+  "android_native_dynamic_selfhosting": false,
+  "authoritative_BF_compiler_modified": false,
+  "baseline_iteration64_sha256_matches": 5,
+  "classification": "LINUX_BF_NATIVE_AARCH64_SIMULATOR_AND_TRANSPORT_STORAGE",
+  "compiler_source_sha256": {
+    "compiler/core.bf": "f73a9b7ddc9d6f1971435251edefd85e3bb81a0dda23e8b11630a2d7cf7407e9",
+    "experiments/android_callable_dso_header59.bf": "6f55400775daad511194e0f5aa55e7a8317ae68ddd6590953fcb56f3931a5671",
+    "experiments/android_callable_ledger58.bf": "78bc940b7e9e2ef9b10a3babf497464589c9db1b81a4a24a9f49934eb3ab1210",
+    "experiments/android_callable_slots58.bf": "ea7c8259237a33ea58b34badcbe2f91f562907033af3cfec08f2d6c382e9d5aa"
+  },
+  "duplicate_patch_rejected_transactionally": true,
+  "file_backed_peak_tracemalloc_bytes": 4914,
+  "file_backed_storage_marks": 50008,
+  "host_relocation_storage": "SPARSE_TEMPORARY_FILE_ONE_BIT_PER_NATIVE_WORD",
+  "iteration": 65,
+  "large_BF_generated_code_bytes": 1056108,
+  "large_BF_source_loop_pairs": 12000,
+  "large_elf_sha256": "fb526aaa206e600076064233b9356977e402f0aaf0950736e62b3392b66df13f",
+  "large_source_simulator_reference_matches": 2,
+  "overlapping_two_word_patch_rejections": 4
+}

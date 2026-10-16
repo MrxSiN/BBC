@@ -1,0 +1,62 @@
+{
+  "date": "2026-10-13",
+  "iteration": 39,
+  "classification": "LINUX_EXECUTED_BF_WINDOWS_PE_WRITER_WINDOWS_EXECUTION_UNVERIFIED",
+  "source": "experiments/windows_linear_pe_64.bf",
+  "source_sha256": "b4c443e31608d92a7c6a4c4580cdbae83cc55e947e8795fdfdfc2251d35311ef",
+  "bf_instructions": 10831,
+  "source_stream_filter": "experiments/android_source_scan.bf",
+  "native_linux_stage": "build/windows_linear_pe_64_seed_x86_64_linux.elf",
+  "native_linux_stage_sha256": "f411de6a8308a99917f75708340dd617e8b40b19858e86b9bcc413dfbf908c8b",
+  "native_linux_stage_bytes": 346807,
+  "sample_pe": "build/windows_linear_pe_example_x86_64.exe",
+  "sample_pe_sha256": "a2eba603741e8a52e664618a8547840f3d70062f3f15686fe331bac4047959d8",
+  "pe_size_bytes": 2048,
+  "tape_cells": 65536,
+  "cell_width": 8,
+  "wrapping": true,
+  "pointer_oob_behavior": "x86 UD2 deterministic CPU invalid instruction; no Windows OS exit-status proof",
+  "supported_commands": "+-<>",
+  "source_command_limit": 64,
+  "unsupported_commands": ". , [ ]",
+  "tests": {
+    "programs_tested": 87,
+    "independent_reference_programs": 5,
+    "expected_pointer_traps": 60,
+    "unsupported_and_overlimit_rejections": 7,
+    "atomic_output_rejections": 3,
+    "native_bf_stage_generation": "PASS",
+    "objdump_sections_imports": "PASS",
+    "fresh_linux_stage1_stage2": "PASS_BYTE_IDENTICAL",
+    "independent_cold_linux_stage0": "NOT_RERUN",
+    "windows_loader": "NOT_RUN",
+    "windows_selfhost": "UNIMPLEMENTED"
+  },
+  "linux_canonical_source_sha256": "f73a9b7ddc9d6f1971435251edefd85e3bb81a0dda23e8b11630a2d7cf7407e9",
+  "linux_compiler_elf_sha256": "e95ec4e028a28f18d955f908cf40e2f9b9fbe650b6ebfd4df6d819c3f6f6cea8",
+  "android_compiler_source_sha256": "7dd565fad8860eb9b5be0a4b61f228fa6ba94803d78811bf26dc9c38fe90e17d",
+  "legacy_windows_exit_source_sha256": "2a3546eef24f17ff16c01cbe63f627ac8425a9e384fd64a7b2ba2ce76cd72a73",
+  "limits": [
+    "Windows-native loader untested; PE structure and machine bytes validated on Linux",
+    "Only four operations and at most 64 filtered commands",
+    "No loops, input, output or Windows native self-compiler",
+    "BF parser is the reused Brainfuck scanner; the Python adapter only transports bytes and rejects status",
+    "UD2 Windows trap process behavior unverified; native Windows ABI execution unverified",
+    "300000-command Android goal remains unmet"
+  ],
+  "windows_native_smoke_bundle": {
+    "directory": "build/windows39_acceptance/",
+    "fixtures": 4,
+    "manifest_sha256": "5c03fa46e66e866734bd242868654d295d497a89e9aade0697fe890a185574c2",
+    "runner": "build/windows39_acceptance/verify_windows39.ps1",
+    "windows_runtime_execution": "NOT_RUN"
+  },
+  "additional_gates": {
+    "source_comments": "PASS",
+    "android_archived_s2_audit": "PASS_4_STAGES_14_CASES_7_REJECTIONS",
+    "android_transport_contract": "PASS",
+    "pe_exit_seed_regression": "PASS",
+    "documentation_consistency": "PASS_76_MARKDOWN_FILES",
+    "python_source_syntax": "PASS"
+  }
+}

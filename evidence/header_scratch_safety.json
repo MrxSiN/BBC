@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-12",
+  "classification": "CONDITIONAL STATIC PROOF for isolated BF header block; EXECUTED entry preconditions on eight cases",
+  "source_sha256": "f73a9b7ddc9d6f1971435251edefd85e3bb81a0dda23e8b11630a2d7cf7407e9",
+  "method": "Static pointer trace and 8-bit symbolic scratch counter interpretation of all header loops",
+  "preconditions": [
+    "Program counter enters BF offset 2848 once with tape pointer at 60",
+    "Tape cell 61 holds zero before execution of the header block",
+    "Original eight-instruction Brainfuck semantics with unsigned wrapping cells"
+  ],
+  "conclusion": "Within the header block, every pointer stays in 60..71; all loops restore pointer, all 39 scratch loops terminate and clear cell 61; the block returns at pointer 60 with cell 61 zero, independently of the other initial tape values.",
+  "checked_mutations_rejected": 4,
+  "runtime_entry_exit_witnesses": 8,
+  "limitations": [
+    "Header entry preconditions are dynamically witnessed, not proven for every possible parser input",
+    "This does not establish compiler-wide source-buffer and scratch ownership",
+    "This does not prove native machine-code semantics or the correctness of emitted bytes"
+  ],
+  "source_block_start": 2848,
+  "source_block_end": 4277,
+  "entry_pointer_precondition": 60,
+  "scratch_cell": 61,
+  "scratch_entry_precondition": 0,
+  "scratch_exit_postcondition": 0,
+  "minimum_pointer": 60,
+  "maximum_pointer": 71,
+  "cells_written": [
+    60,
+    61,
+    69,
+    70,
+    71
+  ],
+  "loop_count": 45,
+  "verified_scratch_multiplication_loops": 39,
+  "verified_cell_clear_loops": 6,
+  "header_bf_sha256": "ff8091683e19fd1748c1a7950e00d592d3c00bbfb26bc2663587b33da470109d"
+}

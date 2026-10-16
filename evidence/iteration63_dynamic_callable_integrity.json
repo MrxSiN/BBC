@@ -1,0 +1,21 @@
+{
+  "BF_authoritative_compiler_modified": false,
+  "BF_generated_cases": 240,
+  "android_ART_JNI_executed": false,
+  "android_dlopen_executed": false,
+  "android_native_compiler_selfhosted": false,
+  "atomic_corrupt_header_rejection": true,
+  "classification": "LOCAL_BF_DSO_ELF_VALIDATION_AND_AARCH64_SIMULATION",
+  "header_corruption_rejections": 40,
+  "host_transport_postflight_validation": true,
+  "iteration": 63,
+  "simulator_reference_comparisons": 960,
+  "source_sha256": {
+    "compiler/core.bf": "f73a9b7ddc9d6f1971435251edefd85e3bb81a0dda23e8b11630a2d7cf7407e9",
+    "experiments/android_callable_dso_header59.bf": "6f55400775daad511194e0f5aa55e7a8317ae68ddd6590953fcb56f3931a5671",
+    "experiments/android_callable_ledger58.bf": "78bc940b7e9e2ef9b10a3babf497464589c9db1b81a4a24a9f49934eb3ab1210",
+    "experiments/android_callable_slots58.bf": "ea7c8259237a33ea58b34badcbe2f91f562907033af3cfec08f2d6c382e9d5aa"
+  },
+  "truncation_rejections": 4,
+  "wide_sparse_structural_test_bytes": 4294968388
+}

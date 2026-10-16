@@ -1,0 +1,57 @@
+{
+  "iteration": 29,
+  "classification": "EXECUTED_LINUX_NATIVE_BF_74_SLOT_ANDROID_ELF_SIMULATED_NOT_ANDROID_DEVICE",
+  "stages": {
+    "slots": {
+      "source": "experiments/android_wide_slot_emitter.bf",
+      "source_sha256": "335208de730d4ebd112f943eaa2724b63e0dfdf1a87538d09a0438fe89bd17f3",
+      "filtered_sha256": "e6f215591f93a2c65e0c15f99c918671dcd7e373d9a8971d8d642f992af3a378",
+      "bf_commands": 16075,
+      "native_linux_elf": "build/android_wide_slot_emitter_x86_64_linux.elf",
+      "native_linux_elf_sha256": "6d383688d6359a73aa86247c1e1178b55df0a9f03fb280a93f6bf86798b96252",
+      "native_linux_elf_bytes": 514615
+    },
+    "elf": {
+      "source": "experiments/android_bounded_elf_wrapper.bf",
+      "source_sha256": "1222f47656537c56053d64272895c891eaa5178cd769b17c988caf906e657091",
+      "filtered_sha256": "e41de4271f4e382f76872c7300cf5e13d559dbbc7b2d61470f28eac0914a84a5",
+      "bf_commands": 8531,
+      "native_linux_elf": "build/android_bounded_elf_wrapper_x86_64_linux.elf",
+      "native_linux_elf_sha256": "51a113f6906e045e9f1ada9426b2d3b08e1f6b615188c49505e1bbbecf8fd08c",
+      "native_linux_elf_bytes": 273207
+    }
+  },
+  "max_compiled_commands_without_brackets": 74,
+  "machine_slot_bytes": 48,
+  "extended_elf_bytes": 4192,
+  "linear_source_emulator_cases": 85,
+  "two_load_biases_per_case": true,
+  "expected_pointer_traps": 58,
+  "legacy_prefix_parity_cases": 13,
+  "slot_counter_boundaries": [
+    0,
+    1,
+    10,
+    74,
+    255,
+    256,
+    257,
+    1024
+  ],
+  "bracket_rejection_cases": 6,
+  "overlimit_rejection_cases": 3,
+  "wrapper_length_rejection_cases": [
+    75,
+    100,
+    255
+  ],
+  "comment_invariance": true,
+  "cli_atomic_preserve_and_success": true,
+  "independent_bf_interpreter_checks": 6,
+  "native_android_device_executed": false,
+  "android_native_compiler_selfhosting": false,
+  "windows_native_target": false,
+  "dynamic_executable_size": false,
+  "general_loop_relocation_in_elf": false,
+  "elapsed_seconds": 6.307
+}

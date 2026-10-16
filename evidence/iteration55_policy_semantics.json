@@ -1,0 +1,18 @@
+{
+  "classification": "LINUX_PYTHON_INDEPENDENT_IR_ORACLE",
+  "original_vs_valuefold_frames_completed_equal": 480,
+  "bounded_ir_step_limit": 500000,
+  "android_native_execution": false,
+  "cases": {
+    "row": {
+      "functionally_equal_completed_frames": 240,
+      "bounded_nonterminating_cases": 0,
+      "fixture_source_sha256": "3fbb3da9839b5a980e50caa0776d790e7d30f3bac38b9503947394d6baf9bbf1"
+    },
+    "scope": {
+      "functionally_equal_completed_frames": 240,
+      "bounded_nonterminating_cases": 0,
+      "fixture_source_sha256": "656d4f4af5a100e0f3be185766557f8c7b4385135e7d32c7f9acdeb7a011bca9"
+    }
+  }
+}

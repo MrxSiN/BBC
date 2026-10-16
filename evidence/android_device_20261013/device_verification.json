@@ -1,0 +1,120 @@
+{
+  "evidence_class": "ANDROID_DEVICE_EXECUTED",
+  "cases": [
+    {
+      "id": "empty",
+      "passed": true,
+      "actual_status": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reason": "match"
+    },
+    {
+      "id": "binary_echo",
+      "passed": true,
+      "actual_status": 0,
+      "stdout_sha256": "cb6dc5bd1968e27d552fd0332443db15e05fe7517cb9db8b446a60a747d03818",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reason": "match"
+    },
+    {
+      "id": "eof_zero",
+      "passed": true,
+      "actual_status": 0,
+      "stdout_sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reason": "match"
+    },
+    {
+      "id": "nested_loops",
+      "passed": true,
+      "actual_status": 0,
+      "stdout_sha256": "e52d9c508c502347344d8c07ad91cbd6068afc75ff6292f062a09ca381c89e71",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reason": "match"
+    },
+    {
+      "id": "page_331",
+      "passed": true,
+      "actual_status": 0,
+      "stdout_sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reason": "match"
+    },
+    {
+      "id": "page_672",
+      "passed": true,
+      "actual_status": 0,
+      "stdout_sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reason": "match"
+    },
+    {
+      "id": "page_1013",
+      "passed": true,
+      "actual_status": 0,
+      "stdout_sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reason": "match"
+    },
+    {
+      "id": "page_1355",
+      "passed": true,
+      "actual_status": 0,
+      "stdout_sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reason": "match"
+    },
+    {
+      "id": "page_1696",
+      "passed": true,
+      "actual_status": 0,
+      "stdout_sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reason": "match"
+    },
+    {
+      "id": "loop_2000",
+      "passed": true,
+      "actual_status": 0,
+      "stdout_sha256": "7c5bd2d144fdde498406edcb9fe60ce65b0dfa5f2dd7a7617f505e3d46d68bdb",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reason": "match"
+    },
+    {
+      "id": "max_nesting",
+      "passed": true,
+      "actual_status": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reason": "match"
+    },
+    {
+      "id": "left_trap",
+      "passed": true,
+      "actual_status": 2,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reason": "match"
+    },
+    {
+      "id": "right_trap",
+      "passed": true,
+      "actual_status": 2,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reason": "match"
+    }
+  ],
+  "passed": 13,
+  "total": 13,
+  "all_passed": true,
+  "device_properties": {
+    "ro.product.cpu.abi": "arm64-v8a",
+    "ro.build.version.sdk": "37",
+    "ro.build.fingerprint": "google/husky/husky:17/CP3A.261005.005/16271449:user/release-keys"
+  },
+  "device_shell_command": "sh /data/local/tmp/bfc_iteration37/run.sh",
+  "adb_pushed_files_pulled_and_hash_verified": true,
+  "manifest_sha256": "1365ffbac36b6ebcd40d3958e8ebdaf38aa4ec5b56d2047d06ee49bdb80b4bcf"
+}

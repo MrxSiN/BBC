@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-12",
+  "iteration": 14,
+  "implemented": [
+    "Optional file compiler adapter orchestrating two verified native BF executables; no parsing or machine-code generation in Python",
+    "Source-independent ELF output for comment variants using the BF-native lexer",
+    "Atomic output replacement and explicit status checks",
+    "Tampered compiled-filter hash rejection",
+    "28 native input equivalence checks and expanded-comment native BF compiler selfhost"
+  ],
+  "authoritative_source": "compiler/core.bf",
+  "authoritative_bf_unchanged": true,
+  "authoritative_source_sha256": "42c9496c22a4746dc43b698688dd13d9e8c92a7e0d32719bebc44e613e4ecf51",
+  "native_compiler_sha256": "21d3a66baf21d88bfabfce60d2837b3147702b2920eef3fd789adbef407b9652",
+  "stream_filter_source_sha256": "e4e2fb953367b9af61b419b247a4810968d4ff71af8e89b0b9c1b78c00aa8e77",
+  "integrated_core_filtering": false,
+  "unverified": [
+    "Windows/Android execution",
+    "integrated single-binary source filtering",
+    "whole-compiler region memory proof",
+    "C/Rust competitive benchmarking"
+  ]
+}

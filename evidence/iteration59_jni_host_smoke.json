@@ -1,0 +1,17 @@
+{
+  "iteration": 59,
+  "host_platform": "Linux x86_64 JVM",
+  "jni_transport_execution": "PASS_TEST_ONLY_NATIVE_STUB",
+  "BF_AARCH64_ELF_EXECUTION": false,
+  "android_loader_execution": false,
+  "native_DSO_under_test": "C_TEST_ONLY_HOST_STUB_NOT_BF_COMPILER",
+  "checks": [
+    "dlopen",
+    "dlsym",
+    "input/output arrays",
+    "tape reuse",
+    "output full status",
+    "invalid path",
+    "negative budget"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "iteration": 50,
+  "classification": "LINUX_EXECUTED_STANDARD_BF_COMPACT_AARCH64_RAW_CODE_ONLY",
+  "source_pattern": "1000000 consecutive plus instructions",
+  "source_commands": 1000000,
+  "generated_native_code_bytes": 12000000,
+  "generated_native_code_sha256": "dcb5748aeabeb1a996bcefbad28980fc4d3af4de286554c1b8865ce3b8cbed16",
+  "elapsed_seconds_observed": 17.887,
+  "historical_padded_bytes_for_same_commands": 48000000,
+  "bf_stage": "experiments/android_streaming_compact_slots.bf",
+  "native_stage": "build/android_streaming_compact_slots_x86_64_linux.elf",
+  "native_code_only": true,
+  "android_elf": false,
+  "brackets_supported": false,
+  "android_device_execution": false,
+  "original_applications_compiled": false,
+  "compiler_source_preserved": true
+}

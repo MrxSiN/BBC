@@ -1,0 +1,31 @@
+{
+  "name": "synthetic_7502",
+  "source_sha256": "f4629a4e592186bf886ca4ed46d7dbc8887f4b08184cdd00d84301f4728b73b0",
+  "relocation_bundle_sha256": "1c6b6e63936f80ea369ff809ec180d5cd7061953535c9bf342e96ebb05fb8600",
+  "manifest": {
+    "format": "BF_ANDROID_COMPACT_UNRELOCATED_V1",
+    "artifact_kind": "RAW_AARCH64_CODE_AND_BF_OWNED_WORD_OFFSETS_NOT_ELF",
+    "raw_source_bytes": 7502,
+    "raw_source_sha256": "f4629a4e592186bf886ca4ed46d7dbc8887f4b08184cdd00d84301f4728b73b0",
+    "native_instruction_records": 7502,
+    "native_code_bytes": 90024,
+    "native_word_count": 22506,
+    "bracket_events": 2,
+    "matched_pairs": 1,
+    "maximum_observed_depth": 1,
+    "native_code_sha256": "c9d50ac0f9fed91e89461242de195f6354fd0bcc831be001e83f68e0d50cb2ea",
+    "pairs_sha256": "d15702332a60e82058d84a8f0bc5bc2965d7f53f744e7034753fe7cab92e2a83",
+    "source_classification": "STANDARD_BRAINFUCK",
+    "native_position_arithmetic": "STANDARD_BRAINFUCK_64BIT_WORDS",
+    "bracket_pairing": "STANDARD_BRAINFUCK_FILE_BACKED_STACK",
+    "relocation_word_encoding_integrated": false,
+    "android_loadable_elf": false,
+    "android_device_executed": false,
+    "program_behavior_executed": false,
+    "resource_limits": {
+      "max_native_bytes": null,
+      "max_pairs": null
+    }
+  },
+  "android_elf": false
+}

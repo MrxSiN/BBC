@@ -1,0 +1,72 @@
+{
+  "active_goal": "RESOURCE_SCALED_FULL_DYNAMIC_CALLABLE_BRAINFUCK_COMPILATION",
+  "evidence": [
+    "evidence/iteration59_dynamic_callable_dso.json",
+    "evidence/iteration59_original_policy_dsos.json",
+    "evidence/iteration59_jni_host_smoke.json",
+    "evidence/iteration59_dso_crosslink.json",
+    "evidence/selfhost.json",
+    "docs/ITERATION59_DYNAMIC_CALLABLE_DSO.md"
+  ],
+  "external_tools_roles": {
+    "Android_NDK": "NOT_AVAILABLE_OR_USED",
+    "gcc_and_clang": "independent BF seed and testing only",
+    "javac_and_JVM": "host transport test only",
+    "ld.lld": "independent consumer link test only",
+    "python": "opaque transport and regression tests",
+    "readelf": "ELF validation only"
+  },
+  "host_adapter_scope": "PYTHON_OPAQUE_STORAGE_FRAMES_ATOMIC_COMMIT; C_JNI_HOST_BUFFERS_NO_BF_CODEGEN",
+  "iteration": 59,
+  "legacy_fallback_retained": true,
+  "new_stage_BF_instruction_count": 13520,
+  "new_stage_native_path": "build/iteration58_dynamic/android_callable_dso_header59.elf",
+  "new_stage_native_sha256": "a7be6c19c76b7238dbed4573a128f00555320508f372827bf4be915a7b7cae06",
+  "platform_qualifications": {
+    "Android_AArch64_machine_code": "STRUCTURAL_SIMULATED_AND_CROSS_LINKED",
+    "Android_JNI_BF_generated_policy": "NOT_EXECUTED",
+    "Android_loader_dlopen": "NOT_EXECUTED",
+    "Android_native_S2_new_compiler": "NOT_EXECUTED",
+    "Linux_x86_64_BF_selfhost": "EXECUTED_STAGE0_TO_STAGE2",
+    "Original_app_APK_parity": "NOT_EXECUTED",
+    "Original_policy_sources_missing": 8,
+    "Windows_DSO_path": "NOT_APPLICABLE"
+  },
+  "recorded_date": "2026-10-14",
+  "remaining": "Android loader/device/JNI parity, eight original policy sources, Android native BF selfhosting; fallback removal gated on these",
+  "sample_output": {
+    "path": "build/iteration59_dynamic/nested_example.so",
+    "sha256": "0f7c06bf4267414f70150215e02d5ff0ec2e4296adf100bcd80b26835e84ffa8"
+  },
+  "source_of_native_compilation_logic": "STANDARD_BRAINFUCK_ONLY",
+  "source_sha256": {
+    "compiler/core.bf": "f73a9b7ddc9d6f1971435251edefd85e3bb81a0dda23e8b11630a2d7cf7407e9",
+    "experiments/android_callable_dso_header59.bf": "6f55400775daad511194e0f5aa55e7a8317ae68ddd6590953fcb56f3931a5671",
+    "experiments/android_callable_ledger58.bf": "78bc940b7e9e2ef9b10a3babf497464589c9db1b81a4a24a9f49934eb3ab1210",
+    "experiments/android_callable_linear57.bf": "79dc62484cba9e207fd1e711eaab4fd604a8c24835456385d26500d05eef5c01",
+    "experiments/android_callable_slots58.bf": "ea7c8259237a33ea58b34badcbe2f91f562907033af3cfec08f2d6c382e9d5aa"
+  },
+  "status": "BF_OWNED_ELF64_DSO_AND_LINKABLE_EXPORT__ANDROID_EXECUTION_NOT_YET_VERIFIED",
+  "synthetic_100m_command_goal_retired": true,
+  "test_gates": {
+    "AArch64_external_cross_linker": "PASSED_STRUCTURE_ONLY",
+    "canonical_linux_selfhost_native_probes": 7,
+    "canonical_linux_selfhost_stages_identical": true,
+    "documentation_link_check": "PASS_151_FILES",
+    "host_bridge_C_syntax": "PASSED",
+    "host_bridge_Java_compilation": "PASSED",
+    "host_linux_JVM_JNI_transport": "PASSED_TEST_ONLY_X86_NATIVE_STUB",
+    "independent_BF_seed_agreement": true,
+    "independent_interpreter_matches": 2,
+    "iteration58_callable_regression_cases": 59,
+    "iteration58_callable_regression_simulator_runs": 354,
+    "native_BF_header_rebuild_identical": true,
+    "native_code_identical_to_old_backend_cases": 13,
+    "new_64bit_length_vectors": 15,
+    "new_AArch64_simulated_runs": 52,
+    "new_DSO_cases": 13,
+    "new_readelf_cases": 13,
+    "three_original_policies_generated_as_DSO": 3,
+    "transactional_rejection_tests": 3
+  }
+}

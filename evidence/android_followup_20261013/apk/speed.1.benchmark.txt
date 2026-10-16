@@ -1,0 +1,8 @@
+         1791861454.230 23455 23468 I System.out: PolicyBenchmarkTest
+         1791861454.230 23455 23468 I System.out: legacy ordinary class              p50   0.61  p95   0.61  p99   0.61 us
+         1791861454.230 23455 23468 I System.out: brainfuck ordinary class           p50   2.93  p95   3.30  p99   3.38 us
+         1791861454.230 23455 23468 I System.out: legacy derived ad row              p50   0.49  p95   0.53  p99   0.53 us
+         1791861454.230 23455 23468 I System.out: brainfuck derived ad row           p50   3.22  p95   3.99  p99   4.03 us
+         1791861454.230 23455 23468 I System.out: legacy scope                       p50   0.20  p95   0.20  p99   0.20 us
+         1791861454.230 23455 23468 I System.out: brainfuck scope                    p50   1.95  p95   2.08  p99   2.16 us
+         1791861454.230 23455 23468 I System.out: cached verdict (the addView path)  p50   0.16  p95   0.16  p99   0.16 us

@@ -1,0 +1,75 @@
+{
+  "date": "2026-10-12",
+  "classification": "MEASURED: single Category B algorithm, Linux host, subprocess wall time including process startup",
+  "status": "TENTATIVE_MET_WITHOUT_STATISTICAL_PROOF",
+  "target_max_ratio": 0.9999,
+  "measured_ratio": 0.808725,
+  "baseline_availability": {
+    "c": true,
+    "rust": false
+  },
+  "compiler_source_sha256": "f73a9b7ddc9d6f1971435251edefd85e3bb81a0dda23e8b11630a2d7cf7407e9",
+  "workload_source_sha256": "2fce9716e67ef049a65208b49b738d5e0effb8453b06041cdbf83576d644097a",
+  "input_hex": "ad",
+  "output_hex": "53",
+  "warmup_policy": "none",
+  "iterations": 13,
+  "workload": "nested_affine",
+  "cpu": "AMD EPYC 9V74 80-Core Processor",
+  "kernel": "6.18.44",
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+  "cc": "cc (Debian 14.2.0-19) 14.2.0",
+  "rustc": null,
+  "data": {
+    "brainfuck": {
+      "binary_bytes": 1911,
+      "compile_ms": 794.616,
+      "raw_ms": [
+        0.646406,
+        0.566595,
+        0.514697,
+        0.439924,
+        0.494457,
+        0.395217,
+        0.355697,
+        1.525513,
+        0.508578,
+        0.369448,
+        0.476309,
+        0.347434,
+        0.846719
+      ],
+      "median_ms": 0.494457
+    },
+    "c": {
+      "binary_bytes": 16096,
+      "compile_ms": 33.382,
+      "raw_ms": [
+        0.615149,
+        0.552624,
+        0.704553,
+        0.611403,
+        0.56337,
+        0.637592,
+        0.673086,
+        0.572524,
+        0.526575,
+        0.611353,
+        0.521898,
+        0.659335,
+        0.720308
+      ],
+      "median_ms": 0.611403
+    }
+  },
+  "limitations": [
+    "one loop-heavy workload only",
+    "subprocess startup dominates fast baseline",
+    "C/Rust may optimize loops algebraically",
+    "uncontrolled CPU governor and background load",
+    "no confidence intervals",
+    "not Android or Windows benchmark",
+    "not a full application workload",
+    "no hardware performance counters"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-12",
+  "classification": "EXECUTED native optimized static PIE on Android; Linux optimizer ELF cross-built, not executed here",
+  "source_sha256": "811f45ca94f513b1ecb3659680ab23a826c8c09bcde189656c1c4d7b5e4c9af8",
+  "source_instructions": 15595,
+  "linux_optimizer_sha256": "6ac50b20f4725817e46fce6d81a9596391080b6c69e7f8fc9a078a12a6e0703e",
+  "linux_optimizer_bytes": 499255,
+  "independent_seed_images": 33,
+  "simulated_comparisons": 396,
+  "simulated_boundary_checks": 24,
+  "android_executions": 1032,
+  "transfer_instruction_reduction": {
+    "input_hex": "ff",
+    "old_instructions": 11287,
+    "optimized_instructions": 56,
+    "ratio": 201.55357142857142
+  },
+  "static_pie_loader_executed": true,
+  "source_limit_commands": 10,
+  "limitations": [
+    "Bounded prototype, no general affine analysis or Android compiler selfhosting",
+    "Upstream BF validation supplies ten-command source and complete trusted images",
+    "Linux release gates unavailable on this Windows host; production core.bf unchanged"
+  ]
+}

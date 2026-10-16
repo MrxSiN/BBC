@@ -1,0 +1,31 @@
+
+D:\GitHub\brainfuckC\build\android_benchmark\c:	file format elf64-littleaarch64
+
+Disassembly of section .text:
+
+0000000000004778 <main>:
+    4778: d10083ff     	sub	sp, sp, #0x20
+    477c: a9017bfd     	stp	x29, x30, [sp, #0x10]
+    4780: 910043fd     	add	x29, sp, #0x10
+    4784: d10013a1     	sub	x1, x29, #0x4
+    4788: 2a1f03e0     	mov	w0, wzr
+    478c: 52800022     	mov	w2, #0x1                // =1
+    4790: 381fc3bf     	sturb	wzr, [x29, #-0x4]
+    4794: 94000027     	bl	0x4830 <read@plt>
+    4798: b7f801a0     	tbnz	x0, #0x3f, 0x47cc <main+0x54>
+    479c: 385fc3a8     	ldurb	w8, [x29, #-0x4]
+    47a0: 910023e1     	add	x1, sp, #0x8
+    47a4: 52800020     	mov	w0, #0x1                // =1
+    47a8: 52800022     	mov	w2, #0x1                // =1
+    47ac: 390023e8     	strb	w8, [sp, #0x8]
+    47b0: 94000024     	bl	0x4840 <write@plt>
+    47b4: 52800068     	mov	w8, #0x3                // =3
+    47b8: f100041f     	cmp	x0, #0x1
+    47bc: 1a8803e0     	csel	w0, wzr, w8, eq
+    47c0: a9417bfd     	ldp	x29, x30, [sp, #0x10]
+    47c4: 910083ff     	add	sp, sp, #0x20
+    47c8: d65f03c0     	ret
+    47cc: 52800080     	mov	w0, #0x4                // =4
+    47d0: a9417bfd     	ldp	x29, x30, [sp, #0x10]
+    47d4: 910083ff     	add	sp, sp, #0x20
+    47d8: d65f03c0     	ret

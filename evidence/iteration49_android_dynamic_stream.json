@@ -1,0 +1,23 @@
+{
+  "iteration": 49,
+  "classification": "EXECUTED_LINUX_BF_DYNAMIC_LINEAR_AARCH64_RAW_SLOTS_ONLY",
+  "native_bf_source": "experiments/android_streaming_linear_slots.bf",
+  "source_filtered_instructions": 15805,
+  "source_sha256": "d4609f8c691608b48b6c54a3c933e9331502dfcc9e65e84d33d4bf809b179d5c",
+  "native_linux_elf_sha256": "80f55180ce8aacd583ea095f6dfc71abe5efed2f4d233673cc26fab2a67b69ab",
+  "native_linux_elf_bytes": 505975,
+  "test_cases": 132,
+  "invalid_bracket_rejections": 6,
+  "independent_seed_interpreter_comparisons": 4,
+  "tested_linear_commands_without_source_counter": 300001,
+  "tested_output_bytes": 14400048,
+  "comments_and_binary_ignored_bytes_supported": true,
+  "atomic_failure_preserves_output": true,
+  "caller_optional_resource_cap_tested": true,
+  "android_elf_generated": false,
+  "full_eight_instruction_codegen": false,
+  "device_execution": "NOT_RUN",
+  "real_application_policies": "UNCOMPILED",
+  "source_scan_100m_experiment_unmodified": true,
+  "elapsed_seconds": 12.7
+}

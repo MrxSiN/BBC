@@ -1,0 +1,60 @@
+{
+  "iteration": 52,
+  "classification": "LUX_HOSTED_BF_OWNED_DYNAMIC_COMPACT_AARCH64_ELF_SIMULATED",
+  "bf_stages": [
+    {
+      "stage": "android_compact_span64_52",
+      "bf_commands": 7538,
+      "source_sha256": "882cf6bf9122241d408f2fc3030e4ce34d10ddd2efc7dd13741eb1315aabc499",
+      "linux_native_bytes": 241431,
+      "linux_native_sha256": "8f6e09b4501404c90994a7035b75b893407c46f4af2dd6038cc6abddb17be575"
+    },
+    {
+      "stage": "android_compact_branch_words52",
+      "bf_commands": 7467,
+      "source_sha256": "d90844f86edf32cd635deb49ab5fef2d91bd80dbd20f058b63d9a299b44d6c38",
+      "linux_native_bytes": 239159,
+      "linux_native_sha256": "6372aae74aa9308543e99d98ed8bcfc41fd91aa4e3c8a8fdf1c5792d7ac6fde8"
+    },
+    {
+      "stage": "android_compact_patch_indices52",
+      "bf_commands": 7968,
+      "source_sha256": "b1c89fcbeb4492b29c03d2e8228cec5d122a2b9b629e80eb085cbfbd28468f86",
+      "linux_native_bytes": 255191,
+      "linux_native_sha256": "a36b4c057cb293348d38ad684a03023e4fff71b396ecefe667522a56484d9abb"
+    },
+    {
+      "stage": "android_compact_elf_word_plus7_52",
+      "bf_commands": 15526,
+      "source_sha256": "eed16c3429437b427c6c0de9dbb296f3620eccf9cce2eb33d23ce6aead5f3170",
+      "linux_native_bytes": 497047,
+      "linux_native_sha256": "cad37cf8a3d29d9f089585c5bb28daab15c3ddae8f26a6f8443d856adaf3539b"
+    },
+    {
+      "stage": "android_compact_elf_words_to_bytes52",
+      "bf_commands": 4406,
+      "source_sha256": "7741fc0c523d4244abb9d04b73cecf8704ac84f2b977457534529074b097a396",
+      "linux_native_bytes": 141207,
+      "linux_native_sha256": "4eec48215896841ba0dfadf9bebbe6827dfa04374b20cc117d375a154645f06f"
+    },
+    {
+      "stage": "android_compact_elf_header52",
+      "bf_commands": 3545,
+      "source_sha256": "64db9a0a6abcc82934cdcc9b594995693829e71f77d1e095c0d987cb477d4b76",
+      "linux_native_bytes": 113655,
+      "linux_native_sha256": "b8b7aaef230d15982a4205fbaf7e3af4c46a418277fdac1fee3233e51af962a9"
+    }
+  ],
+  "program_cases_passed": 55,
+  "simulator_runs_at_two_load_biases": 110,
+  "pointer_traps_verified": 29,
+  "bracket_pairs_verified": 1165,
+  "largest_small_source_commands": 7504,
+  "atomic_output_rejections": 4,
+  "wide_position_and_branch_arithmetic_cases": 7,
+  "branch_reach_rejections": 1,
+  "readelf_structure_passed": true,
+  "android_loader_executed": false,
+  "real_application_policies_compiled": false,
+  "elapsed_seconds": 9.51
+}
