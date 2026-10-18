@@ -1,4 +1,4 @@
-# BrainfuckCC
+# BBC — Brainfuck Ballsdeep Compiler That Works With XAX
 
 #### A Brainfuck compiler, written in Brainfuck, that compiles itself ☾
 
