@@ -1,0 +1,419 @@
+{
+  "status": "EXECUTED",
+  "date": "2026-10-18",
+  "target": "Android arm64-v8a",
+  "device": {
+    "ro.product.model": "Pixel 8 Pro",
+    "ro.build.fingerprint": "google/husky/husky:17/CP3A.261005.005/16271449:user/release-keys",
+    "ro.build.version.sdk": "37",
+    "ro.product.cpu.abilist": "arm64-v8a"
+  },
+  "scope": "Brainfuck frontend self-hosting with an external XAX cross-compiling backend",
+  "seed": "Independent external C# interpreter executes BF framer and BF compiler; exact seed record checked",
+  "native_generations": [
+    {
+      "generation": 1,
+      "observed": "status=0 length=2462",
+      "bbx_sha256": "b9502e64c459034be3193736b63b0fb1eba0a74398f3497280b0ff6f2325a593",
+      "semantic_root": "37b9e546394ebad93878bf7ba4a8ee00822a45374ca08a98667ca081fb50431b",
+      "graph_sha256": "c27ba7d9eefa91f9434e0d3cdc11e4f1b8698e14a1cd958a8c106c2cdd22de2e",
+      "library_sha256": "0d3505127191c92d7639bf16f696f19602fddd174fcb5bb09b409a95e44e36e5",
+      "library_bytes": 66504,
+      "passed": true
+    },
+    {
+      "generation": 2,
+      "observed": "status=0 length=2462",
+      "bbx_sha256": "b9502e64c459034be3193736b63b0fb1eba0a74398f3497280b0ff6f2325a593",
+      "semantic_root": "37b9e546394ebad93878bf7ba4a8ee00822a45374ca08a98667ca081fb50431b",
+      "graph_sha256": "c27ba7d9eefa91f9434e0d3cdc11e4f1b8698e14a1cd958a8c106c2cdd22de2e",
+      "library_sha256": "0d3505127191c92d7639bf16f696f19602fddd174fcb5bb09b409a95e44e36e5",
+      "library_bytes": 66504,
+      "passed": true
+    },
+    {
+      "generation": 3,
+      "observed": "status=0 length=2462",
+      "bbx_sha256": "b9502e64c459034be3193736b63b0fb1eba0a74398f3497280b0ff6f2325a593",
+      "semantic_root": "37b9e546394ebad93878bf7ba4a8ee00822a45374ca08a98667ca081fb50431b",
+      "graph_sha256": "c27ba7d9eefa91f9434e0d3cdc11e4f1b8698e14a1cd958a8c106c2cdd22de2e",
+      "library_sha256": "0d3505127191c92d7639bf16f696f19602fddd174fcb5bb09b409a95e44e36e5",
+      "library_bytes": 66504,
+      "passed": true
+    }
+  ],
+  "checks": [
+    {
+      "check": "native BF source framing",
+      "module": "compiler",
+      "observed": "status=0 length=4534",
+      "sha256": "39fae6d205c0ca55a7fb091e36f088902fb4841e4f0400213053e5fd33748848",
+      "passed": true
+    },
+    {
+      "check": "native BF source framing",
+      "module": "bootstrap",
+      "observed": "status=0 length=1210",
+      "sha256": "afa45cf203ef4b9078bd3eecbb5c81152a16fafc30401a86b50db30effb42327",
+      "passed": true
+    },
+    {
+      "check": "native frontend fixture",
+      "library": "libbbx_compiler.so",
+      "fixture": "all-eight",
+      "observed": "status=0 length=15",
+      "record_sha256": "7335f42e8cf42a2560a7eb217286643af1051a5c5e71b12d59dd0fa4a995dfdd",
+      "passed": true
+    },
+    {
+      "check": "native frontend fixture",
+      "library": "libbbx_compiler.so",
+      "fixture": "bad-close",
+      "observed": "status=0 length=5",
+      "record_sha256": "47d609eaf235fa2ae57493f8f546d5a6c774d3b61431edfd3055681854772df8",
+      "passed": true
+    },
+    {
+      "check": "native frontend fixture",
+      "library": "libbbx_compiler.so",
+      "fixture": "bad-open",
+      "observed": "status=0 length=5",
+      "record_sha256": "47d609eaf235fa2ae57493f8f546d5a6c774d3b61431edfd3055681854772df8",
+      "passed": true
+    },
+    {
+      "check": "native frontend fixture",
+      "library": "libbbx_compiler.so",
+      "fixture": "empty",
+      "observed": "status=0 length=7",
+      "record_sha256": "870f803deb3441d7cfc70f0ea0c23d484acbd61d91875e749ebd3cafc6cc2cb4",
+      "passed": true
+    },
+    {
+      "check": "native frontend fixture",
+      "library": "libbbx_compiler.so",
+      "fixture": "nested",
+      "observed": "status=0 length=25",
+      "record_sha256": "2e1a456071f111ff68b0ef182ee469d78a6e1c621bbe203b35ae841cbcde27fd",
+      "passed": true
+    },
+    {
+      "check": "native frontend fixture",
+      "library": "libbbx_compiler.so",
+      "fixture": "raw-zero",
+      "observed": "status=0 length=9",
+      "record_sha256": "6ca92d3b056ac8f5b94c3aaf68f4fc4788097d6a81272dd129ee55fbc9d71d42",
+      "passed": true
+    },
+    {
+      "check": "native frontend fixture",
+      "library": "libbbx_compiler.so",
+      "fixture": "safe-annotations",
+      "observed": "status=0 length=9",
+      "record_sha256": "6ca92d3b056ac8f5b94c3aaf68f4fc4788097d6a81272dd129ee55fbc9d71d42",
+      "passed": true
+    },
+    {
+      "check": "native frontend fixture",
+      "library": "libbbx_compiler.so",
+      "fixture": "truncated",
+      "observed": "status=0 length=5",
+      "record_sha256": "2fb3ef1a0036fdf2584dc50ab7a7ee309941946bfe991473acfef032075ac008",
+      "passed": true
+    },
+    {
+      "check": "native frontend fixture",
+      "library": "libcompiler_stage3.so",
+      "fixture": "all-eight",
+      "observed": "status=0 length=15",
+      "record_sha256": "7335f42e8cf42a2560a7eb217286643af1051a5c5e71b12d59dd0fa4a995dfdd",
+      "passed": true
+    },
+    {
+      "check": "native frontend fixture",
+      "library": "libcompiler_stage3.so",
+      "fixture": "bad-close",
+      "observed": "status=0 length=5",
+      "record_sha256": "47d609eaf235fa2ae57493f8f546d5a6c774d3b61431edfd3055681854772df8",
+      "passed": true
+    },
+    {
+      "check": "native frontend fixture",
+      "library": "libcompiler_stage3.so",
+      "fixture": "bad-open",
+      "observed": "status=0 length=5",
+      "record_sha256": "47d609eaf235fa2ae57493f8f546d5a6c774d3b61431edfd3055681854772df8",
+      "passed": true
+    },
+    {
+      "check": "native frontend fixture",
+      "library": "libcompiler_stage3.so",
+      "fixture": "empty",
+      "observed": "status=0 length=7",
+      "record_sha256": "870f803deb3441d7cfc70f0ea0c23d484acbd61d91875e749ebd3cafc6cc2cb4",
+      "passed": true
+    },
+    {
+      "check": "native frontend fixture",
+      "library": "libcompiler_stage3.so",
+      "fixture": "nested",
+      "observed": "status=0 length=25",
+      "record_sha256": "2e1a456071f111ff68b0ef182ee469d78a6e1c621bbe203b35ae841cbcde27fd",
+      "passed": true
+    },
+    {
+      "check": "native frontend fixture",
+      "library": "libcompiler_stage3.so",
+      "fixture": "raw-zero",
+      "observed": "status=0 length=9",
+      "record_sha256": "6ca92d3b056ac8f5b94c3aaf68f4fc4788097d6a81272dd129ee55fbc9d71d42",
+      "passed": true
+    },
+    {
+      "check": "native frontend fixture",
+      "library": "libcompiler_stage3.so",
+      "fixture": "safe-annotations",
+      "observed": "status=0 length=9",
+      "record_sha256": "6ca92d3b056ac8f5b94c3aaf68f4fc4788097d6a81272dd129ee55fbc9d71d42",
+      "passed": true
+    },
+    {
+      "check": "native frontend fixture",
+      "library": "libcompiler_stage3.so",
+      "fixture": "truncated",
+      "observed": "status=0 length=5",
+      "record_sha256": "2fb3ef1a0036fdf2584dc50ab7a7ee309941946bfe991473acfef032075ac008",
+      "passed": true
+    },
+    {
+      "check": "native bootstrap module reproduction",
+      "observed": "status=0 length=309",
+      "bbx_sha256": "ed3053b609b3e6a4c54dce689acc818a4458251228746b9085d597e67f805ddd",
+      "passed": true
+    }
+  ],
+  "total_checks": 22,
+  "xax_host_authority": {
+    "blake3-compress": {
+      "component": "blake3-compress",
+      "semantic_root": null,
+      "native_artifact_digest": null,
+      "requested_authority": "xax",
+      "actual_authority": "python",
+      "fallback_occurred": true,
+      "fallback_reason": "native leaf unavailable: RuntimeError('host mmap does not expose executable mappings')"
+    },
+    "blake3-hash": {
+      "component": "blake3-hash",
+      "semantic_root": null,
+      "native_artifact_digest": null,
+      "requested_authority": "xax",
+      "actual_authority": "python",
+      "fallback_occurred": true,
+      "fallback_reason": "native XAX helper images run on Linux x86-64 only (host: win32 AMD64)"
+    },
+    "store-writer": {
+      "component": "store-writer",
+      "semantic_root": null,
+      "native_artifact_digest": null,
+      "requested_authority": "xax",
+      "actual_authority": "python",
+      "fallback_occurred": true,
+      "fallback_reason": "native XAX helper images run on Linux x86-64 only (host: win32 AMD64)"
+    },
+    "store-decoder": {
+      "component": "store-decoder",
+      "semantic_root": null,
+      "native_artifact_digest": null,
+      "requested_authority": "xax",
+      "actual_authority": "python",
+      "fallback_occurred": true,
+      "fallback_reason": "native XAX helper images run on Linux x86-64 only (host: win32 AMD64)"
+    },
+    "typing": {
+      "component": "typing",
+      "semantic_root": null,
+      "native_artifact_digest": null,
+      "requested_authority": "xax",
+      "actual_authority": "python",
+      "fallback_occurred": true,
+      "fallback_reason": "native XAX helper images run on Linux x86-64 only (host: win32 AMD64)"
+    },
+    "store-verifier": {
+      "component": "store-verifier",
+      "semantic_root": null,
+      "native_artifact_digest": null,
+      "requested_authority": "xax",
+      "actual_authority": "python",
+      "fallback_occurred": true,
+      "fallback_reason": "native XAX helper images run on Linux x86-64 only (host: win32 AMD64)"
+    },
+    "graph-decoder": {
+      "component": "graph-decoder",
+      "semantic_root": null,
+      "native_artifact_digest": null,
+      "requested_authority": "xax",
+      "actual_authority": "python",
+      "fallback_occurred": true,
+      "fallback_reason": "native XAX helper images run on Linux x86-64 only (host: win32 AMD64)"
+    },
+    "cfg": {
+      "component": "cfg",
+      "semantic_root": null,
+      "native_artifact_digest": null,
+      "requested_authority": "xax",
+      "actual_authority": "python",
+      "fallback_occurred": true,
+      "fallback_reason": "native XAX helper images run on Linux x86-64 only (host: win32 AMD64)"
+    }
+  },
+  "xax_require_native": false,
+  "xax_backend_self_hosting": false,
+  "native_frontend_execution": true,
+  "compiler_written_in_bf": true,
+  "transport": "External NDK C file/buffer loader; no source parser, framer, emitter or BF runtime",
+  "build_observations": [
+    {
+      "module": "bootstrap",
+      "root": "c546e24f74fed55a1a698f267c07f6249754d741d3a61f8084f5b83937325112",
+      "library_bytes": 17352,
+      "construct_seconds": 0.45212119999996503,
+      "lower_seconds": 0.4166266000011092
+    },
+    {
+      "module": "compiler",
+      "root": "37b9e546394ebad93878bf7ba4a8ee00822a45374ca08a98667ca081fb50431b",
+      "library_bytes": 66504,
+      "construct_seconds": 5.710828600000241,
+      "lower_seconds": 8.30822260000059
+    }
+  ],
+  "limitations": [
+    "XAX backend runs on Windows using Python bootstrap helpers, not self-hosted XAX",
+    "Native component configured for 65536-byte input/output views; full 65538-byte maximum source frame is not tested here",
+    "Only Android native frontend execution is proven",
+    "No performance advantage claimed"
+  ],
+  "artifacts": [
+    {
+      "path": "D:\\GitHub\\Brainfuck_Ballsdeep_Compiler\\compiler\\compiler.bf",
+      "bytes": 4531,
+      "sha256": "56bc7b195c3ff06d5bb61c6363f10558c270dcaead89fa96e627ee767ccae91e"
+    },
+    {
+      "path": "D:\\GitHub\\Brainfuck_Ballsdeep_Compiler\\bootstrap\\frame_source.bf",
+      "bytes": 1207,
+      "sha256": "1b1f7d90c17414417c8622303244d424ccf6e30704ee6165c77f3161e0bd454f"
+    },
+    {
+      "path": "D:\\GitHub\\Brainfuck_Ballsdeep_Compiler\\build\\bbx\\compiler.bbx",
+      "bytes": 2462,
+      "sha256": "b9502e64c459034be3193736b63b0fb1eba0a74398f3497280b0ff6f2325a593"
+    },
+    {
+      "path": "D:\\GitHub\\Brainfuck_Ballsdeep_Compiler\\build\\bbx\\bootstrap.bbx",
+      "bytes": 309,
+      "sha256": "ed3053b609b3e6a4c54dce689acc818a4458251228746b9085d597e67f805ddd"
+    },
+    {
+      "path": "D:\\GitHub\\Brainfuck_Ballsdeep_Compiler\\build\\bbx\\compiler.xax",
+      "bytes": 322596,
+      "sha256": "c27ba7d9eefa91f9434e0d3cdc11e4f1b8698e14a1cd958a8c106c2cdd22de2e"
+    },
+    {
+      "path": "D:\\GitHub\\Brainfuck_Ballsdeep_Compiler\\build\\bbx\\bootstrap.xax",
+      "bytes": 47777,
+      "sha256": "41cd8132e6594b7a0431c72b073dce8508d0260f96ead54e7b8a9ae422e7bea3"
+    },
+    {
+      "path": "D:\\GitHub\\Brainfuck_Ballsdeep_Compiler\\build\\bbx\\libbbx_compiler.so",
+      "bytes": 66504,
+      "sha256": "0d3505127191c92d7639bf16f696f19602fddd174fcb5bb09b409a95e44e36e5"
+    },
+    {
+      "path": "D:\\GitHub\\Brainfuck_Ballsdeep_Compiler\\build\\bbx\\libbbx_bootstrap.so",
+      "bytes": 17352,
+      "sha256": "159ab2a0b5782aeaab3a2bc8d8784dee026db3a340e67ceb5175f1843f44d601"
+    },
+    {
+      "path": "D:\\GitHub\\Brainfuck_Ballsdeep_Compiler\\build\\bbx\\frontend_loader",
+      "bytes": 8440,
+      "sha256": "c15d45f6a736b2c8e4592af32ec3c06effb66a7a7f12eeb0ce09aac53a0d97eb"
+    },
+    {
+      "path": "C:\\Users\\SiN\\.codex\\visualizations\\2026\\10\\18\\01a14f2c-277c-7330-85c1-2cd5abe8d120\\bbc-selfhost-verify.py",
+      "bytes": 6432,
+      "sha256": "6d44d0dc9f459ac4c37daa1e1a19623c70b65ac7ffb99175f4f5aa5f36473505"
+    },
+    {
+      "path": "C:\\Users\\SiN\\.codex\\visualizations\\2026\\10\\18\\01a14f2c-277c-7330-85c1-2cd5abe8d120\\bbc-selfhost-seed.ps1",
+      "bytes": 1222,
+      "sha256": "d32e18e2169befeec75336d40a8826e23757a2f201b4ea180ec8cb695e96688a"
+    },
+    {
+      "path": "C:\\Users\\SiN\\.codex\\visualizations\\2026\\10\\18\\01a14f2c-277c-7330-85c1-2cd5abe8d120\\bbc-native-build.py",
+      "bytes": 1349,
+      "sha256": "cb5a63f2e78e2caa9aa0e768ac18499fa3766e4429f0f5f5f9370f2ed77dc947"
+    },
+    {
+      "path": "C:\\Users\\SiN\\.codex\\visualizations\\2026\\10\\18\\01a14f2c-277c-7330-85c1-2cd5abe8d120\\bbc-verify.ps1",
+      "bytes": 15007,
+      "sha256": "5df5dccd3981685d8d6cff6b5ebd048f515e88b2987c42f621502b732748f123"
+    },
+    {
+      "path": "C:\\Users\\SiN\\.codex\\visualizations\\2026\\10\\18\\01a14f2c-277c-7330-85c1-2cd5abe8d120\\bbx_frontend_loader.c",
+      "bytes": 1589,
+      "sha256": "0619aac8ca44739f4a25c935a595a28d850425e379dd9c1455598a15c17943e4"
+    }
+  ],
+  "xax_revision": "fa516f2bbab1036905e17df4039eb40f91917da9",
+  "xax_publication": "Local commits only; earlier automatic approval review rejected remote push",
+  "tests": {
+    "command": "python -m unittest -q test_xax_bbx test_xax_bbx_android test_xax_android_c_entry test_xax_byte_view_widening",
+    "methods": 30,
+    "passed": 27,
+    "skipped": 3,
+    "host": "Windows x86-64; Android Studio JDK on PATH"
+  },
+  "xax_source_hashes": {
+    "compiler/src/xax_bbx.py": "53b72bf2129755e37e1be7e69d9357d07d31d069218ab90dbce8a4cc3213a2e4",
+    "compiler/src/xax_bbx_android.py": "509bcefbc79d5d5451d0f59b203fe46b2054713b57ec8b6c17d8ffff9e5cf408",
+    "compiler/tests/test_xax_bbx_android.py": "03d9b4952c9cb9798ab86029b63221fa48c27879ed141c552760b84bc3c602d9",
+    "compiler/benchmarks/android_bbx_app.py": "e0fe358ff04c5d37c0d11aa65d846bd43468c1a07e361a38a6a7cb3b72437f51",
+    "compiler/pyproject.toml": "7f07b2c02c8efdd0ace0ab56cbf1746fabb7d764c037b18d3e2804651e5a5513",
+    "docs/BBX_IMPORT.md": "76535d964c0066d5be00cfec182fab1aaf8433bdab07dcdfde94a78ab0414b95"
+  },
+  "latest_verified_xax_revision": "51bb251aff4abfe340901960b150eb11dc2a9a50",
+  "latest_verified_xax_source_hashes": {
+    "compiler/src/xax_bbx.py": "08fcbe63e81ee8a92089946465432d9a32bb253d674603eabb9d4136aaf748d1",
+    "compiler/src/xax_bbx_android.py": "509bcefbc79d5d5451d0f59b203fe46b2054713b57ec8b6c17d8ffff9e5cf408",
+    "compiler/src/xax_x86_64.py": "c0c43abd17de7d096f36c6ba898650f9346d6464e46baecd6ef6b6974b60bc94",
+    "compiler/src/xax_x86_64_regalloc.py": "a1320312941df19887b62d7348df5d06235c401cfaa592165f8550b389c9b739",
+    "compiler/tests/test_xax_bbx_windows.py": "4f1a18dc509da989830905b3e97e2201bd0a1e959cb59aad5ff7c04571af4bac",
+    "compiler/tests/test_xax_bbx_android.py": "03d9b4952c9cb9798ab86029b63221fa48c27879ed141c552760b84bc3c602d9",
+    "compiler/benchmarks/android_bbx_app.py": "e0fe358ff04c5d37c0d11aa65d846bd43468c1a07e361a38a6a7cb3b72437f51",
+    "compiler/pyproject.toml": "7f07b2c02c8efdd0ace0ab56cbf1746fabb7d764c037b18d3e2804651e5a5513",
+    "docs/BBX_IMPORT.md": "ad7c1402f1ce4461b42a1562dc67d4db5e20e1881d1b66309a2261909c210fc5"
+  },
+  "artifact_parity": {
+    "android_library_dex_and_stores_unchanged_after_target_selection": true
+  },
+  "focused_regression": {
+    "runner": "pytest -q -p no:faulthandler",
+    "passed": 45,
+    "skipped": 12,
+    "subtests_passed": 158,
+    "report": "build/bbx/windows/xax-tests.xml",
+    "reason_for_disabled_faulthandler": "Windows Unicorn uses handled access violations; Python faulthandler prints misleading fatal diagnostics for them"
+  },
+  "final_audit": {
+    "brainfuck_files": 7,
+    "brainfuck_instructions": 2808,
+    "retained_files": 58,
+    "local_markdown_links": 46,
+    "implementation_purity": true,
+    "recorded_artifacts_match": true,
+    "current_xax_source_hashes_match": true,
+    "current_windows_compiler_dll_rebuild_matches_execution": true
+  }
+}

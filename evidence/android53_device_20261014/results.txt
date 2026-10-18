@@ -1,9 +1,0 @@
-PASS empty status=0
-PASS single-byte status=0
-PASS transfer-loop status=0
-PASS nested-transfer status=0
-PASS nul-ff-io status=0
-PASS eof-zero status=0
-PASS pointer-underflow status=2
-PASS deep-300 status=0
-PASS over-old-limit status=0

@@ -1,8 +1,0 @@
-{
-  "classification": "INDEPENDENT_C_INTERPRETER_BF_EXECUTION_DIFFERENTIAL",
-  "cases_passed": 152,
-  "checked": "stdout_bytes_and_exit_status",
-  "code_generation_by_C_interpreter": false,
-  "canonical_seed_source_sha256": "2e59fdca386fda2811973feeee5dab1104a25d30e12da9b0d29d020d77473b33",
-  "run_accelerated_source_sha256": "acd2a0145c4363909bf7c133a8df9872f3886e97f8a2120f320508c26f5137d1"
-}

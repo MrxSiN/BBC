@@ -1,0 +1,1368 @@
+{
+  "status": "EXECUTED",
+  "format": "BBX",
+  "format_version": 1,
+  "environment": "Windows x86-64; PowerShell Add-Type independent C# Brainfuck interpreter; no XAX backend",
+  "frontend_sha256": "56bc7b195c3ff06d5bb61c6363f10558c270dcaead89fa96e627ee767ccae91e",
+  "frontend_bytes": 4531,
+  "frontend_instructions": 2455,
+  "frontend_bbx_sha256": "b9502e64c459034be3193736b63b0fb1eba0a74398f3497280b0ff6f2325a593",
+  "decision_bbx_sha256": "963d460f8a074fbd1021ec740f13a852112c0388e66623068e18510a4312f1e9",
+  "verifier_sha256": "5df5dccd3981685d8d6cff6b5ebd048f515e88b2987c42f621502b732748f123",
+  "cases": 224,
+  "wall_seconds": 29.4930474,
+  "results": [
+    {
+      "name": "empty",
+      "result": "EXECUTED",
+      "steps": 471,
+      "highest_cell": 30
+    },
+    {
+      "name": "all byte values",
+      "result": "EXECUTED",
+      "steps": 7122881,
+      "highest_cell": 159
+    },
+    {
+      "name": "raw NUL and FF",
+      "result": "EXECUTED",
+      "steps": 64549,
+      "highest_cell": 63
+    },
+    {
+      "name": "nested loops",
+      "result": "EXECUTED",
+      "steps": 219560,
+      "highest_cell": 318
+    },
+    {
+      "name": "brackets [",
+      "result": "EXECUTED",
+      "steps": 14054,
+      "highest_cell": 46
+    },
+    {
+      "name": "brackets ]",
+      "result": "EXECUTED",
+      "steps": 13783,
+      "highest_cell": 46
+    },
+    {
+      "name": "brackets ][",
+      "result": "EXECUTED",
+      "steps": 27620,
+      "highest_cell": 62
+    },
+    {
+      "name": "brackets [[]",
+      "result": "EXECUTED",
+      "steps": 41622,
+      "highest_cell": 78
+    },
+    {
+      "name": "brackets []]",
+      "result": "EXECUTED",
+      "steps": 41243,
+      "highest_cell": 78
+    },
+    {
+      "name": "nesting 255",
+      "result": "EXECUTED",
+      "steps": 21217134,
+      "highest_cell": 8190
+    },
+    {
+      "name": "nesting 256",
+      "result": "EXECUTED",
+      "steps": 19542093,
+      "highest_cell": 8222
+    },
+    {
+      "name": "nesting 257",
+      "result": "EXECUTED",
+      "steps": 19569905,
+      "highest_cell": 8254
+    },
+    {
+      "name": "instructions 255",
+      "result": "EXECUTED",
+      "steps": 7976071,
+      "highest_cell": 4110
+    },
+    {
+      "name": "instructions 256",
+      "result": "EXECUTED",
+      "steps": 7994998,
+      "highest_cell": 4126
+    },
+    {
+      "name": "instructions 257",
+      "result": "EXECUTED",
+      "steps": 8005234,
+      "highest_cell": 4142
+    },
+    {
+      "name": "instructions 3839",
+      "result": "EXECUTED",
+      "steps": 123761139,
+      "highest_cell": 61454
+    },
+    {
+      "name": "instructions 3840",
+      "result": "EXECUTED",
+      "steps": 123782026,
+      "highest_cell": 61470
+    },
+    {
+      "name": "instructions 3841",
+      "result": "EXECUTED",
+      "steps": 123650942,
+      "highest_cell": 61471
+    },
+    {
+      "name": "full instruction buffer with ignored suffix",
+      "result": "EXECUTED",
+      "steps": 123946012,
+      "highest_cell": 61471
+    },
+    {
+      "name": "full source length",
+      "result": "EXECUTED",
+      "steps": 1204762251,
+      "highest_cell": 31
+    },
+    {
+      "name": "full source length with instructions at ends",
+      "result": "EXECUTED",
+      "steps": 1204790045,
+      "highest_cell": 62
+    },
+    {
+      "name": "combined bracket and size error",
+      "result": "EXECUTED",
+      "steps": 123788659,
+      "highest_cell": 61471
+    },
+    {
+      "name": "truncated or invalid frame ",
+      "result": "EXECUTED",
+      "steps": 998,
+      "highest_cell": 30
+    },
+    {
+      "name": "truncated or invalid frame 00",
+      "result": "EXECUTED",
+      "steps": 998,
+      "highest_cell": 30
+    },
+    {
+      "name": "truncated or invalid frame 0000",
+      "result": "EXECUTED",
+      "steps": 998,
+      "highest_cell": 30
+    },
+    {
+      "name": "truncated or invalid frame 0100",
+      "result": "EXECUTED",
+      "steps": 5526,
+      "highest_cell": 31
+    },
+    {
+      "name": "truncated or invalid frame 01002B",
+      "result": "EXECUTED",
+      "steps": 10994,
+      "highest_cell": 46
+    },
+    {
+      "name": "truncated or invalid frame 000000",
+      "result": "EXECUTED",
+      "steps": 998,
+      "highest_cell": 30
+    },
+    {
+      "name": "truncated or invalid frame 000002",
+      "result": "EXECUTED",
+      "steps": 490,
+      "highest_cell": 30
+    },
+    {
+      "name": "truncated or invalid frame 03002B01",
+      "result": "EXECUTED",
+      "steps": 20501,
+      "highest_cell": 47
+    },
+    {
+      "name": "framing priority over bracket error",
+      "result": "EXECUTED",
+      "steps": 14617,
+      "highest_cell": 46
+    },
+    {
+      "name": "framing priority over size error",
+      "result": "EXECUTED",
+      "steps": 123651505,
+      "highest_cell": 61471
+    },
+    {
+      "name": "request cut at 0",
+      "result": "EXECUTED",
+      "steps": 998,
+      "highest_cell": 30
+    },
+    {
+      "name": "request cut at 1",
+      "result": "EXECUTED",
+      "steps": 5526,
+      "highest_cell": 31
+    },
+    {
+      "name": "request cut at 2",
+      "result": "EXECUTED",
+      "steps": 5526,
+      "highest_cell": 31
+    },
+    {
+      "name": "request cut at 3",
+      "result": "EXECUTED",
+      "steps": 10994,
+      "highest_cell": 46
+    },
+    {
+      "name": "random raw bytes 0",
+      "result": "EXECUTED",
+      "steps": 745833,
+      "highest_cell": 62
+    },
+    {
+      "name": "random raw bytes 1",
+      "result": "EXECUTED",
+      "steps": 640173,
+      "highest_cell": 31
+    },
+    {
+      "name": "random raw bytes 2",
+      "result": "EXECUTED",
+      "steps": 1846069,
+      "highest_cell": 47
+    },
+    {
+      "name": "random raw bytes 3",
+      "result": "EXECUTED",
+      "steps": 1498823,
+      "highest_cell": 63
+    },
+    {
+      "name": "random raw bytes 4",
+      "result": "EXECUTED",
+      "steps": 868802,
+      "highest_cell": 95
+    },
+    {
+      "name": "random raw bytes 5",
+      "result": "EXECUTED",
+      "steps": 245009,
+      "highest_cell": 31
+    },
+    {
+      "name": "random raw bytes 6",
+      "result": "EXECUTED",
+      "steps": 402382,
+      "highest_cell": 47
+    },
+    {
+      "name": "random raw bytes 7",
+      "result": "EXECUTED",
+      "steps": 1282469,
+      "highest_cell": 63
+    },
+    {
+      "name": "random raw bytes 8",
+      "result": "EXECUTED",
+      "steps": 1866937,
+      "highest_cell": 31
+    },
+    {
+      "name": "random raw bytes 9",
+      "result": "EXECUTED",
+      "steps": 80857,
+      "highest_cell": 31
+    },
+    {
+      "name": "random raw bytes 10",
+      "result": "EXECUTED",
+      "steps": 1232370,
+      "highest_cell": 47
+    },
+    {
+      "name": "random raw bytes 11",
+      "result": "EXECUTED",
+      "steps": 151647,
+      "highest_cell": 31
+    },
+    {
+      "name": "random raw bytes 12",
+      "result": "EXECUTED",
+      "steps": 827386,
+      "highest_cell": 78
+    },
+    {
+      "name": "random raw bytes 13",
+      "result": "EXECUTED",
+      "steps": 1830574,
+      "highest_cell": 79
+    },
+    {
+      "name": "random raw bytes 14",
+      "result": "EXECUTED",
+      "steps": 1416320,
+      "highest_cell": 47
+    },
+    {
+      "name": "random raw bytes 15",
+      "result": "EXECUTED",
+      "steps": 876847,
+      "highest_cell": 31
+    },
+    {
+      "name": "random raw bytes 16",
+      "result": "EXECUTED",
+      "steps": 872124,
+      "highest_cell": 47
+    },
+    {
+      "name": "random raw bytes 17",
+      "result": "EXECUTED",
+      "steps": 1282460,
+      "highest_cell": 95
+    },
+    {
+      "name": "random raw bytes 18",
+      "result": "EXECUTED",
+      "steps": 1678113,
+      "highest_cell": 47
+    },
+    {
+      "name": "random raw bytes 19",
+      "result": "EXECUTED",
+      "steps": 1109782,
+      "highest_cell": 46
+    },
+    {
+      "name": "random raw bytes 20",
+      "result": "EXECUTED",
+      "steps": 369043,
+      "highest_cell": 31
+    },
+    {
+      "name": "random raw bytes 21",
+      "result": "EXECUTED",
+      "steps": 1209305,
+      "highest_cell": 63
+    },
+    {
+      "name": "random raw bytes 22",
+      "result": "EXECUTED",
+      "steps": 601097,
+      "highest_cell": 31
+    },
+    {
+      "name": "random raw bytes 23",
+      "result": "EXECUTED",
+      "steps": 1373262,
+      "highest_cell": 63
+    },
+    {
+      "name": "random raw bytes 24",
+      "result": "EXECUTED",
+      "steps": 1679033,
+      "highest_cell": 31
+    },
+    {
+      "name": "random raw bytes 25",
+      "result": "EXECUTED",
+      "steps": 230463,
+      "highest_cell": 31
+    },
+    {
+      "name": "random raw bytes 26",
+      "result": "EXECUTED",
+      "steps": 1200549,
+      "highest_cell": 95
+    },
+    {
+      "name": "random raw bytes 27",
+      "result": "EXECUTED",
+      "steps": 958146,
+      "highest_cell": 63
+    },
+    {
+      "name": "random raw bytes 28",
+      "result": "EXECUTED",
+      "steps": 471,
+      "highest_cell": 30
+    },
+    {
+      "name": "random raw bytes 29",
+      "result": "EXECUTED",
+      "steps": 753446,
+      "highest_cell": 47
+    },
+    {
+      "name": "random raw bytes 30",
+      "result": "EXECUTED",
+      "steps": 1560861,
+      "highest_cell": 47
+    },
+    {
+      "name": "random raw bytes 31",
+      "result": "EXECUTED",
+      "steps": 1570590,
+      "highest_cell": 63
+    },
+    {
+      "name": "random raw bytes 32",
+      "result": "EXECUTED",
+      "steps": 128487,
+      "highest_cell": 31
+    },
+    {
+      "name": "random raw bytes 33",
+      "result": "EXECUTED",
+      "steps": 864758,
+      "highest_cell": 63
+    },
+    {
+      "name": "random raw bytes 34",
+      "result": "EXECUTED",
+      "steps": 1687233,
+      "highest_cell": 79
+    },
+    {
+      "name": "random raw bytes 35",
+      "result": "EXECUTED",
+      "steps": 911879,
+      "highest_cell": 31
+    },
+    {
+      "name": "random raw bytes 36",
+      "result": "EXECUTED",
+      "steps": 1187575,
+      "highest_cell": 31
+    },
+    {
+      "name": "random raw bytes 37",
+      "result": "EXECUTED",
+      "steps": 577603,
+      "highest_cell": 31
+    },
+    {
+      "name": "random raw bytes 38",
+      "result": "EXECUTED",
+      "steps": 755237,
+      "highest_cell": 31
+    },
+    {
+      "name": "random raw bytes 39",
+      "result": "EXECUTED",
+      "steps": 1251598,
+      "highest_cell": 79
+    },
+    {
+      "name": "random raw bytes 40",
+      "result": "EXECUTED",
+      "steps": 988023,
+      "highest_cell": 47
+    },
+    {
+      "name": "random raw bytes 41",
+      "result": "EXECUTED",
+      "steps": 79497,
+      "highest_cell": 31
+    },
+    {
+      "name": "random raw bytes 42",
+      "result": "EXECUTED",
+      "steps": 1456228,
+      "highest_cell": 63
+    },
+    {
+      "name": "random raw bytes 43",
+      "result": "EXECUTED",
+      "steps": 1257715,
+      "highest_cell": 79
+    },
+    {
+      "name": "random raw bytes 44",
+      "result": "EXECUTED",
+      "steps": 1787130,
+      "highest_cell": 62
+    },
+    {
+      "name": "random raw bytes 45",
+      "result": "EXECUTED",
+      "steps": 1167667,
+      "highest_cell": 63
+    },
+    {
+      "name": "random raw bytes 46",
+      "result": "EXECUTED",
+      "steps": 469213,
+      "highest_cell": 31
+    },
+    {
+      "name": "random raw bytes 47",
+      "result": "EXECUTED",
+      "steps": 1014673,
+      "highest_cell": 47
+    },
+    {
+      "name": "random raw bytes 48",
+      "result": "EXECUTED",
+      "steps": 1676179,
+      "highest_cell": 63
+    },
+    {
+      "name": "random raw bytes 49",
+      "result": "EXECUTED",
+      "steps": 1381075,
+      "highest_cell": 31
+    },
+    {
+      "name": "random raw bytes 50",
+      "result": "EXECUTED",
+      "steps": 471,
+      "highest_cell": 30
+    },
+    {
+      "name": "random raw bytes 51",
+      "result": "EXECUTED",
+      "steps": 1569882,
+      "highest_cell": 95
+    },
+    {
+      "name": "random raw bytes 52",
+      "result": "EXECUTED",
+      "steps": 1201676,
+      "highest_cell": 63
+    },
+    {
+      "name": "random raw bytes 53",
+      "result": "EXECUTED",
+      "steps": 283580,
+      "highest_cell": 63
+    },
+    {
+      "name": "random raw bytes 54",
+      "result": "EXECUTED",
+      "steps": 471,
+      "highest_cell": 30
+    },
+    {
+      "name": "random raw bytes 55",
+      "result": "EXECUTED",
+      "steps": 1335642,
+      "highest_cell": 79
+    },
+    {
+      "name": "random raw bytes 56",
+      "result": "EXECUTED",
+      "steps": 1993806,
+      "highest_cell": 95
+    },
+    {
+      "name": "random raw bytes 57",
+      "result": "EXECUTED",
+      "steps": 1440957,
+      "highest_cell": 63
+    },
+    {
+      "name": "random raw bytes 58",
+      "result": "EXECUTED",
+      "steps": 446217,
+      "highest_cell": 47
+    },
+    {
+      "name": "random raw bytes 59",
+      "result": "EXECUTED",
+      "steps": 421599,
+      "highest_cell": 63
+    },
+    {
+      "name": "random raw bytes 60",
+      "result": "EXECUTED",
+      "steps": 1269897,
+      "highest_cell": 47
+    },
+    {
+      "name": "random raw bytes 61",
+      "result": "EXECUTED",
+      "steps": 313133,
+      "highest_cell": 31
+    },
+    {
+      "name": "random raw bytes 62",
+      "result": "EXECUTED",
+      "steps": 1231692,
+      "highest_cell": 47
+    },
+    {
+      "name": "random raw bytes 63",
+      "result": "EXECUTED",
+      "steps": 727633,
+      "highest_cell": 31
+    },
+    {
+      "name": "random raw bytes 64",
+      "result": "EXECUTED",
+      "steps": 471,
+      "highest_cell": 30
+    },
+    {
+      "name": "random raw bytes 65",
+      "result": "EXECUTED",
+      "steps": 312138,
+      "highest_cell": 46
+    },
+    {
+      "name": "random raw bytes 66",
+      "result": "EXECUTED",
+      "steps": 717113,
+      "highest_cell": 31
+    },
+    {
+      "name": "random raw bytes 67",
+      "result": "EXECUTED",
+      "steps": 803017,
+      "highest_cell": 31
+    },
+    {
+      "name": "random raw bytes 68",
+      "result": "EXECUTED",
+      "steps": 818329,
+      "highest_cell": 47
+    },
+    {
+      "name": "random raw bytes 69",
+      "result": "EXECUTED",
+      "steps": 163103,
+      "highest_cell": 31
+    },
+    {
+      "name": "random raw bytes 70",
+      "result": "EXECUTED",
+      "steps": 1718303,
+      "highest_cell": 95
+    },
+    {
+      "name": "random raw bytes 71",
+      "result": "EXECUTED",
+      "steps": 231141,
+      "highest_cell": 47
+    },
+    {
+      "name": "random raw bytes 72",
+      "result": "EXECUTED",
+      "steps": 722152,
+      "highest_cell": 47
+    },
+    {
+      "name": "random raw bytes 73",
+      "result": "EXECUTED",
+      "steps": 608516,
+      "highest_cell": 63
+    },
+    {
+      "name": "random raw bytes 74",
+      "result": "EXECUTED",
+      "steps": 1299911,
+      "highest_cell": 31
+    },
+    {
+      "name": "random raw bytes 75",
+      "result": "EXECUTED",
+      "steps": 214545,
+      "highest_cell": 31
+    },
+    {
+      "name": "random raw bytes 76",
+      "result": "EXECUTED",
+      "steps": 1264742,
+      "highest_cell": 95
+    },
+    {
+      "name": "random raw bytes 77",
+      "result": "EXECUTED",
+      "steps": 1122434,
+      "highest_cell": 79
+    },
+    {
+      "name": "random raw bytes 78",
+      "result": "EXECUTED",
+      "steps": 1705752,
+      "highest_cell": 47
+    },
+    {
+      "name": "random raw bytes 79",
+      "result": "EXECUTED",
+      "steps": 154789,
+      "highest_cell": 31
+    },
+    {
+      "name": "random raw bytes 80",
+      "result": "EXECUTED",
+      "steps": 1731500,
+      "highest_cell": 63
+    },
+    {
+      "name": "random raw bytes 81",
+      "result": "EXECUTED",
+      "steps": 1219011,
+      "highest_cell": 47
+    },
+    {
+      "name": "random raw bytes 82",
+      "result": "EXECUTED",
+      "steps": 471,
+      "highest_cell": 30
+    },
+    {
+      "name": "random raw bytes 83",
+      "result": "EXECUTED",
+      "steps": 1841169,
+      "highest_cell": 79
+    },
+    {
+      "name": "random raw bytes 84",
+      "result": "EXECUTED",
+      "steps": 236135,
+      "highest_cell": 63
+    },
+    {
+      "name": "random raw bytes 85",
+      "result": "EXECUTED",
+      "steps": 1146640,
+      "highest_cell": 63
+    },
+    {
+      "name": "random raw bytes 86",
+      "result": "EXECUTED",
+      "steps": 620257,
+      "highest_cell": 47
+    },
+    {
+      "name": "random raw bytes 87",
+      "result": "EXECUTED",
+      "steps": 1173064,
+      "highest_cell": 95
+    },
+    {
+      "name": "random raw bytes 88",
+      "result": "EXECUTED",
+      "steps": 1294734,
+      "highest_cell": 95
+    },
+    {
+      "name": "random raw bytes 89",
+      "result": "EXECUTED",
+      "steps": 1214844,
+      "highest_cell": 94
+    },
+    {
+      "name": "random raw bytes 90",
+      "result": "EXECUTED",
+      "steps": 179347,
+      "highest_cell": 47
+    },
+    {
+      "name": "random raw bytes 91",
+      "result": "EXECUTED",
+      "steps": 87393,
+      "highest_cell": 31
+    },
+    {
+      "name": "random raw bytes 92",
+      "result": "EXECUTED",
+      "steps": 1752186,
+      "highest_cell": 47
+    },
+    {
+      "name": "random raw bytes 93",
+      "result": "EXECUTED",
+      "steps": 1526020,
+      "highest_cell": 79
+    },
+    {
+      "name": "random raw bytes 94",
+      "result": "EXECUTED",
+      "steps": 927878,
+      "highest_cell": 63
+    },
+    {
+      "name": "random raw bytes 95",
+      "result": "EXECUTED",
+      "steps": 1234617,
+      "highest_cell": 79
+    },
+    {
+      "name": "random raw bytes 96",
+      "result": "EXECUTED",
+      "steps": 1804882,
+      "highest_cell": 79
+    },
+    {
+      "name": "random raw bytes 97",
+      "result": "EXECUTED",
+      "steps": 1117913,
+      "highest_cell": 31
+    },
+    {
+      "name": "random raw bytes 98",
+      "result": "EXECUTED",
+      "steps": 1417394,
+      "highest_cell": 79
+    },
+    {
+      "name": "random raw bytes 99",
+      "result": "EXECUTED",
+      "steps": 1714596,
+      "highest_cell": 111
+    },
+    {
+      "name": "random raw bytes 100",
+      "result": "EXECUTED",
+      "steps": 268345,
+      "highest_cell": 31
+    },
+    {
+      "name": "random raw bytes 101",
+      "result": "EXECUTED",
+      "steps": 1805628,
+      "highest_cell": 63
+    },
+    {
+      "name": "random raw bytes 102",
+      "result": "EXECUTED",
+      "steps": 1662369,
+      "highest_cell": 47
+    },
+    {
+      "name": "random raw bytes 103",
+      "result": "EXECUTED",
+      "steps": 1425407,
+      "highest_cell": 63
+    },
+    {
+      "name": "random raw bytes 104",
+      "result": "EXECUTED",
+      "steps": 1027512,
+      "highest_cell": 47
+    },
+    {
+      "name": "random raw bytes 105",
+      "result": "EXECUTED",
+      "steps": 1774587,
+      "highest_cell": 47
+    },
+    {
+      "name": "random raw bytes 106",
+      "result": "EXECUTED",
+      "steps": 1768338,
+      "highest_cell": 63
+    },
+    {
+      "name": "random raw bytes 107",
+      "result": "EXECUTED",
+      "steps": 377893,
+      "highest_cell": 31
+    },
+    {
+      "name": "random raw bytes 108",
+      "result": "EXECUTED",
+      "steps": 1294071,
+      "highest_cell": 63
+    },
+    {
+      "name": "random raw bytes 109",
+      "result": "EXECUTED",
+      "steps": 1138939,
+      "highest_cell": 47
+    },
+    {
+      "name": "random raw bytes 110",
+      "result": "EXECUTED",
+      "steps": 1734058,
+      "highest_cell": 95
+    },
+    {
+      "name": "random raw bytes 111",
+      "result": "EXECUTED",
+      "steps": 728254,
+      "highest_cell": 47
+    },
+    {
+      "name": "random raw bytes 112",
+      "result": "EXECUTED",
+      "steps": 158701,
+      "highest_cell": 31
+    },
+    {
+      "name": "random raw bytes 113",
+      "result": "EXECUTED",
+      "steps": 555520,
+      "highest_cell": 63
+    },
+    {
+      "name": "random raw bytes 114",
+      "result": "EXECUTED",
+      "steps": 170687,
+      "highest_cell": 31
+    },
+    {
+      "name": "random raw bytes 115",
+      "result": "EXECUTED",
+      "steps": 484748,
+      "highest_cell": 47
+    },
+    {
+      "name": "random raw bytes 116",
+      "result": "EXECUTED",
+      "steps": 641235,
+      "highest_cell": 47
+    },
+    {
+      "name": "random raw bytes 117",
+      "result": "EXECUTED",
+      "steps": 502639,
+      "highest_cell": 31
+    },
+    {
+      "name": "random raw bytes 118",
+      "result": "EXECUTED",
+      "steps": 841330,
+      "highest_cell": 63
+    },
+    {
+      "name": "random raw bytes 119",
+      "result": "EXECUTED",
+      "steps": 1458082,
+      "highest_cell": 110
+    },
+    {
+      "name": "random raw bytes 120",
+      "result": "EXECUTED",
+      "steps": 1460470,
+      "highest_cell": 47
+    },
+    {
+      "name": "random raw bytes 121",
+      "result": "EXECUTED",
+      "steps": 1168655,
+      "highest_cell": 63
+    },
+    {
+      "name": "random raw bytes 122",
+      "result": "EXECUTED",
+      "steps": 908135,
+      "highest_cell": 63
+    },
+    {
+      "name": "random raw bytes 123",
+      "result": "EXECUTED",
+      "steps": 493219,
+      "highest_cell": 31
+    },
+    {
+      "name": "random raw bytes 124",
+      "result": "EXECUTED",
+      "steps": 1308898,
+      "highest_cell": 47
+    },
+    {
+      "name": "random raw bytes 125",
+      "result": "EXECUTED",
+      "steps": 636237,
+      "highest_cell": 31
+    },
+    {
+      "name": "random raw bytes 126",
+      "result": "EXECUTED",
+      "steps": 688121,
+      "highest_cell": 31
+    },
+    {
+      "name": "random raw bytes 127",
+      "result": "EXECUTED",
+      "steps": 448289,
+      "highest_cell": 31
+    },
+    {
+      "name": "random raw bytes 128",
+      "result": "EXECUTED",
+      "steps": 383025,
+      "highest_cell": 31
+    },
+    {
+      "name": "random raw bytes 129",
+      "result": "EXECUTED",
+      "steps": 417319,
+      "highest_cell": 79
+    },
+    {
+      "name": "random raw bytes 130",
+      "result": "EXECUTED",
+      "steps": 326285,
+      "highest_cell": 46
+    },
+    {
+      "name": "random raw bytes 131",
+      "result": "EXECUTED",
+      "steps": 529531,
+      "highest_cell": 31
+    },
+    {
+      "name": "random raw bytes 132",
+      "result": "EXECUTED",
+      "steps": 475683,
+      "highest_cell": 31
+    },
+    {
+      "name": "random raw bytes 133",
+      "result": "EXECUTED",
+      "steps": 491290,
+      "highest_cell": 62
+    },
+    {
+      "name": "random raw bytes 134",
+      "result": "EXECUTED",
+      "steps": 793161,
+      "highest_cell": 47
+    },
+    {
+      "name": "random raw bytes 135",
+      "result": "EXECUTED",
+      "steps": 1163757,
+      "highest_cell": 31
+    },
+    {
+      "name": "random raw bytes 136",
+      "result": "EXECUTED",
+      "steps": 966232,
+      "highest_cell": 47
+    },
+    {
+      "name": "random raw bytes 137",
+      "result": "EXECUTED",
+      "steps": 534037,
+      "highest_cell": 47
+    },
+    {
+      "name": "random raw bytes 138",
+      "result": "EXECUTED",
+      "steps": 84937,
+      "highest_cell": 31
+    },
+    {
+      "name": "random raw bytes 139",
+      "result": "EXECUTED",
+      "steps": 113669,
+      "highest_cell": 31
+    },
+    {
+      "name": "random raw bytes 140",
+      "result": "EXECUTED",
+      "steps": 173853,
+      "highest_cell": 31
+    },
+    {
+      "name": "random raw bytes 141",
+      "result": "EXECUTED",
+      "steps": 74027,
+      "highest_cell": 31
+    },
+    {
+      "name": "random raw bytes 142",
+      "result": "EXECUTED",
+      "steps": 129645,
+      "highest_cell": 31
+    },
+    {
+      "name": "random raw bytes 143",
+      "result": "EXECUTED",
+      "steps": 1824870,
+      "highest_cell": 63
+    },
+    {
+      "name": "random raw bytes 144",
+      "result": "EXECUTED",
+      "steps": 1375050,
+      "highest_cell": 79
+    },
+    {
+      "name": "random raw bytes 145",
+      "result": "EXECUTED",
+      "steps": 190813,
+      "highest_cell": 31
+    },
+    {
+      "name": "random raw bytes 146",
+      "result": "EXECUTED",
+      "steps": 80027,
+      "highest_cell": 31
+    },
+    {
+      "name": "random raw bytes 147",
+      "result": "EXECUTED",
+      "steps": 1486175,
+      "highest_cell": 63
+    },
+    {
+      "name": "random raw bytes 148",
+      "result": "EXECUTED",
+      "steps": 1349957,
+      "highest_cell": 79
+    },
+    {
+      "name": "random raw bytes 149",
+      "result": "EXECUTED",
+      "steps": 911529,
+      "highest_cell": 79
+    },
+    {
+      "name": "random raw bytes 150",
+      "result": "EXECUTED",
+      "steps": 603749,
+      "highest_cell": 79
+    },
+    {
+      "name": "random raw bytes 151",
+      "result": "EXECUTED",
+      "steps": 1106861,
+      "highest_cell": 47
+    },
+    {
+      "name": "random raw bytes 152",
+      "result": "EXECUTED",
+      "steps": 1446412,
+      "highest_cell": 63
+    },
+    {
+      "name": "random raw bytes 153",
+      "result": "EXECUTED",
+      "steps": 864658,
+      "highest_cell": 47
+    },
+    {
+      "name": "random raw bytes 154",
+      "result": "EXECUTED",
+      "steps": 41269,
+      "highest_cell": 31
+    },
+    {
+      "name": "random raw bytes 155",
+      "result": "EXECUTED",
+      "steps": 1442246,
+      "highest_cell": 47
+    },
+    {
+      "name": "random raw bytes 156",
+      "result": "EXECUTED",
+      "steps": 1822738,
+      "highest_cell": 95
+    },
+    {
+      "name": "random raw bytes 157",
+      "result": "EXECUTED",
+      "steps": 1231916,
+      "highest_cell": 127
+    },
+    {
+      "name": "random raw bytes 158",
+      "result": "EXECUTED",
+      "steps": 984963,
+      "highest_cell": 95
+    },
+    {
+      "name": "random raw bytes 159",
+      "result": "EXECUTED",
+      "steps": 1656117,
+      "highest_cell": 79
+    },
+    {
+      "name": "frontend compiles own annotated source",
+      "result": "EXECUTED",
+      "steps": 123862352,
+      "highest_cell": 39311
+    },
+    {
+      "name": "frontend compiles own compact source",
+      "result": "EXECUTED",
+      "steps": 77743027,
+      "highest_cell": 39310
+    },
+    {
+      "name": "decision handoff artifact",
+      "result": "EXECUTED",
+      "steps": 2791160,
+      "highest_cell": 335
+    },
+    {
+      "name": "interpreted BBX compiler round trip; not native selfhosting",
+      "result": "EXECUTED",
+      "steps": 123862352,
+      "highest_cell": 39311
+    },
+    {
+      "name": "external sender rejects source length 65536",
+      "result": "EXECUTED"
+    },
+    {
+      "name": "compile tests/basic.bf input 00",
+      "result": "EXECUTED",
+      "steps": 2204615,
+      "highest_cell": 159
+    },
+    {
+      "name": "execute filtered tests/basic.bf input 00",
+      "result": "EXECUTED",
+      "steps": 8,
+      "highest_cell": 0
+    },
+    {
+      "name": "compile tests/loops.bf input ",
+      "result": "EXECUTED",
+      "steps": 918097,
+      "highest_cell": 319
+    },
+    {
+      "name": "execute filtered tests/loops.bf input ",
+      "result": "EXECUTED",
+      "steps": 40,
+      "highest_cell": 2
+    },
+    {
+      "name": "compile examples/decision.bf input 00",
+      "result": "EXECUTED",
+      "steps": 2791160,
+      "highest_cell": 335
+    },
+    {
+      "name": "execute filtered examples/decision.bf input 00",
+      "result": "EXECUTED",
+      "steps": 10,
+      "highest_cell": 1
+    },
+    {
+      "name": "compile examples/decision.bf input 01",
+      "result": "EXECUTED",
+      "steps": 2791160,
+      "highest_cell": 335
+    },
+    {
+      "name": "execute filtered examples/decision.bf input 01",
+      "result": "EXECUTED",
+      "steps": 17,
+      "highest_cell": 1
+    },
+    {
+      "name": "compile examples/decision.bf input FF",
+      "result": "EXECUTED",
+      "steps": 2791160,
+      "highest_cell": 335
+    },
+    {
+      "name": "execute filtered examples/decision.bf input FF",
+      "result": "EXECUTED",
+      "steps": 525,
+      "highest_cell": 1
+    },
+    {
+      "name": "compile tests/bounds.bf",
+      "result": "EXECUTED",
+      "steps": 603366,
+      "highest_cell": 47
+    },
+    {
+      "name": "execute tests/bounds.bf traps",
+      "result": "EXECUTED"
+    },
+    {
+      "name": "compile tests/bounds_right.bf",
+      "result": "EXECUTED",
+      "steps": 1143627,
+      "highest_cell": 111
+    },
+    {
+      "name": "execute tests/bounds_right.bf traps",
+      "result": "EXECUTED"
+    },
+    {
+      "name": "reference output capacity failure",
+      "result": "EXECUTED"
+    },
+    {
+      "name": "fixture all-eight",
+      "result": "EXECUTED",
+      "steps": 90585,
+      "highest_cell": 158
+    },
+    {
+      "name": "fixture bad-close",
+      "result": "EXECUTED",
+      "steps": 13783,
+      "highest_cell": 46
+    },
+    {
+      "name": "fixture bad-open",
+      "result": "EXECUTED",
+      "steps": 14054,
+      "highest_cell": 46
+    },
+    {
+      "name": "fixture empty",
+      "result": "EXECUTED",
+      "steps": 471,
+      "highest_cell": 30
+    },
+    {
+      "name": "fixture nested",
+      "result": "EXECUTED",
+      "steps": 219560,
+      "highest_cell": 318
+    },
+    {
+      "name": "fixture raw-zero",
+      "result": "EXECUTED",
+      "steps": 64549,
+      "highest_cell": 63
+    },
+    {
+      "name": "fixture safe-annotations",
+      "result": "EXECUTED",
+      "steps": 538043,
+      "highest_cell": 63
+    },
+    {
+      "name": "fixture truncated",
+      "result": "EXECUTED",
+      "steps": 10994,
+      "highest_cell": 46
+    }
+  ],
+  "native_selfhosting": "UNIMPLEMENTED",
+  "android": "UNIMPLEMENTED",
+  "windows_xax": "UNIMPLEMENTED",
+  "linux_xax": "UNIMPLEMENTED",
+  "migration_verification": {
+    "status": "EXECUTED",
+    "request_framing_preserved": true,
+    "validation_instruction_stream_preserved": true,
+    "payload_emission_instruction_stream_preserved": true,
+    "fixture_status_count_payload_pairs_preserved": 8,
+    "bootstrap_source_preserved": true,
+    "previous_snapshot": "C:\\Users\\SiN\\.codex\\visualizations\\2026\\10\\18\\01a14f2c-277c-7330-85c1-2cd5abe8d120\\bbc-before-bbx.zip",
+    "previous_snapshot_sha256": "d8fdcd951f71e7860f8b05858dc371f4f26040c7715eecd9ee3120d0faa5be6c",
+    "updated_requirements_sha256": "15d644e4b4b1c7f68c525077eb71f096871dea779347a7a99b21532ae112e834",
+    "compatibility": "Recompile old records; changing only their extension is invalid"
+  }
+}

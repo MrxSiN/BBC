@@ -1,8 +1,0 @@
-{
-  "classification": "EXECUTED_LINUX_NATIVE_BF_STAGE1_STAGE2_REGRESSION",
-  "all_stages_byte_identical": true,
-  "source_sha256": "f73a9b7ddc9d6f1971435251edefd85e3bb81a0dda23e8b11630a2d7cf7407e9",
-  "native_compiler_elf_sha256": "e95ec4e028a28f18d955f908cf40e2f9b9fbe650b6ebfd4df6d819c3f6f6cea8",
-  "source_unmodified_from_iteration56": true,
-  "elapsed_seconds": 2.576
-}

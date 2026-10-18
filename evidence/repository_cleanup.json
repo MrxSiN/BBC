@@ -1,0 +1,88 @@
+{
+  "status": "EXECUTED",
+  "date": "2026-10-18",
+  "scope": "current working tree excluding Git metadata and ignored build outputs; Git history was not rewritten",
+  "snapshot_files": 2852,
+  "removed_files": 2807,
+  "removed_by_root": {
+    "CHANGELOG.md": 1,
+    "CLAUDE.md": 1,
+    "benchmarks": 29,
+    "bootstrap": 35,
+    "build": 544,
+    "compiler": 4,
+    "docs": 120,
+    "evidence": 1745,
+    "examples": 13,
+    "experiments": 125,
+    "status": 16,
+    "tests": 105,
+    "tools": 69
+  },
+  "archive": "C:\\Users\\SiN\\.codex\\visualizations\\2026\\10\\18\\01a14f2c-277c-7330-85c1-2cd5abe8d120\\bbc-before-cleanup.zip",
+  "archive_sha256": "c175e3414da66e4b3913909d74fb763b84ad9ae8667b5088a7e42c8fbdb05855",
+  "archive_validation": "Every archived member was read back and checked against original SHA-256 before removal; each removal path was resolved inside the workspace and rehashed immediately before deletion",
+  "recovery_manifest": "C:\\Users\\SiN\\.codex\\visualizations\\2026\\10\\18\\01a14f2c-277c-7330-85c1-2cd5abe8d120\\bbc-before-cleanup.manifest.json",
+  "original_git_status": "C:\\Users\\SiN\\.codex\\visualizations\\2026\\10\\18\\01a14f2c-277c-7330-85c1-2cd5abe8d120\\bbc-before-cleanup.git-status.txt",
+  "removal_plan": "C:\\Users\\SiN\\.codex\\visualizations\\2026\\10\\18\\01a14f2c-277c-7330-85c1-2cd5abe8d120\\bbc-cleanup-plan.json",
+  "maintained_files": 54,
+  "brainfuck_files": 7,
+  "brainfuck_instructions": 2813,
+  "foreign_implementation_files": 0,
+  "sources": {
+    "bootstrap/frame_source.bf": {
+      "source_bytes": 1207,
+      "instructions": 302,
+      "sha256": "1b1f7d90c17414417c8622303244d424ccf6e30704ee6165c77f3161e0bd454f",
+      "max_code_line": 32
+    },
+    "compiler/compiler.bf": {
+      "source_bytes": 4527,
+      "instructions": 2460,
+      "sha256": "25a0976c4fe8ece7109d87040a82b2b01490126bae141cbc8b995e9d96971130",
+      "max_code_line": 64
+    },
+    "examples/decision.bf": {
+      "source_bytes": 151,
+      "instructions": 19,
+      "sha256": "61a87e0c7c1d4a2289a879076ed75b769dfd65ea159d113a3ac997fb60c73ba9",
+      "max_code_line": 10
+    },
+    "tests/basic.bf": {
+      "source_bytes": 125,
+      "instructions": 8,
+      "sha256": "37ae641cbff6e75739bf26e89658cdcea05c0aeac6c488e581a1197a66bf4e3e",
+      "max_code_line": 8
+    },
+    "tests/bounds.bf": {
+      "source_bytes": 41,
+      "instructions": 1,
+      "sha256": "fb00c5df7036d6ce1c9b4de8bbd046d02fd5bca2afa804c8a3847ae69c346152",
+      "max_code_line": 1
+    },
+    "tests/bounds_right.bf": {
+      "source_bytes": 72,
+      "instructions": 5,
+      "sha256": "bd34d7dcaed6a6c08e2419a2f75b3523ff7363e866fee81e295f40e9473888f8",
+      "max_code_line": 5
+    },
+    "tests/loops.bf": {
+      "source_bytes": 65,
+      "instructions": 18,
+      "sha256": "ad573fdbd12ddce19021fe45acaf3fb64f8270d2ad823b55c97aff7328d97cb3",
+      "max_code_line": 8
+    }
+  },
+  "external_dependencies": [
+    "independent conforming Brainfuck interpreter for cold execution",
+    "external independent verification tools for development only",
+    "separate XAX graph/native/platform toolchain; BFI1 importer unimplemented"
+  ],
+  "executed_checks": {
+    "frontend": 224,
+    "bootstrap": 18,
+    "independent_python": 24
+  },
+  "xax_changed": false,
+  "native_selfhosting": "UNIMPLEMENTED"
+}

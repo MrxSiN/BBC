@@ -1,6 +1,0 @@
-// Keep the release benchmark isolated from the user's installed GM module.
-gradle.afterProject { project, state ->
-    if (project.path == ':app') {
-        project.extensions.getByName('android').defaultConfig.applicationId = 'io.github.mrxsin.gmailhideads.codexbench'
-    }
-}

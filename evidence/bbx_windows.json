@@ -1,0 +1,346 @@
+{
+  "status": "EXECUTED",
+  "date": "2026-10-18",
+  "target": "Windows x86-64",
+  "host": "Windows-11-10.0.26300-SP0",
+  "compiler_host_authority": {
+    "blake3-compress": {
+      "component": "blake3-compress",
+      "semantic_root": null,
+      "native_artifact_digest": null,
+      "requested_authority": "xax",
+      "actual_authority": "python",
+      "fallback_occurred": true,
+      "fallback_reason": "native leaf unavailable: RuntimeError('host mmap does not expose executable mappings')"
+    },
+    "blake3-hash": {
+      "component": "blake3-hash",
+      "semantic_root": null,
+      "native_artifact_digest": null,
+      "requested_authority": "xax",
+      "actual_authority": "python",
+      "fallback_occurred": true,
+      "fallback_reason": "native XAX helper images run on Linux x86-64 only (host: win32 AMD64)"
+    },
+    "store-writer": {
+      "component": "store-writer",
+      "semantic_root": null,
+      "native_artifact_digest": null,
+      "requested_authority": "xax",
+      "actual_authority": "python",
+      "fallback_occurred": true,
+      "fallback_reason": "native XAX helper images run on Linux x86-64 only (host: win32 AMD64)"
+    },
+    "store-decoder": {
+      "component": "store-decoder",
+      "semantic_root": null,
+      "native_artifact_digest": null,
+      "requested_authority": "xax",
+      "actual_authority": "python",
+      "fallback_occurred": true,
+      "fallback_reason": "native XAX helper images run on Linux x86-64 only (host: win32 AMD64)"
+    },
+    "typing": {
+      "component": "typing",
+      "semantic_root": null,
+      "native_artifact_digest": null,
+      "requested_authority": "xax",
+      "actual_authority": "python",
+      "fallback_occurred": true,
+      "fallback_reason": "native XAX helper images run on Linux x86-64 only (host: win32 AMD64)"
+    },
+    "store-verifier": {
+      "component": "store-verifier",
+      "semantic_root": null,
+      "native_artifact_digest": null,
+      "requested_authority": "xax",
+      "actual_authority": "python",
+      "fallback_occurred": true,
+      "fallback_reason": "native XAX helper images run on Linux x86-64 only (host: win32 AMD64)"
+    },
+    "graph-decoder": {
+      "component": "graph-decoder",
+      "semantic_root": null,
+      "native_artifact_digest": null,
+      "requested_authority": "xax",
+      "actual_authority": "python",
+      "fallback_occurred": true,
+      "fallback_reason": "native XAX helper images run on Linux x86-64 only (host: win32 AMD64)"
+    },
+    "cfg": {
+      "component": "cfg",
+      "semantic_root": null,
+      "native_artifact_digest": null,
+      "requested_authority": "xax",
+      "actual_authority": "python",
+      "fallback_occurred": true,
+      "fallback_reason": "native XAX helper images run on Linux x86-64 only (host: win32 AMD64)"
+    }
+  },
+  "xax_require_native": false,
+  "execution": "Actual Windows PE32+ DLL loader, Win64 ABI and native x86-64 code; external ctypes supplies valid buffers",
+  "native_checks": [
+    {
+      "module": "decision",
+      "input_hex": "00",
+      "capacity": 16,
+      "input_length": 1,
+      "status": 0,
+      "output_hex": "01",
+      "passed": true
+    },
+    {
+      "module": "decision",
+      "input_hex": "01",
+      "capacity": 16,
+      "input_length": 1,
+      "status": 0,
+      "output_hex": "00",
+      "passed": true
+    },
+    {
+      "module": "decision",
+      "input_hex": "ff",
+      "capacity": 16,
+      "input_length": 1,
+      "status": 0,
+      "output_hex": "00",
+      "passed": true
+    },
+    {
+      "module": "decision",
+      "input_hex": "",
+      "capacity": 16,
+      "input_length": 0,
+      "status": 0,
+      "output_hex": "01",
+      "passed": true
+    },
+    {
+      "module": "decision",
+      "input_hex": "00",
+      "capacity": 0,
+      "input_length": 1,
+      "status": 2,
+      "output_hex": "",
+      "passed": true
+    },
+    {
+      "module": "decision",
+      "input_hex": "00",
+      "capacity": 17,
+      "input_length": 1,
+      "status": 3,
+      "output_hex": "",
+      "passed": true
+    },
+    {
+      "module": "decision",
+      "input_hex": "00",
+      "capacity": 16,
+      "input_length": 17,
+      "status": 3,
+      "output_hex": "",
+      "passed": true
+    },
+    {
+      "module": "basic",
+      "status": 0,
+      "output_hex": "ff000000",
+      "library_sha256": "2e03da5d55567bdde88900e3884dbf401613506d81f382cdcd6eaa4f2a87358c",
+      "passed": true
+    },
+    {
+      "module": "loops",
+      "status": 0,
+      "output_hex": "04",
+      "library_sha256": "3df42afec622bde1b74b179ac14d052a1697dccc8b26959490e5b9d68ec6e8fc",
+      "passed": true
+    },
+    {
+      "module": "bounds",
+      "status": 1,
+      "output_hex": "",
+      "library_sha256": "b38f52d9b2249f343c7fad687fb84b83355beab52cdc04c2a18250ea5f777acc",
+      "passed": true
+    },
+    {
+      "module": "bounds_right",
+      "status": 1,
+      "output_hex": "",
+      "library_sha256": "9420a48584ec78a4fcd3234fd52d4c4d5989ebdd23a81b1b2a72d9da913d47e5",
+      "passed": true
+    },
+    {
+      "check": "native frontend fixture",
+      "fixture": "all-eight",
+      "record_sha256": "7335f42e8cf42a2560a7eb217286643af1051a5c5e71b12d59dd0fa4a995dfdd",
+      "passed": true
+    },
+    {
+      "check": "native frontend fixture",
+      "fixture": "bad-close",
+      "record_sha256": "47d609eaf235fa2ae57493f8f546d5a6c774d3b61431edfd3055681854772df8",
+      "passed": true
+    },
+    {
+      "check": "native frontend fixture",
+      "fixture": "bad-open",
+      "record_sha256": "47d609eaf235fa2ae57493f8f546d5a6c774d3b61431edfd3055681854772df8",
+      "passed": true
+    },
+    {
+      "check": "native frontend fixture",
+      "fixture": "empty",
+      "record_sha256": "870f803deb3441d7cfc70f0ea0c23d484acbd61d91875e749ebd3cafc6cc2cb4",
+      "passed": true
+    },
+    {
+      "check": "native frontend fixture",
+      "fixture": "nested",
+      "record_sha256": "2e1a456071f111ff68b0ef182ee469d78a6e1c621bbe203b35ae841cbcde27fd",
+      "passed": true
+    },
+    {
+      "check": "native frontend fixture",
+      "fixture": "raw-zero",
+      "record_sha256": "6ca92d3b056ac8f5b94c3aaf68f4fc4788097d6a81272dd129ee55fbc9d71d42",
+      "passed": true
+    },
+    {
+      "check": "native frontend fixture",
+      "fixture": "safe-annotations",
+      "record_sha256": "6ca92d3b056ac8f5b94c3aaf68f4fc4788097d6a81272dd129ee55fbc9d71d42",
+      "passed": true
+    },
+    {
+      "check": "native frontend fixture",
+      "fixture": "truncated",
+      "record_sha256": "2fb3ef1a0036fdf2584dc50ab7a7ee309941946bfe991473acfef032075ac008",
+      "passed": true
+    }
+  ],
+  "native_generations": [
+    {
+      "generation": 1,
+      "bbx_sha256": "b9502e64c459034be3193736b63b0fb1eba0a74398f3497280b0ff6f2325a593",
+      "graph_sha256": "9e54146ce237a0112caeba04fe6dadc781551f6a502f984f3dbbce3073d069cb",
+      "semantic_root": "b5b4cf233642f9e4262d4433ec37c6294e3eef102eea0a1f96f0c8a3dbca420a",
+      "library_sha256": "cb12e70cdf5d9b8860b25e46e7fe89bcb9ef6d47173379db8cc3aa8c06cb047f",
+      "passed": true
+    },
+    {
+      "generation": 2,
+      "bbx_sha256": "b9502e64c459034be3193736b63b0fb1eba0a74398f3497280b0ff6f2325a593",
+      "graph_sha256": "9e54146ce237a0112caeba04fe6dadc781551f6a502f984f3dbbce3073d069cb",
+      "semantic_root": "b5b4cf233642f9e4262d4433ec37c6294e3eef102eea0a1f96f0c8a3dbca420a",
+      "library_sha256": "cb12e70cdf5d9b8860b25e46e7fe89bcb9ef6d47173379db8cc3aa8c06cb047f",
+      "passed": true
+    },
+    {
+      "generation": 3,
+      "bbx_sha256": "b9502e64c459034be3193736b63b0fb1eba0a74398f3497280b0ff6f2325a593",
+      "graph_sha256": "9e54146ce237a0112caeba04fe6dadc781551f6a502f984f3dbbce3073d069cb",
+      "semantic_root": "b5b4cf233642f9e4262d4433ec37c6294e3eef102eea0a1f96f0c8a3dbca420a",
+      "library_sha256": "cb12e70cdf5d9b8860b25e46e7fe89bcb9ef6d47173379db8cc3aa8c06cb047f",
+      "passed": true
+    }
+  ],
+  "total_checks": 22,
+  "windows_frontend_self_hosting": "Native BF compiler component; XAX backend still uses Windows Python bootstrap helpers",
+  "limitations": [
+    "Trusted test pointer interface, not an untrusted foreign entry",
+    "Frontend components use 65536-byte buffers; largest general source frame is not covered",
+    "No Linux x86-64 execution host available; user confirmed",
+    "No performance advantage claimed"
+  ],
+  "artifacts": [
+    {
+      "path": "D:\\GitHub\\Brainfuck_Ballsdeep_Compiler\\examples\\decision.bf",
+      "bytes": 151,
+      "sha256": "61a87e0c7c1d4a2289a879076ed75b769dfd65ea159d113a3ac997fb60c73ba9"
+    },
+    {
+      "path": "D:\\GitHub\\Brainfuck_Ballsdeep_Compiler\\compiler\\compiler.bf",
+      "bytes": 4531,
+      "sha256": "56bc7b195c3ff06d5bb61c6363f10558c270dcaead89fa96e627ee767ccae91e"
+    },
+    {
+      "path": "D:\\GitHub\\Brainfuck_Ballsdeep_Compiler\\build\\bbx\\decision.bbx",
+      "bytes": 26,
+      "sha256": "963d460f8a074fbd1021ec740f13a852112c0388e66623068e18510a4312f1e9"
+    },
+    {
+      "path": "D:\\GitHub\\Brainfuck_Ballsdeep_Compiler\\build\\bbx\\windows\\decision.dll",
+      "bytes": 8704,
+      "sha256": "a5dbe7c29e82fcafc4712150bb27ee4e6a8e953722c0088fd496bde8ed9ca7f8"
+    },
+    {
+      "path": "D:\\GitHub\\Brainfuck_Ballsdeep_Compiler\\build\\bbx\\windows\\decision.xax",
+      "bytes": 6458,
+      "sha256": "9910fbaf927408a455c8d32045f3ded3408d2dd61c342ae81988f39f2b664637"
+    },
+    {
+      "path": "D:\\GitHub\\Brainfuck_Ballsdeep_Compiler\\build\\bbx\\windows\\compiler.stage3.dll",
+      "bytes": 701952,
+      "sha256": "cb12e70cdf5d9b8860b25e46e7fe89bcb9ef6d47173379db8cc3aa8c06cb047f"
+    },
+    {
+      "path": "D:\\GitHub\\Brainfuck_Ballsdeep_Compiler\\build\\bbx\\windows\\compiler.stage0.xax",
+      "bytes": 316135,
+      "sha256": "9e54146ce237a0112caeba04fe6dadc781551f6a502f984f3dbbce3073d069cb"
+    },
+    {
+      "path": "C:\\Users\\SiN\\.codex\\visualizations\\2026\\10\\18\\01a14f2c-277c-7330-85c1-2cd5abe8d120\\bbc-windows-verify.py",
+      "bytes": 6187,
+      "sha256": "a7fe03b4ab5ae9c3b211889a780c006ebf55086dbf4370e6d76ef044abd067f4"
+    }
+  ],
+  "latest_verified_xax_revision": "51bb251aff4abfe340901960b150eb11dc2a9a50",
+  "latest_verified_xax_source_hashes": {
+    "compiler/src/xax_bbx.py": "08fcbe63e81ee8a92089946465432d9a32bb253d674603eabb9d4136aaf748d1",
+    "compiler/src/xax_bbx_android.py": "509bcefbc79d5d5451d0f59b203fe46b2054713b57ec8b6c17d8ffff9e5cf408",
+    "compiler/src/xax_x86_64.py": "c0c43abd17de7d096f36c6ba898650f9346d6464e46baecd6ef6b6974b60bc94",
+    "compiler/src/xax_x86_64_regalloc.py": "a1320312941df19887b62d7348df5d06235c401cfaa592165f8550b389c9b739",
+    "compiler/tests/test_xax_bbx_windows.py": "4f1a18dc509da989830905b3e97e2201bd0a1e959cb59aad5ff7c04571af4bac",
+    "compiler/tests/test_xax_bbx_android.py": "03d9b4952c9cb9798ab86029b63221fa48c27879ed141c552760b84bc3c602d9",
+    "compiler/benchmarks/android_bbx_app.py": "e0fe358ff04c5d37c0d11aa65d846bd43468c1a07e361a38a6a7cb3b72437f51",
+    "compiler/pyproject.toml": "7f07b2c02c8efdd0ace0ab56cbf1746fabb7d764c037b18d3e2804651e5a5513",
+    "docs/BBX_IMPORT.md": "ad7c1402f1ce4461b42a1562dc67d4db5e20e1881d1b66309a2261909c210fc5"
+  },
+  "xax_publication": "Local commits only; earlier automatic approval review rejected remote push",
+  "artifact_parity": {
+    "android_library_dex_and_stores_unchanged_after_target_selection": true
+  },
+  "focused_regression": {
+    "runner": "pytest -q -p no:faulthandler",
+    "passed": 45,
+    "skipped": 12,
+    "subtests_passed": 158,
+    "report": "build/bbx/windows/xax-tests.xml",
+    "reason_for_disabled_faulthandler": "Windows Unicorn uses handled access violations; Python faulthandler prints misleading fatal diagnostics for them"
+  },
+  "xax_revision": "51bb251aff4abfe340901960b150eb11dc2a9a50",
+  "development_failures_resolved": [
+    {
+      "probe": "Windows decision lowering",
+      "diagnostic": "NATIVE-BITS-SUPPORTED bits<1>",
+      "fix": "Narrow arithmetic masking and typed dynamic pointer support in existing XAX backend"
+    },
+    {
+      "probe": "Large native frontend frame",
+      "exit_code": "0xC0000005",
+      "fix": "Guard-page probing in both hosted lowering paths; fresh-process 128 KiB regression passed"
+    }
+  ],
+  "final_audit": {
+    "brainfuck_files": 7,
+    "brainfuck_instructions": 2808,
+    "retained_files": 58,
+    "local_markdown_links": 46,
+    "implementation_purity": true,
+    "recorded_artifacts_match": true,
+    "current_xax_source_hashes_match": true,
+    "current_windows_compiler_dll_rebuild_matches_execution": true
+  }
+}

@@ -1,0 +1,9 @@
+*.bf text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.request -text
+*.bbx -text
+*.input -text
+*.output -text
+.gitignore text eol=lf
+LICENSE text eol=lf

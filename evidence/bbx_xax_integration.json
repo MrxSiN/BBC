@@ -1,0 +1,214 @@
+{
+  "status": "PROTOTYPE",
+  "format": "BBX",
+  "format_version": 1,
+  "host": "Windows AMD64; Python 3.12.10",
+  "execution": "Unicorn ARM64 instruction emulation; not Android/Bionic/ART/device execution",
+  "unicorn_version": "2.1.4",
+  "xax_require_native": false,
+  "host_helper_authority": {
+    "blake3-compress": {
+      "component": "blake3-compress",
+      "semantic_root": null,
+      "native_artifact_digest": null,
+      "requested_authority": "xax",
+      "actual_authority": "python",
+      "fallback_occurred": true,
+      "fallback_reason": "native leaf unavailable: RuntimeError('host mmap does not expose executable mappings')"
+    },
+    "blake3-hash": {
+      "component": "blake3-hash",
+      "semantic_root": null,
+      "native_artifact_digest": null,
+      "requested_authority": "xax",
+      "actual_authority": "python",
+      "fallback_occurred": true,
+      "fallback_reason": "native XAX helper images run on Linux x86-64 only (host: win32 AMD64)"
+    },
+    "store-writer": {
+      "component": "store-writer",
+      "semantic_root": null,
+      "native_artifact_digest": null,
+      "requested_authority": "xax",
+      "actual_authority": "python",
+      "fallback_occurred": true,
+      "fallback_reason": "native XAX helper images run on Linux x86-64 only (host: win32 AMD64)"
+    },
+    "store-decoder": {
+      "component": "store-decoder",
+      "semantic_root": null,
+      "native_artifact_digest": null,
+      "requested_authority": "xax",
+      "actual_authority": "python",
+      "fallback_occurred": true,
+      "fallback_reason": "native XAX helper images run on Linux x86-64 only (host: win32 AMD64)"
+    },
+    "typing": {
+      "component": "typing",
+      "semantic_root": null,
+      "native_artifact_digest": null,
+      "requested_authority": "xax",
+      "actual_authority": "python",
+      "fallback_occurred": true,
+      "fallback_reason": "native XAX helper images run on Linux x86-64 only (host: win32 AMD64)"
+    },
+    "store-verifier": {
+      "component": "store-verifier",
+      "semantic_root": null,
+      "native_artifact_digest": null,
+      "requested_authority": "xax",
+      "actual_authority": "python",
+      "fallback_occurred": true,
+      "fallback_reason": "native XAX helper images run on Linux x86-64 only (host: win32 AMD64)"
+    },
+    "graph-decoder": {
+      "component": "graph-decoder",
+      "semantic_root": null,
+      "native_artifact_digest": null,
+      "requested_authority": "xax",
+      "actual_authority": "python",
+      "fallback_occurred": true,
+      "fallback_reason": "native XAX helper images run on Linux x86-64 only (host: win32 AMD64)"
+    },
+    "cfg": {
+      "component": "cfg",
+      "semantic_root": null,
+      "native_artifact_digest": null,
+      "requested_authority": "xax",
+      "actual_authority": "python",
+      "fallback_occurred": true,
+      "fallback_reason": "native XAX helper images run on Linux x86-64 only (host: win32 AMD64)"
+    }
+  },
+  "xax_base_revision": "aa5b94ba806eecf59ba654667fb6ef3fd9618206",
+  "xax_files_sha256": {
+    "compiler/src/xax_bbx.py": "53b72bf2129755e37e1be7e69d9357d07d31d069218ab90dbce8a4cc3213a2e4",
+    "compiler/tests/test_xax_bbx.py": "d2bf368abacc8109bbdd3c13031503ddacaccacbff0399f1efed133d7d6a3687",
+    "docs/BBX_IMPORT.md": "da42c82a19d59d95b821b755d6adc2ffda5d4166d01e95ccab4fe34ae80bbbf9",
+    "compiler/pyproject.toml": "b77fb3ebaf822f73e9c5ac0c18e9cc65c92c6a2734371488abbcd960911c9e4f"
+  },
+  "bbc_frontend_sha256": "56bc7b195c3ff06d5bb61c6363f10558c270dcaead89fa96e627ee767ccae91e",
+  "bbc_decision_sha256": "61a87e0c7c1d4a2289a879076ed75b769dfd65ea159d113a3ac997fb60c73ba9",
+  "decision_bbx_sha256": "963d460f8a074fbd1021ec740f13a852112c0388e66623068e18510a4312f1e9",
+  "xax_semantic_root": "ecfb5c308b4fa94eddd5b06250c50caeb350c7c4ec7cfd82cad248a22e64c0da",
+  "function_cid": "2513549dfc83d898c823b01307457de61bf0a13ae777854609fa49189d73c5b6",
+  "deterministic_graph_reconstruction": true,
+  "graph_sha256": "9cc516e7af502282a26b8487a0b96f79a479bb75e342566d2d79d965e5a39fd6",
+  "library_sha256": "cafb58c602d3358284cde55c5e8ca79c3b5aa6ee43210e51a3ff824ab03b5602",
+  "library_bytes": 17352,
+  "code_bytes": 696,
+  "external_verifier_sha256": "fdd95e4e41b96c4f3d715fe013325018d0b3853c79d6d1c274a98bfe67c28be3",
+  "test_methods": 26,
+  "test_methods_passed": 22,
+  "test_methods_skipped": [
+    {
+      "test": "test_jvm (test_xax_byte_view_widening.ByteViewExecutionTests.test_jvm)",
+      "reason": "requires a JDK"
+    },
+    {
+      "test": "test_linux_x86_64_matches_the_reference_executor (test_xax_byte_view_widening.ByteViewExecutionTests.test_linux_x86_64_matches_the_reference_executor)",
+      "reason": "requires a Linux x86-64 host"
+    },
+    {
+      "test": "test_random_byte_view_programs (test_xax_byte_view_widening.FactsEngineTests.test_random_byte_view_programs)",
+      "reason": "requires a Linux x86-64 host"
+    },
+    {
+      "test": "test_riscv64_rejects_and_x86_64_lowers (test_xax_byte_view_widening.ViewsBackendTests.test_riscv64_rejects_and_x86_64_lowers)",
+      "reason": "the XAX backend programs run natively on Linux x86-64"
+    }
+  ],
+  "bbx_test_methods": 7,
+  "bbx_unittest_arm64_runs": 29,
+  "bbc_record_integration_checks": 13,
+  "integration_results": [
+    {
+      "input_hex": "00",
+      "capacity": 16,
+      "logical_length": null,
+      "status": 0,
+      "output_hex": "01",
+      "emulation": "passed"
+    },
+    {
+      "input_hex": "01",
+      "capacity": 16,
+      "logical_length": null,
+      "status": 0,
+      "output_hex": "00",
+      "emulation": "passed"
+    },
+    {
+      "input_hex": "ff",
+      "capacity": 16,
+      "logical_length": null,
+      "status": 0,
+      "output_hex": "00",
+      "emulation": "passed"
+    },
+    {
+      "input_hex": "00",
+      "capacity": 0,
+      "logical_length": null,
+      "status": 2,
+      "output_hex": "",
+      "emulation": "passed"
+    },
+    {
+      "input_hex": "00",
+      "capacity": 16,
+      "logical_length": 17,
+      "status": 3,
+      "output_hex": "",
+      "emulation": "passed"
+    },
+    {
+      "fixture": "all-eight",
+      "status": 0,
+      "output_hex": "00",
+      "emulation": "passed"
+    },
+    {
+      "fixture": "bad-close",
+      "error_record_rejected": true
+    },
+    {
+      "fixture": "bad-open",
+      "error_record_rejected": true
+    },
+    {
+      "fixture": "empty",
+      "status": 0,
+      "output_hex": "",
+      "emulation": "passed"
+    },
+    {
+      "fixture": "nested",
+      "status": 0,
+      "output_hex": "04",
+      "emulation": "passed"
+    },
+    {
+      "fixture": "raw-zero",
+      "status": 0,
+      "output_hex": "01",
+      "emulation": "passed"
+    },
+    {
+      "fixture": "safe-annotations",
+      "status": 0,
+      "output_hex": "01",
+      "emulation": "passed"
+    },
+    {
+      "fixture": "truncated",
+      "error_record_rejected": true
+    }
+  ],
+  "call_boundary": "Internal XAX borrowed-view call; three distinct live initialized buffers required. No untrusted raw-pointer/JNI wrapper.",
+  "android_app": "UNIMPLEMENTED",
+  "native_frontend_selfhosting": "UNIMPLEMENTED",
+  "windows_linux_delivery": "UNIMPLEMENTED",
+  "xax_revision": "2ce6797782532a08f7938d8db6a2e881c013d3e9",
+  "publish_status": "local commit; remote main push rejected by automatic approval review pending explicit user authorization"
+}
