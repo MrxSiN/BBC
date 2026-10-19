@@ -2,7 +2,7 @@
 *.md text eol=lf
 *.json text eol=lf
 *.request -text
-*.bbx -text
+*.bfx -text
 *.input -text
 *.output -text
 .gitignore text eol=lf

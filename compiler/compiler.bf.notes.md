@@ -1,8 +1,8 @@
 # Portable frontend tape map
 
 Authoritative source: [compiler.bf](compiler.bf).
-Raw SHA-256: `56bc7b195c3ff06d5bb61c6363f10558c270dcaead89fa96e627ee767ccae91e`.
-Filtered SHA-256: `2b4d63023917ec76545f7118c00fe9829736a8eeb06e65844f6902492684fd42`.
+Raw SHA-256: `45a5ae43b6cebfe854453827e321c11be2b7ab50db4d78f6a2360b241ed2014b`.
+Filtered SHA-256: `ecc84ea90ad9cb1b2d314686078177f8e8b9a430300f09a94a34d3777dd5c536`.
 The source has 4,531 bytes and 2,455 instructions. Annotations contain none
 of the eight instruction characters. Whitespace and annotations are ignored
 by ordinary interpreters, without preprocessing.
@@ -46,7 +46,7 @@ At most 3,840 instructions are stored. The working slot then spans cells
 left of the zero sentinel. These layout bounds are also exercised by the
 external instrumented interpreter; they are not a claim about an XAX backend.
 
-After validation, the frontend emits BBX magic, binary version and status. Success additionally
+After validation, the frontend emits BFX magic, binary version and status. Success additionally
 emits the count, scans marked slots left to the sentinel, then outputs each
 stored instruction in order. Failures emit exactly five bytes. This prevents
 partial success output for rejected source; it does not promise atomic OS

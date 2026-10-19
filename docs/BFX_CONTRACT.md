@@ -1,11 +1,11 @@
-# BBX portable boundary
+# BFX portable boundary
 
 Status: PROTOTYPE. This is BBC's portable boundary to the separate XAX project.
 
 All integers below are unsigned little endian. One invocation compiles one
 request. Transport bytes are data, never Brainfuck instructions.
-BBX means Brainfuck Ballsdeep XAX. Save module records with the `.bbx`
-extension. The format name is BBX; its version is a separate metadata byte.
+BFX means Ballsdeep Brainfuck XAX. Save module records with the `.bfx`
+extension. The format name is BFX; its version is a separate metadata byte.
 
 ## Request
 
@@ -20,11 +20,11 @@ In particular, zero on physical EOF cannot masquerade as the terminator.
 
 ## Response
 
-Success: `42 42 58 || version:u8 || 00 || instruction_count:u16 || instructions`
+Success: `42 46 58 || version:u8 || 00 || instruction_count:u16 || instructions`
 
-Failure: `42 42 58 || version:u8 || error:u8` and nothing else.
+Failure: `42 46 58 || version:u8 || error:u8` and nothing else.
 
-`42 42 58` is ASCII `BBX`. The initial supported version is binary `01`,
+`42 46 58` is ASCII `BFX`. The initial supported version is binary `01`,
 not ASCII `1`. Version is at offset 3, status at offset 4, count at offsets
 5 and 6, and success payload begins at offset 7. A failure is exactly five
 bytes. Error values:
@@ -55,23 +55,21 @@ limit its working slot starts at 61,456 and ends at 61,471. The compiler's own
 executable stream must fit these same limits; compiling that stream alone is
 not native self-hosting.
 
-## Compatibility
+## Versioning
 
-This replaces the prototype `BFI1` header (`42 46 49 31`). Existing records
-must be recompiled; renaming their file extension does not convert them.
-Request framing, status meanings, counts and source-language semantics are
-unchanged. No native XAX importer has been released, so there is no deployed
-adapter compatibility path to retain. Do not accept the old magic as BBX.
+BFX v1 requires magic `42 46 58` and binary version `01`. The importer rejects
+other magic values and unsupported versions. Compile source with the BFX
+frontend to produce a module; changing a filename does not convert contents.
 Future incompatible records require a new version byte; compatible metadata
-extensions also require an explicit documented framing rule. No extension
-mechanism is added until a concrete use requires it.
+extensions require an explicit documented framing rule. No extension mechanism
+is added until a concrete use requires it.
 
 ## Import requirements
 
 An XAX importer must check the three magic bytes, supported version, exact
 response length, status, supported limits, all payload bytes and bracket
 balance before constructing a graph.
-It must reject error records and trailing or missing response bytes. A BBX
+It must reject error records and trailing or missing response bytes. A BFX
 module fixes the semantics in [the profile](BRAINFUCK_PROFILE.md); it carries
 no target selection or capability permission. The importer must reject a
 target that cannot enforce this profile and the decision buffer contract.

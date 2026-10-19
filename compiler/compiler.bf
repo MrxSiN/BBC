@@ -1,7 +1,7 @@
 # BBC portable compiler
-# PURPOSE Validate framed source and emit a BBX module
+# PURPOSE Validate framed source and emit a BFX module
 # INPUT Raw little endian source length then source then byte one
-# OUTPUT BBX magic version status then count and commands on success
+# OUTPUT BFX magic version status then count and commands on success
 # LIMIT At most three thousand eight hundred forty commands
 # LIMIT At most two hundred fifty five nested loops
 # LAYOUT Each slot has sixteen cells and slot zero is a sentinel
@@ -143,12 +143,12 @@
 >[[-]<<<<<<[-]+++>>>>>>]
 >>[[-]<<<<<<<<[-]+>>>>>>>>]
 
-# Emit BBX magic and a separate binary version after validation
+# Emit BFX magic and a separate binary version after validation
 <<<<<<<<<<<<<[-]
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ++.
-.
-++++++++++++++++++++++.
+++++.
+++++++++++++++++++.
 [-]+.
 >>>>>.
 
