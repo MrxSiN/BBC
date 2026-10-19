@@ -1,4 +1,4 @@
-*.bf text eol=lf
+*.bf text eol=lf linguist-language=Brainfuck
 *.md text eol=lf
 *.json text eol=lf
 evidence/*.json -text whitespace=cr-at-eol
