@@ -2,7 +2,7 @@
 *.md text eol=lf
 *.json text eol=lf
 *.request -text
-*.bfx text eol=lf
+*.bfx text eol=lf linguist-language=Brainfuck
 *.input -text
 *.output -text
 .gitignore text eol=lf
