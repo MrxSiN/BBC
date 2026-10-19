@@ -1,7 +1,7 @@
 # BBC and BFX status
 
 Evidence: **2026-10-19** frontend/platform runs; **2026-10-20** Windows native
-driver prototype, tape-reset optimization and standalone Android process. Format: **BFX v1**, magic `42 46 58`, binary
+driver prototype, tape-reset optimization and standalone Android/Windows processes. Format: **BFX v1**, magic `42 46 58`, binary
 version `01`. The [contract](02_BFX_CONTRACT.md) and
 [execution profile](01_BRAINFUCK_PROFILE.md) define the shared behavior.
 
@@ -9,7 +9,7 @@ version `01`. The [contract](02_BFX_CONTRACT.md) and
 
 | Component | Android ARM64 | Windows x86-64 | Evidence |
 |---|---|---|---|
-| Standalone Android executable | EXECUTED: 23 native programs; fragmented/binary I/O, size and failure checks | No new standalone package | Direct verified decision call; process advantage over pinned Awib, brainfry still faster |
+| Standalone executable | EXECUTED: 23 native programs; fragmented/binary I/O, size and failure checks | EXECUTED: 23 native programs and 28 host checks; kernel32-only PE | Direct verified decisions; separate target-specific build configurations and evidence |
 | Current BBC frontend | EXECUTED | EXECUTED | Current cycles reproduce the seed on both required targets |
 | XAX native driver prototype | No new execution | EXECUTED with bounded coverage: 78 valid stores accept, 130 malformed stores reject, four decline; one diagnostic differs | Native PE build/edit/resolve fixtures pass; corrected self-store and DLL packaging decline |
 | Standalone XAX hashing host | No new execution | EXECUTED: 139 successful streams and five failure cases | Separate native helper process; not yet used by the compiler loader |
@@ -84,8 +84,8 @@ rebuilds match all 36 initially executed native artifacts byte for byte.
 
 In the original pilot, all four target/comparator aggregates favor the baseline for process time,
 test-build time and standalone test artifact bytes. These pilot boundaries
-are REGRESSION; steady-state competitor runtime, compiler/runtime RAM and full
-application results remain NOT MEASURED. The outer compilation figure retains
+are REGRESSION. That pilot did not measure steady-state runtime, RAM or full
+applications; the later follow-up below supplies scoped RAM results. The outer compilation figure retains
 common measurement-CLI overhead, with inner intervals published separately.
 It is not the final compiler victory boundary. No competitor is SURPASSED.
 Graph verification accounts for a median 75.5%/81.6% of instrumented BBC
@@ -139,13 +139,33 @@ The [package and native replay](03_XAX_INTEGRATION.md#standalone-android-process
 preserve full tape reset, bounds and failed-output discard. Twenty-three
 programs run natively; additional checks cover binary/fragmented input,
 maximum/excess input, closed descriptors and large file/pipe output. No
-unrestricted comparator is SURPASSED. Best-mode, full-profile, Windows,
-compiler-latency, RAM and application gates remain open; M8 is not achieved.
+unrestricted comparator is SURPASSED. That snapshot left Windows, compiler
+latency and RAM unmeasured; the later follow-up below measures them on the
+twelve-source corpus. Best-mode, broader-profile and application gates remain
+open; M8 is not achieved.
+
+## Fresh builds, memory and Windows comparisons
+
+The [new comparison](08_BENCHMARKS.md#build-latency-ram-and-windows-standalone)
+measures complete source-to-standalone builds for both targets, compiler
+process-tree memory, runtime resident memory on both targets and standalone
+Windows process execution. It retains the original twelve sources and
+holdouts: 2,160 timed builds, 864 separately profiled builds, 1,080 timed
+Windows processes and 1,080 Android peak-RSS runs. Additional Windows memory
+trials are recorded separately. All build outputs reproduce validated hashes;
+all runtime outputs and statuses are checked.
+
+Compiler resident peaks are sampled lower bounds; kernel peak commit is a
+distinct metric. Native BBC filtering/import is followed by unchanged generic
+Python verification and lowering on Windows. This does not complete the
+native compiler driver, best-mode coverage, real applications or M8.
 
 ## Evidence index
 
 | Report | What it establishes |
 |---|---|
+| [build_runtime_resources.json](../evidence/build_runtime_resources.json) | Fresh complete-build latency, compiler/runtime memory, Windows standalone comparisons, raw samples, calibrations, excluded launcher probe and explicit scope |
+| [standalone_windows.json](../evidence/standalone_windows.json) | Canonical Windows host and public hello transaction; 23 native programs, 28 host checks, native binding replay/verify/stale rejection and exact empty/hello rebuilds; explicit unchanged generic inlining configuration |
 | [standalone_android.json](../evidence/standalone_android.json) | Static Android process host and binding, correctness/artifact hashes, primary raw process timings against pinned Awib/brainfry, size summaries, retained excluded concurrent-validation probe |
 | [standalone_native_replay.json](../evidence/standalone_native_replay.json) | Native-only replay of 23 Android programs; exact native authority; Windows driver binding replay, verification and stale-root rejection |
 | [wide_tape_reset.json](../evidence/wide_tape_reset.json) | Current canonical importer transaction; 393 cases per version/target, 380 decision checks per version/target, three twenty-check frontend generations per target, native-call A/B and fresh Android process comparisons |
@@ -205,8 +225,9 @@ is canonical semantic graphs in the separate repository.
   16 bytes, so it avoids that operation and executes successfully.
 - M4 is incomplete: frontend profiling, two P0 improvements and the first
   [competitor test-pipeline pilot](08_BENCHMARKS.md) are MEASURED. P1/P2,
-  steady-state comparisons, direct scored compiler/deployment boundaries,
-  compiler/runtime RAM and full application coverage remain. XAX graph
+  steady-state comparisons, broader compiler/deployment boundaries,
+  broader compiler/runtime RAM coverage and full application coverage remain.
+  The new twelve-source follow-up supplies scoped build/RAM measurements. XAX graph
   verification bucket includes cold helper setup. The follow-up identifies
   local proof-cache reuse, repeated checked-access type hashing and the
   missing Windows native-helper host path. Reuse existing APIs for the cache;

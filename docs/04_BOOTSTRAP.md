@@ -116,3 +116,23 @@ cycle and from any XAX compiler self-build. The resulting static syscall ELF
 executes on Android ARM64; it needs no desktop Linux host. Binary output
 checks use device files/pull or native pipes, avoiding observed ADB display
 newline translation.
+
+## Standalone Windows packaging
+
+The [canonical Windows host](https://github.com/MrxSiN/XAX/blob/3dcb358e48b0f9a45b8cb72767c1aa600e55cd78/compiler/integration/bfx/standalone_windows.xax)
+uses kernel32 I/O, owned buffers and the same checked decision contract.
+Apply its [hello binding](https://github.com/MrxSiN/XAX/blob/3dcb358e48b0f9a45b8cb72767c1aa600e55cd78/compiler/integration/bfx/standalone_windows_hello.edit)
+through the expected-root transaction interface and verify the complete store.
+The [build guide](https://github.com/MrxSiN/XAX/blob/3dcb358e48b0f9a45b8cb72767c1aa600e55cd78/compiler/integration/bfx/WINDOWS_STANDALONE.md#build-configuration)
+uses unchanged generic graph-splicing and PE lowering APIs. An explicit
+inlined lowering view is required for larger programs because the default
+Win64 call path declines the decision's five machine arguments and returned
+borrowed views. This is a bootstrap configuration, not a new native compiler
+driver or BBC backend.
+
+[Windows evidence](../evidence/standalone_windows.json) records 23 native
+programs and 28 host checks. The native driver replays the public binding,
+verifies it and rejects its stale root. Empty and hello PE files rebuild
+byte for byte. Their process interface accepts binary input up to 65,536 bytes
+and discards decision-error output; no separate decision DLL or test host is
+required. BBC's existing three-generation frontend cycle remains separate.

@@ -1,17 +1,207 @@
 # BBC compared with other Brainfuck compilers
 
-**BBC's standalone Android program now runs faster than the pinned Awib
-build on the twelve-program process comparison. Brainfry remains faster.**
-The original test-pipeline build and file-size results still favor the
-competitors. The overall competitive goal is **NOT YET ACHIEVED**.
+The latest follow-up measures **complete builds, memory use and standalone
+Windows programs** on the same twelve-program corpus. The earlier Android
+process comparison remains separate. The overall competitive goal is
+**NOT YET ACHIEVED**.
 
-The tables use actual elapsed time and file size: **lower is better**.
-One millisecond (ms) is one thousandth of a second; 1,000 ms is one second.
-These measurements cover twelve small programs on each target. They do not
-measure sustained computation inside an already running application, RAM,
-energy or real-application performance.
+Tables use elapsed time, memory and file bytes: **lower is better**.
+One millisecond (ms) is one thousandth of a second. One MiB is 1,048,576 bytes.
+These are small-program comparisons of pinned configurations, with retained
+holdouts. They do not establish best-mode, sustained-computation or real-app
+superiority.
+
+## Build latency, RAM and Windows standalone
+
+Measured on **2026-10-20**. Both targets are built on the Windows Ryzen 9 5900HS
+host; Android programs run on the Pixel 8 Pro. The [complete report](../evidence/build_runtime_resources.json)
+contains the frozen plan, exact sources/inputs, artifact hashes, raw samples,
+per-program quartiles, exploratory intervals and calibration data.
+
+BBC's current Windows build pipeline takes longer and records higher sampled
+resident-memory peaks than these competitors. Windows process-time differences
+are small and inconclusive; these runs do not establish a runtime lead.
+
+### Time to build a complete standalone program
+
+This starts a fresh required build process and ends after the executable is
+written and the build process exits. BBC runs its native frontend and native
+XAX importer, then uses unchanged generic Python verification, binding and
+native lowering. Awib translates to C and invokes the optimizing C compiler
+and linker. Brainfry runs its native AOT compiler directly. Compiler bootstrap,
+SDK installation, device deployment and APK packaging are excluded equally.
+
+| Build for | BBC (ms) | Awib (ms) | brainfry (ms) |
+|---|---:|---:|---:|
+| Windows x86-64 | 986.982 | 137.309 | 14.799 |
+| Android ARM64 | 886.699 | 750.419 | 15.195 |
+
+Each compiler has thirty timing builds per source/target: ten in each of
+three separate runs, plus one excluded warmup per run. The table averages
+the twelve per-program medians, giving every program equal weight. All 2,160
+timed builds check successful completion and reproduce the validated executable
+hash. OS/file caches are warm; “fresh” describes process startup.
+
+### Windows standalone execution, including startup
+
+| Program runs on | BBC (ms) | Awib (ms) | brainfry (ms) |
+|---|---:|---:|---:|
+| Windows x86-64 | 14.396 | 13.784 | 14.938 |
+
+BBC averages 0.611 ms more than Awib and 0.542 ms less than brainfry. Both
+exploratory comparison intervals include faster and slower outcomes, so the
+small differences above do not establish an advantage over either compiler.
+
+These are complete executables with binary stdin/stdout. BBC needs no separate
+decision DLL or fixed test host. The native timer covers detached process
+creation, output consumption and completion. Input/pipe preparation and oracle
+comparison are outside the timer for every arm; no overhead is subtracted.
+All 1,080 timed invocations check exact output and exit status. Each cell again
+averages twelve medians of thirty trials, across three runs.
+
+### Peak resident memory while running
+
+| Program runs on | BBC (MiB) | Awib (MiB) | brainfry (MiB) |
+|---|---:|---:|---:|
+| Windows x86-64 | 8.639 | 8.806 | 8.637 |
+| Android ARM64 | 1.199 | 3.205 | 1.192 |
+
+Each trial measures a whole process lifetime. Windows uses the kernel's
+[peak working-set counter](https://learn.microsoft.com/en-us/windows/win32/api/psapi/ns-psapi-process_memory_counters)
+on the retained process handle after exit. Android uses the waited child's
+[maximum resident set](https://man7.org/linux/man-pages/man2/getrusage.2.html)
+in KiB, converted to bytes. Each table cell averages twelve per-program
+medians of thirty peaks. The two OS counters include shared resident mappings
+and startup; they are not PSS, program-only allocation sizes or directly
+comparable cross-OS accounting. Android collector self-memory is retained as
+a diagnostic; small values near a launch floor cannot isolate program-only RAM.
+
+### Resident memory during a complete build
+
+| Build for | BBC (MiB) | Awib (MiB) | brainfry (MiB) |
+|---|---:|---:|---:|
+| Windows x86-64 | 104.938 | 45.932 | 8.528 |
+| Android ARM64 | 111.714 | 71.489 | 8.580 |
+
+These are **sampled peaks of the simultaneous resident sum across the entire
+live build process tree**, including required coordinators and child tools.
+Memory trials are separate from timing trials: four per source/compiler/target
+in each of three runs, or 864 profiled builds. Each cell averages twelve
+per-program medians of twelve measured peaks; individual maxima and quartiles
+are retained in the report. Shared DLL pages can be counted
+in more than one process. Sampling targets approximately 1 ms; the largest
+observed gap was 7.131 ms. Brief peaks or short-lived descendants can be
+missed, so these are lower bounds to the true
+peak resident sum. They cannot prove memory parity or a general RAM victory.
+BBC’s prototype coordinator retains initialized ABI buffers, including the
+64 MiB importer workspace, through its build function; these are actual
+pipeline measurements, rather than a minimum memory requirement.
+
+### Peak committed memory during a complete build
+
+| Build for | BBC (MiB) | Awib (MiB) | brainfry (MiB) |
+|---|---:|---:|---:|
+| Windows x86-64 | 91.759 | 27.398 | 1.552 |
+| Android ARM64 | 98.793 | 13.035 | 1.548 |
+
+Windows also records the job's kernel-maintained
+[peak committed memory](https://learn.microsoft.com/en-us/windows/win32/api/winnt/ns-winnt-jobobject_extended_limit_information)
+across the complete build tree. It measures committed backing, rather than
+resident physical memory, and is separate from the sampled table above.
+These builds all run on Windows, including the Android-target rows. Each
+cell averages the twelve per-program medians of twelve independent memory
+trials. Declared tape/workspace capacities and executable size are not used
+as RAM measurements.
+
+### Complete Windows executable size
+
+| Compiler | Smallest–largest file (bytes) | Average file (bytes) |
+|---|---:|---:|
+| BBC | 9,216–101,376 | 38,827 |
+| Awib | 111,104–115,200 | 114,517 |
+| brainfry | 2,560–5,120 | 3,072 |
+
+Each compiler contributes twelve complete executables. Shared OS libraries
+are excluded equally. Awib's new Windows configuration links its static C
+runtime; this differs from the older GCC pilot and does not select the best
+compatible Awib mode.
+
+### Configuration and limits
+
+- The frozen sources, inputs, holdouts and expected outputs match the original
+  pilot. Awib and brainfry retain their exact source revisions; their compiler
+  binaries were rebuilt with the recorded tool versions.
+- Windows Awib uses Clang 19 with `-O3 -funsigned-char`, MSVC 14.44 linking and
+  a generic binary-stdio object. Android uses the same NDK Clang 19 setup as
+  before. Brainfry uses its locked release build and native target modes.
+- BBC's [Windows host proof](../evidence/standalone_windows.json) covers 23
+  native programs and 28 host checks. Its [pinned build guide](https://github.com/MrxSiN/XAX/blob/3dcb358e48b0f9a45b8cb72767c1aa600e55cd78/compiler/integration/bfx/WINDOWS_STANDALONE.md)
+  discloses the existing generic inlining configuration needed to avoid a
+  Win64 call-path decline. That work is included in build time and memory;
+  the complete native XAX build driver is still unfinished.
+- All primary benchmark jobs ran serially with counterbalanced compiler order.
+  Clocks, affinity, thermals and ordinary desktop/background activity were
+  uncontrolled. Three run clusters and the exploratory family-adjusted
+  intervals in the report limit statistical generalization.
+- The first console-launch calibration imposed an extra Python coordinator
+  on competitors and created extra console processes. Its completed partial
+  samples are retained and excluded with the reason. The scored runs use
+  native detached command sequencing and direct brainfry invocation. No
+  workloads or samples were removed for poor performance.
+- A concurrent parent/child allocation control validates Windows tree memory;
+  a touched 16 MiB control validates Android peak-RSS units. Calibration samples
+  are excluded from scores. Public distribution of the external hash-pinned
+  collectors remains incomplete.
+
+Build latency, runtime RAM and Windows standalone execution are now measured
+on this corpus. Wider workload coverage, sustained calls, real apps, energy
+and best compatible modes remain open. No unrestricted compiler is marked
+SURPASSED; M8 remains unmet.
+
+<details>
+<summary>Per-program build times (median milliseconds)</summary>
+
+#### Windows x86-64
+
+| Program | BBC (ms) | Awib (ms) | brainfry (ms) |
+|---|---:|---:|---:|
+| hello | 901.711 | 136.244 | 14.425 |
+| binary echo | 664.030 | 135.728 | 14.881 |
+| wrap | 649.685 | 134.212 | 14.851 |
+| nested count | 665.600 | 141.546 | 14.746 |
+| transfer repeat | 1,284.093 | 137.772 | 14.777 |
+| multi transfer | 1,349.233 | 135.699 | 14.672 |
+| scan | 989.085 | 144.455 | 15.024 |
+| nested math | 1,849.426 | 138.303 | 14.807 |
+| clear set | 1,480.630 | 136.334 | 14.859 |
+| permit flag | 657.928 | 134.565 | 15.102 |
+| countdown actions | 647.673 | 137.176 | 14.587 |
+| checksum four | 704.692 | 135.670 | 14.861 |
+
+#### Android ARM64 target, built on Windows
+
+| Program | BBC (ms) | Awib (ms) | brainfry (ms) |
+|---|---:|---:|---:|
+| hello | 817.222 | 747.300 | 15.082 |
+| binary echo | 647.645 | 772.404 | 15.816 |
+| wrap | 626.071 | 756.973 | 16.069 |
+| nested count | 650.086 | 754.476 | 14.966 |
+| transfer repeat | 1,086.292 | 744.907 | 15.071 |
+| multi transfer | 1,155.318 | 742.192 | 15.062 |
+| scan | 904.902 | 752.031 | 15.260 |
+| nested math | 1,568.243 | 748.745 | 14.884 |
+| clear set | 1,218.565 | 743.169 | 14.727 |
+| permit flag | 636.531 | 748.578 | 15.365 |
+| countdown actions | 630.615 | 744.589 | 14.975 |
+| checksum four | 698.900 | 749.671 | 15.062 |
+
+</details>
 
 ## Quick comparison
+
+The tables in this section retain the earlier pilot and standalone Android
+follow-up. Their build/package boundaries differ from the new measurements
+above; their original samples and verdicts remain unchanged.
 
 ### Latest Android standalone process, including startup
 
@@ -167,7 +357,7 @@ parser, interpreter, optimizer or backend. Size comparisons count the BBC
 module plus one copy of the native host per standalone workload, and the
 competitor's complete executable. Module and host bytes are also recorded
 separately. Shared OS libraries are excluded equally; resident/shared runtime
-RAM is unmeasured. XAX emits no debug/static-symbol table in these modules;
+RAM was unmeasured in that pilot; the separate follow-up above measures it. XAX emits no debug/static-symbol table in these modules;
 C outputs use stripped symbols. No APK size comparison is implied.
 
 Awib C uses unsigned-byte cells and a disclosed Windows binary-stdio adapter
@@ -345,7 +535,7 @@ about 0.5–0.6%. The diagnosis below separates store/helper setup from graph
 verification within that stage.
 
 Importer output staging reserves a declared 64 MiB view; peak resident
-compiler RAM is still unmeasured.
+compiler RAM was unmeasured in that diagnosis; see the new full-build memory tables above.
 
 ## Verification cost diagnosis
 
@@ -594,7 +784,7 @@ BBC is still larger on average than both competitors. File size is not RAM.
 This updates the Android standalone process comparison only. Original pilot
 reports and Windows/build timings remain unchanged. Full-profile and best-mode
 coverage, twenty real workloads, three application integrations, compiler
-latency, RAM and Windows standalone comparisons remain open. The installed
+latency, RAM and Windows standalone comparisons were open in that snapshot; the separate follow-up above now measures them on this corpus. The installed
 Android UI app keeps its previous module. No unrestricted comparator is
 SURPASSED, and M8 remains **NOT YET ACHIEVED**.
 
@@ -660,14 +850,15 @@ its previously tested module; M8 remains **NOT YET ACHIEVED**.
 
 The standalone Android process result favors BBC over pinned Awib on its
 recorded subset, while brainfry remains faster. No unrestricted comparator is
-SURPASSED. Unavailable projects remain visible, and missing
-RAM, steady-state execution, application integration, best compatible alternate
+SURPASSED. Unavailable projects remain visible. Broader RAM coverage,
+steady-state execution, application integration, best compatible alternate
 modes and release coverage prevent a sweep on either required target.
 
 GCC-generated C on Windows and Clang-generated C on Android are measured with
 Awib as the pinned translator; those rows share the named Awib data and do
-not count as extra independent compiler wins. Clang on Windows and optimized
-Rust translations need separate full-corpus trials. Brainfry JIT and Awib's
+not count as extra independent compiler wins. The new follow-up above measures
+Clang on Windows over the twelve-source corpus. Optimized Rust translations
+still need separate full-corpus trials. Brainfry JIT and Awib's
 alternate compatible modes also need checking before selecting best modes
 for an unrestricted comparison.
 

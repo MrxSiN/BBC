@@ -3,7 +3,10 @@
 Status: **MEASURED** initial Awib/brainfry process-execution, test-pipeline
 compilation and size pilot on Android ARM64 and Windows x86-64. The
 [results and eight-project coverage matrix](08_BENCHMARKS.md) are separate
-from this plan. Steady-state runtime, RAM, real-application comparisons,
+from this plan. The [fresh-build/resource follow-up](08_BENCHMARKS.md#build-latency-ram-and-windows-standalone)
+now measures both target builds, compiler/runtime memory and Windows standalone
+processes on the twelve-source corpus. Steady-state runtime, broader RAM
+coverage, real-application comparisons,
 best-mode coverage and scored deployment timing remain incomplete.
 The competitive objective is **NOT YET ACHIEVED**. Linux is optional and
 never gates functional delivery or a required-target sweep.
@@ -63,8 +66,9 @@ gap. This change does not implement Brainfuck source rewriting.
 The [standalone Android host](03_XAX_INTEGRATION.md#standalone-android-process)
 now removes the fixed shared-library process host. Its fresh twelve-program
 comparison favors BBC over pinned Awib, while brainfry remains faster.
-Preserve that narrow result; compiler latency, RAM, Windows standalone
-packaging, best compatible modes and real application gates remain. Source
+Preserve that narrow result. The later [build/resource follow-up](08_BENCHMARKS.md#build-latency-ram-and-windows-standalone)
+measures fresh compiler latency, runtime/compiler memory and Windows standalone
+execution. Broader workload, best compatible mode and real-application gates remain. Source
 optimization and lower generated-code cost are still needed for hot compute
 and file-size comparisons.
 
@@ -98,9 +102,10 @@ interpreter/VM results must retain their distinct labels.
 Publish GCC/Clang optimized C and optimized Rust translation references with
 the translator pinned and translation time included. The pilot's Awib C
 rows also supply the same translator's GCC-Windows/Clang-Android references;
-do not count duplicate data as extra independent compiler wins. Alternate
-Clang-Windows and Rust pipelines need complete corpus measurements.
-All such tools and drivers remain outside both implementation repositories.
+do not count duplicate data as extra independent compiler wins. Clang-Windows
+is now measured on the original twelve-source corpus; optimized Rust still
+needs complete measurements. All such tools and drivers remain outside both
+implementation repositories.
 
 ## Corpus and execution prerequisites
 

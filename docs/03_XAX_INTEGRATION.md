@@ -10,6 +10,14 @@ decisions follow [01_BRAINFUCK_PROFILE.md](01_BRAINFUCK_PROFILE.md).
 
 ## Source and responsibility
 
+The standalone Windows host is pinned separately to
+[revision `3dcb358`](https://github.com/MrxSiN/XAX/commit/3dcb358e48b0f9a45b8cb72767c1aa600e55cd78).
+Its [canonical source and build guide](https://github.com/MrxSiN/XAX/blob/3dcb358e48b0f9a45b8cb72767c1aa600e55cd78/compiler/integration/bfx/WINDOWS_STANDALONE.md)
+describe the kernel32-only process interface and required generic bootstrap
+lowering configuration. [Windows execution evidence](../evidence/standalone_windows.json)
+records 23 native programs, 28 host checks, native binding replay and exact
+empty/hello rebuilds. This does not complete the native XAX build driver.
+
 | Canonical XAX source | Responsibility |
 |---|---|
 | [bfx.xax](https://github.com/MrxSiN/XAX/blob/ac7821c9bf9c1bde0c18f00da6d1a60a3b320816/compiler/integration/bfx/bfx.xax) | Validate records and compute matching loop indices |

@@ -88,6 +88,17 @@ naming history. Preserve unrelated working-tree edits.
   `evidence/standalone_native_replay.json` records native authority. Do not
   generalize this to best modes, Windows, compiler latency, RAM, real apps or
   an unrestricted sweep. Older shared-library pilot measurements stay immutable.
+- The standalone Windows PE host and hello binding are canonical XAX sources.
+  `evidence/standalone_windows.json` records 23 native programs, 28 host checks,
+  native binding replay and exact rebuilds. Its required generic bootstrap
+  inlining view avoids a Win64 call-path decline; preserve canonical verification
+  and disclose that build configuration. This does not complete the native
+  compiler driver. Keep fresh build/resource results separate from older pilots.
+  `evidence/build_runtime_resources.json` adds scoped fresh builds, compiler/runtime
+  memory and Windows process comparisons on the twelve-source corpus. Compiler
+  resident sums are sampled lower bounds; job peak commit is a distinct kernel
+  counter. Preserve the excluded launcher calibration and raw counterbalanced
+  trials. These measurements do not complete best-mode/app/coverage gates.
 - The current XAX importer clears the full decision tape with checked eight-byte
   stores at alignment one. Its 393 record cases and 380 decision checks per
   arm/target, native authority and three twenty-check frontend generations

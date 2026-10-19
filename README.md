@@ -32,7 +32,7 @@ or hide a sample row.
 |---|---|
 | Compiled frontend and decision programs | Android ARM64 and Windows x86-64 |
 | Frontend self-compilation | Three identical rebuild generations on each target |
-| Standalone executable | Android ARM64 |
+| Standalone executable | Android ARM64 and Windows x86-64 |
 | Android demo app | Eight fixed, bounded permit, block and error cases |
 
 The recorded builds use Windows-hosted XAX tools, including unchanged generic
@@ -41,10 +41,10 @@ prototype. General Android decisions that may run indefinitely still need
 worker integration; source-program folding and loop optimization remain
 unimplemented. See [status and evidence](docs/05_STATUS.md) for the full scope.
 
-**Performance:** BBC's standalone Android programs beat the pinned Awib build
-in the twelve-program process test; brainfry remains faster. This does not
-establish an overall performance lead. The [benchmark guide](docs/08_BENCHMARKS.md)
-compares elapsed time and file size, with the test conditions and raw evidence.
+**Performance:** [Benchmarks](docs/08_BENCHMARKS.md) compare complete build time,
+memory use, standalone execution and file size. Results cover twelve small
+programs and pinned compiler configurations. BBC has no overall performance
+lead; broader testing and optimization remain.
 
 ## Use the compiler
 
