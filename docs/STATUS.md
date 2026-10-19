@@ -1,45 +1,59 @@
-# BFX status
+# BBC and BFX status
 
-2026-10-19. **BFX — Ballsdeep Brainfuck XAX** is the portable format emitted
-by BBC's Brainfuck frontend. BFX v1 uses magic `42 46 58`, binary version `01`
-and the framing, limits and execution profile defined in the contract.
+Evidence date: **2026-10-19**. Format: **BFX v1**, magic `42 46 58`, binary
+version `01`. The [contract](BFX_CONTRACT.md) and
+[execution profile](BRAINFUCK_PROFILE.md) define the shared behavior.
 
-| Work | Current status | Evidence |
-|---|---|---|
-| Brainfuck frontend and fixtures | EXECUTED | Eight exact fixtures; framing, instruction/nesting limits, maximum raw source and interpreted own-source agreement |
-| XAX-native BFX decoding | EXECUTED | Canonical `compiler/integration/bfx/bfx.xax` in XAX; 393 native Windows cases and the same 393 on Pixel 8 Pro ARM64 |
-| BFX-to-decision-graph emission | EXECUTED | Canonical XAX importer emits and hashes complete stores; 393 record checks on Android and Windows, plus 89 native Windows decision calls passed |
-| BFX Android application | EXECUTED | Canonical XAX app/ABI source; eight Activity cases passed on Pixel 8 Pro |
-| BFX native frontend rebuild cycle through a graph-only importer | EXECUTED | Three generations on each of Android and Windows have identical BFX/store/native artifacts; lowering uses Windows bootstrap tools |
-| BBC optimization | UNIMPLEMENTED | Transparent instruction stream; no speed advantage claimed |
-| Linux execution | UNIMPLEMENTED | No Linux execution performed in this iteration |
+## Executed support
 
-Current results, exact hashes and dependency disclosures are recorded in
-[Frontend and decoder evidence](../evidence/bfx_migration.json). The frontend remains
-ordinary Brainfuck. All newly added executable XAX implementation is a
-canonical semantic graph. The build host uses generic XAX bootstrap utilities.
+| Component | Android ARM64 | Windows x86-64 | Evidence |
+|---|---|---|---|
+| BBC frontend | EXECUTED | EXECUTED | Three native rebuild generations per platform reproduce the seed BFX |
+| Canonical XAX decoder | EXECUTED: 393 cases | EXECUTED: 393 cases | Length, magic, version, opcode, bracket and resource limits |
+| Canonical XAX importer | EXECUTED: 393 cases plus compiler, framer and decision outputs | EXECUTED: 393 cases | Android stores match the established Windows output byte for byte; input and four buffer guards preserved |
+| Generated decision components | EXECUTED | EXECUTED: 89 calls across 13 modules | Native behavior agrees with the Brainfuck profile |
+| Frontend rebuild cycle | EXECUTED: identical BFX/store/ELF across three generations; eight fixtures per generation | EXECUTED: identical BFX/store/DLL across three generations | Import and frontend execution occur on the target; native lowering occurs on Windows |
+| Decision application | EXECUTED: eight Activity cases | UNIMPLEMENTED: no GUI application | Pixel 8 Pro, Android 17/API 37 |
 
-`compiler/integration/bfx/import_bfx.xax` executes on Android and Windows.
-It uses a small mixing-result interface and checked hash scratch outputs;
-the four-buffer import ABI is unchanged. Android imported 393 record cases
-and three real frontend outputs with byte-identical stores and intact input/
-buffer guards. Three Android frontend generations passed eight exact fixtures
-each, with identical BFX, stores and ELF libraries. The Windows cycle and
-89 emitted decision calls also pass.
+The decoder and complete-importer case counts are separate runs of the same
+393-case corpus. The eight Activity cases are separate from the 24 Android
+frontend fixture checks. Neither count is a performance measurement.
 
-Native lowering and canonical verification run on the Windows build host.
-A general ARM64 large-composite return-copy defect remains tracked in XAX
-OI-49; the importer uses a verified interface that avoids that operation.
+The frontend is 4,531 source bytes and 2,455 executable instructions. It accepts
+65,535 raw source bytes, 3,840 instructions and 255 nested loops. The
+interpreter seed passed 21 fixture, boundary and bootstrap checks.
 
-Android UI/JNI/lifecycle behavior is now canonical source in
-`compiler/integration/bfx/android_bfx.xax`. The XAX package ships canonical
-BFX stores, data and documentation.
-`backend_tests.xax` passes 36 arithmetic cases and a fresh-process 128 KiB
-stack probe. Eight Activity cases pass after a generic rebuild from the saved
-source.
+## Evidence index
 
-[Application and regression evidence](../evidence/bfx_retirement.json) records
-source hashes, device results and build dependencies.
-[Importer evidence](../evidence/bfx_android_importer.json) records the current
-canonical source, transaction, native imports and frontend cycles. Generic Python backend, verifier, APK and signing
-tools remain bootstrap dependencies.
+| Report | What it establishes |
+|---|---|
+| [bfx_android_importer.json](../evidence/bfx_android_importer.json) | Current importer source and transaction; Android/Windows execution, native decisions, both rebuild cycles and reproducible artifacts |
+| [bfx_migration.json](../evidence/bfx_migration.json) | Frontend/decoder hashes, 21 seed checks and 393 decoder calls on each target |
+| [bfx_retirement.json](../evidence/bfx_retirement.json) | Canonical application hashes, eight Activity cases, 36 arithmetic checks and a 128 KiB stack probe |
+
+Reports are immutable execution snapshots. Use the report for the component
+and source hash being assessed; a report is not a continuously updated support
+matrix. [XAX integration](XAX_INTEGRATION.md) pins the maintained source revision.
+
+## Build host and boundaries
+
+The importer and compiled Brainfuck frontend execute natively on Android and
+Windows. Canonical verification, native lowering and Android packaging run on
+Windows through unchanged generic XAX Python bootstrap utilities.
+`XAX_REQUIRE_NATIVE` was unset; no Android-hosted XAX compiler claim is made.
+The Android app embeds a compiled decision, without an importer or Brainfuck
+interpreter. All BBC executable source remains `.bf`; XAX integration source
+is canonical semantic graphs in the separate repository.
+
+## Remaining work
+
+- BBC-specific optimization is UNIMPLEMENTED. Any rule needs Brainfuck source
+  changes and positive, negative, wraparound, loop and bounds-equivalence tests.
+- Linux execution is UNIMPLEMENTED in this integration; no Linux execution
+  host is available. Cross-compilation alone will not establish support.
+- Native XAX compiler-host execution on Android is UNIMPLEMENTED in this cycle.
+- The general ARM64 large-composite return-copy defect remains open as
+  [XAX OI-49](https://github.com/MrxSiN/XAX/blob/ac7821c9bf9c1bde0c18f00da6d1a60a3b320816/XAX_OPEN_ISSUES.md#oi-49--android-arm64-large-composite-return-copy).
+  The importer uses checked scratch outputs and mixing results of at most
+  16 bytes, so it avoids that operation and executes successfully.
+- No performance superiority or stable three-platform release is claimed.

@@ -1,11 +1,23 @@
-# Portable frontend tape map
+# BBC frontend algorithm and tape layout
 
-Authoritative source: [compiler.bf](compiler.bf).
+Authoritative source: [compiler.bf](compiler.bf). Wire format:
+[BFX v1](../docs/BFX_CONTRACT.md). Execution semantics:
+[Brainfuck profile](../docs/BRAINFUCK_PROFILE.md).
+
+The frontend reads one known-length request, filters and validates the eight
+instructions, then emits either a complete instruction record or a five-byte
+compiler-error record. It performs no semantic optimization and owns no
+native-code or platform backend.
+
+## Source identity
+
 Raw SHA-256: `45a5ae43b6cebfe854453827e321c11be2b7ab50db4d78f6a2360b241ed2014b`.
 Filtered SHA-256: `ecc84ea90ad9cb1b2d314686078177f8e8b9a430300f09a94a34d3777dd5c536`.
 The source has 4,531 bytes and 2,455 instructions. Annotations contain none
 of the eight instruction characters. Whitespace and annotations are ignored
 by ordinary interpreters, without preprocessing.
+
+## Tape layout
 
 The first sixteen cells stay zero as a left sentinel. Work begins at cell 16.
 For `n` stored instructions the working slot begins at `16 * (n + 1)`.
@@ -24,6 +36,8 @@ For `n` stored instructions the working slot begins at `16 * (n + 1)`.
 | 12 | Sticky size error |
 | 13 | Main-loop flag; later success-output gate |
 | 14, 15 | Opening and closing bracket flags |
+
+## Filtering and validation
 
 Each main iteration begins and ends at offset 13. It clears that flag, reads
 one raw byte, compares all eight opcode values, updates bracket depth, and
@@ -46,8 +60,29 @@ At most 3,840 instructions are stored. The working slot then spans cells
 left of the zero sentinel. These layout bounds are also exercised by the
 external instrumented interpreter; they are not a claim about an XAX backend.
 
-After validation, the frontend emits BFX magic, binary version and status. Success additionally
-emits the count, scans marked slots left to the sentinel, then outputs each
+## Record emission
+
+After validation, the frontend emits BFX magic `42 46 58`, binary version
+`01` and the compiler status. Success additionally emits the little-endian
+count, scans marked slots left to the sentinel, then outputs each
 stored instruction in order. Failures emit exactly five bytes. This prevents
 partial success output for rejected source; it does not promise atomic OS
 writes. Callers must reject incomplete transport output.
+
+
+## Maintenance checks
+
+Preserve request consumption, diagnostic priority and exact instruction order
+when editing the source. Annotations must contain none of the eight executable
+instruction characters. Check raw and filtered hashes independently, slot
+bounds, all exact fixtures, resource limits and independent-interpreter
+agreement after executable changes.
+
+The own-source BFX is 2,462 bytes: seven bytes of framing and 2,455 instructions.
+Interpreted agreement alone is seed verification. Three native frontend
+rebuild generations execute separately on Android and Windows through the
+canonical XAX importer; [bootstrap](../docs/BOOTSTRAP.md) describes that cycle.
+[Current evidence](../evidence/bfx_android_importer.json) binds native results
+to this source hash, and [the fixture guide](../tests/bfx/README.md) describes
+regression inputs. This tape map governs the Brainfuck frontend, not the XAX
+importer's separate serialization workspace.

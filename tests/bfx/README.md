@@ -1,26 +1,71 @@
-# Binary fixtures and verification
+# BFX fixtures and verification
 
-Each `.request` is compiler input and its matching `.bfx` is exact expected
-stdout. `truncated.request` lacks the required terminator; `raw-zero` includes
-literal NUL and FF. See [the contract](../../docs/BFX_CONTRACT.md).
-Modules must contain BFX magic as well as use the `.bfx` extension.
+Each `.request` is exact compiler input. The matching `.bfx` is the complete
+expected response, including compiler-error records. Read
+[the wire contract](../../docs/BFX_CONTRACT.md) before changing fixture bytes.
+BFX magic and binary version are part of the data; the extension alone does
+not identify a valid module. Fixture bytes are protected from checkout
+line-ending conversion by `.gitattributes`.
 
-The `.input`/`.output` pairs run `../basic.bf`, `../loops.bf` and
-`../../examples/decision.bf` (permit/block). `../bounds.bf` and
-`../bounds_right.bf` must fail on executed out-of-range tape movement.
-The `../bootstrap/` fixtures exercise the standard Brainfuck framer.
-Fixture bytes are protected from checkout line-ending conversion.
+## Compiler fixtures
 
-The current external seed verifier is
-`C:\Users\User\.codex\visualizations\2026\10\19\01a151a5-3e3d-7680-a6b1-3dd4bd01e4c9\verify-bfx.ps1`.
-It uses a .NET interpreter with checked 65,536-cell tape, wrapping bytes and
-EOF zero. It executes the BF framer/compiler, compares all eight BFX fixtures,
-checks limits, and compares interpreted own-source output. It is external
-development tooling, not a production compiler or repository implementation.
-A different machine can use any independent interpreter with the same profile.
+| Fixture | Expected compiler status | Payload count | Purpose |
+|---|---|---|---|
+| [all-eight](all-eight.request) | 0 | 8 | Preserve all eight instructions |
+| [bad-close](bad-close.request) | 2 | None | Reject an unmatched closing bracket |
+| [bad-open](bad-open.request) | 2 | None | Reject an unmatched opening bracket |
+| [empty](empty.request) | 0 | 0 | Emit a valid seven-byte empty module |
+| [nested](nested.request) | 0 | 18 | Preserve nested-loop structure |
+| [raw-zero](raw-zero.request) | 0 | 2 | Ignore literal NUL and FF in known-length source |
+| [safe-annotations](safe-annotations.request) | 0 | 2 | Ignore annotation text without changing commands |
+| [truncated](truncated.request) | 1 | None | Reject a missing final terminator |
 
-The new XAX decoder has static input/result/loop-pair data in the separate
-XAX repository at `compiler/integration/bfx/decoder_cases.json`. External
-native-call drivers exercise that canonical graph without supplying any
-validation or translation implementation. Current results and tool hashes:
-[BFX evidence](../../evidence/bfx_migration.json).
+Run [the compiler](../../compiler/compiler.bf) with each request under an
+independent interpreter implementing [the profile](../../docs/BRAINFUCK_PROFILE.md).
+Compare complete stdout byte for byte with the matching `.bfx`. A failed
+compilation has no payload; do not import its error response as a decision.
+When the frontend is a native decision component, check both the native call
+result and the BFX compiler response: they are separate status interfaces.
+
+## Program and bootstrap fixtures
+
+| Program | Input / expected output | What it checks |
+|---|---|---|
+| [basic.bf](../basic.bf) | [basic.input](basic.input) / [basic.output](basic.output) | Byte wrap, literal zero and EOF after the supplied byte |
+| [loops.bf](../loops.bf) | [loops.input](loops.input) / [loops.output](loops.output) | Nested loops and raw byte `04` |
+| [decision.bf](../../examples/decision.bf) | [permit.input](permit.input) / [permit.output](permit.output) | Zero flag emits raw `01` |
+| [decision.bf](../../examples/decision.bf) | [block.input](block.input) / [block.output](block.output) | Nonzero flag emits raw `00` |
+| [bounds.bf](../bounds.bf) | Empty input; required bounds failure | Left move from cell zero |
+| [bounds_right.bf](../bounds_right.bf) | Empty input; required bounds failure | Repeated right moves reach the tape boundary |
+
+The [bootstrap fixtures](../bootstrap/) pair `.input` and `.output` files for
+[frame_source.bf](../../bootstrap/frame_source.bf): empty, ordinary text and
+NUL-terminated text. Compare all emitted bytes. Oversized text emits nothing;
+known-length binary compiler input is a separate transport.
+
+## Boundary and integration checks
+
+External verification also covers the 65,535-byte raw-source limit,
+3,840-instruction acceptance and 3,841-instruction rejection, 255-level nesting
+acceptance and 256-level rejection, interpreted own-source output, and three
+native frontend generations on each supported target.
+
+XAX's [393 static decoder cases](https://github.com/MrxSiN/XAX/blob/ac7821c9bf9c1bde0c18f00da6d1a60a3b320816/compiler/integration/bfx/decoder_cases.json)
+contain record bytes, logical lengths, expected validation results and loop
+pairs. The decoder and complete importer each execute that corpus on Android
+and Windows. Cases include invalid lengths/magic/version, every payload-byte
+value, limit cases, random opcode streams, input preservation and canaries.
+Native decision checks compare an independent Brainfuck oracle and verify
+output/tape effects on success and failure.
+
+The independent interpreter, native-call transports and build drivers remain
+outside BBC. They may execute programs, allocate buffers, compare results and
+move files; they must not implement production parsing, optimization or BFX
+translation. Their identities and hashes are recorded in the evidence reports.
+
+- [Seed and decoder evidence](../../evidence/bfx_migration.json): 21 seed checks and 393 decoder calls per target.
+- [Current importer/cycle evidence](../../evidence/bfx_android_importer.json): 393 importer cases per target, 89 Windows decision calls, three generations per target and 24 Android fixture checks.
+- [Application evidence](../../evidence/bfx_retirement.json): eight Android Activity cases and canonical backend regressions.
+
+These results describe the recorded source hashes. For any executable change,
+rerun the relevant checks before updating [the current status](../../docs/STATUS.md).
