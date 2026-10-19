@@ -1,8 +1,8 @@
 # BBC frontend algorithm and tape layout
 
 Authoritative source: [compiler.bf](compiler.bf). Wire format:
-[BFX v1](../docs/BFX_CONTRACT.md). Execution semantics:
-[Brainfuck profile](../docs/BRAINFUCK_PROFILE.md).
+[BFX v1](../docs/02_BFX_CONTRACT.md). Execution semantics:
+[Brainfuck profile](../docs/01_BRAINFUCK_PROFILE.md).
 
 The frontend reads one known-length request, filters and validates the eight
 instructions, then emits either a complete instruction record or a five-byte
@@ -11,9 +11,9 @@ native-code or platform backend.
 
 ## Source identity
 
-Raw SHA-256: `45a5ae43b6cebfe854453827e321c11be2b7ab50db4d78f6a2360b241ed2014b`.
-Filtered SHA-256: `ecc84ea90ad9cb1b2d314686078177f8e8b9a430300f09a94a34d3777dd5c536`.
-The source has 4,531 bytes and 2,455 instructions. Annotations contain none
+Raw SHA-256: `6829614ef2d7778e8e1513ecdb94726ce00ad2989f12618987a569386a7dce88`.
+Filtered SHA-256: `9bb101b4b342ba4fad80eace408801bfafdfcb80f263833b895acba10d39bf72`.
+The source has 4,355 bytes and 2,110 instructions. Annotations contain none
 of the eight instruction characters. Whitespace and annotations are ignored
 by ordinary interpreters, without preprocessing.
 
@@ -27,22 +27,47 @@ For `n` stored instructions the working slot begins at `16 * (n + 1)`.
 | 0 | Stored-instruction marker; zero in sentinel and current working slot |
 | 1 | Raw source byte; retained as opcode in a stored slot |
 | 2, 3 | Destructive comparison and restoration scratch |
-| 4 | Recognized-command flag |
+| 4 | Recognized-command flag; initialization temporarily saves the nonempty gate here |
 | 5 | Unsigned bracket depth |
 | 6 | Temporary zero-test flag, then final error code |
 | 7, 8 | Filtered instruction count, low byte then high |
-| 9, 10 | Remaining raw source length, low byte then high |
+| 9 | Current group byte counter; zero encodes 256 at an active group entry |
+| 10 | Number of later full 256-byte groups |
 | 11 | Sticky bracket error |
 | 12 | Sticky size error |
 | 13 | Main-loop flag; later success-output gate |
-| 14, 15 | Opening and closing bracket flags |
+| 14, 15 | Opening and closing bracket flags; reused as group-counter scratch after bracket processing |
 
 ## Filtering and validation
 
-Each main iteration begins and ends at offset 13. It clears that flag, reads
-one raw byte, compares all eight opcode values, updates bracket depth, and
-decrements the 16-bit remaining length with borrow. The next-loop flag is the
-OR of the remaining length bytes. All comparisons preserve the raw byte.
+Before the main loop, copy length-high into scratch cells 2 and 3 and restore
+it. Adding one and testing for zero recognizes high byte 255. Only in that
+case, copy and restore length-low twice; adding one or two recognizes 255 or
+254 respectively. Either case sets sticky size error 12. Scratch cells return
+to zero and both length bytes are unchanged. This rejects source beyond
+65,533 without skipping any declared byte or its terminator. The check uses
+269 extra source instructions, no extra tape cells, and runs once per request;
+it changes neither the per-byte loop nor the maximum instruction slot.
+
+For nonempty source, initialization saves the loop gate in cell 4, prepares
+the first byte group, then restores the gate and clears cell 4. A nonzero
+length-low byte gives the first group size. Zero length-low starts a full
+256-byte group and decrements length-high once. Empty source skips both.
+
+Each main iteration begins and ends at offset 13. It sets continuation to one,
+reads one raw byte, decodes the eight opcodes and updates bracket depth.
+After bracket flags are consumed, the group counter decrements and tests its
+low byte once using cells 14 and 15. Only at a completed group does it test
+the high byte, selecting a later full group or stopping. Scratch cells return
+to zero before slot transfer. Opcode decoding preserves the raw byte using a
+single copy into comparison scratch. Nested mismatch branches subtract the
+gaps between ASCII values 43, 44, 45, 46, 60, 62, 91 and 93. A match skips
+all later comparisons. The final mismatch clears the command and bracket
+flags. Scratch returns to zero; bracket flags are set only for their exact
+bytes. The decoder passes all 256 bytes at both extreme working slots while
+preserving every other tape cell, with at most 4,381 dispatched instructions.
+The exact counter invariant, 131,072-state regression and decoder proof
+are documented in [P0 proofs](../docs/07_OPTIMIZATION_PROOFS.md).
 
 An opening bracket that wraps depth sets the sticky size error. A close at
 depth zero sets the sticky bracket error without subtracting. A nonzero final
@@ -78,11 +103,14 @@ instruction characters. Check raw and filtered hashes independently, slot
 bounds, all exact fixtures, resource limits and independent-interpreter
 agreement after executable changes.
 
-The own-source BFX is 2,462 bytes: seven bytes of framing and 2,455 instructions.
+The own-source BFX is 2,117 bytes: seven bytes of framing and 2,110 instructions.
 Interpreted agreement alone is seed verification. Three native frontend
-rebuild generations execute separately on Android and Windows through the
-canonical XAX importer; [bootstrap](../docs/BOOTSTRAP.md) describes that cycle.
-[Current evidence](../evidence/bfx_android_importer.json) binds native results
-to this source hash, and [the fixture guide](../tests/bfx/README.md) describes
+rebuild generations pass on both Windows and Android for this source;
+[bootstrap](../docs/04_BOOTSTRAP.md) describes that cycle.
+[Windows filter evidence](../evidence/frontend_filter_windows.json) binds
+the current source to independent-interpreter and Windows results.
+[Android filter evidence](../evidence/frontend_filter_android.json) binds
+three Android generations and boundary checks to that same source.
+[The fixture guide](../tests/bfx/README.md) describes
 regression inputs. This tape map governs the Brainfuck frontend, not the XAX
 importer's separate serialization workspace.

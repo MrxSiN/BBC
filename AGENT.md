@@ -32,9 +32,9 @@ naming history. Preserve unrelated working-tree edits.
 
 ## Contracts and implementation
 
-- Read [the BFX contract](docs/BFX_CONTRACT.md),
-  [execution profile](docs/BRAINFUCK_PROFILE.md),
-  [bootstrap guide](docs/BOOTSTRAP.md) and [status](docs/STATUS.md).
+- Read [the BFX contract](docs/02_BFX_CONTRACT.md),
+  [execution profile](docs/01_BRAINFUCK_PROFILE.md),
+  [bootstrap guide](docs/04_BOOTSTRAP.md) and [status](docs/05_STATUS.md).
   Preserve semantics, framing, ownership and failure behavior unless a
   version change is intentional and tested.
 - Name records BFX, use `.bfx`, and keep version in binary metadata. Keep
@@ -53,18 +53,56 @@ naming history. Preserve unrelated working-tree edits.
 
 ## Verification and current scope
 
-- Android ARM64 comes first, Windows x86-64 second, Linux x86-64 third.
+- Android ARM64 comes first, Windows x86-64 second; Linux is optional and
+  never gates required delivery or benchmarking.
   The decoder and importer execute natively on Android and Windows. Three
-  frontend generations pass on each platform; Android also passes eight
-  frontend fixtures per generation and eight separate Activity cases.
-- Verification, lowering and packaging remain Windows-hosted XAX bootstrap
-  operations. Native component execution is not XAX compiler-host execution;
+  current frontend generations pass on each platform, with twelve fixtures per
+  Android generation and seven boundary checks. Eight fixed bounded Activity
+  cases are separately verified. Use current evidence rather than earlier hashes.
+- The recorded BBC cycles use Windows-hosted XAX bootstrap verification,
+  lowering and packaging. A separate canonical Windows native driver prototype
+  verifies tested stores and builds a PE fixture. Its diagnostic parity,
+  corrected self-store, large-edit and DLL gates remain unmet; do not promote
+  it to a complete native build path. Native component execution is not XAX compiler-host execution;
   cross-compilation is not target execution. Linux still needs an execution
   host; do not promote its support without one.
+- The current frontend limits raw source to 65,533 bytes, keeping the complete
+  request within the 65,536-byte native input view. Current Android and Windows
+  native rebuild cycles have separate reports; do not promote earlier hashes
+  to current evidence.
+- Keep competitive completion separate from functional delivery. The
+  [competitor pilot](docs/08_BENCHMARKS.md) measures Awib and brainfry process
+  execution, test-pipeline compilation and size on both targets. It does not
+  establish steady-state, RAM, application or best-mode victories. Preserve
+  every pinned comparator and exclusion; follow
+  [the measurement plan](docs/06_PERFORMANCE_PLAN.md) before claiming wins.
+- The verification diagnosis separates cold helper setup from graph checks.
+  Existing ProofCache reuse is a measured external warm-stage prototype;
+  it must not skip the first verification or trust producer-supplied proofs.
+  Windows native-helper loading still falls back to Python. Implement new
+  host integration only as canonical XAX graphs, and rerun full pipeline
+  timing before changing competitor scores.
+- The standalone Android host and hello-binding transaction are canonical XAX
+  sources. `evidence/standalone_android.json` records a process advantage over
+  pinned Awib on twelve common-subset workloads; brainfry remains faster.
+  `evidence/standalone_native_replay.json` records native authority. Do not
+  generalize this to best modes, Windows, compiler latency, RAM, real apps or
+  an unrestricted sweep. Older shared-library pilot measurements stay immutable.
+- The current XAX importer clears the full decision tape with checked eight-byte
+  stores at alignment one. Its 393 record cases and 380 decision checks per
+  arm/target, native authority and three twenty-check frontend generations
+  are in `evidence/wide_tape_reset.json`. Preserve full-reset semantics and
+  the rejected-length guard before reset. Native-call gains do not establish
+  a compiler, process-startup, application or competitor victory.
+- P0 grouped-byte bookkeeping and single-copy opcode decoding have exhaustive
+  state checks and native
+  frontend A/B measurements. Source-program folding and loop optimization are
+  still unimplemented; see [proofs](docs/07_OPTIMIZATION_PROOFS.md). Keep BFX v1
+  transparent and do not describe frontend work reductions as application wins.
 - Preserve the importer's hash scratch/output and small-result contracts.
   The general ARM64 composite-return defect is tracked in XAX OI-49; the
   maintained importer avoids it. The pinned revision and ABI details belong
-  in [XAX integration](docs/XAX_INTEGRATION.md).
+  in [XAX integration](docs/03_XAX_INTEGRATION.md).
 - After executable changes, verify annotations, exact fixtures, size/nesting
   boundaries, bootstrap byte identity, independent-interpreter agreement and
   affected target execution. Optimization changes require positive, negative,
@@ -79,7 +117,15 @@ naming history. Preserve unrelated working-tree edits.
   bootstrap, integration, status, compiler notes and fixture instructions.
   Use relative BBC links and revision-pinned XAX links; put machine-specific
   paths only where needed for local setup or recorded execution.
-- [STATUS.md](docs/STATUS.md) is the current support and evidence index.
+- Every Markdown filename in `docs/` uses a two-digit ordering prefix, as in
+  `01_BRAINFUCK_PROFILE.md`. Keep the README index and all local links aligned
+  with renames; preserve immutable evidence filenames and bytes.
+- The retired-format reports and generated tree were removed at the user's
+  request, with exact archives outside the repository. Do not relabel their
+  old measurements as BFX results. Existing BFX migration records retain their
+  original bootstrap provenance; [cleanup evidence](evidence/format_cleanup.json)
+  records the removal.
+- [05_STATUS.md](docs/05_STATUS.md) is the current support and evidence index.
   Evidence JSON is an immutable execution snapshot: add a report for a new
   run instead of relabeling earlier results or rewriting their hashes.
 - Check links, binary examples, documented limits, source hashes and evidence

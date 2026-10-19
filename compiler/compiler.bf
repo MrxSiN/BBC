@@ -9,13 +9,29 @@
 # CELLS Two and three comparison scratch and four command flag
 # CELLS Five bracket depth and six temporary flag
 # CELLS Seven and eight command count low and high
-# CELLS Nine and ten remaining raw length low and high
+# CELLS Nine group byte counter and ten later full groups
 # CELLS Eleven bracket error and twelve size error
 # CELLS Thirteen loop flag and fourteen and fifteen bracket flags
 
 # Read length into the first working slot
 >>>>>>>>>>>>>>>>
 >>>>>>>>>,>,
+
+# Reject source lengths whose complete frame cannot fit the native input view
+# Preserve length bytes and consume the whole declared frame even on error
+[-<<<<<<<<+>+>>>>>>>]<<<<<<<[->>>>>>>+<<<<<<<]<+
+>>>>+<<<<[[-]>>>>[-]<<<<]>>>>
+[
+  -
+  >>>[-<<<<<<<+>+>>>>>>]<<<<<<[->>>>>>+<<<<<<]<+
+  >>+<<[[-]>>[-]<<]>>
+  [[-]>>>>>>>>[-]+<<<<<<<<]
+  >>>>>[-<<<<<<<+>+>>>>>>]<<<<<<[->>>>>>+<<<<<<]<++
+  >>+<<[[-]>>[-]<<]>>
+  [[-]>>>>>>>>[-]+<<<<<<<<]
+  >>
+]
+>>>>
 
 # Set loop flag if either length byte is nonzero
 <[-<<<<<<<+>+>>>>>>]<<<<<<[->>>>>>+<<<<<<]<
@@ -24,51 +40,49 @@
 [-<<<<<<<<+>+>>>>>>>]<<<<<<<[->>>>>>>+<<<<<<<]<
 [[-]>>>>>>>>>>>[-]+<<<<<<<<<<<]
 >>>>>>>>>>>
+
+# Prepare counted byte groups only for a nonempty source
 [
-  [-]
+  -<<<<<<<<<+
+  >>>>>
+  [->>>>>+>+<<<<<<]>>>>>>[-<<<<<<+>>>>>>]<
+  >+<[[-]>[-]<]>
+  [-<<<<<->>>>>]
+  <<
+]
+<<<<<<<<<[->>>>>>>>>+<<<<<<<<<]>>>>>>>>>
+
+[
+  [-]+
   <<<<<<<<<<<<,
 
-  # Recognize right pointer movement
+  # Decode opcodes with one preserved byte copy
   [->+>+<<]>>[-<<+>>]<
-  --------------------------------------------------------------
-  >+<[[-]>[-]<]>[->+<]<<
-
-  # Recognize left pointer movement
-  [->+>+<<]>>[-<<+>>]<
-  ------------------------------------------------------------
-  >+<[[-]>[-]<]>[->+<]<<
-
-  # Recognize increment
-  [->+>+<<]>>[-<<+>>]<
+  >>+<<
   -------------------------------------------
-  >+<[[-]>[-]<]>[->+<]<<
-
-  # Recognize decrement
-  [->+>+<<]>>[-<<+>>]<
-  ---------------------------------------------
-  >+<[[-]>[-]<]>[->+<]<<
-
-  # Recognize output
-  [->+>+<<]>>[-<<+>>]<
-  ----------------------------------------------
-  >+<[[-]>[-]<]>[->+<]<<
-
-  # Recognize input
-  [->+>+<<]>>[-<<+>>]<
-  --------------------------------------------
-  >+<[[-]>[-]<]>[->+<]<<
-
-  # Recognize opening bracket
-  [->+>+<<]>>[-<<+>>]<
-  ------------------------------------------------------------
-  -------------------------------
-  >+<[[-]>[-]<]>[->+>>>>>>>>>>+<<<<<<<<<<<]<<
-
-  # Recognize closing bracket
-  [->+>+<<]>>[-<<+>>]<
-  ------------------------------------------------------------
-  ---------------------------------
-  >+<[[-]>[-]<]>[->+>>>>>>>>>>>+<<<<<<<<<<<<]<<
+  [
+    -[
+      -[
+        -[
+          --------------[
+            --[
+              -----------------------------
+              >>>>>>>>>>>>+<<<<<<<<<<<<
+              [
+                >>>>>>>>>>>>[-]<<<<<<<<<<<<
+                --
+                >>>>>>>>>>>>>+<<<<<<<<<<<<<
+                [
+                  [-]>>[-]>>>>>>>>>>>[-]<<<<<<<<<<<<<
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ]
+  ]
+  <
 
   # Increase depth and reject wrapping nesting
   >>>>>>>>>>>>>[
@@ -88,23 +102,19 @@
     >>>>>>>>>
   ]
 
-  # Subtract one from the remaining length with borrow
+  # Count remaining bytes within this group
   <<<<<<
-  [-<<<<<<<+>+>>>>>>]<<<<<<[->>>>>>+<<<<<<]<
-  >>>>+<<<<[[-]>>>>[-]<<<<]>>>>
-  [->>>>-<<<<]>>>-
-
-  # Continue if the low remaining length is nonzero
-  [-<<<<<<<+>+>>>>>>]<<<<<<[->>>>>>+<<<<<<]<
-  [[-]>>>>>>>>>>>[-]+<<<<<<<<<<<]
-
-  # Continue if the high remaining length is nonzero
-  >>>>>>>>
-  [-<<<<<<<<+>+>>>>>>>]<<<<<<<[->>>>>>>+<<<<<<<]<
-  [[-]>>>>>>>>>>>[-]+<<<<<<<<<<<]
+  -[->>>>>+>+<<<<<<]>>>>>>[-<<<<<<+>>>>>>]<
+  >+<[[-]>[-]<]>
+  [
+    -<<[-]<<<
+    [->>>>+>+<<<<<]>>>>>[-<<<<<+>>>>>]<
+    [[-]<<<<->>>+>]
+    >
+  ]
 
   # Refuse another command when the high count reaches fifteen
-  >>>>>>
+  <<<<<<<
   [-<<<<<<+>+>>>>>]<<<<<[->>>>>+<<<<<]<
   ---------------
   >>>>+<<<<[[-]>>>>[-]<<<<]>>>>

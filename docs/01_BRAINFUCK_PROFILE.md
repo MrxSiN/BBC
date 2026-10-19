@@ -1,7 +1,7 @@
 # BBC Brainfuck execution profile
 
 This profile governs every BFX decision on Android ARM64, Windows x86-64 and
-Linux x86-64. [STATUS.md](STATUS.md) records which targets have execution
+Linux x86-64. [05_STATUS.md](05_STATUS.md) records which targets have execution
 evidence; sharing the profile does not itself establish target support.
 
 ## Instruction semantics
@@ -26,8 +26,9 @@ belongs to Brainfuck.
 Whitespace and annotations are ordinary ignored source bytes. `#` has no
 special lexical meaning: any of the eight instruction characters after it
 still execute. Keep annotations free of those characters. Compiler resource
-limits are defined in [BFX_CONTRACT.md](BFX_CONTRACT.md); the optional text
-framer's transport restriction is defined in [BOOTSTRAP.md](BOOTSTRAP.md).
+limits, including the 65,533-byte source and 65,536-byte complete request, are
+defined in [02_BFX_CONTRACT.md](02_BFX_CONTRACT.md); the optional text
+framer's transport restriction is defined in [04_BOOTSTRAP.md](04_BOOTSTRAP.md).
 
 ## Native decision contract
 
@@ -60,7 +61,7 @@ errors. A failed call may have written an output prefix; the application must
 discard it. The raw-pointer core is an internal typed interface, not a public
 boundary that validates arbitrary foreign pointers. The Android JNI entry
 accepts scalar integers and allocates its views before calling this core.
-See [XAX_INTEGRATION.md](XAX_INTEGRATION.md) for ABI details.
+See [03_XAX_INTEGRATION.md](03_XAX_INTEGRATION.md) for ABI details.
 
 ## Decision application
 
@@ -83,11 +84,20 @@ Capacity zero reaches the native output-exhaustion path. Out-of-range scalar
 inputs reject before the decision call. Allocation failure takes the existing
 checked-null trap and is not a recoverable UI error. The current evidence does
 not claim a new OOM-injection test. Eight executed Activity cases and package
-identity are recorded in [the integration guide](XAX_INTEGRATION.md).
+identity are recorded in [the integration guide](03_XAX_INTEGRATION.md).
+
+The embedded decision is bounded and the current app invokes it synchronously
+in lifecycle/UI flow. Potentially unbounded Brainfuck must execute off the
+Android main thread. That general worker integration remains unimplemented;
+see [status](05_STATUS.md). A host cancellation or budget, if later supported,
+is an integration-policy outcome, must discard failed output and leave the
+next invocation isolated, and is not a Brainfuck instruction or language status.
 
 ## Optimization obligations
 
-BBC optimization is currently unimplemented. Any future rewrite must preserve
+BBC source-program rewriting is currently unimplemented. P0 optimizes compiler
+bookkeeping while preserving transparent BFX v1; see
+[its proof](07_OPTIMIZATION_PROOFS.md). Any source rewrite must preserve
 output bytes, input consumption, byte wrapping, pointer position, loop
 termination behavior and the order of defined bounds failures. Opposite
 pointer moves cannot generally cancel: an intermediate move may already fail.

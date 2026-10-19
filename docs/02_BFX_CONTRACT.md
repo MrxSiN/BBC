@@ -2,7 +2,7 @@
 
 BBC emits **BFX — Ballsdeep Brainfuck XAX** modules with extension `.bfx`.
 This contract defines the compiler request and response. Native target support
-and executed evidence are listed in [STATUS.md](STATUS.md).
+and executed evidence are listed in [05_STATUS.md](05_STATUS.md).
 
 All multi-byte integers are unsigned little endian. One invocation compiles
 one request. Framing and response bytes are data, never executable Brainfuck.
@@ -11,15 +11,41 @@ one request. Framing and response bytes are data, never executable Brainfuck.
 
 `source_length:u16le || source:byte[source_length] || 01`
 
+This is **BBC source-request v1**, independently versioned from the BFX output
+record. It has no in-band version field; future versions require explicit
+out-of-band selection or a separately specified unambiguous frame.
+
 Length counts every raw source byte, including NUL, ignored text and whitespace.
-It must not exceed **65,535**. The sender must reject larger input before
-encoding; splitting or wrapping the length is invalid. The final byte must be
+The u16 field can encode 65,535, but the accepted limit is **65,533**:
+
+| Limit | Bytes | Meaning |
+|---|---|---|
+| `MAX_SOURCE_BYTES` | 65,533 | Maximum accepted raw source |
+| `MAX_REQUEST_FRAME_BYTES` | 65,536 | Accepted source plus two length bytes and terminator |
+| `NATIVE_INPUT_VIEW_BYTES` | 65,536 | Existing XAX decision input extent |
+
+BBC itself rejects declared source lengths 65,534 and 65,535 with compiler
+status 3 after consuming the declared frame and checking the terminator.
+A missing or invalid terminator still takes priority and returns status 1.
+Those two complete oversized frames cannot be passed through the native
+input view: the native core rejects logical input lengths above 65,536 with
+native status 3 before executing BBC. A shorter, truncated frame is never
+a substitute for a complete oversized request. External senders must reject
+source above the accepted limit; splitting or wrapping the length is invalid.
+The final byte must be
 hex `01`. A missing or different terminator fails; EOF-as-zero cannot satisfy
 that check. Bytes after this frame belong to the caller.
 
+The terminator detects truncation at physical EOF, including a last source
+byte of NUL. It does not detect arbitrary insertion, deletion or corruption
+when later bytes remain: a later byte may accidentally satisfy the terminator.
+Hosts requiring integrity must isolate and validate each frame or use an
+independently validated transport. Optional host validation owns transport
+only; BBC still validates framing, filters source and validates brackets.
+
 This known-length request accepts binary source. The optional text bootstrap
 framer has a separate NUL-termination rule and 7,680-byte capacity; see
-[BOOTSTRAP.md](BOOTSTRAP.md).
+[04_BOOTSTRAP.md](04_BOOTSTRAP.md).
 
 ## Compiler response
 
@@ -43,24 +69,28 @@ response is exactly five bytes, with no count or payload.
 | 0 | Successful validation and emission |
 | 1 | Missing or invalid request terminator, including truncated input |
 | 2 | Unmatched brackets |
-| 3 | Instruction count or nesting exceeds the supported resource limit |
+| 3 | Source length, instruction count or nesting exceeds the supported resource limit |
 
 If several errors occur, framing wins, then size, then unmatched brackets.
 The frontend consumes the declared source and checks its terminator before
 emitting a response. It emits no partial success record for rejected source.
 OS-level writes are not atomic: callers must reject truncated output and must
 not publish it as a module.
+Even a complete success-looking record is invalid if the compiler invocation
+failed. The caller must establish successful compiler termination as well as
+complete record validation and exact consumption before publishing a module.
 
 ## Payload and resource limits
 
-The frontend filters exactly `><+-.,[]`, preserves their order and performs
-no optimization. All other bytes are ignored, including raw `00` and `FF`.
+The frontend filters exactly `><+-.,[]` and preserves their order without
+source-program rewrites. P0 optimizes compiler bookkeeping only; BFX v1 bytes
+for the same request are unchanged. All other bytes are ignored, including raw `00` and `FF`.
 A hash character is not a comment delimiter; instruction characters in
 annotations still participate in compilation.
 
 At most **3,840 instructions** and **255 nested loops** are accepted. Every
 bracket must match. These are frontend resource limits, not changes to the
-[Brainfuck execution profile](BRAINFUCK_PROFILE.md).
+[Brainfuck execution profile](01_BRAINFUCK_PROFILE.md).
 
 The compiler itself runs on a zeroed 65,536-cell tape. A sentinel precedes its
 sixteen-cell instruction slots and working slot. At the instruction limit,
@@ -74,10 +104,16 @@ length, successful status, instruction/nesting limits, payload opcodes and
 bracket balance. It rejects compiler-error records and incomplete or trailing
 bytes before emitting a decision store.
 
+Serialized data remains untrusted before publication. BFX v1's bracket check
+and loop-edge derivation are defensive import validation, not raw-source
+filtering or Brainfuck optimization. Any future safety annotation must be
+validated independently or retain runtime checks; producer authentication
+alone never authorizes unchecked memory access.
+
 BFX v1 carries neither a target selection nor platform capabilities. Every
 target must preserve the same tape, byte, input/output and error semantics.
 Importer validation errors and native decision-call statuses are separate
-interfaces, documented in [XAX_INTEGRATION.md](XAX_INTEGRATION.md).
+interfaces, documented in [03_XAX_INTEGRATION.md](03_XAX_INTEGRATION.md).
 
 Changing a filename does not convert record contents. Incompatible records
 require a new version byte; compatible metadata additions require an explicit

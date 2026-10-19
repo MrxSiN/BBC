@@ -1,0 +1,320 @@
+{
+  "date": "2026-10-19",
+  "status": "EXECUTED",
+  "bbc_base_revision": "4bff2a3e8d07baf1cee93c46036b034966ed7592",
+  "xax_revision": "ac7821c9bf9c1bde0c18f00da6d1a60a3b320816",
+  "bbc_source_sha256": "f5275e521d8416454b0f8ddd316ef48890b69ce6747c89a34863f406c00eefbc",
+  "windows_and_seed_report": "frontend_counter_windows.json",
+  "windows_and_seed_report_sha256": "57884d07519a8da09a8d78c40b5d37663ccbff80cb55009cca8fff896e9db9c3",
+  "bfx_version": 1,
+  "source_request_version": 1,
+  "android_device": {
+    "ro.product.model": "Pixel 8 Pro",
+    "ro.build.fingerprint": "google/husky/husky:17/CP3A.261005.005/16271449:user/release-keys",
+    "ro.build.version.sdk": "37",
+    "ro.product.cpu.abilist": "arm64-v8a"
+  },
+  "generations": [
+    {
+      "generation": 0,
+      "bfx_sha256": "bf9d4004d503f0701c5c79ed179858fed5523f74aae46b0f34616db874d8e60b",
+      "store_sha256": "e65037d9b343411dd934fce6fbc83795758c579263f280b48e05aabdddc78f42",
+      "matches_windows_store": true,
+      "elf_sha256": "6b111b1dd6398bc7b33a2414793411651243d6fec4fcb055ea6c02e9bfe13553",
+      "elf_bytes": 66504,
+      "input_preserved": true,
+      "all_four_importer_buffer_guards_preserved": true,
+      "fixtures": [
+        {
+          "fixture": "all-eight",
+          "output_hex": "424658010008003e3c2b2d2e2c5b5d",
+          "native_log": "status=0 length=15",
+          "passed": true
+        },
+        {
+          "fixture": "bad-close",
+          "output_hex": "4246580102",
+          "native_log": "status=0 length=5",
+          "passed": true
+        },
+        {
+          "fixture": "bad-open",
+          "output_hex": "4246580102",
+          "native_log": "status=0 length=5",
+          "passed": true
+        },
+        {
+          "fixture": "empty",
+          "output_hex": "42465801000000",
+          "native_log": "status=0 length=7",
+          "passed": true
+        },
+        {
+          "fixture": "invalid-terminator",
+          "output_hex": "4246580101",
+          "native_log": "status=0 length=5",
+          "passed": true
+        },
+        {
+          "fixture": "nested",
+          "output_hex": "424658010012002b2b5b3e2b2b5b3e2b3c2d5d3c2d5d3e3e2e",
+          "native_log": "status=0 length=25",
+          "passed": true
+        },
+        {
+          "fixture": "raw-zero",
+          "output_hex": "424658010002002b2e",
+          "native_log": "status=0 length=9",
+          "passed": true
+        },
+        {
+          "fixture": "safe-annotations",
+          "output_hex": "424658010002002b2e",
+          "native_log": "status=0 length=9",
+          "passed": true
+        },
+        {
+          "fixture": "truncated-zero",
+          "output_hex": "4246580101",
+          "native_log": "status=0 length=5",
+          "passed": true
+        },
+        {
+          "fixture": "truncated",
+          "output_hex": "4246580101",
+          "native_log": "status=0 length=5",
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "generation": 1,
+      "bfx_sha256": "bf9d4004d503f0701c5c79ed179858fed5523f74aae46b0f34616db874d8e60b",
+      "store_sha256": "e65037d9b343411dd934fce6fbc83795758c579263f280b48e05aabdddc78f42",
+      "matches_windows_store": true,
+      "elf_sha256": "6b111b1dd6398bc7b33a2414793411651243d6fec4fcb055ea6c02e9bfe13553",
+      "elf_bytes": 66504,
+      "input_preserved": true,
+      "all_four_importer_buffer_guards_preserved": true,
+      "fixtures": [
+        {
+          "fixture": "all-eight",
+          "output_hex": "424658010008003e3c2b2d2e2c5b5d",
+          "native_log": "status=0 length=15",
+          "passed": true
+        },
+        {
+          "fixture": "bad-close",
+          "output_hex": "4246580102",
+          "native_log": "status=0 length=5",
+          "passed": true
+        },
+        {
+          "fixture": "bad-open",
+          "output_hex": "4246580102",
+          "native_log": "status=0 length=5",
+          "passed": true
+        },
+        {
+          "fixture": "empty",
+          "output_hex": "42465801000000",
+          "native_log": "status=0 length=7",
+          "passed": true
+        },
+        {
+          "fixture": "invalid-terminator",
+          "output_hex": "4246580101",
+          "native_log": "status=0 length=5",
+          "passed": true
+        },
+        {
+          "fixture": "nested",
+          "output_hex": "424658010012002b2b5b3e2b2b5b3e2b3c2d5d3c2d5d3e3e2e",
+          "native_log": "status=0 length=25",
+          "passed": true
+        },
+        {
+          "fixture": "raw-zero",
+          "output_hex": "424658010002002b2e",
+          "native_log": "status=0 length=9",
+          "passed": true
+        },
+        {
+          "fixture": "safe-annotations",
+          "output_hex": "424658010002002b2e",
+          "native_log": "status=0 length=9",
+          "passed": true
+        },
+        {
+          "fixture": "truncated-zero",
+          "output_hex": "4246580101",
+          "native_log": "status=0 length=5",
+          "passed": true
+        },
+        {
+          "fixture": "truncated",
+          "output_hex": "4246580101",
+          "native_log": "status=0 length=5",
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "generation": 2,
+      "bfx_sha256": "bf9d4004d503f0701c5c79ed179858fed5523f74aae46b0f34616db874d8e60b",
+      "store_sha256": "e65037d9b343411dd934fce6fbc83795758c579263f280b48e05aabdddc78f42",
+      "matches_windows_store": true,
+      "elf_sha256": "6b111b1dd6398bc7b33a2414793411651243d6fec4fcb055ea6c02e9bfe13553",
+      "elf_bytes": 66504,
+      "input_preserved": true,
+      "all_four_importer_buffer_guards_preserved": true,
+      "fixtures": [
+        {
+          "fixture": "all-eight",
+          "output_hex": "424658010008003e3c2b2d2e2c5b5d",
+          "native_log": "status=0 length=15",
+          "passed": true
+        },
+        {
+          "fixture": "bad-close",
+          "output_hex": "4246580102",
+          "native_log": "status=0 length=5",
+          "passed": true
+        },
+        {
+          "fixture": "bad-open",
+          "output_hex": "4246580102",
+          "native_log": "status=0 length=5",
+          "passed": true
+        },
+        {
+          "fixture": "empty",
+          "output_hex": "42465801000000",
+          "native_log": "status=0 length=7",
+          "passed": true
+        },
+        {
+          "fixture": "invalid-terminator",
+          "output_hex": "4246580101",
+          "native_log": "status=0 length=5",
+          "passed": true
+        },
+        {
+          "fixture": "nested",
+          "output_hex": "424658010012002b2b5b3e2b2b5b3e2b3c2d5d3c2d5d3e3e2e",
+          "native_log": "status=0 length=25",
+          "passed": true
+        },
+        {
+          "fixture": "raw-zero",
+          "output_hex": "424658010002002b2e",
+          "native_log": "status=0 length=9",
+          "passed": true
+        },
+        {
+          "fixture": "safe-annotations",
+          "output_hex": "424658010002002b2e",
+          "native_log": "status=0 length=9",
+          "passed": true
+        },
+        {
+          "fixture": "truncated-zero",
+          "output_hex": "4246580101",
+          "native_log": "status=0 length=5",
+          "passed": true
+        },
+        {
+          "fixture": "truncated",
+          "output_hex": "4246580101",
+          "native_log": "status=0 length=5",
+          "passed": true
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "boundary_checks": [
+    {
+      "name": "complete maximum source 65533",
+      "request_sha256": "c2bb83ea9fdbf474a36b2656a819ad06350129e4bae1ff63105e0becb4810a85",
+      "native_log": "status=0 length=7",
+      "output_hex": "42465801000000",
+      "passed": true
+    },
+    {
+      "name": "truncated source 65533 final payload zero",
+      "native_log": "status=0 length=5",
+      "output_hex": "4246580101",
+      "passed": true
+    },
+    {
+      "name": "complete source 65534 rejected by external transport view-size prevalidation",
+      "request_sha256": "a076cb7272bd6e6ae322d8c2ab89b15324d16fed0d046940af1d5d9861799aea",
+      "transport_exit": 15,
+      "not_a_bbc_compiler_status": true,
+      "passed": true
+    },
+    {
+      "name": "truncated source 65534 final payload zero",
+      "native_log": "status=0 length=5",
+      "output_hex": "4246580101",
+      "passed": true
+    },
+    {
+      "name": "complete source 65535 rejected by external transport view-size prevalidation",
+      "request_sha256": "d283970d2a50331f9f9e5d8de634f6b776b2e4af5c643b849776f0fdd6c12ec4",
+      "transport_exit": 15,
+      "not_a_bbc_compiler_status": true,
+      "passed": true
+    },
+    {
+      "name": "truncated source 65535 final payload zero",
+      "native_log": "status=0 length=5",
+      "output_hex": "4246580101",
+      "passed": true
+    },
+    {
+      "name": "maximum frame invalid nonzero terminator",
+      "native_log": "status=0 length=5",
+      "output_hex": "4246580101",
+      "passed": true
+    }
+  ],
+  "all_generations_identical": true,
+  "native_execution": "Canonical XAX BFX importer and compiled BBC frontend on Android ARM64; no BF interpreter on device",
+  "lowering_host": "Windows x86-64; unchanged legacy Python XAX verifier, generic Android native lowering and ELF packaging; XAX_REQUIRE_NATIVE unset",
+  "purity": {
+    "xax_source_changes": 0,
+    "bbc_implementation_change": "compiler/compiler.bf only",
+    "foreign_implementation_committed": false
+  },
+  "tools": {
+    "verify-android.py": {
+      "sha256": "fdcf3dafe0b2e625ca66dad185f39205423e15ea1be5d22b84f8e8d74efe39ac",
+      "bytes": 6241
+    },
+    "bfx-frontend-transport.c": {
+      "sha256": "8cac9d4af9d765faffae602502af97435a06c658ca862b6a4e35a7031858b74d",
+      "bytes": 910
+    },
+    "bfx-frontend-transport": {
+      "sha256": "4fb82734562ec82b91a389ba9e128fb386b2aa339a5aa38d5046af6bb439c3d3",
+      "bytes": 7944
+    },
+    "bfx-import-transport.c": {
+      "sha256": "5528e33eab22b7c5219aaa61f673462d792c60a9527e253ec5d12fae427b4c89",
+      "bytes": 1463
+    },
+    "bfx-import-transport": {
+      "sha256": "9ec7fa85772d255c1a2bdaabff5342cc5ac15cc95c1d1afdee19325bc90e01cd",
+      "bytes": 8408
+    },
+    "libbfx-import-arm64-v4.so": {
+      "sha256": "ca6d51ded4559c3fce6f7eb33e967cd05e181be1db4770c3e870383c12339109",
+      "bytes": 132040
+    }
+  },
+  "performance": "NOT MEASURED; no competitor claim"
+}

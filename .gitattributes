@@ -1,8 +1,9 @@
 *.bf text eol=lf
 *.md text eol=lf
 *.json text eol=lf
+evidence/*.json -text whitespace=cr-at-eol
 *.request -text
-*.bfx text eol=lf linguist-language=Brainfuck
+*.bfx -text linguist-language=Brainfuck
 *.input -text
 *.output -text
 .gitignore text eol=lf

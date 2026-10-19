@@ -1,0 +1,58 @@
+{
+  "date": "2026-10-19",
+  "removed_reports": [
+    {
+      "removed": "evidence/bbx_android.json",
+      "bytes": 16205,
+      "sha256": "c9d5cef0c5585b8f22d232373e35a8157b617abbae2896ebf1d37361def755e3",
+      "reason": "Historical record of the retired format cannot be relabeled as BFX evidence"
+    },
+    {
+      "removed": "evidence/bbx_bootstrap.json",
+      "bytes": 2942,
+      "sha256": "a49f22cdb850fcf62093e6fa439ec749ed414bc63b918cc61673697895f91fae",
+      "reason": "Historical record of the retired format cannot be relabeled as BFX evidence"
+    },
+    {
+      "removed": "evidence/bbx_frontend.json",
+      "bytes": 31479,
+      "sha256": "27c6671989e3e878c3df3784b25a370da7b10c10445f522384297afc8e472e2b",
+      "reason": "Historical record of the retired format cannot be relabeled as BFX evidence"
+    },
+    {
+      "removed": "evidence/bbx_reference.json",
+      "bytes": 3140,
+      "sha256": "43c73d2a590862534589ee79525f49e1f8e5c0c6e0f4df650f15eaa2acf6f367",
+      "reason": "Historical record of the retired format cannot be relabeled as BFX evidence"
+    },
+    {
+      "removed": "evidence/bbx_selfhost_android.json",
+      "bytes": 17372,
+      "sha256": "f2d7dfb078082e7ab9ebe73d4aca4408a5a54fab5a6ca71d2bbd45e9c5dca2f7",
+      "reason": "Historical record of the retired format cannot be relabeled as BFX evidence"
+    },
+    {
+      "removed": "evidence/bbx_windows.json",
+      "bytes": 12864,
+      "sha256": "4b43c20c0cde9f35dd04ba08174d1179ea4fccae91ecf806ed03128adc86cecd",
+      "reason": "Historical record of the retired format cannot be relabeled as BFX evidence"
+    },
+    {
+      "removed": "evidence/bbx_xax_inspection.json",
+      "bytes": 1591,
+      "sha256": "36d5a7e8c0d8e10547c29a8d5bba9c429c316cfc7c8c902b31134398ba81ebcc",
+      "reason": "Historical record of the retired format cannot be relabeled as BFX evidence"
+    },
+    {
+      "removed": "evidence/bbx_xax_integration.json",
+      "bytes": 7563,
+      "sha256": "a3939bb7f0b02ed28e3662f18061e1e4dd097bf966dd3b9c265db02b7bbf4bec",
+      "reason": "Historical record of the retired format cannot be relabeled as BFX evidence"
+    }
+  ],
+  "generated_files_moved_outside_repository": 95,
+  "generated_bytes": 6370859,
+  "archive_directory": "C:\\Users\\User\\.codex\\visualizations\\2026\\10\\19\\01a152f2-d29e-73c0-94b9-56c564685d42\\opcode_filter\\retired_format",
+  "reused": "Existing authoritative Brainfuck framer and BFX fixtures remain unchanged; genuine BBX binary outputs are not renamed",
+  "provenance": "Immutable BFX migration and retirement reports retain truthful references to their historical bootstrap dependencies"
+}
