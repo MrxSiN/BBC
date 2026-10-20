@@ -3,7 +3,7 @@
 Current migration: **2026-10-20–21**. Production uses one
 [BFX specification](02_BFX_CONTRACT.md), with new magic `42 46 58 00` and
 identifier `01`. No other identifier, legacy decoder or fallback is accepted.
-All optimization levels and both source-capacity routes use the same u32-count
+All optimization levels and supported source sizes use the same u32-count
 record and shared canonical XAX decoder. Current XAX sources are pinned in
 [integration](03_XAX_INTEGRATION.md).
 
@@ -60,8 +60,8 @@ are 1.46 to 1.58 seconds versus 23 to 24 ms for pinned Brainfry on this subset.
 This is a frozen diagnostic baseline, not a new implementation speedup or
 competitive milestone. The native driver accepts the current hello bound store,
 source coordinator and importer, but declines its self-store and the small
-two-distinct-resource-callee fixture. The one practical public entry point,
-full native packaging and broader evaluation remain open.
+two-distinct-resource-callee fixture. The public entry point was open at that baseline and is implemented by the
+following phase. Full native packaging and broader evaluation remain open.
 
 ## Historical evidence index
 
@@ -164,3 +164,22 @@ matrix. [XAX integration](03_XAX_INTEGRATION.md) pins the maintained source revi
   [the measurement and coverage plan](06_PERFORMANCE_PLAN.md).
 - No stable release or performance superiority is claimed. Android and Windows
   are required; Linux implementation and benchmarking are optional and non-gating.
+
+## Unified compilation phase
+
+**IMPLEMENTED and EXECUTED:** one public compile_bfx entry for 1 MiB sources,
+65,536 pre-pack commands and depth 32,768; O0/O1 share one BFX format.
+The Windows emit-bfx/check/info command executes without Python. The bounded
+compiler and manual pass interfaces are private seed/reference components.
+[The guide](21_UNIFIED_COMPILATION.md) and [raw report](../evidence/unified_compilation.json)
+record 1,074 per-target frontend cases, eleven unchanged-buffer Windows
+rejections, 1,899 CLI checks, 468 generated-program full-buffer calls,
+three identical final frontend generations on each target and Mandelbrot replay.
+No existing evidence report is rewritten. The streaming coordinator fixes
+capacity-before-bracket precedence across chunks.
+
+Full native compilation remains INCOMPLETE. A prepared Android native-build
+snapshot packages and runs hello successfully, but equivalent Windows build
+rejects unsupported one-bit values. Library packaging, self-store/multiple
+resource-callee coverage and common helper loading remain open. No new complete
+build speedup, advanced loop optimization or universal competitor win is claimed.

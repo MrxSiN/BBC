@@ -1,0 +1,45 @@
+{
+  "interface": "compile_bfx",
+  "levels": [
+    0,
+    1
+  ],
+  "cases": [
+    {
+      "name": "empty",
+      "frame_bytes": 5,
+      "frame_sha256": "15f2f1a4339f5f2a313b95015cad8124d054a171ac2f31cf529dda7cfb6a38b4",
+      "status": 0
+    },
+    {
+      "name": "binary",
+      "frame_bytes": 10,
+      "frame_sha256": "7d8665bfe769b1ec5177b1fb85a1148d8fdacb9deedefae7f8fe1ceb354e31c7",
+      "status": 0
+    },
+    {
+      "name": "overflow-after-close",
+      "frame_bytes": 65542,
+      "frame_sha256": "b10bd8c34057d99a43a0dba773bc020920903bf97f97bc7b93a6a3bba9474d34",
+      "status": 3
+    },
+    {
+      "name": "overflow-before-open",
+      "frame_bytes": 65542,
+      "frame_sha256": "d3eb76266f2e9c87caedca9d422176d18cc076d48775d568112855809da8d0fa",
+      "status": 3
+    },
+    {
+      "name": "bracket-at-capacity",
+      "frame_bytes": 65541,
+      "frame_sha256": "e42937952b135ad485127bc0b910287d353c11b8abcccf78055f21d6eb37ca78",
+      "status": 2
+    },
+    {
+      "name": "unclosed-at-capacity",
+      "frame_bytes": 65541,
+      "frame_sha256": "e9c247d90b6beb51abf4623b4117b86c9ee7403fe527e36a1d06a8dc07ea4ab9",
+      "status": 2
+    }
+  ]
+}

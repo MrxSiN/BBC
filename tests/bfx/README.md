@@ -1,6 +1,9 @@
 # BFX fixtures and verification
 
-Each `.request` is exact compiler input. The matching `.bfx` is the complete
+These are private bounded seed/reference fixtures. The public interface uses
+[tests/compile](../compile/README.md) and u32 source frames.
+
+Each `.request` is exact bounded compiler input. The matching `.bfx` is the complete
 expected response, including compiler-error records. Read
 [the wire contract](../../docs/02_BFX_CONTRACT.md) before changing fixture bytes.
 BFX magic and identifier are part of the data; the extension alone does

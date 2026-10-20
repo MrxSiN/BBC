@@ -9,36 +9,36 @@ source size and target. [The BFX specification](docs/02_BFX_CONTRACT.md) is the
 single wire authority. The intentional migration uses a new four-byte magic
 and one identifier; old layouts are rejected without fallback.
 
-| Route | Raw-source budget | Instruction budget | Balanced depth |
-|---|---:|---:|---:|
-| Bounded `compiler/compiler.bf` | 65,533 bytes | 3,840 | 255 |
-| Streaming BF with canonical XAX coordination | 1 MiB | 65,536 before packing | 32,768 |
-
-These are fixed implementation budgets. [Dynamic workspace growth](docs/16_SCALABILITY.md)
-remains open. The program tape has 65,536 wrapping byte cells, checked pointer
-movement and EOF-as-zero. Only `><+-.,[]` execute; `#` is not a comment delimiter.
+One [public compilation interface](docs/21_UNIFIED_COMPILATION.md) accepts
+small and large binary sources: up to **1 MiB raw source**, **65,536 commands**
+before optimization and balanced nesting **32,768**. These are fixed budgets;
+[dynamic workspace growth](docs/16_SCALABILITY.md) remains open. Programs use
+65,536 wrapping byte cells, checked movement and EOF-as-zero.
 
 ## Use the compiler
 
-1. Frame bounded source as `length:u16le || source || 01` and execute
-   [compiler.bf](compiler/compiler.bf) with a matching BF interpreter/native component.
-2. Require successful termination and complete successful BFX. Save exact `.bfx` bytes.
-3. Optionally run the bounded [clear](docs/10_CLEAR_OPTIMIZATION.md),
-   [arithmetic](docs/12_ARITHMETIC_PACKING.md) and
-   [movement](docs/14_MOVEMENT_PACKING.md) passes on validated records plus `01`.
-4. Import with the [canonical XAX sources](https://github.com/MrxSiN/XAX/tree/42de0fc3ce31d4447f697e35a565cb4fdc489eda/compiler/integration/bfx),
-   verify the complete store and generate native code for Android ARM64 or Windows x86-64.
+Build the native Windows command using the external XAX
+[bootstrap recipe](https://github.com/MrxSiN/XAX/blob/d320babab5bb9fe61a9d29f1f14942a847bf83a7/compiler/integration/bfx/COMPILE.md),
+then place `bbc.exe` in ignored `build/`. From Command Prompt:
 
-For larger sources use [streaming compilation](docs/17_STREAMING_COMPILATION.md).
-The optional [text framer](bootstrap/frame_source.bf) accepts 7,680 NUL-terminated
-text bytes; binary source uses explicit lengths. See [bootstrap](docs/04_BOOTSTRAP.md)
-and [integration](docs/03_XAX_INTEGRATION.md) for exact authority and buffer contracts.
+```text
+build\bbc.exe emit-bfx -O1 < program.bf > program.bfx
+build\bbc.exe check < program.bf
+build\bbc.exe info < program.bfx
+```
 
-Native components execute on both required targets. Builds still use unchanged
-Windows-hosted generic Python XAX utilities; the native compiler driver remains
-a prototype. Current tests and historical evidence are separated in
-[status](docs/05_STATUS.md). The Android demo's earlier eight bounded application
-cases do not establish general worker/cancellation integration.
+PowerShell users can run these through `cmd /d /c "..."` for binary redirection.
+O0 preserves primitives; O1 integrates BF run packing and safe bounded clear
+optimization. O2/O3 are not implemented. Every level uses identical BFX framing.
+Discard output on nonzero exit. [The interface guide](docs/21_UNIFIED_COMPILATION.md)
+defines exit codes, limits, typed API and current optimization coverage.
+
+The supported commands execute without Python. Building the command and compiling
+BFX into native executables/libraries still require the external Windows-hosted
+generic XAX SDK; full native `bbc compile` remains incomplete. Native components
+execute on Windows x86-64 and Android ARM64. See [integration](docs/03_XAX_INTEGRATION.md)
+and [bootstrap](docs/04_BOOTSTRAP.md). The bounded compiler and text framer are
+private seed/reference components, not another public workflow.
 
 BBC has no established overall performance lead. [Benchmarks](docs/08_BENCHMARKS.md),
 [Brainfry analysis](docs/09_BRAINFRY_ANALYSIS.md), [measurement plan](docs/06_PERFORMANCE_PLAN.md),
@@ -50,8 +50,10 @@ The BFX migration makes no performance claim.
 
 The [modernization audit and fresh baseline](docs/20_MODERNIZATION.md) records
 180 current-revision builds and native driver coverage. It confirms that startup
-and XAX graph work dominate compilation; the single public entry point and
-complete native driver remain implementation milestones.
+and XAX graph work dominate compilation. The complete native driver remains
+an implementation milestone. The
+[unified interface phase](docs/21_UNIFIED_COMPILATION.md) now implements the
+public entry point; the frozen baseline describes its earlier state.
 
 ## Documentation
 
@@ -76,3 +78,5 @@ complete native driver remain implementation milestones.
 - [Native driver follow-up](docs/19_NATIVE_DRIVER_FOLLOWUP.md)
 
 - [Modernization audit and fresh baseline](docs/20_MODERNIZATION.md)
+
+- [Unified public compilation and native command](docs/21_UNIFIED_COMPILATION.md)

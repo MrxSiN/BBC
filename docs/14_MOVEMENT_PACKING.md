@@ -15,3 +15,7 @@ bodies. Output does not expand. CLEAR passes through as a real zero-valued opcod
 Historical correctness and timing snapshots stay in
 [bfx_v4_movement.json](../evidence/bfx_v4_movement.json) and
 [the benchmark report](15_V4_BENCHMARKS.md), with their original source identities.
+
+The supported end-user route is [unified compilation](21_UNIFIED_COMPILATION.md).
+These component contracts describe private BF implementation/bootstrap details;
+users do not select a separate BFX format or manually negotiate passes.

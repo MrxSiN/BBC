@@ -1,9 +1,10 @@
 # Compiler scalability and limits
 
-Both frontend routes emit [BFX](02_BFX_CONTRACT.md). Source capacity and
+One public [compile_bfx interface](21_UNIFIED_COMPILATION.md) coordinates all
+supported source sizes. Its private bounded seed and streaming components emit [BFX](02_BFX_CONTRACT.md). Source capacity and
 optimization level never select a different wire layout or importer.
 
-| Resource | Bounded BF frontend | Streaming route |
+| Resource | Private bounded seed | Public streaming entry |
 |---|---:|---:|
 | Raw source | 65,533 bytes | 1,048,576 bytes |
 | Instructions before optimization | 3,840 | 65,536 |

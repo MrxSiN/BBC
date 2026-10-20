@@ -1,9 +1,10 @@
 # Private chunk frontend tape notes
 
-[stream_chunks.bf](stream_chunks.bf) is a **PROTOTYPE** private source-filter/
+[stream_chunks.bf](stream_chunks.bf) is the public compiler's private packet source-filter/
 bracket-validation stage. It emits version01 BBCS provisional token packets;
 see [the interface and remaining pipeline work](../docs/16_SCALABILITY.md).
-The authoritative public frontend remains [compiler.bf](compiler.bf).
+The [unified public interface](../docs/21_UNIFIED_COMPILATION.md) coordinates
+this BF algorithm. [compiler.bf](compiler.bf) is a private bounded seed/reference.
 
 The u64 depth occupies cells 0, 4, 8, 12, 16, 20, 24 and 28, low byte first.
 Each adjacent three-cell group holds destructive-copy scratch, carry/nonzero

@@ -1,7 +1,7 @@
 # BBC bootstrap and native rebuilds
 
-All BBC implementation is standard Brainfuck. The bounded authoritative frontend
-is [`compiler.bf`](../compiler/compiler.bf); the streaming frontend uses
+All BBC implementation is standard Brainfuck. [`compiler.bf`](../compiler/compiler.bf)
+is the private bounded seed/reference; the public frontend uses
 [`stream_chunks.bf`](../compiler/stream_chunks.bf) plus canonical XAX coordination.
 Every path uses the one [BFX specification](02_BFX_CONTRACT.md).
 
@@ -16,7 +16,9 @@ Every path uses the one [BFX specification](02_BFX_CONTRACT.md).
    repeat native import/verification/lowering. Compare record, store and native
    artifact bytes within each target across generations.
 
-Optional bounded passes run as separate programs: clear optimization, arithmetic
+The [unified public entry](21_UNIFIED_COMPILATION.md) integrates O0/O1 passes.
+The following separate programs are private bootstrap/reference components.
+Optional bounded passes implement clear optimization, arithmetic
 packing and movement packing. Each consumes a previously validated successful
 BFX record of at most 3,840 instructions plus byte `01`; each emits BFX again.
 Do not pass a compiler failure to a transform. Validate each complete result.
@@ -49,3 +51,13 @@ remain byte-identical historical snapshots, with their original source and wire
 identities. They must not be cited as execution of the migrated sources.
 Standalone packaging uses the existing canonical hosts in XAX; its historical
 build and resource reports retain their pinned compiler configurations.
+
+## Unified frontend generations
+
+[Unified compilation evidence](../evidence/unified_compilation.json) records
+three final native stream_chunks own-source generations, exact imported BF
+core identity and identical per-target facade images. Android executes each
+generation and imports its own-source record. The coordinator is reused by
+verified content identity after its embedded BF core is freshly reproduced;
+it is not presented as a BF implementation of OS orchestration. Generic XAX
+verification/lowering/packaging remains the disclosed Windows bootstrap.

@@ -75,16 +75,26 @@ and stack entries each. Maximum balanced nesting is therefore 32,768.
 Larger counts reject before count-plus-header arithmetic or payload access.
 This implementation budget does not select another format.
 
-| Producer | Raw-source budget | Instruction budget | Depth budget |
+The single public `compile_bfx` entry orchestrates these private BF components;
+see [the public interface](21_UNIFIED_COMPILATION.md). Source capacity is not a
+second public pipeline.
+
+| Component | Raw-source budget | Instruction budget | Depth budget |
 |---|---:|---:|---:|
-| Bounded `compiler.bf` | 65,533 | 3,840 | 255 |
+| Private bounded seed `compiler.bf` | 65,533 | 3,840 | 255 |
 | Streaming coordinator with `stream_chunks.bf` | 1,048,576 | 65,536 before packing | 32,768 balanced |
 
 Both emit identical framing. The compiled program still has a 65,536-byte tape.
 Fixed compiler workspaces are distinct from dynamic allocation; runtime workspace
 growth remains unimplemented. See [scalability](16_SCALABILITY.md).
 
-## Bounded source request and private passes
+## Public source interface and private passes
+
+Public source requests use a u32 length and optimization level through the
+[unified API](21_UNIFIED_COMPILATION.md). The native command frames raw stdin
+automatically. O0/O1 use the same BFX format; other levels reject explicitly.
+
+### Private bounded seed request
 
 `source_length:u16le || raw_source:byte[source_length] || 01` is the bounded
 frontend's input transport, separate from BFX. Length counts every byte,

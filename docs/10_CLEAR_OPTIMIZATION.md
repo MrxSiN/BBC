@@ -17,3 +17,7 @@ describe staging and rewinds. Missing/invalid terminator emits BFX failure 1.
 Historical optimization and timing snapshots remain in
 [bfx_v2_optimization.json](../evidence/bfx_v2_optimization.json) and
 [the benchmark report](11_V2_BENCHMARKS.md); their old wire identities are historical.
+
+The supported end-user route is [unified compilation](21_UNIFIED_COMPILATION.md).
+These component contracts describe private BF implementation/bootstrap details;
+users do not select a separate BFX format or manually negotiate passes.

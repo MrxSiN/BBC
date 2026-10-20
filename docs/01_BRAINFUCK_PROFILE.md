@@ -26,7 +26,7 @@ belongs to Brainfuck.
 Whitespace and annotations are ordinary ignored source bytes. `#` has no
 special lexical meaning: any of the eight instruction characters after it
 still execute. Keep annotations free of those characters. Compiler resource
-limits, including the 65,533-byte source and 65,536-byte complete request, are
+limits, including the public 1 MiB source budget and private bounded seed, are
 defined in [02_BFX_CONTRACT.md](02_BFX_CONTRACT.md); the optional text
 framer's transport restriction is defined in [04_BOOTSTRAP.md](04_BOOTSTRAP.md).
 
@@ -99,7 +99,7 @@ The optional [clear pass](10_CLEAR_OPTIMIZATION.md) folds exact unit-step clear 
 and removes complete 256-command same-direction arithmetic groups. P0 optimizes
 compiler bookkeeping. A second [arithmetic pass](12_ARITHMETIC_PACKING.md) packs powers
 of two in consecutive arithmetic. The [movement pass](14_MOVEMENT_PACKING.md) packs
-identical monotone movements, retaining first-crossing failures. The authoritative frontend preserves
+identical monotone movements, retaining first-crossing failures. The private bounded frontend preserves
 transparent BFX; see
 [the proofs](07_OPTIMIZATION_PROOFS.md). Every source rewrite must preserve
 output bytes, input consumption, byte wrapping, pointer position, loop

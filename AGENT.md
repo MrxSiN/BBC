@@ -11,8 +11,10 @@ naming history. Preserve unrelated working-tree edits.
   test in standard `.bf` using only `><+-.,[]`. Do not add foreign-language
   build scripts, harnesses, CI programs or code disguised as metadata.
   Markdown, licenses, exact binary fixtures and evidence JSON are allowed.
-- [compiler/compiler.bf](compiler/compiler.bf) is the authoritative frontend;
-  [bootstrap/frame_source.bf](bootstrap/frame_source.bf) is the text framer.
+- [compiler/stream_chunks.bf](compiler/stream_chunks.bf) owns public source
+  filtering/validation under the unified canonical XAX compile_bfx entry.
+  [compiler/compiler.bf](compiler/compiler.bf) is a private bounded seed/reference;
+  [bootstrap/frame_source.bf](bootstrap/frame_source.bf) is its private text framer.
   Read the contracts and [tape notes](compiler/compiler.bf.notes.md) before
   changing either instruction stream. Do not duplicate their algorithms.
 - Keep annotations free of all eight instruction characters. A hash prefix
@@ -77,7 +79,9 @@ naming history. Preserve unrelated working-tree edits.
   closure and importer. XAX source, packer and importer live directly under
   compiler/integration/bfx. Old wide entrypoints and legacy transactions are
   retired; historical evidence stays exact and old sources stay in Git.
-- Builds use unchanged generic Windows-hosted Python SDK verification/lowering/
+- The unified Windows emit-bfx/check/info host executes without Python. Its
+  bootstrap and full native target builds still use unchanged generic
+  Windows-hosted Python SDK verification/lowering/
   packaging. Native calls run with XAX_REQUIRE_NATIVE=1 and record authority.
   Common Windows helper loading still falls back to Python. The separate native
   driver prototype has bounded diagnostic/store coverage; self-store, large-edit,

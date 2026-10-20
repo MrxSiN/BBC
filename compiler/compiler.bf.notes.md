@@ -5,7 +5,8 @@ filtered SHA-256 `a9323e9daa898c76693df7b66647f58ddb16dd67d91db72ee76b710250b6c3
 [BFX specification](../docs/02_BFX_CONTRACT.md). Older counts, hashes and
 rebuild results quoted below are historical snapshots, not this source identity.
 
-Authoritative source: [compiler.bf](compiler.bf). Wire format:
+Private bounded seed/reference: [compiler.bf](compiler.bf). The
+[unified public entry](../docs/21_UNIFIED_COMPILATION.md) uses stream_chunks.bf. Wire format:
 [BFX](../docs/02_BFX_CONTRACT.md). Execution semantics:
 [Brainfuck profile](../docs/01_BRAINFUCK_PROFILE.md).
 

@@ -938,3 +938,10 @@ cache experiment, with insufficient broad competitive coverage. Native driver
 self-store/diagnostic/large-edit/DLL gates, common-helper migration, repeated
 type hashing, steady-state, deployment, larger-profile measurements and
 real applications remain open. M8 is **NOT YET ACHIEVED**.
+
+## Unified compilation interface
+
+[The new interface phase](21_UNIFIED_COMPILATION.md) adds one native public
+source entry and Windows emit/check/info commands. Its correctness and bootstrap
+evidence does not replace the [frozen complete-build measurements](20_MODERNIZATION.md).
+No new full-build/runtime/memory competitive result is claimed for this phase.

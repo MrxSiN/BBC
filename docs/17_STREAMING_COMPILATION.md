@@ -1,7 +1,8 @@
 # Streaming compilation
 
-The canonical XAX source coordinator runs [`stream_chunks.bf`](../compiler/stream_chunks.bf)
-through private BBCS packets. Optional packing runs
+The single public [compile_bfx interface](21_UNIFIED_COMPILATION.md) invokes
+the canonical XAX source coordinator, which runs [`stream_chunks.bf`](../compiler/stream_chunks.bf)
+through private BBCS packets. O1 packing runs
 [`stream_runs.bf`](../compiler/stream_runs.bf) through BBCR packets. A single
 canonical decoder/importer accepts their output and the bounded frontend's
 output. Every route uses [BFX](02_BFX_CONTRACT.md), with no alternate format,

@@ -514,3 +514,17 @@ This pass is tested within a separate [wide compilation profile](17_STREAMING_CO
 Its private fixed-packet specialization relies on initialized complete
 count-bounded frames and adequate output capacity. It does not relax generic
 decision length guards or authorize untrusted continuation state.
+
+## Unified O0/O1 orchestration
+
+The [public interface](21_UNIFIED_COMPILATION.md) reuses the existing BF passes;
+it introduces no new semantic rewrite. Validate source before packing. Pack
+only identical arithmetic/monotone movement runs; preserve loop and I/O
+boundaries and first-crossing movement failures. The clear pass remains bounded:
+invoke it only after packing yields at most 3,840 operations, otherwise retain
+loops. Even-step loops are retained. The full-buffer independent comparison
+covers O0/O1, boundary failures, scan-shaped loops and multiple-target transfers.
+Source bracket errors are sticky across chunks while counting continues so
+capacity takes precedence. Success magic is published only after those checks.
+The canonical XAX edits are verified against exact roots; no verifier bypass
+or BFX wire change is used. No affine/scan/offset optimization is claimed.

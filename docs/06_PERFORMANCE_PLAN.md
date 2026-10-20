@@ -237,3 +237,10 @@ can import and execute them. The private chunk component alone proves filtering/
 validation. V5 now imports and executes larger programs, including Mandelbrot;
 maximum-count import-integrity cases remain distinct from complete verification,
 lowering and execution. Larger-profile competitive timings remain open.
+
+## Modernization interface phase
+
+[The unified frontend](21_UNIFIED_COMPILATION.md) is executed on both required
+targets. It does not change the frozen build score or complete M4/M8. Native
+driver/backend coverage and safe graph reuse remain higher priority than
+frontend tuning under the [fresh stage profile](20_MODERNIZATION.md).

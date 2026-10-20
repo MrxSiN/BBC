@@ -15,3 +15,7 @@ The pass never expands the instruction stream. Bad terminator emits failure 1.
 markers. Historical correctness and measurements remain immutable in
 [bfx_v3_arithmetic.json](../evidence/bfx_v3_arithmetic.json) and
 [the benchmark report](13_V3_BENCHMARKS.md); they do not measure this migration.
+
+The supported end-user route is [unified compilation](21_UNIFIED_COMPILATION.md).
+These component contracts describe private BF implementation/bootstrap details;
+users do not select a separate BFX format or manually negotiate passes.
