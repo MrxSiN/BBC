@@ -1,5 +1,11 @@
 # BBC compared with other Brainfuck compilers
 
+A fresh current-format [modernization baseline](20_MODERNIZATION.md) records
+180 builds and separate stage/resident/commit results. The older measurements
+below retain their pinned source/format identities. The three-source fresh
+subset establishes no general competitor victory or post-change speedup.
+
+
 > Format migration note: measurements and source identities below describe their
 > pinned pre-migration snapshots. Historical version names identify that evidence,
 > not current decoder modes. Current production uses only [BFX](02_BFX_CONTRACT.md).

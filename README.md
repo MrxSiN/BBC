@@ -1,4 +1,4 @@
-# BBC â€” Ballsdeep Brainfuck Compiler
+# BBC — Ballsdeep Brainfuck Compiler
 
 BBC compiles Brainfuck to native programs through XAX. Standard Brainfuck
 sources validate/filter source and perform semantic optimization; canonical XAX
