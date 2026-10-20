@@ -1,6 +1,6 @@
 # BBC and BFX status
 
-Current migration: **2026-10-20–21**. Production uses one
+Current migration: **2026-10-20â€“21**. Production uses one
 [BFX specification](02_BFX_CONTRACT.md), with new magic `42 46 58 00` and
 identifier `01`. No other identifier, legacy decoder or fallback is accepted.
 All optimization levels and both source-capacity routes use the same u32-count
@@ -49,6 +49,19 @@ historical, not new application coverage. Linux execution remains unverified.
 All 44 pre-migration BBC evidence files retain exact bytes. Old executable wire
 fixtures were migrated; old implementation and fixture bytes remain in Git history.
 Previous named formats appear below only to identify historical evidence.
+
+## Modernization baseline
+
+The new assignment's [Milestone 0 audit](20_MODERNIZATION.md) is EXECUTED and
+MEASURED at BBC 2d9fbd6 / XAX 42de0fc. It records 180 fresh-process builds,
+three workloads, both target outputs, kernel resident/commit counters and stage
+timing. All six Android baseline programs execute correctly. BBC build medians
+are 1.46–1.58 seconds versus 23–24 ms for pinned Brainfry on this subset.
+This is a frozen diagnostic baseline, not a new implementation speedup or
+competitive milestone. The native driver accepts the current hello bound store,
+source coordinator and importer, but declines its self-store and the small
+two-distinct-resource-callee fixture. The one practical public entry point,
+full native packaging and broader evaluation remain open.
 
 ## Historical evidence index
 

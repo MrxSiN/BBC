@@ -1,4 +1,4 @@
-# BBC — Ballsdeep Brainfuck Compiler
+# BBC â€” Ballsdeep Brainfuck Compiler
 
 BBC compiles Brainfuck to native programs through XAX. Standard Brainfuck
 sources validate/filter source and perform semantic optimization; canonical XAX
@@ -48,6 +48,11 @@ results. M4 remains incomplete and M8 is not achieved. The installed .NET SDK
 unblocks Brainfly correctness testing; no Brainfly timing score is established.
 The BFX migration makes no performance claim.
 
+The [modernization audit and fresh baseline](docs/20_MODERNIZATION.md) records
+180 current-revision builds and native driver coverage. It confirms that startup
+and XAX graph work dominate compilation; the single public entry point and
+complete native driver remain implementation milestones.
+
 ## Documentation
 
 - [Execution profile](docs/01_BRAINFUCK_PROFILE.md)
@@ -69,3 +74,5 @@ The BFX migration makes no performance claim.
 - [Streaming compilation](docs/17_STREAMING_COMPILATION.md)
 - [Backend cache](docs/18_BACKEND_BUILD_CACHE.md)
 - [Native driver follow-up](docs/19_NATIVE_DRIVER_FOLLOWUP.md)
+
+- [Modernization audit and fresh baseline](docs/20_MODERNIZATION.md)
