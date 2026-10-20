@@ -1,5 +1,11 @@
 # BBC compared with other Brainfuck compilers
 
+> Format migration note: measurements and source identities below describe their
+> pinned pre-migration snapshots. Historical version names identify that evidence,
+> not current decoder modes. Current production uses only [BFX](02_BFX_CONTRACT.md).
+> No migration performance or broader completion claim follows from these reports.
+
+
 The latest [v4 movement report](15_V4_BENCHMARKS.md) measures complete
 builds, memory, file size and standalone processes on both targets, retaining
 the twelve original programs and four preregistered clear-loop workloads. Separate

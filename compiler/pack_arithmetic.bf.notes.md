@@ -1,7 +1,12 @@
 # Arithmetic packer tape notes
 
-[`pack_arithmetic.bf`](pack_arithmetic.bf) implements the private validated-v2
-to v3 pass in [the contract and proof](../docs/12_BFX_V3_ARITHMETIC.md).
+Current source has 5258 bytes and 3653 BF instructions; raw SHA-256 `7d8a403d8a5c79caa9d1b3c7fc499cd8dd8545198d9037d6486d4cf67e15b95d`,
+filtered SHA-256 `4f2dc8d352f91e8904e6904d64532b7cb7b573e25a33a901fd20f3dc68a86138`. All current framing follows the single
+[BFX specification](../docs/02_BFX_CONTRACT.md). Older counts, hashes and
+rebuild results quoted below are historical snapshots, not this source identity.
+
+[`pack_arithmetic.bf`](pack_arithmetic.bf) implements the private validated BFX
+packing pass in [the contract and proof](../docs/12_ARITHMETIC_PACKING.md).
 It is standard Brainfuck; annotations contain no executable characters.
 
 Slots have stride sixteen. Offset zero is a persistent marker, one the opcode,
@@ -26,12 +31,11 @@ the end; the existing marked-slot walk emits only live operations. Larger
 encodings and zero-valued CLEAR remain distinct from markers and deletions.
 
 The count never increases, all walks stay inside the staged region and the
-maximum observed cell is 61,469. The source is 5,259 bytes / 3,639 instructions;
-its own optimized module has 3,258 operations. Bootstrap needs the frontend,
+maximum observed cell is 61,469. Current source identity is listed above. Bootstrap needs the frontend,
 clear helper and this helper as separate bounded programs. It does not
 concatenate their source or relax the 3,840-instruction acceptance limit.
 
-[Evidence](../evidence/bfx_v3_arithmetic.json) records independent interpretation,
+[Historical evidence](../evidence/bfx_v3_arithmetic.json) records independent interpretation,
 exact consumption, native properties and three identical generations of all
 three components on Android and Windows. The execution profile, full reset,
-source validation, failure-output discard rule and transparent v1 route remain.
+source validation, failure-output discard rule and transparent BFX route remain.

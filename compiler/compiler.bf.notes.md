@@ -1,21 +1,18 @@
 # BBC frontend algorithm and tape layout
 
+Current source has 4545 bytes and 2200 BF instructions; raw SHA-256 `89e87c42d870e879c4dbbf2ec578da2823351566d3e7d25801f29b5804446b2a`,
+filtered SHA-256 `a9323e9daa898c76693df7b66647f58ddb16dd67d91db72ee76b710250b6c358`. All current framing follows the single
+[BFX specification](../docs/02_BFX_CONTRACT.md). Older counts, hashes and
+rebuild results quoted below are historical snapshots, not this source identity.
+
 Authoritative source: [compiler.bf](compiler.bf). Wire format:
-[BFX v1](../docs/02_BFX_CONTRACT.md). Execution semantics:
+[BFX](../docs/02_BFX_CONTRACT.md). Execution semantics:
 [Brainfuck profile](../docs/01_BRAINFUCK_PROFILE.md).
 
 The frontend reads one known-length request, filters and validates the eight
-instructions, then emits either a complete instruction record or a five-byte
+instructions, then emits either a complete instruction record or a six-byte
 compiler-error record. It performs no semantic optimization and owns no
 native-code or platform backend.
-
-## Source identity
-
-Raw SHA-256: `d8170d895449cf00e971a052b6d5415d2c5f86585d982f826fa70c5127850d6e`.
-Filtered SHA-256: `ef7d88fe05eef56a646779959ecfa96bf7ddaa8626c2a7636e2caaa1ea963fa9`.
-The source has 4,537 bytes and 2,192 instructions. Annotations contain none
-of the eight instruction characters. Whitespace and annotations are ignored
-by ordinary interpreters, without preprocessing.
 
 ## Tape layout
 
@@ -98,10 +95,10 @@ external instrumented interpreter; they are not a claim about an XAX backend.
 
 ## Record emission
 
-After validation, the frontend emits BFX magic `42 46 58`, binary version
-`01` and the compiler status. Success additionally emits the little-endian
+After validation, the frontend emits BFX magic `42 46 58`, NUL magic byte, identifier
+`01` and the compiler status. Success additionally emits the little-endian u32
 count, scans marked slots left to the sentinel, then outputs each
-stored instruction in order. Failures emit exactly five bytes. This prevents
+stored instruction in order. Failures emit exactly six bytes. This prevents
 partial success output for rejected source; it does not promise atomic OS
 writes. Callers must reject incomplete transport output.
 
@@ -114,23 +111,9 @@ instruction characters. Check raw and filtered hashes independently, slot
 bounds, all exact fixtures, resource limits and independent-interpreter
 agreement after executable changes.
 
-The own-source BFX is 2,199 bytes: seven bytes of framing and 2,192 instructions.
-Interpreted agreement alone is seed verification. Three Windows native
-frontend generations, 785 byte/property checks and 42 independent seed checks
-pass for this source in [capacity-gate evidence](../evidence/frontend_capacity_gate.json).
-The subsequent Android run passes 393 importer cases, three native generations,
-twelve fixtures per generation and twelve boundary checks. Stores match Windows;
-Android execution became available after the initial Windows-only snapshot.
-[Bootstrap](../docs/04_BOOTSTRAP.md) describes the cycles.
-[Windows filter evidence](../evidence/frontend_filter_windows.json) and
-[Android filter evidence](../evidence/frontend_filter_android.json) retain
-their separate results for the preceding 2,110-instruction source.
-[The fixture guide](../tests/bfx/README.md) describes
-regression inputs. This tape map governs the Brainfuck frontend, not the XAX
-importer's separate serialization workspace.
-
-The optional [optimizer](optimize.bf.notes.md) has its own tape layout and
-validated-v1 input boundary. It can optimize this frontend's module while
-preserving the frontend's exact v1 output; three native generations per target
-are recorded in [v2 evidence](../evidence/bfx_v2_optimization.json). It does not
-change this source, request contract, filtering algorithm or acceptance limits.
+Current own-source records, stores and native cycles are in
+[canonical migration evidence](../evidence/canonical_bfx.json). Earlier
+[capacity-gate evidence](../evidence/frontend_capacity_gate.json) retains its
+pre-migration source identity. The [optional optimizer](optimize.bf.notes.md)
+changes the payload representation, while both routes emit the same BFX format.
+[Bootstrap](../docs/04_BOOTSTRAP.md) explains authority and replay.

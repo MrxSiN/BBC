@@ -1,13 +1,18 @@
 # Optional BFX optimizer
 
+Current source has 4395 bytes and 2946 BF instructions; raw SHA-256 `971fc93a10bc2ce9840f7bc675c57b6a994bd5c45757a24191a93c72852b1259`,
+filtered SHA-256 `33255827d324a2fa9b797366e7f6fa8561fef3ea7088a2ea11ea37f96e613174`. All current framing follows the single
+[BFX specification](../docs/02_BFX_CONTRACT.md). Older counts, hashes and
+rebuild results quoted below are historical snapshots, not this source identity.
+
 [`optimize.bf`](optimize.bf) is an independent standard Brainfuck pass. It
 recognizes exact unit-step clear loops and complete groups of 256 identical
-arithmetic commands. The [v2 contract](../docs/10_BFX_V2_CLEAR.md) defines its
+arithmetic commands. The [pass guide](../docs/10_CLEAR_OPTIMIZATION.md) defines its
 private input boundary, encoding, proofs and rejection requirements.
 
 The authoritative frontend still accepts raw framed source and emits
-transparent BFX v1. Invoke this pass only after successful frontend completion
-and validation of that complete v1 success record. Append a byte `01`. Failed
+transparent BFX. Invoke this pass only after successful frontend completion
+and validation of that complete BFX success record. Append a byte `01`. Failed
 compilations bypass it. The pass assumes the validated header and operation
 stream; it does not independently establish those preconditions.
 
@@ -22,7 +27,7 @@ temporary continuation/gate. Other cells hold local comparison/copy scratch
 and counted-input state. State is transferred to the next slot, rather than
 indexed through a second array.
 
-1. Discard the five validated fixed header bytes, preserve the bounded count
+1. Discard the six validated fixed header bytes, preserve the bounded count
    and stage exactly that many operation bytes in marked slots.
 2. Require the terminator. Carry the output count to the sentinel and then
    into the first slot. Do not consume bytes following the terminator.
@@ -34,10 +39,7 @@ indexed through a second array.
 5. Emit the known version, status and final count, rewind through marked
    slots and emit only undeleted operations. Preserve zero-valued CLEAR.
 
-Every accepted input fits the existing 3,840-operation limit. The pass itself
-has 2,931 instructions in 4,393 raw bytes; its SHA-256 is
-`6f1b09b2f7719ea80b90fe0a4def3c172714de964a7a9587ae2e64806442d177`.
-Its own optimized module has 2,851 operations. At the maximum input count,
+Every accepted input fits the existing 3,840-operation limit. Current source identity is listed above. At the maximum input count,
 the independent interpreter observes peak cell 61,469. Neither source nor
 output limits are expanded. No rewrite can increase the record length.
 
@@ -49,12 +51,12 @@ loop; nonzero entry must still loop indefinitely. Opposite movements are
 never cancelled. The full tape reset and each retained access check remain
 part of the generated decision contract.
 
-Require native success and validate the entire returned v2 record before
+Require native success and validate the entire returned BFX record before
 import. A native output-capacity failure can expose a prefix resembling
-success; discard it. Missing/incorrect terminators emit a five-byte v2
-framing error. Behavior outside the validated-v1 precondition is unspecified.
+success; discard it. Missing/incorrect terminators emit a six-byte BFX
+framing error. Behavior outside the validated BFX precondition is unspecified.
 
-[Optimization evidence](../evidence/bfx_v2_optimization.json) contains native
+[Historical optimization evidence](../evidence/bfx_v2_optimization.json) contains native
 and independent checks, exact consumption, all-byte and boundary tests,
 three-generation fixed points, artifact hashes and separate performance
 measurements. Unchanged generic XAX bootstrap verification and lowering

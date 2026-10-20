@@ -3,7 +3,7 @@
 Each `.request` is exact compiler input. The matching `.bfx` is the complete
 expected response, including compiler-error records. Read
 [the wire contract](../../docs/02_BFX_CONTRACT.md) before changing fixture bytes.
-BFX magic and binary version are part of the data; the extension alone does
+BFX magic and identifier are part of the data; the extension alone does
 not identify a valid module. Fixture bytes are protected from checkout
 line-ending conversion by `.gitattributes`.
 
@@ -14,7 +14,7 @@ line-ending conversion by `.gitattributes`.
 | [all-eight](all-eight.request) | 0 | 8 | Preserve all eight instructions |
 | [bad-close](bad-close.request) | 2 | None | Reject an unmatched closing bracket |
 | [bad-open](bad-open.request) | 2 | None | Reject an unmatched opening bracket |
-| [empty](empty.request) | 0 | 0 | Emit a valid seven-byte empty module |
+| [empty](empty.request) | 0 | 0 | Emit a valid ten-byte empty module |
 | [nested](nested.request) | 0 | 18 | Preserve nested-loop structure |
 | [raw-zero](raw-zero.request) | 0 | 2 | Ignore literal NUL and FF in known-length source |
 | [safe-annotations](safe-annotations.request) | 0 | 2 | Ignore annotation text without changing commands |
@@ -47,93 +47,28 @@ The [bootstrap fixtures](../bootstrap/) pair `.input` and `.output` files for
 NUL-terminated text. Compare all emitted bytes. Oversized text emits nothing;
 known-length binary compiler input is a separate transport.
 
-## Boundary and integration checks
+## Current migration checks
 
-External verification covers source lengths 65,533, 65,534 and 65,535:
-the interpreter accepts the first and returns compiler resource status 3
-for the latter two complete frames. Missing or invalid terminators return
-compiler status 1 even on oversized source. The native ABI accepts the
-65,536-byte maximum complete request; larger logical frame lengths return
-native status 3 without invoking BBC. Truncated maximum-sized input views
-return compiler framing status 1. These are distinct checks and statuses.
+All twelve request/response pairs use the canonical BFX signature, identifier
+and u32 count. Empty success is ten bytes; failures are six. Both native targets
+execute all twelve fixtures, and the independent interpreter agrees.
 
-External verification also covers
-3,840-instruction acceptance and 3,841-instruction rejection, 255-level nesting
-acceptance and 256-level rejection, interpreted own-source output, and three
-native frontend generations on each supported target.
+Static transformation data are [clear-cases.json](clear-cases.json),
+[arithmetic-cases.json](arithmetic-cases.json) and
+[movement-cases.json](movement-cases.json). They contain 10, 23 and 24 exact
+binary input/output pairs, including negative rewrites, maximum counts and
+invalid terminators. Each private pass requires a complete validated successful
+BFX record of at most 3,840 instructions plus byte `01`. They are not independent
+untrusted-record validators. Input and output use the same format.
 
-The current capacity-flag source has separate
-[verification evidence](../../evidence/frontend_capacity_gate.json): 42
-independent seed checks, 785 Windows byte/property cases, three Windows native
-generations with twelve exact fixtures each, and an exhaustive whole-tape
-check of all 7,682 reachable instruction-count/command-flag states. Saturated
-buffers with ignored tails still accept; an additional command rejects.
-The later Android run passes three current native generations with twelve
-fixtures each, twelve boundary checks and 393 importer cases; canonical stores
-match Windows. Prior Android cycle evidence retains its preceding frontend hash.
+The single canonical XAX decoder's 1,231 current cases include all identifier
+values, payload-byte values, old signatures as rejection cases, framing,
+maximum-count/depth, input preservation, guards and alignments. Legacy records
+appear only as explicit negative inputs. Current decoder/importer sources and
+case data are linked in [integration](../../docs/03_XAX_INTEGRATION.md).
+Native program checks compare complete buffers with an independent BF reference.
 
-XAX's [393 static decoder cases](https://github.com/MrxSiN/XAX/blob/ac7821c9bf9c1bde0c18f00da6d1a60a3b320816/compiler/integration/bfx/decoder_cases.json)
-contain record bytes, logical lengths, expected validation results and loop
-pairs. The decoder and complete importer each execute that corpus on Android
-and Windows. Cases include invalid lengths/magic/version, every payload-byte
-value, limit cases, random opcode streams, input preservation and canaries.
-Native decision checks compare an independent Brainfuck oracle and verify
-output/tape effects on success and failure.
-
-The independent interpreter, native-call transports and build drivers remain
-outside BBC. They may execute programs, allocate buffers, compare results and
-move files; they must not implement production parsing, optimization or BFX
-translation. Their identities and hashes are recorded in the evidence reports.
-
-- [Seed and decoder evidence](../../evidence/bfx_migration.json): 21 seed checks and 393 decoder calls per target.
-- [Current importer/cycle evidence](../../evidence/bfx_android_importer.json): 393 importer cases per target, 89 Windows decision calls, three generations per target and 24 Android fixture checks.
-- [Application evidence](../../evidence/bfx_retirement.json): eight Android Activity cases and canonical backend regressions.
-- [Capacity evidence](../../evidence/source_capacity.json): preceding capacity-checked frontend, independent seed checks and Windows rebuild cycle; records initial device absence.
-- [Android capacity evidence](../../evidence/source_capacity_android.json): capacity-checked predecessor, 30 fixture checks and seven boundary checks.
-- [Windows counter evidence](../../evidence/frontend_counter_windows.json) and [Android counter evidence](../../evidence/frontend_counter_android.json): current P0 source, three native generations per target, ten fixtures per Android generation and boundary checks.
-- [Counter profile and validation](../../evidence/frontend_counter_profile.json): 131,072 exhaustive fragment states, seeded native byte/property checks, the additional group-boundary fixture on the independent interpreter and both native targets, and raw local frontend A/B measurements.
-
-The current [Windows filter cycle](../../evidence/frontend_filter_windows.json)
-and [Android filter cycle](../../evidence/frontend_filter_android.json) include
-all twelve fixture pairs. The [filter profile](../../evidence/frontend_filter_profile.json)
-records exhaustive decoder states, 530 native property cases and current A/B
-measurements. Earlier reports describe their own hashes and fixture sets;
-do not assign them to the current instruction stream.
-
-## Optional v2 optimizer
-
-The authoritative frontend still emits the exact v1 fixtures above. The
-[optional optimizer](../../compiler/optimize.bf) requires a validated success
-record plus byte `01`; it emits [v2](../../docs/10_BFX_V2_CLEAR.md). The
-[static v2 cases](v2-cases.json) give exact pass inputs/outputs and negative
-rewrite examples. They are data, not an alternate implementation. The
-standalone XAX validator remains strict v1; the extended importer's embedded
-validator accepts both versions. Do not send unvalidated records to the pass.
-
-[Its evidence](../../evidence/bfx_v2_optimization.json) includes 359 native
-properties, 71 independent binary-output interpreter cases, all v2 payload
-bytes, unknown versions, framing errors, size/count boundaries, exact input
-consumption and three-generation native fixed points on both targets.
-Twenty modules have 1,512 complete input/output/tape/guard vectors per arm
-per target. Clear loops exercise all 256 controlling bytes. Both bounds,
-EOF and I/O failures retain their ordering. Even-step, movement and full-wrap
-empty-loop nontermination remain explicit negative rewrite cases.
-
-These results describe the recorded source hashes. For any executable change,
-rerun the relevant checks before updating [the current status](../../docs/05_STATUS.md).
-
-The [v3 arithmetic contract](../../docs/12_BFX_V3_ARITHMETIC.md) and
-[correctness report](../../evidence/bfx_v3_arithmetic.json) extend the optional
-route after validated v2. Fourteen powers cover both signs and all byte values;
-42 modules have 5,530 full-buffer vectors per arm/target. Bounds, EOF, dirty
-tape, alignments, output failures and invalid logical arguments agree on both
-targets. V1/v2 fixtures and accepted stores remain byte-identical. All three
-components pass three native generations, with twelve frontend fixtures each.
-
-The [v3 static cases](v3-cases.json) cover both arithmetic directions, power
-boundaries, the maximum record count, control/movement barriers and negative
-even-step/empty-loop rewrites. Their inputs require the validated-v2 contract.
-
-The [v4 static pairs](v4-cases.json) cover both movement directions, power
-boundaries, maximum count, control/arithmetic/CLEAR barriers and opposite-move
-negative cases. Inputs require complete validated v3 success plus byte `01`.
+[Current evidence](../../evidence/canonical_bfx.json) separates native target
+execution from unchanged generic Windows-hosted SDK verification/lowering.
+Historical reports remain byte-identical with their original source identities;
+they are not reruns of the migrated implementation.

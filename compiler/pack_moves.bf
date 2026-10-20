@@ -1,15 +1,16 @@
 # BBC optional movement packer
-# INPUT A validated successful BFX v three record then required byte one
-# OUTPUT BFX v four with power of two movement operations packed
-# CALLER Establish the complete v three contract before invoking this internal pass
+# INPUT A validated successful BFX record then required byte one
+# OUTPUT BFX with power of two movement operations packed
+# CALLER Establish the complete BFX contract before invoking this internal pass
 # LAYOUT Sixteen cell slots with marker zero opcode one and deletion twelve
 # STATE Count seven and eight run nine previous ten and deletion twelve
 # POWER Code five threshold eleven continuation thirteen and scratch fourteen fifteen
 
 # Read the fixed header and preserve its bounded count
 >>>>>>>>>>>>>>>>
-,,,,,
+,,,,,,
 >>>>>>>>>,>,
+>,,[-]<
 <
 [-<<+<<<<<+>>>>>>>]<<<<<<<[->>>>>>>+<<<<<<<]
 >>>>>>>>
@@ -180,16 +181,16 @@
   >>>>>>>>>>>>>>>>
 ]
 
-# Emit the versioned record after the whole transformation
+# Emit the canonical record after the whole transformation
 >[-]
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++.
 ++++.
 ++++++++++++++++++.
-[-]++++.
+[-].+.
 >>>>>.
 >>>>>>>+<<<<<<<[[-]>>>>>>>[-]<<<<<<<]>>>>>>>
 [
-  [-]<<<<<<.>.
+  [-]<<<<<<.>.>[-]..<
   <<<<<<<<
   <<<<<<<<<<<<<<<<[<<<<<<<<<<<<<<<<]
   >>>>>>>>>>>>>>>>

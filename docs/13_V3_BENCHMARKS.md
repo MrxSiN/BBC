@@ -1,10 +1,16 @@
 # BFX v3 arithmetic measurements
 
+> Format migration note: measurements and source identities below describe their
+> pinned pre-migration snapshots. Historical version names identify that evidence,
+> not current decoder modes. Current production uses only [BFX](02_BFX_CONTRACT.md).
+> No migration performance or broader completion claim follows from these reports.
+
+
 The optional Brainfuck pass packs consecutive arithmetic into powers of two.
 This report compares v2 baseline and v3 arithmetic packing
 and its canonical XAX consumer; the competitive objective remains **NOT YET
 ACHIEVED**. [Proofs](07_OPTIMIZATION_PROOFS.md#p1-arithmetic-powers)
-and the [v3 contract](12_BFX_V3_ARITHMETIC.md) specify the implementation.
+and the [v3 contract](12_ARITHMETIC_PACKING.md) specify the implementation.
 
 [Complete immutable evidence](../evidence/bfx_v3_measurements.json) contains
 the frozen plan, exact source/input/output bytes, artifact and tool hashes,

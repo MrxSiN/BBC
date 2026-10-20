@@ -1,0 +1,56 @@
+{
+  "format": "BFX; exact binary pass inputs and outputs; required input terminator included when present",
+  "precondition": "Complete validated successful BFX of at most 3840 instructions, followed by byte01; source validation is upstream. Invalid terminator cases test framing failure.",
+  "cases": [
+    {
+      "name": "empty",
+      "input_hex": "4246580001000000000001",
+      "output_hex": "42465800010000000000"
+    },
+    {
+      "name": "decrement_clear",
+      "input_hex": "424658000100030000005b2d5d01",
+      "output_hex": "4246580001000100000000"
+    },
+    {
+      "name": "increment_clear",
+      "input_hex": "424658000100030000005b2b5d01",
+      "output_hex": "4246580001000100000000"
+    },
+    {
+      "name": "even_increment_kept",
+      "input_hex": "424658000100040000005b2b2b5d01",
+      "output_hex": "424658000100040000005b2b2b5d"
+    },
+    {
+      "name": "even_decrement_kept",
+      "input_hex": "424658000100040000005b2d2d5d01",
+      "output_hex": "424658000100040000005b2d2d5d"
+    },
+    {
+      "name": "movement_kept",
+      "input_hex": "424658000100060000002b5b3c3e2d5d01",
+      "output_hex": "424658000100060000002b5b3c3e2d5d"
+    },
+    {
+      "name": "nested_clear",
+      "input_hex": "424658000100050000005b5b2d5d5d01",
+      "output_hex": "424658000100030000005b005d"
+    },
+    {
+      "name": "adjacent_clears",
+      "input_hex": "424658000100060000005b2d5d5b2b5d01",
+      "output_hex": "424658000100020000000000"
+    },
+    {
+      "name": "missing_terminator",
+      "input_hex": "42465800010000000000",
+      "output_hex": "424658000101"
+    },
+    {
+      "name": "invalid_terminator",
+      "input_hex": "4246580001000000000002",
+      "output_hex": "424658000101"
+    }
+  ]
+}

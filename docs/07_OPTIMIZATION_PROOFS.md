@@ -1,5 +1,11 @@
 # BBC frontend optimization proofs
 
+> Format migration note: measurements and source identities below describe their
+> pinned pre-migration snapshots. Historical version names identify that evidence,
+> not current decoder modes. Current production uses only [BFX](02_BFX_CONTRACT.md).
+> No migration performance or broader completion claim follows from these reports.
+
+
 This document records proven compiler-implementation changes. P0 reduces
 BBC's own execution work while preserving transparent BFX v1 byte for byte.
 It does not implement P1/P2 source-program rewrites or change decision semantics.
@@ -337,7 +343,7 @@ gain, especially Android, while exposing its code-size and workload trade-offs.
 
 The optional [`optimize.bf`](../compiler/optimize.bf) consumes a validated v1
 success record followed by byte `01` and emits the explicitly versioned
-[BFX v2 format](10_BFX_V2_CLEAR.md). Raw-source validation remains in the
+[BFX v2 format](10_CLEAR_OPTIMIZATION.md). Raw-source validation remains in the
 authoritative frontend. The pass has 2,931 instructions, fits the unchanged
 limits and never expands its input record. Its own optimized stream contains
 2,851 operations. [Tape notes](../compiler/optimize.bf.notes.md) describe its
@@ -386,7 +392,7 @@ are reported separately in [benchmarks](08_BENCHMARKS.md).
 
 ## P1: arithmetic powers
 
-The optional [v3 arithmetic pass](12_BFX_V3_ARITHMETIC.md) extends P1 with
+The optional [v3 arithmetic pass](12_ARITHMETIC_PACKING.md) extends P1 with
 declared add/subtract powers. For `K = 2..128`, a live run of `K` identical
 unit commands equals one modular operation. Seven descending passes retain
 larger encodings and reset at deleted/nonarithmetic slots. Groups do not
@@ -414,7 +420,7 @@ support remains a separate gate.
 
 ## P1: movement powers
 
-The optional [v4 pass](14_BFX_V4_MOVEMENT.md) replaces only live identical
+The optional [v4 pass](14_MOVEMENT_PACKING.md) replaces only live identical
 unit moves with declared powers from two through 128. A monotone run stays
 within the tape exactly when its endpoint does. The run performs no other
 observable operation. Failure branches use the original status and the last
@@ -504,7 +510,7 @@ empties the state. Chunking therefore cannot split or lose a pending run.
 Monotone movement preserves the importer's first-crossing failure and clipped
 cursor. Neither opposite movements nor even-step loops are canceled.
 
-This pass is tested within a separate [wide compilation profile](17_BFX_V5_WIDE.md).
+This pass is tested within a separate [wide compilation profile](17_STREAMING_COMPILATION.md).
 Its private fixed-packet specialization relies on initialized complete
 count-bounded frames and adequate output capacity. It does not relax generic
 decision length guards or authorize untrusted continuation state.

@@ -1,7 +1,12 @@
 # Movement packer tape notes
 
-[`pack_moves.bf`](pack_moves.bf) implements the private validated-v3 to v4 pass
-in [the contract](../docs/14_BFX_V4_MOVEMENT.md). It is standard Brainfuck;
+Current source has 5342 bytes and 3732 BF instructions; raw SHA-256 `254910fea21d82ddf31c3ce89569b691ca68f468ba26695561cf6a0f23a792c9`,
+filtered SHA-256 `608e867e4e3b9c7d326dd1b9250705e382e5a960d257b04b86a9a5a514da2b0b`. All current framing follows the single
+[BFX specification](../docs/02_BFX_CONTRACT.md). Older counts, hashes and
+rebuild results quoted below are historical snapshots, not this source identity.
+
+[`pack_moves.bf`](pack_moves.bf) implements the private validated BFX pass
+in [the contract](../docs/14_MOVEMENT_PACKING.md). It is standard Brainfuck;
 annotations contain none of the eight executable characters.
 
 Slots have stride sixteen. Offset zero is the persistent marker; one holds
@@ -26,11 +31,10 @@ flags occupy distinct cells. No source pointer cancellation is performed.
 
 All walks stay within the staged region and output count never increases.
 The maximum observed cell is 61,469 for the unchanged 3,840-operation limit.
-The source is 5,347 bytes / 3,719 instructions; its own v4 native module contains
-1,063 operations. Bootstrap invokes four bounded BF components separately,
+Current source identity is listed above. Bootstrap invokes four bounded BF components separately,
 without concatenating sources or increasing frontend acceptance limits.
 
-[Correctness evidence](../evidence/bfx_v4_movement.json) records exact counted
+[Historical correctness evidence](../evidence/bfx_v4_movement.json) records exact counted
 consumption, native properties, independent interpretation, both native targets
 and three identical rebuild generations. Full tape reset and first-failure
 semantics remain part of the decision contract.

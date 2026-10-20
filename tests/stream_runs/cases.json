@@ -1,5 +1,5 @@
 {
-  "interface": "private BBCR binary version01; trusted continuation/ASCII-token preconditions",
+  "interface": "private BBCR binary version01; trusted continuation and validated BFX-token preconditions",
   "cases": [
     {
       "name": "native-case-0",
@@ -130,6 +130,26 @@
       "name": "native-case-1-bad-terminator",
       "input_hex": "2b0000000100",
       "output_hex": "42424352010000000001"
+    },
+    {
+      "name": "zero-repeat",
+      "input_hex": "000003000100000001",
+      "output_hex": "42424352010000000000030000"
+    },
+    {
+      "name": "opaque-all",
+      "input_hex": "00001d0001000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c01",
+      "output_hex": "4242435201000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c00001d0000"
+    },
+    {
+      "name": "zero-separated",
+      "input_hex": "00000700012b002b2b00002b01",
+      "output_hex": "42424352012b000100002b0000060000"
+    },
+    {
+      "name": "run-after-zero",
+      "input_hex": "0000060001002b2b2b2b0001",
+      "output_hex": "42424352010002000000030000"
     }
   ]
 }

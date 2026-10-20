@@ -1,5 +1,11 @@
 # Brainfry analysis and optimization priorities
 
+> Format migration note: measurements and source identities below describe their
+> pinned pre-migration snapshots. Historical version names identify that evidence,
+> not current decoder modes. Current production uses only [BFX](02_BFX_CONTRACT.md).
+> No migration performance or broader completion claim follows from these reports.
+
+
 The competitive objective remains **NOT YET ACHIEVED**. The measurements in
 [the benchmark report](08_BENCHMARKS.md) identify different problems in build
 latency, generated execution, memory and file size. Improvements in one do
@@ -115,7 +121,7 @@ attached to the previous frontend hash; the new run has its own report.
 
 ## Implemented semantic optimization
 
-The optional [v2 pass](10_BFX_V2_CLEAR.md) now recognizes exact `[-]` and `[+]`
+The optional [v2 pass](10_CLEAR_OPTIMIZATION.md) now recognizes exact `[-]` and `[+]`
 and removes groups of 256 identical arithmetic commands. This is actual
 Brainfuck implementation with canonical XAX importer changes. It preserves
 transparent v1, the complete tape reset and intermediate movement checks.
@@ -133,7 +139,7 @@ compared directly with the older buffer-retention report as a measured win.
 
 ## Next measured steps toward the competitive objective
 
-The [v3 arithmetic pass](12_BFX_V3_ARITHMETIC.md) is now EXECUTED: fourteen
+The [v3 arithmetic pass](12_ARITHMETIC_PACKING.md) is now EXECUTED: fourteen
 powers, 432 native properties, 72 independent cases, 908 cross-target records,
 22,120 full-buffer calls and three generations of all three components on
 both targets. It uses actual BF recognition and canonical XAX lowering;
@@ -169,7 +175,7 @@ time and native-call cost against v2 in aggregate. Brainfry still retains
 much faster complete builds and smaller files. Its valid scored workloads
 remain included; the reproduced defects do not remove them.
 
-The [v4 movement contract](14_BFX_V4_MOVEMENT.md) and [matched report](15_V4_BENCHMARKS.md)
+The [v4 movement contract](14_MOVEMENT_PACKING.md) and [matched report](15_V4_BENCHMARKS.md)
 add guarded identical-direction groups. Both-target full-buffer checks and
 four-component native fixed points pass. Affine transfers, stride scans and
 complete native compiler-host integration remain open. The v3 figures in
@@ -177,7 +183,7 @@ the implementation table are a separate pinned measurement snapshot.
 
 [Scalability](16_SCALABILITY.md) is now a coverage priority: the bounded
 frontend rejects Brainfry's 11,451-instruction Mandelbrot. The separate
-[v5 wide profile](17_BFX_V5_WIDE.md) now coordinates native BF filtering and
+[v5 wide profile](17_STREAMING_COMPILATION.md) now coordinates native BF filtering and
 run packing, emits a wide-count record and compiles that program to native
 Android and Windows executables. Run packing reduces it to 5,172 instructions.
 Larger fixed budgets close this capacity gap; dynamic arena growth and

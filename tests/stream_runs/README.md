@@ -9,4 +9,4 @@ termination. Input is isolated and includes the final byte-one terminator.
 The [pass notes](../../compiler/stream_runs.bf.notes.md) define trusted tokens,
 two-byte continuation state, finalization and provisional output. Never import
 these private `BBCR` packets as BFX modules. The separate
-[wide profile](../../docs/17_BFX_V5_WIDE.md) owns full-module publication.
+[streaming coordinator](../../docs/17_STREAMING_COMPILATION.md) owns full-module publication.

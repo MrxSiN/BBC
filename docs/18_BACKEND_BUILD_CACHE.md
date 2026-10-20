@@ -1,5 +1,11 @@
 # Compile-local verification cache
 
+> Format migration note: measurements and source identities below describe their
+> pinned pre-migration snapshots. Historical version names identify that evidence,
+> not current decoder modes. Current production uses only [BFX](02_BFX_CONTRACT.md).
+> No migration performance or broader completion claim follows from these reports.
+
+
 This experiment carries XAX's existing successful-object proof cache through
 a fresh source-to-runnable build. It uses the native v4 BBC frontend and
 optimization passes, native import, and unchanged generic Windows-hosted XAX

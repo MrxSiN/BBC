@@ -1,10 +1,16 @@
 # BFX v2 optimization measurements
 
+> Format migration note: measurements and source identities below describe their
+> pinned pre-migration snapshots. Historical version names identify that evidence,
+> not current decoder modes. Current production uses only [BFX](02_BFX_CONTRACT.md).
+> No migration performance or broader completion claim follows from these reports.
+
+
 The optional Brainfuck pass folds exact clear loops and removes complete
 256-command same-direction arithmetic groups. This report measures that pass
 and its canonical XAX consumer; the competitive objective remains **NOT YET
 ACHIEVED**. [Proofs](07_OPTIMIZATION_PROOFS.md#p1-clear-loops-and-full-arithmetic-wraps)
-and the [v2 contract](10_BFX_V2_CLEAR.md) specify the implementation.
+and the [v2 contract](10_CLEAR_OPTIMIZATION.md) specify the implementation.
 
 [Complete immutable evidence](../evidence/bfx_v2_optimization.json) contains
 the frozen plan, exact source/input/output bytes, artifact and tool hashes,

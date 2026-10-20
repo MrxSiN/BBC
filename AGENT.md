@@ -42,7 +42,7 @@ naming history. Preserve unrelated working-tree edits.
 - Apply SRP, separation of concerns and least knowledge to framing, filtering,
   validation, emission and import. Depend on explicit contracts and verified
   interfaces. Use DRY, KISS and YAGNI; add no speculative frameworks or layers.
-- Version extensions explicitly. Every target must preserve identical
+- Change incompatible formats only through an explicit unambiguous migration. Every target must preserve identical
   Brainfuck semantics and failures. BBC owns semantic optimization and its
   equivalence proof; XAX owns general graph and machine-code optimization.
 - Keep the internal borrowed-view decision core private. The typed caller
@@ -53,141 +53,62 @@ naming history. Preserve unrelated working-tree edits.
 
 ## Verification and current scope
 
-- Android ARM64 comes first, Windows x86-64 second; Linux is optional and
-  never gates required delivery or benchmarking.
-  The decoder and importer execute natively on Android and Windows. Three
-  current frontend generations pass on each platform, with twelve fixtures per
-  Android generation and twelve current boundary checks. Eight fixed bounded Activity
-  cases are separately verified. Use current evidence rather than earlier hashes.
-- The recorded BBC cycles use Windows-hosted XAX bootstrap verification,
-  lowering and packaging. A separate canonical Windows native driver prototype
-  verifies tested stores and builds a PE fixture. The canonical kind-order fix
-  passes 160 semantic cases with exact full diagnostics and 110 helper checks;
-  the full original corpus was not rerun. Broader diagnostic coverage,
-  corrected self-store, large-edit and DLL gates remain unmet; do not promote
-  it to a complete native build path. Native component execution is not XAX compiler-host execution;
-  cross-compilation is not target execution. Linux still needs an execution
-  host; do not promote its support without one.
-- The current frontend limits raw source to 65,533 bytes, keeping the complete
-  request within the 65,536-byte native input view. Current Android and Windows
-  native rebuild cycles have separate reports; do not promote earlier hashes
-  to current evidence.
-- Keep competitive completion separate from functional delivery. The
-  [competitor pilot](docs/08_BENCHMARKS.md) measures Awib and brainfry process
-  execution, test-pipeline compilation and size on both targets. It does not
-  establish steady-state, RAM, application or best-mode victories. Preserve
-  every pinned comparator and exclusion; follow
-  [the measurement plan](docs/06_PERFORMANCE_PLAN.md) before claiming wins.
-- The verification diagnosis separates cold helper setup from graph checks.
-  Existing ProofCache reuse has separate warm-stage and fresh-process external
-  experiments. Preserve the cold experiment's 1.009x Android-target / 1.001x
-  Windows-target point estimates and non-significant results; do not present
-  warm-stage ratios as full-build gains. It must not skip the first verification
-  or trust producer-supplied proofs. The cold configuration remains experimental.
-  Windows native-helper loading still falls back to Python. Implement new
-  host integration only as canonical XAX graphs, and rerun full pipeline
-  timing before changing competitor scores.
-- The standalone Android host and hello-binding transaction are canonical XAX
-  sources. `evidence/standalone_android.json` records a process advantage over
-  pinned Awib on twelve common-subset workloads; brainfry remains faster.
-  `evidence/standalone_native_replay.json` records native authority. Do not
-  generalize this to best modes, Windows, compiler latency, RAM, real apps or
-  an unrestricted sweep. Older shared-library pilot measurements stay immutable.
-- The standalone Windows PE host and hello binding are canonical XAX sources.
-  `evidence/standalone_windows.json` records 23 native programs, 28 host checks,
-  native binding replay and exact rebuilds. Its required generic bootstrap
-  inlining view avoids a Win64 call-path decline; preserve canonical verification
-  and disclose that build configuration. This does not complete the native
-  compiler driver. Keep fresh build/resource results separate from older pilots.
-  `evidence/build_runtime_resources.json` adds scoped fresh builds, compiler/runtime
-  memory and Windows process comparisons on the twelve-source corpus. Compiler
-  resident sums are sampled lower bounds; job peak commit is a distinct kernel
-  counter. Preserve the excluded launcher calibration and raw counterbalanced
-  trials. These measurements do not complete best-mode/app/coverage gates.
-- The current XAX importer clears the full decision tape with checked eight-byte
-  stores at alignment one. Its 393 record cases and 380 decision checks per
-  arm/target, native authority and three twenty-check frontend generations
-  are in `evidence/wide_tape_reset.json`. Preserve full-reset semantics and
-  the rejected-length guard before reset. Native-call gains do not establish
-  a compiler, process-startup, application or competitor victory.
-- P0 grouped-byte bookkeeping and single-copy opcode decoding have exhaustive
-  state checks and native
-  frontend A/B measurements. The optional `compiler/optimize.bf` pass now folds
-  exact unit-step clear loops and removes full 256-command arithmetic groups;
-  see [v2](docs/10_BFX_V2_CLEAR.md) and [proofs](docs/07_OPTIMIZATION_PROOFS.md).
-  Its precondition is a complete validated successful v1 record followed by
-  byte one. It is not an untrusted-record validator. Keep BFX v1
-  transparent and do not describe frontend work reductions as application wins.
-- `compiler/pack_arithmetic.bf` is the optional validated-v2 to v3 pass. It packs
-  powers of two in identical arithmetic runs, has 3,639 instructions / 5,259
-  bytes and observes peak cell 61,469. Its separate correctness evidence covers
-  432 native properties, 72 independent cases, 908 cross-target records, 22,120
-  full-buffer calls and three native generations of all three BF components.
-  V1/v2 accepted stores remain exact. Keep its new performance runs distinct
-  from the immutable v2 snapshot. `evidence/bfx_v3_measurements.json` records
-  matched three-run build/process/resource/file-size and full-call results;
-  preserve the Android hello growth and unmet competitor gates.
-- `compiler/pack_moves.bf` is the optional validated-v3 to v4 pass: 3,719
-  instructions / 5,347 bytes, peak cell 61,469. It packs identical monotone
-  moves, preserving first-crossing traps and zero-entry loop skips; never
-  cancel opposite moves. Its separate evidence records 432 properties,
-  72 independent cases, 1,164 cross-target records, 9,592 full-buffer calls
-  and three native generations of all four components on each target.
-  Preserve strict old versions and exact v1/v2/v3 accepted stores. Matched
-  performance remains separate from native compiler-host and sweep gates.
-  Preserve the v4 Android 0.930x native-call aggregate and its separate
-  post-primary controls; identical-code variability establishes no pass effect.
-- `compiler/stream_chunks.bf` is a PROTOTYPE private BBCS version01 chunk
-  filter/validator, 3,671 instructions / 3,794 bytes, using cells 0..58.
-  Its u64 depth and explicit continuation state pass 588 scalar properties,
-  44 stream chunks per target, Android guards/five alignments and ten
-  independent-interpreter checks. All tokens remain provisional until final
-  success; any error discards the entire stream. Keep its private caller
-  preconditions and 32,768-byte chunk bound. It is not a BFX module producer.
-  Original BFX/source limits remain unchanged. The separate
-  [v5 wide profile](docs/17_BFX_V5_WIDE.md) connects native chunk coordination,
-  u32-count records, streaming identical-run packing and defensive import.
-  Its fixed budgets are 1 MiB source / 65,536 pre-pack instructions, with a
-  65,536-entry pairing stack and balanced depth up to 32,768. Runtime arena
-  growth remains UNIMPLEMENTED; do not describe fixed views as dynamic allocation.
-  The private packer accepts only trusted transparent ASCII-command records;
-  it must not repack arbitrary optimized v5 modules. Preserve v1-v4 sources,
-  accepted stores and all existing immutable evidence. The wide native path
-  still uses unchanged generic Windows-hosted Python verification/lowering.
-  `stream_runs.bf` has 10,907 instructions / 11,054 bytes and uses cells 0..37.
-  Preserve 1,796 native properties per target, 1,184 Windows / twelve Android
-  private-specialization record checks, fourteen six-vector full-buffer modules
-  per target and three identical native wide bootstrap cycles. Five maximum-
-  count import stress cases check native emission/store integrity and target
-  equality; do not describe those as full SSA/lowering checks of every maximum
-  graph. Mandelbrot's transparent and packed programs execute correctly on both
-  targets. The explicit Windows derived-closure configuration removes unused
-  outlined code; artifact sizes are not counterbalanced performance scores.
-- The capacity-flag frontend is 4,537 bytes / 2,192 instructions. It adds 82
-  instructions and no cells, preserving exact BFX v1 output. Its separate
-  `evidence/frontend_capacity_gate.json` covers 42 seed checks, 7,682 complete
-  tape states, 785 Windows byte/property cases, 393 importer cases and three
-  Windows generations. The later Android run passes 393 importer cases,
-  three native generations, twelve fixtures each and twelve boundary checks;
-  stores match Windows. Keep preceding Android hashes distinct. No device
-  was connected initially; it became available during the follow-up.
-- The user-local .NET SDK 10.0.402 resolves the Brainfly Windows build blocker.
-  Twelve pinned corpus programs pass JIT and generated NativeAOT correctness
-  checks in `evidence/brainfly_brainfry_followup.json`; no Brainfly timing
-  score is established. Preserve the reproduced Brainfry even-step clear and
-  intermediate-movement defects as negative rewrite cases. They do not
-  invalidate separately checked pilot workloads or exclude the whole compiler.
-- Preserve the importer's hash scratch/output and small-result contracts.
-  The general ARM64 composite-return defect is tracked in XAX OI-49; the
-  maintained importer avoids it. The pinned revision and ABI details belong
-  in [XAX integration](docs/03_XAX_INTEGRATION.md).
-- After executable changes, verify annotations, exact fixtures, size/nesting
-  boundaries, bootstrap byte identity, independent-interpreter agreement and
-  affected target execution. Optimization changes require positive, negative,
-  nested-loop, wraparound and bounds-equivalence tests.
-- Use EXECUTED, MEASURED, PROTOTYPE, UNIMPLEMENTED and BLOCKED precisely.
-  Record source/artifact hashes, device/target, tool identities and unchanged
-  bootstrap dependencies. Do not infer timing superiority from one run.
+- Use the single [BFX contract](docs/02_BFX_CONTRACT.md). Its magic is
+  `42 46 58 00`, identifier `01`, success count u32. Exactly that identifier
+  is emitted and accepted. No legacy decoder/fallback is part of production.
+  All optimization levels, source sizes and targets share this format.
+- Android ARM64 and Windows x86-64 are required. Linux is optional and its
+  execution is unverified. Cross-compilation alone is not target execution.
+- [Current migration evidence](evidence/canonical_bfx.json) records decoder,
+  importer, producer, fixture, independent interpreter, full-buffer program,
+  maximum-store integrity and Mandelbrot checks. The frontend passes three
+  identical native generations on each target. Do not assign historical
+  optimizer-generation or performance counts to the migrated sources.
+- Bounded compiler limits are 65,533 raw source bytes, 3,840 instructions and
+  255 nested loops. Streaming coordination has 1 MiB source and 65,536
+  pre-pack instructions, permitting balanced depth 32,768. These fixed view
+  budgets are not runtime growth. Compiled programs retain 65,536 tape cells.
+- Bounded passes are private transforms requiring complete validated successful
+  BFX with at most 3,840 instructions plus terminator byte one. They trust the
+  header/count precondition and do not independently validate untrusted records.
+  The streaming packer preserves CLEAR and already encoded instructions.
+  Validate complete output before publication/import; discard failed prefixes.
+- The canonical decoder's function identity is shared by the portable decoder
+  closure and importer. XAX source, packer and importer live directly under
+  compiler/integration/bfx. Old wide entrypoints and legacy transactions are
+  retired; historical evidence stays exact and old sources stay in Git.
+- Builds use unchanged generic Windows-hosted Python SDK verification/lowering/
+  packaging. Native calls run with XAX_REQUIRE_NATIVE=1 and record authority.
+  Common Windows helper loading still falls back to Python. The separate native
+  driver prototype has bounded diagnostic/store coverage; self-store, large-edit,
+  common-loader and BBC DLL packaging gates remain unmet. Native component
+  execution is not a complete native compiler-host path.
+- Generic source-coordinator Windows lowering needs existing callee-inlining
+  APIs. Keep canonical verification and disclose that configuration. The general
+  ARM64 composite-return defect OI-49 remains separate; importer scratch outputs
+  and small results avoid it. Preserve full tape reset and rejected-length-before-
+  reset behavior, checked accesses and first-crossing movement failures.
+- After executable changes, verify safe annotations, exact fixtures, size/depth
+  boundaries, independent interpretation, bootstrap byte identity and affected
+  target execution. Optimization changes need positive/negative/nested-loop,
+  wrapping and bounds-equivalence tests with complete buffers and guards.
+- Preserve all historical timing/evidence snapshots, pinned comparators and
+  exclusions. Prior warm ProofCache gains are not complete-build gains; cold
+  cache results are negligible and do not close the compiler latency gap.
+  Any new helper integration must be canonical XAX graph work.
+- The .NET SDK 10.0.402 unblocks Brainfly correctness testing. Its twelve-program
+  JIT/NativeAOT results establish no timing score. Reproduced Brainfry clear and
+  movement defects remain scoped negative examples, not grounds to exclude the
+  compiler's separately checked workloads.
+- M4 remains incomplete. Further P1/P2 work, steady-state comparisons, broader
+  compiler/deployment boundaries, compiler/runtime RAM and full applications
+  remain. M8 is NOT YET ACHIEVED. Follow [the plan](docs/06_PERFORMANCE_PLAN.md)
+  before claiming competitive wins. This format migration has no performance score.
+- General unbounded Android decisions still need off-main-thread worker/cancellation
+  integration; previous bounded demo Activity cases do not prove that path.
+- Use EXECUTED, MEASURED, PROTOTYPE, UNIMPLEMENTED and BLOCKED precisely. Record
+  hashes, targets/devices, tools and unchanged bootstrap dependencies. Keep current
+  support separate from immutable historical snapshots.
 
 ## Documentation and evidence
 

@@ -1,14 +1,15 @@
 # BBC optional clear loop optimizer
-# INPUT A validated successful BFX v one record then required byte one
-# OUTPUT BFX v two with exact unit step clear loops folded
-# CALLER Establish the complete v one contract before invoking this internal pass
+# INPUT A validated successful BFX record then required byte one
+# OUTPUT BFX with exact unit step clear loops folded
+# CALLER Establish the complete BFX contract before invoking this internal pass
 # LAYOUT Sixteen cell slots with marker zero opcode one and deletion twelve
 # STATE Count seven and eight group counters nine and ten and loop gate thirteen
 
 # Read the fixed header and preserve its bounded count
 >>>>>>>>>>>>>>>>
-,,,,,
+,,,,,,
 >>>>>>>>>,>,
+>,,[-]<
 <
 [-<<+<<<<<+>>>>>>>]<<<<<<<[->>>>>>>+<<<<<<<]
 >>>>>>>>
@@ -152,16 +153,16 @@
   >>>>>>>>>>>>>>>>
 ]
 
-# Emit the versioned record after the whole transformation
+# Emit the canonical record after the whole transformation
 >[-]
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++.
 ++++.
 ++++++++++++++++++.
-[-]++.
+[-].+.
 >>>>>.
 >>>>>>>+<<<<<<<[[-]>>>>>>>[-]<<<<<<<]>>>>>>>
 [
-  [-]<<<<<<.>.
+  [-]<<<<<<.>.>[-]..<
   <<<<<<<<
   <<<<<<<<<<<<<<<<[<<<<<<<<<<<<<<<<]
   >>>>>>>>>>>>>>>>

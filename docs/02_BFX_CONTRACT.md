@@ -1,146 +1,118 @@
-# BFX v1 portable contract
+# BFX
 
-BBC emits **BFX — Ballsdeep Brainfuck XAX** modules with extension `.bfx`.
-This contract defines the compiler request and response. Native target support
-and executed evidence are listed in [05_STATUS.md](05_STATUS.md).
+BFX (Ballsdeep Brainfuck XAX), extension `.bfx`, is BBC's portable handoff to
+XAX. This is the single authoritative wire specification. All optimization
+levels, supported source sizes and target architectures use this format.
+Integers are unsigned little endian. The [execution profile](01_BRAINFUCK_PROFILE.md)
+defines the resulting program's behavior.
 
-All multi-byte integers are unsigned little endian. One invocation compiles
-one request. Framing and response bytes are data, never executable Brainfuck.
+## Record
 
-## Compiler request
+Success: `42 46 58 00 || 01 || 00 || count:u32le || payload:byte[count]`.
 
-`source_length:u16le || source:byte[source_length] || 01`
+Failure: `42 46 58 00 || 01 || status:u8`, with nonzero status.
 
-This is **BBC source-request v1**, independently versioned from the BFX output
-record. It has no in-band version field; future versions require explicit
-out-of-band selection or a separately specified unambiguous frame.
-
-Length counts every raw source byte, including NUL, ignored text and whitespace.
-The u16 field can encode 65,535, but the accepted limit is **65,533**:
-
-| Limit | Bytes | Meaning |
+| Offset | Field | Required value |
 |---|---|---|
-| `MAX_SOURCE_BYTES` | 65,533 | Maximum accepted raw source |
-| `MAX_REQUEST_FRAME_BYTES` | 65,536 | Accepted source plus two length bytes and terminator |
-| `NATIVE_INPUT_VIEW_BYTES` | 65,536 | Existing XAX decision input extent |
+| 0..3 | Magic | `42 46 58 00` (ASCII BFX followed by NUL) |
+| 4 | Format identifier | Exactly `01` |
+| 5 | Producer status | Zero for success, nonzero for failure |
+| 6..9 | Instruction count | Present only on success, u32 little endian |
+| 10 onward | Instructions | Exactly count bytes |
 
-BBC itself rejects declared source lengths 65,534 and 65,535 with compiler
-status 3 after consuming the declared frame and checking the terminator.
-A missing or invalid terminator still takes priority and returns status 1.
-Those two complete oversized frames cannot be passed through the native
-input view: the native core rejects logical input lengths above 65,536 with
-native status 3 before executing BBC. A shorter, truncated frame is never
-a substitute for a complete oversized request. External senders must reject
-source above the accepted limit; splitting or wrapping the length is invalid.
-The final byte must be
-hex `01`. A missing or different terminator fails; EOF-as-zero cannot satisfy
-that check. Bytes after this frame belong to the caller.
+A success has exactly `10 + count` bytes; a failure has exactly six bytes.
+No padding, extension fields, trailing bytes or alternate count widths are
+accepted. Count arithmetic must be checked for overflow before length comparison.
+A failure is a valid producer response but never an importable program.
+The bounded BF producers use status 1 for missing/invalid terminator, 2 for
+unmatched brackets and 3 for resource limits; framing takes priority, then
+resource limits, then brackets. A caller must establish native/process success
+as well as a complete successful record. Discard incomplete or failed output.
+OS writes are not promised to be atomic.
 
-The terminator detects truncation at physical EOF, including a last source
-byte of NUL. It does not detect arbitrary insertion, deletion or corruption
-when later bytes remain: a later byte may accidentally satisfy the terminator.
-Hosts requiring integrity must isolate and validate each frame or use an
-independently validated transport. Optional host validation owns transport
-only; BBC still validates framing, filters source and validates brackets.
+The identifier is binary `01`, not ASCII `1`. No other identifier is accepted
+or emitted. This intentional migration changes the magic so old records using
+three-byte magic and identifiers 01 through 05 are unambiguously rejected.
+There is no probing, legacy fallback or production legacy decoder. Convert
+old inputs by recompiling source, never by changing a filename or header.
+Historical evidence retains its original bytes and meaning.
 
-This known-length request accepts binary source. The optional text bootstrap
-framer has a separate NUL-termination rule and 7,680-byte capacity; see
-[04_BOOTSTRAP.md](04_BOOTSTRAP.md).
+## Instructions
 
-## Compiler response
-
-Success: `42 46 58 || 01 || 00 || instruction_count:u16le || instructions`
-
-Failure: `42 46 58 || 01 || error:u8`
-
-| Offset | Field | Rule |
-|---|---|---|
-| 0..2 | Magic | ASCII `BFX`, hex `42 46 58` |
-| 3 | Version | Binary `01`, not ASCII `1` |
-| 4 | Compiler status | Zero for success; nonzero for failure |
-| 5..6 | Instruction count | Present only on success |
-| 7 onward | Payload | Exactly the stated number of original instruction bytes |
-
-A successful response is exactly `7 + instruction_count` bytes. A failed
-response is exactly five bytes, with no count or payload.
-
-| Compiler status | Meaning |
+| Byte | Meaning |
 |---|---|
-| 0 | Successful validation and emission |
-| 1 | Missing or invalid request terminator, including truncated input |
-| 2 | Unmatched brackets |
-| 3 | Source length, instruction count or nesting exceeds the supported resource limit |
+| ASCII `+ - > < . , [ ]` | The corresponding Brainfuck instruction |
+| `00` | CLEAR: write zero to the current cell |
+| `01..07` | Add `2^opcode`, modulo 256 |
+| `08..0E` | Subtract `2^(opcode - 7)`, modulo 256 |
+| `0F..15` | Move right `2^(opcode - 14)` cells |
+| `16..1C` | Move left `2^(opcode - 21)` cells |
 
-If several errors occur, framing wins, then size, then unmatched brackets.
-The frontend consumes the declared source and checks its terminator before
-emitting a response. It emits no partial success record for rejected source.
-OS-level writes are not atomic: callers must reject truncated output and must
-not publish it as a module.
-Even a complete success-looking record is invalid if the compiler invocation
-failed. The caller must establish successful compiler termination as well as
-complete record validation and exact consumption before publishing a module.
+Every other byte is invalid. CLEAR is an instruction, so zero bytes must not
+serve as payload terminators. Counts include all instructions, including brackets
+and CLEAR. Brackets must balance. The frontend may preserve ASCII instructions;
+optimizers may use any declared opcode. These are representations in one format,
+not different decoder modes. A record carries no optimization-level marker,
+source-size marker, target selection, unchecked-memory permission or platform API.
 
-## Payload and resource limits
+Packed movement has the same first-crossing failure as its constituent unit
+moves. On failure the cursor remains at the last valid cell. Opposite moves
+cannot cancel. A skipped zero-entry loop executes no movement. Arithmetic wraps
+modulo 256. CLEAR has the semantics of an exact unit-step clear loop.
 
-The frontend filters exactly `><+-.,[]` and preserves their order without
-source-program rewrites. P0 optimizes compiler bookkeeping only; BFX v1 bytes
-for the same request are unchanged. All other bytes are ignored, including raw `00` and `FF`.
-A hash character is not a comment delimiter; instruction characters in
-annotations still participate in compilation.
+## Validation and implementation budgets
 
-The current capacity flag is private compiler bookkeeping. It replaces a
-per-byte instruction-count comparison with a carry-event update, without
-changing accepted payloads, limits or serialized bytes. See
-[the proof](07_OPTIMIZATION_PROOFS.md#p0-carry-triggered-capacity-flag).
+The one canonical XAX decoder checks length, magic, identifier, successful status,
+count, every opcode and bracket pairing before the importer publishes a graph.
+Its scalar validation statuses are separate from producer statuses: 1 framing
+or magic, 2 unsupported identifier, 3 producer failure, 4 resource limit,
+5 invalid opcode, 6 unmatched brackets. Exact framing is checked even for a
+failure response. Imported data remains untrusted until validation succeeds.
 
-At most **3,840 instructions** and **255 nested loops** are accepted. Every
-bracket must match. These are frontend resource limits, not changes to the
-[Brainfuck execution profile](01_BRAINFUCK_PROFILE.md).
+The count field can represent u32 values; current native import accepts at
+most 65,536 instructions, using a 65,546-byte record view and 65,536 u32 pairing
+and stack entries each. Maximum balanced nesting is therefore 32,768.
+Larger counts reject before count-plus-header arithmetic or payload access.
+This implementation budget does not select another format.
 
-The compiler itself runs on a zeroed 65,536-cell tape. A sentinel precedes its
-sixteen-cell instruction slots and working slot. At the instruction limit,
-the working slot spans cells 61,456..61,471. See the
-[tape notes](../compiler/compiler.bf.notes.md) for exact state and bounds.
+| Producer | Raw-source budget | Instruction budget | Depth budget |
+|---|---:|---:|---:|
+| Bounded `compiler.bf` | 65,533 | 3,840 | 255 |
+| Streaming coordinator with `stream_chunks.bf` | 1,048,576 | 65,536 before packing | 32,768 balanced |
 
-[Scalability notes](16_SCALABILITY.md) explain these bounds and the separate
-private chunk frontend prototype. It does not change this request/response,
-BFX v1-v4 acceptance or the original native importer's view extents.
-The separate [v5 wide profile](17_BFX_V5_WIDE.md) has its own record,
-coordinator API, budgets and native importer; it does not reinterpret v1.
+Both emit identical framing. The compiled program still has a 65,536-byte tape.
+Fixed compiler workspaces are distinct from dynamic allocation; runtime workspace
+growth remains unimplemented. See [scalability](16_SCALABILITY.md).
 
-## Import acceptance and versioning
+## Bounded source request and private passes
 
-The XAX importer independently checks magic, supported version, exact response
-length, successful status, instruction/nesting limits, payload opcodes and
-bracket balance. It rejects compiler-error records and incomplete or trailing
-bytes before emitting a decision store.
+`source_length:u16le || raw_source:byte[source_length] || 01` is the bounded
+frontend's input transport, separate from BFX. Length counts every byte,
+including NUL, whitespace and ignored text. Filter exactly `><+-.,[]` in order;
+all other source bytes are ignored. A hash is not a comment delimiter.
+The accepted raw-source maximum 65,533 leaves room for the length and terminator
+in a 65,536-byte native input view. Lengths 65,534 and 65,535 are rejected;
+complete oversized frames cannot enter that native view. A missing terminator
+fails even at physical EOF. The terminator detects truncation, not arbitrary
+corruption when later bytes remain. Isolate frames in the transport.
 
-Serialized data remains untrusted before publication. BFX v1's bracket check
-and loop-edge derivation are defensive import validation, not raw-source
-filtering or Brainfuck optimization. Any future safety annotation must be
-validated independently or retain runtime checks; producer authentication
-alone never authorizes unchecked memory access.
-
-BFX v1 carries neither a target selection nor platform capabilities. Every
-target must preserve the same tape, byte, input/output and error semantics.
-Importer validation errors and native decision-call statuses are separate
-interfaces, documented in [03_XAX_INTEGRATION.md](03_XAX_INTEGRATION.md).
-
-Changing a filename does not convert record contents. Incompatible records
-require a new version byte; compatible metadata additions require an explicit
-framing rule. [BFX v2](10_BFX_V2_CLEAR.md) is an explicit separate version
-with CLEAR and an optional Brainfuck optimization stage; it does not change
-these v1 request/response bytes or v1 opcode validation. The authoritative
-frontend continues to emit v1.
+The bounded optimization passes consume a complete, previously validated,
+successful BFX record with at most 3,840 instructions, followed by byte `01`.
+They trust the header/count precondition; they are private transformations,
+not additional untrusted-record decoders. They preserve the format and emit
+six-byte failure status 1 for an invalid terminator. Their count staging uses
+u16 internally and emits the upper two u32 count bytes as zero. Validate their
+complete result before publication or import. Streaming coordinators have
+separate typed buffer APIs; private BBCS/BBCR packets are not BFX records.
 
 ## Exact examples
 
-| Source/request | Complete response |
+| Input/result | Complete BFX hex |
 |---|---|
-| Empty source: `00 00 01` | `42 46 58 01 00 00 00` |
-| Unmatched opening bracket: `01 00 5B 01` | `42 46 58 01 02` |
-| Truncated terminator fixture | `42 46 58 01 01` |
+| Empty program | `42 46 58 00 01 00 00 00 00 00` |
+| One ASCII plus | `42 46 58 00 01 00 01 00 00 00 2B` |
+| One CLEAR | `42 46 58 00 01 00 01 00 00 00 00` |
+| Unmatched bracket response | `42 46 58 00 01 02` |
+| Missing terminator response | `42 46 58 00 01 01` |
 
-The tracked [fixture pairs](../tests/bfx/README.md) are exact binary compiler
-requests and expected responses. Compile source to create `.bfx` modules;
-the portable record is not a human-written source language.
+[Fixture pairs](../tests/bfx/README.md) contain current exact binary records.

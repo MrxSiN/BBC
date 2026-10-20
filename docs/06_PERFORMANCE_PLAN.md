@@ -1,5 +1,11 @@
 # BBC measurement plan
 
+> Format migration note: measurements and source identities below describe their
+> pinned pre-migration snapshots. Historical version names identify that evidence,
+> not current decoder modes. Current production uses only [BFX](02_BFX_CONTRACT.md).
+> No migration performance or broader completion claim follows from these reports.
+
+
 Status: **MEASURED** initial Awib/brainfry process-execution, test-pipeline
 compilation and size pilot on Android ARM64 and Windows x86-64. The
 [results and eight-project coverage matrix](08_BENCHMARKS.md) are separate
@@ -11,7 +17,7 @@ best-mode coverage and scored deployment timing remain incomplete.
 The competitive objective is **NOT YET ACHIEVED**. Linux is optional and
 never gates functional delivery or a required-target sweep.
 
-The [v5 wide profile](17_BFX_V5_WIDE.md) adds compiled Mandelbrot and larger
+The [v5 wide profile](17_STREAMING_COMPILATION.md) adds compiled Mandelbrot and larger
 source/depth regressions. Its opcode reductions and executable byte counts are
 correctness/artifact observations, not a replacement for matched build, memory
 and runtime trials. Preserve the existing corpus and every earlier negative
@@ -93,7 +99,7 @@ and file-size comparisons.
 
 BBC owns source recognition, analysis and optimization in standard Brainfuck.
 The optional `compiler/optimize.bf` pass now folds exact clear loops and full
-arithmetic wraps under the [v2 contract](10_BFX_V2_CLEAR.md), with canonical
+arithmetic wraps under the [v2 contract](10_CLEAR_OPTIMIZATION.md), with canonical
 XAX lowering. Retain transparent BFX v1 for differential tests. Before any
 further optimized opcode, specify encoding, safety, rejection rules,
 resource/fallback budgets and XAX lowering support.
@@ -146,7 +152,7 @@ Pre-register sanity/short-run, hot-compute and real-decision runtime categories.
 Extend the small existing sanity corpus with transfer/multiply, scans,
 checksum/math, nested loops and source-limit stress only as needed. Programs
 outside the 3,840-instruction or 65,533-source-byte limits are **UNSUPPORTED**
-by the original v1-v4 frontend. The separate [v5 profile](17_BFX_V5_WIDE.md)
+by the original v1-v4 frontend. The separate [v5 profile](17_STREAMING_COMPILATION.md)
 accepts 1 MiB source, 65,536 pre-pack instructions and balanced depth up to
 32,768. Name the selected profile and its fixed budgets in every new run;
 do not retroactively change an earlier experiment's eligibility.

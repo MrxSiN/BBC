@@ -1,5 +1,11 @@
 # Native driver diagnostic and coverage follow-up
 
+> Format migration note: measurements and source identities below describe their
+> pinned pre-migration snapshots. Historical version names identify that evidence,
+> not current decoder modes. Current production uses only [BFX](02_BFX_CONTRACT.md).
+> No migration performance or broader completion claim follows from these reports.
+
+
 The canonical Windows XAX driver now resolves its known type-diagnostic
 mismatch. This is backend correctness work toward the native compiler path;
 it establishes no new build-time, RAM or competitor score. M4 remains incomplete

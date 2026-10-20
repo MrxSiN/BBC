@@ -95,12 +95,12 @@ next invocation isolated, and is not a Brainfuck instruction or language status.
 
 ## Optimization obligations
 
-The optional [BFX v2 pass](10_BFX_V2_CLEAR.md) folds exact unit-step clear loops
+The optional [clear pass](10_CLEAR_OPTIMIZATION.md) folds exact unit-step clear loops
 and removes complete 256-command same-direction arithmetic groups. P0 optimizes
-compiler bookkeeping. A second [v3 pass](12_BFX_V3_ARITHMETIC.md) packs powers
-of two in consecutive arithmetic. The [v4 pass](14_BFX_V4_MOVEMENT.md) packs
+compiler bookkeeping. A second [arithmetic pass](12_ARITHMETIC_PACKING.md) packs powers
+of two in consecutive arithmetic. The [movement pass](14_MOVEMENT_PACKING.md) packs
 identical monotone movements, retaining first-crossing failures. The authoritative frontend preserves
-transparent BFX v1; see
+transparent BFX; see
 [the proofs](07_OPTIMIZATION_PROOFS.md). Every source rewrite must preserve
 output bytes, input consumption, byte wrapping, pointer position, loop
 termination behavior and the order of defined bounds failures. Opposite

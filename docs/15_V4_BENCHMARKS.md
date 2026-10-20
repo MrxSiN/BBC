@@ -1,10 +1,16 @@
 # BFX v4 movement measurements
 
+> Format migration note: measurements and source identities below describe their
+> pinned pre-migration snapshots. Historical version names identify that evidence,
+> not current decoder modes. Current production uses only [BFX](02_BFX_CONTRACT.md).
+> No migration performance or broader completion claim follows from these reports.
+
+
 The optional Brainfuck pass packs consecutive movement into powers of two.
 This report compares v3 baseline and v4 movement packing
 and its canonical XAX consumer; the competitive objective remains **NOT YET
 ACHIEVED**. [Proofs](07_OPTIMIZATION_PROOFS.md#p1-movement-powers)
-and the [v4 contract](14_BFX_V4_MOVEMENT.md) specify the implementation.
+and the [v4 contract](14_MOVEMENT_PACKING.md) specify the implementation.
 
 [Complete immutable evidence](../evidence/bfx_v4_measurements.json) contains
 the frozen plan, exact source/input/output bytes, artifact and tool hashes,
