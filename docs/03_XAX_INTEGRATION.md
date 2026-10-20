@@ -2,7 +2,11 @@
 
 The decoder and application baseline sources are pinned to revision
 [`ac7821c9bf9c1bde0c18f00da6d1a60a3b320816`](https://github.com/MrxSiN/XAX/commit/ac7821c9bf9c1bde0c18f00da6d1a60a3b320816).
-The v1/v2 importer is pinned to [revision `69baed9`](https://github.com/MrxSiN/XAX/commit/69baed905c340c491d8d827c48163dae526e4863),
+The current v1/v2/v3 importer is pinned to
+[revision `0232858`](https://github.com/MrxSiN/XAX/commit/0232858c7ad9be0e66b6feb300b4d0880bc276a5),
+with its [arithmetic contract and exact-root transactions](https://github.com/MrxSiN/XAX/blob/0232858c7ad9be0e66b6feb300b4d0880bc276a5/compiler/integration/bfx/POWERS.md).
+The preceding v1/v2 importer remains pinned to
+[revision `69baed9`](https://github.com/MrxSiN/XAX/commit/69baed905c340c491d8d827c48163dae526e4863),
 with its [CLEAR contract and graph transactions](https://github.com/MrxSiN/XAX/blob/69baed905c340c491d8d827c48163dae526e4863/compiler/integration/bfx/CLEAR.md).
 The preceding v1 reset importer remains pinned to
 [revision `7761cf2`](https://github.com/MrxSiN/XAX/commit/7761cf24218472c459c3491dcf7570263bc3b373)
@@ -31,7 +35,7 @@ empty/hello rebuilds. This does not complete the native XAX build driver.
 | Canonical XAX source | Responsibility |
 |---|---|
 | [bfx.xax](https://github.com/MrxSiN/XAX/blob/ac7821c9bf9c1bde0c18f00da6d1a60a3b320816/compiler/integration/bfx/bfx.xax) | Validate records and compute matching loop indices |
-| [import_bfx.xax](https://github.com/MrxSiN/XAX/blob/69baed905c340c491d8d827c48163dae526e4863/compiler/integration/bfx/import_bfx.xax) | Validate v1/v2, then emit, hash, sort and serialize a complete native decision store |
+| [import_bfx.xax](https://github.com/MrxSiN/XAX/blob/0232858c7ad9be0e66b6feb300b4d0880bc276a5/compiler/integration/bfx/import_bfx.xax) | Validate v1/v2/v3, then emit, hash, sort and serialize a complete native decision store |
 | [android_bfx.xax](https://github.com/MrxSiN/XAX/blob/ac7821c9bf9c1bde0c18f00da6d1a60a3b320816/compiler/integration/bfx/android_bfx.xax) | Native decision caller, JNI lifecycle, managed UI and Android package/build metadata |
 | [backend_tests.xax](https://github.com/MrxSiN/XAX/blob/ac7821c9bf9c1bde0c18f00da6d1a60a3b320816/compiler/integration/bfx/backend_tests.xax) | Arithmetic and large-stack regression checks |
 
@@ -47,9 +51,24 @@ contracts and static case data.
 
 ## Decoder and importer
 
-The standalone decoder remains strict v1. The extended importer's embedded
-validator accepts both v1 and [v2 CLEAR](10_BFX_V2_CLEAR.md), with unknown
-versions and unsupported payload bytes rejected. Both exact-root edits,
+The [v3 extension](12_BFX_V3_ARITHMETIC.md) adds fourteen modular arithmetic
+powers. The new consumer passes 908 Android/Windows record comparisons,
+retaining exact v1/v2 stores. Its 22,120 full-buffer comparisons cover every
+entry byte for every power, both bounds and failure ordering on both targets.
+Frontend, clear helper and arithmetic helper each reach three native fixed
+points, with twelve frontend fixtures per generation. The
+[v3 correctness report](../evidence/bfx_v3_arithmetic.json) pins all source,
+artifact and transaction identities. This does not replace older measurements.
+
+Lowering uses a supported 32-bit rotate of the existing constant one, byte
+truncation, wrapping arithmetic and checked load/store. The initial byte-width
+rotate was explicitly declined by Windows; the third verified graph edit
+repairs that limitation without changing the generic compiler. Native ABI,
+caller allocations, full reset and source acceptance limits remain unchanged.
+
+For the preceding v2 change, the importer's embedded validator accepted
+v1 and [v2 CLEAR](10_BFX_V2_CLEAR.md). The standalone decoder remains strict v1.
+Unknown versions and unsupported payload bytes reject. Both exact-root edits,
 stale rejection and full canonical verification precede `Workspace.save`.
 The published graph matches the privately tested artifact byte for byte;
 the unrelated local XAX construct branch was left untouched.

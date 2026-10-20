@@ -121,3 +121,15 @@ empty-loop nontermination remain explicit negative rewrite cases.
 
 These results describe the recorded source hashes. For any executable change,
 rerun the relevant checks before updating [the current status](../../docs/05_STATUS.md).
+
+The [v3 arithmetic contract](../../docs/12_BFX_V3_ARITHMETIC.md) and
+[correctness report](../../evidence/bfx_v3_arithmetic.json) extend the optional
+route after validated v2. Fourteen powers cover both signs and all byte values;
+42 modules have 5,530 full-buffer vectors per arm/target. Bounds, EOF, dirty
+tape, alignments, output failures and invalid logical arguments agree on both
+targets. V1/v2 fixtures and accepted stores remain byte-identical. All three
+components pass three native generations, with twelve frontend fixtures each.
+
+The [v3 static cases](v3-cases.json) cover both arithmetic directions, power
+boundaries, the maximum record count, control/movement barriers and negative
+even-step/empty-loop rewrites. Their inputs require the validated-v2 contract.

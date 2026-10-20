@@ -41,7 +41,7 @@ for commands, versions, hashes and individual outcomes.
 | Dimension | Brainfry implementation | Current BBC + XAX implication |
 |---|---|---|
 | Complete build | One native process parses, optimizes, emits bytes and writes a container; no external assembler/linker | BBC invokes its frontend and canonical importer, verifies a much larger graph, binds the process host and uses legacy bootstrap lowering. The existing complete-build medians average about 0.9–1.0 seconds versus about 15 ms for Brainfry. Frontend-only tuning cannot close that gap. |
-| Arithmetic | Consecutive same-direction arithmetic becomes an immediate-count operation | BFX v1 retains individual instruction bytes and the importer lowers them individually. Code, graph size and verification work scale with the original stream. |
+| Arithmetic | Consecutive same-direction arithmetic becomes an immediate-count operation | Transparent v1 retains individual commands. Optional v3 now packs power-of-two adds/subtracts; direct arbitrary deltas and generic generated-code overhead remain. |
 | Common loops | `Zero`, offset `MulAdd` and stride `Scan` remove common loop work | BBC now folds exact unit-step clear loops in Brainfuck. Affine transfer and scan recognition still need proofs and implementation before XAX lowers their declared semantics. |
 | Backend | Dedicated x86-64/AArch64 emitters hold the tape cursor in a register and patch branches directly | XAX is a general verified backend; measure graph/operation and spill costs before targeted graph or backend changes. A second BBC machine-code writer would violate the repository architecture. |
 | Startup and tape | Fresh native processes reserve address space and commit initially zero OS pages; a small freestanding runtime provides I/O | BBC's reusable decision contract resets all 65,536 cells for every invocation. Fresh-process and repeated-call costs need distinct measurements; removing reset would be incorrect. |
@@ -133,13 +133,21 @@ compared directly with the older buffer-retention report as a measured win.
 
 ## Next measured steps toward the competitive objective
 
+The [v3 arithmetic pass](12_BFX_V3_ARITHMETIC.md) is now EXECUTED: fourteen
+powers, 432 native properties, 72 independent cases, 908 cross-target records,
+22,120 full-buffer calls and three generations of all three components on
+both targets. It uses actual BF recognition and canonical XAX lowering;
+complete-build/process/resource timing remains a separate report. The first
+byte-width rotate declined on Windows and was repaired canonically with a
+supported 32-bit rotate/truncate sequence.
+
 1. Complete and measure the canonical XAX native build path, including its
    outstanding diagnostic, self-store, large-edit and DLL gates. Reuse proofs
    only through the existing verified cache contract. This addresses the
    largest recorded build-latency gap; do not bypass verification.
-2. Extend the versioned compact format beyond CLEAR, with proved actual XAX
-   lowering support. Prioritize immediate byte arithmetic, trap-preserving
-   movement envelopes and general odd-step clears. Retain v1 as the
+2. Extend compact arithmetic beyond powers where useful, with proved actual XAX
+   lowering support. Prioritize trap-preserving movement envelopes and general
+   odd-step clears. Retain v1 as the
    transparent differential path and a capacity-safe fallback.
 3. Keep recognition in Brainfuck and lower declared operations in canonical
    XAX through expected-root transactions. Extend to guarded affine
@@ -155,3 +163,8 @@ compared directly with the older buffer-retention report as a measured win.
 Each step needs its own correctness, full-pipeline time, RAM, file-size and
 execution measurements. None of the competitors is marked SURPASSED by this
 follow-up.
+
+The [v3 measured follow-up](13_V3_BENCHMARKS.md) reduces this corpus's build
+time and native-call cost against v2 in aggregate. Brainfry still retains
+much faster complete builds and smaller files. Its valid scored workloads
+remain included; the reproduced defects do not remove them.

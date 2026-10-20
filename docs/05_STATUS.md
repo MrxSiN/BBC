@@ -3,7 +3,8 @@
 Evidence: **2026-10-19** frontend/platform runs; **2026-10-20** Windows native
 driver prototype, tape-reset and capacity-flag optimizations, Brainfly SDK
 follow-up, semantic optimization and standalone Android/Windows processes.
-Formats: transparent **BFX v1** and optional [**v2 CLEAR**](10_BFX_V2_CLEAR.md),
+Formats: transparent **BFX v1**, optional [**v2 CLEAR**](10_BFX_V2_CLEAR.md)
+and [**v3 arithmetic powers**](12_BFX_V3_ARITHMETIC.md),
 magic `42 46 58`, explicit binary version. The [v1 contract](02_BFX_CONTRACT.md) and
 [execution profile](01_BRAINFUCK_PROFILE.md) define the shared behavior.
 
@@ -16,9 +17,10 @@ magic `42 46 58`, explicit binary version. The [v1 contract](02_BFX_CONTRACT.md)
 | XAX native driver prototype | No new execution | EXECUTED with bounded coverage: 78 valid stores accept, 130 malformed stores reject, four decline; one diagnostic differs | Native PE build/edit/resolve fixtures pass; corrected self-store and DLL packaging decline |
 | Standalone XAX hashing host | No new execution | EXECUTED: 139 successful streams and five failure cases | Separate native helper process; not yet used by the compiler loader |
 | Canonical XAX decoder | EXECUTED: 393 cases | EXECUTED: 393 cases | Length, magic, version, opcode, bracket and resource limits |
-| Canonical XAX importer | EXECUTED: v1/v2 importer passes 652 cases | EXECUTED: v1/v2 records, all v2 bytes and strict v1 compatibility | Exact Android/Windows agreement; input and four buffer guards preserved |
+| Canonical XAX importer | EXECUTED: v1/v2/v3 importer passes 908 cases | EXECUTED: all three versions and strict v1/v2 compatibility | Exact Android/Windows agreement; input and four buffer guards preserved |
 | Optional BF optimizer | EXECUTED: three identical optimized generations | EXECUTED: three identical optimized generations, 359 properties and 71 independent seed cases | Exact clears/full arithmetic wraps; no record expansion |
-| Optimized decision components | EXECUTED: 1,512 checks across 20 modules per arm | EXECUTED: 1,512 checks across 20 modules per arm | Complete buffers and guards agree with an independent interpreter; 6,048 calls total |
+| Arithmetic packer | EXECUTED: three identical native generations | EXECUTED: three identical native generations, 432 native properties and 72 independent cases | 3,639-instruction standard BF producer; all fourteen arithmetic powers |
+| Arithmetic decision components | EXECUTED: 5,530 checks across 42 modules per arm | EXECUTED: 5,530 checks across 42 modules per arm | Complete buffers and guards agree with an independent interpreter; 22,120 calls total |
 | Frontend rebuild cycle | EXECUTED for current 2,192-instruction frontend: identical BFX/store/ELF across three generations; twelve fixtures each | EXECUTED for current 2,192-instruction frontend: identical BFX/store/DLL across three generations; twelve fixtures each | Native lowering occurs on Windows |
 | Decision application | EXECUTED: eight fixed bounded Activity cases | UNVERIFIED: XAX application caller beyond native component tests | Pixel 8 Pro, Android 17/API 37; Windows GUI is not required |
 
@@ -52,6 +54,20 @@ The installed demo application remains tied to its previous evidence.
 The [v2 benchmark report](11_V2_BENCHMARKS.md) separates complete builds,
 process execution, memory, full executable bytes and native calls. The
 competitive objective remains unmet; older measurements retain their hashes.
+
+The [v3 packer](12_BFX_V3_ARITHMETIC.md) now packs seven powers per direction.
+It requires validated v2 plus byte `01`, never expands a record and uses no
+extra tape. Both targets pass three identical generations of all three BF
+components. Current native frontend v3 IR contains 1,910 operations; the
+unchanged source still has 2,192 instructions and emits exact transparent v1.
+Clear and arithmetic helpers have 2,513 and 3,258 optimized operations.
+[V3 correctness evidence](../evidence/bfx_v3_arithmetic.json) is separate from
+the v2 measurements. The [new v3 measurements](13_V3_BENCHMARKS.md) report
+complete native-call geometric-mean median ratios of 1.432x on Android and
+1.236x on Windows against v2, including full reset. Fresh complete-build
+ratios are 1.093x and 1.136x; process ratios are 1.077x and 1.009x. Three run
+clusters limit inference. Seven Windows and six Android files shrink; Android
+hello grows by 16.7%. Brainfry retains much faster builds and smaller files.
 
 The retained capacity-flag change has ten-case native-call median-ratio
 geometric means of 1.169x on Android and 1.086x on Windows, thirty paired
@@ -216,6 +232,7 @@ native compiler driver, best-mode coverage, real applications or M8.
 | [frontend_capacity_gate.json](../evidence/frontend_capacity_gate.json) | Carry-triggered capacity flag; exhaustive states, independent seed, Windows/Android fixed points and importer parity, paired frontend trials and rejected gate candidate |
 | [brainfly_brainfry_followup.json](../evidence/brainfly_brainfry_followup.json) | Installed SDK identity; twelve Brainfly JIT and generated NativeAOT correctness cases; pinned Brainfry release tests and reproduced optimizer defects; no new competitive timing score |
 | [bfx_v2_optimization.json](../evidence/bfx_v2_optimization.json) | BF clear/full-wrap optimizer, canonical v1/v2 importer, independent/native correctness, optimized fixed points and separate three-arm complete build/process/resource measurements |
+| [bfx_v3_arithmetic.json](../evidence/bfx_v3_arithmetic.json) | Standard BF arithmetic packing, canonical v1/v2/v3 consumer, 908 cross-target record cases, 22,120 full-buffer calls and three-component native fixed points; timing measured separately |
 | [build_runtime_resources.json](../evidence/build_runtime_resources.json) | Fresh complete-build latency, compiler/runtime memory, Windows standalone comparisons, raw samples, calibrations, excluded launcher probe and explicit scope |
 | [standalone_windows.json](../evidence/standalone_windows.json) | Canonical Windows host and public hello transaction; 23 native programs, 28 host checks, native binding replay/verify/stale rejection and exact empty/hello rebuilds; explicit unchanged generic inlining configuration |
 | [standalone_android.json](../evidence/standalone_android.json) | Static Android process host and binding, correctness/artifact hashes, primary raw process timings against pinned Awib/brainfry, size summaries, retained excluded concurrent-validation probe |
@@ -266,7 +283,7 @@ is canonical semantic graphs in the separate repository.
 - After P0 decoding, slot transfer dominates accepted-instruction work and
   grouped length bookkeeping dominates ignored NUL input. Profile those
   remaining costs before extending the frontend. P1 clear/full-wrap folding is
-  implemented. Immediate arithmetic, general odd-step clear, affine transfer,
+  implemented, and v3 arithmetic powers are EXECUTED. General odd-step clear, affine transfer,
   scan and movement-envelope optimization still need independent equivalence
   proofs, safe bounds/error ordering, versioned BFX design and native evidence.
 - Linux execution is UNIMPLEMENTED in this integration; no Linux execution

@@ -97,7 +97,9 @@ next invocation isolated, and is not a Brainfuck instruction or language status.
 
 The optional [BFX v2 pass](10_BFX_V2_CLEAR.md) folds exact unit-step clear loops
 and removes complete 256-command same-direction arithmetic groups. P0 optimizes
-compiler bookkeeping while preserving transparent BFX v1; see
+compiler bookkeeping. A second [v3 pass](12_BFX_V3_ARITHMETIC.md) packs powers
+of two in consecutive arithmetic. The authoritative frontend preserves
+transparent BFX v1; see
 [the proofs](07_OPTIMIZATION_PROOFS.md). Every source rewrite must preserve
 output bytes, input consumption, byte wrapping, pointer position, loop
 termination behavior and the order of defined bounds failures. Opposite

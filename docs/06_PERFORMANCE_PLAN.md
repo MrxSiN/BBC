@@ -198,3 +198,8 @@ budget, targeted adversarial tests, self-hosting, and same-machine A/B stage
 costs. Keep it only with a demonstrated net benefit; report rejected attempts
 and approximate repeated-call break-even cost. Semantic correctness and source
 purity are absolute gates. Full pinned sweeps belong at M8, not every small edit.
+
+The [v3 matched run](13_V3_BENCHMARKS.md) follows the fixed-corpus protocol
+with twelve observations across three independent runs per arm/case/target.
+Its exploratory intervals and exact three-run sign-flip limitations do not
+meet the confirmatory competitor-victory gates above.

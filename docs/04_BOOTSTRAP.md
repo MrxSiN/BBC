@@ -129,6 +129,19 @@ source has 2,931 instructions; optimizing its own v1 stream leaves 2,851
 operations. These are component fixed points, not a complete compiler-host
 self-build. Windows-hosted unchanged generic XAX tools still verify and lower.
 
+## Arithmetic-packed rebuilds
+
+For arithmetic-packed builds, continue the optional route with
+[`pack_arithmetic.bf`](../compiler/pack_arithmetic.bf). Validate the complete v2
+success, append byte `01`, run the native helper, then validate/import v3 and
+perform full canonical verification before native lowering. The
+[v3 contract](12_BFX_V3_ARITHMETIC.md) specifies that internal boundary.
+[Separate correctness evidence](../evidence/bfx_v3_arithmetic.json) records
+three identical frontend, clear-helper and arithmetic-helper generations on
+each target, twelve exact frontend fixtures each and native Android imports
+matching Windows stores. The unchanged frontend source still emits v1.
+These component fixed points use the disclosed Windows bootstrap host.
+
 ## Standalone Android packaging
 
 The [canonical process host](https://github.com/MrxSiN/XAX/blob/5d3a41c649c08974825b9e5b4c199cb6d59b3185/compiler/integration/bfx/standalone_arm64.xax) calls an imported

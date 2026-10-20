@@ -113,6 +113,15 @@ naming history. Preserve unrelated working-tree edits.
   Its precondition is a complete validated successful v1 record followed by
   byte one. It is not an untrusted-record validator. Keep BFX v1
   transparent and do not describe frontend work reductions as application wins.
+- `compiler/pack_arithmetic.bf` is the optional validated-v2 to v3 pass. It packs
+  powers of two in identical arithmetic runs, has 3,639 instructions / 5,259
+  bytes and observes peak cell 61,469. Its separate correctness evidence covers
+  432 native properties, 72 independent cases, 908 cross-target records, 22,120
+  full-buffer calls and three native generations of all three BF components.
+  V1/v2 accepted stores remain exact. Keep its new performance runs distinct
+  from the immutable v2 snapshot. `evidence/bfx_v3_measurements.json` records
+  matched three-run build/process/resource/file-size and full-call results;
+  preserve the Android hello growth and unmet competitor gates.
 - The capacity-flag frontend is 4,537 bytes / 2,192 instructions. It adds 82
   instructions and no cells, preserving exact BFX v1 output. Its separate
   `evidence/frontend_capacity_gate.json` covers 42 seed checks, 7,682 complete

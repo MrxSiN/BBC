@@ -384,6 +384,34 @@ fixed points use disclosed unchanged Windows-hosted generic XAX bootstrap
 verification and lowering. Complete-pipeline and standalone-process results
 are reported separately in [benchmarks](08_BENCHMARKS.md).
 
+## P1: arithmetic powers
+
+The optional [v3 arithmetic pass](12_BFX_V3_ARITHMETIC.md) extends P1 with
+declared add/subtract powers. For `K = 2..128`, a live run of `K` identical
+unit commands equals one modular operation. Seven descending passes retain
+larger encodings and reset at deleted/nonarithmetic slots. Groups do not
+overlap, counts decrease by `K - 1`, and all pointer/I/O/control operations
+retain order. Nonzero-entry even-step loops remain nonterminating where the
+original does. The pass never expands records or raises source limits.
+
+The [v3 evidence](../evidence/bfx_v3_arithmetic.json) records 432 native
+properties, 72 independent C cases and all fourteen powers over every entry
+byte. The 22,120 complete buffer/guard calls cover both targets, EOF, both
+bounds and failure ordering. Three generations of frontend, clear helper and
+arithmetic helper reach exact fixed points on each target. Native lowering
+uses a supported 32-bit rotate plus truncation after the initial byte rotate
+was explicitly declined; generic backend implementation remains unchanged.
+
+The [matched performance report](13_V3_BENCHMARKS.md) retains all sixteen
+workloads and three run clusters. Full native-call geometric-mean median
+ratios against v2 are 1.432x Android / 1.236x Windows. Complete-build ratios
+are 1.093x / 1.136x; smaller graphs outweigh the added BF stage on this fixed
+corpus in aggregate, while individual unchanged cases can cost more. Full
+file sizes improve in aggregate, with Android hello growing by 16.7%. No
+new tape budget is required. Three-cluster inference, remaining compiler/RAM
+gaps and competitor coverage prevent a sweep claim. Complete compiler-host
+support remains a separate gate.
+
 ## XAX: eight-byte tape reset
 
 The current [canonical importer](https://github.com/MrxSiN/XAX/blob/7761cf24218472c459c3491dcf7570263bc3b373/compiler/integration/bfx/import_bfx.xax) initializes the complete
