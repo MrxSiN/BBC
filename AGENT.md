@@ -57,7 +57,7 @@ naming history. Preserve unrelated working-tree edits.
   never gates required delivery or benchmarking.
   The decoder and importer execute natively on Android and Windows. Three
   current frontend generations pass on each platform, with twelve fixtures per
-  Android generation and seven boundary checks. Eight fixed bounded Activity
+  Android generation and twelve current boundary checks. Eight fixed bounded Activity
   cases are separately verified. Use current evidence rather than earlier hashes.
 - The recorded BBC cycles use Windows-hosted XAX bootstrap verification,
   lowering and packaging. A separate canonical Windows native driver prototype
@@ -107,9 +107,26 @@ naming history. Preserve unrelated working-tree edits.
   a compiler, process-startup, application or competitor victory.
 - P0 grouped-byte bookkeeping and single-copy opcode decoding have exhaustive
   state checks and native
-  frontend A/B measurements. Source-program folding and loop optimization are
-  still unimplemented; see [proofs](docs/07_OPTIMIZATION_PROOFS.md). Keep BFX v1
+  frontend A/B measurements. The optional `compiler/optimize.bf` pass now folds
+  exact unit-step clear loops and removes full 256-command arithmetic groups;
+  see [v2](docs/10_BFX_V2_CLEAR.md) and [proofs](docs/07_OPTIMIZATION_PROOFS.md).
+  Its precondition is a complete validated successful v1 record followed by
+  byte one. It is not an untrusted-record validator. Keep BFX v1
   transparent and do not describe frontend work reductions as application wins.
+- The capacity-flag frontend is 4,537 bytes / 2,192 instructions. It adds 82
+  instructions and no cells, preserving exact BFX v1 output. Its separate
+  `evidence/frontend_capacity_gate.json` covers 42 seed checks, 7,682 complete
+  tape states, 785 Windows byte/property cases, 393 importer cases and three
+  Windows generations. The later Android run passes 393 importer cases,
+  three native generations, twelve fixtures each and twelve boundary checks;
+  stores match Windows. Keep preceding Android hashes distinct. No device
+  was connected initially; it became available during the follow-up.
+- The user-local .NET SDK 10.0.402 resolves the Brainfly Windows build blocker.
+  Twelve pinned corpus programs pass JIT and generated NativeAOT correctness
+  checks in `evidence/brainfly_brainfry_followup.json`; no Brainfly timing
+  score is established. Preserve the reproduced Brainfry even-step clear and
+  intermediate-movement defects as negative rewrite cases. They do not
+  invalidate separately checked pilot workloads or exclude the whole compiler.
 - Preserve the importer's hash scratch/output and small-result contracts.
   The general ARM64 composite-return defect is tracked in XAX OI-49; the
   maintained importer avoids it. The pinned revision and ABI details belong

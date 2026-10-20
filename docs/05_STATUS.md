@@ -1,8 +1,10 @@
 # BBC and BFX status
 
 Evidence: **2026-10-19** frontend/platform runs; **2026-10-20** Windows native
-driver prototype, tape-reset optimization and standalone Android/Windows processes. Format: **BFX v1**, magic `42 46 58`, binary
-version `01`. The [contract](02_BFX_CONTRACT.md) and
+driver prototype, tape-reset and capacity-flag optimizations, Brainfly SDK
+follow-up, semantic optimization and standalone Android/Windows processes.
+Formats: transparent **BFX v1** and optional [**v2 CLEAR**](10_BFX_V2_CLEAR.md),
+magic `42 46 58`, explicit binary version. The [v1 contract](02_BFX_CONTRACT.md) and
 [execution profile](01_BRAINFUCK_PROFILE.md) define the shared behavior.
 
 ## Executed support
@@ -10,28 +12,75 @@ version `01`. The [contract](02_BFX_CONTRACT.md) and
 | Component | Android ARM64 | Windows x86-64 | Evidence |
 |---|---|---|---|
 | Standalone executable | EXECUTED: 23 native programs; fragmented/binary I/O, size and failure checks | EXECUTED: 23 native programs and 28 host checks; kernel32-only PE | Direct verified decisions; separate target-specific build configurations and evidence |
-| Current BBC frontend | EXECUTED | EXECUTED | Current cycles reproduce the seed on both required targets |
+| Current BBC frontend | EXECUTED: three identical capacity-flag generations | EXECUTED: three identical capacity-flag generations | Native Android and Windows stores match |
 | XAX native driver prototype | No new execution | EXECUTED with bounded coverage: 78 valid stores accept, 130 malformed stores reject, four decline; one diagnostic differs | Native PE build/edit/resolve fixtures pass; corrected self-store and DLL packaging decline |
 | Standalone XAX hashing host | No new execution | EXECUTED: 139 successful streams and five failure cases | Separate native helper process; not yet used by the compiler loader |
 | Canonical XAX decoder | EXECUTED: 393 cases | EXECUTED: 393 cases | Length, magic, version, opcode, bracket and resource limits |
-| Canonical XAX importer | EXECUTED: current reset importer passes 393 cases and compiler imports | EXECUTED: current reset importer passes 393 cases | Each version produces identical Android/Windows stores; input and four buffer guards preserved |
-| Generated decision components | EXECUTED: 380 checks across 20 modules per importer version | EXECUTED: 380 checks across 20 modules per importer version | Full output and tape agree with an independent interpreter; no source-program optimization |
-| Frontend rebuild cycle | EXECUTED for current frontend: identical BFX/store/ELF across three generations; twenty checks per generation | EXECUTED for current frontend: identical BFX/store/DLL across three generations; twenty checks per generation | Android stores also match Windows stores; native lowering occurs on Windows |
+| Canonical XAX importer | EXECUTED: v1/v2 importer passes 652 cases | EXECUTED: v1/v2 records, all v2 bytes and strict v1 compatibility | Exact Android/Windows agreement; input and four buffer guards preserved |
+| Optional BF optimizer | EXECUTED: three identical optimized generations | EXECUTED: three identical optimized generations, 359 properties and 71 independent seed cases | Exact clears/full arithmetic wraps; no record expansion |
+| Optimized decision components | EXECUTED: 1,512 checks across 20 modules per arm | EXECUTED: 1,512 checks across 20 modules per arm | Complete buffers and guards agree with an independent interpreter; 6,048 calls total |
+| Frontend rebuild cycle | EXECUTED for current 2,192-instruction frontend: identical BFX/store/ELF across three generations; twelve fixtures each | EXECUTED for current 2,192-instruction frontend: identical BFX/store/DLL across three generations; twelve fixtures each | Native lowering occurs on Windows |
 | Decision application | EXECUTED: eight fixed bounded Activity cases | UNVERIFIED: XAX application caller beyond native component tests | Pixel 8 Pro, Android 17/API 37; Windows GUI is not required |
+
+The current frontend has 4,537 source bytes and 2,192 instructions; its raw
+SHA-256 is `d8170d895449cf00e971a052b6d5415d2c5f86585d982f826fa70c5127850d6e`.
+It moves the count-high comparison to carry events, preserves exact BFX v1 output
+and uses no extra tape. [Capacity-gate evidence](../evidence/frontend_capacity_gate.json)
+records 42 independent seed checks, all 7,682 reachable count/command states,
+785 Windows byte/property cases, 393 current-importer cases and three Windows
+fixed-point generations. Android subsequently passed 393 importer cases,
+three current native generations, twelve fixtures each and twelve boundary
+checks; canonical stores agree with Windows. The device became available
+after the initial Windows-only snapshot. The following filter-cycle counts and timings retain their
+preceding source identities.
+
+The optional [`optimize.bf`](../compiler/optimize.bf) adds source-program
+rewriting under a [separate v2 contract](10_BFX_V2_CLEAR.md). Its 2,931
+instructions fold exact unit-step clear loops and remove full 256-command
+same-direction arithmetic groups. Raw source validation and transparent v1
+output remain authoritative. The pass requires a complete validated successful
+v1 record plus byte `01`; it is not an independent record validator.
+
+[Optimization evidence](../evidence/bfx_v2_optimization.json) records native
+and independent checks, count/bounds failures and three identical optimized
+frontend/helper generations per target. The compiler source stays unchanged;
+its v1 records and twelve fixtures remain exact through the v2 route. Every
+v1 accepted store retains its bytes. The standalone decoder stays v1-only;
+the extended importer validates both versions. All 96 new standalone artifacts
+build and all 48 per-target executions pass exact output/status checks.
+The installed demo application remains tied to its previous evidence.
+The [v2 benchmark report](11_V2_BENCHMARKS.md) separates complete builds,
+process execution, memory, full executable bytes and native calls. The
+competitive objective remains unmet; older measurements retain their hashes.
+
+The retained capacity-flag change has ten-case native-call median-ratio
+geometric means of 1.169x on Android and 1.086x on Windows, thirty paired
+trials per case/target. Windows nested-input median is about 4% slower and
+its compiler DLL grows by 20,992 bytes; Android library size stays 50,120.
+These are frontend results, not compiler-pipeline or application victories.
+[Full table, uncertainty and rejected candidate](07_OPTIMIZATION_PROOFS.md#p0-carry-triggered-capacity-flag).
+
+The .NET SDK blocker is resolved: Windows x64 SDK 10.0.402 is installed and
+the unchanged pinned Brainfly CLI builds. All twelve frozen corpus programs
+pass exact output checks in JIT and generated NativeAOT modes. These are build
+and correctness checks, not scored competitive timing. The
+[follow-up](../evidence/brainfly_brainfry_followup.json) also records three
+reproduced Brainfry optimizer defects; the
+[analysis](09_BRAINFRY_ANALYSIS.md) explains their scope and optimization priorities.
 
 The decoder and complete-importer case counts are separate runs of the same
 393-case corpus. The eight Activity cases are separate from frontend checks.
-The current native cycles each use twelve exact fixtures, own source and
+The preceding filter/reset native cycles each use twelve exact fixtures, own source and
 seven boundary checks: twenty checks per generation on each target, including
 the group boundary and all-byte opcode fixtures. None of these correctness counts is
 a timing measurement.
 
-The current frontend is 4,355 source bytes and 2,110 executable instructions.
+The preceding filter frontend is 4,355 source bytes and 2,110 executable instructions.
 It accepts 65,533 raw source bytes, 3,840 instructions and 255 nested loops.
 The source limit keeps a complete request within the native 65,536-byte input
 view. It passed 42 independent-interpreter checks and 47 Windows native
 checks plus 530 byte/property cases
-plus three native rebuild generations. Android passed three current frontend
+plus three native rebuild generations. Android passed three filter-frontend
 generations, 36 exact fixture checks and seven separate boundary checks.
 In that frontend-only iteration, the canonical XAX importer was unchanged,
 rebuilt byte-identically and passed its 393 record cases again. The current
@@ -49,7 +98,7 @@ All earlier reports retain their original bytes and hashes. Android evidence
 for the earlier frontend must not be attributed to the changed instruction
 stream. Earlier capacity reports retain their original source identities.
 
-## Local frontend measurements
+## Preceding filter frontend measurements
 
 The fixed nine-case suite has three independent runs and ten paired trials
 per case/run on each target. It includes ignored ASCII/NUL/FF, instruction-heavy
@@ -164,6 +213,9 @@ native compiler driver, best-mode coverage, real applications or M8.
 
 | Report | What it establishes |
 |---|---|
+| [frontend_capacity_gate.json](../evidence/frontend_capacity_gate.json) | Carry-triggered capacity flag; exhaustive states, independent seed, Windows/Android fixed points and importer parity, paired frontend trials and rejected gate candidate |
+| [brainfly_brainfry_followup.json](../evidence/brainfly_brainfry_followup.json) | Installed SDK identity; twelve Brainfly JIT and generated NativeAOT correctness cases; pinned Brainfry release tests and reproduced optimizer defects; no new competitive timing score |
+| [bfx_v2_optimization.json](../evidence/bfx_v2_optimization.json) | BF clear/full-wrap optimizer, canonical v1/v2 importer, independent/native correctness, optimized fixed points and separate three-arm complete build/process/resource measurements |
 | [build_runtime_resources.json](../evidence/build_runtime_resources.json) | Fresh complete-build latency, compiler/runtime memory, Windows standalone comparisons, raw samples, calibrations, excluded launcher probe and explicit scope |
 | [standalone_windows.json](../evidence/standalone_windows.json) | Canonical Windows host and public hello transaction; 23 native programs, 28 host checks, native binding replay/verify/stale rejection and exact empty/hello rebuilds; explicit unchanged generic inlining configuration |
 | [standalone_android.json](../evidence/standalone_android.json) | Static Android process host and binding, correctness/artifact hashes, primary raw process timings against pinned Awib/brainfry, size summaries, retained excluded concurrent-validation probe |
@@ -213,9 +265,10 @@ is canonical semantic graphs in the separate repository.
   not evidence that this integration has been implemented.
 - After P0 decoding, slot transfer dominates accepted-instruction work and
   grouped length bookkeeping dominates ignored NUL input. Profile those
-  remaining costs before extending the frontend. P1/P2 source-program folding and
-  loop optimization are UNIMPLEMENTED and need independent equivalence proofs,
-  safe bounds/error ordering, BFX design and native cost evidence.
+  remaining costs before extending the frontend. P1 clear/full-wrap folding is
+  implemented. Immediate arithmetic, general odd-step clear, affine transfer,
+  scan and movement-envelope optimization still need independent equivalence
+  proofs, safe bounds/error ordering, versioned BFX design and native evidence.
 - Linux execution is UNIMPLEMENTED in this integration; no Linux execution
   host is available. Cross-compilation alone will not establish support.
 - Native XAX compiler-host execution on Android is UNIMPLEMENTED in this cycle.
@@ -224,7 +277,7 @@ is canonical semantic graphs in the separate repository.
   The importer uses checked scratch outputs and mixing results of at most
   16 bytes, so it avoids that operation and executes successfully.
 - M4 is incomplete: frontend profiling, two P0 improvements and the first
-  [competitor test-pipeline pilot](08_BENCHMARKS.md) are MEASURED. P1/P2,
+  [competitor test-pipeline pilot](08_BENCHMARKS.md) are MEASURED. Further P1/P2,
   steady-state comparisons, broader compiler/deployment boundaries,
   broader compiler/runtime RAM coverage and full application coverage remain.
   The new twelve-source follow-up supplies scoped build/RAM measurements. XAX graph

@@ -11,6 +11,13 @@ best-mode coverage and scored deployment timing remain incomplete.
 The competitive objective is **NOT YET ACHIEVED**. Linux is optional and
 never gates functional delivery or a required-target sweep.
 
+The [v2 follow-up](11_V2_BENCHMARKS.md) retains that twelve-source corpus and
+adds four preregistered clear-loop workloads. It reports three-arm complete
+build/process/resource trials and a separately preregistered native-call BBC
+A/B. Every timed result is checked; all builds reproduce validated artifact
+hashes. Its caller allocation policy, current CPU and native/bootstrap
+boundaries are explicit, so earlier snapshots retain their own scopes.
+
 ## Next gate and ownership
 
 The current P0 frontend has been revalidated on both required targets.
@@ -72,12 +79,21 @@ execution. Broader workload, best compatible mode and real-application gates rem
 optimization and lower generated-code cost are still needed for hot compute
 and file-size comparisons.
 
-BBC owns all source recognition, analysis and optimization in `compiler.bf`.
-Retain transparent BFX v1 for differential tests. Before BFX v2 or an optimized
-opcode, specify encoding, safety, rejection rules, resource/fallback budgets
-and XAX lowering support.
+BBC owns source recognition, analysis and optimization in standard Brainfuck.
+The optional `compiler/optimize.bf` pass now folds exact clear loops and full
+arithmetic wraps under the [v2 contract](10_BFX_V2_CLEAR.md), with canonical
+XAX lowering. Retain transparent BFX v1 for differential tests. Before any
+further optimized opcode, specify encoding, safety, rejection rules,
+resource/fallback budgets and XAX lowering support.
 Use checked mathematical offsets capable of representing beyond signed 16 bits;
 preserve intermediate movement traps and conditional loop entry.
+
+The [Brainfry analysis](09_BRAINFRY_ANALYSIS.md) records the SDK follow-up,
+reproduced even-step clear and movement-envelope defects, and prioritized
+build/runtime/memory/size work. The first capacity-flag frontend change
+has its own [proof and Android/Windows A/B scope](07_OPTIMIZATION_PROOFS.md#p0-carry-triggered-capacity-flag).
+Android native execution also passes three generations. Retain the negative cases when implementing
+source-loop rewriting; they are not timed workloads.
 
 The actual XAX integration is pinned in [03_XAX_INTEGRATION.md](03_XAX_INTEGRATION.md).
 It has canonical decoder/importer/application stores, verified workspace saves
@@ -94,8 +110,11 @@ output is tested on Android; a Linux target name alone is not grounds for
 excluding a working Android execution path. No desktop Linux result is used.
 
 The matrix retains all eight projects. Missing LLVM/MLIR development
-toolchains or the .NET SDK are local build blockers, not victories or proof
+toolchains are local build blockers, not victories or proof
 of unsupported platforms. Unverified translation routes remain visible.
+The .NET SDK is now installed and the pinned Brainfly JIT and generated
+NativeAOT modes pass the twelve-program Windows correctness corpus; their
+scored timings and Android eligibility remain unverified.
 Verify best compatible alternate modes before unrestricted claims; JIT and
 interpreter/VM results must retain their distinct labels.
 

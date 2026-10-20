@@ -8,8 +8,9 @@ The [profile](01_BRAINFUCK_PROFILE.md), [wire contract](02_BFX_CONTRACT.md) and
 
 ## P0: counted source-byte groups
 
-This section records the preceding counter-only snapshot. The decoder section
-below describes the current frontend; its measurements are a separate A/B run.
+This section records the counter-only snapshot. The decoder section below
+records the following snapshot; the command-gated capacity section records
+the current frontend. Each has its own source identity and measurements.
 
 The baseline frontend copied the low source-length byte twice and the high
 byte once on every raw byte. Instrumented independent execution identified
@@ -167,7 +168,7 @@ instructions**. The movement range stays within the existing working slot.
 
 Whole-compiler verification adds a fixture containing every raw byte in
 ascending order. Its payload is exactly the original eight commands in that
-order, including balanced brackets. The current source passes 42 independent
+order, including balanced brackets. The decoder snapshot passes 42 independent
 interpreter checks, 530 native byte/property cases, 393 unchanged importer
 cases, and three native rebuild generations on each required target. Android
 passes all twelve fixtures in every generation and seven boundary cases.
@@ -175,7 +176,7 @@ passes all twelve fixtures in every generation and seven boundary cases.
 ### Resource and measured-work effects
 
 Relative to the preceding counter frontend, compiler source shrinks by 602
-bytes and 615 instructions. Current source is 4,355 bytes / 2,110 commands;
+bytes and 615 instructions. This decoder snapshot is 4,355 bytes / 2,110 commands;
 own-source BFX is 2,117 bytes. No tape cells or BFX feature/version are added.
 All source, instruction, nesting, input-view and output limits are unchanged.
 The existing capacity and grouped-byte-counter logic is retained, with its
@@ -193,7 +194,7 @@ they are not smaller application decision modules, whose BFX is unchanged.
 Peak compiler tape use remains cell 61,471. Process RAM and full BBC-plus-XAX
 latency are not inferred from these source and artifact counts.
 
-The current native A/B results, raw samples, confidence intervals and limits
+That snapshot's native A/B results, raw samples, confidence intervals and limits
 are published in [filter profile evidence](../evidence/frontend_filter_profile.json)
 and [status](05_STATUS.md). They compare against the immediately preceding
 counter frontend using a separately frozen nine-case suite. Do not multiply
@@ -221,6 +222,167 @@ Clocks and thermals were not actively controlled; thermal snapshots reported
 status zero. These A/B runs do not measure full pipeline timing, process RAM,
 energy or application runtime. Retain the decoder for its consistent nonempty frontend
 improvements, reduced compiler source/IR/native size and unchanged tape bound.
+
+## P0: carry-triggered capacity flag
+
+The retained implementation uses a carry-triggered full flag. The baseline
+compared the high byte of the stored instruction count with fifteen for
+every raw source byte. That repeated copying and comparison grows more
+expensive as instructions accumulate, even on ignored annotation bytes.
+
+### State and equivalence
+
+For stored count `n`, the working slot starts at `16 * (n + 1)`. Its marker
+cell was unused until storage. Reuse it as the Boolean fact `n == 3840`:
+
+- Initially count and marker are zero.
+- On an accepted command, mark the old slot as stored and increment the count.
+  Only a low-byte carry increments high and compares it with fifteen.
+  When high reaches fifteen, set the next working slot's marker to one.
+- At each source byte, copy and restore that Boolean marker. A set marker
+  clears a recognized-command flag and sets sticky size error; ignored bytes
+  remain harmless. The existing storage gate handles accepted commands.
+- Rejected commands never advance the slot or change the count. Thus the
+  marker remains one at saturation, while every earlier working marker is zero.
+- After source consumption, clear the working marker before output scanning.
+  The zero sentinel remains untouched and only real stored slots are emitted.
+
+The comparison now runs at most fifteen times per accepted request, rather
+than once per raw byte. Scratch returns to zero; raw opcode, depth, grouped
+source counter, sticky errors and complete request consumption are preserved.
+The same framing/size/bracket priority, 3,840-instruction and 255-nesting limits,
+and staged BFX v1 emission hold. Compiler implementation changes do not rewrite
+the accepted source program.
+
+The actual guard/store fragment passes **7,682 exhaustive states**: all
+reachable counts 0..3,840 and both command flags. Each check compares all
+65,536 tape cells against independently computed count, transfer, marker and
+error effects, including ignored/rejected bytes at saturation. Whole-program
+checks exercise marker cleanup through exact limit-sized output.
+
+### Resources and validation
+
+Source increases from 4,355 to 4,537 bytes and from 2,110 to 2,192 executable
+instructions. Own-source BFX increases from 2,117 to 2,199 bytes. No tape cells
+are added: the maximum working cell remains 61,471, and the source stays
+within its own compiler and text-framer limits. No BFX version or capacity
+changes are needed.
+
+The current source passes 42 independent-interpreter checks, 785 Windows
+byte/property cases, twelve exact fixtures per generation and three identical
+native BFX/store/DLL rebuild generations. The unchanged current canonical
+importer passes its 393 record cases. Invalid logical lengths still reject
+before reset; an output-capacity failure is followed by a successful clean
+call. Both baseline and candidate Android ELF frontend libraries occupy 50,120
+bytes. Once the initially disconnected Pixel 8 Pro became available, Android
+passed 393 importer cases, three native frontend generations, twelve fixtures
+each and twelve boundary checks. Canonical stores match Windows; BFX/store/ELF
+bytes match across Android generations.
+
+The Windows compiler DLL grows from 549,888 to 570,880 bytes, a 20,992-byte
+cost. This is the frontend component; unchanged application sources still
+emit identical BFX and therefore receive no application size/runtime gain
+from this change. Peak process RAM was not remeasured.
+
+The [complete evidence](../evidence/frontend_capacity_gate.json) retains the
+frozen ten-case plan and all three independent Windows collector runs, ten
+paired trials per case/run. Both arms use the same current importer and
+unchanged generic XAX bootstrap lowerers. Complete native calls include tape
+reset; validation follows each timed call; no overhead is subtracted.
+The tenth case explicitly measures a full instruction buffer followed by
+ignored bytes. No cases or poor samples are removed.
+
+An earlier candidate wrapped the count comparison and storage in a command
+gate. It passed correctness checks but regressed instruction-heavy and
+own-source measurements. Its source identity, plan and all 300 paired samples
+are retained as a **rejected experiment**, separate from the final candidate.
+
+Results measure frontend calls on the Windows Ryzen 7 5800H host. They do not
+update older complete-pipeline, process, application, memory or competitor
+scores, including measurements made on the separately recorded Ryzen 9
+5900HS host. Background work, frequency, affinity and thermals are uncontrolled;
+small differences near the empty-call floor are inconclusive.
+
+Android uses the same ten frozen requests in a separate, preregistered
+follow-up on the Pixel 8 Pro. An unchanged external native timer measures
+`CLOCK_MONOTONIC` around complete calls, checks exact output after each call,
+and keeps ADB outside the interval. Three independent collectors per case
+retain ten pairs each, with exactly five pairs per arm order and three
+warmups. The Android jobs ran after Windows collection and native validation.
+
+| Request | Android ms, baseline / candidate | Ratio | Windows ms, baseline / candidate | Ratio |
+|---|---:|---:|---:|---:|
+| ignored ASCII | 12.1373 / 9.6801 | 1.254 | 100.4570 / 85.6189 | 1.173 |
+| ignored NUL | 11.3463 / 8.8050 | 1.289 | 77.4975 / 68.5999 | 1.130 |
+| ignored FF | 16.1455 / 13.6980 | 1.179 | 123.9095 / 116.7548 | 1.061 |
+| instructions | 13.5578 / 12.2665 | 1.105 | 116.9250 / 111.4149 | 1.049 |
+| nested | 5.5297 / 5.2701 | 1.049 | 41.3444 / 42.9862 | 0.962 |
+| baseline own source | 20.6930 / 17.9430 | 1.153 | 170.3958 / 162.5051 | 1.049 |
+| maximum ignored NUL | 178.3771 / 138.0391 | 1.292 | 1204.6245 / 1059.4822 | 1.137 |
+| empty | 0.0233 / 0.0234 | 0.996 | 0.0496 / 0.0467 | 1.062 |
+| decision | 1.2266 / 0.9172 | 1.337 | 3.5223 / 2.8283 | 1.245 |
+| full instructions then ignored | 38.3793 / 35.2412 | 1.089 | 338.6977 / 331.4409 | 1.022 |
+
+Geometric means of these ten per-case median ratios are **1.169x on Android**
+and **1.086x on Windows**. Exploratory paired hierarchical bootstrap intervals
+are 1.164–1.181 and 1.038–1.123 respectively. They resample three run clusters
+and paired trials, use 5,000 draws, and are unadjusted percentile 95% intervals;
+three clusters limit inference. The report retains all raw pairs and individual
+intervals. Windows own-source, instruction-heavy, decision and nested intervals
+include parity; the nested median is about 4% slower. This is not a universal
+per-request improvement. Retain the change for the measured aggregate frontend
+gain, especially Android, while exposing its code-size and workload trade-offs.
+
+## P1: clear loops and full arithmetic wraps
+
+The optional [`optimize.bf`](../compiler/optimize.bf) consumes a validated v1
+success record followed by byte `01` and emits the explicitly versioned
+[BFX v2 format](10_BFX_V2_CLEAR.md). Raw-source validation remains in the
+authoritative frontend. The pass has 2,931 instructions, fits the unchanged
+limits and never expands its input record. Its own optimized stream contains
+2,851 operations. [Tape notes](../compiler/optimize.bf.notes.md) describe its
+bounded staging and deletion markers.
+
+For either exact `[-]` or `[+]`, each iteration changes the controlling byte
+by one modulo 256. Every initial byte reaches zero in at most 255 iterations;
+zero entry already leaves zero. The body has no movement, I/O or other cell
+effect. Replacing the entire triple with CLEAR preserves the complete public
+state at the same position in the enclosing control flow. A checked load,
+self-subtraction and checked store implement that declared operation in XAX.
+
+A group of 256 identical `+` or `-` commands is the identity on every byte.
+It cannot change input, output, cursor or failure ordering. The pass removes
+only complete consecutive same-direction groups. Intervening operations reset
+its private run counter. A removed loop body leaves an ordinary empty loop;
+it does not establish a clear operation. Thus nonzero-entry nontermination
+remains, including the even-step negative cases. No intermediate pointer move
+is ever discarded.
+
+Slot markers remain present after deletion. CLEAR's zero opcode is independent
+of both marker and deletion flag. A clear fold deletes two following slots;
+each arithmetic wrap proves 256 distinct undeleted arithmetic slots and
+deletes exactly those. Output-count decrements cannot underflow. The pass
+knows the final count before emitting any success prefix; callers still
+discard output from native failure and validate complete returned records.
+
+[New evidence](../evidence/bfx_v2_optimization.json) records 359 native optimizer
+cases and 71 independent C-interpreter cases, both signs around count carries
+and the 3,840-operation limit. The independent interpreter consumes exactly the
+module plus terminator and observes peak cell 61,469. The native decision
+comparison covers 20 modules and 1,512 full-buffer vectors per arm/target:
+6,048 calls across both targets. It checks all 256 entry bytes, five pointer
+alignments, immutable input, dirty tape, output/length guards, EOF and failure
+ordering. Nonterminating cases use parity/identity proofs; zero-entry variants
+alone are executed to completion.
+
+The extended importer retains exact v1 store bytes, rejects all unsupported
+v2 payload bytes and unknown versions, and executes 652 record cases on
+Android with byte-identical Windows results. Both optimized components pass
+three identical native generations per target; the frontend still emits the
+same v1 records and twelve exact fixtures per generation. These component
+fixed points use disclosed unchanged Windows-hosted generic XAX bootstrap
+verification and lowering. Complete-pipeline and standalone-process results
+are reported separately in [benchmarks](08_BENCHMARKS.md).
 
 ## XAX: eight-byte tape reset
 

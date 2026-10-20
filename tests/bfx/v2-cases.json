@@ -1,0 +1,16 @@
+{
+  "format": "Static validated-v1 optimizer input/output cases; hexadecimal bytes, required terminator included",
+  "precondition": "Caller first validates a complete v1 success record; these are not raw source requests",
+  "cases": [
+    {"name": "empty", "input_hex": "4246580100000001", "output_hex": "42465802000000"},
+    {"name": "decrement_clear", "input_hex": "424658010003005b2d5d01", "output_hex": "4246580200010000"},
+    {"name": "increment_clear", "input_hex": "424658010003005b2b5d01", "output_hex": "4246580200010000"},
+    {"name": "even_increment_kept", "input_hex": "424658010004005b2b2b5d01", "output_hex": "424658020004005b2b2b5d"},
+    {"name": "even_decrement_kept", "input_hex": "424658010004005b2d2d5d01", "output_hex": "424658020004005b2d2d5d"},
+    {"name": "movement_kept", "input_hex": "424658010006002b5b3c3e2d5d01", "output_hex": "424658020006002b5b3c3e2d5d"},
+    {"name": "nested_clear", "input_hex": "424658010005005b5b2d5d5d01", "output_hex": "424658020003005b005d"},
+    {"name": "adjacent_clears", "input_hex": "424658010006005b2d5d5b2b5d01", "output_hex": "424658020002000000"},
+    {"name": "missing_terminator", "input_hex": "42465801000000", "output_hex": "4246580201"},
+    {"name": "invalid_terminator", "input_hex": "4246580100000002", "output_hex": "4246580201"}
+  ]
+}

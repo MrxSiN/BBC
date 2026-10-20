@@ -24,9 +24,14 @@ step limit is a test safeguard, not a Brainfuck language guarantee.
 The original seed passed 21 fixture/bootstrap/boundary checks, including
 interpreted own-source agreement; its 2,455-instruction identity is recorded in
 [frontend and decoder evidence](../evidence/bfx_migration.json).
-The current source emits 2,117 BFX bytes containing 2,110 instructions.
+The current source emits 2,199 BFX bytes containing 2,192 instructions.
+[Capacity-gate evidence](../evidence/frontend_capacity_gate.json) records
+42 independent checks, 785 Windows byte/property checks and three identical
+Windows native generations. The device became available later in the follow-up;
+Android then passed three native generations, twelve exact fixtures each,
+twelve boundary checks and all 393 importer cases with Windows store parity.
 [Windows filter evidence](../evidence/frontend_filter_windows.json) records
-its independent seed and Windows rebuild checks;
+the preceding source's independent seed and Windows rebuild checks;
 [Android filter evidence](../evidence/frontend_filter_android.json) records
 three native generations, twelve fixtures per generation and boundary checks.
 
@@ -49,7 +54,7 @@ sixteen-cell slots; its last working cell is 61,471.
 | Source | Bytes | Instructions | Raw SHA-256 |
 |---|---|---|---|
 | Framer | 1,207 | 302 | `1b1f7d90c17414417c8622303244d424ccf6e30704ee6165c77f3161e0bd454f` |
-| Frontend | 4,355 | 2,110 | `6829614ef2d7778e8e1513ecdb94726ce00ad2989f12618987a569386a7dce88` |
+| Frontend | 4,537 | 2,192 | `d8170d895449cf00e971a052b6d5415d2c5f86585d982f826fa70c5127850d6e` |
 
 The [frontend tape notes](../compiler/compiler.bf.notes.md) describe its layout
 and filtered instruction hash. Source annotations must contain none of the
@@ -66,12 +71,18 @@ For each target and each generation:
 4. Require output identical to the seed BFX. Feed that output into the next
    generation and compare BFX, canonical-store and native-library hashes.
 
-The current frontend with the eight-byte-reset importer passes three
+The preceding 2,110-instruction frontend with the eight-byte-reset importer passes three
 generations on each required target, with twelve exact fixtures, own source
 and seven boundary checks per generation: twenty checks on each target.
 BFX/store/ELF bytes match between Android generations; BFX/store/DLL bytes
 match between Windows generations. ELF and DLL files are different target
 artifacts and are not compared to each other.
+
+The current capacity-flag frontend separately passes three identical Windows
+BFX/store/DLL and Android BFX/store/ELF generations, twelve exact fixtures per
+generation on both targets and twelve Android boundary checks. Android stores
+match their Windows counterparts. Its new evidence does not relabel the
+preceding Android source identity.
 
 The native decision ABI's call status and the frontend's BFX compilation status
 are distinct. A frontend can execute successfully and emit a five-byte BFX
@@ -98,6 +109,25 @@ these recorded cycles; native BBC DLL packaging remains incomplete.
 These cycles establish correctness and fixed points. Separate
 [frontend measurements](07_OPTIMIZATION_PROOFS.md) do not establish Linux
 execution, application speed or competitive superiority.
+
+## Optional optimized rebuilds
+
+Compile [`optimize.bf`](../compiler/optimize.bf) through the transparent v1
+route first. Validate each successful v1 module with the unchanged canonical
+v1 decoder, append byte `01`, and run the native Brainfuck optimizer. Validate
+the resulting v2 module with the extended importer before full canonical
+verification and generic native lowering. Source failures bypass optimization.
+The [contract](10_BFX_V2_CLEAR.md) specifies the private preconditions; external
+drivers supply buffers and files, not production recognition or translation.
+
+[New evidence](../evidence/bfx_v2_optimization.json) records three identical
+native generations for both the optimizer and the frontend on Android ARM64
+and Windows x86-64. The frontend source and its v1 output stay identical;
+its optimized v2 module, imported store and target native artifact also
+reproduce. Each frontend generation passes twelve exact fixtures. The helper
+source has 2,931 instructions; optimizing its own v1 stream leaves 2,851
+operations. These are component fixed points, not a complete compiler-host
+self-build. Windows-hosted unchanged generic XAX tools still verify and lower.
 
 ## Standalone Android packaging
 

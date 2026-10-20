@@ -88,6 +88,11 @@ for the same request are unchanged. All other bytes are ignored, including raw `
 A hash character is not a comment delimiter; instruction characters in
 annotations still participate in compilation.
 
+The current capacity flag is private compiler bookkeeping. It replaces a
+per-byte instruction-count comparison with a carry-event update, without
+changing accepted payloads, limits or serialized bytes. See
+[the proof](07_OPTIMIZATION_PROOFS.md#p0-carry-triggered-capacity-flag).
+
 At most **3,840 instructions** and **255 nested loops** are accepted. Every
 bracket must match. These are frontend resource limits, not changes to the
 [Brainfuck execution profile](01_BRAINFUCK_PROFILE.md).
@@ -117,7 +122,10 @@ interfaces, documented in [03_XAX_INTEGRATION.md](03_XAX_INTEGRATION.md).
 
 Changing a filename does not convert record contents. Incompatible records
 require a new version byte; compatible metadata additions require an explicit
-framing rule. No extension mechanism is currently defined.
+framing rule. [BFX v2](10_BFX_V2_CLEAR.md) is an explicit separate version
+with CLEAR and an optional Brainfuck optimization stage; it does not change
+these v1 request/response bytes or v1 opcode validation. The authoritative
+frontend continues to emit v1.
 
 ## Exact examples
 

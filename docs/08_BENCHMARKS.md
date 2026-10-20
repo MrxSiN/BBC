@@ -1,8 +1,11 @@
 # BBC compared with other Brainfuck compilers
 
-The latest follow-up measures **complete builds, memory use and standalone
-Windows programs** on the same twelve-program corpus. The earlier Android
-process comparison remains separate. The overall competitive goal is
+The latest [v2 optimization report](11_V2_BENCHMARKS.md) measures complete
+builds, memory, file size and standalone processes on both targets, retaining
+all twelve original programs and adding four clear-loop workloads. Separate
+native-call A/B results isolate BBC execution costs. The preceding complete
+build/resource and Android process comparisons below remain unchanged.
+The overall competitive goal is
 **NOT YET ACHIEVED**.
 
 Tables use elapsed time, memory and file bytes: **lower is better**.
@@ -10,6 +13,14 @@ One millisecond (ms) is one thousandth of a second. One MiB is 1,048,576 bytes.
 These are small-program comparisons of pinned configurations, with retained
 holdouts. They do not establish best-mode, sustained-computation or real-app
 superiority.
+
+The [SDK and Brainfry analysis follow-up](09_BRAINFRY_ANALYSIS.md) clears
+Brainfly's .NET SDK blocker and verifies all twelve Windows corpus programs
+in JIT and generated NativeAOT modes. It also reproduces Brainfry optimizer
+correctness defects outside the scored corpus. These are setup/correctness
+results, not new competitor scores. BBC's capacity-flag frontend has
+separate [Android/Windows A/B evidence](07_OPTIMIZATION_PROOFS.md#p0-carry-triggered-capacity-flag);
+the complete-build and process tables below are unchanged.
 
 ## Build latency, RAM and Windows standalone
 
@@ -288,6 +299,11 @@ source/input/output bytes and hashes, tool identities, artifacts and intervals.
 Pins identify inspected source, not a claim that every project built here.
 This matrix records the original pilot's tool availability; the standalone
 follow-up reuses its pinned executables and does not reassess those blockers.
+
+The subsequent [2026-10-20 SDK follow-up](09_BRAINFRY_ANALYSIS.md) resolves
+the original Brainfly Windows build blocker. Its JIT and generated NativeAOT
+routes now pass twelve correctness cases each. Android remains unverified;
+no Brainfly timing row is scored by this follow-up.
 
 | Project (link to exact commit) | Android ARM64 | Windows x86-64 |
 |---|---|---|

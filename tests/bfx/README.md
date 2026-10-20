@@ -62,6 +62,16 @@ External verification also covers
 acceptance and 256-level rejection, interpreted own-source output, and three
 native frontend generations on each supported target.
 
+The current capacity-flag source has separate
+[verification evidence](../../evidence/frontend_capacity_gate.json): 42
+independent seed checks, 785 Windows byte/property cases, three Windows native
+generations with twelve exact fixtures each, and an exhaustive whole-tape
+check of all 7,682 reachable instruction-count/command-flag states. Saturated
+buffers with ignored tails still accept; an additional command rejects.
+The later Android run passes three current native generations with twelve
+fixtures each, twelve boundary checks and 393 importer cases; canonical stores
+match Windows. Prior Android cycle evidence retains its preceding frontend hash.
+
 XAX's [393 static decoder cases](https://github.com/MrxSiN/XAX/blob/ac7821c9bf9c1bde0c18f00da6d1a60a3b320816/compiler/integration/bfx/decoder_cases.json)
 contain record bytes, logical lengths, expected validation results and loop
 pairs. The decoder and complete importer each execute that corpus on Android
@@ -89,6 +99,25 @@ all twelve fixture pairs. The [filter profile](../../evidence/frontend_filter_pr
 records exhaustive decoder states, 530 native property cases and current A/B
 measurements. Earlier reports describe their own hashes and fixture sets;
 do not assign them to the current instruction stream.
+
+## Optional v2 optimizer
+
+The authoritative frontend still emits the exact v1 fixtures above. The
+[optional optimizer](../../compiler/optimize.bf) requires a validated success
+record plus byte `01`; it emits [v2](../../docs/10_BFX_V2_CLEAR.md). The
+[static v2 cases](v2-cases.json) give exact pass inputs/outputs and negative
+rewrite examples. They are data, not an alternate implementation. The
+standalone XAX validator remains strict v1; the extended importer's embedded
+validator accepts both versions. Do not send unvalidated records to the pass.
+
+[Its evidence](../../evidence/bfx_v2_optimization.json) includes 359 native
+properties, 71 independent binary-output interpreter cases, all v2 payload
+bytes, unknown versions, framing errors, size/count boundaries, exact input
+consumption and three-generation native fixed points on both targets.
+Twenty modules have 1,512 complete input/output/tape/guard vectors per arm
+per target. Clear loops exercise all 256 controlling bytes. Both bounds,
+EOF and I/O failures retain their ordering. Even-step, movement and full-wrap
+empty-loop nontermination remain explicit negative rewrite cases.
 
 These results describe the recorded source hashes. For any executable change,
 rerun the relevant checks before updating [the current status](../../docs/05_STATUS.md).

@@ -1,0 +1,367 @@
+{
+  "date": "2026-10-20",
+  "status": "SDK installed; pinned Brainfly JIT and generated NativeAOT correctness executed; Brainfry analysis and correctness diagnostics; no new scored competitor timing",
+  "brainfly": {
+    "date": "2026-10-20",
+    "status": "CORRECTNESS and build smoke only; no competitive timing score",
+    "sdk": ".NET SDK:\n Version:           10.0.402\n Commit:            a8dd0577c5\n Workload version:  10.0.400-manifests.da132f47\n MSBuild version:   18.9.15+a8dd0577c\n\nRuntime Environment:\n OS Name:     Windows\n OS Version:  10.0.26200\n OS Platform: Windows\n RID:         win-x64\n Base Path:   C:\\Users\\User\\.dotnet\\sdk\\10.0.402\\\n\n.NET workloads installed:\nThere are no installed workloads to display.\nConfigured to use workload sets when installing new manifests.\nNo workload sets are installed. Run \"dotnet workload restore\" to install a workload set.\n\nHost:\n  Version:      10.0.13\n  Architecture: x64\n  Commit:       4099f83977\n\n.NET SDKs installed:\n  10.0.402 [C:\\Users\\User\\.dotnet\\sdk]\n\n.NET runtimes installed:\n  Microsoft.AspNetCore.App 10.0.13 [C:\\Users\\User\\.dotnet\\shared\\Microsoft.AspNetCore.App]\n  Microsoft.NETCore.App 10.0.13 [C:\\Users\\User\\.dotnet\\shared\\Microsoft.NETCore.App]\n  Microsoft.WindowsDesktop.App 10.0.13 [C:\\Users\\User\\.dotnet\\shared\\Microsoft.WindowsDesktop.App]\n\nOther architectures found:\n  None\n\nEnvironment variables:\n  Not set\n\nglobal.json file:\n  Not found\n\nLearn more:\n  https://aka.ms/dotnet/info\n\nDownload .NET:\n  https://aka.ms/dotnet/download\n",
+    "revision": "2e1d1b56725dd69b2278ee4566ee2dacfca5d348",
+    "host": "Windows-11-10.0.26200-SP0",
+    "cases": [
+      {
+        "name": "hello",
+        "source_sha256": "2f8559490b324beade0f38e9663318d56acbf432f4f46bbe7e828f004f5b57cd",
+        "input_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "expected_sha256": "03ba204e50d126e4674c005e04d82e84c21366780af1f43bd54a37816b6ab340",
+        "jit": {
+          "passed": true,
+          "stdout_sha256": "03ba204e50d126e4674c005e04d82e84c21366780af1f43bd54a37816b6ab340",
+          "fresh_process_smoke_seconds": 0.190111000003526
+        },
+        "generate_seconds": 0.1260067999974126,
+        "publish_seconds": 7.973778700004914,
+        "publish_exit": 0,
+        "aot": {
+          "passed": true,
+          "stdout_sha256": "03ba204e50d126e4674c005e04d82e84c21366780af1f43bd54a37816b6ab340",
+          "exe_sha256": "15fc832eb6aa1f1f45858f7a6578f057bc8526a689df7853b8116b320ef21771",
+          "exe_bytes": 1082368,
+          "fresh_process_smoke_seconds": 0.0788170000014361
+        }
+      },
+      {
+        "name": "binary_echo",
+        "source_sha256": "340d314681be0a516eb3ac4c915a7976ab0c8cc3c0a361e0342d6e7916d2fb9b",
+        "input_sha256": "89273d2f70b93285bb7ddb4bcee86a5347ca7159352e3cbdd20c23e9d1e507d3",
+        "expected_sha256": "89273d2f70b93285bb7ddb4bcee86a5347ca7159352e3cbdd20c23e9d1e507d3",
+        "jit": {
+          "passed": true,
+          "stdout_sha256": "89273d2f70b93285bb7ddb4bcee86a5347ca7159352e3cbdd20c23e9d1e507d3",
+          "fresh_process_smoke_seconds": 0.14643140000407584
+        },
+        "generate_seconds": 0.13064899999881163,
+        "publish_seconds": 7.8878561000019545,
+        "publish_exit": 0,
+        "aot": {
+          "passed": true,
+          "stdout_sha256": "89273d2f70b93285bb7ddb4bcee86a5347ca7159352e3cbdd20c23e9d1e507d3",
+          "exe_sha256": "7e64bd6f58866119754737a3a625b93c0759c89e831cb82c4bdc949e84a411e7",
+          "exe_bytes": 1081856,
+          "fresh_process_smoke_seconds": 0.08523009999771602
+        }
+      },
+      {
+        "name": "wrap",
+        "source_sha256": "fa0877681a7998f576ef2a485ad6ad0cbc98e9f1f648bb9a4b58248c02a3bb56",
+        "input_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "expected_sha256": "942e1e2a66a427b6551732f758bc314f22b9cdec9365a3425c9184de299392b5",
+        "jit": {
+          "passed": true,
+          "stdout_sha256": "942e1e2a66a427b6551732f758bc314f22b9cdec9365a3425c9184de299392b5",
+          "fresh_process_smoke_seconds": 0.14032109999971
+        },
+        "generate_seconds": 0.1220144000108121,
+        "publish_seconds": 8.139164499996696,
+        "publish_exit": 0,
+        "aot": {
+          "passed": true,
+          "stdout_sha256": "942e1e2a66a427b6551732f758bc314f22b9cdec9365a3425c9184de299392b5",
+          "exe_sha256": "6c1e7ac9381925d793aba8ae75b470ddd14f752a39a9fdcc6b7e7971ac8941c5",
+          "exe_bytes": 1080832,
+          "fresh_process_smoke_seconds": 0.10012600000482053
+        }
+      },
+      {
+        "name": "nested_count",
+        "source_sha256": "0ea1ddf14c2d4ade4962e8466e8bf0aab50ecc12db64a6a0d119d542f52cd1d5",
+        "input_sha256": "fb95aa98d6e6c5827a57ec17b978d647fcc01d98c357b7e64989af57339e9ac3",
+        "expected_sha256": "fb95aa98d6e6c5827a57ec17b978d647fcc01d98c357b7e64989af57339e9ac3",
+        "jit": {
+          "passed": true,
+          "stdout_sha256": "fb95aa98d6e6c5827a57ec17b978d647fcc01d98c357b7e64989af57339e9ac3",
+          "fresh_process_smoke_seconds": 0.16063470000517555
+        },
+        "generate_seconds": 0.143400400003884,
+        "publish_seconds": 8.081750599987572,
+        "publish_exit": 0,
+        "aot": {
+          "passed": true,
+          "stdout_sha256": "fb95aa98d6e6c5827a57ec17b978d647fcc01d98c357b7e64989af57339e9ac3",
+          "exe_sha256": "3a3c3f2f1dd7f94d066eee502b4212e07048589e8631b4e969b2ab55bbcc39cb",
+          "exe_bytes": 1081856,
+          "fresh_process_smoke_seconds": 0.10409700000309385
+        }
+      },
+      {
+        "name": "transfer_repeat",
+        "source_sha256": "46e969679a900e5531111e6167abd3e1012a8ec31948d858157044faf661e349",
+        "input_sha256": "85f71b1edbf29ee22faaf2a817bc55f857d82f2cbdec2eb402f81e3eb6fb1bf6",
+        "expected_sha256": "7c5bd2d144fdde498406edcb9fe60ce65b0dfa5f2dd7a7617f505e3d46d68bdb",
+        "jit": {
+          "passed": true,
+          "stdout_sha256": "7c5bd2d144fdde498406edcb9fe60ce65b0dfa5f2dd7a7617f505e3d46d68bdb",
+          "fresh_process_smoke_seconds": 0.1839341000013519
+        },
+        "generate_seconds": 0.15825210000912193,
+        "publish_seconds": 8.402710499998648,
+        "publish_exit": 0,
+        "aot": {
+          "passed": true,
+          "stdout_sha256": "7c5bd2d144fdde498406edcb9fe60ce65b0dfa5f2dd7a7617f505e3d46d68bdb",
+          "exe_sha256": "d0c059bfb15764c60e11245b82bb807b3eadbdb51e29e1ebb1b12019d029bef7",
+          "exe_bytes": 1082368,
+          "fresh_process_smoke_seconds": 0.10010129999136552
+        }
+      },
+      {
+        "name": "multi_transfer",
+        "source_sha256": "924485f8ce7b030c93cbc15bf0ba034eb5c5063a720a129e44db1b10c6e904b8",
+        "input_sha256": "fb95aa98d6e6c5827a57ec17b978d647fcc01d98c357b7e64989af57339e9ac3",
+        "expected_sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+        "jit": {
+          "passed": true,
+          "stdout_sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+          "fresh_process_smoke_seconds": 0.19442390000040177
+        },
+        "generate_seconds": 0.1498013000091305,
+        "publish_seconds": 25.24768899999617,
+        "publish_exit": 0,
+        "aot": {
+          "passed": true,
+          "stdout_sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+          "exe_sha256": "cf27424196df38096d08666355712c7f92ba3f87917a8f7bac38e06d396a02d0",
+          "exe_bytes": 1082368,
+          "fresh_process_smoke_seconds": 0.15895860000455286
+        }
+      },
+      {
+        "name": "scan",
+        "source_sha256": "2dfbb0157789c9909a9816015a752c1b25d52e7c6074cd0a28069f3f3d6ae704",
+        "input_sha256": "9652595f37edd08c51dfa26567e6cd76e6fa2709c3e578478ca398d316837a7a",
+        "expected_sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+        "jit": {
+          "passed": true,
+          "stdout_sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+          "fresh_process_smoke_seconds": 0.32053610000002664
+        },
+        "generate_seconds": 0.31095709999499377,
+        "publish_seconds": 9.895690200006356,
+        "publish_exit": 0,
+        "aot": {
+          "passed": true,
+          "stdout_sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+          "exe_sha256": "2f26dd7574bde139fb4174c4e70c40afd06540edc16c549b4aaaa5f30b29306d",
+          "exe_bytes": 1084928,
+          "fresh_process_smoke_seconds": 0.11563729999761563
+        }
+      },
+      {
+        "name": "nested_math",
+        "source_sha256": "41645f3c3f8ccee8402151ff13ce7b62a3e27f49ff80cafe45cd7b3c24020001",
+        "input_sha256": "59c936897f0938d77b1052dd7f15e38912f4dac7a256583801329cbadbe78eee",
+        "expected_sha256": "c19a797fa1fd590cd2e5b42d1cf5f246e29b91684e2f87404b81dc345c7a56a0",
+        "jit": {
+          "passed": true,
+          "stdout_sha256": "c19a797fa1fd590cd2e5b42d1cf5f246e29b91684e2f87404b81dc345c7a56a0",
+          "fresh_process_smoke_seconds": 0.32636639999691397
+        },
+        "generate_seconds": 0.13680230001045857,
+        "publish_seconds": 7.136324799997965,
+        "publish_exit": 0,
+        "aot": {
+          "passed": true,
+          "stdout_sha256": "c19a797fa1fd590cd2e5b42d1cf5f246e29b91684e2f87404b81dc345c7a56a0",
+          "exe_sha256": "138320ffd1bddff765e2998df247deac924da447aab2a083d39c39a9a5c27095",
+          "exe_bytes": 1082368,
+          "fresh_process_smoke_seconds": 0.0873210999998264
+        }
+      },
+      {
+        "name": "clear_set",
+        "source_sha256": "d02579ad3551dbbe32eb74026815a74227f7019dcdd51b76af794e9c3f9f30fe",
+        "input_sha256": "2bfc8165d8c8e9b6efc5746577bca4f24f93bb2fbb0b502c1b9b5c29241d5ccb",
+        "expected_sha256": "e77b9a9ae9e30b0dbdb6f510a264ef9de781501d7b6b92ae89eb059c5ab743db",
+        "jit": {
+          "passed": true,
+          "stdout_sha256": "e77b9a9ae9e30b0dbdb6f510a264ef9de781501d7b6b92ae89eb059c5ab743db",
+          "fresh_process_smoke_seconds": 0.1474968000111403
+        },
+        "generate_seconds": 0.1725841000006767,
+        "publish_seconds": 7.133253199994215,
+        "publish_exit": 0,
+        "aot": {
+          "passed": true,
+          "stdout_sha256": "e77b9a9ae9e30b0dbdb6f510a264ef9de781501d7b6b92ae89eb059c5ab743db",
+          "exe_sha256": "0b6fc0bf14515bb8be00d1b75b1a8abdec33d3893e2490c01ae649b6a5c8921c",
+          "exe_bytes": 1081856,
+          "fresh_process_smoke_seconds": 0.07266449999588076
+        }
+      },
+      {
+        "name": "permit_flag",
+        "source_sha256": "c2b2519e9f9ef8019022a2cdb3ee51a3c977f783bfe547b2bd948aab8eb570c7",
+        "input_sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+        "expected_sha256": "4bf5122f344554c53bde2ebb8cd2b7e3d1600ad631c385a5d7cce23c7785459a",
+        "jit": {
+          "passed": true,
+          "stdout_sha256": "4bf5122f344554c53bde2ebb8cd2b7e3d1600ad631c385a5d7cce23c7785459a",
+          "fresh_process_smoke_seconds": 0.1495122999913292
+        },
+        "generate_seconds": 0.13255980001122225,
+        "publish_seconds": 8.127507599987439,
+        "publish_exit": 0,
+        "aot": {
+          "passed": true,
+          "stdout_sha256": "4bf5122f344554c53bde2ebb8cd2b7e3d1600ad631c385a5d7cce23c7785459a",
+          "exe_sha256": "04b4c9b4bcc974f60a09e3a89bf7f6d4c1e1a86a1deed8b74219b3e5a0abc25f",
+          "exe_bytes": 1082368,
+          "fresh_process_smoke_seconds": 0.08905949999461882
+        }
+      },
+      {
+        "name": "countdown_actions",
+        "source_sha256": "533784e99acb5d9a069a1eb20b234ec63abe0c1106ef6a430dbe37b21ded0d98",
+        "input_sha256": "ca358758f6d27e6cf45272937977a748fd88391db679ceda7dc7bf1f005ee879",
+        "expected_sha256": "4bd00f01eadfdf639fdcd3c924c8935961df7f9ee44fcd4839da21bca5e65ffc",
+        "jit": {
+          "passed": true,
+          "stdout_sha256": "4bd00f01eadfdf639fdcd3c924c8935961df7f9ee44fcd4839da21bca5e65ffc",
+          "fresh_process_smoke_seconds": 0.15730260001146235
+        },
+        "generate_seconds": 0.14331909999600612,
+        "publish_seconds": 8.48469899999327,
+        "publish_exit": 0,
+        "aot": {
+          "passed": true,
+          "stdout_sha256": "4bd00f01eadfdf639fdcd3c924c8935961df7f9ee44fcd4839da21bca5e65ffc",
+          "exe_sha256": "ba611a8e453f5f514b0b767a4877114d6c13b94ed45dec9a832258de1d4bc01b",
+          "exe_bytes": 1081344,
+          "fresh_process_smoke_seconds": 0.0922042999882251
+        }
+      },
+      {
+        "name": "checksum_four",
+        "source_sha256": "9c050b9965e8a4426aaef1dc93e9529eb7d7ae59e56fa1e3ff20b593e8d7d916",
+        "input_sha256": "b8acebbdbb55efd3d1fd27b7e1940a4809da3c305c22598a70ddf4c501f807e4",
+        "expected_sha256": "4c94485e0c21ae6c41ce1dfe7b6bfaceea5ab68e40a2476f50208e526f506080",
+        "jit": {
+          "passed": true,
+          "stdout_sha256": "4c94485e0c21ae6c41ce1dfe7b6bfaceea5ab68e40a2476f50208e526f506080",
+          "fresh_process_smoke_seconds": 0.16478019999340177
+        },
+        "generate_seconds": 0.13263540000480134,
+        "publish_seconds": 8.08854669998982,
+        "publish_exit": 0,
+        "aot": {
+          "passed": true,
+          "stdout_sha256": "4c94485e0c21ae6c41ce1dfe7b6bfaceea5ab68e40a2476f50208e526f506080",
+          "exe_sha256": "fae6f0016b5e547c4ce4db6d141467c5f35b63b933a2f77609319e903281a9ed",
+          "exe_bytes": 1082368,
+          "fresh_process_smoke_seconds": 0.07860569999320433
+        }
+      }
+    ],
+    "mode": "JIT from original CLI; NativeAOT from unchanged CLI generated self-contained C sharp per upstream README; separate net10.0 project per source, 65536 cells; default NativeAOT optimization; SDK/restore/bootstrap excluded from any future timing",
+    "limits": "Small fixed safe-tape corpus; no EOF read; no full BBC semantic-profile claim; no Android execution"
+  },
+  "brainfry_correctness": {
+    "date": "2026-10-20",
+    "revision": "e55d45735a6feb450a7e47852f4340f5b532fef8",
+    "status": "Correctness diagnostics, not timing races or a blanket competitor exclusion",
+    "rows": [
+      {
+        "name": "even-add",
+        "source_ascii": "+[++].",
+        "source_sha256": "b469cb782768f49a510cd61f8a875a73df8482e6c410efa82a51ce37f0f5fc4d",
+        "reference": {
+          "exit": 3,
+          "stderr": "total_ops=6\tsteps=1000001\tseconds=0.003172\tread=0\twrite=0\toutlen=0\tmax_pointer=0\texit=3\r\n",
+          "stdout_hex": ""
+        },
+        "brainfry_native": {
+          "exit": 0,
+          "stdout_hex": "00",
+          "stderr": "",
+          "exe_sha256": "0d663281f750ea0ed6ae9bba1d32a20b7da53f7a36b39625e7dc1ec5eb54c534"
+        },
+        "expected": "Nontermination proven by odd initial cell and even delta; budget exhaustion is diagnostic only"
+      },
+      {
+        "name": "even-sub",
+        "source_ascii": "+[--].",
+        "source_sha256": "cf8c9349e4053920862614402a1c03e94053ea66e444b14f36fcded8b4339da7",
+        "reference": {
+          "exit": 3,
+          "stderr": "total_ops=6\tsteps=1000001\tseconds=0.002948\tread=0\twrite=0\toutlen=0\tmax_pointer=0\texit=3\r\n",
+          "stdout_hex": ""
+        },
+        "brainfry_native": {
+          "exit": 0,
+          "stdout_hex": "00",
+          "stderr": "",
+          "exe_sha256": "0d663281f750ea0ed6ae9bba1d32a20b7da53f7a36b39625e7dc1ec5eb54c534"
+        },
+        "expected": "Nontermination proven by odd initial cell and even delta; budget exhaustion is diagnostic only"
+      },
+      {
+        "name": "cancelled-pointer-underflow",
+        "source_ascii": "+[<>-].",
+        "source_sha256": "0b6d13b6fdc60a7df9497a7cbd8647ce959daa8f6bdece770ac94aef93a96341",
+        "reference": {
+          "exit": 1,
+          "stderr": "total_ops=7\tsteps=3\tseconds=0.000005\tread=0\twrite=0\toutlen=0\tmax_pointer=0\texit=1\r\n",
+          "stdout_hex": ""
+        },
+        "brainfry_native": {
+          "exit": 0,
+          "stdout_hex": "00",
+          "stderr": "",
+          "exe_sha256": "0d663281f750ea0ed6ae9bba1d32a20b7da53f7a36b39625e7dc1ec5eb54c534"
+        },
+        "expected": "First move left at zero must fail"
+      },
+      {
+        "name": "odd-clear",
+        "source_ascii": "+[+++].",
+        "source_sha256": "e37533225b668b01af879c0cc5f5b4bb0d2dddf9bffe2307096da525b26d7e99",
+        "reference": {
+          "exit": 0,
+          "stderr": "total_ops=7\tsteps=343\tseconds=0.000006\tread=0\twrite=1\toutlen=1\tmax_pointer=0\texit=0\r\n",
+          "stdout_hex": "00"
+        },
+        "brainfry_native": {
+          "exit": 0,
+          "stdout_hex": "00",
+          "stderr": "",
+          "exe_sha256": "0d663281f750ea0ed6ae9bba1d32a20b7da53f7a36b39625e7dc1ec5eb54c534"
+        },
+        "expected": "Terminates with zero byte"
+      }
+    ],
+    "note": "Independent fixed-tape EOF-zero interpreter is used only on cases unaffected by EOF or right-growth differences. No target execution claim for Android."
+  },
+  "brainfry_release_tests": {
+    "command": "cargo test --release --workspace --locked",
+    "revision": "e55d45735a6feb450a7e47852f4340f5b532fef8",
+    "passed": 144,
+    "failed": 0,
+    "log_sha256": "db3413e81155a482c5cd270527501ae80e3ece9de21b60fd5814fef2a9581357",
+    "log": "   Compiling bfformat v0.1.0 (C:\\Users\\User\\.cache\\bbc-sdk\\brainfry\\bfformat)\n   Compiling bfc v0.1.0 (C:\\Users\\User\\.cache\\bbc-sdk\\brainfry\\bfc)\n   Compiling bfrun v0.1.0 (C:\\Users\\User\\.cache\\bbc-sdk\\brainfry\\bfrun)\n   Compiling bfjit v0.1.0 (C:\\Users\\User\\.cache\\bbc-sdk\\brainfry\\bfjit)\n   Compiling bfinterp v0.1.0 (C:\\Users\\User\\.cache\\bbc-sdk\\brainfry\\bfinterp)\n   Compiling bfwasm v0.1.0 (C:\\Users\\User\\.cache\\bbc-sdk\\brainfry\\bfwasm)\n   Compiling bfnative v0.1.0 (C:\\Users\\User\\.cache\\bbc-sdk\\brainfry\\bfnative)\n    Finished `release` profile [optimized] target(s) in 34.64s\n     Running unittests src\\lib.rs (target\\release\\deps\\bfc-2b455c09d0ddc1b3.exe)\n\nrunning 22 tests\ntest optimize::tests::detects_zero_loop ... ok\ntest optimize::tests::does_not_fold_loop_that_does_not_return_to_start ... ok\ntest optimize::tests::does_not_fold_loop_with_input_inside ... ok\ntest optimize::tests::does_not_fold_loop_with_nested_jump ... ok\ntest optimize::tests::does_not_fold_loop_with_output_inside ... ok\ntest optimize::tests::does_not_fold_loop_with_subtract_on_other_cell ... ok\ntest optimize::tests::folds_offset_add_to_the_left ... ok\ntest optimize::tests::does_not_scan_fold_loop_with_more_than_move_in_body ... ok\ntest optimize::tests::folds_offset_add_spreading_to_multiple_cells ... ok\ntest optimize::tests::does_not_fold_loop_with_wrong_step_size ... ok\ntest optimize::tests::folds_offset_add_with_multiplier ... ok\ntest optimize::tests::full_pipeline_folds_offset_add_and_resolves_surrounding_jumps ... ok\ntest optimize::tests::folds_scan_left_with_stride ... ok\ntest optimize::tests::folds_simple_offset_add ... ok\ntest optimize::tests::folds_simple_scan_right ... ok\ntest optimize::tests::folds_repeated_add ... ok\ntest optimize::tests::resolves_jumps_after_folding_changes_indices ... ok\ntest optimize::tests::splits_runs_over_255 ... ok\ntest parser::tests::parses_simple_loop ... ok\ntest parser::tests::ignores_comment_characters ... ok\ntest parser::tests::rejects_unmatched_close ... ok\ntest parser::tests::rejects_unmatched_open ... ok\n\ntest result: ok. 22 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n     Running unittests src\\main.rs (target\\release\\deps\\bfc-9152db298aa2d621.exe)\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n     Running unittests src\\lib.rs (target\\release\\deps\\bfformat-3eaf9b639eb1b4be.exe)\n\nrunning 4 tests\ntest tests::rejects_bad_magic ... ok\ntest tests::rejects_future_version ... ok\ntest tests::round_trips_negative_offset_and_stride ... ok\ntest tests::round_trips_through_bytes ... ok\n\ntest result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n     Running unittests src\\main.rs (target\\release\\deps\\bfinterp-f05a2ea8033fb5f4.exe)\n\nrunning 11 tests\ntest interp::tests::add_wraps_at_256 ... ok\ntest interp::tests::eof_leaves_the_cell_unchanged ... ok\ntest interp::tests::huge_left_move_is_an_error_not_a_wrap ... ok\ntest interp::tests::jump_lands_one_past_the_target ... ok\ntest interp::tests::input_byte_round_trips ... ok\ntest interp::tests::move_left_past_zero_is_an_error ... ok\ntest interp::tests::move_right_grows_past_the_initial_tape ... ok\ntest interp::tests::stdout_receives_every_byte_before_flush ... ok\ntest interp::tests::sub_wraps_below_zero ... ok\ntest interp::tests::zero_loop_terminates_and_clears ... ok\ntest interp::tests::optimized_and_naive_paths_agree ... ok\n\ntest result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n     Running tests\\e2e.rs (target\\release\\deps\\e2e-c36620b64822995c.exe)\n\nrunning 15 tests\ntest deeply_nested_loops_six_levels ... ok\ntest echo_stdin_until_eof ... ok\ntest hello_world_matches_expected_output ... ok\ntest cells_wrap_at_256 ... ok\ntest io_inside_loops ... ok\ntest pointer_walks_past_the_initial_tape ... ok\ntest nested_loops_and_the_zero_idiom ... ok\ntest tape_growth_beyond_the_first_commit_granule ... ok\ntest pointer_underflow_is_a_clean_error ... ok\ntest bad_brackets_fail_cleanly ... ok\ntest huge_left_move_is_caught_not_wrapped ... ok\ntest eof_leaves_the_cell_unchanged ... ok\ntest zero_loop_idiom_as_a_real_loop ... ok\ntest optimize_flag_agrees_with_the_naive_path ... ok\ntest mandelbrot_matches_the_stored_reference_output ... ok\n\ntest result: ok. 15 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 54.16s\n\n     Running unittests src\\main.rs (target\\release\\deps\\bfjit-dbd9eaec6367476b.exe)\n\nrunning 33 tests\ntest codegen::aarch64::tests::known_golden_encodings ... ok\ntest codegen::aarch64::tests::grow_saves_x30_and_takes_an_aligned_frame ... ok\ntest codegen::aarch64::tests::grow_call_is_bl_not_b ... ok\ntest codegen::aarch64::tests::bracket_jump_emits_trampoline_and_far_branch ... ok\ntest codegen::aarch64::tests::mov_and_byte_ops_match_reference_encodings ... ok\ntest codegen::aarch64::tests::sub_sp_reg_encodes_the_extended_register_form ... ok\ntest codegen::aarch64::tests::mul_add_emits_a_multiply ... ok\ntest codegen::aarch64::tests::mul_add_negative_offset_checks_underflow ... ok\ntest codegen::aarch64::tests::scan_loops_back_to_its_own_start ... ok\ntest codegen::aarch64::tests::movz_movk_build_big_constants ... ok\ntest codegen::tests::internal_labels_allocate_sequentially ... ok\ntest codegen::x86_64::tests::add_cell_encodes_as_imm8_alu ... ok\ntest codegen::x86_64::tests::cmp_rax_r14_uses_rex_r ... ok\ntest codegen::tests::fixups_record_positions_of_placeholder_bytes ... ok\ntest codegen::x86_64::tests::jump_if_zero_aims_one_past_target ... ok\ntest codegen::x86_64::tests::grow_routine_uses_push_rax_pop_rax ... ok\ntest codegen::x86_64::tests::mov64_r12_rax_has_rex_b ... ok\ntest codegen::x86_64::tests::lea_r13_plus_rcx_uses_the_disp8_form ... ok\ntest codegen::tests::strings_are_nul_terminated_and_offset_correctly ... ok\ntest codegen::x86_64::tests::linux_entry_starts_with_zeroed_rdi ... ok\ntest codegen::x86_64::tests::entries_align_stack_on_macos_and_windows ... ok\ntest codegen::x86_64::tests::scan_loops_back_to_its_own_start ... ok\ntest codegen::x86_64::tests::mul_add_emits_a_multiply_and_skips_on_zero ... ok\ntest codegen::x86_64::tests::mul_add_negative_offset_checks_underflow ... ok\ntest codegen::x86_64::tests::zero_is_a_single_store ... ok\ntest exec::tests::region_round_trip_writes_and_reads_back ... ok\ntest host::tests::linux_needs_no_slots ... ok\ntest patch::tests::arm64_branches_patch_word_aligned_and_in_range ... ok\ntest patch::tests::got_fixup_without_a_got_is_an_error ... ok\ntest patch::tests::unbound_label_is_reported ... ok\ntest patch::tests::x86_rel32_resolves_to_the_label_address ... ok\ntest target::tests::parses_all_six_names ... ok\ntest target::tests::unknown_target_error_lists_valid_names ... ok\n\ntest result: ok. 33 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n     Running tests\\e2e.rs (target\\release\\deps\\e2e-90bf6b97b6e7f28c.exe)\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n     Running unittests src\\main.rs (target\\release\\deps\\bfnative-3bb18ec3a91b252e.exe)\n\nrunning 43 tests\ntest codegen::aarch64::tests::known_golden_encodings ... ok\ntest codegen::aarch64::tests::mul_add_negative_offset_checks_underflow ... ok\ntest codegen::aarch64::tests::movz_movk_build_big_constants ... ok\ntest codegen::aarch64::tests::mul_add_emits_a_multiply ... ok\ntest codegen::aarch64::tests::mov_and_byte_ops_match_reference_encodings ... ok\ntest codegen::aarch64::tests::grow_call_is_bl_not_b ... ok\ntest codegen::aarch64::tests::bracket_jump_emits_trampoline_and_far_branch ... ok\ntest codegen::aarch64::tests::grow_saves_x30_and_takes_an_aligned_frame ... ok\ntest codegen::tests::fixups_record_positions_of_placeholder_bytes ... ok\ntest codegen::aarch64::tests::scan_loops_back_to_its_own_start ... ok\ntest codegen::tests::strings_are_nul_terminated_and_offset_correctly ... ok\ntest codegen::x86_64::tests::add_cell_encodes_as_imm8_alu ... ok\ntest codegen::tests::internal_labels_allocate_sequentially ... ok\ntest codegen::aarch64::tests::sub_sp_reg_encodes_the_extended_register_form ... ok\ntest codegen::x86_64::tests::cmp_rax_r14_uses_rex_r ... ok\ntest codegen::x86_64::tests::entries_align_stack_on_macos_and_windows ... ok\ntest codegen::x86_64::tests::grow_routine_uses_push_rax_pop_rax ... ok\ntest codegen::x86_64::tests::jump_if_zero_aims_one_past_target ... ok\ntest codegen::x86_64::tests::lea_r13_plus_rcx_uses_the_disp8_form ... ok\ntest codegen::x86_64::tests::mov64_r12_rax_has_rex_b ... ok\ntest codegen::x86_64::tests::linux_entry_starts_with_zeroed_rdi ... ok\ntest codegen::x86_64::tests::mul_add_emits_a_multiply_and_skips_on_zero ... ok\ntest codegen::x86_64::tests::mul_add_negative_offset_checks_underflow ... ok\ntest codegen::x86_64::tests::scan_loops_back_to_its_own_start ... ok\ntest codegen::x86_64::tests::zero_is_a_single_store ... ok\ntest obj::elf::tests::header_shape_is_correct_for_both_arches ... ok\ntest obj::elf::tests::resolved_rel32_branches_stay_in_bounds ... ok\ntest obj::macho::tests::bind_stream_binds_all_five_symbols_to_contiguous_slots ... ok\ntest obj::macho::tests::adjacent_segments_do_not_share_a_page ... ok\ntest obj::macho::tests::exec_seg_base_and_limit_are_text_file_offsets_not_vm_addresses ... ok\ntest obj::macho::tests::code_signature_hashes_reverify ... ok\ntest obj::macho::tests::header_and_command_table_shape ... ok\ntest obj::macho::tests::segment_congruence_holds_for_every_segment ... ok\ntest sha256::tests::empty_input ... ok\ntest obj::pe::tests::headers_are_well_formed_for_both_arches ... ok\ntest obj::pe::tests::import_table_resolves_five_kernel32_functions ... ok\ntest obj::pe::tests::iat_is_first_in_idata_so_arm64_ldr_offsets_fit ... ok\ntest obj::pe::tests::base_relocation_table_has_a_real_dir64_fixup ... ok\ntest sha256::tests::multi_block_and_incremental_agree ... ok\ntest sha256::tests::nist_abc ... ok\ntest target::tests::parses_all_six_names ... ok\ntest target::tests::unknown_target_error_lists_valid_names ... ok\ntest sha256::tests::long_input_matches_known_vector ... ok\n\ntest result: ok. 43 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s\n\n     Running tests\\e2e.rs (target\\release\\deps\\e2e-87e67ce568eed112.exe)\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n     Running unittests src\\main.rs (target\\release\\deps\\bfrun-dfe69bf7581068b8.exe)\n\nrunning 4 tests\ntest vm::tests::add_and_sub_wrap_at_cell_boundary ... ok\ntest vm::tests::move_left_past_zero_errors ... ok\ntest vm::tests::move_right_grows_tape_past_initial_size ... ok\ntest vm::tests::zero_clears_current_cell ... ok\n\ntest result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n     Running unittests src\\main.rs (target\\release\\deps\\bfwasm-e6822270bc47e1b0.exe)\n\nrunning 12 tests\ntest codegen::tests::empty_program_exports_start_and_memory ... ok\ntest codegen::tests::match_loops_pairs_nested_brackets ... ok\ntest codegen::tests::every_control_construct_is_balanced_for_simple_programs ... ok\ntest codegen::tests::uleb_and_sleb_agree_with_encode_module_on_a_shared_call_path ... ok\ntest codegen::tests::module_starts_with_magic_and_version ... ok\ntest encode::tests::sleb_negative_one_is_one_byte ... ok\ntest encode::tests::byte_vec_prefixes_length ... ok\ntest encode::tests::sleb_matches_spec_example ... ok\ntest codegen::tests::match_loops_panics_on_unbalanced_close - should panic ... ok\ntest codegen::tests::move_delta_clamps_instead_of_wrapping_negative ... ok\ntest encode::tests::uleb_multi_byte_matches_spec_example ... ok\ntest encode::tests::uleb_small_values_are_one_byte ... ok\n\ntest result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n   Doc-tests bfc\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n   Doc-tests bfformat\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+    "initial_debug_attempt": "Mandelbrot stdout mismatch because Git converted the reference fixture to CRLF. Restored the external checkout with git config core.autocrlf false and git checkout-index --all --force; release tests then passed. Upstream source unchanged."
+  },
+  "sdk_install": {
+    "command": "Official dotnet-install.ps1 -Channel 10.0 -InstallDir C:\\Users\\User\\.dotnet -NoPath",
+    "source": "https://builds.dotnet.microsoft.com/dotnet/scripts/v1/dotnet-install.ps1",
+    "script_sha256": "e8b873e18a81e5c4cd8ab69d84dac8fead291d50b3c44633cd7fddad709a13d6",
+    "installed_sdk": "10.0.402",
+    "executable": "C:\\Users\\User\\.dotnet\\dotnet.exe",
+    "persistent_environment": "User DOTNET_ROOT and user PATH updated; machine PATH may still select C:\\Program Files\\dotnet first, so recorded commands use the explicit SDK executable.",
+    "nuget": "NativeAOT restore uses --source https://api.nuget.org/v3/index.json; initial host source configuration produced NU1100. No global NuGet configuration was changed.",
+    "excluded_cli_aot_attempt": "Publishing the reflection-based compiler CLI itself completed with AOT/trimming warnings; excluded. Scored-candidate smoke uses its documented build command to generate a self-contained program, then publishes that program with NativeAOT."
+  },
+  "tools_sha256": {
+    "brainfly_check.py": "17e03d3cea2a94601ca69957fcbd34faa2c9cd0451702590112ab8283e979a8e",
+    "brainfry_check.py": "39c1111fc24627a38862cf4ce171a710aa52bc2236af4c20dc5396aa1f94032b"
+  },
+  "limits": "Brainfly smoke durations include concurrent build/correctness activity and are not competitive timing samples. All 12 exact outputs pass both modes on Windows with 65536 cells. Android Brainfly execution, repeated-call benchmarks, memory and full-profile safety parity are not established."
+}

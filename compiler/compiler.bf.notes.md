@@ -11,9 +11,9 @@ native-code or platform backend.
 
 ## Source identity
 
-Raw SHA-256: `6829614ef2d7778e8e1513ecdb94726ce00ad2989f12618987a569386a7dce88`.
-Filtered SHA-256: `9bb101b4b342ba4fad80eace408801bfafdfcb80f263833b895acba10d39bf72`.
-The source has 4,355 bytes and 2,110 instructions. Annotations contain none
+Raw SHA-256: `d8170d895449cf00e971a052b6d5415d2c5f86585d982f826fa70c5127850d6e`.
+Filtered SHA-256: `ef7d88fe05eef56a646779959ecfa96bf7ddaa8626c2a7636e2caaa1ea963fa9`.
+The source has 4,537 bytes and 2,192 instructions. Annotations contain none
 of the eight instruction characters. Whitespace and annotations are ignored
 by ordinary interpreters, without preprocessing.
 
@@ -24,7 +24,7 @@ For `n` stored instructions the working slot begins at `16 * (n + 1)`.
 
 | Slot offset | Meaning |
 |---|---|
-| 0 | Stored-instruction marker; zero in sentinel and current working slot |
+| 0 | Stored-instruction marker; working slot reuses it as a Boolean full flag; sentinel stays zero |
 | 1 | Raw source byte; retained as opcode in a stored slot |
 | 2, 3 | Destructive comparison and restoration scratch |
 | 4 | Recognized-command flag; initialization temporarily saves the nonempty gate here |
@@ -73,6 +73,17 @@ An opening bracket that wraps depth sets the sticky size error. A close at
 depth zero sets the sticky bracket error without subtracting. A nonzero final
 depth sets the bracket error. Size takes priority over bracket diagnostics.
 
+The working slot's marker is one exactly when the stored count is 3,840.
+The per-byte guard copies that Boolean flag, preserving it. A full buffer
+rejects only a recognized command, clearing cell 4 and setting size error 12.
+The expensive count-high comparison runs only when count-low carries, at
+most fifteen times: high becoming fifteen marks the next working slot full.
+Stored slots retain marker one. Before record emission, clear the current
+working marker so output scanning cannot emit a phantom instruction.
+No state is transferred on ignored or rejected bytes.
+All 7,682 reachable count/command states pass whole-tape checks; see the
+[capacity-gate proof](../docs/07_OPTIMIZATION_PROOFS.md#p0-carry-triggered-capacity-flag).
+
 If an instruction is recognized and count-high is below fifteen, the frontend
 marks the old slot, increments the count with carry, and transfers live state
 sixteen cells right. The raw instruction stays in the old slot. A full buffer
@@ -103,14 +114,23 @@ instruction characters. Check raw and filtered hashes independently, slot
 bounds, all exact fixtures, resource limits and independent-interpreter
 agreement after executable changes.
 
-The own-source BFX is 2,117 bytes: seven bytes of framing and 2,110 instructions.
-Interpreted agreement alone is seed verification. Three native frontend
-rebuild generations pass on both Windows and Android for this source;
-[bootstrap](../docs/04_BOOTSTRAP.md) describes that cycle.
-[Windows filter evidence](../evidence/frontend_filter_windows.json) binds
-the current source to independent-interpreter and Windows results.
-[Android filter evidence](../evidence/frontend_filter_android.json) binds
-three Android generations and boundary checks to that same source.
+The own-source BFX is 2,199 bytes: seven bytes of framing and 2,192 instructions.
+Interpreted agreement alone is seed verification. Three Windows native
+frontend generations, 785 byte/property checks and 42 independent seed checks
+pass for this source in [capacity-gate evidence](../evidence/frontend_capacity_gate.json).
+The subsequent Android run passes 393 importer cases, three native generations,
+twelve fixtures per generation and twelve boundary checks. Stores match Windows;
+Android execution became available after the initial Windows-only snapshot.
+[Bootstrap](../docs/04_BOOTSTRAP.md) describes the cycles.
+[Windows filter evidence](../evidence/frontend_filter_windows.json) and
+[Android filter evidence](../evidence/frontend_filter_android.json) retain
+their separate results for the preceding 2,110-instruction source.
 [The fixture guide](../tests/bfx/README.md) describes
 regression inputs. This tape map governs the Brainfuck frontend, not the XAX
 importer's separate serialization workspace.
+
+The optional [optimizer](optimize.bf.notes.md) has its own tape layout and
+validated-v1 input boundary. It can optimize this frontend's module while
+preserving the frontend's exact v1 output; three native generations per target
+are recorded in [v2 evidence](../evidence/bfx_v2_optimization.json). It does not
+change this source, request contract, filtering algorithm or acceptance limits.

@@ -2,11 +2,21 @@
 
 The decoder and application baseline sources are pinned to revision
 [`ac7821c9bf9c1bde0c18f00da6d1a60a3b320816`](https://github.com/MrxSiN/XAX/commit/ac7821c9bf9c1bde0c18f00da6d1a60a3b320816).
-The current importer is pinned to [revision `7761cf2`](https://github.com/MrxSiN/XAX/commit/7761cf24218472c459c3491dcf7570263bc3b373)
+The v1/v2 importer is pinned to [revision `69baed9`](https://github.com/MrxSiN/XAX/commit/69baed905c340c491d8d827c48163dae526e4863),
+with its [CLEAR contract and graph transactions](https://github.com/MrxSiN/XAX/blob/69baed905c340c491d8d827c48163dae526e4863/compiler/integration/bfx/CLEAR.md).
+The preceding v1 reset importer remains pinned to
+[revision `7761cf2`](https://github.com/MrxSiN/XAX/commit/7761cf24218472c459c3491dcf7570263bc3b373)
 with its [reset proof and measurements](https://github.com/MrxSiN/XAX/blob/7761cf24218472c459c3491dcf7570263bc3b373/compiler/integration/bfx/WIDE_RESET.md).
 The local checkout is `D:\GitHub\XAX`; the links below also work without that
 checkout. BFX v1 is governed by [02_BFX_CONTRACT.md](02_BFX_CONTRACT.md), and generated
 decisions follow [01_BRAINFUCK_PROFILE.md](01_BRAINFUCK_PROFILE.md).
+
+The capacity-flag frontend follow-up uses that preceding unchanged v1 importer and generic
+bootstrap backend. It records three native generations on Windows and Android,
+393 importer cases on each and exact cross-target store agreement. Exact
+local XAX revision, canonical importer hash and artifacts are in
+[its evidence](../evidence/frontend_capacity_gate.json). No XAX implementation
+was authored or modified for that frontend change.
 
 ## Source and responsibility
 
@@ -21,7 +31,7 @@ empty/hello rebuilds. This does not complete the native XAX build driver.
 | Canonical XAX source | Responsibility |
 |---|---|
 | [bfx.xax](https://github.com/MrxSiN/XAX/blob/ac7821c9bf9c1bde0c18f00da6d1a60a3b320816/compiler/integration/bfx/bfx.xax) | Validate records and compute matching loop indices |
-| [import_bfx.xax](https://github.com/MrxSiN/XAX/blob/7761cf24218472c459c3491dcf7570263bc3b373/compiler/integration/bfx/import_bfx.xax) | Emit, hash, sort and serialize a complete native decision store |
+| [import_bfx.xax](https://github.com/MrxSiN/XAX/blob/69baed905c340c491d8d827c48163dae526e4863/compiler/integration/bfx/import_bfx.xax) | Validate v1/v2, then emit, hash, sort and serialize a complete native decision store |
 | [android_bfx.xax](https://github.com/MrxSiN/XAX/blob/ac7821c9bf9c1bde0c18f00da6d1a60a3b320816/compiler/integration/bfx/android_bfx.xax) | Native decision caller, JNI lifecycle, managed UI and Android package/build metadata |
 | [backend_tests.xax](https://github.com/MrxSiN/XAX/blob/ac7821c9bf9c1bde0c18f00da6d1a60a3b320816/compiler/integration/bfx/backend_tests.xax) | Arithmetic and large-stack regression checks |
 
@@ -29,13 +39,29 @@ These saved canonical graphs are authoritative source. Initial construction
 uses XAX's supported graph facilities; later changes use exact-root verified
 transactions and workspace saves. No textual XAX substitute or Python BFX
 algorithm is maintained. BBC owns Brainfuck source filtering, validation and
-future semantic optimization; XAX owns graph verification, native lowering,
+semantic optimization; XAX owns graph verification, native lowering,
 ABIs and platform packaging.
 
 The [numbered BFX guide](https://github.com/MrxSiN/XAX/blob/ac7821c9bf9c1bde0c18f00da6d1a60a3b320816/docs/18_BFX_IMPORT.md) indexes the XAX-side
 contracts and static case data.
 
 ## Decoder and importer
+
+The standalone decoder remains strict v1. The extended importer's embedded
+validator accepts both v1 and [v2 CLEAR](10_BFX_V2_CLEAR.md), with unknown
+versions and unsupported payload bytes rejected. Both exact-root edits,
+stale rejection and full canonical verification precede `Workspace.save`.
+The published graph matches the privately tested artifact byte for byte;
+the unrelated local XAX construct branch was left untouched.
+
+[New evidence](../evidence/bfx_v2_optimization.json) records 652 Android record
+checks with exact Windows agreement, full v1 store compatibility, all v2
+payload bytes and three native generations of both optimized components on
+each required target. The 6,048 independent-oracle decision calls compare
+entire buffers and guards, including failure ordering and dirty-tape reset.
+The importer lowers CLEAR as checked load/subtract-self/store; it recognizes
+no source idiom and retains the full reset. Its ABI and allocation extents
+below are unchanged. Generic bootstrap verification/lowering remain Python.
 
 The decoder checks magic, binary version, successful compiler status, exact
 record length, supported instruction/nesting limits, all payload opcodes and

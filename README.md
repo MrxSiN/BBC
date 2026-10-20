@@ -19,7 +19,7 @@ Brainfuck source → BBC → BFX module → XAX → Native program
 ```
 
 All executable source in this repository is standard Brainfuck. The
-[separate XAX project](https://github.com/MrxSiN/XAX/blob/ac7821c9bf9c1bde0c18f00da6d1a60a3b320816/docs/18_BFX_IMPORT.md)
+[separate XAX project](https://github.com/MrxSiN/XAX/blob/69baed905c340c491d8d827c48163dae526e4863/docs/18_BFX_IMPORT.md)
 handles graph verification, machine code and platform packaging.
 
 For a small example, [decision.bf](examples/decision.bf) reads one input byte
@@ -38,12 +38,20 @@ or hide a sample row.
 The recorded builds use Windows-hosted XAX tools, including unchanged generic
 Python bootstrap utilities. The native Windows build driver is still a
 prototype. General Android decisions that may run indefinitely still need
-worker integration; source-program folding and loop optimization remain
-unimplemented. See [status and evidence](docs/05_STATUS.md) for the full scope.
+worker integration. An optional Brainfuck pass now folds exact clear loops
+and removes full wrapping arithmetic groups, with canonical XAX lowering.
+See [status and evidence](docs/05_STATUS.md) for the full scope.
+
+The latest frontend optimization passes three native rebuild generations
+on Android and Windows. The [Brainfry analysis](docs/09_BRAINFRY_ANALYSIS.md)
+explains the performance gaps, reproduced correctness defects and next steps.
+The .NET 10 SDK is installed and Brainfly's JIT/NativeAOT routes pass the
+twelve-program Windows correctness corpus; competitive timings are pending.
 
 **Performance:** [Benchmarks](docs/08_BENCHMARKS.md) compare complete build time,
-memory use, standalone execution and file size. Results cover twelve small
-programs and pinned compiler configurations. BBC has no overall performance
+memory use, standalone execution and file size. The latest
+[v2 follow-up](docs/11_V2_BENCHMARKS.md) retains twelve original programs and
+adds four clear-loop workloads, with pinned compiler configurations. BBC has no overall performance
 lead; broader testing and optimization remain.
 
 ## Use the compiler
@@ -57,8 +65,14 @@ You need an external Brainfuck interpreter matching
 2. **Run BBC.** Execute [compiler.bf](compiler/compiler.bf) with that framed input.
 3. **Save the result.** Check that the complete response reports success, then
    save its exact bytes as a `.bfx` file.
-4. **Build native code.** Use the [XAX importer](https://github.com/MrxSiN/XAX/blob/ac7821c9bf9c1bde0c18f00da6d1a60a3b320816/compiler/integration/bfx/IMPORT.md)
+4. **Build native code.** Use the [XAX importer](https://github.com/MrxSiN/XAX/blob/69baed905c340c491d8d827c48163dae526e4863/compiler/integration/bfx/IMPORT.md)
    to import the module, verify the result and generate code for your target.
+
+For the optional optimized route, validate the complete successful v1 module,
+append byte `01`, and execute [optimize.bf](compiler/optimize.bf) before import.
+Validate its complete successful v2 result and use the v2-capable importer.
+The [v2 contract](docs/10_BFX_V2_CLEAR.md) and
+[tape notes](compiler/optimize.bf.notes.md) specify this internal interface.
 
 The binary input layout is:
 
@@ -82,7 +96,9 @@ and error handling.
 | Language behavior and binary format | [Execution profile](docs/01_BRAINFUCK_PROFILE.md) · [BFX contract](docs/02_BFX_CONTRACT.md) |
 | Native builds and Android integration | [XAX integration](docs/03_XAX_INTEGRATION.md) · [Bootstrap](docs/04_BOOTSTRAP.md) |
 | Verified results and remaining work | [Project status](docs/05_STATUS.md) |
-| Performance comparisons | [Benchmarks](docs/08_BENCHMARKS.md) · [Measurement plan](docs/06_PERFORMANCE_PLAN.md) |
+| Performance comparisons | [Benchmarks](docs/08_BENCHMARKS.md) · [V2 measurements](docs/11_V2_BENCHMARKS.md) · [Measurement plan](docs/06_PERFORMANCE_PLAN.md) |
+| Competitor implementation and optimization priorities | [Brainfry analysis](docs/09_BRAINFRY_ANALYSIS.md) |
+| Optional semantic optimization | [BFX v2](docs/10_BFX_V2_CLEAR.md) · [Optimizer notes](compiler/optimize.bf.notes.md) |
 | Compiler implementation | [Algorithm and tape layout](compiler/compiler.bf.notes.md) · [Optimization proofs](docs/07_OPTIMIZATION_PROOFS.md) |
 | Tests | [Fixtures and verification](tests/bfx/README.md) |
 
