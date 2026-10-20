@@ -208,3 +208,8 @@ The [v4 matched run](15_V4_BENCHMARKS.md) retains that sixteen-source corpus
 and trial count, comparing v3, v4 and pinned Brainfry. It remains an
 exploratory optimization measurement; missing modes and confirmatory
 competitor-victory gates remain open.
+
+Capacity coverage must include sources above the old 3,840-instruction and
+65,533-byte bounds, and depth above 255, once the [scalable path](16_SCALABILITY.md)
+can import and execute them. The current chunk prototype proves filtering/
+validation only; its larger cases are not execution benchmarks.

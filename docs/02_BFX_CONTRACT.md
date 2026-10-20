@@ -102,6 +102,10 @@ sixteen-cell instruction slots and working slot. At the instruction limit,
 the working slot spans cells 61,456..61,471. See the
 [tape notes](../compiler/compiler.bf.notes.md) for exact state and bounds.
 
+[Scalability notes](16_SCALABILITY.md) explain these bounds and the separate
+private chunk frontend prototype. It does not change this request/response,
+BFX v1-v4 acceptance or the native importer's existing view extents.
+
 ## Import acceptance and versioning
 
 The XAX importer independently checks magic, supported version, exact response

@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-20",
+  "status": "PASS source/fixture/bootstrap-provenance audit for private streaming prototype",
+  "source_sha256": "7a243960bcbde41b4b84f45e78075971b5ee29b60e9ca44e267ffbf3b554649b",
+  "source_bytes": 3794,
+  "instructions": 3671,
+  "static_fixtures": 10,
+  "legacy_bf_sources_byte_identical_to_head": 10,
+  "legacy_evidence_files_byte_identical_to_head": 33,
+  "native_execution_report_sha256": "75fda1cdc92ca1f943ea672dcabeb46b863df33a4c907024ea133b2b06ed4324",
+  "bootstrap_report_sha256": "4fdf92fb1f2f217e24b895988c5f47f279695296c135dced3c5ab7d3a3988f3c",
+  "unchanged_bounded_build_pipeline_evidence_sha256": "4237ad2cac2c44ccdd6d20ffe75b3c8136747cfc00d1302e06071e2599719709",
+  "python": {
+    "version": "3.13.5 (tags/v3.13.5:6cb20a2, Jun 11 2025, 16:15:46) [MSC v.1943 64 bit (AMD64)]",
+    "executable": "C:\\Users\\User\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+    "executable_sha256": "5341746f92483a93e44c313de830f2fba2956f0759094404a16b2fed06c9a2ed"
+  },
+  "external_test_transport": {
+    "source_sha256": "ba81eb2e7783e9366680a6182dfb4ed50293efd2ecf8abcbe39bfed5255727a5",
+    "binary_sha256": "2ace43f303c8624c3aa63356af28a7fa3b47dc703fa96faa56877292c080c987",
+    "ndk_clang": "Android (13624864, based on r530567e) clang version 19.0.1 (https://android.googlesource.com/toolchain/llvm-project 97a699bf4812a18fb657c2779f5296a4ab2694d2)\nTarget: x86_64-w64-windows-gnu\nThread model: posix\nInstalledDir: C:/Android/Sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/windows-x86_64/bin",
+    "ndk_clang_sha256": "7d31c6f6fad98987b6c9d21b800afaa8b3e37f052e94aaddc941d42ff2a35579",
+    "flags": [
+      "-O2",
+      "-ldl"
+    ],
+    "scope": "Opaque buffers, files, calls and expected-byte comparisons only; no production source parsing or translation."
+  },
+  "authority": "Actual native standard BF component on both targets; unchanged bounded BBC native helpers and canonical XAX importer build it. Generic Python XAX bootstrap verification/lowering remains unchanged; no full native compiler-host claim."
+}

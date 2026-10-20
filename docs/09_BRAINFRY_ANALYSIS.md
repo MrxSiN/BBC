@@ -174,3 +174,9 @@ add guarded identical-direction groups. Both-target full-buffer checks and
 four-component native fixed points pass. Affine transfers, stride scans and
 complete native compiler-host integration remain open. The v3 figures in
 the implementation table are a separate pinned measurement snapshot.
+
+[Scalability](16_SCALABILITY.md) is now a coverage priority: the bounded
+frontend rejects Brainfry's 11,451-instruction Mandelbrot. The new native BF
+chunk prototype validates that source and deeper/larger streams on both targets,
+but its provisional tokens still need a wide-count container and scalable
+XAX import/lowering. Do not score it as a compiled Mandelbrot result.

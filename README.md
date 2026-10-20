@@ -98,6 +98,12 @@ BBC accepts up to **65,533 source bytes**, **3,840 instructions** and
 EOF as zero and checked pointer movement. Only `><+-.,[]` execute; `#` does
 not introduce a comment.
 
+Those are limits of the current bounded compiler interface.
+[Scalability](docs/16_SCALABILITY.md) explains their causes and the native
+streaming frontend prototype. It handles larger source/instruction streams
+and deeper nesting; full scalable BFX import/native compilation is pending.
+The program's 65,536-cell execution tape is a separate contract.
+
 Follow the [bootstrap guide](docs/04_BOOTSTRAP.md) for seed execution and native
 rebuilds, or the [BFX contract](docs/02_BFX_CONTRACT.md) for exact input, output
 and error handling.
@@ -113,7 +119,8 @@ and error handling.
 | Competitor implementation and optimization priorities | [Brainfry analysis](docs/09_BRAINFRY_ANALYSIS.md) |
 | Optional semantic optimization | [BFX v2](docs/10_BFX_V2_CLEAR.md) · [BFX v3](docs/12_BFX_V3_ARITHMETIC.md) · [V3 measurements](docs/13_V3_BENCHMARKS.md) · [BFX v4](docs/14_BFX_V4_MOVEMENT.md) · [V4 measurements](docs/15_V4_BENCHMARKS.md) · [Optimizer notes](compiler/optimize.bf.notes.md) · [Arithmetic notes](compiler/pack_arithmetic.bf.notes.md) · [Movement notes](compiler/pack_moves.bf.notes.md) |
 | Compiler implementation | [Algorithm and tape layout](compiler/compiler.bf.notes.md) · [Optimization proofs](docs/07_OPTIMIZATION_PROOFS.md) |
-| Tests | [Fixtures and verification](tests/bfx/README.md) |
+| Compiler scalability | [Limits, streaming prototype and remaining work](docs/16_SCALABILITY.md) |
+| Tests | [BFX fixtures](tests/bfx/README.md) · [Private chunk fixtures](tests/stream_chunks/README.md) |
 
 Independent interpreters and test drivers live outside this repository.
 Generated artifacts belong in ignored `build/`; recorded results live in

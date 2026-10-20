@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-20",
+  "status": "EXECUTED deterministic bootstrap replay and own-source token parity for private streaming prototype; not self-hosting through a wide BFX importer",
+  "source_sha256": "7a243960bcbde41b4b84f45e78075971b5ee29b60e9ca44e267ffbf3b554649b",
+  "native_replays": [
+    {
+      "replay": 0,
+      "dll_sha256": "6115b736eb18976a27b279d225b9df49f2d2bcbf9c7f84a3098994050fb0d349",
+      "so_sha256": "71571fd3509d736ac08a31ef56df505d4ce68aa978a933b2f70488ba321117ac",
+      "native_windows_own_source_tokens_exact": true
+    },
+    {
+      "replay": 1,
+      "dll_sha256": "6115b736eb18976a27b279d225b9df49f2d2bcbf9c7f84a3098994050fb0d349",
+      "so_sha256": "71571fd3509d736ac08a31ef56df505d4ce68aa978a933b2f70488ba321117ac",
+      "native_windows_own_source_tokens_exact": true
+    },
+    {
+      "replay": 2,
+      "dll_sha256": "6115b736eb18976a27b279d225b9df49f2d2bcbf9c7f84a3098994050fb0d349",
+      "so_sha256": "71571fd3509d736ac08a31ef56df505d4ce68aa978a933b2f70488ba321117ac",
+      "native_windows_own_source_tokens_exact": true
+    }
+  ],
+  "own_source": {
+    "source_bytes": 3794,
+    "instructions": 3671,
+    "request_sha256": "319083a24a46d2c5cd825596c43149e3cb84831753cdcbc3cad5b97fa62ff7d3",
+    "response_sha256": "bdbb4c038984e26a97a16e5a0d7f9b81d4a615d0bc7bc4a2c48377fadbdb455f",
+    "android_result_sha256": "7bfc2f8bc273bf9e149bfa09872c5a9adc04036fa956c49c91c536b5cf3f5469",
+    "windows_and_android_exact": true,
+    "independent_interpreter_read_bytes": 3808,
+    "independent_interpreter_peak_cell": 58
+  },
+  "ordinary_bfx_importer_rejects_private_packet_status": 1,
+  "authority": "Rebuilds use the existing bounded BBC native frontend/helpers and canonical XAX importer, then unchanged generic Python verification/lowering. Prototype token output is compared only; it is not converted into a production module by the test driver."
+}

@@ -132,6 +132,16 @@ naming history. Preserve unrelated working-tree edits.
   performance remains separate from native compiler-host and sweep gates.
   Preserve the v4 Android 0.930x native-call aggregate and its separate
   post-primary controls; identical-code variability establishes no pass effect.
+- `compiler/stream_chunks.bf` is a PROTOTYPE private BBCS version01 chunk
+  filter/validator, 3,671 instructions / 3,794 bytes, using cells 0..58.
+  Its u64 depth and explicit continuation state pass 588 scalar properties,
+  44 stream chunks per target, Android guards/five alignments and ten
+  independent-interpreter checks. All tokens remain provisional until final
+  success; any error discards the entire stream. Keep its private caller
+  preconditions and 32,768-byte chunk bound. It is not a BFX module producer.
+  Current public BFX/source limits remain unchanged; the native wide-count
+  host/container/importer/optimizer path is still UNIMPLEMENTED. Follow
+  [scalability](docs/16_SCALABILITY.md) before expanding support claims.
 - The capacity-flag frontend is 4,537 bytes / 2,192 instructions. It adds 82
   instructions and no cells, preserving exact BFX v1 output. Its separate
   `evidence/frontend_capacity_gate.json` covers 42 seed checks, 7,682 complete

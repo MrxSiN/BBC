@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-20",
+  "status": "EXECUTED current-capacity audit; scalable mode not implemented",
+  "frontend_source_sha256": "d8170d895449cf00e971a052b6d5415d2c5f86585d982f826fa70c5127850d6e",
+  "frontend_native_dll_sha256": "094afead3a9bb4d254bdeaeddfb13bd2e3a5dd1173dda38d4f8cf7ede404b0cd",
+  "current_limits": {
+    "source_bytes": 65533,
+    "instructions": 3840,
+    "nesting": 255,
+    "compiler_tape_cells": 65536,
+    "instruction_slot_cells": 16
+  },
+  "case": {
+    "name": "Pinned Brainfry Mandelbrot",
+    "upstream_revision": "e55d45735a6feb450a7e47852f4340f5b532fef8",
+    "source_path": "tests/mandelbrot.b",
+    "source_sha256": "f0f048e90855450fb06f2bea21f914f0d24e6b6c15fd050c68176ff794c6229e",
+    "raw_bytes": 11669,
+    "instructions": 11451,
+    "max_nesting": 9,
+    "native_decision_status": 0,
+    "bbc_response_hex": "4246580103"
+  },
+  "interpretation": "The current frontend rejects this source with BFX resource status3. This is a coverage limitation, not a timing score or a defect in Brainfry. No source acceptance or tape semantics changed."
+}
