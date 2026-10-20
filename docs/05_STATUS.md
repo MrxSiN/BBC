@@ -183,3 +183,13 @@ snapshot packages and runs hello successfully, but equivalent Windows build
 rejects unsupported one-bit values. Library packaging, self-store/multiple
 resource-callee coverage and common helper loading remain open. No new complete
 build speedup, advanced loop optimization or universal competitor win is claimed.
+
+## Native frame backend follow-up
+
+[Native bits1 evidence](../evidence/native_bits1.json) records the next
+canonical XAX driver change: frame fallback supports one-bit AND/OR/XOR.
+Forty-eight build controls and 160 exact diagnostic controls pass. 3 of six
+prepared BBC target snapshots build, reproduce and execute correctly; inspect
+the raw report for remaining failures. Earlier interface-phase observations
+are preserved as snapshots. Full source-to-native driver, libraries, graph
+reuse work and competitive targets remain INCOMPLETE.

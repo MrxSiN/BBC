@@ -90,3 +90,20 @@ No new Android compiler-host execution or competitive timing is claimed.
 The [measurement plan](06_PERFORMANCE_PLAN.md) still governs promotion. The
 [cold-build cache experiment](18_BACKEND_BUILD_CACHE.md) remains a separate
 configuration with negligible measured full-build gains.
+
+## Native frame bitwise extension
+
+The new [native backend report](../evidence/native_bits1.json) adds canonical
+XAX lowering for bits1 AND/OR/XOR in the frame fallback. All four inputs are
+checked for every operation, with nonzero fifth Win64 arguments. Forty-eight
+build controls preserve other width rejection bytes and 32-bit output identity;
+160 verifier cases preserve exact complete diagnostics. 3 of six prepared
+BBC workload/target snapshots build, repeat identically and execute on target.
+This is a native verified build-stage result, not a Python-free BBC source
+workflow or a competitive speedup measurement. Library packaging and remaining
+verifier/common-loader gates stay open.
+
+The current canonical [driver source and protocol](https://github.com/MrxSiN/XAX/blob/1c211da49f88e6634b0b4f98557efdd7204ca800/compiler/integration/windows_helpers/DRIVER.md)
+pins the tested implementation. The validated local prototype is in ignored
+`build/xaxc.exe`; `build <snapshot> <artifact> <provenance>` is the tested
+native stage, with exit 2 meaning decline and no validity claim.

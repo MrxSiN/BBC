@@ -120,3 +120,7 @@ for this interface phase. Next priorities are native driver/backend coverage,
 content-bound proof reuse and type identity reuse, then semantic loop
 optimizations with failure-trace proofs. Frontend integration alone does not
 address the dominant measured SDK/startup/verification/binding costs.
+
+The later [native backend follow-up](19_NATIVE_DRIVER_FOLLOWUP.md#native-frame-bitwise-extension)
+records the response to the one-bit rejection found above. Its prepared-build
+results do not change this interface phase's frozen benchmark or bootstrap hashes.
