@@ -492,3 +492,19 @@ Windows test DLL grows from 2,560 to 3,072 bytes at a PE padding boundary; the
 Windows importer also grows by 512 bytes. No smaller-file or RAM result follows.
 Fresh [Android process comparisons](08_BENCHMARKS.md#eight-byte-tape-reset)
 still favor Awib and brainfry. No comparator is surpassed, and M8 remains unmet.
+
+## Streaming identical runs
+
+The [v5 run-packer invariant](../compiler/stream_runs.bf.notes.md) carries one
+opcode and a count between chunks. Identical arithmetic is represented modulo
+256; movement emits complete 128-step groups and retains a smaller remainder.
+Flushing emits binary powers with the same net arithmetic or monotone movement.
+Loop/I/O boundaries flush before the original instruction, and finalization
+empties the state. Chunking therefore cannot split or lose a pending run.
+Monotone movement preserves the importer's first-crossing failure and clipped
+cursor. Neither opposite movements nor even-step loops are canceled.
+
+This pass is tested within a separate [wide compilation profile](17_BFX_V5_WIDE.md).
+Its private fixed-packet specialization relies on initialized complete
+count-bounded frames and adequate output capacity. It does not relax generic
+decision length guards or authorize untrusted continuation state.

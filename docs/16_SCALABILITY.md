@@ -1,9 +1,10 @@
 # Compiler scalability and current limits
 
 **Current bounded pipeline: EXECUTED. Private chunk frontend: PROTOTYPE,
-EXECUTED on Android and Windows. Full scalable BFX import/native compilation:
-UNIMPLEMENTED.** This document separates implementation limits from Brainfuck
-semantics. No existing source request, BFX record or program tape changes.
+EXECUTED on Android and Windows. Separate BFX v5 wide-profile native compilation:
+EXECUTED. Runtime workspace growth: UNIMPLEMENTED.** This document separates
+implementation limits from Brainfuck semantics. No existing source request,
+BFX v1-v4 record or program tape changes.
 
 ## Where the current limits come from
 
@@ -21,9 +22,11 @@ a scalable compiler. BFX v1-v4 counts are u16 and their native record view is
 also have fixed extents. All affected layers must agree on wider capacities.
 
 The [capacity audit](../evidence/scalability_capacity_audit.json) reproduces a
-real coverage gap: pinned Brainfry Mandelbrot has 11,669 raw bytes, 11,451
+coverage gap in the original bounded pipeline: pinned Brainfry Mandelbrot has 11,669 raw bytes, 11,451
 instructions and nesting nine. The current ordinary BBC frontend returns BFX
-resource status 3. This is a capacity failure, not a timing result.
+resource status 3. The separate [v5 profile](17_BFX_V5_WIDE.md) now compiles
+that program end to end. The earlier failure is preserved as a capacity
+measurement, not a timing result.
 
 These are compiler-resource limits. The compiled program's defined 65,536-cell
 tape is a separate execution contract. A scalable compiler can preserve it.
@@ -52,7 +55,9 @@ state, preserves returned state exactly, isolates each packet, accepts only
 successful continuation and finishes exactly once. Any native failure,
 framing error, resource error or bracket error discards every earlier token
 from the compilation. Complete success is published only after final validation.
-The future native host must implement that transaction; it is not delivered here.
+The [v5 native coordinator](17_BFX_V5_WIDE.md) now implements this transaction
+within separately declared fixed budgets. File-backed spooling and runtime
+growth remain future work.
 
 ## Private BBCS version01 interface
 
@@ -78,27 +83,34 @@ These packets must never be saved or imported as `.bfx` modules.
 
 ## Remaining work for dynamic compilation
 
+The [v5 implementation](17_BFX_V5_WIDE.md) supplies a u32-count record,
+native chunk coordination, streaming identical-run packing, wider decoder
+pairing and enlarged import arenas. It accepts 1 MiB of source, 65,536
+instructions and balanced nesting up to 32,768, and compiles Mandelbrot on
+both targets. Those are fixed verified extents. The steps below describe
+runtime growth beyond that specialization, not missing v5 record import.
+
 1. Implement the canonical XAX compiler host's checked source-chunk loop and
    provisional spool/commit path. It must count total bytes/instructions with
    checked wide arithmetic and enforce configurable source, work, memory and
    depth budgets, with clean allocation/I/O exhaustion outcomes.
-2. Add an explicitly versioned wide-count BFX container. Preserve strict v1-v4
-   acceptance and bytes. Final counts must be known before publishing success;
-   never expose a partial stream as a valid module.
-3. Stream the BF optimization passes with bounded pending context, preserving
-   rewrites across chunk boundaries and all failure/termination proofs.
+2. Preserve the v5 wide-count container and strict v1-v4 acceptance and bytes.
+   Final counts must be known before publishing success; never expose a
+   partial stream as a valid module.
+3. Extend the streaming BF optimization beyond identical runs to clear and
+   affine patterns, preserving chunk-boundary and failure/termination proofs.
 4. Replace fixed importer record/scratch/output assumptions with verified
    growth or paging, and a checked loop-pair stack. Complete graph verification,
    target lowering and packaging must also accept the enlarged stores.
-5. Rebuild and execute larger programs on both required targets; measure full
-   builds, runtime, memory and artifact size. Add Mandelbrot and larger held-out
-   sources without removing smaller regression cases.
+5. Measure full builds, runtime, memory and artifact size on the larger
+   compiled corpus. Keep executed Mandelbrot and smaller regressions; add
+   held-out sources and counterbalanced competitor trials.
 
 The existing XAX HEAP_VIEW verifier requires a proven constant allocation size
 before constructing a checked view. General runtime-sized views therefore need
 further XAX work; calling malloc or removing bounds checks is insufficient.
-Verified fixed-size pages or capacity specialization are candidate approaches,
-not implemented growth mechanisms. All new XAX implementation remains canonical
+The v5 capacity specialization is implemented; verified paging and runtime
+growth remain open. All new XAX implementation remains canonical
 semantic graphs/verified transactions; no Python production compiler fallback.
 
 Dynamic scaling means consuming resources as work grows, subject to explicit
@@ -112,3 +124,5 @@ independent consumption. Ordinary BFX import rejects the private packet.
 pins the unchanged build components, source/fixture checks and external test
 transport/compiler identities. These replays use the existing bounded frontend;
 they are not self-hosting through a new wide-count importer.
+The separate [v5 bootstrap evidence](../evidence/wide_bootstrap.json) records
+the later native wide-profile run-packer cycle.

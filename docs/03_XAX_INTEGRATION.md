@@ -5,6 +5,12 @@ The decoder and application baseline sources are pinned to revision
 The current v1/v2/v3/v4 importer is pinned to
 [revision `ab25b75`](https://github.com/MrxSiN/XAX/commit/ab25b75f7cc0f03d06aae3cab7d84327c59c5e37),
 with its [movement contract and exact-root transactions](https://github.com/MrxSiN/XAX/blob/ab25b75f7cc0f03d06aae3cab7d84327c59c5e37/compiler/integration/bfx/MOVEMENT.md).
+The separate [v5 wide profile](17_BFX_V5_WIDE.md) is pinned to
+[revision `85abd46`](https://github.com/MrxSiN/XAX/commit/85abd4640439c748374dce79cb54bfecb406cedf),
+with [canonical source/packing coordinators, native importer and replay guide](https://github.com/MrxSiN/XAX/blob/85abd4640439c748374dce79cb54bfecb406cedf/compiler/integration/bfx/wide/README.md).
+It retains the original importer and program tape. Its larger fixed views and
+private packet specialization are distinct from runtime arena growth and the
+unfinished native XAX compiler driver.
 The preceding v1/v2/v3 importer remains pinned to
 [revision `0232858`](https://github.com/MrxSiN/XAX/commit/0232858c7ad9be0e66b6feb300b4d0880bc276a5),
 with its [arithmetic contract and exact-root transactions](https://github.com/MrxSiN/XAX/blob/0232858c7ad9be0e66b6feb300b4d0880bc276a5/compiler/integration/bfx/POWERS.md).

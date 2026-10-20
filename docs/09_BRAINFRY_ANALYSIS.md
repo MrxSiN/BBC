@@ -176,7 +176,10 @@ complete native compiler-host integration remain open. The v3 figures in
 the implementation table are a separate pinned measurement snapshot.
 
 [Scalability](16_SCALABILITY.md) is now a coverage priority: the bounded
-frontend rejects Brainfry's 11,451-instruction Mandelbrot. The new native BF
-chunk prototype validates that source and deeper/larger streams on both targets,
-but its provisional tokens still need a wide-count container and scalable
-XAX import/lowering. Do not score it as a compiled Mandelbrot result.
+frontend rejects Brainfry's 11,451-instruction Mandelbrot. The separate
+[v5 wide profile](17_BFX_V5_WIDE.md) now coordinates native BF filtering and
+run packing, emits a wide-count record and compiles that program to native
+Android and Windows executables. Run packing reduces it to 5,172 instructions.
+Larger fixed budgets close this capacity gap; dynamic arena growth and
+counterbalanced competitor measurements remain open. No performance score
+changes follow from this correctness result.

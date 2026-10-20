@@ -11,6 +11,12 @@ best-mode coverage and scored deployment timing remain incomplete.
 The competitive objective is **NOT YET ACHIEVED**. Linux is optional and
 never gates functional delivery or a required-target sweep.
 
+The [v5 wide profile](17_BFX_V5_WIDE.md) adds compiled Mandelbrot and larger
+source/depth regressions. Its opcode reductions and executable byte counts are
+correctness/artifact observations, not a replacement for matched build, memory
+and runtime trials. Preserve the existing corpus and every earlier negative
+result when adding these workloads to the next counterbalanced comparison.
+
 The [v2 follow-up](11_V2_BENCHMARKS.md) retains that twelve-source corpus and
 adds four preregistered clear-loop workloads. It reports three-arm complete
 build/process/resource trials and a separately preregistered native-call BBC

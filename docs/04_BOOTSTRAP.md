@@ -5,6 +5,14 @@ Authoritative source is [compiler/compiler.bf](../compiler/compiler.bf).
 Both algorithms are ordinary Brainfuck. BFX is serialized data; filesystem,
 process and platform operations belong to the external host or XAX.
 
+The separate [v5 wide bootstrap](17_BFX_V5_WIDE.md) compiles the
+10,907-instruction streaming run packer, which exceeds the original frontend's
+budget. Native BF filtering and packing plus native XAX import produce its
+canonical decision store. Generic expected-root view/interface edits bind the
+private packet core; unchanged generic SDK utilities verify and lower it.
+[Its replay evidence](../evidence/wide_bootstrap.json) keeps this component
+cycle separate from native XAX compiler-host self-compilation.
+
 ## Seed procedure
 
 1. Execute the framer under an independent interpreter with the exact compiler

@@ -139,9 +139,25 @@ naming history. Preserve unrelated working-tree edits.
   independent-interpreter checks. All tokens remain provisional until final
   success; any error discards the entire stream. Keep its private caller
   preconditions and 32,768-byte chunk bound. It is not a BFX module producer.
-  Current public BFX/source limits remain unchanged; the native wide-count
-  host/container/importer/optimizer path is still UNIMPLEMENTED. Follow
-  [scalability](docs/16_SCALABILITY.md) before expanding support claims.
+  Original BFX/source limits remain unchanged. The separate
+  [v5 wide profile](docs/17_BFX_V5_WIDE.md) connects native chunk coordination,
+  u32-count records, streaming identical-run packing and defensive import.
+  Its fixed budgets are 1 MiB source / 65,536 pre-pack instructions, with a
+  65,536-entry pairing stack and balanced depth up to 32,768. Runtime arena
+  growth remains UNIMPLEMENTED; do not describe fixed views as dynamic allocation.
+  The private packer accepts only trusted transparent ASCII-command records;
+  it must not repack arbitrary optimized v5 modules. Preserve v1-v4 sources,
+  accepted stores and all existing immutable evidence. The wide native path
+  still uses unchanged generic Windows-hosted Python verification/lowering.
+  `stream_runs.bf` has 10,907 instructions / 11,054 bytes and uses cells 0..37.
+  Preserve 1,796 native properties per target, 1,184 Windows / twelve Android
+  private-specialization record checks, fourteen six-vector full-buffer modules
+  per target and three identical native wide bootstrap cycles. Five maximum-
+  count import stress cases check native emission/store integrity and target
+  equality; do not describe those as full SSA/lowering checks of every maximum
+  graph. Mandelbrot's transparent and packed programs execute correctly on both
+  targets. The explicit Windows derived-closure configuration removes unused
+  outlined code; artifact sizes are not counterbalanced performance scores.
 - The capacity-flag frontend is 4,537 bytes / 2,192 instructions. It adds 82
   instructions and no cells, preserving exact BFX v1 output. Its separate
   `evidence/frontend_capacity_gate.json` covers 42 seed checks, 7,682 complete

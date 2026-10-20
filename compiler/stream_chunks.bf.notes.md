@@ -29,4 +29,6 @@ The source is 3,794 bytes / 3,671 instructions. Raw SHA-256 is
 [Native/independent evidence](../evidence/streaming_frontend_prototype.json)
 and [static fixtures](../tests/stream_chunks/README.md) cover both targets,
 wide carries/borrows, framing, provisional output and cross-chunk brackets.
-This does not expand BFX v1-v4 or supply a large-program native compiler host.
+This filter does not expand BFX v1-v4. The separate
+[v5 coordinator](../docs/17_BFX_V5_WIDE.md) now consumes its private packets
+and supplies bounded wide-count module production and native compilation.

@@ -104,7 +104,9 @@ the working slot spans cells 61,456..61,471. See the
 
 [Scalability notes](16_SCALABILITY.md) explain these bounds and the separate
 private chunk frontend prototype. It does not change this request/response,
-BFX v1-v4 acceptance or the native importer's existing view extents.
+BFX v1-v4 acceptance or the original native importer's view extents.
+The separate [v5 wide profile](17_BFX_V5_WIDE.md) has its own record,
+coordinator API, budgets and native importer; it does not reinterpret v1.
 
 ## Import acceptance and versioning
 

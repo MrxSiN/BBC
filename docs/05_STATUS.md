@@ -8,6 +8,8 @@ Formats: transparent **BFX v1**, optional [**v2 CLEAR**](10_BFX_V2_CLEAR.md),
 and [**v4 movement powers**](14_BFX_V4_MOVEMENT.md),
 magic `42 46 58`, explicit binary version. The [v1 contract](02_BFX_CONTRACT.md) and
 [execution profile](01_BRAINFUCK_PROFILE.md) define the shared behavior.
+The separate [**v5 wide profile**](17_BFX_V5_WIDE.md) uses a u32 count and its
+own fixed budgets; it does not reinterpret any earlier format.
 
 ## Executed support
 
@@ -20,7 +22,9 @@ magic `42 46 58`, explicit binary version. The [v1 contract](02_BFX_CONTRACT.md)
 | Canonical XAX decoder | EXECUTED: 393 cases | EXECUTED: 393 cases | Length, magic, version, opcode, bracket and resource limits |
 | Canonical XAX importer | EXECUTED: v1/v2/v3/v4 importer passes 1,164 cases | EXECUTED: all four versions and strict v1/v2/v3 compatibility | Exact Android/Windows agreement; input and four buffer guards preserved |
 | Optional BF optimizer | EXECUTED: three identical optimized generations | EXECUTED: three identical optimized generations, 359 properties and 71 independent seed cases | Exact clears/full arithmetic wraps; no record expansion |
-| Streaming frontend prototype | PROTOTYPE: 632 chunk calls, five alignments and guards | PROTOTYPE: 588 scalar properties and 44 stream chunks | 59-cell private filter/validator; larger BFX/native compilation remains unimplemented |
+| Private chunk frontend | EXECUTED: 632 chunk calls, five alignments and guards | EXECUTED: 588 scalar properties and 44 stream chunks | 59-cell filter/validator; v5 now supplies separate module coordination and import |
+| V5 wide compilation | EXECUTED: Mandelbrot and larger-source regressions; 398 source and 414 decoder cases | EXECUTED: the same source/decoder cases and native programs | 1-MiB source, 65,536 pre-pack instructions; fixed views, not runtime arena growth |
+| Streaming run packer | EXECUTED: 1,796 native calls plus independent checks | EXECUTED: the same 1,796 calls | Carries runs across chunks; full buffer regressions and native bootstrap replay are separate evidence |
 | Arithmetic packer | EXECUTED: three identical native generations | EXECUTED: three identical native generations, 432 native properties and 72 independent cases | 3,639-instruction standard BF producer; all fourteen arithmetic powers |
 | Arithmetic decision components | EXECUTED: 5,530 checks across 42 modules per arm | EXECUTED: 5,530 checks across 42 modules per arm | Complete buffers and guards agree with an independent interpreter; 22,120 calls total |
 | Frontend rebuild cycle | EXECUTED for current 2,192-instruction frontend: identical BFX/store/ELF across three generations; twelve fixtures each | EXECUTED for current 2,192-instruction frontend: identical BFX/store/DLL across three generations; twelve fixtures each | Native lowering occurs on Windows |
@@ -91,10 +95,12 @@ The [scalable frontend prototype](16_SCALABILITY.md) now filters and validates
 source incrementally with 59 cells and a u64 bracket-depth counter. Both targets
 process Mandelbrot, a 1 MiB binary source and 140,000 instructions at nesting
 70,000, with cross-chunk errors retained. Tokens are provisional until final
-success. This is not a BFX module producer or large-program native compiler;
-current public source/instruction/nesting bounds remain unchanged. The
+success. The filter alone emits private packets. The separate
+[v5 coordinator and importer](17_BFX_V5_WIDE.md) now turn them into complete
+modules and compiled larger programs under explicit fixed budgets. The
 [capacity audit](../evidence/scalability_capacity_audit.json) still reproduces
-the ordinary frontend's rejection of 11,451-instruction Mandelbrot.
+the original interface's rejection of 11,451-instruction Mandelbrot; the new
+profile compiles it on both targets. Runtime arena growth remains open.
 
 The retained capacity-flag change has ten-case native-call median-ratio
 geometric means of 1.169x on Android and 1.086x on Windows, thirty paired
@@ -266,9 +272,13 @@ native compiler driver, best-mode coverage, real applications or M8.
 | [bfx_v4_native_boundaries.json](../evidence/bfx_v4_native_boundaries.json) | Current native frontend boundaries, oversized-view guards and three maximum-count v4 stores, exact on both targets |
 | [bfx_v4_call_controls.json](../evidence/bfx_v4_call_controls.json) | Post-primary load/slot/thread-CPU diagnostics on four selected Android cases; identical-library controls, raw primary scores retained |
 | [scalability_capacity_audit.json](../evidence/scalability_capacity_audit.json) | Current resource-cap rejection of pinned Brainfry Mandelbrot; no timing score |
-| [streaming_frontend_prototype.json](../evidence/streaming_frontend_prototype.json) | Private BF chunk filtering/validation on both targets, wide depth, large source and provisional output; full scalable compilation pending |
+| [streaming_frontend_prototype.json](../evidence/streaming_frontend_prototype.json) | Private BF chunk filtering/validation snapshot on both targets; does not itself compile larger programs |
 | [streaming_frontend_bootstrap.json](../evidence/streaming_frontend_bootstrap.json) | Three identical bounded-pipeline rebuilds and native/independent own-source parity; private packet rejected by ordinary BFX import |
 | [streaming_frontend_verification.json](../evidence/streaming_frontend_verification.json) | Source/fixture and unchanged-bootstrap audit, tool identities and immutable earlier reports |
+| [wide_profile.json](../evidence/wide_profile.json) | Separate v5 native coordination/import, larger compiled programs, exact Mandelbrot, capacity stress and explicit fixed-budget limits |
+| [stream_runs.json](../evidence/stream_runs.json) | Native streaming run properties, independent checks, complete-buffer regressions and private fixed-packet specialization |
+| [wide_bootstrap.json](../evidence/wide_bootstrap.json) | Three identical native own-source cycles through v5, verified canonical edits, source/SDK audit and publication replay |
+| [wide_final_audit.json](../evidence/wide_final_audit.json) | Final private coordinator reproduces all fourteen verified regression stores; local links and fixed-budget scope checked |
 | [build_runtime_resources.json](../evidence/build_runtime_resources.json) | Fresh complete-build latency, compiler/runtime memory, Windows standalone comparisons, raw samples, calibrations, excluded launcher probe and explicit scope |
 | [standalone_windows.json](../evidence/standalone_windows.json) | Canonical Windows host and public hello transaction; 23 native programs, 28 host checks, native binding replay/verify/stale rejection and exact empty/hello rebuilds; explicit unchanged generic inlining configuration |
 | [standalone_android.json](../evidence/standalone_android.json) | Static Android process host and binding, correctness/artifact hashes, primary raw process timings against pinned Awib/brainfry, size summaries, retained excluded concurrent-validation probe |

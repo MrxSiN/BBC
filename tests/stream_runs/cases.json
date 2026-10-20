@@ -1,0 +1,135 @@
+{
+  "interface": "private BBCR binary version01; trusted continuation/ASCII-token preconditions",
+  "cases": [
+    {
+      "name": "native-case-0",
+      "input_hex": "2b0000000001",
+      "output_hex": "42424352012b00000000"
+    },
+    {
+      "name": "native-case-1",
+      "input_hex": "2b0000000101",
+      "output_hex": "42424352010000000000"
+    },
+    {
+      "name": "native-case-2",
+      "input_hex": "2b0100000001",
+      "output_hex": "42424352012b01000000"
+    },
+    {
+      "name": "native-case-3",
+      "input_hex": "2b0100000101",
+      "output_hex": "42424352012b0000010000"
+    },
+    {
+      "name": "native-case-254",
+      "input_hex": "2b7f00000001",
+      "output_hex": "42424352012b7f000000"
+    },
+    {
+      "name": "native-case-255",
+      "input_hex": "2b7f00000101",
+      "output_hex": "42424352012b0102030405060000070000"
+    },
+    {
+      "name": "native-case-510",
+      "input_hex": "2bff00000001",
+      "output_hex": "42424352012bff000000"
+    },
+    {
+      "name": "native-case-511",
+      "input_hex": "2bff00000101",
+      "output_hex": "42424352012b010203040506070000080000"
+    },
+    {
+      "name": "native-case-512",
+      "input_hex": "2d0000000001",
+      "output_hex": "42424352012d00000000"
+    },
+    {
+      "name": "native-case-513",
+      "input_hex": "2d0000000101",
+      "output_hex": "42424352010000000000"
+    },
+    {
+      "name": "native-case-1024",
+      "input_hex": "3c0000000001",
+      "output_hex": "42424352013c00000000"
+    },
+    {
+      "name": "native-case-1025",
+      "input_hex": "3c0000000101",
+      "output_hex": "42424352010000000000"
+    },
+    {
+      "name": "native-case-1280",
+      "input_hex": "3e0000000001",
+      "output_hex": "42424352013e00000000"
+    },
+    {
+      "name": "native-case-1281",
+      "input_hex": "3e0000000101",
+      "output_hex": "42424352010000000000"
+    },
+    {
+      "name": "native-case-1536",
+      "input_hex": "000000000001",
+      "output_hex": "42424352010000000000"
+    },
+    {
+      "name": "native-case-1537",
+      "input_hex": "000000000101",
+      "output_hex": "42424352010000000000"
+    },
+    {
+      "name": "native-case-1538",
+      "input_hex": "00000100002b01",
+      "output_hex": "42424352012b01000000"
+    },
+    {
+      "name": "native-case-1539",
+      "input_hex": "00000100012b01",
+      "output_hex": "42424352012b0000010000"
+    },
+    {
+      "name": "native-case-1544",
+      "input_hex": "00000700002b2b2b2b2b2b2b01",
+      "output_hex": "42424352012b07000000"
+    },
+    {
+      "name": "native-case-1545",
+      "input_hex": "00000700012b2b2b2b2b2b2b01",
+      "output_hex": "42424352012b01020000030000"
+    },
+    {
+      "name": "native-case-1546",
+      "input_hex": "00007f00002b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b01",
+      "output_hex": "42424352012b7f000000"
+    },
+    {
+      "name": "native-case-1547",
+      "input_hex": "00007f00012b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b01",
+      "output_hex": "42424352012b0102030405060000070000"
+    },
+    {
+      "name": "native-case-1548",
+      "input_hex": "00008000002b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b01",
+      "output_hex": "42424352012b80000000"
+    },
+    {
+      "name": "native-case-1549",
+      "input_hex": "00008000012b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b01",
+      "output_hex": "4242435201070000010000"
+    },
+    {
+      "name": "native-case-0-bad-terminator",
+      "input_hex": "2b0000000000",
+      "output_hex": "42424352012b00000001"
+    },
+    {
+      "name": "native-case-1-bad-terminator",
+      "input_hex": "2b0000000100",
+      "output_hex": "42424352010000000001"
+    }
+  ]
+}
