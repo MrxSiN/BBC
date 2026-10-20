@@ -207,3 +207,9 @@ reader for the exact binding-result bytes, then verify the bound store before
 lowering. No proof sidecar, producer assertion or first-check bypass is used.
 This configuration retains the existing native BF sources and generic
 bootstrap compiler; it does not complete the native Windows driver.
+
+The [native-driver follow-up](19_NATIVE_DRIVER_FOLLOWUP.md) preserves an exact
+independent rebuild of the original driver and separately verifies the
+canonical diagnostic correction. Its corrected build uses existing same-process
+SDK function fragments after full verification. That diagnostic bootstrap is
+separate from cold-build measurements and native compiler self-compilation.

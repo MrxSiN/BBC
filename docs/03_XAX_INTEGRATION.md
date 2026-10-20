@@ -254,8 +254,8 @@ No new Android execution or whole-toolchain native claim is made.
 
 ## Windows native driver prototype
 
-A separate [canonical Windows driver](https://github.com/MrxSiN/XAX/blob/3ddafd26752511d7efbc6ff715e2f4899be93ff2/compiler/integration/windows_helpers/driver.xax)
-and [rebuild guide](https://github.com/MrxSiN/XAX/blob/3ddafd26752511d7efbc6ff715e2f4899be93ff2/compiler/integration/windows_helpers/DRIVER.md)
+A separate [canonical Windows driver](https://github.com/MrxSiN/XAX/blob/76792c792eb6f2165e562aaea41b11119f274798/compiler/integration/windows_helpers/driver.xax)
+and [rebuild guide](https://github.com/MrxSiN/XAX/blob/76792c792eb6f2165e562aaea41b11119f274798/compiler/integration/windows_helpers/DRIVER.md)
 now host the existing XAX compiler call chain as a native PE process. Hashing,
 store/graph decoding, CFG, typing and verification run in XAX machine code;
 kernel32 and msvcrt provide allocation, arguments, path conversion and files.
@@ -265,8 +265,10 @@ The common Python helper loader is unchanged.
 cases: all 78 reference-valid stores accept; 130 malformed stores reject; four
 malformed stores explicitly decline without a validity claim. Accepted real
 stores include BBC's compiler, the BFX decoder and both importer variants.
-One malformed case receives a different rejection diagnostic from the
-reference. Exact diagnostic parity is unmet.
+That original report preserves one rejection diagnostic differing from the
+reference. The [canonical follow-up](19_NATIVE_DRIVER_FOLLOWUP.md) fixes it and
+passes the separate 160-case semantic replay with exact full diagnostics;
+broader diagnostic coverage remains open.
 
 A request resolves byte for byte to the reference snapshot. A small Windows
 PE build produces reference-identical executable and provenance bytes, and
@@ -283,12 +285,13 @@ flags in 95 functions to avoid a bootstrap branch-fusion defect. The equivalent
 fixed regression graph passes 256 native inputs; the 31 adapter checks and five
 driver I/O/path checks pass. The generic Python compiler sources are unchanged.
 [XAX OI-50](https://github.com/MrxSiN/XAX/blob/3ddafd26752511d7efbc6ff715e2f4899be93ff2/XAX_OPEN_ISSUES.md#oi-50--x86-64-branch-fusion-loses-cross-block-comparison-values)
-and [OI-51](https://github.com/MrxSiN/XAX/blob/3ddafd26752511d7efbc6ff715e2f4899be93ff2/XAX_OPEN_ISSUES.md#oi-51--windows-native-driver-coverage-and-diagnostic-parity)
+and [OI-51](https://github.com/MrxSiN/XAX/blob/76792c792eb6f2165e562aaea41b11119f274798/XAX_OPEN_ISSUES.md#oi-51--windows-native-driver-coverage-and-diagnostic-parity)
 record the general backend defect and remaining driver gates.
 
 The driver declares 22 views totaling 3,550,558,208 bytes; that budget is not
 measured resident RAM. Source and edit-record views are 32 MiB and 16 MiB,
-with stricter component limits possible. Its PE is 11,857,408 bytes. Bootstrap
+with stricter component limits possible. The original PE is 11,857,408 bytes;
+the diagnostic-corrected PE is 11,864,576 bytes. Bootstrap
 construction, full canonical verification, lowering and PE emission still use
 disclosed unchanged Python tools. Native test processes use
 `XAX_REQUIRE_NATIVE=1`; the report records native process authority separately

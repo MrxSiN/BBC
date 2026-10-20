@@ -61,7 +61,9 @@ naming history. Preserve unrelated working-tree edits.
   cases are separately verified. Use current evidence rather than earlier hashes.
 - The recorded BBC cycles use Windows-hosted XAX bootstrap verification,
   lowering and packaging. A separate canonical Windows native driver prototype
-  verifies tested stores and builds a PE fixture. Its diagnostic parity,
+  verifies tested stores and builds a PE fixture. The canonical kind-order fix
+  passes 160 semantic cases with exact full diagnostics and 110 helper checks;
+  the full original corpus was not rerun. Broader diagnostic coverage,
   corrected self-store, large-edit and DLL gates remain unmet; do not promote
   it to a complete native build path. Native component execution is not XAX compiler-host execution;
   cross-compilation is not target execution. Linux still needs an execution
