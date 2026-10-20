@@ -254,8 +254,8 @@ No new Android execution or whole-toolchain native claim is made.
 
 ## Windows native driver prototype
 
-A separate [canonical Windows driver](https://github.com/MrxSiN/XAX/blob/76792c792eb6f2165e562aaea41b11119f274798/compiler/integration/windows_helpers/driver.xax)
-and [rebuild guide](https://github.com/MrxSiN/XAX/blob/76792c792eb6f2165e562aaea41b11119f274798/compiler/integration/windows_helpers/DRIVER.md)
+A separate [canonical Windows driver](https://github.com/MrxSiN/XAX/blob/6c9ed73474307d4b3f6130dd09a16431b0f8046d/compiler/integration/windows_helpers/driver.xax)
+and [rebuild guide](https://github.com/MrxSiN/XAX/blob/6c9ed73474307d4b3f6130dd09a16431b0f8046d/compiler/integration/windows_helpers/DRIVER.md)
 now host the existing XAX compiler call chain as a native PE process. Hashing,
 store/graph decoding, CFG, typing and verification run in XAX machine code;
 kernel32 and msvcrt provide allocation, arguments, path conversion and files.
@@ -285,7 +285,7 @@ flags in 95 functions to avoid a bootstrap branch-fusion defect. The equivalent
 fixed regression graph passes 256 native inputs; the 31 adapter checks and five
 driver I/O/path checks pass. The generic Python compiler sources are unchanged.
 [XAX OI-50](https://github.com/MrxSiN/XAX/blob/3ddafd26752511d7efbc6ff715e2f4899be93ff2/XAX_OPEN_ISSUES.md#oi-50--x86-64-branch-fusion-loses-cross-block-comparison-values)
-and [OI-51](https://github.com/MrxSiN/XAX/blob/76792c792eb6f2165e562aaea41b11119f274798/XAX_OPEN_ISSUES.md#oi-51--windows-native-driver-coverage-and-diagnostic-parity)
+and [OI-51](https://github.com/MrxSiN/XAX/blob/6c9ed73474307d4b3f6130dd09a16431b0f8046d/XAX_OPEN_ISSUES.md#oi-51--windows-native-driver-coverage-and-diagnostic-parity)
 record the general backend defect and remaining driver gates.
 
 The driver declares 22 views totaling 3,550,558,208 bytes; that budget is not

@@ -293,6 +293,7 @@ native compiler driver, best-mode coverage, real applications or M8.
 | [wide_tape_reset.json](../evidence/wide_tape_reset.json) | Current canonical importer transaction; 393 cases per version/target, 380 decision checks per version/target, three twenty-check frontend generations per target, native-call A/B and fresh Android process comparisons |
 | [windows_native_driver.json](../evidence/windows_native_driver.json) | Bounded Windows native CLI: 212 verification cases with explicit declines/diagnostic gap, PE/resolve/edit fixtures, 31 adapter checks and 256 flag-regression inputs; no native corrected self-store verification |
 | [windows_native_driver_followup.json](../evidence/windows_native_driver_followup.json) | Canonical diagnostic-order correction; 160 exact full-diagnostic semantic cases, 110 helper checks, native build/edit controls, packed-v5 verification and original-driver decoder/CFG/table diagnosis; self-store/native-pipeline gates remain open |
+| [windows_native_resource_diagnosis.json](../evidence/windows_native_resource_diagnosis.json) | Private canonical probe identifies the declined self-store entry graph and zero defer token; five tiny normal-driver resource-call controls and exact fixture rebinding isolate a separate multiple-callee coverage limit |
 | [windows_native_verification_profile.json](../evidence/windows_native_verification_profile.json) | Three separate runs, ten randomized pairs per case/run for Python versus native verification CLI; raw samples on the current Windows host; no full-build or competitor result |
 | [windows_hash_host.json](../evidence/windows_hash_host.json) | Standalone canonical Windows hashing host: 139 successful streams, five failure cases, explicit error-state transaction and byte-identical PE rebuild; no compiler-loader integration |
 | [graph_verification_profile.json](../evidence/graph_verification_profile.json) | Cold reader/check decomposition, Python fallback authority, repeated type-hash trace, existing proof-cache tests and warm XAX-stage A/B; no new competitor verdict |
@@ -367,8 +368,10 @@ is canonical semantic graphs in the separate repository.
   packaging remain outstanding. The [native-driver follow-up](19_NATIVE_DRIVER_FOLLOWUP.md)
   fixes the known mismatch, checks all 508 original graph bodies natively and
   rules out the audited decoder/CFG/table budgets. A private canonical probe
-  locates the self-store decline at resource-callee action 2; its underlying
-  graph outcome remains under investigation.
+  locates the self-store decline at resource-callee action 2 in its entry graph,
+  with no deferred callee token. A separate 1,919-byte multiple-callee case
+  reproduces a small coverage gap. The underlying entry-graph failure remains
+  under investigation; the probes do not prove a common cause.
   Frontend tuning does not
   address these backend costs. M8 is NOT YET ACHIEVED; follow
   [the measurement and coverage plan](06_PERFORMANCE_PLAN.md).

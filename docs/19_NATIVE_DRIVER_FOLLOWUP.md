@@ -8,8 +8,8 @@ and M8 is **NOT YET ACHIEVED**.
 [Execution evidence](../evidence/windows_native_driver_followup.json) preserves
 the exact sources, transaction, artifacts, native authority and checks. Earlier
 reports remain immutable. The current
-[XAX source](https://github.com/MrxSiN/XAX/blob/76792c792eb6f2165e562aaea41b11119f274798/compiler/integration/windows_helpers/driver.xax)
-and [rebuild guide](https://github.com/MrxSiN/XAX/blob/76792c792eb6f2165e562aaea41b11119f274798/compiler/integration/windows_helpers/DRIVER.md)
+[XAX source](https://github.com/MrxSiN/XAX/blob/6c9ed73474307d4b3f6130dd09a16431b0f8046d/compiler/integration/windows_helpers/driver.xax)
+and [rebuild guide](https://github.com/MrxSiN/XAX/blob/6c9ed73474307d4b3f6130dd09a16431b0f8046d/compiler/integration/windows_helpers/DRIVER.md)
 contain the implementation and its limits.
 
 ## Corrected diagnostic
@@ -57,6 +57,23 @@ canonical probe locates the original self-store decline at resource-callee
 action 2. That identifies a stage; the underlying graph outcome remains under
 investigation. Increasing capacities without identifying the cause is not a
 validated fix.
+
+The separate [resource diagnosis](../evidence/windows_native_resource_diagnosis.json)
+now identifies the corrected self-store's entry graph as that declined graph:
+2,149 blocks, 37,533 nodes, 112 direct calls to 37 targets and a zero deferred
+callee token. Its graph is
+`85a20ba4e71d38112f4a59ec76ede95cab3810090495a8580b11acc98205aaa6`.
+The precise node/facts reason remains undiagnosed. Private canonical diagnostic
+records preserve the state capture; their exits are not production CLI statuses.
+
+Five small normal-driver controls isolate a separate resource-call coverage
+limit. One callee and two calls to the same callee accept; a valid 1,919-byte
+store calling two distinct identity callees declines. A malformed second callee
+rejects with the exact full reference diagnostic. A verified 138-byte fixture
+transaction rebinds the second call to the first callee, making verification
+succeed while retaining both functions in the module. This is a diagnostic
+control, not a production optimization. The small fixture shares the resource
+decision stage with the self-store; a common underlying cause is not established.
 
 The corrected driver still declines its own store. Native self-verification,
 the large flag transaction, Windows DLL packaging, common helper-loader
