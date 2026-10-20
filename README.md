@@ -54,7 +54,10 @@ twelve-program Windows correctness corpus; competitive timings are pending.
 **Performance:** [Benchmarks](docs/08_BENCHMARKS.md) compare complete build time,
 memory use, standalone execution and file size. The latest
 [v4 follow-up](docs/15_V4_BENCHMARKS.md) measures the same sixteen programs,
-including four clear-loop workloads, with pinned compiler configurations. BBC has no overall performance
+including four clear-loop workloads, with pinned compiler configurations. A
+separate [cold-build cache experiment](docs/18_BACKEND_BUILD_CACHE.md) validates
+those artifacts and measures only negligible build gains on three sources.
+BBC has no overall performance
 lead; broader testing and optimization remain.
 
 ## Use the compiler
@@ -118,7 +121,7 @@ and error handling.
 | Language behavior and binary format | [Execution profile](docs/01_BRAINFUCK_PROFILE.md) · [BFX contract](docs/02_BFX_CONTRACT.md) |
 | Native builds and Android integration | [XAX integration](docs/03_XAX_INTEGRATION.md) · [Bootstrap](docs/04_BOOTSTRAP.md) |
 | Verified results and remaining work | [Project status](docs/05_STATUS.md) |
-| Performance comparisons | [Benchmarks](docs/08_BENCHMARKS.md) · [V2 measurements](docs/11_V2_BENCHMARKS.md) · [Measurement plan](docs/06_PERFORMANCE_PLAN.md) |
+| Performance comparisons | [Benchmarks](docs/08_BENCHMARKS.md) · [V2 measurements](docs/11_V2_BENCHMARKS.md) · [Backend cache experiment](docs/18_BACKEND_BUILD_CACHE.md) · [Measurement plan](docs/06_PERFORMANCE_PLAN.md) |
 | Competitor implementation and optimization priorities | [Brainfry analysis](docs/09_BRAINFRY_ANALYSIS.md) |
 | Optional semantic optimization | [BFX v2](docs/10_BFX_V2_CLEAR.md) · [BFX v3](docs/12_BFX_V3_ARITHMETIC.md) · [V3 measurements](docs/13_V3_BENCHMARKS.md) · [BFX v4](docs/14_BFX_V4_MOVEMENT.md) · [V4 measurements](docs/15_V4_BENCHMARKS.md) · [Optimizer notes](compiler/optimize.bf.notes.md) · [Arithmetic notes](compiler/pack_arithmetic.bf.notes.md) · [Movement notes](compiler/pack_moves.bf.notes.md) |
 | Compiler implementation | [Algorithm and tape layout](compiler/compiler.bf.notes.md) · [Optimization proofs](docs/07_OPTIMIZATION_PROOFS.md) |

@@ -900,3 +900,29 @@ External runner source is pinned by local Git tree
 `9bb57e6de8edba20436095b7fb1525c0158d02f2` and file hashes in the evidence.
 It remains local-only; independently published reproduction is pending.
 The source/input/output corpus is reproduced exactly in the static evidence.
+
+## Complete-build proof-cache follow-up
+
+The [compile-local cache experiment](18_BACKEND_BUILD_CACHE.md) now measures
+fresh source-to-runnable builds through the existing cache API. All sixteen
+v4 programs retain exact executable bytes on both targets. A frozen three-source
+subset has twelve observations per arm/target across three runs: 216 complete
+builds comparing BBC baseline, cached BBC and pinned Brainfry. First verification
+uses an empty cache and remains inside the timer. Unchanged generic Python
+SDK verification/lowering still runs on Windows; this adds no native helper.
+
+Paired baseline/cache geometric means are 1.009x for Android-target and
+1.001x for Windows-target builds. The latter exploratory interval crosses
+one; all Holm-adjusted p-values are 1.0 with only three run clusters.
+No material cold-build gain or RAM improvement is established. Brainfry's
+complete builds are about 56–57x faster on this subset and retain lower
+compiler working set and smaller artifacts. Keep earlier warm-stage ratios
+and all prior competitor scores separate. Raw samples, source authority,
+kernel memory counters and calibration are in
+[new immutable evidence](../evidence/backend_build_cache.json).
+
+The three-source result supplies a measured cold-build boundary for the
+cache experiment, with insufficient broad competitive coverage. Native driver
+self-store/diagnostic/large-edit/DLL gates, common-helper migration, repeated
+type hashing, steady-state, deployment, larger-profile measurements and
+real applications remain open. M8 is **NOT YET ACHIEVED**.

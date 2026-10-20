@@ -48,9 +48,15 @@ stage through XAX-native facilities before expensive frontend work intended
 to close the full compilation gap. The
 [verification follow-up](08_BENCHMARKS.md#verification-cost-diagnosis) now
 separates cold helper setup, type-CID hashing and repeated verification.
-It measures existing proof-cache reuse in a warm backend-stage prototype;
-full cold pipeline and competitor timing must be rerun before updating their
-scores. New Windows helper integration must remain XAX graph work, with
+It measures existing proof-cache reuse in a warm backend-stage prototype.
+The separate [compile-local cache experiment](18_BACKEND_BUILD_CACHE.md)
+carries an initially empty cache through complete fresh-process builds,
+with first verification preserved and unchanged artifacts required. Keep its
+three-source scope separate from the earlier corpus and competitor scores.
+Its 1.009x Android-target / 1.001x Windows-target point estimates are not
+significant and establish no material build or RAM improvement. Native
+helper setup and repeated type hashing still need independent diagnosis.
+New Windows helper integration must remain XAX graph work, with
 legacy Python left unchanged. Do not multiply ratios from different benchmark
 snapshots or claim a full-pipeline win from a frontend-only improvement.
 The [standalone Windows hashing host](03_XAX_INTEGRATION.md#windows-native-hashing-host)
@@ -139,7 +145,11 @@ eligible common subsets, exclusions and holdouts before optimization tuning.
 Pre-register sanity/short-run, hot-compute and real-decision runtime categories.
 Extend the small existing sanity corpus with transfer/multiply, scans,
 checksum/math, nested loops and source-limit stress only as needed. Programs
-outside the 3,840-instruction or 65,533-source-byte limits are **UNSUPPORTED**.
+outside the 3,840-instruction or 65,533-source-byte limits are **UNSUPPORTED**
+by the original v1-v4 frontend. The separate [v5 profile](17_BFX_V5_WIDE.md)
+accepts 1 MiB source, 65,536 pre-pack instructions and balanced depth up to
+32,768. Name the selected profile and its fixed budgets in every new run;
+do not retroactively change an earlier experiment's eligibility.
 Never change an algorithm or hide exclusions to improve a score.
 
 Before a general claim, require at least 20 real eligible workloads per target,
@@ -217,5 +227,7 @@ competitor-victory gates remain open.
 
 Capacity coverage must include sources above the old 3,840-instruction and
 65,533-byte bounds, and depth above 255, once the [scalable path](16_SCALABILITY.md)
-can import and execute them. The current chunk prototype proves filtering/
-validation only; its larger cases are not execution benchmarks.
+can import and execute them. The private chunk component alone proves filtering/
+validation. V5 now imports and executes larger programs, including Mandelbrot;
+maximum-count import-integrity cases remain distinct from complete verification,
+lowering and execution. Larger-profile competitive timings remain open.

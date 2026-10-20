@@ -183,3 +183,11 @@ Android and Windows executables. Run packing reduces it to 5,172 instructions.
 Larger fixed budgets close this capacity gap; dynamic arena growth and
 counterbalanced competitor measurements remain open. No performance score
 changes follow from this correctness result.
+
+The [complete-build cache follow-up](18_BACKEND_BUILD_CACHE.md) now tests the
+existing proof API with an empty compile-local cache. All sixteen v4 programs
+retain exact artifacts on both targets. Three-source cold-build point estimates
+are only 1.009x Android-target / 1.001x Windows-target, without significant
+results or a RAM improvement. Brainfry still builds this subset about 56–57x
+faster. Treat the earlier warm-stage gain as a distinct boundary and keep the
+native driver/helper and repeated type-hashing work as backend priorities.

@@ -77,8 +77,11 @@ naming history. Preserve unrelated working-tree edits.
   every pinned comparator and exclusion; follow
   [the measurement plan](docs/06_PERFORMANCE_PLAN.md) before claiming wins.
 - The verification diagnosis separates cold helper setup from graph checks.
-  Existing ProofCache reuse is a measured external warm-stage prototype;
-  it must not skip the first verification or trust producer-supplied proofs.
+  Existing ProofCache reuse has separate warm-stage and fresh-process external
+  experiments. Preserve the cold experiment's 1.009x Android-target / 1.001x
+  Windows-target point estimates and non-significant results; do not present
+  warm-stage ratios as full-build gains. It must not skip the first verification
+  or trust producer-supplied proofs. The cold configuration remains experimental.
   Windows native-helper loading still falls back to Python. Implement new
   host integration only as canonical XAX graphs, and rerun full pipeline
   timing before changing competitor scores.

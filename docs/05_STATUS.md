@@ -194,8 +194,14 @@ these phases separately. Existing local ProofCache reuse improves a separate
 three-source warm XAX stage by geometric means of 1.166x/1.187x for
 Android-target/Windows-target builds, with identical emitted bytes and seven
 cache tests passing. This is an external prototype; no executable source,
-XAX graph or original competitor result changes. Cold builds remain a
-separate gate, with Windows native-helper execution still unavailable through
+XAX graph or original competitor result changes. The separate
+[fresh-process experiment](18_BACKEND_BUILD_CACHE.md) now carries the same
+existing API through complete builds. It validates all sixteen v4 artifacts
+on both targets and times three sources, with 1.009x Android-target / 1.001x
+Windows-target point estimates. Neither comparison is significant; Windows'
+exploratory interval includes a slowdown. Brainfry remains about 56–57x faster
+on that subset, with lower compiler RAM and smaller files. The cold
+configuration remains experimental. Windows native-helper execution is still unavailable through
 the current helper loader. A [standalone Windows hashing host](03_XAX_INTEGRATION.md#windows-native-hashing-host)
 now executes the existing BLAKE3 graph with XAX-owned buffers and Windows I/O.
 Its 139 successful cases and five failure cases are a native component result;
@@ -279,6 +285,7 @@ native compiler driver, best-mode coverage, real applications or M8.
 | [stream_runs.json](../evidence/stream_runs.json) | Native streaming run properties, independent checks, complete-buffer regressions and private fixed-packet specialization |
 | [wide_bootstrap.json](../evidence/wide_bootstrap.json) | Three identical native own-source cycles through v5, verified canonical edits, source/SDK audit and publication replay |
 | [wide_final_audit.json](../evidence/wide_final_audit.json) | Final private coordinator reproduces all fourteen verified regression stores; local links and fixed-budget scope checked |
+| [backend_build_cache.json](../evidence/backend_build_cache.json) | Existing compile-local proof cache through complete fresh builds; 64 byte-identical validation builds, both-target execution, seven cache tests and 216 timed three-source BBC/BBC-cache/Brainfry builds; negligible gains and open gates retained |
 | [build_runtime_resources.json](../evidence/build_runtime_resources.json) | Fresh complete-build latency, compiler/runtime memory, Windows standalone comparisons, raw samples, calibrations, excluded launcher probe and explicit scope |
 | [standalone_windows.json](../evidence/standalone_windows.json) | Canonical Windows host and public hello transaction; 23 native programs, 28 host checks, native binding replay/verify/stale rejection and exact empty/hello rebuilds; explicit unchanged generic inlining configuration |
 | [standalone_android.json](../evidence/standalone_android.json) | Static Android process host and binding, correctness/artifact hashes, primary raw process timings against pinned Awib/brainfry, size summaries, retained excluded concurrent-validation probe |
@@ -346,12 +353,17 @@ is canonical semantic graphs in the separate repository.
   The new twelve-source follow-up supplies scoped build/RAM measurements. XAX graph
   verification bucket includes cold helper setup. The follow-up identifies
   local proof-cache reuse, repeated checked-access type hashing and the
-  missing Windows native-helper host path. Reuse existing APIs for the cache;
+  missing Windows native-helper host path. The new
+  [cold-build cache experiment](18_BACKEND_BUILD_CACHE.md) reuses the existing
+  APIs with an empty cache and full first verification, but measures only
+  negligible complete-build gains. It does not close the backend latency gap;
   any new helper integration must be canonical XAX graph work. The standalone
   hashing host covers hashing and stream transport. The separate native driver
   prototype executes the store/graph/CFG/type/verifier chain on tested stores;
   full diagnostic/large-store coverage, common-loader migration and BBC DLL
-  packaging remain outstanding. Frontend tuning does not
+  packaging remain outstanding. The driver graph-body size audit rules out
+  the 2-MiB graph limit for this source; the self-store decline remains undiagnosed.
+  Frontend tuning does not
   address these backend costs. M8 is NOT YET ACHIEVED; follow
   [the measurement and coverage plan](06_PERFORMANCE_PLAN.md).
 - No stable release or performance superiority is claimed. Android and Windows

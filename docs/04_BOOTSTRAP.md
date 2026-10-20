@@ -199,3 +199,11 @@ verifies it and rejects its stale root. Empty and hello PE files rebuild
 byte for byte. Their process interface accepts binary input up to 65,536 bytes
 and discards decision-error output; no separate decision DLL or test host is
 required. BBC's existing three-generation frontend cycle remains separate.
+
+The [compile-local cache configuration](18_BACKEND_BUILD_CACHE.md) reuses
+successful verification facts through existing XAX APIs. Start each build
+with an empty cache, verify the imported store, retain that cache on the
+reader for the exact binding-result bytes, then verify the bound store before
+lowering. No proof sidecar, producer assertion or first-check bypass is used.
+This configuration retains the existing native BF sources and generic
+bootstrap compiler; it does not complete the native Windows driver.

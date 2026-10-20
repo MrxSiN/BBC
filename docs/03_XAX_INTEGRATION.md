@@ -345,6 +345,15 @@ is recorded in [Android capacity evidence](../evidence/source_capacity_android.j
 
 ## Host tools and evidence scope
 
+The [compile-local cache experiment](18_BACKEND_BUILD_CACHE.md) carries
+XAX's existing `ProofCache` across native import and expected-root standalone
+binding. It constructs the bound reader with the same initially local cache
+and verifies it before lowering. This is external configuration of unchanged
+generic SDK APIs; no helper, verifier, graph or Python production algorithm is
+added. The Windows inlining/default closure and Android packaging paths stay
+fixed for that experiment. The native driver and common helper loader retain
+their separate outstanding gates.
+
 Native importer/frontend execution occurs on Android and Windows. For the
 recorded frontend and application cycles, canonical verification,
 reference-transaction application, native lowering, DEX/APK
