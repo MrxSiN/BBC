@@ -1,6 +1,6 @@
 # BBC compared with other Brainfuck compilers
 
-The latest [v3 arithmetic report](13_V3_BENCHMARKS.md) measures complete
+The latest [v4 movement report](15_V4_BENCHMARKS.md) measures complete
 builds, memory, file size and standalone processes on both targets, retaining
 the twelve original programs and four preregistered clear-loop workloads. Separate
 native-call A/B results isolate BBC execution costs. The preceding complete

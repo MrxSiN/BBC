@@ -1,0 +1,5624 @@
+{
+  "date": "2026-10-20",
+  "status": "EXECUTED post-primary Android native-call control diagnostic; primary scores unchanged",
+  "plan": {
+    "status": "Frozen post-primary diagnostic before its execution; no replacement/re-scoring of primary samples",
+    "reason": "Android native-call binary_echo and clear_input regress despite byte-identical baseline/optimized libraries. Test load position, same-file handle controls and scheduling sensitivity.",
+    "cases": [
+      "binary_echo",
+      "clear_input",
+      "multi_transfer",
+      "scan"
+    ],
+    "modes": {
+      "original": [
+        "baseline",
+        "optimized"
+      ],
+      "reversed": [
+        "optimized",
+        "baseline"
+      ],
+      "same-baseline": [
+        "baseline",
+        "baseline"
+      ],
+      "same-optimized": [
+        "optimized",
+        "optimized"
+      ]
+    },
+    "runs": 3,
+    "pairs_per_case_mode_run": 4,
+    "complete_calls_per_observation": 8,
+    "call_order": "two pairs each order, fixed-seed shuffled",
+    "job_order": "case/mode cells fixed-seed shuffled independently in each fresh run",
+    "clocks": "Original per-call CLOCK_MONOTONIC sum; additional per-observation CLOCK_THREAD_CPUTIME_ID diagnostic includes clock/validation loop costs, no subtraction. Two warmup observations per slot.",
+    "scope": "Post-hoc diagnostic, four selected cases; no competitor score, optimization superiority or confirmatory inference."
+  },
+  "primary_evidence_sha256": "4237ad2cac2c44ccdd6d20ffe75b3c8136747cfc00d1302e06071e2599719709",
+  "artifacts": {
+    "binary_echo": {
+      "baseline": "49362daa3d731993975082f7f36acbc99247815cda08d7f253c553d629f5e51d",
+      "optimized": "49362daa3d731993975082f7f36acbc99247815cda08d7f253c553d629f5e51d"
+    },
+    "clear_input": {
+      "baseline": "73f299c1cf22551815a14f3acb6392888c0b45ca5128089cff48dcdceb7962b7",
+      "optimized": "73f299c1cf22551815a14f3acb6392888c0b45ca5128089cff48dcdceb7962b7"
+    },
+    "multi_transfer": {
+      "baseline": "565301d1ded15d2db0bf19834c86e73264f71c8e208770882a2b86bd99d9a815",
+      "optimized": "338b672bf6fd019b3dcbdba8a0771691ebe3e620ce6fe7b2a4a20e35e68fdb34"
+    },
+    "scan": {
+      "baseline": "a7f01e32f5a646c88439454099dd7fb9c31ae509994f81a67bab1086f10b3adb",
+      "optimized": "1852632bc31b833bdabfcde611729b017bae9e48d33dc8d8c7ff01c45ed0205e"
+    }
+  },
+  "tools_sha256": {
+    "call_control.c": "ae69d7173a4f7af493499d2c548ec96924f31e71e5daceff2bf6d6e88cd99ee2",
+    "call_control": "4d4f55703319d44d84c775a4db2b677d852f5736dfb5689bfa1f12fd201546b8",
+    "call_controls.py": "442c3ca9c19d1814a276bf58b0cc9a81d3024a8fef35b0b41287b42772927b4e"
+  },
+  "summary": [
+    {
+      "name": "binary_echo",
+      "mode": "original",
+      "n": 12,
+      "ratio_kind": "baseline_over_optimized",
+      "median_ratio": 0.9952901237015286,
+      "min": 0.6425232374843725,
+      "max": 1.2377357958650048,
+      "median_slot0_over_slot1_thread_cpu": 0.9960371703402866,
+      "same_function_address": false
+    },
+    {
+      "name": "binary_echo",
+      "mode": "reversed",
+      "n": 12,
+      "ratio_kind": "baseline_over_optimized",
+      "median_ratio": 1.0018038419564554,
+      "min": 0.5258314676833535,
+      "max": 1.017760498502612,
+      "median_slot0_over_slot1_thread_cpu": 0.997502526495837,
+      "same_function_address": false
+    },
+    {
+      "name": "binary_echo",
+      "mode": "same-baseline",
+      "n": 12,
+      "ratio_kind": "slot0_over_slot1_same_function",
+      "median_ratio": 1.0004666823732131,
+      "min": 0.6306867811908575,
+      "max": 1.89224278893322,
+      "median_slot0_over_slot1_thread_cpu": 1.0,
+      "same_function_address": true
+    },
+    {
+      "name": "binary_echo",
+      "mode": "same-optimized",
+      "n": 12,
+      "ratio_kind": "slot0_over_slot1_same_function",
+      "median_ratio": 1.0001199702473786,
+      "min": 0.6827232690780449,
+      "max": 1.0141884402216943,
+      "median_slot0_over_slot1_thread_cpu": 1.0001172236744933,
+      "same_function_address": true
+    },
+    {
+      "name": "clear_input",
+      "mode": "original",
+      "n": 12,
+      "ratio_kind": "baseline_over_optimized",
+      "median_ratio": 1.0016358258577782,
+      "min": 0.990978263063354,
+      "max": 1.015854668628154,
+      "median_slot0_over_slot1_thread_cpu": 1.0010785916108071,
+      "same_function_address": false
+    },
+    {
+      "name": "clear_input",
+      "mode": "reversed",
+      "n": 12,
+      "ratio_kind": "baseline_over_optimized",
+      "median_ratio": 1.0024927878893837,
+      "min": 0.5896399159741974,
+      "max": 1.023926873956284,
+      "median_slot0_over_slot1_thread_cpu": 0.9974290626971942,
+      "same_function_address": false
+    },
+    {
+      "name": "clear_input",
+      "mode": "same-baseline",
+      "n": 12,
+      "ratio_kind": "slot0_over_slot1_same_function",
+      "median_ratio": 0.9999938142926953,
+      "min": 0.9989875855767985,
+      "max": 1.0024753447801658,
+      "median_slot0_over_slot1_thread_cpu": 1.0000096000614405,
+      "same_function_address": true
+    },
+    {
+      "name": "clear_input",
+      "mode": "same-optimized",
+      "n": 12,
+      "ratio_kind": "slot0_over_slot1_same_function",
+      "median_ratio": 0.9993671602993683,
+      "min": 0.9803005672958895,
+      "max": 1.0191654161142927,
+      "median_slot0_over_slot1_thread_cpu": 0.9996172823333556,
+      "same_function_address": true
+    },
+    {
+      "name": "multi_transfer",
+      "mode": "original",
+      "n": 12,
+      "ratio_kind": "baseline_over_optimized",
+      "median_ratio": 1.0221391823940036,
+      "min": 0.8208230877045192,
+      "max": 1.2331796338779948,
+      "median_slot0_over_slot1_thread_cpu": 1.0183952058586425,
+      "same_function_address": false
+    },
+    {
+      "name": "multi_transfer",
+      "mode": "reversed",
+      "n": 12,
+      "ratio_kind": "baseline_over_optimized",
+      "median_ratio": 1.0046860847762682,
+      "min": 0.8980500129567245,
+      "max": 1.0924769488400694,
+      "median_slot0_over_slot1_thread_cpu": 0.9925943989903783,
+      "same_function_address": false
+    },
+    {
+      "name": "multi_transfer",
+      "mode": "same-baseline",
+      "n": 12,
+      "ratio_kind": "slot0_over_slot1_same_function",
+      "median_ratio": 0.9922686417773068,
+      "min": 0.8471057591903209,
+      "max": 1.0592164777662316,
+      "median_slot0_over_slot1_thread_cpu": 0.9933280110599124,
+      "same_function_address": true
+    },
+    {
+      "name": "multi_transfer",
+      "mode": "same-optimized",
+      "n": 12,
+      "ratio_kind": "slot0_over_slot1_same_function",
+      "median_ratio": 1.0006198599150924,
+      "min": 0.8412964274851702,
+      "max": 1.1737388641216642,
+      "median_slot0_over_slot1_thread_cpu": 0.9988534611356525,
+      "same_function_address": true
+    },
+    {
+      "name": "scan",
+      "mode": "original",
+      "n": 12,
+      "ratio_kind": "baseline_over_optimized",
+      "median_ratio": 0.9818620614987932,
+      "min": 0.7467136859127351,
+      "max": 1.0077200667875545,
+      "median_slot0_over_slot1_thread_cpu": 0.982261768425454,
+      "same_function_address": false
+    },
+    {
+      "name": "scan",
+      "mode": "reversed",
+      "n": 12,
+      "ratio_kind": "baseline_over_optimized",
+      "median_ratio": 0.9919990416529412,
+      "min": 0.48194261660776516,
+      "max": 1.1826657202487525,
+      "median_slot0_over_slot1_thread_cpu": 1.0136966904490499,
+      "same_function_address": false
+    },
+    {
+      "name": "scan",
+      "mode": "same-baseline",
+      "n": 12,
+      "ratio_kind": "slot0_over_slot1_same_function",
+      "median_ratio": 1.000960389202515,
+      "min": 0.8118647913102829,
+      "max": 3.2497341219738365,
+      "median_slot0_over_slot1_thread_cpu": 1.0014204882329725,
+      "same_function_address": true
+    },
+    {
+      "name": "scan",
+      "mode": "same-optimized",
+      "n": 12,
+      "ratio_kind": "slot0_over_slot1_same_function",
+      "median_ratio": 1.000161502900076,
+      "min": 0.7917508341454285,
+      "max": 1.1525519516013971,
+      "median_slot0_over_slot1_thread_cpu": 1.0009051619881375,
+      "same_function_address": true
+    }
+  ],
+  "raw_samples": [
+    {
+      "run": 0,
+      "name": "binary_echo",
+      "mode": "original",
+      "trial": 0,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "baseline",
+        "optimized"
+      ],
+      "function_addresses": [
+        475746656656,
+        475746443664
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        283692,
+        441528
+      ],
+      "slot_thread_cpu_ns": [
+        287435,
+        291749
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.6425232374843725,
+      "baseline_over_optimized": 0.6425232374843725
+    },
+    {
+      "run": 0,
+      "name": "binary_echo",
+      "mode": "original",
+      "trial": 1,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "baseline",
+        "optimized"
+      ],
+      "function_addresses": [
+        475746656656,
+        475746443664
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        280152,
+        281738
+      ],
+      "slot_thread_cpu_ns": [
+        284342,
+        285725
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9943706564254733,
+      "baseline_over_optimized": 0.9943706564254733
+    },
+    {
+      "run": 0,
+      "name": "binary_echo",
+      "mode": "original",
+      "trial": 2,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "baseline",
+        "optimized"
+      ],
+      "function_addresses": [
+        475746656656,
+        475746443664
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        279582,
+        281777
+      ],
+      "slot_thread_cpu_ns": [
+        283406,
+        285441
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9922101519996309,
+      "baseline_over_optimized": 0.9922101519996309
+    },
+    {
+      "run": 0,
+      "name": "binary_echo",
+      "mode": "original",
+      "trial": 3,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "baseline",
+        "optimized"
+      ],
+      "function_addresses": [
+        475746656656,
+        475746443664
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        351236,
+        283773
+      ],
+      "slot_thread_cpu_ns": [
+        296062,
+        288045
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.2377357958650048,
+      "baseline_over_optimized": 1.2377357958650048
+    },
+    {
+      "run": 0,
+      "name": "clear_input",
+      "mode": "same-optimized",
+      "trial": 0,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "optimized",
+        "optimized"
+      ],
+      "function_addresses": [
+        513181413776,
+        513181413776
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        151449,
+        148601
+      ],
+      "slot_thread_cpu_ns": [
+        154907,
+        152059
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0191654161142927,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 0,
+      "name": "clear_input",
+      "mode": "same-optimized",
+      "trial": 1,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "optimized",
+        "optimized"
+      ],
+      "function_addresses": [
+        513181413776,
+        513181413776
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        147746,
+        150715
+      ],
+      "slot_thread_cpu_ns": [
+        151286,
+        154338
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9803005672958895,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 0,
+      "name": "clear_input",
+      "mode": "same-optimized",
+      "trial": 2,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "optimized",
+        "optimized"
+      ],
+      "function_addresses": [
+        513181413776,
+        513181413776
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        148233,
+        148519
+      ],
+      "slot_thread_cpu_ns": [
+        151652,
+        151896
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9980743204573153,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 0,
+      "name": "clear_input",
+      "mode": "same-optimized",
+      "trial": 3,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "optimized",
+        "optimized"
+      ],
+      "function_addresses": [
+        513181413776,
+        513181413776
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        148559,
+        148763
+      ],
+      "slot_thread_cpu_ns": [
+        151896,
+        152344
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.99862869127404,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 0,
+      "name": "scan",
+      "mode": "same-baseline",
+      "trial": 0,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "baseline",
+        "baseline"
+      ],
+      "function_addresses": [
+        477459509648,
+        477459509648
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        1008790,
+        845906
+      ],
+      "slot_thread_cpu_ns": [
+        875814,
+        850748
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.1925556740347036,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 0,
+      "name": "scan",
+      "mode": "same-baseline",
+      "trial": 1,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "baseline",
+        "baseline"
+      ],
+      "function_addresses": [
+        477459509648,
+        477459509648
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        847736,
+        849854
+      ],
+      "slot_thread_cpu_ns": [
+        852458,
+        854655
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9975078072233584,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 0,
+      "name": "scan",
+      "mode": "same-baseline",
+      "trial": 2,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "baseline",
+        "baseline"
+      ],
+      "function_addresses": [
+        477459509648,
+        477459509648
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        848104,
+        1044637
+      ],
+      "slot_thread_cpu_ns": [
+        852905,
+        879190
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.8118647913102829,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 0,
+      "name": "scan",
+      "mode": "same-baseline",
+      "trial": 3,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "baseline",
+        "baseline"
+      ],
+      "function_addresses": [
+        477459509648,
+        477459509648
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        761841,
+        733439
+      ],
+      "slot_thread_cpu_ns": [
+        766032,
+        737060
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0387244201630947,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 0,
+      "name": "binary_echo",
+      "mode": "reversed",
+      "trial": 0,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "optimized",
+        "baseline"
+      ],
+      "function_addresses": [
+        493120147856,
+        493119943056
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        148194,
+        149658
+      ],
+      "slot_thread_cpu_ns": [
+        151652,
+        153361
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9902176963476726,
+      "baseline_over_optimized": 1.0098789424673065
+    },
+    {
+      "run": 0,
+      "name": "binary_echo",
+      "mode": "reversed",
+      "trial": 1,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "optimized",
+        "baseline"
+      ],
+      "function_addresses": [
+        493120147856,
+        493119943056
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        147785,
+        150311
+      ],
+      "slot_thread_cpu_ns": [
+        151285,
+        153727
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9831948426928169,
+      "baseline_over_optimized": 1.0170923977399602
+    },
+    {
+      "run": 0,
+      "name": "binary_echo",
+      "mode": "reversed",
+      "trial": 2,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "optimized",
+        "baseline"
+      ],
+      "function_addresses": [
+        493120147856,
+        493119943056
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        148926,
+        151571
+      ],
+      "slot_thread_cpu_ns": [
+        152385,
+        154908
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9825494322792618,
+      "baseline_over_optimized": 1.017760498502612
+    },
+    {
+      "run": 0,
+      "name": "binary_echo",
+      "mode": "reversed",
+      "trial": 3,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "optimized",
+        "baseline"
+      ],
+      "function_addresses": [
+        493120147856,
+        493119943056
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        150391,
+        149250
+      ],
+      "slot_thread_cpu_ns": [
+        153808,
+        152629
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.007644891122278,
+      "baseline_over_optimized": 0.9924131098270508
+    },
+    {
+      "run": 0,
+      "name": "multi_transfer",
+      "mode": "same-baseline",
+      "trial": 0,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "baseline",
+        "baseline"
+      ],
+      "function_addresses": [
+        527104549264,
+        527104549264
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        6844236,
+        7350869
+      ],
+      "slot_thread_cpu_ns": [
+        6780721,
+        7309042
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.931078488815404,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 0,
+      "name": "multi_transfer",
+      "mode": "same-baseline",
+      "trial": 1,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "baseline",
+        "baseline"
+      ],
+      "function_addresses": [
+        527104549264,
+        527104549264
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        5666585,
+        5526613
+      ],
+      "slot_thread_cpu_ns": [
+        5621379,
+        5487671
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0253269045616185,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 0,
+      "name": "multi_transfer",
+      "mode": "same-baseline",
+      "trial": 2,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "baseline",
+        "baseline"
+      ],
+      "function_addresses": [
+        527104549264,
+        527104549264
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        4809817,
+        4792277
+      ],
+      "slot_thread_cpu_ns": [
+        4783731,
+        4800334
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.003660055543534,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 0,
+      "name": "multi_transfer",
+      "mode": "same-baseline",
+      "trial": 3,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "baseline",
+        "baseline"
+      ],
+      "function_addresses": [
+        527104549264,
+        527104549264
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        4220054,
+        4319824
+      ],
+      "slot_thread_cpu_ns": [
+        4174926,
+        4274007
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9769041516506228,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 0,
+      "name": "scan",
+      "mode": "reversed",
+      "trial": 0,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "optimized",
+        "baseline"
+      ],
+      "function_addresses": [
+        510274093456,
+        510273999248
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        247681,
+        250651
+      ],
+      "slot_thread_cpu_ns": [
+        250244,
+        248168
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9881508551731292,
+      "baseline_over_optimized": 1.011991230655561
+    },
+    {
+      "run": 0,
+      "name": "scan",
+      "mode": "reversed",
+      "trial": 1,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "optimized",
+        "baseline"
+      ],
+      "function_addresses": [
+        510274093456,
+        510273999248
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        202881,
+        97777
+      ],
+      "slot_thread_cpu_ns": [
+        204834,
+        99080
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 2.0749358233531403,
+      "baseline_over_optimized": 0.48194261660776516
+    },
+    {
+      "run": 0,
+      "name": "scan",
+      "mode": "reversed",
+      "trial": 2,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "optimized",
+        "baseline"
+      ],
+      "function_addresses": [
+        510274093456,
+        510273999248
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        99487,
+        93750
+      ],
+      "slot_thread_cpu_ns": [
+        99202,
+        94889
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0611946666666667,
+      "baseline_over_optimized": 0.942334174314232
+    },
+    {
+      "run": 0,
+      "name": "scan",
+      "mode": "reversed",
+      "trial": 3,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "optimized",
+        "baseline"
+      ],
+      "function_addresses": [
+        510274093456,
+        510273999248
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        95008,
+        93751
+      ],
+      "slot_thread_cpu_ns": [
+        96232,
+        94808
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0134078569828588,
+      "baseline_over_optimized": 0.986769535197036
+    },
+    {
+      "run": 0,
+      "name": "clear_input",
+      "mode": "reversed",
+      "trial": 0,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "optimized",
+        "baseline"
+      ],
+      "function_addresses": [
+        487390400912,
+        487390028176
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        64249,
+        63437
+      ],
+      "slot_thread_cpu_ns": [
+        65633,
+        64900
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0128001008874947,
+      "baseline_over_optimized": 0.9873616709987704
+    },
+    {
+      "run": 0,
+      "name": "clear_input",
+      "mode": "reversed",
+      "trial": 1,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "optimized",
+        "baseline"
+      ],
+      "function_addresses": [
+        487390400912,
+        487390028176
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        107586,
+        63437
+      ],
+      "slot_thread_cpu_ns": [
+        67139,
+        65022
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.6959503129088702,
+      "baseline_over_optimized": 0.5896399159741974
+    },
+    {
+      "run": 0,
+      "name": "clear_input",
+      "mode": "reversed",
+      "trial": 2,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "optimized",
+        "baseline"
+      ],
+      "function_addresses": [
+        487390400912,
+        487390028176
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        64005,
+        64292
+      ],
+      "slot_thread_cpu_ns": [
+        65551,
+        65837
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9955359920363342,
+      "baseline_over_optimized": 1.0044840246855715
+    },
+    {
+      "run": 0,
+      "name": "clear_input",
+      "mode": "reversed",
+      "trial": 3,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "optimized",
+        "baseline"
+      ],
+      "function_addresses": [
+        487390400912,
+        487390028176
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        63600,
+        64534
+      ],
+      "slot_thread_cpu_ns": [
+        65185,
+        66122
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9855270090185019,
+      "baseline_over_optimized": 1.014685534591195
+    },
+    {
+      "run": 0,
+      "name": "clear_input",
+      "mode": "same-baseline",
+      "trial": 0,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "baseline",
+        "baseline"
+      ],
+      "function_addresses": [
+        483373724048,
+        483373724048
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        51313,
+        51353
+      ],
+      "slot_thread_cpu_ns": [
+        53141,
+        53101
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9992210776390863,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 0,
+      "name": "clear_input",
+      "mode": "same-baseline",
+      "trial": 1,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "baseline",
+        "baseline"
+      ],
+      "function_addresses": [
+        483373724048,
+        483373724048
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        51309,
+        51273
+      ],
+      "slot_thread_cpu_ns": [
+        53223,
+        53101
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0007021239248728,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 0,
+      "name": "clear_input",
+      "mode": "same-baseline",
+      "trial": 2,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "baseline",
+        "baseline"
+      ],
+      "function_addresses": [
+        483373724048,
+        483373724048
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        51312,
+        51350
+      ],
+      "slot_thread_cpu_ns": [
+        53100,
+        53141
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9992599805258033,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 0,
+      "name": "clear_input",
+      "mode": "same-baseline",
+      "trial": 3,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "baseline",
+        "baseline"
+      ],
+      "function_addresses": [
+        483373724048,
+        483373724048
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        51432,
+        51391
+      ],
+      "slot_thread_cpu_ns": [
+        53142,
+        53304
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0007978050631434,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 0,
+      "name": "binary_echo",
+      "mode": "same-optimized",
+      "trial": 0,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "optimized",
+        "optimized"
+      ],
+      "function_addresses": [
+        511933338000,
+        511933338000
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        96069,
+        94725
+      ],
+      "slot_thread_cpu_ns": [
+        98103,
+        97249
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0141884402216943,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 0,
+      "name": "binary_echo",
+      "mode": "same-optimized",
+      "trial": 1,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "optimized",
+        "optimized"
+      ],
+      "function_addresses": [
+        511933338000,
+        511933338000
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        94682,
+        96191
+      ],
+      "slot_thread_cpu_ns": [
+        96680,
+        98144
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9843124616648127,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 0,
+      "name": "binary_echo",
+      "mode": "same-optimized",
+      "trial": 2,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "optimized",
+        "optimized"
+      ],
+      "function_addresses": [
+        511933338000,
+        511933338000
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        94768,
+        96108
+      ],
+      "slot_thread_cpu_ns": [
+        96802,
+        98186
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9860573521455029,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 0,
+      "name": "binary_echo",
+      "mode": "same-optimized",
+      "trial": 3,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "optimized",
+        "optimized"
+      ],
+      "function_addresses": [
+        511933338000,
+        511933338000
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        94564,
+        138510
+      ],
+      "slot_thread_cpu_ns": [
+        96883,
+        140910
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.6827232690780449,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 0,
+      "name": "multi_transfer",
+      "mode": "same-optimized",
+      "trial": 0,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "optimized",
+        "optimized"
+      ],
+      "function_addresses": [
+        529489621392,
+        529489621392
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        3344768,
+        3251467
+      ],
+      "slot_thread_cpu_ns": [
+        3360109,
+        3229939
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.028695047497022,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 0,
+      "name": "multi_transfer",
+      "mode": "same-optimized",
+      "trial": 1,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "optimized",
+        "optimized"
+      ],
+      "function_addresses": [
+        529489621392,
+        529489621392
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        3292358,
+        3235596
+      ],
+      "slot_thread_cpu_ns": [
+        3273803,
+        3226075
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0175429812621848,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 0,
+      "name": "multi_transfer",
+      "mode": "same-optimized",
+      "trial": 2,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "optimized",
+        "optimized"
+      ],
+      "function_addresses": [
+        529489621392,
+        529489621392
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        2761515,
+        3034464
+      ],
+      "slot_thread_cpu_ns": [
+        2763062,
+        2765747
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9100503416748394,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 0,
+      "name": "multi_transfer",
+      "mode": "same-optimized",
+      "trial": 3,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "optimized",
+        "optimized"
+      ],
+      "function_addresses": [
+        529489621392,
+        529489621392
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        2779257,
+        2787148
+      ],
+      "slot_thread_cpu_ns": [
+        2765056,
+        2768717
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9971687904625086,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 0,
+      "name": "binary_echo",
+      "mode": "same-baseline",
+      "trial": 0,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "baseline",
+        "baseline"
+      ],
+      "function_addresses": [
+        516101792144,
+        516101792144
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        138508,
+        138467
+      ],
+      "slot_thread_cpu_ns": [
+        142131,
+        142212
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0002960994316334,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 0,
+      "name": "binary_echo",
+      "mode": "same-baseline",
+      "trial": 1,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "baseline",
+        "baseline"
+      ],
+      "function_addresses": [
+        516101792144,
+        516101792144
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        138551,
+        138428
+      ],
+      "slot_thread_cpu_ns": [
+        142049,
+        141927
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.00088854855954,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 0,
+      "name": "binary_echo",
+      "mode": "same-baseline",
+      "trial": 2,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "baseline",
+        "baseline"
+      ],
+      "function_addresses": [
+        516101792144,
+        516101792144
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        138428,
+        138470
+      ],
+      "slot_thread_cpu_ns": [
+        141845,
+        142089
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9996966852025709,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 0,
+      "name": "binary_echo",
+      "mode": "same-baseline",
+      "trial": 3,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "baseline",
+        "baseline"
+      ],
+      "function_addresses": [
+        516101792144,
+        516101792144
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        138630,
+        219808
+      ],
+      "slot_thread_cpu_ns": [
+        143229,
+        147827
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.6306867811908575,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 0,
+      "name": "clear_input",
+      "mode": "original",
+      "trial": 0,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "baseline",
+        "optimized"
+      ],
+      "function_addresses": [
+        522070016400,
+        522069909904
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        149413,
+        148276
+      ],
+      "slot_thread_cpu_ns": [
+        152995,
+        151856
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0076681324017374,
+      "baseline_over_optimized": 1.0076681324017374
+    },
+    {
+      "run": 0,
+      "name": "clear_input",
+      "mode": "original",
+      "trial": 1,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "baseline",
+        "optimized"
+      ],
+      "function_addresses": [
+        522070016400,
+        522069909904
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        147991,
+        147583
+      ],
+      "slot_thread_cpu_ns": [
+        151449,
+        151123
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.002764546052052,
+      "baseline_over_optimized": 1.002764546052052
+    },
+    {
+      "run": 0,
+      "name": "clear_input",
+      "mode": "original",
+      "trial": 2,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "baseline",
+        "optimized"
+      ],
+      "function_addresses": [
+        522070016400,
+        522069909904
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        149657,
+        148235
+      ],
+      "slot_thread_cpu_ns": [
+        153320,
+        151774
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0095928761763415,
+      "baseline_over_optimized": 1.0095928761763415
+    },
+    {
+      "run": 0,
+      "name": "clear_input",
+      "mode": "original",
+      "trial": 3,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "baseline",
+        "optimized"
+      ],
+      "function_addresses": [
+        522070016400,
+        522069909904
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        147300,
+        148641
+      ],
+      "slot_thread_cpu_ns": [
+        150838,
+        152180
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.990978263063354,
+      "baseline_over_optimized": 0.990978263063354
+    },
+    {
+      "run": 0,
+      "name": "multi_transfer",
+      "mode": "reversed",
+      "trial": 0,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "optimized",
+        "baseline"
+      ],
+      "function_addresses": [
+        478085325200,
+        478085063056
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        5636517,
+        5834757
+      ],
+      "slot_thread_cpu_ns": [
+        5591064,
+        5837484
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9660242920142176,
+      "baseline_over_optimized": 1.0351706559210236
+    },
+    {
+      "run": 0,
+      "name": "multi_transfer",
+      "mode": "reversed",
+      "trial": 1,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "optimized",
+        "baseline"
+      ],
+      "function_addresses": [
+        478085325200,
+        478085063056
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        4396891,
+        4412679
+      ],
+      "slot_thread_cpu_ns": [
+        4354167,
+        4400553
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9964221281448299,
+      "baseline_over_optimized": 1.0035907189875755
+    },
+    {
+      "run": 0,
+      "name": "multi_transfer",
+      "mode": "reversed",
+      "trial": 2,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "optimized",
+        "baseline"
+      ],
+      "function_addresses": [
+        478085325200,
+        478085063056
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        4393716,
+        4412882
+      ],
+      "slot_thread_cpu_ns": [
+        4369668,
+        4399861
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9956568065948739,
+      "baseline_over_optimized": 1.0043621390185438
+    },
+    {
+      "run": 0,
+      "name": "multi_transfer",
+      "mode": "reversed",
+      "trial": 3,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "optimized",
+        "baseline"
+      ],
+      "function_addresses": [
+        478085325200,
+        478085063056
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        3916462,
+        4178060
+      ],
+      "slot_thread_cpu_ns": [
+        3901612,
+        4152752
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9373876871083708,
+      "baseline_over_optimized": 1.066794469089704
+    },
+    {
+      "run": 0,
+      "name": "multi_transfer",
+      "mode": "original",
+      "trial": 0,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "baseline",
+        "optimized"
+      ],
+      "function_addresses": [
+        497441845648,
+        497441792400
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        6053751,
+        5362385
+      ],
+      "slot_thread_cpu_ns": [
+        5887409,
+        5244548
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.1289288255132743,
+      "baseline_over_optimized": 1.1289288255132743
+    },
+    {
+      "run": 0,
+      "name": "multi_transfer",
+      "mode": "original",
+      "trial": 1,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "baseline",
+        "optimized"
+      ],
+      "function_addresses": [
+        497441845648,
+        497441792400
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        4433473,
+        4368040
+      ],
+      "slot_thread_cpu_ns": [
+        4438761,
+        4358725
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0149799452385968,
+      "baseline_over_optimized": 1.0149799452385968
+    },
+    {
+      "run": 0,
+      "name": "multi_transfer",
+      "mode": "original",
+      "trial": 2,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "baseline",
+        "optimized"
+      ],
+      "function_addresses": [
+        497441845648,
+        497441792400
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        4494342,
+        4366413
+      ],
+      "slot_thread_cpu_ns": [
+        4441243,
+        4360880
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0292984195494104,
+      "baseline_over_optimized": 1.0292984195494104
+    },
+    {
+      "run": 0,
+      "name": "multi_transfer",
+      "mode": "original",
+      "trial": 3,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "baseline",
+        "optimized"
+      ],
+      "function_addresses": [
+        497441845648,
+        497441792400
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        4177980,
+        3920085
+      ],
+      "slot_thread_cpu_ns": [
+        4035643,
+        3907878
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.065788114288338,
+      "baseline_over_optimized": 1.065788114288338
+    },
+    {
+      "run": 0,
+      "name": "scan",
+      "mode": "original",
+      "trial": 0,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "baseline",
+        "optimized"
+      ],
+      "function_addresses": [
+        535985410448,
+        535985275280
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        377768,
+        378377
+      ],
+      "slot_thread_cpu_ns": [
+        381184,
+        381795
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9983904941368,
+      "baseline_over_optimized": 0.9983904941368
+    },
+    {
+      "run": 0,
+      "name": "scan",
+      "mode": "original",
+      "trial": 1,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "baseline",
+        "optimized"
+      ],
+      "function_addresses": [
+        535985410448,
+        535985275280
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        379761,
+        377075
+      ],
+      "slot_thread_cpu_ns": [
+        383382,
+        380656
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0071232513425712,
+      "baseline_over_optimized": 1.0071232513425712
+    },
+    {
+      "run": 0,
+      "name": "scan",
+      "mode": "original",
+      "trial": 2,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "baseline",
+        "optimized"
+      ],
+      "function_addresses": [
+        535985410448,
+        535985275280
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        380085,
+        378540
+      ],
+      "slot_thread_cpu_ns": [
+        383586,
+        381917
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0040814709145665,
+      "baseline_over_optimized": 1.0040814709145665
+    },
+    {
+      "run": 0,
+      "name": "scan",
+      "mode": "original",
+      "trial": 3,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "baseline",
+        "optimized"
+      ],
+      "function_addresses": [
+        535985410448,
+        535985275280
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        375689,
+        384806
+      ],
+      "slot_thread_cpu_ns": [
+        379109,
+        388224
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9763075419821936,
+      "baseline_over_optimized": 0.9763075419821936
+    },
+    {
+      "run": 0,
+      "name": "scan",
+      "mode": "same-optimized",
+      "trial": 0,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "optimized",
+        "optimized"
+      ],
+      "function_addresses": [
+        516282597776,
+        516282597776
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        323813,
+        324546
+      ],
+      "slot_thread_cpu_ns": [
+        327148,
+        327962
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.997741460378498,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 0,
+      "name": "scan",
+      "mode": "same-optimized",
+      "trial": 1,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "optimized",
+        "optimized"
+      ],
+      "function_addresses": [
+        516282597776,
+        516282597776
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        324136,
+        324056
+      ],
+      "slot_thread_cpu_ns": [
+        327759,
+        327392
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0002468709112005,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 0,
+      "name": "scan",
+      "mode": "same-optimized",
+      "trial": 2,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "optimized",
+        "optimized"
+      ],
+      "function_addresses": [
+        516282597776,
+        516282597776
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        373209,
+        323811
+      ],
+      "slot_thread_cpu_ns": [
+        331299,
+        327474
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.1525519516013971,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 0,
+      "name": "scan",
+      "mode": "same-optimized",
+      "trial": 3,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "optimized",
+        "optimized"
+      ],
+      "function_addresses": [
+        516282597776,
+        516282597776
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        324054,
+        324015
+      ],
+      "slot_thread_cpu_ns": [
+        327474,
+        327556
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.000120364797926,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 1,
+      "name": "scan",
+      "mode": "original",
+      "trial": 0,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "baseline",
+        "optimized"
+      ],
+      "function_addresses": [
+        488280621456,
+        488280191376
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        385173,
+        389852
+      ],
+      "slot_thread_cpu_ns": [
+        389200,
+        393880
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9879980095010414,
+      "baseline_over_optimized": 0.9879980095010414
+    },
+    {
+      "run": 1,
+      "name": "scan",
+      "mode": "original",
+      "trial": 1,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "baseline",
+        "optimized"
+      ],
+      "function_addresses": [
+        488280621456,
+        488280191376
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        383300,
+        389932
+      ],
+      "slot_thread_cpu_ns": [
+        387410,
+        393881
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9829919062810951,
+      "baseline_over_optimized": 0.9829919062810951
+    },
+    {
+      "run": 1,
+      "name": "scan",
+      "mode": "original",
+      "trial": 2,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "baseline",
+        "optimized"
+      ],
+      "function_addresses": [
+        488280621456,
+        488280191376
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        383262,
+        513265
+      ],
+      "slot_thread_cpu_ns": [
+        387288,
+        418051
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.7467136859127351,
+      "baseline_over_optimized": 0.7467136859127351
+    },
+    {
+      "run": 1,
+      "name": "scan",
+      "mode": "original",
+      "trial": 3,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "baseline",
+        "optimized"
+      ],
+      "function_addresses": [
+        488280621456,
+        488280191376
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        392903,
+        389893
+      ],
+      "slot_thread_cpu_ns": [
+        391684,
+        394450
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0077200667875545,
+      "baseline_over_optimized": 1.0077200667875545
+    },
+    {
+      "run": 1,
+      "name": "multi_transfer",
+      "mode": "original",
+      "trial": 0,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "baseline",
+        "optimized"
+      ],
+      "function_addresses": [
+        492533559696,
+        492533293456
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        5651408,
+        6885050
+      ],
+      "slot_thread_cpu_ns": [
+        5621338,
+        4902587
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.8208230877045192,
+      "baseline_over_optimized": 0.8208230877045192
+    },
+    {
+      "run": 1,
+      "name": "multi_transfer",
+      "mode": "original",
+      "trial": 1,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "baseline",
+        "optimized"
+      ],
+      "function_addresses": [
+        492533559696,
+        492533293456
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        5144083,
+        4754069
+      ],
+      "slot_thread_cpu_ns": [
+        4786987,
+        4389934
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0820379342411732,
+      "baseline_over_optimized": 1.0820379342411732
+    },
+    {
+      "run": 1,
+      "name": "multi_transfer",
+      "mode": "original",
+      "trial": 2,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "baseline",
+        "optimized"
+      ],
+      "function_addresses": [
+        492533559696,
+        492533293456
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        4207845,
+        4211791
+      ],
+      "slot_thread_cpu_ns": [
+        4174683,
+        4160564
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9990631064077016,
+      "baseline_over_optimized": 0.9990631064077016
+    },
+    {
+      "run": 1,
+      "name": "multi_transfer",
+      "mode": "original",
+      "trial": 3,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "baseline",
+        "optimized"
+      ],
+      "function_addresses": [
+        492533559696,
+        492533293456
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        3856690,
+        3897869
+      ],
+      "slot_thread_cpu_ns": [
+        3837321,
+        3890544
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.989435509505322,
+      "baseline_over_optimized": 0.989435509505322
+    },
+    {
+      "run": 1,
+      "name": "binary_echo",
+      "mode": "same-baseline",
+      "trial": 0,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "baseline",
+        "baseline"
+      ],
+      "function_addresses": [
+        478396727696,
+        478396727696
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        61238,
+        61199
+      ],
+      "slot_thread_cpu_ns": [
+        62663,
+        62663
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0006372653147928,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 1,
+      "name": "binary_echo",
+      "mode": "same-baseline",
+      "trial": 1,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "baseline",
+        "baseline"
+      ],
+      "function_addresses": [
+        478396727696,
+        478396727696
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        115722,
+        61156
+      ],
+      "slot_thread_cpu_ns": [
+        66650,
+        62582
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.89224278893322,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 1,
+      "name": "binary_echo",
+      "mode": "same-baseline",
+      "trial": 2,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "baseline",
+        "baseline"
+      ],
+      "function_addresses": [
+        478396727696,
+        478396727696
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        64697,
+        63518
+      ],
+      "slot_thread_cpu_ns": [
+        63518,
+        63518
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0185616675588023,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 1,
+      "name": "binary_echo",
+      "mode": "same-baseline",
+      "trial": 3,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "baseline",
+        "baseline"
+      ],
+      "function_addresses": [
+        478396727696,
+        478396727696
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        64656,
+        69825
+      ],
+      "slot_thread_cpu_ns": [
+        66162,
+        72143
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9259720730397422,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 1,
+      "name": "scan",
+      "mode": "same-optimized",
+      "trial": 0,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "optimized",
+        "optimized"
+      ],
+      "function_addresses": [
+        524852412816,
+        524852412816
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        389690,
+        389445
+      ],
+      "slot_thread_cpu_ns": [
+        393636,
+        393311
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0006291003864474,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 1,
+      "name": "scan",
+      "mode": "same-optimized",
+      "trial": 1,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "optimized",
+        "optimized"
+      ],
+      "function_addresses": [
+        524852412816,
+        524852412816
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        389931,
+        389852
+      ],
+      "slot_thread_cpu_ns": [
+        394287,
+        393758
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0002026410022264,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 1,
+      "name": "scan",
+      "mode": "same-optimized",
+      "trial": 2,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "optimized",
+        "optimized"
+      ],
+      "function_addresses": [
+        524852412816,
+        524852412816
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        390055,
+        389933
+      ],
+      "slot_thread_cpu_ns": [
+        394571,
+        393961
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0003128742630145,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 1,
+      "name": "scan",
+      "mode": "same-optimized",
+      "trial": 3,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "optimized",
+        "optimized"
+      ],
+      "function_addresses": [
+        524852412816,
+        524852412816
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        389934,
+        390096
+      ],
+      "slot_thread_cpu_ns": [
+        394002,
+        393799
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9995847176079734,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 1,
+      "name": "clear_input",
+      "mode": "original",
+      "trial": 0,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "baseline",
+        "optimized"
+      ],
+      "function_addresses": [
+        525219078544,
+        525218787728
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        161743,
+        161743
+      ],
+      "slot_thread_cpu_ns": [
+        165568,
+        165568
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0,
+      "baseline_over_optimized": 1.0
+    },
+    {
+      "run": 1,
+      "name": "clear_input",
+      "mode": "original",
+      "trial": 1,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "baseline",
+        "optimized"
+      ],
+      "function_addresses": [
+        525219078544,
+        525218787728
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        161784,
+        161702
+      ],
+      "slot_thread_cpu_ns": [
+        165650,
+        165690
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0005071056635044,
+      "baseline_over_optimized": 1.0005071056635044
+    },
+    {
+      "run": 1,
+      "name": "clear_input",
+      "mode": "original",
+      "trial": 2,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "baseline",
+        "optimized"
+      ],
+      "function_addresses": [
+        525219078544,
+        525218787728
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        162271,
+        163004
+      ],
+      "slot_thread_cpu_ns": [
+        166178,
+        166870
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9955031778361267,
+      "baseline_over_optimized": 0.9955031778361267
+    },
+    {
+      "run": 1,
+      "name": "clear_input",
+      "mode": "original",
+      "trial": 3,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "baseline",
+        "optimized"
+      ],
+      "function_addresses": [
+        525219078544,
+        525218787728
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        164347,
+        161782
+      ],
+      "slot_thread_cpu_ns": [
+        168498,
+        165527
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.015854668628154,
+      "baseline_over_optimized": 1.015854668628154
+    },
+    {
+      "run": 1,
+      "name": "multi_transfer",
+      "mode": "reversed",
+      "trial": 0,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "optimized",
+        "baseline"
+      ],
+      "function_addresses": [
+        518254358928,
+        518253990288
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        5177939,
+        5656779
+      ],
+      "slot_thread_cpu_ns": [
+        5131672,
+        5619953
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.915351121194588,
+      "baseline_over_optimized": 1.0924769488400694
+    },
+    {
+      "run": 1,
+      "name": "multi_transfer",
+      "mode": "reversed",
+      "trial": 1,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "optimized",
+        "baseline"
+      ],
+      "function_addresses": [
+        518254358928,
+        518253990288
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        4799641,
+        4768638
+      ],
+      "slot_thread_cpu_ns": [
+        4784139,
+        4709391
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0065014370979721,
+      "baseline_over_optimized": 0.9935405585542753
+    },
+    {
+      "run": 1,
+      "name": "multi_transfer",
+      "mode": "reversed",
+      "trial": 2,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "optimized",
+        "baseline"
+      ],
+      "function_addresses": [
+        518254358928,
+        518253990288
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        4185423,
+        4184408
+      ],
+      "slot_thread_cpu_ns": [
+        4159058,
+        4192383
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0002425671684023,
+      "baseline_over_optimized": 0.99975749165616
+    },
+    {
+      "run": 1,
+      "name": "multi_transfer",
+      "mode": "reversed",
+      "trial": 3,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "optimized",
+        "baseline"
+      ],
+      "function_addresses": [
+        518254358928,
+        518253990288
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        4140706,
+        3891969
+      ],
+      "slot_thread_cpu_ns": [
+        4120646,
+        3840008
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0639103240544825,
+      "baseline_over_optimized": 0.9399288430523683
+    },
+    {
+      "run": 1,
+      "name": "clear_input",
+      "mode": "same-optimized",
+      "trial": 0,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "optimized",
+        "optimized"
+      ],
+      "function_addresses": [
+        472503001488,
+        472503001488
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        161947,
+        161539
+      ],
+      "slot_thread_cpu_ns": [
+        165934,
+        165853
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0025257058666948,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 1,
+      "name": "clear_input",
+      "mode": "same-optimized",
+      "trial": 1,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "optimized",
+        "optimized"
+      ],
+      "function_addresses": [
+        472503001488,
+        472503001488
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        161824,
+        161783
+      ],
+      "slot_thread_cpu_ns": [
+        166260,
+        165894
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0002534258852909,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 1,
+      "name": "clear_input",
+      "mode": "same-optimized",
+      "trial": 2,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "optimized",
+        "optimized"
+      ],
+      "function_addresses": [
+        472503001488,
+        472503001488
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        161701,
+        161744
+      ],
+      "slot_thread_cpu_ns": [
+        165812,
+        165852
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9997341477890989,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 1,
+      "name": "clear_input",
+      "mode": "same-optimized",
+      "trial": 3,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "optimized",
+        "optimized"
+      ],
+      "function_addresses": [
+        472503001488,
+        472503001488
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        161866,
+        162028
+      ],
+      "slot_thread_cpu_ns": [
+        165771,
+        166016
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9990001728096378,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 1,
+      "name": "binary_echo",
+      "mode": "original",
+      "trial": 0,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "baseline",
+        "optimized"
+      ],
+      "function_addresses": [
+        509381058960,
+        509380899216
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        166139,
+        166627
+      ],
+      "slot_thread_cpu_ns": [
+        170084,
+        170573
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9970713029701069,
+      "baseline_over_optimized": 0.9970713029701069
+    },
+    {
+      "run": 1,
+      "name": "binary_echo",
+      "mode": "original",
+      "trial": 1,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "baseline",
+        "optimized"
+      ],
+      "function_addresses": [
+        509381058960,
+        509380899216
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        166829,
+        166098
+      ],
+      "slot_thread_cpu_ns": [
+        170898,
+        170044
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0044010162675048,
+      "baseline_over_optimized": 1.0044010162675048
+    },
+    {
+      "run": 1,
+      "name": "binary_echo",
+      "mode": "original",
+      "trial": 2,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "baseline",
+        "optimized"
+      ],
+      "function_addresses": [
+        509381058960,
+        509380899216
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        166829,
+        166016
+      ],
+      "slot_thread_cpu_ns": [
+        170695,
+        170085
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0048971183500386,
+      "baseline_over_optimized": 1.0048971183500386
+    },
+    {
+      "run": 1,
+      "name": "binary_echo",
+      "mode": "original",
+      "trial": 3,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "baseline",
+        "optimized"
+      ],
+      "function_addresses": [
+        509381058960,
+        509380899216
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        166667,
+        166665
+      ],
+      "slot_thread_cpu_ns": [
+        170736,
+        170613
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0000120001200012,
+      "baseline_over_optimized": 1.0000120001200012
+    },
+    {
+      "run": 1,
+      "name": "multi_transfer",
+      "mode": "same-baseline",
+      "trial": 0,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "baseline",
+        "baseline"
+      ],
+      "function_addresses": [
+        509295575440,
+        509295575440
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        5147501,
+        5904541
+      ],
+      "slot_thread_cpu_ns": [
+        5107705,
+        5837891
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.8717868162825866,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 1,
+      "name": "multi_transfer",
+      "mode": "same-baseline",
+      "trial": 1,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "baseline",
+        "baseline"
+      ],
+      "function_addresses": [
+        509295575440,
+        509295575440
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        4435586,
+        4477498
+      ],
+      "slot_thread_cpu_ns": [
+        4418579,
+        4446737
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9906394151376505,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 1,
+      "name": "multi_transfer",
+      "mode": "same-baseline",
+      "trial": 2,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "baseline",
+        "baseline"
+      ],
+      "function_addresses": [
+        509295575440,
+        509295575440
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        4496662,
+        4453531
+      ],
+      "slot_thread_cpu_ns": [
+        4400961,
+        4383425
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0096846749242343,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 1,
+      "name": "multi_transfer",
+      "mode": "same-baseline",
+      "trial": 3,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "baseline",
+        "baseline"
+      ],
+      "function_addresses": [
+        509295575440,
+        509295575440
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        3997763,
+        3989502
+      ],
+      "slot_thread_cpu_ns": [
+        3935872,
+        3963664
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0020706845115004,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 1,
+      "name": "scan",
+      "mode": "same-baseline",
+      "trial": 0,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "baseline",
+        "baseline"
+      ],
+      "function_addresses": [
+        518923465104,
+        518923465104
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        1240599,
+        381754
+      ],
+      "slot_thread_cpu_ns": [
+        397259,
+        385661
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 3.2497341219738365,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 1,
+      "name": "scan",
+      "mode": "same-baseline",
+      "trial": 1,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "baseline",
+        "baseline"
+      ],
+      "function_addresses": [
+        518923465104,
+        518923465104
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        383017,
+        382203
+      ],
+      "slot_thread_cpu_ns": [
+        387288,
+        386150
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0021297582698199,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 1,
+      "name": "scan",
+      "mode": "same-baseline",
+      "trial": 2,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "baseline",
+        "baseline"
+      ],
+      "function_addresses": [
+        518923465104,
+        518923465104
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        382529,
+        449341
+      ],
+      "slot_thread_cpu_ns": [
+        386596,
+        432169
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.8513111423173046,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 1,
+      "name": "scan",
+      "mode": "same-baseline",
+      "trial": 3,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "baseline",
+        "baseline"
+      ],
+      "function_addresses": [
+        518923465104,
+        518923465104
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        1001142,
+        382814
+      ],
+      "slot_thread_cpu_ns": [
+        393026,
+        386719
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 2.615217834248486,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 1,
+      "name": "clear_input",
+      "mode": "same-baseline",
+      "trial": 0,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "baseline",
+        "baseline"
+      ],
+      "function_addresses": [
+        531694813584,
+        531694813584
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        50865,
+        50782
+      ],
+      "slot_thread_cpu_ns": [
+        52083,
+        52084
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0016344373990784,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 1,
+      "name": "clear_input",
+      "mode": "same-baseline",
+      "trial": 1,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "baseline",
+        "baseline"
+      ],
+      "function_addresses": [
+        531694813584,
+        531694813584
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        51028,
+        50902
+      ],
+      "slot_thread_cpu_ns": [
+        52246,
+        52083
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0024753447801658,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 1,
+      "name": "clear_input",
+      "mode": "same-baseline",
+      "trial": 2,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "baseline",
+        "baseline"
+      ],
+      "function_addresses": [
+        531694813584,
+        531694813584
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        50822,
+        50864
+      ],
+      "slot_thread_cpu_ns": [
+        52083,
+        52083
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9991742686379365,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 1,
+      "name": "clear_input",
+      "mode": "same-baseline",
+      "trial": 3,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "baseline",
+        "baseline"
+      ],
+      "function_addresses": [
+        531694813584,
+        531694813584
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        50864,
+        50864
+      ],
+      "slot_thread_cpu_ns": [
+        52084,
+        52083
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 1,
+      "name": "multi_transfer",
+      "mode": "same-optimized",
+      "trial": 0,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "optimized",
+        "optimized"
+      ],
+      "function_addresses": [
+        500749803920,
+        500749803920
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        5635294,
+        4801148
+      ],
+      "slot_thread_cpu_ns": [
+        5554360,
+        4784098
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.1737388641216642,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 1,
+      "name": "multi_transfer",
+      "mode": "same-optimized",
+      "trial": 1,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "optimized",
+        "optimized"
+      ],
+      "function_addresses": [
+        500749803920,
+        500749803920
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        4420126,
+        5253946
+      ],
+      "slot_thread_cpu_ns": [
+        4335979,
+        4788085
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.8412964274851702,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 1,
+      "name": "multi_transfer",
+      "mode": "same-optimized",
+      "trial": 2,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "optimized",
+        "optimized"
+      ],
+      "function_addresses": [
+        500749803920,
+        500749803920
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        4225261,
+        4208130
+      ],
+      "slot_thread_cpu_ns": [
+        4158446,
+        4176106
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0040709293676764,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 1,
+      "name": "multi_transfer",
+      "mode": "same-optimized",
+      "trial": 3,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "optimized",
+        "optimized"
+      ],
+      "function_addresses": [
+        500749803920,
+        500749803920
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        3860027,
+        3932414
+      ],
+      "slot_thread_cpu_ns": [
+        3823324,
+        3878051
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9815922229958494,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 1,
+      "name": "scan",
+      "mode": "reversed",
+      "trial": 0,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "optimized",
+        "baseline"
+      ],
+      "function_addresses": [
+        505709269392,
+        505708994960
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        395876,
+        383055
+      ],
+      "slot_thread_cpu_ns": [
+        400025,
+        386923
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0334703893696728,
+      "baseline_over_optimized": 0.9676135961765805
+    },
+    {
+      "run": 1,
+      "name": "scan",
+      "mode": "reversed",
+      "trial": 1,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "optimized",
+        "baseline"
+      ],
+      "function_addresses": [
+        505709269392,
+        505708994960
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        395507,
+        382161
+      ],
+      "slot_thread_cpu_ns": [
+        399617,
+        386149
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.034922454148906,
+      "baseline_over_optimized": 0.9662559701851042
+    },
+    {
+      "run": 1,
+      "name": "scan",
+      "mode": "reversed",
+      "trial": 2,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "optimized",
+        "baseline"
+      ],
+      "function_addresses": [
+        505709269392,
+        505708994960
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        394206,
+        451986
+      ],
+      "slot_thread_cpu_ns": [
+        399048,
+        393474
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.872164182076436,
+      "baseline_over_optimized": 1.1465731115203726
+    },
+    {
+      "run": 1,
+      "name": "scan",
+      "mode": "reversed",
+      "trial": 3,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "optimized",
+        "baseline"
+      ],
+      "function_addresses": [
+        505709269392,
+        505708994960
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        388631,
+        383667
+      ],
+      "slot_thread_cpu_ns": [
+        392659,
+        387533
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0129383032681987,
+      "baseline_over_optimized": 0.9872269582200082
+    },
+    {
+      "run": 1,
+      "name": "binary_echo",
+      "mode": "reversed",
+      "trial": 0,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "optimized",
+        "baseline"
+      ],
+      "function_addresses": [
+        537535619472,
+        537535304080
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        166016,
+        166666
+      ],
+      "slot_thread_cpu_ns": [
+        169882,
+        170655
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9960999843999376,
+      "baseline_over_optimized": 1.0039152852737085
+    },
+    {
+      "run": 1,
+      "name": "binary_echo",
+      "mode": "reversed",
+      "trial": 1,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "optimized",
+        "baseline"
+      ],
+      "function_addresses": [
+        537535619472,
+        537535304080
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        166586,
+        165852
+      ],
+      "slot_thread_cpu_ns": [
+        170450,
+        169963
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.004425632491619,
+      "baseline_over_optimized": 0.995593867431837
+    },
+    {
+      "run": 1,
+      "name": "binary_echo",
+      "mode": "reversed",
+      "trial": 2,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "optimized",
+        "baseline"
+      ],
+      "function_addresses": [
+        537535619472,
+        537535304080
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        315797,
+        166056
+      ],
+      "slot_thread_cpu_ns": [
+        194376,
+        170532
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.9017500120441297,
+      "baseline_over_optimized": 0.5258314676833535
+    },
+    {
+      "run": 1,
+      "name": "binary_echo",
+      "mode": "reversed",
+      "trial": 3,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "optimized",
+        "baseline"
+      ],
+      "function_addresses": [
+        537535619472,
+        537535304080
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        165974,
+        165935
+      ],
+      "slot_thread_cpu_ns": [
+        169921,
+        170247
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.000235031789556,
+      "baseline_over_optimized": 0.9997650234374058
+    },
+    {
+      "run": 1,
+      "name": "clear_input",
+      "mode": "reversed",
+      "trial": 0,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "optimized",
+        "baseline"
+      ],
+      "function_addresses": [
+        518293483920,
+        516145254800
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        161499,
+        161580
+      ],
+      "slot_thread_cpu_ns": [
+        165365,
+        165527
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9994987003341997,
+      "baseline_over_optimized": 1.0005015510931956
+    },
+    {
+      "run": 1,
+      "name": "clear_input",
+      "mode": "reversed",
+      "trial": 1,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "optimized",
+        "baseline"
+      ],
+      "function_addresses": [
+        518293483920,
+        516145254800
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        162150,
+        161622
+      ],
+      "slot_thread_cpu_ns": [
+        165975,
+        165406
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0032668819838884,
+      "baseline_over_optimized": 0.9967437557816836
+    },
+    {
+      "run": 1,
+      "name": "clear_input",
+      "mode": "reversed",
+      "trial": 2,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "optimized",
+        "baseline"
+      ],
+      "function_addresses": [
+        518293483920,
+        516145254800
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        161581,
+        162394
+      ],
+      "slot_thread_cpu_ns": [
+        165527,
+        166219
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9949936574011355,
+      "baseline_over_optimized": 1.0050315321727183
+    },
+    {
+      "run": 1,
+      "name": "clear_input",
+      "mode": "reversed",
+      "trial": 3,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "optimized",
+        "baseline"
+      ],
+      "function_addresses": [
+        518293483920,
+        516145254800
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        162923,
+        164386
+      ],
+      "slot_thread_cpu_ns": [
+        167033,
+        168172
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9911002153468057,
+      "baseline_over_optimized": 1.008979702067848
+    },
+    {
+      "run": 1,
+      "name": "binary_echo",
+      "mode": "same-optimized",
+      "trial": 0,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "optimized",
+        "optimized"
+      ],
+      "function_addresses": [
+        521781678480,
+        521781678480
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        166748,
+        166708
+      ],
+      "slot_thread_cpu_ns": [
+        170857,
+        170613
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0002399404947573,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 1,
+      "name": "binary_echo",
+      "mode": "same-optimized",
+      "trial": 1,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "optimized",
+        "optimized"
+      ],
+      "function_addresses": [
+        521781678480,
+        521781678480
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        166870,
+        166668
+      ],
+      "slot_thread_cpu_ns": [
+        170695,
+        170735
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0012119903040775,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 1,
+      "name": "binary_echo",
+      "mode": "same-optimized",
+      "trial": 2,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "optimized",
+        "optimized"
+      ],
+      "function_addresses": [
+        521781678480,
+        521781678480
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        166748,
+        166585
+      ],
+      "slot_thread_cpu_ns": [
+        170817,
+        170532
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.000978479454933,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 1,
+      "name": "binary_echo",
+      "mode": "same-optimized",
+      "trial": 3,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "optimized",
+        "optimized"
+      ],
+      "function_addresses": [
+        521781678480,
+        521781678480
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        166667,
+        166667
+      ],
+      "slot_thread_cpu_ns": [
+        170654,
+        170614
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 2,
+      "name": "scan",
+      "mode": "same-baseline",
+      "trial": 0,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "baseline",
+        "baseline"
+      ],
+      "function_addresses": [
+        509158674832,
+        509158674832
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        382241,
+        382732
+      ],
+      "slot_thread_cpu_ns": [
+        385742,
+        386393
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9987171179833408,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 2,
+      "name": "scan",
+      "mode": "same-baseline",
+      "trial": 1,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "baseline",
+        "baseline"
+      ],
+      "function_addresses": [
+        509158674832,
+        509158674832
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        382732,
+        382812
+      ],
+      "slot_thread_cpu_ns": [
+        386515,
+        386556
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9997910201352099,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 2,
+      "name": "scan",
+      "mode": "same-baseline",
+      "trial": 2,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "baseline",
+        "baseline"
+      ],
+      "function_addresses": [
+        509158674832,
+        509158674832
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        382771,
+        383138
+      ],
+      "slot_thread_cpu_ns": [
+        386434,
+        386759
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9990421205936242,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 2,
+      "name": "scan",
+      "mode": "same-baseline",
+      "trial": 3,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "baseline",
+        "baseline"
+      ],
+      "function_addresses": [
+        509158674832,
+        509158674832
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        383221,
+        381022
+      ],
+      "slot_thread_cpu_ns": [
+        386963,
+        384562
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0057713202912169,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 2,
+      "name": "clear_input",
+      "mode": "reversed",
+      "trial": 0,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "optimized",
+        "baseline"
+      ],
+      "function_addresses": [
+        484468679056,
+        484468470160
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        149129,
+        151365
+      ],
+      "slot_thread_cpu_ns": [
+        152670,
+        154826
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9852277607108645,
+      "baseline_over_optimized": 1.0149937302603786
+    },
+    {
+      "run": 2,
+      "name": "clear_input",
+      "mode": "reversed",
+      "trial": 1,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "optimized",
+        "baseline"
+      ],
+      "function_addresses": [
+        484468679056,
+        484468470160
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        147909,
+        151448
+      ],
+      "slot_thread_cpu_ns": [
+        151245,
+        154907
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9766322434102794,
+      "baseline_over_optimized": 1.023926873956284
+    },
+    {
+      "run": 2,
+      "name": "clear_input",
+      "mode": "reversed",
+      "trial": 2,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "optimized",
+        "baseline"
+      ],
+      "function_addresses": [
+        484468679056,
+        484468470160
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        150473,
+        149128
+      ],
+      "slot_thread_cpu_ns": [
+        153890,
+        152506
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0090190976878923,
+      "baseline_over_optimized": 0.9910615193423404
+    },
+    {
+      "run": 2,
+      "name": "clear_input",
+      "mode": "reversed",
+      "trial": 3,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "optimized",
+        "baseline"
+      ],
+      "function_addresses": [
+        484468679056,
+        484468470160
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        148275,
+        147663
+      ],
+      "slot_thread_cpu_ns": [
+        151692,
+        151123
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0041445724385933,
+      "baseline_over_optimized": 0.9958725341426403
+    },
+    {
+      "run": 2,
+      "name": "multi_transfer",
+      "mode": "same-baseline",
+      "trial": 0,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "baseline",
+        "baseline"
+      ],
+      "function_addresses": [
+        516006310288,
+        516006310288
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        4812296,
+        5680868
+      ],
+      "slot_thread_cpu_ns": [
+        4838989,
+        5603881
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.8471057591903209,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 2,
+      "name": "multi_transfer",
+      "mode": "same-baseline",
+      "trial": 1,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "baseline",
+        "baseline"
+      ],
+      "function_addresses": [
+        516006310288,
+        516006310288
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        4818237,
+        4548869
+      ],
+      "slot_thread_cpu_ns": [
+        4782470,
+        4509684
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0592164777662316,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 2,
+      "name": "multi_transfer",
+      "mode": "same-baseline",
+      "trial": 2,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "baseline",
+        "baseline"
+      ],
+      "function_addresses": [
+        516006310288,
+        516006310288
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        4201905,
+        4227703
+      ],
+      "slot_thread_cpu_ns": [
+        4172811,
+        4196737
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.993897868416963,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 2,
+      "name": "multi_transfer",
+      "mode": "same-baseline",
+      "trial": 3,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "baseline",
+        "baseline"
+      ],
+      "function_addresses": [
+        516006310288,
+        516006310288
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        3889853,
+        4012819
+      ],
+      "slot_thread_cpu_ns": [
+        3858520,
+        3986328
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9693567041025274,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 2,
+      "name": "multi_transfer",
+      "mode": "original",
+      "trial": 0,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "baseline",
+        "optimized"
+      ],
+      "function_addresses": [
+        503335149968,
+        503334883728
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        2148844,
+        2150147
+      ],
+      "slot_thread_cpu_ns": [
+        2150350,
+        2142782
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9993939949222076,
+      "baseline_over_optimized": 0.9993939949222076
+    },
+    {
+      "run": 2,
+      "name": "multi_transfer",
+      "mode": "original",
+      "trial": 1,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "baseline",
+        "optimized"
+      ],
+      "function_addresses": [
+        503335149968,
+        503334883728
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        2148803,
+        2153443
+      ],
+      "slot_thread_cpu_ns": [
+        2150227,
+        2145020
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9978453109741006,
+      "baseline_over_optimized": 0.9978453109741006
+    },
+    {
+      "run": 2,
+      "name": "multi_transfer",
+      "mode": "original",
+      "trial": 2,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "baseline",
+        "optimized"
+      ],
+      "function_addresses": [
+        503335149968,
+        503334883728
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        2291748,
+        2141116
+      ],
+      "slot_thread_cpu_ns": [
+        2161540,
+        2142212
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0703520967570184,
+      "baseline_over_optimized": 1.0703520967570184
+    },
+    {
+      "run": 2,
+      "name": "multi_transfer",
+      "mode": "original",
+      "trial": 3,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "baseline",
+        "optimized"
+      ],
+      "function_addresses": [
+        503335149968,
+        503334883728
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        2764568,
+        2241821
+      ],
+      "slot_thread_cpu_ns": [
+        2720337,
+        2231732
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.2331796338779948,
+      "baseline_over_optimized": 1.2331796338779948
+    },
+    {
+      "run": 2,
+      "name": "binary_echo",
+      "mode": "same-optimized",
+      "trial": 0,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "optimized",
+        "optimized"
+      ],
+      "function_addresses": [
+        492865986960,
+        492865986960
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        78777,
+        78735
+      ],
+      "slot_thread_cpu_ns": [
+        80770,
+        80567
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0005334349399886,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 2,
+      "name": "binary_echo",
+      "mode": "same-optimized",
+      "trial": 1,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "optimized",
+        "optimized"
+      ],
+      "function_addresses": [
+        492865986960,
+        492865986960
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        78898,
+        78776
+      ],
+      "slot_thread_cpu_ns": [
+        80607,
+        81299
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0015486950340204,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 2,
+      "name": "binary_echo",
+      "mode": "same-optimized",
+      "trial": 2,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "optimized",
+        "optimized"
+      ],
+      "function_addresses": [
+        492865986960,
+        492865986960
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        78735,
+        78816
+      ],
+      "slot_thread_cpu_ns": [
+        80607,
+        80607
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9989722898903776,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 2,
+      "name": "binary_echo",
+      "mode": "same-optimized",
+      "trial": 3,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "optimized",
+        "optimized"
+      ],
+      "function_addresses": [
+        492865986960,
+        492865986960
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        78774,
+        78899
+      ],
+      "slot_thread_cpu_ns": [
+        80729,
+        80607
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9984156960164261,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 2,
+      "name": "clear_input",
+      "mode": "same-optimized",
+      "trial": 0,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "optimized",
+        "optimized"
+      ],
+      "function_addresses": [
+        501884223888,
+        501884223888
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        76336,
+        76335
+      ],
+      "slot_thread_cpu_ns": [
+        78084,
+        78247
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0000131001506518,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 2,
+      "name": "clear_input",
+      "mode": "same-optimized",
+      "trial": 1,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "optimized",
+        "optimized"
+      ],
+      "function_addresses": [
+        501884223888,
+        501884223888
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        76254,
+        76374
+      ],
+      "slot_thread_cpu_ns": [
+        78165,
+        78206
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9984287846649383,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 2,
+      "name": "clear_input",
+      "mode": "same-optimized",
+      "trial": 2,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "optimized",
+        "optimized"
+      ],
+      "function_addresses": [
+        501884223888,
+        501884223888
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        76416,
+        76375
+      ],
+      "slot_thread_cpu_ns": [
+        78166,
+        78125
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0005368248772504,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 2,
+      "name": "clear_input",
+      "mode": "same-optimized",
+      "trial": 3,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "optimized",
+        "optimized"
+      ],
+      "function_addresses": [
+        501884223888,
+        501884223888
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        76334,
+        76416
+      ],
+      "slot_thread_cpu_ns": [
+        78125,
+        78125
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9989269262981575,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 2,
+      "name": "clear_input",
+      "mode": "original",
+      "trial": 0,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "baseline",
+        "optimized"
+      ],
+      "function_addresses": [
+        480468013456,
+        480467906960
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        87931,
+        87605
+      ],
+      "slot_thread_cpu_ns": [
+        90006,
+        89803
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0037212487871696,
+      "baseline_over_optimized": 1.0037212487871696
+    },
+    {
+      "run": 2,
+      "name": "clear_input",
+      "mode": "original",
+      "trial": 1,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "baseline",
+        "optimized"
+      ],
+      "function_addresses": [
+        480468013456,
+        480467906960
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        87646,
+        88012
+      ],
+      "slot_thread_cpu_ns": [
+        89722,
+        90129
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9958414761623415,
+      "baseline_over_optimized": 0.9958414761623415
+    },
+    {
+      "run": 2,
+      "name": "clear_input",
+      "mode": "original",
+      "trial": 2,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "baseline",
+        "optimized"
+      ],
+      "function_addresses": [
+        480468013456,
+        480467906960
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        88299,
+        88339
+      ],
+      "slot_thread_cpu_ns": [
+        90373,
+        90373
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9995471988589412,
+      "baseline_over_optimized": 0.9995471988589412
+    },
+    {
+      "run": 2,
+      "name": "clear_input",
+      "mode": "original",
+      "trial": 3,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "baseline",
+        "optimized"
+      ],
+      "function_addresses": [
+        480468013456,
+        480467906960
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        88257,
+        87565
+      ],
+      "slot_thread_cpu_ns": [
+        90372,
+        89803
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0079027008507966,
+      "baseline_over_optimized": 1.0079027008507966
+    },
+    {
+      "run": 2,
+      "name": "binary_echo",
+      "mode": "original",
+      "trial": 0,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "baseline",
+        "optimized"
+      ],
+      "function_addresses": [
+        528134414736,
+        528134111632
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        64777,
+        65266
+      ],
+      "slot_thread_cpu_ns": [
+        66162,
+        66569
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9925075843471333,
+      "baseline_over_optimized": 0.9925075843471333
+    },
+    {
+      "run": 2,
+      "name": "binary_echo",
+      "mode": "original",
+      "trial": 1,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "baseline",
+        "optimized"
+      ],
+      "function_addresses": [
+        528134414736,
+        528134111632
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        64129,
+        64373
+      ],
+      "slot_thread_cpu_ns": [
+        65592,
+        65795
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9962095909775838,
+      "baseline_over_optimized": 0.9962095909775838
+    },
+    {
+      "run": 2,
+      "name": "binary_echo",
+      "mode": "original",
+      "trial": 2,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "baseline",
+        "optimized"
+      ],
+      "function_addresses": [
+        528134414736,
+        528134111632
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        64047,
+        65105
+      ],
+      "slot_thread_cpu_ns": [
+        65511,
+        66529
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9837493280086015,
+      "baseline_over_optimized": 0.9837493280086015
+    },
+    {
+      "run": 2,
+      "name": "binary_echo",
+      "mode": "original",
+      "trial": 3,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "baseline",
+        "optimized"
+      ],
+      "function_addresses": [
+        528134414736,
+        528134111632
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        64942,
+        65793
+      ],
+      "slot_thread_cpu_ns": [
+        66325,
+        67179
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9870654932895597,
+      "baseline_over_optimized": 0.9870654932895597
+    },
+    {
+      "run": 2,
+      "name": "multi_transfer",
+      "mode": "reversed",
+      "trial": 0,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "optimized",
+        "baseline"
+      ],
+      "function_addresses": [
+        510046126480,
+        510045852048
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        3087200,
+        2772460
+      ],
+      "slot_thread_cpu_ns": [
+        3070598,
+        2773763
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.1135237298283835,
+      "baseline_over_optimized": 0.8980500129567245
+    },
+    {
+      "run": 2,
+      "name": "multi_transfer",
+      "mode": "reversed",
+      "trial": 1,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "optimized",
+        "baseline"
+      ],
+      "function_addresses": [
+        510046126480,
+        510045852048
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        2769045,
+        2782918
+      ],
+      "slot_thread_cpu_ns": [
+        2764323,
+        2775228
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9950149447450481,
+      "baseline_over_optimized": 1.0050100305339928
+    },
+    {
+      "run": 2,
+      "name": "multi_transfer",
+      "mode": "reversed",
+      "trial": 2,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "optimized",
+        "baseline"
+      ],
+      "function_addresses": [
+        510046126480,
+        510045852048
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        2765950,
+        2828614
+      ],
+      "slot_thread_cpu_ns": [
+        2770874,
+        2789144
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9778463940290192,
+      "baseline_over_optimized": 1.0226555071494423
+    },
+    {
+      "run": 2,
+      "name": "multi_transfer",
+      "mode": "reversed",
+      "trial": 3,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "optimized",
+        "baseline"
+      ],
+      "function_addresses": [
+        510046126480,
+        510045852048
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        3834067,
+        3987469
+      ],
+      "slot_thread_cpu_ns": [
+        3822306,
+        3965860
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9615289799118187,
+      "baseline_over_optimized": 1.0400102554285044
+    },
+    {
+      "run": 2,
+      "name": "scan",
+      "mode": "original",
+      "trial": 0,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "baseline",
+        "optimized"
+      ],
+      "function_addresses": [
+        518655361424,
+        518655209872
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        382527,
+        390096
+      ],
+      "slot_thread_cpu_ns": [
+        385824,
+        393840
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9805970837947582,
+      "baseline_over_optimized": 0.9805970837947582
+    },
+    {
+      "run": 2,
+      "name": "scan",
+      "mode": "original",
+      "trial": 1,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "baseline",
+        "optimized"
+      ],
+      "function_addresses": [
+        518655361424,
+        518655209872
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        383176,
+        390704
+      ],
+      "slot_thread_cpu_ns": [
+        386515,
+        394125
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9807322167164912,
+      "baseline_over_optimized": 0.9807322167164912
+    },
+    {
+      "run": 2,
+      "name": "scan",
+      "mode": "original",
+      "trial": 2,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "baseline",
+        "optimized"
+      ],
+      "function_addresses": [
+        518655361424,
+        518655209872
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        382122,
+        389770
+      ],
+      "slot_thread_cpu_ns": [
+        385580,
+        393067
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9803781717423096,
+      "baseline_over_optimized": 0.9803781717423096
+    },
+    {
+      "run": 2,
+      "name": "scan",
+      "mode": "original",
+      "trial": 3,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "baseline",
+        "optimized"
+      ],
+      "function_addresses": [
+        518655361424,
+        518655209872
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        381999,
+        389849
+      ],
+      "slot_thread_cpu_ns": [
+        385457,
+        393229
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9798639986251086,
+      "baseline_over_optimized": 0.9798639986251086
+    },
+    {
+      "run": 2,
+      "name": "scan",
+      "mode": "reversed",
+      "trial": 0,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "optimized",
+        "baseline"
+      ],
+      "function_addresses": [
+        496932147600,
+        496931864976
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        376994,
+        376954
+      ],
+      "slot_thread_cpu_ns": [
+        380411,
+        380290
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0001061137433214,
+      "baseline_over_optimized": 0.9998938975156103
+    },
+    {
+      "run": 2,
+      "name": "scan",
+      "mode": "reversed",
+      "trial": 1,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "optimized",
+        "baseline"
+      ],
+      "function_addresses": [
+        496932147600,
+        496931864976
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        377564,
+        446532
+      ],
+      "slot_thread_cpu_ns": [
+        380900,
+        392823
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.8455474635636415,
+      "baseline_over_optimized": 1.1826657202487525
+    },
+    {
+      "run": 2,
+      "name": "scan",
+      "mode": "reversed",
+      "trial": 2,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "optimized",
+        "baseline"
+      ],
+      "function_addresses": [
+        496932147600,
+        496931864976
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        376017,
+        374959
+      ],
+      "slot_thread_cpu_ns": [
+        379435,
+        378337
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0028216418328404,
+      "baseline_over_optimized": 0.9971862974280418
+    },
+    {
+      "run": 2,
+      "name": "scan",
+      "mode": "reversed",
+      "trial": 3,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "optimized",
+        "baseline"
+      ],
+      "function_addresses": [
+        496932147600,
+        496931864976
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        378460,
+        377238
+      ],
+      "slot_thread_cpu_ns": [
+        382040,
+        380738
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0032393343194481,
+      "baseline_over_optimized": 0.9967711250858743
+    },
+    {
+      "run": 2,
+      "name": "binary_echo",
+      "mode": "same-baseline",
+      "trial": 0,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "baseline",
+        "baseline"
+      ],
+      "function_addresses": [
+        517342581136,
+        517342581136
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        52490,
+        52409
+      ],
+      "slot_thread_cpu_ns": [
+        53874,
+        53793
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0015455360720487,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 2,
+      "name": "binary_echo",
+      "mode": "same-baseline",
+      "trial": 1,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "baseline",
+        "baseline"
+      ],
+      "function_addresses": [
+        517342581136,
+        517342581136
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        52450,
+        52448
+      ],
+      "slot_thread_cpu_ns": [
+        53914,
+        53833
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0000381330079318,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 2,
+      "name": "binary_echo",
+      "mode": "same-baseline",
+      "trial": 2,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "baseline",
+        "baseline"
+      ],
+      "function_addresses": [
+        517342581136,
+        517342581136
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        52489,
+        52492
+      ],
+      "slot_thread_cpu_ns": [
+        53752,
+        53915
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9999428484340471,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 2,
+      "name": "binary_echo",
+      "mode": "same-baseline",
+      "trial": 3,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "baseline",
+        "baseline"
+      ],
+      "function_addresses": [
+        517342581136,
+        517342581136
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        52489,
+        52449
+      ],
+      "slot_thread_cpu_ns": [
+        53915,
+        53752
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0007626456176477,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 2,
+      "name": "multi_transfer",
+      "mode": "same-optimized",
+      "trial": 0,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "optimized",
+        "optimized"
+      ],
+      "function_addresses": [
+        503422673296,
+        503422673296
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        3830770,
+        3420085
+      ],
+      "slot_thread_cpu_ns": [
+        3822753,
+        3325560
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.1200803488802178,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 2,
+      "name": "multi_transfer",
+      "mode": "same-optimized",
+      "trial": 1,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "optimized",
+        "optimized"
+      ],
+      "function_addresses": [
+        503422673296,
+        503422673296
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        3200480,
+        3233520
+      ],
+      "slot_thread_cpu_ns": [
+        3173868,
+        3213746
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9897820332022069,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 2,
+      "name": "multi_transfer",
+      "mode": "same-optimized",
+      "trial": 2,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "optimized",
+        "optimized"
+      ],
+      "function_addresses": [
+        503422673296,
+        503422673296
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        2771077,
+        2968464
+      ],
+      "slot_thread_cpu_ns": [
+        2765666,
+        2966675
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9335053414830027,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 2,
+      "name": "multi_transfer",
+      "mode": "same-optimized",
+      "trial": 3,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "optimized",
+        "optimized"
+      ],
+      "function_addresses": [
+        503422673296,
+        503422673296
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        2856202,
+        2775716
+      ],
+      "slot_thread_cpu_ns": [
+        2767619,
+        2766072
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0289964823490587,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 2,
+      "name": "scan",
+      "mode": "same-optimized",
+      "trial": 0,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "optimized",
+        "optimized"
+      ],
+      "function_addresses": [
+        476979372432,
+        476979372432
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        122845,
+        123048
+      ],
+      "slot_thread_cpu_ns": [
+        124145,
+        124389
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9983502373057669,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 2,
+      "name": "scan",
+      "mode": "same-optimized",
+      "trial": 1,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "optimized",
+        "optimized"
+      ],
+      "function_addresses": [
+        476979372432,
+        476979372432
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        122803,
+        122719
+      ],
+      "slot_thread_cpu_ns": [
+        124593,
+        124023
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.00068449058418,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 2,
+      "name": "scan",
+      "mode": "same-optimized",
+      "trial": 2,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "optimized",
+        "optimized"
+      ],
+      "function_addresses": [
+        476979372432,
+        476979372432
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        122681,
+        122681
+      ],
+      "slot_thread_cpu_ns": [
+        124105,
+        123983
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 2,
+      "name": "scan",
+      "mode": "same-optimized",
+      "trial": 3,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "optimized",
+        "optimized"
+      ],
+      "function_addresses": [
+        476979372432,
+        476979372432
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        122681,
+        154949
+      ],
+      "slot_thread_cpu_ns": [
+        124512,
+        129314
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.7917508341454285,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 2,
+      "name": "binary_echo",
+      "mode": "reversed",
+      "trial": 0,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "optimized",
+        "baseline"
+      ],
+      "function_addresses": [
+        518478770576,
+        516329206160
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        90373,
+        90617
+      ],
+      "slot_thread_cpu_ns": [
+        92529,
+        92977
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9973073485107651,
+      "baseline_over_optimized": 1.0026999214367123
+    },
+    {
+      "run": 2,
+      "name": "binary_echo",
+      "mode": "reversed",
+      "trial": 1,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "optimized",
+        "baseline"
+      ],
+      "function_addresses": [
+        518478770576,
+        516329206160
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        90049,
+        90455
+      ],
+      "slot_thread_cpu_ns": [
+        92245,
+        92530
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9955115803438174,
+      "baseline_over_optimized": 1.0045086563981833
+    },
+    {
+      "run": 2,
+      "name": "binary_echo",
+      "mode": "reversed",
+      "trial": 2,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "optimized",
+        "baseline"
+      ],
+      "function_addresses": [
+        518478770576,
+        516329206160
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        90332,
+        90414
+      ],
+      "slot_thread_cpu_ns": [
+        92652,
+        92529
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9990930608091667,
+      "baseline_over_optimized": 1.0009077624761988
+    },
+    {
+      "run": 2,
+      "name": "binary_echo",
+      "mode": "reversed",
+      "trial": 3,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "optimized",
+        "baseline"
+      ],
+      "function_addresses": [
+        518478770576,
+        516329206160
+      ],
+      "same_function_address": false,
+      "slot_monotonic_ns": [
+        90374,
+        90252
+      ],
+      "slot_thread_cpu_ns": [
+        92530,
+        92570
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0013517705978814,
+      "baseline_over_optimized": 0.9986500542191338
+    },
+    {
+      "run": 2,
+      "name": "clear_input",
+      "mode": "same-baseline",
+      "trial": 0,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "baseline",
+        "baseline"
+      ],
+      "function_addresses": [
+        473844965776,
+        473844965776
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        161825,
+        161989
+      ],
+      "slot_thread_cpu_ns": [
+        166423,
+        167237
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9989875855767985,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 2,
+      "name": "clear_input",
+      "mode": "same-baseline",
+      "trial": 1,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "baseline",
+        "baseline"
+      ],
+      "function_addresses": [
+        473844965776,
+        473844965776
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        161661,
+        161663
+      ],
+      "slot_thread_cpu_ns": [
+        165690,
+        165691
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9999876285853906,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 2,
+      "name": "clear_input",
+      "mode": "same-baseline",
+      "trial": 2,
+      "first_slot": 1,
+      "arms_by_slot": [
+        "baseline",
+        "baseline"
+      ],
+      "function_addresses": [
+        473844965776,
+        473844965776
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        161784,
+        161824
+      ],
+      "slot_thread_cpu_ns": [
+        165934,
+        165731
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 0.9997528178762112,
+      "baseline_over_optimized": null
+    },
+    {
+      "run": 2,
+      "name": "clear_input",
+      "mode": "same-baseline",
+      "trial": 3,
+      "first_slot": 0,
+      "arms_by_slot": [
+        "baseline",
+        "baseline"
+      ],
+      "function_addresses": [
+        473844965776,
+        473844965776
+      ],
+      "same_function_address": true,
+      "slot_monotonic_ns": [
+        161866,
+        161701
+      ],
+      "slot_thread_cpu_ns": [
+        165853,
+        165527
+      ],
+      "calls": 8,
+      "all_output_status_checks": true,
+      "slot0_over_slot1": 1.0010204018528024,
+      "baseline_over_optimized": null
+    }
+  ],
+  "limitations": [
+    "Four cases selected post-primary; diagnostic only, not a new optimization/comparator score.",
+    "Clocks, frequency, scheduling and thermals uncontrolled; addresses are observations, no mechanism attribution without isolation.",
+    "Thread-CPU observation includes clock-loop/validation cost and is not subtracted from primary measurements."
+  ]
+}

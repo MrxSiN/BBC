@@ -142,6 +142,18 @@ each target, twelve exact frontend fixtures each and native Android imports
 matching Windows stores. The unchanged frontend source still emits v1.
 These component fixed points use the disclosed Windows bootstrap host.
 
+## Movement-packed rebuilds
+
+Continue the optional route with [`pack_moves.bf`](../compiler/pack_moves.bf).
+Validate complete v3 success, append byte `01`, execute the native BF helper,
+then validate/import v4 and verify the complete canonical store before lowering.
+The [v4 contract](14_BFX_V4_MOVEMENT.md) keeps failure ordering and all source
+limits. [Correctness evidence](../evidence/bfx_v4_movement.json) records three
+identical generations of all four components on each target, twelve frontend
+fixtures per generation and exact Android/Windows stores. Frontend source and
+its transparent v1 bytes remain unchanged. The four components are separate
+bounded programs, never concatenated; native compiler-host gates remain separate.
+
 ## Standalone Android packaging
 
 The [canonical process host](https://github.com/MrxSiN/XAX/blob/5d3a41c649c08974825b9e5b4c199cb6d59b3185/compiler/integration/bfx/standalone_arm64.xax) calls an imported

@@ -21,6 +21,8 @@ Windows 11, with Python 3.13.5. Android execution uses Pixel 8 Pro, API 37.
 These are separate fresh measurements; older reports retain their own host
 metadata and must not be multiplied into these ratios.
 
+Build-time and compiler-memory rows for both targets are Windows-hosted;
+Android labels the output target, not an Android compiler host.
 Each complete build starts a fresh required compiler process and ends after
 the standalone executable is written and the process exits. BBC's native BF
 frontend, canonical validators, native BF clear/arithmetic passes and importer

@@ -40,13 +40,13 @@ for commands, versions, hashes and individual outcomes.
 
 | Dimension | Brainfry implementation | Current BBC + XAX implication |
 |---|---|---|
-| Complete build | One native process parses, optimizes, emits bytes and writes a container; no external assembler/linker | BBC invokes its frontend and canonical importer, verifies a much larger graph, binds the process host and uses legacy bootstrap lowering. The existing complete-build medians average about 0.9–1.0 seconds versus about 15 ms for Brainfry. Frontend-only tuning cannot close that gap. |
+| Complete build | One native process parses, optimizes, emits bytes and writes a container; no external assembler/linker | BBC invokes its frontend and canonical importer, verifies a much larger graph, binds the process host and uses legacy bootstrap lowering. The matched v3 sixteen-case geometric means are about 1.14–1.17 seconds versus about 27 ms for Brainfry. Frontend-only tuning cannot close that gap. |
 | Arithmetic | Consecutive same-direction arithmetic becomes an immediate-count operation | Transparent v1 retains individual commands. Optional v3 now packs power-of-two adds/subtracts; direct arbitrary deltas and generic generated-code overhead remain. |
 | Common loops | `Zero`, offset `MulAdd` and stride `Scan` remove common loop work | BBC now folds exact unit-step clear loops in Brainfuck. Affine transfer and scan recognition still need proofs and implementation before XAX lowers their declared semantics. |
 | Backend | Dedicated x86-64/AArch64 emitters hold the tape cursor in a register and patch branches directly | XAX is a general verified backend; measure graph/operation and spill costs before targeted graph or backend changes. A second BBC machine-code writer would violate the repository architecture. |
 | Startup and tape | Fresh native processes reserve address space and commit initially zero OS pages; a small freestanding runtime provides I/O | BBC's reusable decision contract resets all 65,536 cells for every invocation. Fresh-process and repeated-call costs need distinct measurements; removing reset would be incorrect. |
-| Build memory | Compact Rust operations and byte buffers | The current BBC importer borrows a 64 MiB workspace; the recorded coordinator retains it through later stages. Verification also contributes. Workspace extent is a capacity, not a RAM measurement. |
-| Native file size | Direct minimal PE/ELF writers and compact optimized instruction stream | The recorded Windows average is 3,072 bytes for Brainfry versus 38,827 for BBC; Android averages are 1,307 versus 5,423. Folding and generic backend/package costs need separate accounting. |
+| Build memory | Compact Rust operations and byte buffers | The current BBC caller uses a lazy zero-initialized 64 MiB importer view and releases it before verification/lowering. The matched v3 compiler resident peaks remain about 51 MiB versus 5.3 MiB for Brainfry. Extent is not resident RAM. |
+| Native file size | Direct minimal PE/ELF writers and compact optimized instruction stream | The matched v3 file-size geometric means remain about 14,183 versus 2,890 bytes on Windows and 2,743 versus 1,140 on Android. Further folding and generic backend/package costs need separate accounting. |
 
 These explanations follow the pinned
 [optimizer](https://github.com/DirazCoder/brainfry/blob/e55d45735a6feb450a7e47852f4340f5b532fef8/bfc/src/optimize.rs),
@@ -146,8 +146,8 @@ supported 32-bit rotate/truncate sequence.
    only through the existing verified cache contract. This addresses the
    largest recorded build-latency gap; do not bypass verification.
 2. Extend compact arithmetic beyond powers where useful, with proved actual XAX
-   lowering support. Prioritize trap-preserving movement envelopes and general
-   odd-step clears. Retain v1 as the
+   lowering support. The v4 monotone movement pass now preserves
+   first-crossing failures; prioritize general odd-step clears next. Retain v1 as the
    transparent differential path and a capacity-safe fallback.
 3. Keep recognition in Brainfuck and lower declared operations in canonical
    XAX through expected-root transactions. Extend to guarded affine
@@ -168,3 +168,9 @@ The [v3 measured follow-up](13_V3_BENCHMARKS.md) reduces this corpus's build
 time and native-call cost against v2 in aggregate. Brainfry still retains
 much faster complete builds and smaller files. Its valid scored workloads
 remain included; the reproduced defects do not remove them.
+
+The [v4 movement contract](14_BFX_V4_MOVEMENT.md) and [matched report](15_V4_BENCHMARKS.md)
+add guarded identical-direction groups. Both-target full-buffer checks and
+four-component native fixed points pass. Affine transfers, stride scans and
+complete native compiler-host integration remain open. The v3 figures in
+the implementation table are a separate pinned measurement snapshot.

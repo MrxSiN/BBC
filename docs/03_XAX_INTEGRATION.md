@@ -2,7 +2,10 @@
 
 The decoder and application baseline sources are pinned to revision
 [`ac7821c9bf9c1bde0c18f00da6d1a60a3b320816`](https://github.com/MrxSiN/XAX/commit/ac7821c9bf9c1bde0c18f00da6d1a60a3b320816).
-The current v1/v2/v3 importer is pinned to
+The current v1/v2/v3/v4 importer is pinned to
+[revision `ab25b75`](https://github.com/MrxSiN/XAX/commit/ab25b75f7cc0f03d06aae3cab7d84327c59c5e37),
+with its [movement contract and exact-root transactions](https://github.com/MrxSiN/XAX/blob/ab25b75f7cc0f03d06aae3cab7d84327c59c5e37/compiler/integration/bfx/MOVEMENT.md).
+The preceding v1/v2/v3 importer remains pinned to
 [revision `0232858`](https://github.com/MrxSiN/XAX/commit/0232858c7ad9be0e66b6feb300b4d0880bc276a5),
 with its [arithmetic contract and exact-root transactions](https://github.com/MrxSiN/XAX/blob/0232858c7ad9be0e66b6feb300b4d0880bc276a5/compiler/integration/bfx/POWERS.md).
 The preceding v1/v2 importer remains pinned to
@@ -35,7 +38,7 @@ empty/hello rebuilds. This does not complete the native XAX build driver.
 | Canonical XAX source | Responsibility |
 |---|---|
 | [bfx.xax](https://github.com/MrxSiN/XAX/blob/ac7821c9bf9c1bde0c18f00da6d1a60a3b320816/compiler/integration/bfx/bfx.xax) | Validate records and compute matching loop indices |
-| [import_bfx.xax](https://github.com/MrxSiN/XAX/blob/0232858c7ad9be0e66b6feb300b4d0880bc276a5/compiler/integration/bfx/import_bfx.xax) | Validate v1/v2/v3, then emit, hash, sort and serialize a complete native decision store |
+| [import_bfx.xax](https://github.com/MrxSiN/XAX/blob/ab25b75f7cc0f03d06aae3cab7d84327c59c5e37/compiler/integration/bfx/import_bfx.xax) | Validate v1/v2/v3/v4, then emit, hash, sort and serialize a complete native decision store |
 | [android_bfx.xax](https://github.com/MrxSiN/XAX/blob/ac7821c9bf9c1bde0c18f00da6d1a60a3b320816/compiler/integration/bfx/android_bfx.xax) | Native decision caller, JNI lifecycle, managed UI and Android package/build metadata |
 | [backend_tests.xax](https://github.com/MrxSiN/XAX/blob/ac7821c9bf9c1bde0c18f00da6d1a60a3b320816/compiler/integration/bfx/backend_tests.xax) | Arithmetic and large-stack regression checks |
 
@@ -50,6 +53,17 @@ The [numbered BFX guide](https://github.com/MrxSiN/XAX/blob/ac7821c9bf9c1bde0c18
 contracts and static case data.
 
 ## Decoder and importer
+
+The [v4 movement extension](14_BFX_V4_MOVEMENT.md) adds fourteen monotone
+movement powers while preserving first-crossing failures and skipped zero
+loops. Its 1,164 cross-target records retain exact v1/v2/v3 stores. Across
+42 modules, 9,592 full-buffer calls agree with the original interpreter;
+all four BF components reach three identical generations on each target.
+The [capacity supplement](../evidence/bfx_v4_native_boundaries.json) adds
+three maximum-count records, current frontend boundaries and oversized-view
+guards. Native ABI, caller extents, full reset and generic backend sources
+remain unchanged. Separate [matched measurements](15_V4_BENCHMARKS.md)
+retain the existing compiler-host and competitor limitations.
 
 The [v3 extension](12_BFX_V3_ARITHMETIC.md) adds fourteen modular arithmetic
 powers. The new consumer passes 908 Android/Windows record comparisons,

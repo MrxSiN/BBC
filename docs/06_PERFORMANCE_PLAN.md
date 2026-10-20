@@ -203,3 +203,8 @@ The [v3 matched run](13_V3_BENCHMARKS.md) follows the fixed-corpus protocol
 with twelve observations across three independent runs per arm/case/target.
 Its exploratory intervals and exact three-run sign-flip limitations do not
 meet the confirmatory competitor-victory gates above.
+
+The [v4 matched run](15_V4_BENCHMARKS.md) retains that sixteen-source corpus
+and trial count, comparing v3, v4 and pinned Brainfry. It remains an
+exploratory optimization measurement; missing modes and confirmatory
+competitor-victory gates remain open.

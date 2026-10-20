@@ -412,6 +412,40 @@ new tape budget is required. Three-cluster inference, remaining compiler/RAM
 gaps and competitor coverage prevent a sweep claim. Complete compiler-host
 support remains a separate gate.
 
+## P1: movement powers
+
+The optional [v4 pass](14_BFX_V4_MOVEMENT.md) replaces only live identical
+unit moves with declared powers from two through 128. A monotone run stays
+within the tape exactly when its endpoint does. The run performs no other
+observable operation. Failure branches use the original status and the last
+valid boundary cursor, retaining all prior tape/input/output effects. The
+endpoint never reaches continuation after a failed bound check. Zero-entry
+loops bypass both movement and checking. Opposite moves remain separate;
+`<>` and `+[<>-]` are retained negative examples.
+
+The sixteen-cell staging proof follows the arithmetic packer's marked slots:
+count decreases by `K - 1`, groups never overlap, deleted slots end runs and
+all walks stay inside the bounded staged region. Markers, CLEAR, arithmetic
+encodings and deletions occupy distinct fields. Seven descending phases never
+expand a record or increase acceptance limits. The source has 3,719 instructions
+and observes peak cell 61,469; its own v4 module has 1,063 operations.
+
+[Correctness evidence](../evidence/bfx_v4_movement.json) records 432 native
+properties, 72 independent cases, 1,164 cross-target records and 9,592 full-buffer
+calls over fourteen powers and 42 modules. Nearby boundary positions, guarded
+unaligned buffers, dirty tape, EOF, output limits, skipped/trap-reaching loops
+and invalid logical lengths match the original interpreter. Three generations
+of all four BF components agree on each target, including twelve frontend
+fixtures per generation. Generic XAX implementation remains unchanged.
+
+The [v4 matched report](15_V4_BENCHMARKS.md) owns performance conclusions.
+It records exact file-size reductions and about 1.020x complete-build median
+ratios on each target, but no established runtime or RAM win. The 0.930x
+Android native-call aggregate is retained; post-primary identical-code and
+same-address controls expose variability without isolating a mechanism.
+Do not multiply ratios from separate snapshots or promote these component
+fixed points to a complete native compiler host.
+
 ## XAX: eight-byte tape reset
 
 The current [canonical importer](https://github.com/MrxSiN/XAX/blob/7761cf24218472c459c3491dcf7570263bc3b373/compiler/integration/bfx/import_bfx.xax) initializes the complete

@@ -3,8 +3,9 @@
 Evidence: **2026-10-19** frontend/platform runs; **2026-10-20** Windows native
 driver prototype, tape-reset and capacity-flag optimizations, Brainfly SDK
 follow-up, semantic optimization and standalone Android/Windows processes.
-Formats: transparent **BFX v1**, optional [**v2 CLEAR**](10_BFX_V2_CLEAR.md)
-and [**v3 arithmetic powers**](12_BFX_V3_ARITHMETIC.md),
+Formats: transparent **BFX v1**, optional [**v2 CLEAR**](10_BFX_V2_CLEAR.md),
+[**v3 arithmetic powers**](12_BFX_V3_ARITHMETIC.md)
+and [**v4 movement powers**](14_BFX_V4_MOVEMENT.md),
 magic `42 46 58`, explicit binary version. The [v1 contract](02_BFX_CONTRACT.md) and
 [execution profile](01_BRAINFUCK_PROFILE.md) define the shared behavior.
 
@@ -17,7 +18,7 @@ magic `42 46 58`, explicit binary version. The [v1 contract](02_BFX_CONTRACT.md)
 | XAX native driver prototype | No new execution | EXECUTED with bounded coverage: 78 valid stores accept, 130 malformed stores reject, four decline; one diagnostic differs | Native PE build/edit/resolve fixtures pass; corrected self-store and DLL packaging decline |
 | Standalone XAX hashing host | No new execution | EXECUTED: 139 successful streams and five failure cases | Separate native helper process; not yet used by the compiler loader |
 | Canonical XAX decoder | EXECUTED: 393 cases | EXECUTED: 393 cases | Length, magic, version, opcode, bracket and resource limits |
-| Canonical XAX importer | EXECUTED: v1/v2/v3 importer passes 908 cases | EXECUTED: all three versions and strict v1/v2 compatibility | Exact Android/Windows agreement; input and four buffer guards preserved |
+| Canonical XAX importer | EXECUTED: v1/v2/v3/v4 importer passes 1,164 cases | EXECUTED: all four versions and strict v1/v2/v3 compatibility | Exact Android/Windows agreement; input and four buffer guards preserved |
 | Optional BF optimizer | EXECUTED: three identical optimized generations | EXECUTED: three identical optimized generations, 359 properties and 71 independent seed cases | Exact clears/full arithmetic wraps; no record expansion |
 | Arithmetic packer | EXECUTED: three identical native generations | EXECUTED: three identical native generations, 432 native properties and 72 independent cases | 3,639-instruction standard BF producer; all fourteen arithmetic powers |
 | Arithmetic decision components | EXECUTED: 5,530 checks across 42 modules per arm | EXECUTED: 5,530 checks across 42 modules per arm | Complete buffers and guards agree with an independent interpreter; 22,120 calls total |
@@ -68,6 +69,22 @@ complete native-call geometric-mean median ratios of 1.432x on Android and
 ratios are 1.093x and 1.136x; process ratios are 1.077x and 1.009x. Three run
 clusters limit inference. Seven Windows and six Android files shrink; Android
 hello grows by 16.7%. Brainfry retains much faster builds and smaller files.
+
+The [v4 movement packer](14_BFX_V4_MOVEMENT.md) adds identical-direction
+power groups without cancelling opposite moves. It has 3,719 instructions /
+5,347 bytes and observes peak cell 61,469. Its [separate correctness evidence](../evidence/bfx_v4_movement.json)
+records 432 native properties, 72 independent cases and 9,592 complete-buffer
+calls over both targets. All four BF components reach three native fixed
+points per target; frontend/clear/arithmetic/movement v4 operation counts are
+812/901/1,057/1,063. The unchanged frontend still emits exact transparent v1.
+[New matched measurements](15_V4_BENCHMARKS.md) retain the same sixteen
+workloads and all earlier snapshots; no overall competitor sweep is achieved. Full-build
+geometric-mean median ratios against v3 are about 1.020x on each target;
+seven Android/four Windows executable files shrink and none grow. The new
+Windows frontend DLL is 218,624 bytes versus v3's 502,784. Native-call ratios
+are 0.930x Android / 1.005x Windows; no runtime or RAM victory is established.
+[Post-primary controls](../evidence/bfx_v4_call_controls.json) record variability
+with identical code and the same function address; primary scores stay intact.
 
 The retained capacity-flag change has ten-case native-call median-ratio
 geometric means of 1.169x on Android and 1.086x on Windows, thirty paired
@@ -233,6 +250,11 @@ native compiler driver, best-mode coverage, real applications or M8.
 | [brainfly_brainfry_followup.json](../evidence/brainfly_brainfry_followup.json) | Installed SDK identity; twelve Brainfly JIT and generated NativeAOT correctness cases; pinned Brainfry release tests and reproduced optimizer defects; no new competitive timing score |
 | [bfx_v2_optimization.json](../evidence/bfx_v2_optimization.json) | BF clear/full-wrap optimizer, canonical v1/v2 importer, independent/native correctness, optimized fixed points and separate three-arm complete build/process/resource measurements |
 | [bfx_v3_arithmetic.json](../evidence/bfx_v3_arithmetic.json) | Standard BF arithmetic packing, canonical v1/v2/v3 consumer, 908 cross-target record cases, 22,120 full-buffer calls and three-component native fixed points; timing measured separately |
+| [bfx_v3_measurements.json](../evidence/bfx_v3_measurements.json) | Matched three-run v2/v3/Brainfry timings, memory and full sizes; arithmetic native-call improvements remain distinct from later movement results |
+| [bfx_v4_movement.json](../evidence/bfx_v4_movement.json) | Monotone movement packing, bounds proofs, 1,164 importer cases, 9,592 complete-buffer calls and four-component native fixed points |
+| [bfx_v4_measurements.json](../evidence/bfx_v4_measurements.json) | Fresh matched v3/v4/Brainfry complete builds, process execution, native calls, resources and full file sizes; no overall sweep |
+| [bfx_v4_native_boundaries.json](../evidence/bfx_v4_native_boundaries.json) | Current native frontend boundaries, oversized-view guards and three maximum-count v4 stores, exact on both targets |
+| [bfx_v4_call_controls.json](../evidence/bfx_v4_call_controls.json) | Post-primary load/slot/thread-CPU diagnostics on four selected Android cases; identical-library controls, raw primary scores retained |
 | [build_runtime_resources.json](../evidence/build_runtime_resources.json) | Fresh complete-build latency, compiler/runtime memory, Windows standalone comparisons, raw samples, calibrations, excluded launcher probe and explicit scope |
 | [standalone_windows.json](../evidence/standalone_windows.json) | Canonical Windows host and public hello transaction; 23 native programs, 28 host checks, native binding replay/verify/stale rejection and exact empty/hello rebuilds; explicit unchanged generic inlining configuration |
 | [standalone_android.json](../evidence/standalone_android.json) | Static Android process host and binding, correctness/artifact hashes, primary raw process timings against pinned Awib/brainfry, size summaries, retained excluded concurrent-validation probe |

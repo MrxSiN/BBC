@@ -122,6 +122,16 @@ naming history. Preserve unrelated working-tree edits.
   from the immutable v2 snapshot. `evidence/bfx_v3_measurements.json` records
   matched three-run build/process/resource/file-size and full-call results;
   preserve the Android hello growth and unmet competitor gates.
+- `compiler/pack_moves.bf` is the optional validated-v3 to v4 pass: 3,719
+  instructions / 5,347 bytes, peak cell 61,469. It packs identical monotone
+  moves, preserving first-crossing traps and zero-entry loop skips; never
+  cancel opposite moves. Its separate evidence records 432 properties,
+  72 independent cases, 1,164 cross-target records, 9,592 full-buffer calls
+  and three native generations of all four components on each target.
+  Preserve strict old versions and exact v1/v2/v3 accepted stores. Matched
+  performance remains separate from native compiler-host and sweep gates.
+  Preserve the v4 Android 0.930x native-call aggregate and its separate
+  post-primary controls; identical-code variability establishes no pass effect.
 - The capacity-flag frontend is 4,537 bytes / 2,192 instructions. It adds 82
   instructions and no cells, preserving exact BFX v1 output. Its separate
   `evidence/frontend_capacity_gate.json` covers 42 seed checks, 7,682 complete

@@ -133,3 +133,7 @@ components pass three native generations, with twelve frontend fixtures each.
 The [v3 static cases](v3-cases.json) cover both arithmetic directions, power
 boundaries, the maximum record count, control/movement barriers and negative
 even-step/empty-loop rewrites. Their inputs require the validated-v2 contract.
+
+The [v4 static pairs](v4-cases.json) cover both movement directions, power
+boundaries, maximum count, control/arithmetic/CLEAR barriers and opposite-move
+negative cases. Inputs require complete validated v3 success plus byte `01`.
