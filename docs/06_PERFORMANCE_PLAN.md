@@ -234,7 +234,7 @@ competitor-victory gates remain open.
 Capacity coverage must include sources above the old 3,840-instruction and
 65,533-byte bounds, and depth above 255, once the [scalable path](16_SCALABILITY.md)
 can import and execute them. The private chunk component alone proves filtering/
-validation. V5 now imports and executes larger programs, including Mandelbrot;
+validation. The streaming pipeline imports and executes larger programs, including Mandelbrot;
 maximum-count import-integrity cases remain distinct from complete verification,
 lowering and execution. Larger-profile competitive timings remain open.
 
@@ -251,3 +251,9 @@ Those exploratory results do not replace full-build comparisons. OS samples
 show about 3.31 GiB private commit and 11.2–13.3 MiB peak resident memory;
 allocation reduction remains necessary. Android build coverage takes priority
 before further Windows-specific work. M4 and M8 remain incomplete.
+
+[Android interval allocation](23_ANDROID_NATIVE_LOWERING.md) now clears the
+deep-nesting coverage gate on the tested corpus. Its wall times are diagnostic
+and unscored; deep repeat builds run concurrently. Alias/range and graph-analysis
+cost, fixed workspace commitment and the complete native source workflow remain
+the next Android priorities. No new complete-build or runtime comparison follows.

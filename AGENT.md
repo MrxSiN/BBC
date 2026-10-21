@@ -87,6 +87,11 @@ naming history. Preserve unrelated working-tree edits.
   driver prototype has bounded diagnostic/store coverage; self-store, large-edit,
   common-loader and BBC DLL packaging gates remain unmet. Native component
   execution is not a complete native compiler-host path.
+- [Android lowering](docs/23_ANDROID_NATIVE_LOWERING.md) passes 22 prepared
+  snapshots, 44 native builds and 47 Pixel 8 Pro executions. Twenty previously
+  successful Android artifacts remain exact; active depth-512 coverage is new.
+  Interval records allocate as needed inside a fixed arena. This does not
+  establish dynamic view growth, lower peak RAM or a complete source workflow.
 - Generic source-coordinator Windows lowering needs existing callee-inlining
   APIs. Keep canonical verification and disclose that configuration. The general
   ARM64 composite-return defect OI-49 remains separate; importer scratch outputs

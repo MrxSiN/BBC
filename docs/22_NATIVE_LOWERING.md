@@ -1,5 +1,9 @@
 # Native lowering and remaining Android coverage
 
+The subsequent [Android phase](23_ANDROID_NATIVE_LOWERING.md) resolves the
+deep-512 decline recorded here. This guide retains the preceding source's
+results and measurement boundaries.
+
 ## Implemented scope
 
 The [execution report](../evidence/native_windows_lowering.json) records a

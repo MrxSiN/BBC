@@ -178,9 +178,10 @@ three identical final frontend generations on each target and Mandelbrot replay.
 No existing evidence report is rewritten. The streaming coordinator fixes
 capacity-before-bracket precedence across chunks.
 
-Full native compilation remains INCOMPLETE. A prepared Android native-build
-snapshot packages and runs hello successfully, but equivalent Windows build
-rejects unsupported one-bit values. Library packaging, self-store/multiple
+Full native compilation remains INCOMPLETE. At the interface phase's pinned
+driver source, an Android snapshot packages and runs hello, while the Windows
+build rejects one-bit values; subsequent lowering results follow below.
+Library packaging, self-store/multiple
 resource-callee coverage and common helper loading remain open. No new complete
 build speedup, advanced loop optimization or universal competitor win is claimed.
 
@@ -196,12 +197,12 @@ reuse work and competitive targets remain INCOMPLETE.
 
 ## Native lowering follow-up
 
-[Current native lowering](22_NATIVE_LOWERING.md) and its
+[The preceding native lowering phase](22_NATIVE_LOWERING.md) and its
 [immutable report](../evidence/native_windows_lowering.json) extend that scope:
 all six original prepared target snapshots now build twice identically and
 execute correctly. A separate 42-target corpus passes 38. Android deep-512
-verifies but declines during build; three Windows cases reject a call ABI
-shape. Android diagnosis and target execution take priority next.
+verified but declined during build; three Windows cases rejected a call ABI
+shape. The Android follow-up below resolves that target's decline.
 The report includes 786,432 counted byte-operation route executions, pointer
 and stack cases, and 160 preserved semantic diagnostic cases. Prepared native
 build medians of 24.25–31.83 ms exclude frontend/import/binding. OS samples show
@@ -209,3 +210,25 @@ about 3.31 GiB private commit despite 11.2–13.3 MiB resident memory.
 The public native build workflow, libraries, self-store/resource-callee coverage,
 common loading, M4 and M8 remain incomplete. Historical reports retain their
 original bytes and scope.
+
+## Android native lowering
+
+[The Android follow-up](23_ANDROID_NATIVE_LOWERING.md) fixes the depth-512
+native build decline through checked allocation of live-interval records
+inside the existing fixed arena. All 22 prepared Android snapshots pass
+44 native builds and 47 actual Pixel 8 Pro executions. Each build pair has
+identical artifact/provenance bytes, and all 20 previously successful Android
+artifacts remain exact. Both zero-entry and active depth-512 programs pass.
+There are 388 allocation boundary/random cases, six exhaustion calls, four
+framed O0/O1 frontend checks, 160 exact diagnostic controls and three unchanged
+Windows smoke artifacts. [Raw evidence](../evidence/native_android_lowering.json)
+preserves source hashes, failed private attempts and unscored timing samples.
+A separate [Android hello smoke](../evidence/android_hello_smoke.json) adds two
+identical native builds and one device execution, retaining the 5,880-byte ELF.
+
+The BFX contract and BBC implementation streams are unchanged. The fixed view
+budgets do not grow dynamically, and no peak-RAM or competitor win is claimed.
+Full source workflow, Android-hosted compiler execution, self-store/resource
+verification gaps, common loading and shared libraries remain incomplete.
+Android graph-analysis cost and the complete native workflow take priority.
+M2/M4 remain incomplete; M8 is not achieved.

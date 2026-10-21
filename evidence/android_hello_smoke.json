@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-21",
+  "state": "EXECUTED separate Android hello follow-up",
+  "driver_root": "68ecf527e4c18c163d1fc2bdddc76335ca2f205eff4f57766cec944a67915f4c",
+  "driver_artifact_sha256": "fa50e6005717a521e30123ad8e9cc637aa3fe15f28a1935cf394f0d4f2ee1125",
+  "source_sha256": "09350bdd22b7ad74f5bac9ee667beb92efde56a297661336de95c0206730271a",
+  "source_name": "hello-android.xax",
+  "native_authority": {
+    "component": "native-android-hello-followup",
+    "semantic_root": "68ecf527e4c18c163d1fc2bdddc76335ca2f205eff4f57766cec944a67915f4c",
+    "native_artifact_digest": "fa50e6005717a521e30123ad8e9cc637aa3fe15f28a1935cf394f0d4f2ee1125",
+    "requested_authority": "xax",
+    "actual_authority": "xax",
+    "fallback_occurred": false,
+    "fallback_reason": null
+  },
+  "verify_exit": 0,
+  "build_count": 2,
+  "build_exit": 0,
+  "artifact_and_provenance_repeat_identity": true,
+  "artifact_sha256": "38c86bdd228a62304e4f6f9d22c9f99a0762d9511e358b7fec2cafeb125d6c2e",
+  "artifact_bytes": 5880,
+  "provenance_sha256": "eaaa9e2a90d211146f07346aacb3b77a2366c8d929c4e91d334123e712240499",
+  "prior_artifact_identical": true,
+  "android_serial": "adb-38021FDJG00610-NIdGHK._adb-tls-connect._tcp",
+  "program_exit": 0,
+  "output_hex": "48656c6c6f20576f726c64210a",
+  "scope": "Separate from the22-snapshot corpus: two native prepared-store builds and one actual Android execution. Binary output redirected on device and pulled. No Python compiler runs in this native stage; frozen snapshot preparation/initial compiler bootstrap remain external generic SDK setup. No timing score.",
+  "external_archive": {
+    "path": "C:\\Users\\User\\.codex\\visualizations\\2026\\10\\20\\01a156c6-4d9f-7521-888e-9f3bc25184bb\\native_build_fix",
+    "commit": "fad1559aa04f8a2cd223b28b6edf4f5c67db01a6",
+    "archived_report_sha256": "3c1d9ec1defee842b2510d81e77db855acade528b4d38157a1d3a271aecccd82",
+    "production_dependency": false
+  }
+}

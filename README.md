@@ -55,11 +55,11 @@ an implementation milestone. The
 [unified interface phase](docs/21_UNIFIED_COMPILATION.md) now implements the
 public entry point; the frozen baseline describes its earlier state.
 
-[Native lowering evidence](docs/22_NATIVE_LOWERING.md) now records successful
-native builds and execution of all six original target snapshots, plus 38 of
-42 broader cases. Android deep nesting remains a build decline and is the next
-platform priority. Prepared-build timings exclude frontend/import/binding;
-full native compilation and competitive targets remain incomplete.
+[Android native lowering](docs/23_ANDROID_NATIVE_LOWERING.md) passes all 22
+prepared Android snapshots, 44 native builds and 47 Pixel 8 Pro executions,
+including an active depth-512 program. The 20 previously successful Android
+artifacts remain identical. Prepared-build timings exclude frontend/import/
+binding; full native compilation and competitive evaluation remain incomplete.
 
 ## Documentation
 
@@ -87,3 +87,4 @@ full native compilation and competitive targets remain incomplete.
 
 - [Unified public compilation and native command](docs/21_UNIFIED_COMPILATION.md)
 - [Native lowering and remaining Android coverage](docs/22_NATIVE_LOWERING.md)
+- [Android native lowering](docs/23_ANDROID_NATIVE_LOWERING.md)

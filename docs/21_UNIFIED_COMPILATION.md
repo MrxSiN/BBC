@@ -127,3 +127,7 @@ results do not change this interface phase's frozen benchmark or bootstrap hashe
 
 [Subsequent lowering](22_NATIVE_LOWERING.md) builds all six original prepared
 target snapshots and records the broader Android deep-nesting decline.
+
+[Android interval allocation](23_ANDROID_NATIVE_LOWERING.md) subsequently fixes
+that decline while preserving all 20 previously successful Android artifacts.
+The public frontend and its single BFX format remain unchanged.

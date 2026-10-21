@@ -40,6 +40,22 @@
       "frame_bytes": 65541,
       "frame_sha256": "e9c247d90b6beb51abf4623b4117b86c9ee7403fe527e36a1d06a8dc07ea4ab9",
       "status": 2
+    },
+    {
+      "name": "deep_nesting_512",
+      "frame_bytes": 1031,
+      "frame_sha256": "682d18bfdf93ef76619987236bbbfd3129b49c0abc676958ad1848465f01d0de",
+      "status": 0,
+      "source_file": "deep_nesting_512.bf",
+      "expected_O1_record": "deep_nesting_512.bfx"
+    },
+    {
+      "name": "deep_nesting_512_active",
+      "frame_bytes": 1035,
+      "frame_sha256": "f5693c17b6ae9a154f142cecdd446c4afa45fb13eb21bbb6e3f6d6c787f2cd41",
+      "status": 0,
+      "source_file": "deep_nesting_512_active.bf",
+      "expected_O1_record": "deep_nesting_512_active.bfx"
     }
   ]
 }

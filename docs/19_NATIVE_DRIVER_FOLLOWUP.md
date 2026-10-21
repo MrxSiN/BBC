@@ -115,3 +115,7 @@ and large-stack handling. All six original prepared target snapshots now build
 and run; the broader corpus retains four failures, including Android deep-512.
 Its separate report measures prepared native builds and OS memory, without
 promoting these boundaries into full-source or competitor results.
+
+The later [Android phase](23_ANDROID_NATIVE_LOWERING.md) resolves the tested
+deep-512 decline and adds active nesting coverage. Its separate report retains
+all earlier evidence and does not close the remaining full native workflow gates.
