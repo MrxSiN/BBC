@@ -17,9 +17,9 @@ before optimization and balanced nesting **32,768**. These are fixed budgets;
 
 ## Use the compiler
 
-Put `bbc.exe`, the native XAX driver as `xaxc.exe` and the two host requests in
-ignored `build/` (see [native compilation](docs/25_NATIVE_COMPILE.md) and the
-external XAX [bootstrap recipes](https://github.com/MrxSiN/XAX/blob/19d899db0db6503b37b1dfc8a1967d7b2798862f/compiler/integration/bfx/COMPILE.md)).
+Put `bbc.exe` and the two host requests `bbc-android-arm64.xax` and
+`bbc-windows-x86_64.xax` in ignored `build/` (see [native compilation](docs/25_NATIVE_COMPILE.md)
+and the external XAX [bootstrap recipes](https://github.com/MrxSiN/XAX/blob/1af64bff46723b54a132a9586a82f9a0fa527534/compiler/integration/bfx/COMPILE.md)).
 From Command Prompt:
 
 ```text
@@ -37,8 +37,9 @@ Discard output on nonzero exit. [The interface guide](docs/21_UNIFIED_COMPILATIO
 defines the source interface and limits; [native compilation](docs/25_NATIVE_COMPILE.md)
 defines `compile` exits and outputs.
 
-Every command runs without Python: `compile` uses the native XAX driver for
-binding, resolution, verification, lowering and packaging. Bootstrapping
+Every command runs without Python, and `compile` runs in one process: `bbc.exe`
+contains the native XAX driver, which binds, resolves, verifies, lowers and
+packages. Bootstrapping
 `bbc.exe` and the driver still uses the disclosed generic XAX SDK once. Native
 components execute on Windows x86-64 and Android ARM64. See [integration](docs/03_XAX_INTEGRATION.md)
 and [bootstrap](docs/04_BOOTSTRAP.md). The bounded compiler and text framer are
@@ -68,8 +69,8 @@ binding; full native compilation and competitive evaluation remain incomplete.
 [Native compilation](docs/25_NATIVE_COMPILE.md) completes the Python-free
 source-to-executable path: 332 builds and 588 emulated executions match an
 independent interpreter, earlier device-executed artifacts reproduce exactly,
-and complete builds measure 0.24–0.25 s under Wine against 1.24–1.27 s for the
-previous Python path on the same host. No Brainfry verdict follows.
+and single-process builds measure about 0.11 s under Wine against about 1.4 s
+for the previous Python path on the same host. No Brainfry verdict follows.
 
 [XAX build-latency work](docs/24_XAX_BUILD_LATENCY.md) replaces repeated ARM64
 whole-graph alias scans with an incoming-edge index. All 22 Android artifacts

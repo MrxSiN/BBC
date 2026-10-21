@@ -1,0 +1,192 @@
+{
+ "date": "2026-10-21",
+ "state": "IMPLEMENTED and EXECUTED in emulated hosts; MEASURED on one Linux host under Wine (not Windows-native, no competitor arm)",
+ "baseline_xax": "19d899db0db6503b37b1dfc8a1967d7b2798862f",
+ "environment": {
+  "host": "Linux-6.18.44-fc-v139-x86_64-with-glibc2.39",
+  "cpu": "\t: Intel(R) Xeon(R) Processor @ 2.80GHz",
+  "windows_pe_execution": "wine-9.0, persistent wineserver",
+  "android_artifact_execution": "qemu-aarch64 8.2.2 user mode",
+  "device_or_windows_native_execution": false
+ },
+ "canonical_change": {
+  "expected_root": "9bf3f203349cf8712ca93f968db2bd63f1c20b6277181891724ee4fbdd60aafc (windows_helpers/driver.xax)",
+  "result_root": "84478ecaeb21337d68707db175d6c85fc6628466fc4e6b119e50d19e46933f78",
+  "store_sha256": "f716ad3ed572c18666edf1add91fdc4f9326b8af842adc8af086f188a212f8d1",
+  "transaction_sha256": "9d811a1c5d90af86807f8b0464a004d8e305c816cf03586e8c5ae514e1e5bae3",
+  "entry": "3b12142978798b55cb2acdd728ad3aac5dde5fcda18efe101c328fc2b15f83ff",
+  "step_variants": {
+   "edit": "f84978df2b4e",
+   "resolve": "da9790b44157",
+   "build": "e13ce95105dc"
+  },
+  "checks": [
+   "reference edit service apply",
+   "full verify_store",
+   "Workspace.save",
+   "stale root rejected"
+  ]
+ },
+ "bbc_exe": {
+  "sha256": "4e5b03d49ce0759156e7f229c564c0816e214523423d455edc37d87b4d5afa01",
+  "bytes": 14747648,
+  "install": [
+   "bbc.exe",
+   "bbc-android-arm64.xax",
+   "bbc-windows-x86_64.xax"
+  ]
+ },
+ "error_paths": {
+  "invalid source": 1,
+  "unknown target": 4,
+  "unsupported level -O3": 4,
+  "host request missing": 3,
+  "output directory missing": 3,
+  "leftover files after each failure": "none"
+ },
+ "external_test_tools_sha256": {
+  "ref.py": "a705feac7b3579061fd801ad12f8de27a18bdec629f8eda1b22cb2753703bfd6",
+  "campaign.py": "870b7c74172ca39d4662f965b9dcf09d1848a31b2b8dab39da3926e11e73c5ff",
+  "measure2.py": "788f1958b9636e43e74ef07259851d14fdb073e9fc9e5bf4d346af36c8b72969",
+  "old_pipeline.py": "0d87c02137de0d7372e3ad19d0681d6a1e793f6b71229870f50d6e96ae717aaf",
+  "ab_driver3.py": "8155a0b30b4cb5ad8e3c126f0241f8b3715579db49a377664db505629aca837b",
+  "ab_driver4.py": "2eff52a1b385a9fb6cd7b06d2b6cb3e0f2ad10c7f8644ffe69858d8618141224"
+ },
+ "external_authoring_transport_sha256": {
+  "lib.py": "71a51080e437651fdb8044951c5b9597792b404f70083aacc37c0eac866e72fb",
+  "lib2.py": "1b56ec930c1334715f9136d28d48b006845ba49d9fd73df2e8c8ab3c29ff3273",
+  "make_single.py": "ce346209b784ebcecd700b5b82be21966864ca8b2d1d57bf0413a55c7fbb9f6b",
+  "boot_single.py": "a1390022121586dcb5651ee9d82f8ac0ff81f2dc049766c3d4d71ef46edd0025"
+ },
+ "differential_summary": {
+  "compiles": 332,
+  "passed": 332,
+  "executions": 588,
+  "execution_mismatches": 0,
+  "artifacts_identical_to_multi_process_pipeline": "332/332"
+ },
+ "driver_command_ab": {
+  "reference": "windows_helpers driver PE 110a76a2\u2026",
+  "stores": 141,
+  "differences": 0
+ },
+ "timing": {
+  "boundary": "fresh processes; single = bbc.exe compile (one process); multi = previous bbc.exe plus three xaxc.exe processes; python = previous generic SDK path from the native record; one warmup and ten rotated trials per case",
+  "summary_seconds": {
+   "hello/single": {
+    "median": 0.10955459049955607,
+    "min": 0.10008035900045797,
+    "max": 0.1454271789998529,
+    "n": 10,
+    "artifacts": [
+     "38c86bdd228a62304e4f6f9d22c9f99a0762d9511e358b7fec2cafeb125d6c2e"
+    ]
+   },
+   "hello/native": {
+    "median": 0.2706793584998195,
+    "min": 0.23679429799994978,
+    "max": 0.34111306199974933,
+    "n": 10,
+    "artifacts": [
+     "38c86bdd228a62304e4f6f9d22c9f99a0762d9511e358b7fec2cafeb125d6c2e"
+    ]
+   },
+   "hello/python": {
+    "median": 1.4086098074999427,
+    "min": 1.321418566999455,
+    "max": 1.5498966799996197,
+    "n": 10,
+    "artifacts": [
+     "38c86bdd228a62304e4f6f9d22c9f99a0762d9511e358b7fec2cafeb125d6c2e"
+    ]
+   },
+   "nested_math/single": {
+    "median": 0.11316524650010251,
+    "min": 0.10013638400050695,
+    "max": 0.16454233399963414,
+    "n": 10,
+    "artifacts": [
+     "94d3ecc033bb62e077b4496b03027a342cef827b1a3707e47654a9c7a2638feb"
+    ]
+   },
+   "nested_math/native": {
+    "median": 0.27150722099986524,
+    "min": 0.2394835189998048,
+    "max": 0.3015910519998215,
+    "n": 10,
+    "artifacts": [
+     "94d3ecc033bb62e077b4496b03027a342cef827b1a3707e47654a9c7a2638feb"
+    ]
+   },
+   "nested_math/python": {
+    "median": 1.346483517500019,
+    "min": 1.2832325099998343,
+    "max": 1.481033863000448,
+    "n": 10,
+    "artifacts": [
+     "94d3ecc033bb62e077b4496b03027a342cef827b1a3707e47654a9c7a2638feb"
+    ]
+   },
+   "checksum_four/single": {
+    "median": 0.11128006550052305,
+    "min": 0.09836589400038065,
+    "max": 0.13268916600009106,
+    "n": 10,
+    "artifacts": [
+     "54fcef3fd19fe9f9b131a213827242490942de6bd20e10f8bb8aad8422d3aeb5"
+    ]
+   },
+   "checksum_four/native": {
+    "median": 0.2753430819998357,
+    "min": 0.2530610829999205,
+    "max": 0.30370487100026367,
+    "n": 10,
+    "artifacts": [
+     "54fcef3fd19fe9f9b131a213827242490942de6bd20e10f8bb8aad8422d3aeb5"
+    ]
+   },
+   "checksum_four/python": {
+    "median": 1.4442521195001063,
+    "min": 1.3739187080000193,
+    "max": 1.6569083340000361,
+    "n": 10,
+    "artifacts": [
+     "54fcef3fd19fe9f9b131a213827242490942de6bd20e10f8bb8aad8422d3aeb5"
+    ]
+   },
+   "deep512/single": {
+    "median": 0.8831998465002471,
+    "min": 0.8066187519998493,
+    "max": 0.9272321720000036,
+    "n": 10,
+    "artifacts": [
+     "f0e67192b1ae3bd21aa318acd3e7203484036fab0de8c1219163c299c6e0b449"
+    ]
+   },
+   "deep512/native": {
+    "median": 0.9930111705002673,
+    "min": 0.9201822470004117,
+    "max": 1.0940602949995082,
+    "n": 10,
+    "artifacts": [
+     "f0e67192b1ae3bd21aa318acd3e7203484036fab0de8c1219163c299c6e0b449"
+    ]
+   },
+   "deep512/python": {
+    "median": 13.093609450999793,
+    "min": 12.364895486999558,
+    "max": 13.693135200000143,
+    "n": 10,
+    "artifacts": [
+     "f0e67192b1ae3bd21aa318acd3e7203484036fab0de8c1219163c299c6e0b449"
+    ]
+   }
+  },
+  "limitations": [
+   "Wine launch costs about 0.044 s per process",
+   "not Windows-native",
+   "no Brainfry, runtime or RAM arm"
+  ]
+ },
+ "xax_evidence": "compiler/integration/bfx/single_process_evidence.json"
+}

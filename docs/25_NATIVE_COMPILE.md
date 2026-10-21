@@ -13,9 +13,10 @@ is pinned to its tested commit.
 
 ## Use
 
-Put `bbc.exe`, the native XAX driver as `xaxc.exe` and the host requests
-`bbc-android-arm64.xax` and `bbc-windows-x86_64.xax` in one directory, such as
-ignored `build/`. Then:
+Put `bbc.exe` and the host requests `bbc-android-arm64.xax` and
+`bbc-windows-x86_64.xax` in one directory, such as ignored `build/` (the
+[single-process](#single-process) `bbc.exe` contains the driver; the earlier
+four-process build also needs the driver as `xaxc.exe`). Then:
 
 ```text
 build\bbc.exe compile android-arm64 -O1 program < program.bf
@@ -106,11 +107,49 @@ in each driver step and the driver's fixed views. Merging bind, edit, resolve
 and build into one verified driver process is the next build-latency step; the
 fixed 3,550,558,208-byte driver view declarations remain. M4 and M8 remain open.
 
+## Single process
+
+**IMPLEMENTED, EXECUTED and MEASURED under Wine, 2026-10-21.** `bbc.exe` now holds
+BBC's commands and the whole native XAX driver in one canonical program
+([XAX source](https://github.com/MrxSiN/XAX/blob/1af64bff46723b54a132a9586a82f9a0fa527534/compiler/integration/bfx/COMPILE.md#single-process-compilation--2026-10-21)),
+so `bbc compile` starts no helper process. After the in-process front writes
+`<output>.edit`, it calls the driver's entry three times. Each call uses a
+variant whose argument helpers produce that step's command line and whose final
+`ExitProcess` is `SetLastError`, so the status returns to `bbc.exe`. Every step
+still verifies its inputs. Install only `bbc.exe` and the two host requests.
+`bbc.exe` also answers the driver's own commands (`verify`, `build`, ...).
+[Raw evidence](../evidence/native_single_process.json) records the stores,
+hashes and samples.
+
+- 332 builds and 588 executions match the independent interpreter; all 332
+  artifacts equal those of the four-process pipeline.
+- Driver commands through `bbc.exe` match the driver PE byte for byte on 141
+  regression and declared-rejection stores.
+- Error paths exit 1, 4, 4, 3 and 3 for invalid source, target, level, a
+  missing host request and a missing output directory, and leave no files.
+
+| Complete Android build, median of 10 (s) | Single process | Four processes | Python SDK path |
+|---|---:|---:|---:|
+| hello | 0.110 | 0.271 | 1.409 |
+| nested_math | 0.113 | 0.272 | 1.347 |
+| checksum_four | 0.111 | 0.275 | 1.444 |
+| deep_nesting_512 O1 | 0.883 | 0.993 | 13.094 |
+
+This run's host was somewhat slower than the earlier one, so compare arms
+within the table. One Wine launch (about 0.044 s) remains. These are not
+Windows-native times and give no Brainfry verdict. The remaining small-build cost
+is three driver entry runs, each committing the driver's fixed views and
+re-reading and re-verifying its inputs; handing verified stores between steps
+in memory is next.
+
 ## Bootstrap finding
 
 The generic bootstrap's Windows PE lowering of the new `bbc.exe` entry lost
 scalar values carried from early blocks across later loops and calls, although
 each had one definition in the verified graph. The entry keeps process scalars
 in its own view and fetches standard handles where it uses them. The defect is
-in the disclosed bootstrap backend, which `bbc.exe` still needs; the native
-driver used for program builds is not affected.
+in the disclosed bootstrap backend, which `bbc.exe` still needs. A first
+single-process front with its loops inline hit the same class: a loop-carried
+view pointer shared a spill slot, so the record copy read a wrong pointer. The
+front is now loop-free, with its two loops in small helpers. Driver code is
+unaffected and keeps byte-identical behavior.
