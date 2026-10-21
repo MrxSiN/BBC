@@ -30,10 +30,9 @@ instruction count. A nonzero exit requires discarding redirected output.
 
 Exits are 0 success, 1 invalid source/BFX, 2 resource capacity, 3 I/O failure,
 4 usage/unsupported level. Errors go to stderr. `emit-bfx`, `check` and `info`
-execute without Python. Full native `bbc compile`, filesystem target options,
-DLL packaging and Android compiler-host execution remain NOT IMPLEMENTED.
-Native-code generation still uses the external XAX importer, verified binding
-and generic SDK lowering/packaging described in [integration](03_XAX_INTEGRATION.md).
+execute without Python. The later [`bbc compile`](25_NATIVE_COMPILE.md) command
+builds Windows and Android executables natively from this same interface. DLL
+packaging and Android compiler-host execution remain NOT IMPLEMENTED.
 
 ## One typed source API
 

@@ -53,8 +53,10 @@ compiler-host claims. See [status](05_STATUS.md) and [bootstrap](04_BOOTSTRAP.md
 
 The native compile_windows.xax process host exposes emit-bfx/check/info through
 the unified interface and exact shared decoder. These commands require no Python
-at runtime. Full native bbc compile, library packaging and common-helper loader
-migration remain open. See the [public guide](21_UNIFIED_COMPILATION.md).
+at runtime. Its [`compile` command](25_NATIVE_COMPILE.md) binds imported decisions
+into host build requests and runs the native XAX driver for resolution,
+verification, lowering and packaging, with no Python. Library packaging and
+common-helper loader migration remain open. See the [public guide](21_UNIFIED_COMPILATION.md).
 
 The [ARM64 alias-index follow-up](24_XAX_BUILD_LATENCY.md) changes only the
 canonical XAX native backend. It preserves strict input verification and uses

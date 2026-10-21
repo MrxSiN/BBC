@@ -17,11 +17,14 @@ before optimization and balanced nesting **32,768**. These are fixed budgets;
 
 ## Use the compiler
 
-Build the native Windows command using the external XAX
-[bootstrap recipe](https://github.com/MrxSiN/XAX/blob/d320babab5bb9fe61a9d29f1f14942a847bf83a7/compiler/integration/bfx/COMPILE.md),
-then place `bbc.exe` in ignored `build/`. From Command Prompt:
+Put `bbc.exe`, the native XAX driver as `xaxc.exe` and the two host requests in
+ignored `build/` (see [native compilation](docs/25_NATIVE_COMPILE.md) and the
+external XAX [bootstrap recipes](https://github.com/MrxSiN/XAX/blob/19d899db0db6503b37b1dfc8a1967d7b2798862f/compiler/integration/bfx/COMPILE.md)).
+From Command Prompt:
 
 ```text
+build\bbc.exe compile windows-x86_64 -O1 program.exe < program.bf
+build\bbc.exe compile android-arm64 -O1 program < program.bf
 build\bbc.exe emit-bfx -O1 < program.bf > program.bfx
 build\bbc.exe check < program.bf
 build\bbc.exe info < program.bfx
@@ -31,12 +34,13 @@ PowerShell users can run these through `cmd /d /c "..."` for binary redirection.
 O0 preserves primitives; O1 integrates BF run packing and safe bounded clear
 optimization. O2/O3 are not implemented. Every level uses identical BFX framing.
 Discard output on nonzero exit. [The interface guide](docs/21_UNIFIED_COMPILATION.md)
-defines exit codes, limits, typed API and current optimization coverage.
+defines the source interface and limits; [native compilation](docs/25_NATIVE_COMPILE.md)
+defines `compile` exits and outputs.
 
-The supported commands execute without Python. Building the command and compiling
-BFX into native executables/libraries still require the external Windows-hosted
-generic XAX SDK; full native `bbc compile` remains incomplete. Native components
-execute on Windows x86-64 and Android ARM64. See [integration](docs/03_XAX_INTEGRATION.md)
+Every command runs without Python: `compile` uses the native XAX driver for
+binding, resolution, verification, lowering and packaging. Bootstrapping
+`bbc.exe` and the driver still uses the disclosed generic XAX SDK once. Native
+components execute on Windows x86-64 and Android ARM64. See [integration](docs/03_XAX_INTEGRATION.md)
 and [bootstrap](docs/04_BOOTSTRAP.md). The bounded compiler and text framer are
 private seed/reference components, not another public workflow.
 
@@ -60,6 +64,12 @@ prepared Android snapshots, 44 native builds and 47 Pixel 8 Pro executions,
 including an active depth-512 program. The 20 previously successful Android
 artifacts remain identical. Prepared-build timings exclude frontend/import/
 binding; full native compilation and competitive evaluation remain incomplete.
+
+[Native compilation](docs/25_NATIVE_COMPILE.md) completes the Python-free
+source-to-executable path: 332 builds and 588 emulated executions match an
+independent interpreter, earlier device-executed artifacts reproduce exactly,
+and complete builds measure 0.24–0.25 s under Wine against 1.24–1.27 s for the
+previous Python path on the same host. No Brainfry verdict follows.
 
 [XAX build-latency work](docs/24_XAX_BUILD_LATENCY.md) replaces repeated ARM64
 whole-graph alias scans with an incoming-edge index. All 22 Android artifacts
@@ -94,3 +104,4 @@ prepared builds; full-source compilation and competitor scores remain separate.
 - [Native lowering and remaining Android coverage](docs/22_NATIVE_LOWERING.md)
 - [Android native lowering](docs/23_ANDROID_NATIVE_LOWERING.md)
 - [XAX ARM64 build latency](docs/24_XAX_BUILD_LATENCY.md)
+- [Native source-to-executable compilation](docs/25_NATIVE_COMPILE.md)

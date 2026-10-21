@@ -79,14 +79,15 @@ naming history. Preserve unrelated working-tree edits.
   closure and importer. XAX source, packer and importer live directly under
   compiler/integration/bfx. Old wide entrypoints and legacy transactions are
   retired; historical evidence stays exact and old sources stay in Git.
-- The unified Windows emit-bfx/check/info host executes without Python. Its
-  bootstrap and full native target builds still use unchanged generic
-  Windows-hosted Python SDK verification/lowering/
-  packaging. Native calls run with XAX_REQUIRE_NATIVE=1 and record authority.
-  Common Windows helper loading still falls back to Python. The separate native
-  driver prototype has bounded diagnostic/store coverage; self-store, large-edit,
-  common-loader and BBC DLL packaging gates remain unmet. Native component
-  execution is not a complete native compiler-host path.
+- The unified Windows host executes emit-bfx/check/info and
+  [native compile](docs/25_NATIVE_COMPILE.md) without Python: bind in-process,
+  then the native XAX driver's edit, resolve and build. Bootstrapping bbc.exe
+  and the driver still uses the unchanged generic SDK once. Native calls run
+  with XAX_REQUIRE_NATIVE=1 and record authority. Common Windows helper loading
+  still falls back to Python; self-store, large-edit and BBC DLL packaging gates
+  remain unmet. Compile evidence ran under Wine and qemu user emulation; new
+  artifacts beyond the reproduced device-executed ones need target execution.
+  Next build-latency step: one verified driver process instead of four.
 - [Android lowering](docs/23_ANDROID_NATIVE_LOWERING.md) passes 22 prepared
   snapshots, 44 native builds and 47 Pixel 8 Pro executions. Twenty previously
   successful Android artifacts remain exact; active depth-512 coverage is new.

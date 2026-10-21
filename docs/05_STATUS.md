@@ -249,3 +249,26 @@ prepared builds, with frontend, import, binding and snapshot preparation exclude
 This scoped optimization does not replace the full-source Brainfry comparison.
 The complete native workflow, fixed workspace commitment, common loading and
 library packaging remain priorities. M4 and M8 remain incomplete.
+
+## Native source-to-executable compilation
+
+[`bbc compile`](25_NATIVE_COMPILE.md) builds Android ARM64 and Windows x86-64
+executables from Brainfuck source with native XAX code only. One process runs
+the unchanged BF frontend, the strict importer and a new canonical framing
+function; the native XAX driver then binds, resolves, verifies, lowers and
+packages. A driver transaction elides given-back borrowed views on the x86-64
+frame path, removing the Windows `NATIVE-CALL-ARITY` gap for non-inlined
+decisions; 141 earlier driver regression stores keep identical bytes.
+
+| Check | Result |
+|---|---|
+| Binding records | Equal to both Python-made depth-512 Android binding fixtures |
+| Artifact identity | Reproduces six earlier Windows/Pixel-executed artifacts and the depth-512 Android artifact |
+| Differential campaign | 83 programs, O0/O1, both targets: 332 builds, 588 executions match an independent interpreter |
+| Complete build timing | 0.24–0.25 s under Wine versus 1.24–1.27 s previous Python path, same Linux host |
+
+Execution used Wine and qemu user emulation, not devices; timings are not
+Windows-native and give no Brainfry verdict. [Raw evidence](../evidence/native_compile.json)
+retains samples and limitations. Process merging, fixed driver views, runtime
+and RAM comparisons, libraries and Android-hosted compilation remain open.
+M4 and M8 remain incomplete.
