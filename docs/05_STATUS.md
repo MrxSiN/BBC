@@ -193,3 +193,19 @@ prepared BBC target snapshots build, reproduce and execute correctly; inspect
 the raw report for remaining failures. Earlier interface-phase observations
 are preserved as snapshots. Full source-to-native driver, libraries, graph
 reuse work and competitive targets remain INCOMPLETE.
+
+## Native lowering follow-up
+
+[Current native lowering](22_NATIVE_LOWERING.md) and its
+[immutable report](../evidence/native_windows_lowering.json) extend that scope:
+all six original prepared target snapshots now build twice identically and
+execute correctly. A separate 42-target corpus passes 38. Android deep-512
+verifies but declines during build; three Windows cases reject a call ABI
+shape. Android diagnosis and target execution take priority next.
+The report includes 786,432 counted byte-operation route executions, pointer
+and stack cases, and 160 preserved semantic diagnostic cases. Prepared native
+build medians of 24.25–31.83 ms exclude frontend/import/binding. OS samples show
+about 3.31 GiB private commit despite 11.2–13.3 MiB resident memory.
+The public native build workflow, libraries, self-store/resource-callee coverage,
+common loading, M4 and M8 remain incomplete. Historical reports retain their
+original bytes and scope.

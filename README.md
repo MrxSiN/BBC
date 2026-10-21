@@ -55,6 +55,12 @@ an implementation milestone. The
 [unified interface phase](docs/21_UNIFIED_COMPILATION.md) now implements the
 public entry point; the frozen baseline describes its earlier state.
 
+[Native lowering evidence](docs/22_NATIVE_LOWERING.md) now records successful
+native builds and execution of all six original target snapshots, plus 38 of
+42 broader cases. Android deep nesting remains a build decline and is the next
+platform priority. Prepared-build timings exclude frontend/import/binding;
+full native compilation and competitive targets remain incomplete.
+
 ## Documentation
 
 - [Execution profile](docs/01_BRAINFUCK_PROFILE.md)
@@ -80,3 +86,4 @@ public entry point; the frozen baseline describes its earlier state.
 - [Modernization audit and fresh baseline](docs/20_MODERNIZATION.md)
 
 - [Unified public compilation and native command](docs/21_UNIFIED_COMPILATION.md)
+- [Native lowering and remaining Android coverage](docs/22_NATIVE_LOWERING.md)

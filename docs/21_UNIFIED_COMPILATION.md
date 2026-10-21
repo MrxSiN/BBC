@@ -124,3 +124,6 @@ address the dominant measured SDK/startup/verification/binding costs.
 The later [native backend follow-up](19_NATIVE_DRIVER_FOLLOWUP.md#native-frame-bitwise-extension)
 records the response to the one-bit rejection found above. Its prepared-build
 results do not change this interface phase's frozen benchmark or bootstrap hashes.
+
+[Subsequent lowering](22_NATIVE_LOWERING.md) builds all six original prepared
+target snapshots and records the broader Android deep-nesting decline.

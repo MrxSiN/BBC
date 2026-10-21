@@ -244,3 +244,10 @@ lowering and execution. Larger-profile competitive timings remain open.
 targets. It does not change the frozen build score or complete M4/M8. Native
 driver/backend coverage and safe graph reuse remain higher priority than
 frontend tuning under the [fresh stage profile](20_MODERNIZATION.md).
+
+The [native lowering phase](22_NATIVE_LOWERING.md) measures fresh-process
+prepared builds at 24.25–31.83 ms, excluding source/frontend/import/binding.
+Those exploratory results do not replace full-build comparisons. OS samples
+show about 3.31 GiB private commit and 11.2–13.3 MiB peak resident memory;
+allocation reduction remains necessary. Android build coverage takes priority
+before further Windows-specific work. M4 and M8 remain incomplete.

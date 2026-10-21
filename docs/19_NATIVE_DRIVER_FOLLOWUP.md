@@ -103,7 +103,15 @@ This is a native verified build-stage result, not a Python-free BBC source
 workflow or a competitive speedup measurement. Library packaging and remaining
 verifier/common-loader gates stay open.
 
-The current canonical [driver source and protocol](https://github.com/MrxSiN/XAX/blob/1c211da49f88e6634b0b4f98557efdd7204ca800/compiler/integration/windows_helpers/DRIVER.md)
+The bitwise-phase [driver source and protocol](https://github.com/MrxSiN/XAX/blob/1c211da49f88e6634b0b4f98557efdd7204ca800/compiler/integration/windows_helpers/DRIVER.md)
 pins the tested implementation. The validated local prototype is in ignored
 `build/xaxc.exe`; `build <snapshot> <artifact> <provenance>` is the tested
 native stage, with exit 2 meaning decline and no validity claim.
+
+## Subsequent native lowering
+
+[The next phase](22_NATIVE_LOWERING.md) adds verified pointer, byte arithmetic
+and large-stack handling. All six original prepared target snapshots now build
+and run; the broader corpus retains four failures, including Android deep-512.
+Its separate report measures prepared native builds and OS memory, without
+promoting these boundaries into full-source or competitor results.
