@@ -108,3 +108,7 @@ gaps, reduce fixed workspace commitment, then rerun matched full-build, runtime,
 memory and size comparisons. Preserve first verification and exact failure
 semantics throughout.
 
+The subsequent [XAX alias-index phase](24_XAX_BUILD_LATENCY.md) addresses the
+dominant deep-program analysis cost with measured native prepared-build A/B
+runs. This page preserves the preceding interval-allocation results and scope.
+

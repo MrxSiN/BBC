@@ -61,6 +61,11 @@ including an active depth-512 program. The 20 previously successful Android
 artifacts remain identical. Prepared-build timings exclude frontend/import/
 binding; full native compilation and competitive evaluation remain incomplete.
 
+[XAX build-latency work](docs/24_XAX_BUILD_LATENCY.md) replaces repeated ARM64
+whole-graph alias scans with an incoming-edge index. All 22 Android artifacts
+and 160 diagnostic controls remain exact. The report compares fresh native
+prepared builds; full-source compilation and competitor scores remain separate.
+
 ## Documentation
 
 - [Execution profile](docs/01_BRAINFUCK_PROFILE.md)
@@ -88,3 +93,4 @@ binding; full native compilation and competitive evaluation remain incomplete.
 - [Unified public compilation and native command](docs/21_UNIFIED_COMPILATION.md)
 - [Native lowering and remaining Android coverage](docs/22_NATIVE_LOWERING.md)
 - [Android native lowering](docs/23_ANDROID_NATIVE_LOWERING.md)
+- [XAX ARM64 build latency](docs/24_XAX_BUILD_LATENCY.md)

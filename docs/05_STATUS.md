@@ -232,3 +232,20 @@ Full source workflow, Android-hosted compiler execution, self-store/resource
 verification gaps, common loading and shared libraries remain incomplete.
 Android graph-analysis cost and the complete native workflow take priority.
 M2/M4 remain incomplete; M8 is not achieved.
+
+## XAX build-latency optimization
+
+[Incoming-edge indexing](24_XAX_BUILD_LATENCY.md) accelerates the ARM64
+parameter-alias fixed point. One expected-root canonical XAX transaction keeps
+the original scan for scratch exhaustion and preserves first verification.
+The helper and production dispatch each pass 1,091 native reference checks.
+All 22 Android snapshots reproduce exact artifacts across 44 builds and pass
+47 Pixel 8 Pro executions. A separate hello replay adds two builds and one
+device execution. All 160 diagnostic controls and three Windows smoke artifacts
+remain exact. BBC instruction streams, BFX and compile fixtures are unchanged.
+
+[Raw observations](../evidence/xax_alias_index.json) compare fresh native
+prepared builds, with frontend, import, binding and snapshot preparation excluded.
+This scoped optimization does not replace the full-source Brainfry comparison.
+The complete native workflow, fixed workspace commitment, common loading and
+library packaging remain priorities. M4 and M8 remain incomplete.

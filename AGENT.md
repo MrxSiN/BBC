@@ -92,6 +92,14 @@ naming history. Preserve unrelated working-tree edits.
   successful Android artifacts remain exact; active depth-512 coverage is new.
   Interval records allocate as needed inside a fixed arena. This does not
   establish dynamic view growth, lower peak RAM or a complete source workflow.
+- [XAX build latency](docs/24_XAX_BUILD_LATENCY.md) indexes ARM64 incoming edges
+  while preserving alias order, stamps and fixed-point semantics. If scratch
+  cannot fit, use the unchanged canonical scan before state mutation. First
+  verification remains mandatory. Native helper/dispatch tests and Android
+  artifact/diagnostic identity checks accompany exploratory fresh-process
+  prepared-build A/B measurements. These exclude source/import/binding and do
+  not replace full-source or competitor scores. Prioritize the complete native
+  XAX workflow and fixed workspace commitment over further BF micro-optimization.
 - Generic source-coordinator Windows lowering needs existing callee-inlining
   APIs. Keep canonical verification and disclose that configuration. The general
   ARM64 composite-return defect OI-49 remains separate; importer scratch outputs

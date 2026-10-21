@@ -257,3 +257,11 @@ deep-nesting coverage gate on the tested corpus. Its wall times are diagnostic
 and unscored; deep repeat builds run concurrently. Alias/range and graph-analysis
 cost, fixed workspace commitment and the complete native source workflow remain
 the next Android priorities. No new complete-build or runtime comparison follows.
+
+[ARM64 alias indexing](24_XAX_BUILD_LATENCY.md) now measures the effect of
+removing repeated whole-CFG argument scans from prepared native builds. The
+paired observations preserve exact artifacts and diagnostics. Keep this boundary
+separate from the frozen full-source baseline and competitor results. Next,
+complete the native public source workflow and measure its startup, binding,
+verification and packaging costs together; reduce fixed workspace commitment
+and profile remaining graph work. Further BF micro-optimizations are lower priority.
