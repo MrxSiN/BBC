@@ -49,54 +49,55 @@ build\bbc.exe info < hello.bfx
 
 BBC vs Awib, brainfry, bf-x86, bflang, Brainfly, pablojorge/brainfuck, abfc and
 Wilfred/bfc on 18 programs (2026-10-22). Medians per program, geometric means per
-group. Lower is better; **bold** is best.
+group. Lower is better; **bold** is best, and 🏆 says who wins what.
 
 ### 📦 Small programs (12)
 
-| Compiler | ✅ | Build | Run | File size | Build RAM | Run RAM |
-|---|---:|---:|---:|---:|---:|---:|
-| **BBC** 🍷 | 12/12 | 104 ms | 44.9 ms | 15.9 KB | 26 MiB | 6.6 MiB |
-| brainfry-win 🍷 | 12/12 | 3.9 ms | 45.3 ms | 3.0 KB | 2.3 MiB | 6.7 MiB |
-| brainfry | 12/12 | 3.9 ms | **2.3 ms** | 1.3 KB | 2.3 MiB | 1.7 MiB |
-| bf-x86 | 12/12 | **3.5 ms** | 2.5 ms | **264 B** | **1.7 MiB** | 1.9 MiB |
-| pablojorge | 11/12 | 61 ms | 3.2 ms | 16.1 KB | 27 MiB | 1.7 MiB |
-| Wilfred/bfc | 12/12 | 77 ms | 3.3 ms | 16.1 KB | 66 MiB | 1.7 MiB |
-| bflang | 12/12 | 63 ms | 3.4 ms | 16.1 KB | 71 MiB | 1.7 MiB |
-| Awib | 12/12 | 57 ms | 3.4 ms | 16.1 KB | 25 MiB | 1.7 MiB |
-| abfc | 12/12 | 16 ms | 3.4 ms | 13.6 KB | 4.6 MiB | 1.7 MiB |
-| Brainfly | 12/12 | 6,851 ms | 5.7 ms | 1.19 MB | 193 MiB | 3.5 MiB |
+| Compiler | ✅ | Build | Run | File size | Build RAM | Run RAM | 🏆 Best at |
+|---|---:|---:|---:|---:|---:|---:|---|
+| **BBC** 🍷 | 12/12 | 104 ms | 44.9 ms | 15.9 KB | 26 MiB | 6.6 MiB | 🍷 Run under Wine (by 0.4 ms) |
+| brainfry-win 🍷 | 12/12 | 3.9 ms | 45.3 ms | 3.0 KB | 2.3 MiB | 6.7 MiB | — |
+| brainfry | 12/12 | 3.9 ms | **2.3 ms** | 1.3 KB | 2.3 MiB | 1.7 MiB | 🏃 Run |
+| bf-x86 | 12/12 | **3.5 ms** | 2.5 ms | **264 B** | **1.7 MiB** | 1.9 MiB | 🔨 Build · 📦 Size · 🧠 Build RAM |
+| pablojorge | 11/12 | 61 ms | 3.2 ms | 16.1 KB | 27 MiB | 1.7 MiB | — |
+| Wilfred/bfc | 12/12 | 77 ms | 3.3 ms | 16.1 KB | 66 MiB | 1.7 MiB | — |
+| bflang | 12/12 | 63 ms | 3.4 ms | 16.1 KB | 71 MiB | 1.7 MiB | — |
+| Awib | 12/12 | 57 ms | 3.4 ms | 16.1 KB | 25 MiB | 1.7 MiB | — |
+| abfc | 12/12 | 16 ms | 3.4 ms | 13.6 KB | 4.6 MiB | 1.7 MiB | — |
+| Brainfly | 12/12 | 6,851 ms | 5.7 ms | 1.19 MB | 193 MiB | 3.5 MiB | — |
 
 ### 🏋️ Large programs (5)
 
-| Compiler | ✅ | Build | Run | File size | Build RAM |
-|---|---:|---:|---:|---:|---:|
-| **BBC** 🍷 | 5/5 | 506 ms | 289 ms | 361 KB | 132 MiB |
-| brainfry-win 🍷 | 5/5 | 4.7 ms | 98.5 ms | 18.1 KB | 3.0 MiB |
-| Awib | 5/5 | 217 ms | **9.5 ms** | 19.7 KB | 54 MiB |
-| pablojorge | 5/5 | 316 ms | 10.5 ms | 19.7 KB | 69 MiB |
-| bflang | 5/5 | 647 ms | 10.6 ms | 21.7 KB | 96 MiB |
-| Wilfred/bfc | 5/5 | 257 ms | 10.7 ms | 23.3 KB | 70 MiB |
-| brainfry | 5/5 | 4.3 ms | 13.8 ms | 15.4 KB | 3.0 MiB |
-| bf-x86 | 5/5 | **3.6 ms** | 22.6 ms | **4.2 KB** | **1.7 MiB** |
-| abfc | 5/5 | 132 ms | 29.5 ms | 32.0 KB | 5.1 MiB |
-| Brainfly | 5/5 | 12,742 ms | 38.6 ms | 1.20 MB | 1,519 MiB |
+| Compiler | ✅ | Build | Run | File size | Build RAM | 🏆 Best at |
+|---|---:|---:|---:|---:|---:|---|
+| **BBC** 🍷 | 5/5 | 506 ms | 289 ms | 361 KB | 132 MiB | — |
+| brainfry-win 🍷 | 5/5 | 4.7 ms | 98.5 ms | 18.1 KB | 3.0 MiB | 🍷 Run under Wine |
+| Awib | 5/5 | 217 ms | **9.5 ms** | 19.7 KB | 54 MiB | 🏃 Run |
+| pablojorge | 5/5 | 316 ms | 10.5 ms | 19.7 KB | 69 MiB | — |
+| bflang | 5/5 | 647 ms | 10.6 ms | 21.7 KB | 96 MiB | — |
+| Wilfred/bfc | 5/5 | 257 ms | 10.7 ms | 23.3 KB | 70 MiB | — |
+| brainfry | 5/5 | 4.3 ms | 13.8 ms | 15.4 KB | 3.0 MiB | — |
+| bf-x86 | 5/5 | **3.6 ms** | 22.6 ms | **4.2 KB** | **1.7 MiB** | 🔨 Build · 📦 Size · 🧠 Build RAM |
+| abfc | 5/5 | 132 ms | 29.5 ms | 32.0 KB | 5.1 MiB | — |
+| Brainfly | 5/5 | 12,742 ms | 38.6 ms | 1.20 MB | 1,519 MiB | — |
 
 ### ⏱️ Run time per large program (ms)
 
-| Program | BBC 🍷 | brainfry-win 🍷 | Awib | brainfry | bf-x86 | bflang | Brainfly | pablojorge | abfc | Wilfred/bfc |
-|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| mandelbrot | 21,954 | 1,677 | **481** | 1,622 | 792 | 1,056 | 1,549 | 922 | 1,280 | 1,006 |
-| bottles | 48 | 61 | 3.3 | 10.8 | 10.7 | 3.3 | 15.8 | 3.4 | 14.5 | **3.1** |
-| factor | 49 | 45 | 3.6 | **2.2** | 2.4 | 3.1 | 5.4 | 3.3 | 3.1 | 3.3 |
-| life | 911 | 45 | **3.6** | 4.5 | 98.5 | 3.8 | 98.6 | 3.7 | 97.6 | 3.7 |
-| sierpinski | 42 | 45 | 3.7 | **3.0** | **3.0** | 3.3 | 6.5 | 3.3 | 4.0 | 3.6 |
+| Program | BBC 🍷 | brainfry-win 🍷 | Awib | brainfry | bf-x86 | bflang | Brainfly | pablojorge | abfc | Wilfred/bfc | 🏆 Fastest |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
+| mandelbrot | 21,954 | 1,677 | **481** | 1,622 | 792 | 1,056 | 1,549 | 922 | 1,280 | 1,006 | **Awib** |
+| bottles | 48 | 61 | 3.3 | 10.8 | 10.7 | 3.3 | 15.8 | 3.4 | 14.5 | **3.1** | **Wilfred/bfc** |
+| factor | 49 | 45 | 3.6 | **2.2** | 2.4 | 3.1 | 5.4 | 3.3 | 3.1 | 3.3 | **brainfry** |
+| life | 911 | 45 | **3.6** | 4.5 | 98.5 | 3.8 | 98.6 | 3.7 | 97.6 | 3.7 | **Awib** |
+| sierpinski | 42 | 45 | 3.7 | **3.0** | **3.0** | 3.3 | 6.5 | 3.3 | 4.0 | 3.6 | **brainfry, bf-x86** |
 
 🍷 = runs under Wine 9.0 (BBC builds Windows programs). An empty program costs
 ~43 ms there vs ~2–3 ms natively. Everything else builds and runs natively on
 Linux x86-64. brainfry-win is brainfry's Windows output under the same Wine, the
 fair same-platform comparison.
 
-- 🟰 Under the same Wine, BBC's small programs run as fast as brainfry's.
+- 🟰 Under the same Wine, BBC's small programs run as fast as brainfry's (44.9 vs 45.3 ms).
+- 🤝 Run RAM ties at ~1.7 MiB (the launcher floor) for six native compilers.
 - 🐢 Heavy loops (Mandelbrot: 22 s) are BBC's weak spot; loop optimizations are next.
 - ❌ pablojorge fails nested_math: its 30,000-cell tape isn't zeroed.
 
