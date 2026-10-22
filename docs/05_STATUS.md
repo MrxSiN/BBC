@@ -267,10 +267,13 @@ decisions; 141 earlier driver regression stores keep identical bytes.
 | Differential campaign | 83 programs, O0/O1, both targets: 332 builds, 588 executions match an independent interpreter |
 | Complete build timing | 0.24–0.25 s under Wine versus 1.24–1.27 s previous Python path, same Linux host |
 | Single process | `bbc.exe` contains the driver: 332 builds, identical artifacts, 141 driver stores byte-identical; 0.11 s versus 0.27 s four-process and 1.35–1.44 s Python (same later run) |
+| Lazy views | Peak commit 3,398 MiB to 66–131 MiB per Android build; 332 builds, 996 output files and 141 driver stores identical; latency unchanged |
 
 Execution used Wine and qemu user emulation, not devices; timings are not
 Windows-native and give no Brainfry verdict. [Raw evidence](../evidence/native_compile.json)
 and [single-process evidence](../evidence/native_single_process.json) retain
-samples and limitations. In-memory step handoff, fixed driver views, runtime
-and RAM comparisons, libraries and Android-hosted compilation remain open.
+samples and limitations; [lazy-view evidence](../evidence/native_lazy_views.json)
+records the commit change. Step time is first verification, not file I/O, so a
+driver proof cache is next. Runtime and RAM comparisons, libraries and
+Android-hosted compilation remain open.
 M4 and M8 remain incomplete.

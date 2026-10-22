@@ -140,7 +140,47 @@ within the table. One Wine launch (about 0.044 s) remains. These are not
 Windows-native times and give no Brainfry verdict. The remaining small-build cost
 is three driver entry runs, each committing the driver's fixed views and
 re-reading and re-verifying its inputs; handing verified stores between steps
-in memory is next.
+in memory is next. [Lazy views](#lazy-views) revises this plan.
+
+## Lazy views
+
+**IMPLEMENTED, EXECUTED and MEASURED under Wine, 2026-10-22.** `bbc.exe` no longer
+commits the driver's 3,550,558,208 bytes of views up front
+([XAX source](https://github.com/MrxSiN/XAX/blob/5091cb44a86f3fa70ff29340bf7badf9bc891bb1/compiler/integration/bfx/COMPILE.md#lazily-committed-driver-views--2026-10-22)).
+The driver's 17 views of at least 1 MiB that never reach the C runtime are
+reserved instead, and so are the front's 512 MiB importer arena and 16 MiB
+record view. One vectored exception handler commits the touched 1 MiB slice of
+such a reservation, zero-filled, and resumes. It acts only on reservations
+marked `PAGE_NOACCESS`; any other fault still ends the process. The views that
+file and argument calls write into stay committed. View types, extents, proofs
+and verification are unchanged. [Raw evidence](../evidence/native_lazy_views.json)
+records stores, hashes and samples.
+
+- 332 builds and 588 executions match the independent interpreter; all 996
+  output files equal those of the previous `bbc.exe`.
+- Driver commands match the previous `bbc.exe` byte for byte on 141 stores.
+- Error paths still exit 1, 4, 4, 3 and 3 and leave no files.
+
+| Complete Android build | Peak commit before (MiB) | Now (MiB) | Median before (s) | Now (s) |
+|---|---:|---:|---:|---:|
+| hello | 3,398 | 67–98 | 0.100 | 0.100 |
+| nested_math | 3,398 | 67–74 | 0.096 | 0.097 |
+| checksum_four | 3,398 | 66–88 | 0.093 | 0.096 |
+| deep_nesting_512 O1 | 3,398 | 117–131 | 0.676 | 0.652 |
+
+Commit is the peak of the Wine process's private writable mappings over three
+runs, not a Windows counter. Latency is unchanged.
+
+### Step handoff
+
+For hello, a Wine relay timeline gives front 3 ms, edit 10 ms, resolve 10 ms
+and build 23 ms. File reads and writes take under 1 ms per step. About 8 ms of
+each step is the first full verification of a different store, since edit does
+not verify its output and resolve does not verify its snapshot. Build adds about
+14 ms of lowering and packaging. Passing the files in memory would save under
+1 ms, so it was not done, and verification may not be skipped. The remaining
+latency step is a per-process proof cache, keyed by CID, inside the XAX
+driver's verifier.
 
 ## Bootstrap finding
 
