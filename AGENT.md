@@ -87,9 +87,9 @@ naming history. Preserve unrelated working-tree edits.
   still falls back to Python; self-store, large-edit and BBC DLL packaging gates
   remain unmet. Compile evidence ran under Wine and qemu user emulation; new
   artifacts beyond the reproduced device-executed ones need target execution.
-  bbc.exe contains the driver and compiles in one process and commits its large
-  views only when touched. Each step's cost is first verification of a different
-  store, not file I/O; a CID-keyed proof cache in the driver verifier is next.
+  bbc.exe contains the driver and compiles in one process, commits its large
+  views only when touched and checks each graph once per compile (a CID-keyed
+  table of ordinary acceptances). Build's lowering is the largest remaining cost.
 - [Android lowering](docs/23_ANDROID_NATIVE_LOWERING.md) passes 22 prepared
   snapshots, 44 native builds and 47 Pixel 8 Pro executions. Twenty previously
   successful Android artifacts remain exact; active depth-512 coverage is new.

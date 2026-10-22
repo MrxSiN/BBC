@@ -72,7 +72,8 @@ independent interpreter, earlier device-executed artifacts reproduce exactly,
 and single-process builds measure about 0.11 s under Wine against about 1.4 s
 for the previous Python path on the same host. The driver's large views are now
 committed only when touched: peak commit falls from 3,398 MiB to under 140 MiB.
-No Brainfry verdict follows.
+Each graph is now checked once per build, 3–7.5% faster. No Brainfry verdict
+follows.
 
 [XAX build-latency work](docs/24_XAX_BUILD_LATENCY.md) replaces repeated ARM64
 whole-graph alias scans with an incoming-edge index. All 22 Android artifacts

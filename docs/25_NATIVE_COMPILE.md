@@ -181,6 +181,49 @@ not verify its output and resolve does not verify its snapshot. Build adds about
 1 ms, so it was not done, and verification may not be skipped. The remaining
 latency step is a per-process proof cache, keyed by CID, inside the XAX
 driver's verifier.
+[Graph proof cache](#graph-proof-cache) takes that step.
+
+## Graph proof cache
+
+**IMPLEMENTED, EXECUTED and MEASURED under Wine, 2026-10-22.** The three driver
+steps of one `bbc compile` now check each graph once
+([XAX source](https://github.com/MrxSiN/XAX/blob/841e6d8f85dca72b78ce35b92582642f6491c9c4/compiler/integration/bfx/COMPILE.md#graph-proof-cache--2026-10-22)).
+
+Profiling hello's steps showed:
+- verification was about half of the driver's machine time and lowering 40%;
+- the typing program was about 60% of verification;
+- the host request, request and snapshot share their graphs, types and
+  constants.
+
+Before checking a graph, a step looks up its CID among graphs an earlier step
+of the same process accepted ordinarily.
+
+- **Hit:** the step replays that graph's recorded pointer extents and trap
+  heads, which the build step's lowering reads, and its acceptance state.
+- **Miss:** the step checks the graph as before and records an ordinary
+  acceptance.
+
+Object CIDs, type and constant checks and store-level checks still run in every
+step. [Raw evidence](../evidence/native_proof_cache.json) records stores, hashes,
+profiles and samples.
+
+- 332 builds and 588 executions match the independent interpreter; all 996
+  output files equal those of the previous `bbc.exe`.
+- Driver commands match the previous `bbc.exe` byte for byte on 141 stores.
+- Error paths still exit 1, 4, 4, 3 and 3 and leave no files.
+- Typing-program time falls 41% for hello and 38% for deep_nesting_512.
+
+| Complete Android build | Median before (s) | With cache (s) | Change |
+|---|---:|---:|---:|
+| hello | 0.113 | 0.109 | −3% |
+| nested_math | 0.100 | 0.097 | −3.5% |
+| checksum_four | 0.103 | 0.096 | −6.6% |
+| deep_nesting_512 O1 | 0.690 | 0.639 | −7.5% |
+
+These are 20 alternating trials per case under Wine. Host stalls that hit both
+arms in about half of nested_math's trials are excluded and counted in the
+evidence. They are not Windows-native times and give no Brainfry verdict.
+Build's lowering is now the largest remaining cost.
 
 ## Bootstrap finding
 
