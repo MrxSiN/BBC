@@ -1,23 +1,23 @@
-# Clear-loop optimization
+# 🧹 Clear-loop pass
 
-[`optimize.bf`](../compiler/optimize.bf) transforms a validated bounded BFX
-success plus terminator byte `01`. Input and output follow the single
-[BFX specification](02_BFX_CONTRACT.md); optimization never changes its identifier.
-The helper trusts the complete header, opcode and bracket validation precondition.
+> `[-]` is a very long way of saying "zero". This pass says it in one byte.
 
-Exact `[-]` and `[+]` become CLEAR (`00`). Longer/even-step loops retain their
-meaning and must not be rewritten as CLEAR. Complete groups of 256 consecutive
-identical arithmetic commands disappear by modular arithmetic. No movement is
-cancelled and source validation happens first. Existing packed opcodes pass through.
+[`optimize.bf`](../compiler/optimize.bf) takes a validated BFX success of up to
+3,840 instructions plus terminator `01`, and emits the same [BFX format](02_BFX_CONTRACT.md).
 
-A sixteen-cell slot stores its marker independently from the opcode so CLEAR
-cannot end a scan. At most 3,840 instructions fit this bounded helper; the upper
-two serialized count bytes are zero. [Tape notes](../compiler/optimize.bf.notes.md)
-describe staging and rewinds. Missing/invalid terminator emits BFX failure 1.
-Historical optimization and timing snapshots remain in
-[bfx_v2_optimization.json](../evidence/bfx_v2_optimization.json) and
-[the benchmark report](11_V2_BENCHMARKS.md); their old wire identities are historical.
+| Input | Output |
+|---|---|
+| `[-]` or `[+]` | CLEAR (`00`) |
+| 256 identical `+` or `-` in a row | Nothing (they wrap to the identity) |
+| `[--]`, `[++]` and other even-step loops | Left alone: they may loop forever |
+| Moves | Never cancelled |
+| Packed opcodes | Passed through |
 
-The supported end-user route is [unified compilation](21_UNIFIED_COMPILATION.md).
-These component contracts describe private BF implementation/bootstrap details;
-users do not select a separate BFX format or manually negotiate passes.
+- Each 16-cell slot keeps its marker separate from the opcode, so CLEAR (`00`)
+  can't end a scan early.
+- A bad terminator gives BFX failure 1. The top two count bytes are always zero.
+- Tape layout: [optimize.bf notes](../compiler/optimize.bf.notes.md).
+- Proof: [optimization proofs](07_OPTIMIZATION_PROOFS.md#-p1-clear-loops-and-full-wraps).
+- Old measurements: [v2 report](11_V2_BENCHMARKS.md).
+
+You don't call this directly. [`bbc compile -O1`](25_NATIVE_COMPILE.md) runs it for you.

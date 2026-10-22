@@ -1,71 +1,66 @@
-# Streaming identical-run packing
+# 🌊 stream_runs.bf — streaming run packer
 
-Current source has 11124 bytes and 10976 BF instructions; raw SHA-256 `aae50166e21d0647806cf7edac3ce5d5ea8fbd84cdf0a37ad785ed026016dcb3`,
-filtered SHA-256 `4c6697cecb6c5b6a3e1dcdb7baee6409a7ebf58f37877c2f57c9f49a43c6a1ef`. All current framing follows the single
-[BFX specification](../docs/02_BFX_CONTRACT.md). Older counts, hashes and
-rebuild results quoted below are historical snapshots, not this source identity.
+> O1 packing for big programs: packs runs across 32 KiB chunks, carrying two bytes of state.
 
-`stream_runs.bf` is a standard Brainfuck pass for the private wide compilation
-profile. It consumes trusted provisional BFX instruction chunks, preserves
-two continuation bytes, and emits BFX opcode bytes. The canonical
-XAX coordinator owns whole-record framing and final publication. This pass
-does not validate untrusted BFX records or bracket balance.
+| | |
+|---|---|
+| Size | 11,124 bytes, 10,976 instructions (bootstrapped through the wide profile) |
+| Raw SHA-256 | `aae50166e21d0647806cf7edac3ce5d5ea8fbd84cdf0a37ad785ed026016dcb3` |
+| Filtered SHA-256 | `4c6697cecb6c5b6a3e1dcdb7baee6409a7ebf58f37877c2f57c9f49a43c6a1ef` |
+| Coordinator | [streaming compilation](../docs/17_STREAMING_COMPILATION.md) |
 
-Input is `pending_opcode:u8 || pending_count:u8 || chunk_count:u16le || final:u8
-|| instructions[chunk_count] || 01`. Chunks contain at most 32,768 validated BFX
-instructions. Initial state is two zero bytes; final is Boolean. Pending opcode
-is zero, plus, minus, left or right. Zero opcode requires zero count. Arithmetic
-counts range from zero through 255; movement counts remain below 128. Only
-state returned by a successful preceding call is valid continuation state.
+It trusts its input: validated BFX instruction chunks. It does not check brackets
+or untrusted records. XAX owns framing and publication.
 
-Output is `BBCR || 01 || packed_instructions || pending_opcode:u8 ||
-pending_count:u8 || output_count:u16le || status:u8`. It has exactly
-`10 + output_count` bytes. Status one means bad/missing terminator; all bytes
-are provisional until both this pass and complete source validation succeed.
-No delimiter is needed: the fixed five-byte footer supplies the count.
+---
 
-The count of identical arithmetic instructions wraps modulo 256. On a change
-of instruction or final input, binary decomposition emits the original ASCII
-unit instruction for bit zero and the corresponding power opcode for bits
-one through seven. The sum is exactly the original arithmetic modulo 256.
-Complete 256-command groups disappear. Opposite directions remain separate.
+## 📨 Packets
 
-Identical movement emits a 128-step opcode immediately at count 128. Remaining
-movement decomposes in the same way at a run boundary. Every group moves in
-one direction. The importer retains endpoint checking and last-valid-cursor
-failure behavior, so a group cannot hide an intermediate bounds failure.
-Opposite movements never cancel. Loops, input and output flush the pending run
-and retain their original order. Non-unit encoded opcodes including zero-valued CLEAR flush any pending run and
-pass through unchanged; only recognized ASCII unit operations may coalesce.
-Clear-loop recognition is not part of this
-pass; the bounded optimization pipeline retains its separate clear optimization.
+**In:** `pending_opcode:u8 | pending_count:u8 | chunk_count:u16 | final:u8 | instructions | 01`
 
-For an unfinished arithmetic run the pending count represents its length
-modulo 256. A movement run has emitted every complete 128-step group and holds
-the remaining length. This invariant is independent of chunk boundaries.
-Final flush leaves zero continuation state. Cumulative packed output never
-exceeds cumulative consumed instructions, including the pending run; the XAX
-coordinator checks this before copying output into the record in place.
+- At most 32,768 instructions per chunk.
+- Initial state is `00 00`. `final` is Boolean.
+- The pending opcode is none, `+`, `-`, `<` or `>`. "None" means count 0.
+  Arithmetic counts are 0–255; movement counts stay below 128.
+- Only state returned by a successful earlier call is valid.
 
-## Tape
+**Out:** `BBCR | 01 | packed | pending_opcode:u8 | pending_count:u8 | output_count:u16 | status:u8`
+
+- Exactly `10 + output_count` bytes. Status 1 means a bad or missing terminator.
+- Everything stays provisional until this pass *and* full source validation succeed.
+
+---
+
+## 🧮 Packing rules
+
+- **Arithmetic.** Count identical ops mod 256. At a run end, emit bit 0 as the ASCII
+  op and bits 1–7 as power opcodes. The sum is exact mod 256, so full 256 groups vanish.
+- **Movement.** Emit a 128-step move every time the count hits 128; decompose the
+  rest at the run end. Every group is one-directional, so the importer still
+  catches the first step off the tape.
+- **Flushing.** Loops, I/O and already-encoded opcodes (including CLEAR) flush the
+  pending run and pass through in order.
+- **Never.** Opposite moves never cancel. Clear-loop folding is not done here.
+- **Invariant.** The pending count is the arithmetic run length mod 256, or the
+  movement leftover. Chunk boundaries can't change it. The final flush leaves zero
+  state. Output never exceeds consumed input, and XAX checks this before its
+  in-place copy.
+
+---
+
+## 🗺️ Tape
 
 | Cells | Meaning |
 |---|---|
 | 0, 1 | Pending opcode and count |
-| 4..11 | Remaining chunk length, four cells per byte |
-| 12, 13 | Final flag and current input byte |
-| 16..23 | Output count, four cells per byte |
-| 24, 25 | Equality scratch and restoration |
-| 26..30 | Predicate, parity, quotient, toggle and encoded opcode |
-| 31..36 | Recognition and branch scratch |
+| 4–11 | Remaining chunk length (4 cells per byte) |
+| 12, 13 | Final flag, current input byte |
+| 16–23 | Output count (4 cells per byte) |
+| 24, 25 | Equality scratch and restore |
+| 26–30 | Predicate, parity, quotient, toggle, encoded opcode |
+| 31–36 | Recognition and branch scratch |
 | 37 | Framing status |
 
-Cells 2..3, 14..15 and 38..65,535 remain zero. Copy destinations and restoration
-scratch are zero at each helper entry. Division consumes the count into a
-quotient and parity, restores the quotient as the next count, then consumes
-the parity to emit one power. Each flush ends with a zero count and opcode.
-Current source identity is listed above. It exceeds the original
-frontend's instruction budget and is bootstrapped through the wide profile.
-
-See [wide compilation](../docs/17_STREAMING_COMPILATION.md) for capacities, executed
-evidence and the remaining work toward runtime workspace growth.
+Cells 2–3, 14–15 and 38+ stay zero. Division splits the count into quotient and
+parity, keeps the quotient as the next count and emits one power per parity bit.
+Each flush ends with count and opcode at zero.

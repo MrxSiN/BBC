@@ -1,21 +1,18 @@
-# Arithmetic packing
+# ➕ Arithmetic packing
 
-[`pack_arithmetic.bf`](../compiler/pack_arithmetic.bf) consumes a validated,
-successful BFX record of at most 3,840 instructions plus terminator `01`.
-It emits the same [BFX format](02_BFX_CONTRACT.md). The header is a trusted
-private precondition; publication requires complete record validation.
+> 128 plus signs in a row is one instruction wearing a trench coat.
 
-Seven descending scans group identical unit arithmetic commands in powers of
-two, from 128 through 2. A group of K operations becomes one declared arithmetic
-opcode; bit-zero units remain ASCII. Addition and subtraction wrap modulo 256.
-Existing encoded operations and other commands stop a run and pass through.
-The pass never expands the instruction stream. Bad terminator emits failure 1.
+[`pack_arithmetic.bf`](../compiler/pack_arithmetic.bf) takes a validated BFX
+success of up to 3,840 instructions plus `01`, and emits the same [BFX format](02_BFX_CONTRACT.md).
 
-[Tape notes](../compiler/pack_arithmetic.bf.notes.md) explain staging and deletion
-markers. Historical correctness and measurements remain immutable in
-[bfx_v3_arithmetic.json](../evidence/bfx_v3_arithmetic.json) and
-[the benchmark report](13_V3_BENCHMARKS.md); they do not measure this migration.
+- Seven passes, from 128 down to 2, replace runs of identical `+` or `-` with
+  one power-of-two opcode. A leftover single step stays ASCII.
+- Addition and subtraction wrap mod 256.
+- Packed opcodes and every other instruction end a run and pass through.
+- Output never grows. A bad terminator gives failure 1.
 
-The supported end-user route is [unified compilation](21_UNIFIED_COMPILATION.md).
-These component contracts describe private BF implementation/bootstrap details;
-users do not select a separate BFX format or manually negotiate passes.
+Tape layout: [pack_arithmetic notes](../compiler/pack_arithmetic.bf.notes.md) ·
+proof: [optimization proofs](07_OPTIMIZATION_PROOFS.md#-p1-arithmetic-powers) ·
+old measurements: [v3 report](13_V3_BENCHMARKS.md).
+
+You don't call this directly. [`bbc compile -O1`](25_NATIVE_COMPILE.md) runs it for you.

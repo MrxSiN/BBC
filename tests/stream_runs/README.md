@@ -1,12 +1,11 @@
-# Private run-packer fixtures
+# 🧪 stream_runs fixtures
 
-`cases.json` contains exact binary input/output pairs for
-[`stream_runs.bf`](../../compiler/stream_runs.bf). They are data, not executable
-test logic. Execute them under the [BBC profile](../../docs/01_BRAINFUCK_PROFILE.md)
-or the compiled pass and compare complete output bytes and successful native
-termination. Input is isolated and includes the final byte-one terminator.
+> Exact packets for the streaming run packer.
 
-The [pass notes](../../compiler/stream_runs.bf.notes.md) define trusted tokens,
-two-byte continuation state, finalization and provisional output. Never import
-these private `BBCR` packets as BFX modules. The separate
-[streaming coordinator](../../docs/17_STREAMING_COMPILATION.md) owns full-module publication.
+[cases.json](cases.json) holds exact binary input/output pairs for
+[`stream_runs.bf`](../../compiler/stream_runs.bf). They are data, not test code. Run each one
+under the [BBC profile](../../docs/01_BRAINFUCK_PROFILE.md) or through the compiled pass, and
+compare every output byte plus clean termination. Each input ends with the `01` terminator.
+
+The private **BBCR** packets are never BFX ([format notes](../../compiler/stream_runs.bf.notes.md)).
+Full-module publication belongs to the [streaming coordinator](../../docs/17_STREAMING_COMPILATION.md).

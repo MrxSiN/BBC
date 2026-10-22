@@ -1,35 +1,47 @@
-# Private chunk frontend tape notes
+# 🌊 stream_chunks.bf — public source filter
 
-[stream_chunks.bf](stream_chunks.bf) is the public compiler's private packet source-filter/
-bracket-validation stage. It emits version01 BBCS provisional token packets;
-see [the interface and remaining pipeline work](../docs/16_SCALABILITY.md).
-The [unified public interface](../docs/21_UNIFIED_COMPILATION.md) coordinates
-this BF algorithm. [compiler.bf](compiler.bf) is a private bounded seed/reference.
+> Filters and bracket-checks one 32 KiB chunk at a time, carrying a 64-bit depth between chunks.
 
-The u64 depth occupies cells 0, 4, 8, 12, 16, 20, 24 and 28, low byte first.
-Each adjacent three-cell group holds destructive-copy scratch, carry/nonzero
-state and restoration. Carries/borrows propagate through fixed positions;
-nonzero tests move a bounded sum of nonzero-byte flags through these groups.
-All internal copy scratch returns to zero before reuse.
+| | |
+|---|---|
+| Role | The public compiler's filter/bracket stage. Emits private **BBCS** v01 token packets, not BFX |
+| Size | 3,794 bytes, 3,671 instructions |
+| Raw SHA-256 | `7a243960bcbde41b4b84f45e78075971b5ee29b60e9ca44e267ffbf3b554649b` |
+| Driven by | [`compile_bfx`](../docs/21_UNIFIED_COMPILATION.md) via the [streaming coordinator](../docs/17_STREAMING_COMPILATION.md) |
 
-Chunk length occupies 32/36; its adjacent scratch includes loop gate 38.
-Per-chunk instruction count occupies 40/44. Cell 48 is raw input/output scratch;
-49 recognized-command flag; 50/51 opening/closing flags; 52 final-input flag;
-53 sticky bracket error; 54 sticky depth-overflow error; 55 status; 56/57 opcode
-comparison/restoration scratch; 58 unmatched-close temporary flag.
+---
 
-The counted source loop copies each raw byte once, compares the eight command
-values, emits recognized tokens and updates count/depth. Opening increments
-with full-width carry. Closing first tests complete depth, then borrows or marks
-an unmatched close. Final input marks unclosed depth; framing priority is retained.
-Overflow is sticky. No input-controlled pointer walk or instruction staging grows.
-All loop bodies return to their controlling cell and the maximum cell is 58.
+## 🗺️ Tape layout
 
-The source is 3,794 bytes / 3,671 instructions. Raw SHA-256 is
-`7a243960bcbde41b4b84f45e78075971b5ee29b60e9ca44e267ffbf3b554649b`.
-[Native/independent evidence](../evidence/streaming_frontend_prototype.json)
-and [static fixtures](../tests/stream_chunks/README.md) cover both targets,
-wide carries/borrows, framing, provisional output and cross-chunk brackets.
-This filter emits private packets rather than BFX. The
-[streaming coordinator](../docs/17_STREAMING_COMPILATION.md) now consumes its private packets
-and supplies bounded wide-count module production and native compilation.
+| Cells | Meaning |
+|---|---|
+| 0, 4, 8, … 28 | u64 bracket depth, low byte first; each byte has a 3-cell scratch group next to it |
+| 32 / 36 | Chunk length (38 is the loop gate) |
+| 40 / 44 | Instructions in this chunk |
+| 48 | Raw byte in/out |
+| 49 | Recognized-command flag |
+| 50 / 51 | Open / close flags |
+| 52 | Final-chunk flag |
+| 53 | Sticky bracket error |
+| 54 | Sticky depth-overflow error |
+| 55 | Status |
+| 56 / 57 | Opcode compare / restore scratch |
+| 58 | Unmatched-close temp |
+
+The highest cell used is 58. Nothing grows with input size.
+
+---
+
+## 🔁 Per byte
+
+1. Copy the raw byte once and compare it against the eight commands.
+2. Emit recognized tokens and bump the count.
+3. Open: increment depth with full-width carry.
+4. Close: test the whole depth, then borrow, or mark an unmatched close.
+5. On the final chunk, leftover depth marks unclosed brackets.
+
+Framing priority is kept, overflow is sticky, and every loop returns to its
+controlling cell.
+
+📎 [streaming_frontend_prototype.json](../evidence/streaming_frontend_prototype.json) ·
+fixtures: [tests/stream_chunks](../tests/stream_chunks/README.md)

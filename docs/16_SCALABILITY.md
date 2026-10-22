@@ -1,31 +1,32 @@
-# Compiler scalability and limits
+# 📏 Scalability and limits
 
-One public [compile_bfx interface](21_UNIFIED_COMPILATION.md) coordinates all
-supported source sizes. Its private bounded seed and streaming components emit [BFX](02_BFX_CONTRACT.md). Source capacity and
-optimization level never select a different wire layout or importer.
+> How big a program BBC eats, and why the plate is fixed-size for now.
 
-| Resource | Private bounded seed | Public streaming entry |
+One public entry, [`compile_bfx`](21_UNIFIED_COMPILATION.md), handles every size.
+Size never changes the [BFX format](02_BFX_CONTRACT.md) or the importer.
+
+| Resource | Public streaming entry | Private bounded seed |
 |---|---:|---:|
-| Raw source | 65,533 bytes | 1,048,576 bytes |
-| Instructions before optimization | 3,840 | 65,536 |
-| Balanced nested loops | 255 | 32,768 |
+| Raw source | 1,048,576 bytes | 65,533 bytes |
+| Instructions before optimization | 65,536 | 3,840 |
+| Balanced nesting | 32,768 | 255 |
 
-The bounded frontend stores sixteen tape cells per instruction and keeps depth
-in one byte. Its request length is u16 and the native input view is 65,536 bytes,
-including two length bytes and one terminator. These are implementation choices,
-not Brainfuck language restrictions. Its last working cell is 61,471.
+- **Bounded seed.** 16 tape cells per instruction, a one-byte depth, a u16
+  length and a 64 KiB input view. Its last working cell is 61,471. These are
+  implementation choices, not language limits.
+- **Streaming entry.** Validates 32 KiB chunks with a u64 depth counter and
+  wide pairing indices. Count limits are checked before any payload is read.
+- The compiled program's 65,536-cell tape is a separate, fixed language rule.
 
-The streaming route validates chunks with a u64 depth counter, coordinates larger
-fixed source/work views and uses wide import pairing indices. It compiles sources
-that exceed the bounded frontend's limits. BFX always carries a u32 count, including
-empty and small modules. The decoder's present 65,536-instruction budget is checked
-before payload access; balanced nesting cannot exceed half that count.
+---
 
-Dynamic growth is possible, but is not implemented. It requires a canonical XAX
-allocation/growth interface, checked arithmetic, defined allocation failures,
-growable source/record/pairing/graph storage and matching validation/optimization
-budgets. Raising one constant does not address every layer. The compiled program's
-65,536-byte execution tape is a separate language contract. Historical
-[capacity audit](../evidence/scalability_capacity_audit.json) and
-[chunk prototype](../evidence/streaming_frontend_prototype.json) retain their
-original implementation limits. See [streaming compilation](17_STREAMING_COMPILATION.md).
+## 🌱 Growing at runtime
+
+Possible, but not built. It needs, at every layer, not just one constant:
+
+- a canonical XAX allocation and growth interface;
+- checked arithmetic and defined allocation failures;
+- growable source, record, pairing and graph storage;
+- matching validation and optimization budgets.
+
+📎 [capacity audit](../evidence/scalability_capacity_audit.json) · [chunk prototype](../evidence/streaming_frontend_prototype.json) · [streaming compilation](17_STREAMING_COMPILATION.md)

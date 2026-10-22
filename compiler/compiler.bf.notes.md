@@ -1,120 +1,93 @@
-# BBC frontend algorithm and tape layout
+# 🧠 compiler.bf — bounded seed frontend
 
-Current source has 4545 bytes and 2200 BF instructions; raw SHA-256 `89e87c42d870e879c4dbbf2ec578da2823351566d3e7d25801f29b5804446b2a`,
-filtered SHA-256 `a9323e9daa898c76693df7b66647f58ddb16dd67d91db72ee76b710250b6c358`. All current framing follows the single
-[BFX specification](../docs/02_BFX_CONTRACT.md). Older counts, hashes and
-rebuild results quoted below are historical snapshots, not this source identity.
+> Reads one framed request, keeps the eight instructions, checks brackets and size,
+> and writes BFX. No optimization, no backend.
 
-Private bounded seed/reference: [compiler.bf](compiler.bf). The
-[unified public entry](../docs/21_UNIFIED_COMPILATION.md) uses stream_chunks.bf. Wire format:
-[BFX](../docs/02_BFX_CONTRACT.md). Execution semantics:
-[Brainfuck profile](../docs/01_BRAINFUCK_PROFILE.md).
+| | |
+|---|---|
+| Role | Private bounded seed/reference. The public entry uses [`stream_chunks.bf`](stream_chunks.bf) |
+| Size | 4,545 bytes, 2,200 instructions |
+| Raw SHA-256 | `89e87c42d870e879c4dbbf2ec578da2823351566d3e7d25801f29b5804446b2a` |
+| Filtered SHA-256 | `a9323e9daa898c76693df7b66647f58ddb16dd67d91db72ee76b710250b6c358` |
+| Specs | [BFX](../docs/02_BFX_CONTRACT.md) · [profile](../docs/01_BRAINFUCK_PROFILE.md) |
 
-The frontend reads one known-length request, filters and validates the eight
-instructions, then emits either a complete instruction record or a six-byte
-compiler-error record. It performs no semantic optimization and owns no
-native-code or platform backend.
+Older counts and hashes quoted elsewhere are historical snapshots.
 
-## Tape layout
+---
 
-The first sixteen cells stay zero as a left sentinel. Work begins at cell 16.
-For `n` stored instructions the working slot begins at `16 * (n + 1)`.
+## 🗺️ Tape layout
+
+Cells 0–15 stay zero (left sentinel). Work starts at cell 16. With `n` stored
+instructions, the working slot starts at `16 × (n + 1)`.
 
 | Slot offset | Meaning |
 |---|---|
-| 0 | Stored-instruction marker; working slot reuses it as a Boolean full flag; sentinel stays zero |
-| 1 | Raw source byte; retained as opcode in a stored slot |
-| 2, 3 | Destructive comparison and restoration scratch |
-| 4 | Recognized-command flag; initialization temporarily saves the nonempty gate here |
-| 5 | Unsigned bracket depth |
-| 6 | Temporary zero-test flag, then final error code |
-| 7, 8 | Filtered instruction count, low byte then high |
-| 9 | Current group byte counter; zero encodes 256 at an active group entry |
-| 10 | Number of later full 256-byte groups |
+| 0 | Stored marker. In the working slot: the Boolean "full" flag. Sentinel stays 0 |
+| 1 | Raw source byte; becomes the stored opcode |
+| 2, 3 | Compare and restore scratch |
+| 4 | Recognized-command flag (setup briefly parks the nonempty gate here) |
+| 5 | Bracket depth (unsigned) |
+| 6 | Zero-test temp, then the final error code |
+| 7, 8 | Instruction count, low then high |
+| 9 | Bytes left in this group (0 means 256 at group entry) |
+| 10 | Full 256-byte groups still to come |
 | 11 | Sticky bracket error |
 | 12 | Sticky size error |
-| 13 | Main-loop flag; later success-output gate |
-| 14, 15 | Opening and closing bracket flags; reused as group-counter scratch after bracket processing |
+| 13 | Main-loop flag; later the success-output gate |
+| 14, 15 | Open/close bracket flags; reused as counter scratch afterwards |
 
-## Filtering and validation
+---
 
-Before the main loop, copy length-high into scratch cells 2 and 3 and restore
-it. Adding one and testing for zero recognizes high byte 255. Only in that
-case, copy and restore length-low twice; adding one or two recognizes 255 or
-254 respectively. Either case sets sticky size error 12. Scratch cells return
-to zero and both length bytes are unchanged. This rejects source beyond
-65,533 without skipping any declared byte or its terminator. The check uses
-269 extra source instructions, no extra tape cells, and runs once per request;
-it changes neither the per-byte loop nor the maximum instruction slot.
+## 🔁 Filtering and validation
 
-For nonempty source, initialization saves the loop gate in cell 4, prepares
-the first byte group, then restores the gate and clears cell 4. A nonzero
-length-low byte gives the first group size. Zero length-low starts a full
-256-byte group and decrements length-high once. Empty source skips both.
+1. **Length check (once).** If the high length byte is 255 and the low byte is 254
+   or 255, set size error 12. This rejects sources over 65,533 bytes without
+   skipping any byte or the terminator. Cost: 269 instructions, no extra cells.
+2. **Group setup.** A nonzero low byte is the first group size. A zero low byte
+   means a full 256-group, and high is decremented once. Empty source skips this.
+3. **Per byte** (each pass starts and ends at offset 13):
+   - read the byte;
+   - decode it with one copy and a subtraction chain (43, 44, 45, 46, 60, 62,
+     91, 93), so a match skips the rest;
+   - update depth, then the group counter.
+   The high byte is tested only at group ends. All scratch returns to zero.
+   Worst case 4,381 instructions per byte.
+4. **Brackets.** A wrapping open sets the size error. A close at depth 0 sets the
+   bracket error. Nonzero final depth sets the bracket error. Size beats brackets.
+5. **Capacity.** The working marker is 1 exactly when 3,840 instructions are
+   stored, and each byte just copies that flag. The count-high compare runs only
+   on a low-byte carry (at most 15 times). A full buffer rejects commands but
+   still accepts ignored bytes. The working marker is cleared before output, so
+   no phantom instruction is emitted.
+6. **Store.** A recognized command below the limit marks the slot, bumps the count
+   and moves live state 16 cells right.
+7. **Always consume the whole source**, even after an error, so the terminator
+   can be checked.
 
-Each main iteration begins and ends at offset 13. It sets continuation to one,
-reads one raw byte, decodes the eight opcodes and updates bracket depth.
-After bracket flags are consumed, the group counter decrements and tests its
-low byte once using cells 14 and 15. Only at a completed group does it test
-the high byte, selecting a later full group or stopping. Scratch cells return
-to zero before slot transfer. Opcode decoding preserves the raw byte using a
-single copy into comparison scratch. Nested mismatch branches subtract the
-gaps between ASCII values 43, 44, 45, 46, 60, 62, 91 and 93. A match skips
-all later comparisons. The final mismatch clears the command and bracket
-flags. Scratch returns to zero; bracket flags are set only for their exact
-bytes. The decoder passes all 256 bytes at both extreme working slots while
-preserving every other tape cell, with at most 4,381 dispatched instructions.
-The exact counter invariant, 131,072-state regression and decoder proof
-are documented in [P0 proofs](../docs/07_OPTIMIZATION_PROOFS.md).
+At most 3,840 instructions fit. The last working slot spans cells 61,456–61,471.
+Nothing scans left of the sentinel.
 
-An opening bracket that wraps depth sets the sticky size error. A close at
-depth zero sets the sticky bracket error without subtracting. A nonzero final
-depth sets the bracket error. Size takes priority over bracket diagnostics.
+Proofs: [P0 proofs](../docs/07_OPTIMIZATION_PROOFS.md) (131,072-state counter,
+512-state decoder, 7,682-state capacity flag).
 
-The working slot's marker is one exactly when the stored count is 3,840.
-The per-byte guard copies that Boolean flag, preserving it. A full buffer
-rejects only a recognized command, clearing cell 4 and setting size error 12.
-The expensive count-high comparison runs only when count-low carries, at
-most fifteen times: high becoming fifteen marks the next working slot full.
-Stored slots retain marker one. Before record emission, clear the current
-working marker so output scanning cannot emit a phantom instruction.
-No state is transferred on ignored or rejected bytes.
-All 7,682 reachable count/command states pass whole-tape checks; see the
-[capacity-gate proof](../docs/07_OPTIMIZATION_PROOFS.md#p0-carry-triggered-capacity-flag).
+---
 
-If an instruction is recognized and count-high is below fifteen, the frontend
-marks the old slot, increments the count with carry, and transfers live state
-sixteen cells right. The raw instruction stays in the old slot. A full buffer
-rejects further instructions without advancing; ignored trailing bytes remain
-valid. After any error the declared source is still consumed, so the required
-terminator can be checked before choosing the final status.
+## 📤 Output
 
-At most 3,840 instructions are stored. The working slot then spans cells
-61,456 through 61,471. Rejected input never creates another slot. No scan goes
-left of the zero sentinel. These layout bounds are also exercised by the
-external instrumented interpreter; they are not a claim about an XAX backend.
+`42 46 58 00 01 status`, then on success the u32 count and each stored
+instruction in order (scanning marked slots back to the sentinel). Failures are
+exactly 6 bytes. There is never partial success output, but OS writes aren't
+atomic, so callers must reject truncated output.
 
-## Record emission
+---
 
-After validation, the frontend emits BFX magic `42 46 58`, NUL magic byte, identifier
-`01` and the compiler status. Success additionally emits the little-endian u32
-count, scans marked slots left to the sentinel, then outputs each
-stored instruction in order. Failures emit exactly six bytes. This prevents
-partial success output for rejected source; it does not promise atomic OS
-writes. Callers must reject incomplete transport output.
+## 🧰 When you edit it
 
+- Keep byte consumption, error priority and instruction order.
+- Comments must not contain any of the eight instruction characters.
+- Re-check raw and filtered hashes, slot bounds, all fixtures, limits and agreement
+  with an independent interpreter.
 
-## Maintenance checks
-
-Preserve request consumption, diagnostic priority and exact instruction order
-when editing the source. Annotations must contain none of the eight executable
-instruction characters. Check raw and filtered hashes independently, slot
-bounds, all exact fixtures, resource limits and independent-interpreter
-agreement after executable changes.
-
-Current own-source records, stores and native cycles are in
-[canonical migration evidence](../evidence/canonical_bfx.json). Earlier
-[capacity-gate evidence](../evidence/frontend_capacity_gate.json) retains its
-pre-migration source identity. The [optional optimizer](optimize.bf.notes.md)
-changes the payload representation, while both routes emit the same BFX format.
-[Bootstrap](../docs/04_BOOTSTRAP.md) explains authority and replay.
+📎 [canonical_bfx.json](../evidence/canonical_bfx.json) (current) ·
+[frontend_capacity_gate.json](../evidence/frontend_capacity_gate.json) (pre-migration) ·
+[bootstrap](../docs/04_BOOTSTRAP.md)

@@ -1,65 +1,81 @@
-# BBC integration with XAX
+# 🔗 XAX integration
 
-The single [BFX specification](02_BFX_CONTRACT.md) governs every producer and
-consumer. Canonical XAX source at `d320babab5bb9fe61a9d29f1f14942a847bf83a7` contains one decoder,
-shared by `bfx.xax` and `import_bfx.xax`. The latter emits, hashes, sorts and
-serializes a complete decision store only after validation. Old decoder and
-wide-format entrypoints are retired; there is no format fallback.
+> BBC writes Brainfuck. XAX turns it into machine code. This page is the handshake.
 
-[Canonical integration sources](https://github.com/MrxSiN/XAX/tree/d320babab5bb9fe61a9d29f1f14942a847bf83a7/compiler/integration/bfx)
-are authoritative semantic graphs, with expected-root verified transactions and
-workspace saves. `bfx.xax` is now the decoder FUNCTION dependency closure rather
-than the retired target-specific build/package request. Select that function
-and package it with the existing generic SDK. The importer and source/packing
-coordinators are MODULE/PROGRAM stores with explicit entry functions.
+Everything here lives in the separate [XAX repository](https://github.com/MrxSiN/XAX/tree/40caaf7069bcee1a46165388dbe2548e329721c7/compiler/integration/bfx)
+as canonical semantic graphs, changed only through verified expected-root
+transactions. The [BFX spec](02_BFX_CONTRACT.md) is the contract between the two.
 
-| Component | Typed borrowed views in machine argument order |
+---
+
+## 🧩 Who does what
+
+| Piece | Lives in | Job |
+|---|---|---|
+| `stream_chunks.bf`, `stream_runs.bf`, `optimize.bf` | BBC | Filter, validate and optimize source, in Brainfuck |
+| `compile.xax` / `compile_bfx` | XAX | The one public entry that drives those BF passes |
+| `bfx.xax` | XAX | The single strict BFX decoder |
+| `import_bfx.xax` | XAX | Turns a valid record into a verified decision store |
+| `bbc.xax` | XAX | The whole `bbc.exe`: commands plus the native XAX driver |
+| `bbc-android-arm64.xax`, `bbc-windows-x86_64.xax` | XAX | Host build requests the decision is bound into |
+
+The decoder is shared by `bfx.xax` and `import_bfx.xax`, so there is exactly
+one way to read BFX. No old-format fallback exists.
+
+---
+
+## 📐 Buffer contracts
+
+Every component borrows typed views. They must be separate, initialized and
+alive. Raw native pointers alone prove nothing.
+
+| Component | Views (bytes, in argument order) |
 |---|---|
-| Public compile_bfx | Source/work 1,114,112; record 65,546; output/work 1,114,112; tape/work 1,114,112 |
-| Decoder | Record read-only 65,546; scratch writable 524,288; logical length u32 |
-| Importer | Record read-only 65,546; scratch writable 524,288; arena writable 536,870,912; hash scratch writable 2,048 |
-| Source coordinator | Source/work 1,114,112; record 65,546; output work 1,114,112; tape work 1,114,112 |
-| Packing coordinator | Record 65,546; input work 1,114,112; output work 1,114,112; tape work 1,114,112 |
+| Public `compile_bfx` | source/work 1,114,112 · record 65,546 · output/work 1,114,112 · tape/work 1,114,112 |
+| Decoder | record 65,546 (read-only) · scratch 524,288 · plus logical length |
+| Importer | record 65,546 (read-only) · scratch 524,288 · arena 536,870,912 · hash scratch 2,048 |
+| Source coordinator | same four views as `compile_bfx` |
+| Packing coordinator | record 65,546 · input, output and tape work 1,114,112 each |
 
-Views must be distinct, initialized, live and satisfy the canonical ownership
-contract. Raw native pointers cannot establish those proofs. Importer logical
-record length is written to the first scratch u32 before calling. The public [compile_bfx interface](21_UNIFIED_COMPILATION.md) supplies a u32
-frame and optimization level. The following is private source-coordinator ABI:
-source bytes begin at source/work offset 65,536; write raw-source length to
-record offset zero. Public callers use compile_bfx, not this private ABI.
-Source length above 1 MiB rejects before tape reset.
+Return values pack length and status into one number:
 
-Decoder returns `(count << 32) | validation_status`; importer returns
-`(store_bytes << 32) | status`; source/packer return `(record_bytes << 32) | status`.
-On any failure discard provisional buffers. Decoder status meanings are specified
-once in the wire contract. Decision-call status and buffer semantics remain in
-the [execution profile](01_BRAINFUCK_PROFILE.md).
+| Component | Returns |
+|---|---|
+| Decoder | `(count << 32) \| status` |
+| Importer | `(store_bytes << 32) \| status` |
+| Source and packing coordinators | `(record_bytes << 32) \| status` |
 
-The earlier format migration changed no generic SDK files. Its initial builds used the SDK snapshot
-at `3dcb358e48b0f9a45b8cb72767c1aa600e55cd78`; unrelated upstream additions from
-`943884a` are retained and all eight migration-snapshot component images rebuilt identically.
-The unified phase adds compile.xax/compile_windows.xax and updates the private
-source coordinator; its own evidence records the new identities.
-Builds use Windows-hosted Python
-verification, lowering and packaging. Source-coordinator Windows lowering uses
-existing generic inlining APIs for its private BF callee. Native component calls
-run with `XAX_REQUIRE_NATIVE=1` and record authority. Generic verification still
-uses the Windows helper-loader fallback; this is not a native XAX compiler host.
+On any failure, discard every provisional buffer.
 
-The standalone Android/Windows hosts and bounded Android demo embed decisions,
-not BFX decoders. Their earlier packaging/application evidence remains historical;
-new format migration tests do not establish new application, performance or native
-compiler-host claims. See [status](05_STATUS.md) and [bootstrap](04_BOOTSTRAP.md).
+The importer's record length goes in the first scratch u32. The private
+source-coordinator layout (source at offset 65,536, length at record offset 0)
+is internal; callers use `compile_bfx`. Source over 1 MiB is rejected before
+the tape is touched.
 
-The native compile_windows.xax process host exposes emit-bfx/check/info through
-the unified interface and exact shared decoder. These commands require no Python
-at runtime. Its [`compile` command](25_NATIVE_COMPILE.md) binds imported decisions
-into host build requests and runs the native XAX driver for resolution,
-verification, lowering and packaging, with no Python. Library packaging and
-common-helper loader migration remain open. See the [public guide](21_UNIFIED_COMPILATION.md).
+---
 
-The [ARM64 alias-index follow-up](24_XAX_BUILD_LATENCY.md) changes only the
-canonical XAX native backend. It preserves strict input verification and uses
-the original canonical scan if per-call scratch cannot fit. Its prepared-build
-measurements exclude frontend/import/binding and do not establish the complete
-native public source workflow.
+## ⚙️ How a build runs today
+
+`bbc.exe compile` does everything in one native process, with no Python. The
+full pipeline is in [native compilation](25_NATIVE_COMPILE.md).
+
+1. BBC's Brainfuck passes produce BFX.
+2. The XAX importer turns it into a decision store.
+3. A framing function wraps that store as an expected-root edit record.
+4. The driver steps run in turn:
+   - **edit** binds the decision into the host request;
+   - **resolve** produces the build snapshot;
+   - **build** verifies it, lowers it to machine code and packages it.
+
+The generic Python XAX SDK is used once, to bootstrap `bbc.exe` itself.
+
+---
+
+## 📎 History
+
+- The standalone Android and Windows hosts embed decisions, not BFX decoders.
+- Their earlier packaging and app evidence keeps its original scope.
+- The [ARM64 alias index](24_XAX_BUILD_LATENCY.md) and later driver changes
+  touch only the XAX backend. BFX and BBC's Brainfuck are unchanged.
+- The format migration changed no generic SDK files and was built with SDK
+  `3dcb358`. All eight migration-snapshot component images rebuilt identically.

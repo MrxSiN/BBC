@@ -1,21 +1,20 @@
-# Movement packing
+# ➡️ Movement packing
 
-[`pack_moves.bf`](../compiler/pack_moves.bf) consumes a previously validated BFX
-success of at most 3,840 instructions followed by `01`. It emits exactly the
-same [BFX format](02_BFX_CONTRACT.md), including the identifier and u32 count.
-It trusts the private header/count precondition. Bad terminator emits failure 1.
+> `>>>>>>>>` but in one byte, and it still falls off the tape at exactly the right step.
 
-Seven descending scans replace identical monotone moves in groups of 128 through
-2 with the declared movement powers. Encoded operations and opposite moves stop
-a run. Every executed move retains its first-crossing trap and last valid cursor.
-Opposite movement must never cancel, and zero-entry loops must still skip their
-bodies. Output does not expand. CLEAR passes through as a real zero-valued opcode.
+[`pack_moves.bf`](../compiler/pack_moves.bf) takes a validated BFX success of up
+to 3,840 instructions plus `01`, and emits the same [BFX format](02_BFX_CONTRACT.md).
 
-[Tape notes](../compiler/pack_moves.bf.notes.md) describe the separate markers.
-Historical correctness and timing snapshots stay in
-[bfx_v4_movement.json](../evidence/bfx_v4_movement.json) and
-[the benchmark report](15_V4_BENCHMARKS.md), with their original source identities.
+- Seven passes, from 128 down to 2, replace runs of identical moves with one
+  packed move.
+- A packed move fails at the same first step its unit moves would, and the
+  pointer stays on the last valid cell.
+- Opposite moves never cancel. A loop that starts on zero still skips its body.
+- CLEAR passes through as a real zero-valued opcode. Output never grows.
+- A bad terminator gives failure 1.
 
-The supported end-user route is [unified compilation](21_UNIFIED_COMPILATION.md).
-These component contracts describe private BF implementation/bootstrap details;
-users do not select a separate BFX format or manually negotiate passes.
+Tape layout: [pack_moves notes](../compiler/pack_moves.bf.notes.md) ·
+proof: [optimization proofs](07_OPTIMIZATION_PROOFS.md#-p1-movement-powers) ·
+old measurements: [v4 report](15_V4_BENCHMARKS.md).
+
+You don't call this directly. [`bbc compile -O1`](25_NATIVE_COMPILE.md) runs it for you.
