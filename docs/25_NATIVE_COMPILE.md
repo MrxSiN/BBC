@@ -143,6 +143,26 @@ its own view and putting loops in small helpers. The driver itself is unaffected
 
 ---
 
+## 📚 Android shared libraries
+
+`bbc.exe bind android-arm64` records also bind XAX's `bfc_call_v1` shared-library host, for
+apps that load Brainfuck policies with `dlopen`:
+
+```text
+buildbc.exe bind android-arm64 -O1 < policy.bf > policy.edit
+python -m xax_android_bfc policy.edit libpolicy.so
+```
+
+- The second step is XAX's generic SDK, run from its `compiler/src`; BBC's passes and BFX are unchanged.
+- The library needs a 65,536-cell tape and ignores the instruction budget argument.
+- Nine YouTubeHideAds policies matched their previously shipped libraries on about 1.8 million
+  calls on a Pixel 8 Pro.
+- A native `bbc compile` shared-library target is not implemented.
+
+📎 XAX side: [SHARED.md](https://github.com/MrxSiN/XAX/blob/52e8808/compiler/integration/bfx/SHARED.md)
+
+---
+
 ## 📏 Where the time goes now
 
 See [benchmarks](08_BENCHMARKS.md). In short: a small build is about 0.1 s, and a

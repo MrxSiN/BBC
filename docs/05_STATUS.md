@@ -33,7 +33,8 @@ Updated **2026-10-22**.
 - ⏱️ **Build time** is about 0.1 s for small programs under Wine; native competitors
   take 4–80 ms. Lowering is the biggest cost.
 - 📱 **Android:** no off-main-thread worker for unbounded programs; no
-  Android-hosted compiler.
+  Android-hosted compiler. `bfc_call_v1` [shared libraries](25_NATIVE_COMPILE.md#-android-shared-libraries)
+  build through XAX's SDK, not natively.
 - 📦 **Windows DLL packaging** and common helper loading are open.
 - 🐧 **Linux** is optional and not a target. Cross-compiling doesn't count.
 - 🧩 **XAX OI-49** (large ARM64 composite returns) is open; the importer avoids it.
