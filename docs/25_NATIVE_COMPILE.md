@@ -155,6 +155,8 @@ python -m xax_android_bfc policy.edit libpolicy.so
 
 - The second step is XAX's generic SDK, run from its `compiler/src`; BBC's passes and BFX are unchanged.
 - The library needs a 65,536-cell tape and ignores the instruction budget argument.
+- **Not migrated** to the 2 GiB tape: records from the current `bbc` don't bind into it
+  until its C ABI changes ([XAX SHARED.md](https://github.com/MrxSiN/XAX/blob/main/compiler/integration/bfx/SHARED.md)).
 - Nine YouTubeHideAds policies matched their previously shipped libraries on about 1.8 million
   calls on a Pixel 8 Pro.
 - A native `bbc compile` shared-library target is not implemented.

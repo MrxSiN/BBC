@@ -16,7 +16,9 @@ Size never changes the [BFX format](02_BFX_CONTRACT.md) or the importer.
   implementation choices, not language limits.
 - **Streaming entry.** Validates 32 KiB chunks with a u64 depth counter and
   wide pairing indices. Count limits are checked before any payload is read.
-- The compiled program's 65,536-cell tape is a separate, fixed language rule.
+- The compiled program's tape is 2,147,246,080 cells, reserved up front and committed page by
+  page as the program touches it (Windows: a commit-on-touch handler; Android: `mmap`).
+  The edge comes from XAX's x86-64 bound encoding, not from BBC; see XAX OI-52.
 
 ---
 

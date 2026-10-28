@@ -45,6 +45,10 @@ Return values pack length and status into one number:
 | Importer | `(store_bytes << 32) \| status` |
 | Source and packing coordinators | `(record_bytes << 32) \| status` |
 
+Decisions borrow three 2,147,246,080-byte views (input, output, tape). Hosts reserve them
+and commit pages as touched; see
+[XAX dynamic tape](https://github.com/MrxSiN/XAX/blob/main/compiler/integration/bfx/DYNAMIC_TAPE.md).
+
 On any failure, discard every provisional buffer.
 
 The importer's record length goes in the first scratch u32. The private

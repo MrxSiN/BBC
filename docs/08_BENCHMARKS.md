@@ -8,7 +8,41 @@ Run on **2026-10-22**. Lower is better everywhere.
 
 ---
 
-## 🥊 The short version
+## 🪟 Native Windows and Pixel, before/after the 2 GiB tape (2026-10-29)
+
+First Windows-native and on-device numbers. Windows 11 on a Ryzen 9 5900HS and a Pixel 8 Pro;
+brainfry `e55d457` is the only competitor rebuilt so far. Medians of 15 interleaved trials;
+every built program's output matched the reference interpreter.
+
+📎 [dynamic_tape_benchmark_2026-10-29.json](../evidence/dynamic_tape_benchmark_2026-10-29.json)
+
+| Windows x86-64 (ms) | BBC O1 build before → after | BBC O1 run before → after | brainfry build | brainfry run |
+|---|---:|---:|---:|---:|
+| Small programs (12, typical) | ~95 → ~46 | ~16 → ~16 | ~17 | ~16 |
+| mandelbrot | 1,731 → 1,529 | 10,605 → 10,339 | 18 | 938 |
+| life | 318 → 242 | 2,852 → 2,795 | 14 | 22 |
+| factor | 343 → 263 | 910 → 909 | 15 | 58 |
+| bottles | 385 → 304 | 18 → 17 | 14 | 25 |
+
+| Pixel 8 Pro (ms) | BBC O1 build | BBC O1 run | brainfry run |
+|---|---:|---:|---:|
+| mandelbrot | ❌ declined (exit 5) | — | 1,240 |
+| life | 520 | 855 | 89 |
+| factor | 694 | 319 | 245 |
+
+- 🔨 **Faster builds come from the rebuilt `bbc.exe`, not the tape.** Rebuilding the
+  unchanged store gives the same ~2× faster small builds. The same rebuild raises peak
+  build working set (about 10 → 16 MiB small, up to 122 MiB for Mandelbrot).
+- 🏃 **Run time is unchanged** by the wider tape on Windows. Pixel run times vary up to
+  1.6× between runs of the same brainfry binary, so their before/after deltas aren't
+  significant.
+- 📏 **Peak commit** of a generated Windows program stays at 1.6 MiB: the tape is reserved,
+  not committed (eager commit measured 6,157 MiB).
+- ⚖️ brainfry still wins every compute-heavy run and every build. No lead is claimed.
+
+---
+
+## 🥊 The short version (2026-10-22, Wine on Linux)
 
 | | Winner | BBC |
 |---|---|---|

@@ -12,7 +12,7 @@ are actually *tested* lives in [status](05_STATUS.md).
 | Thing | BBC does |
 |---|---|
 | Instructions | `><+-.,[]`. Every other byte is ignored |
-| Tape | 65,536 cells, each one byte, all start at zero |
+| Tape | 2,147,246,080 cells (2 GiB − 232 KiB), each one byte, all start at zero. Pages are committed only when touched |
 | Arithmetic | Wraps: 255 + 1 is 0 |
 | Pointer | Starts at cell 0 |
 | Moving off the tape | Fails immediately, at the first step past the edge |
@@ -38,11 +38,13 @@ Inside, every program is one function:
 run_decision(input) -> status + output
 ```
 
-- It borrows three separate 65,536-byte buffers: input (read-only), output and tape.
+- It borrows three separate 2,147,246,080-byte views: input (read-only), output and tape. Hosts
+  reserve them and commit pages on first touch; input and output capacity stay 65,536.
 - Two 32-bit numbers give the real input length and the output space. Either can
   be zero; neither can exceed its buffer.
-- Every call clears the whole tape and starts at cell 0. Bad lengths are rejected
-  *before* the tape is touched.
+- Every call starts at cell 0 on a zero tape: the decision clears cells 0–65,535 and the
+  host provides a freshly reserved, zero tape. Bad lengths are rejected *before* the tape
+  is touched.
 - Output bytes past what was written stay untouched.
 
 The result packs into one number: `(output_length << 32) | status`.

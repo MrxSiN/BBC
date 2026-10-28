@@ -58,7 +58,9 @@ Leave unrelated working-tree edits alone.
   cross-compiling alone is not target execution.
 - **Limits:** the bounded seed takes 65,533 bytes, 3,840 instructions and depth 255.
   The public entry takes 1 MiB, 65,536 instructions before packing and depth 32,768.
-  The program tape is 65,536 cells. These are fixed budgets, not growth.
+  These are fixed budgets, not growth. The program tape is 2,147,246,080 cells (2 GiB − 232 KiB),
+  committed only as touched; input and output stay 65,536 bytes. The tape edge is
+  XAX's x86-64 bound encoding ([XAX OI-52](https://github.com/MrxSiN/XAX/blob/main/XAX_OPEN_ISSUES.md)).
 - **Bounded passes** trust a complete validated success of up to 3,840 instructions
   plus `01`. They don't validate untrusted input. Validate their output, and
   discard failed prefixes.

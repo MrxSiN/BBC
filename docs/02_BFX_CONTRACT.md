@@ -88,7 +88,8 @@ rejected before any payload is read.
 | Public entry (`stream_chunks.bf` + XAX) | 1,048,576 bytes | 65,536 before packing | 32,768 |
 | Private bounded seed (`compiler.bf`) | 65,533 bytes | 3,840 | 255 |
 
-Both emit identical BFX. The compiled program's tape is always 65,536 bytes.
+Both emit identical BFX. The compiled program's tape is 2,147,246,080 bytes, committed as
+touched ([XAX dynamic tape](https://github.com/MrxSiN/XAX/blob/main/compiler/integration/bfx/DYNAMIC_TAPE.md)).
 These are fixed budgets; growing them at runtime is not built yet
 ([scalability](16_SCALABILITY.md)).
 

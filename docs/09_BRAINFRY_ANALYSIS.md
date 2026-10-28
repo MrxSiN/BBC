@@ -17,7 +17,7 @@ container itself, in one process. The current numbers are in
 | Arithmetic | Any run becomes one immediate add | Packs runs in powers of two |
 | Loops | `Zero`, offset `MulAdd` and stride `Scan` | Exact clear loops only; affine and scan need proofs first |
 | Backend | Dedicated emitters, tape pointer in a register | General verified backend; code quality is the open problem |
-| Tape | Fresh OS pages, a tiny runtime | Every call resets the full 65,536-cell tape (removing that would be wrong) |
+| Tape | Fresh OS pages, a tiny runtime | A 2 GiB reservation committed as touched; each call clears cells 0–65,535 on a fresh tape |
 | File size | Hand-written minimal PE/ELF | Generic packaging |
 
 This is implementation analysis, not a per-pass timing experiment.

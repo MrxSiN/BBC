@@ -2,7 +2,7 @@
 
 > What works today, what doesn't yet, and where the proof lives.
 
-Updated **2026-10-22**.
+Updated **2026-10-29**.
 
 ---
 
@@ -17,6 +17,7 @@ Updated **2026-10-22**.
 | **Competitors** | All 18 [benchmark](08_BENCHMARKS.md) programs give correct output |
 | **Devices** | Earlier artifacts ran on a Pixel 8 Pro and Windows 11; new builds reproduce them byte for byte |
 | **Self-hosting** | Three identical native own-source frontend generations on each target |
+| **Tape** | 2,147,246,080 cells, committed as touched. A 130,050-cell walk runs natively on Windows 11 and on a Pixel 8 Pro at O0 and O1; both edges still fail at the first crossing ([XAX dynamic tape](https://github.com/MrxSiN/XAX/blob/main/compiler/integration/bfx/DYNAMIC_TAPE.md)) |
 
 **Limits:** fixed budgets, listed in [BFX budgets](02_BFX_CONTRACT.md#-budgets).
 
@@ -35,6 +36,11 @@ Updated **2026-10-22**.
 - 🐧 **Linux** is optional and not a target. Cross-compiling doesn't count.
 - 🧩 **XAX OI-49** (large ARM64 composite returns) is open; the importer avoids it.
 - 🏁 **Milestones:** M4 incomplete, M8 not achieved. No performance lead is claimed.
+- 📏 **Fixed limits remain** on source (1 MiB), instructions (65,536), nesting (32,768),
+  input/output (64 KiB), the importer's record view and the native driver: it declines
+  mandelbrot at O0 on Windows and factor O0 and mandelbrot on Android, and its 40 MB file
+  capacity. The tape edge is XAX's x86-64 bound encoding ([XAX OI-52](https://github.com/MrxSiN/XAX/blob/main/XAX_OPEN_ISSUES.md)).
+- 📚 **`bfc_call_v1`** shared libraries aren't migrated to the wider tape.
 
 ---
 
@@ -47,7 +53,8 @@ were archived outside the repo on 2026-10-28 and remain in git history.
 
 | Report | What it shows |
 |---|---|
-| [competitor_benchmark_2026-10-22.json](../evidence/competitor_benchmark_2026-10-22.json) | **Current.** BBC vs 8 compilers: 18 programs, build, run, size, RAM |
+| [dynamic_tape_benchmark_2026-10-29.json](../evidence/dynamic_tape_benchmark_2026-10-29.json) | **Current.** Windows-native and Pixel before/after the 2 GiB tape, vs brainfry; raw samples |
+| [competitor_benchmark_2026-10-22.json](../evidence/competitor_benchmark_2026-10-22.json) | BBC vs 8 compilers under Wine on Linux: 18 programs, build, run, size, RAM |
 | [brainfly_brainfry_followup.json](../evidence/brainfly_brainfry_followup.json) | Brainfly correctness, brainfry optimizer defects |
 
 ### ⚙️ Native compile
