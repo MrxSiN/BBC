@@ -28,7 +28,6 @@ wraps, and scratch cells return to zero. Framing, limits and output are untouche
 and from 1.20G to 564M (max ignored NUL). Native frontend calls got 1.17× faster
 on Android and 1.29× on Windows (geometric mean of 9 cases).
 
-📎 [frontend_counter_profile.json](../evidence/frontend_counter_profile.json)
 
 ---
 
@@ -49,7 +48,6 @@ from 160M to 38M. Native calls got 2.23× faster on Android and 1.95× on Window
 The compiler library shrank from 66,504 to 50,120 bytes (Android) and from
 692,736 to 549,888 bytes (Windows).
 
-📎 [frontend_filter_profile.json](../evidence/frontend_filter_profile.json)
 
 ---
 
@@ -69,7 +67,6 @@ requests. The Windows nested case is about 4% slower. It costs 82 instructions
 and 20,992 bytes in the Windows DLL. An earlier gated variant regressed and was
 rejected; its samples are kept.
 
-📎 [frontend_capacity_gate.json](../evidence/frontend_capacity_gate.json)
 
 ---
 
@@ -85,7 +82,7 @@ Even-step loops like `[--]` are **not** touched, because they can loop forever.
 **Checks.** 359 native and 71 independent cases. 6,048 full-buffer decision calls
 across all 256 entry bytes, five alignments, EOF and failure order.
 
-📎 [bfx_v2_optimization.json](../evidence/bfx_v2_optimization.json) · contract: [clear optimization](10_CLEAR_OPTIMIZATION.md)
+📎 contract: [clear optimization](10_CLEAR_OPTIMIZATION.md)
 
 ---
 
@@ -103,7 +100,7 @@ every entry byte. 22,120 full-buffer calls.
 **Effect.** Native calls 1.43× faster on Android and 1.24× on Windows vs v2.
 Builds 1.09× / 1.14× faster.
 
-📎 [bfx_v3_arithmetic.json](../evidence/bfx_v3_arithmetic.json) · contract: [arithmetic packing](12_ARITHMETIC_PACKING.md)
+📎 implemented by [stream_runs.bf](../compiler/stream_runs.bf) · [streaming compilation](17_STREAMING_COMPILATION.md)
 
 ---
 
@@ -121,7 +118,7 @@ records and 9,592 full-buffer calls.
 **Effect.** Smaller files and builds about 1.02× faster. No clear runtime win;
 the Android native-call aggregate was 0.93×.
 
-📎 [bfx_v4_movement.json](../evidence/bfx_v4_movement.json) · contract: [movement packing](14_MOVEMENT_PACKING.md)
+📎 implemented by [stream_runs.bf](../compiler/stream_runs.bf) · [streaming compilation](17_STREAMING_COMPILATION.md)
 
 ---
 
@@ -136,7 +133,6 @@ once, and length checks still run first.
 **Effect.** A call saves 0.544 ms on Windows (6.168 → 5.624) and 0.058 ms on
 Android (1.360 → 1.302).
 
-📎 [wide_tape_reset.json](../evidence/wide_tape_reset.json)
 
 ---
 

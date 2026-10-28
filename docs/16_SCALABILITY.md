@@ -29,4 +29,4 @@ Possible, but not built. It needs, at every layer, not just one constant:
 - growable source, record, pairing and graph storage;
 - matching validation and optimization budgets.
 
-📎 [capacity audit](../evidence/scalability_capacity_audit.json) · [chunk prototype](../evidence/streaming_frontend_prototype.json) · [streaming compilation](17_STREAMING_COMPILATION.md)
+📎 [streaming compilation](17_STREAMING_COMPILATION.md)

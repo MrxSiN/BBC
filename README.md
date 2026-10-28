@@ -137,14 +137,10 @@ Details: [status and evidence](docs/05_STATUS.md)
 - [Execution profile](docs/01_BRAINFUCK_PROFILE.md) · [BFX format](docs/02_BFX_CONTRACT.md) · [Compile interface](docs/21_UNIFIED_COMPILATION.md) · [Native compile](docs/25_NATIVE_COMPILE.md)
 
 **Inside**
-- [XAX integration](docs/03_XAX_INTEGRATION.md) · [Bootstrap](docs/04_BOOTSTRAP.md) · [Optimization proofs](docs/07_OPTIMIZATION_PROOFS.md) · [Scalability](docs/16_SCALABILITY.md) · [Streaming](docs/17_STREAMING_COMPILATION.md)
+- [XAX integration](docs/03_XAX_INTEGRATION.md) · [Bootstrap](docs/04_BOOTSTRAP.md) · [Optimization proofs](docs/07_OPTIMIZATION_PROOFS.md) · [Scalability](docs/16_SCALABILITY.md) · [Streaming](docs/17_STREAMING_COMPILATION.md) · [Clear-loop pass](docs/10_CLEAR_OPTIMIZATION.md)
 
 **Performance**
 - [Benchmarks](docs/08_BENCHMARKS.md) · [Performance plan](docs/06_PERFORMANCE_PLAN.md) · [Brainfry analysis](docs/09_BRAINFRY_ANALYSIS.md)
-
-**History**
-- Optimizations: [clear](docs/10_CLEAR_OPTIMIZATION.md) · [clear bench](docs/11_V2_BENCHMARKS.md) · [arithmetic](docs/12_ARITHMETIC_PACKING.md) · [arithmetic bench](docs/13_V3_BENCHMARKS.md) · [movement](docs/14_MOVEMENT_PACKING.md) · [movement bench](docs/15_V4_BENCHMARKS.md)
-- Native path: [build cache](docs/18_BACKEND_BUILD_CACHE.md) · [driver follow-up](docs/19_NATIVE_DRIVER_FOLLOWUP.md) · [modernization](docs/20_MODERNIZATION.md) · [native lowering](docs/22_NATIVE_LOWERING.md) · [Android lowering](docs/23_ANDROID_NATIVE_LOWERING.md) · [ARM64 build latency](docs/24_XAX_BUILD_LATENCY.md)
 
 **Contributing**
 - [Rules for maintainers](AGENT.md) · [Status](docs/05_STATUS.md)

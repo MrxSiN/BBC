@@ -75,7 +75,7 @@ The generic Python XAX SDK is used once, to bootstrap `bbc.exe` itself.
 
 - The standalone Android and Windows hosts embed decisions, not BFX decoders.
 - Their earlier packaging and app evidence keeps its original scope.
-- The [ARM64 alias index](24_XAX_BUILD_LATENCY.md) and later driver changes
+- The [ARM64 alias index](../evidence/xax_alias_index.json) and later driver changes
   touch only the XAX backend. BFX and BBC's Brainfuck are unchanged.
 - The format migration changed no generic SDK files and was built with SDK
   `3dcb358`. All eight migration-snapshot component images rebuilt identically.

@@ -88,6 +88,5 @@ atomic, so callers must reject truncated output.
 - Re-check raw and filtered hashes, slot bounds, all fixtures, limits and agreement
   with an independent interpreter.
 
-📎 [canonical_bfx.json](../evidence/canonical_bfx.json) (current) ·
-[frontend_capacity_gate.json](../evidence/frontend_capacity_gate.json) (pre-migration) ·
+📎 [canonical_bfx.json](../evidence/canonical_bfx.json) ·
 [bootstrap](../docs/04_BOOTSTRAP.md)

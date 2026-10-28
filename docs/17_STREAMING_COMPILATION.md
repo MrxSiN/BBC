@@ -40,4 +40,4 @@ XAX `compiler/integration/bfx/`: `source.xax`, `pack.xax`, `import_bfx.xax` and
 the shared decoder `bfx.xax`. Buffer sizes are in [XAX integration](03_XAX_INTEGRATION.md).
 These are fixed views; runtime growth is not built.
 
-📎 [wide bootstrap](../evidence/wide_bootstrap.json) · [wide final audit](../evidence/wide_final_audit.json) · [Mandelbrot report](../evidence/wide_profile.json) (all pre-migration)
+📎 [stream_runs.json](../evidence/stream_runs.json) · [unified_compilation.json](../evidence/unified_compilation.json)

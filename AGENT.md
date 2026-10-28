@@ -90,6 +90,11 @@ Leave unrelated working-tree edits alone.
   hashes, devices, tools and bootstrap dependencies.
 - Follow the [measurement plan](docs/06_PERFORMANCE_PLAN.md) before claiming any
   win. Keep historical snapshots and pinned competitors as they are.
+- O0 stays the correctness baseline. O1 never rejects a size O0 accepts. Fast
+  paths fall back to exact behavior when a precondition fails.
+- Emulator runs are not device runs: without a real Windows host or Pixel, report
+  BLOCKED. Report each change as files changed, equivalence argument, tests,
+  measurements and remaining risks.
 
 ---
 
@@ -101,8 +106,8 @@ Leave unrelated working-tree edits alone.
   sync with any rename.
 - **Evidence JSON is immutable.** Add a new report for a new run; never relabel or
   rehash old ones. [Status](docs/05_STATUS.md) is the index.
-- Retired-format reports were removed at the user's request and archived outside
-  the repo ([cleanup record](evidence/format_cleanup.json)). Don't relabel old
-  measurements as BFX results.
+- Retired-format reports and superseded snapshots were removed at the user's
+  request and archived outside the repo ([cleanup record](evidence/format_cleanup.json));
+  git history keeps them too. Don't relabel old measurements as BFX results.
 - When editing docs, check links, binary examples, limits, hashes and evidence counts.
   Doc-only work must not touch executable source, fixtures or evidence bytes.

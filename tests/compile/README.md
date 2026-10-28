@@ -26,5 +26,5 @@ The first two rows lock in the coordinator's cross-chunk error precedence.
 - **Active** enters all 512 loops, runs the innermost body three times and prints `03 02 01 00`.
 
 Both pass the native frontend at O0 and O1, and their Android builds run on a Pixel 8 Pro
-([Android lowering](../../docs/23_ANDROID_NATIVE_LOWERING.md)). O0 keeps primitives,
+([native Android lowering](../../evidence/native_android_lowering.json)). O0 keeps primitives,
 so its record differs from O1 while using the same BFX format.

@@ -94,7 +94,6 @@ So opposite moves (`<>`) never cancel: the first move may already fail. Each new
 rule needs positive, negative, nested-loop, wraparound and tape-edge tests against
 an independent interpreter before it is switched on.
 
-The passes that pass this bar: [clear loops](10_CLEAR_OPTIMIZATION.md),
-[arithmetic packing](12_ARITHMETIC_PACKING.md) and
-[movement packing](14_MOVEMENT_PACKING.md). Proofs live in
+The passes that pass this bar: [clear loops](10_CLEAR_OPTIMIZATION.md) and
+[run packing](17_STREAMING_COMPILATION.md). Proofs live in
 [optimization proofs](07_OPTIMIZATION_PROOFS.md).

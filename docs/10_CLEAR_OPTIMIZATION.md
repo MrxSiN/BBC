@@ -18,6 +18,5 @@
 - A bad terminator gives BFX failure 1. The top two count bytes are always zero.
 - Tape layout: [optimize.bf notes](../compiler/optimize.bf.notes.md).
 - Proof: [optimization proofs](07_OPTIMIZATION_PROOFS.md#-p1-clear-loops-and-full-wraps).
-- Old measurements: [v2 report](11_V2_BENCHMARKS.md).
 
 You don't call this directly. [`bbc compile -O1`](25_NATIVE_COMPILE.md) runs it for you.

@@ -153,13 +153,6 @@ Earlier, narrower comparisons. Their numbers stay as recorded.
 | What (newest first) | Doc | Evidence |
 |---|---|---|
 | Native compile (2026-10-21), ~0.1 s builds under Wine | [native compile](25_NATIVE_COMPILE.md) | [native_compile.json](../evidence/native_compile.json) |
-| Android standalone (2026-10-20) vs Awib and brainfry | — | [standalone_android.json](../evidence/standalone_android.json) |
-| Fresh baseline: 180 builds, BBC 1.5 s vs brainfry 23 ms | [modernization](20_MODERNIZATION.md) | [modernization_baseline.json](../evidence/modernization_baseline.json) |
-| Build latency, RAM, Windows standalone | — | [build_runtime_resources.json](../evidence/build_runtime_resources.json) |
-| Movement packing vs brainfry | [v4](15_V4_BENCHMARKS.md) | [bfx_v4_measurements.json](../evidence/bfx_v4_measurements.json) |
-| Arithmetic packing vs brainfry | [v3](13_V3_BENCHMARKS.md) | [bfx_v3_measurements.json](../evidence/bfx_v3_measurements.json) |
-| Clear loops | [v2](11_V2_BENCHMARKS.md) | [bfx_v2_optimization.json](../evidence/bfx_v2_optimization.json) |
 | Brainfly correctness, brainfry defects | [analysis](09_BRAINFRY_ANALYSIS.md) | [brainfly_brainfry_followup.json](../evidence/brainfly_brainfry_followup.json) |
-| First pilot vs Awib and brainfry | — | [competition_pilot.json](../evidence/competition_pilot.json) |
 
 How to measure fairly: [performance plan](06_PERFORMANCE_PLAN.md).

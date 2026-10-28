@@ -57,4 +57,4 @@ Fits the 3,840-instruction limit; peak cell 61,469. Output never grows.
 - Validate the whole returned record before importing. A native output-capacity
   failure can leave a success-looking prefix: discard it.
 
-📎 [bfx_v2_optimization.json](../evidence/bfx_v2_optimization.json) (pre-migration)
+📎 [canonical_bfx.json](../evidence/canonical_bfx.json)

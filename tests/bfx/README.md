@@ -55,9 +55,8 @@ Oversized text produces nothing.
 
 ## 🔁 Pass fixtures
 
-[clear-cases.json](clear-cases.json) (10), [arithmetic-cases.json](arithmetic-cases.json) (23)
-and [movement-cases.json](movement-cases.json) (24) hold exact binary input/output
-pairs, including negative rewrites, maximum counts and bad terminators. Each pass
+[clear-cases.json](clear-cases.json) (10) holds exact binary input/output
+pairs for `optimize.bf`, including negative rewrites, maximum counts and bad terminators. It
 needs a validated success record of up to 3,840 instructions plus `01`.
 
 The XAX decoder's 1,231 cases cover every id byte, every payload byte, old

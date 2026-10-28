@@ -18,11 +18,7 @@ Updated **2026-10-22**.
 | **Devices** | Earlier artifacts ran on a Pixel 8 Pro and Windows 11; new builds reproduce them byte for byte |
 | **Self-hosting** | Three identical native own-source frontend generations on each target |
 
-**Limits** (fixed budgets, not growth):
-
-- Public entry: 1 MiB source, 65,536 instructions before packing, depth 32,768.
-- Bounded seed: 65,533 bytes, 3,840 instructions, depth 255.
-- Program tape: 65,536 wrapping byte cells, checked movement, EOF reads 0.
+**Limits:** fixed budgets, listed in [BFX budgets](02_BFX_CONTRACT.md#-budgets).
 
 ---
 
@@ -44,18 +40,15 @@ Updated **2026-10-22**.
 
 ## 📚 Evidence index
 
-Each report is an immutable snapshot for the sources it names.
+Each report is an immutable snapshot for the sources it names. Superseded reports
+were archived outside the repo on 2026-10-28 and remain in git history.
 
 ### 🏁 Benchmarks
 
 | Report | What it shows |
 |---|---|
 | [competitor_benchmark_2026-10-22.json](../evidence/competitor_benchmark_2026-10-22.json) | **Current.** BBC vs 8 compilers: 18 programs, build, run, size, RAM |
-| [competition_pilot.json](../evidence/competition_pilot.json) | First Awib/brainfry pilot; competitor pins |
 | [brainfly_brainfry_followup.json](../evidence/brainfly_brainfry_followup.json) | Brainfly correctness, brainfry optimizer defects |
-| [build_runtime_resources.json](../evidence/build_runtime_resources.json) | Earlier build latency and memory |
-| [modernization_baseline.json](../evidence/modernization_baseline.json) | Frozen baseline: 180 builds |
-| [scalability_capacity_audit.json](../evidence/scalability_capacity_audit.json) | brainfry Mandelbrot resource-cap rejection |
 
 ### ⚙️ Native compile
 
@@ -77,34 +70,10 @@ Each report is an immutable snapshot for the sources it names.
 | Report | What it shows |
 |---|---|
 | [canonical_bfx.json](../evidence/canonical_bfx.json) | Current BFX: decoder, importer, frontend, Mandelbrot |
-| [frontend_capacity_gate.json](../evidence/frontend_capacity_gate.json) | Carry-triggered capacity flag |
 | [stream_runs.json](../evidence/stream_runs.json) | Streaming run packer |
-| [wide_profile.json](../evidence/wide_profile.json) · [wide_bootstrap.json](../evidence/wide_bootstrap.json) · [wide_final_audit.json](../evidence/wide_final_audit.json) · [wide_tape_reset.json](../evidence/wide_tape_reset.json) | Large programs and full tape reset |
-| [streaming_frontend_prototype.json](../evidence/streaming_frontend_prototype.json) · [streaming_frontend_bootstrap.json](../evidence/streaming_frontend_bootstrap.json) · [streaming_frontend_verification.json](../evidence/streaming_frontend_verification.json) | Chunked source filter |
-| [frontend_filter_windows.json](../evidence/frontend_filter_windows.json) · [frontend_filter_android.json](../evidence/frontend_filter_android.json) · [frontend_filter_profile.json](../evidence/frontend_filter_profile.json) | Source filter |
-| [frontend_counter_windows.json](../evidence/frontend_counter_windows.json) · [frontend_counter_android.json](../evidence/frontend_counter_android.json) · [frontend_counter_profile.json](../evidence/frontend_counter_profile.json) | Instruction counter |
-| [source_capacity.json](../evidence/source_capacity.json) · [source_capacity_android.json](../evidence/source_capacity_android.json) | Capacity checks |
-
-### 🔁 Optimizations
-
-| Report | What it shows |
-|---|---|
-| [bfx_v2_optimization.json](../evidence/bfx_v2_optimization.json) | Clear and full-wrap loops |
-| [bfx_v3_arithmetic.json](../evidence/bfx_v3_arithmetic.json) · [bfx_v3_measurements.json](../evidence/bfx_v3_measurements.json) | Arithmetic packing |
-| [bfx_v4_movement.json](../evidence/bfx_v4_movement.json) · [bfx_v4_measurements.json](../evidence/bfx_v4_measurements.json) · [bfx_v4_native_boundaries.json](../evidence/bfx_v4_native_boundaries.json) · [bfx_v4_call_controls.json](../evidence/bfx_v4_call_controls.json) | Movement packing |
-
-### 🧱 Hosts and driver history
-
-| Report | What it shows |
-|---|---|
-| [standalone_windows.json](../evidence/standalone_windows.json) · [standalone_android.json](../evidence/standalone_android.json) · [standalone_native_replay.json](../evidence/standalone_native_replay.json) | Standalone process hosts |
-| [windows_native_driver.json](../evidence/windows_native_driver.json) · [windows_native_driver_followup.json](../evidence/windows_native_driver_followup.json) · [windows_native_resource_diagnosis.json](../evidence/windows_native_resource_diagnosis.json) · [windows_native_verification_profile.json](../evidence/windows_native_verification_profile.json) | Early native driver |
-| [windows_hash_host.json](../evidence/windows_hash_host.json) | Native hashing host |
-| [graph_verification_profile.json](../evidence/graph_verification_profile.json) · [backend_build_cache.json](../evidence/backend_build_cache.json) | Verification cost, cold cache |
 
 ### 🗃️ Migration and cleanup
 
 | Report | What it shows |
 |---|---|
-| [bfx_migration.json](../evidence/bfx_migration.json) · [bfx_android_importer.json](../evidence/bfx_android_importer.json) · [bfx_xax_import.json](../evidence/bfx_xax_import.json) · [bfx_retirement.json](../evidence/bfx_retirement.json) | Move to BFX and the XAX importer |
 | [format_cleanup.json](../evidence/format_cleanup.json) · [repository_cleanup.json](../evidence/repository_cleanup.json) | Retired formats and files, archived outside the repo |

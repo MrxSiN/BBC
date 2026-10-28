@@ -43,5 +43,4 @@ The highest cell used is 58. Nothing grows with input size.
 Framing priority is kept, overflow is sticky, and every loop returns to its
 controlling cell.
 
-📎 [streaming_frontend_prototype.json](../evidence/streaming_frontend_prototype.json) ·
-fixtures: [tests/stream_chunks](../tests/stream_chunks/README.md)
+📎 fixtures: [tests/stream_chunks](../tests/stream_chunks/README.md)
