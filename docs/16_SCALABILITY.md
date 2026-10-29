@@ -23,6 +23,30 @@ count field, so the wire format itself no longer caps a program; the limits belo
 
 ---
 
+## 🧱 The native backend is the real ceiling today
+
+The frontend accepts 65,536 instructions, but the native XAX driver inside `bbc.exe`
+declines (exit 5) much smaller decisions. Measured 2026-10-29 with the BFX `02` `bbc.exe`
+on Windows, O0, by bisection on repeated patterns:
+
+| Pattern | Builds up to | Declines from | Decision blocks / nodes at the edge |
+|---|---:|---:|---|
+| `+` | 4,941 | 4,942 | 4,951 / 15,109 |
+| `>` | 4,213 | 4,214 | 4,223 / 8,711 |
+| `[]` | 2,420 pairs | 2,421 | 4,851 / 9,967 |
+| `+>` | 4,155 pairs | 4,156 | 8,321 / 21,063 |
+| `.` | 4,162 | 4,163 | 8,335 / 16,935 |
+
+No single count (blocks, nodes, values, edges, edge arguments, operands or fragment
+bytes) or positive linear combination of them explains all five edges, so the limit
+is inside the driver's verifier rather than a table size the frontend could respect.
+It is XAX's open native-coverage issue
+([OI-51](https://github.com/MrxSiN/XAX/blob/main/XAX_OPEN_ISSUES.md)). Folding moves
+real programs under it: Mandelbrot's 11,451 instructions build at O1 (3,145 BFX
+instructions) but still decline at O0.
+
+---
+
 ## 🌱 Growing at runtime
 
 Possible, but not built. It needs, at every layer, not just one constant:

@@ -77,6 +77,6 @@ nested loops, I/O, a moving counter) stays a real loop.
 ## 🧪 Checks
 
 - 19 exact fixtures, each matching an independent interpreter on 3 tape sizes and 2 inputs.
-- 3,000 random programs (up to 400 instructions, tapes of 8 to 4,096 cells, long
-  moves near both edges): every terminating one matches the reference semantics.
+- 3,300 random programs (up to 400 instructions, tapes of 8 to 4,096 cells, long moves
+  near both edges): all 2,921 that terminate within the step budget match the reference.
 - All 17 benchmark programs match their expected output after folding.
