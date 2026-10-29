@@ -6,9 +6,9 @@
 | | |
 |---|---|
 | Role | Private bounded seed/reference. The public entry uses [`stream_chunks.bf`](stream_chunks.bf) |
-| Size | 4,545 bytes, 2,200 instructions |
-| Raw SHA-256 | `89e87c42d870e879c4dbbf2ec578da2823351566d3e7d25801f29b5804446b2a` |
-| Filtered SHA-256 | `a9323e9daa898c76693df7b66647f58ddb16dd67d91db72ee76b710250b6c358` |
+| Size | 4,576 bytes, 2,196 instructions |
+| Raw SHA-256 | `46cddbb0f8ed3723b6a90b595db2ef3f46c2f586a8aa58ea4408f45367e0df30` |
+| Filtered SHA-256 | `cd8fd78c1f9782d280efa09d6ea51a9bbedb77365490089e6728363567a7b992` |
 | Specs | [BFX](../docs/02_BFX_CONTRACT.md) · [profile](../docs/01_BRAINFUCK_PROFILE.md) |
 
 Older counts and hashes quoted elsewhere are historical snapshots.
@@ -74,9 +74,9 @@ Proofs: [P0 proofs](../docs/07_OPTIMIZATION_PROOFS.md) (131,072-state counter,
 
 ## 📤 Output
 
-`42 46 58 00 01 status`, then on success the u32 count and each stored
-instruction in order (scanning marked slots back to the sentinel). Failures are
-exactly 6 bytes. There is never partial success output, but OS writes aren't
+`42 46 58 00 02 status`, then on success each stored instruction in order
+(scanning marked slots back to the sentinel) and the END byte `FF`. Failures are
+exactly 6 bytes. (Until 2026-10-29 it wrote id `01` and a u32 count.) There is never partial success output, but OS writes aren't
 atomic, so callers must reject truncated output.
 
 ---

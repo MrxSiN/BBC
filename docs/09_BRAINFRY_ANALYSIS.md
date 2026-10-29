@@ -53,7 +53,7 @@ Timed programs avoid EOF and stay on low tape cells, so every arm agrees.
 ## 🛠️ What BBC took from this
 
 - ✅ [Capacity flag](07_OPTIMIZATION_PROOFS.md#-p0-carry-triggered-capacity-flag): a frontend speedup.
-- ✅ [Clear loops](10_CLEAR_OPTIMIZATION.md) and arithmetic/movement
+- ✅ [Clear loops](10_FOLD_OPTIMIZATION.md) and arithmetic/movement
   [run packing](17_STREAMING_COMPILATION.md), each proven, with Brainfry's
   bugs kept as negative tests.
 - ✅ A fully [native, single-process build](25_NATIVE_COMPILE.md): 0.10 s under

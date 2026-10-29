@@ -11,9 +11,10 @@ Updated **2026-10-29**.
 | Area | State |
 |---|---|
 | **Compile** | `bbc.exe compile` turns Brainfuck into Windows x86-64 and Android ARM64 programs in one native process, no Python ([native compile](25_NATIVE_COMPILE.md)) |
-| **Format** | One [BFX format](02_BFX_CONTRACT.md): magic `42 46 58 00`, id `01`. No fallback, no legacy decoder |
-| **Levels** | O0 keeps primitives; O1 packs runs and folds safe clear loops. O2/O3 don't exist yet |
+| **Format** | One [BFX format](02_BFX_CONTRACT.md): magic `42 46 58 00`, id `02`, END byte, no count field. No fallback, no legacy decoder |
+| **Levels** | O0 keeps primitives; O1 runs [`fold.bf`](10_FOLD_OPTIMIZATION.md): offset instructions per straight segment, multiply and clear loops. O2/O3 don't exist yet |
 | **Correctness** | 83 programs × O0/O1 × 2 targets: 332 builds and 588 runs match an independent interpreter |
+| **BFX `02`** | 26 programs × O0/O1 on Windows: 52 builds and runs match; Android builds only (no device attached) ([fold_v2.json](../evidence/fold_v2.json)) |
 | **Competitors** | All 18 [benchmark](08_BENCHMARKS.md) programs give correct output |
 | **Devices** | Earlier artifacts ran on a Pixel 8 Pro and Windows 11; new builds reproduce them byte for byte |
 | **Self-hosting** | Three identical native own-source frontend generations on each target |
@@ -25,8 +26,11 @@ Updated **2026-10-29**.
 
 ## 🚧 Not yet
 
-- 🐢 **Generated code is slow on heavy compute.** Mandelbrot takes about 22 s
-  vs 0.5–1.7 s for the competitors. Loop optimizations (affine, scan, offset) are missing.
+- 🐢 **Generated code is slow on heavy compute.** After folding, Mandelbrot takes 7.8 s on
+  Windows vs 0.34–0.96 s for the competitors: the Windows backend still keeps every value in
+  memory. Scan loops are not folded yet.
+- 📦 **Small executables grew** by about 28 KiB with BFX `02` (the decision's constant pool),
+  and large O0 builds are 38–71% slower ([fold_v2.json](../evidence/fold_v2.json)).
 - ⏱️ **Build time** is about 0.1 s for small programs under Wine; native competitors
   take 4–80 ms. Lowering is the biggest cost.
 - 📱 **Android:** no off-main-thread worker for unbounded programs; no
@@ -53,7 +57,8 @@ were archived outside the repo on 2026-10-28 and remain in git history.
 
 | Report | What it shows |
 |---|---|
-| [dynamic_tape_benchmark_2026-10-29.json](../evidence/dynamic_tape_benchmark_2026-10-29.json) | **Current.** Windows-native and Pixel before/after the 2 GiB tape, vs brainfry; raw samples |
+| [fold_v2.json](../evidence/fold_v2.json) | **Current.** BFX `02` and `fold.bf`: Windows before/after, 52 verified builds and runs; raw samples |
+| [dynamic_tape_benchmark_2026-10-29.json](../evidence/dynamic_tape_benchmark_2026-10-29.json) | Windows-native and Pixel before/after the 2 GiB tape, vs brainfry; raw samples |
 | [competitor_benchmark_2026-10-22.json](../evidence/competitor_benchmark_2026-10-22.json) | BBC vs 8 compilers under Wine on Linux: 18 programs, build, run, size, RAM |
 | [brainfly_brainfry_followup.json](../evidence/brainfly_brainfry_followup.json) | Brainfly correctness, brainfry optimizer defects |
 
@@ -77,7 +82,7 @@ were archived outside the repo on 2026-10-28 and remain in git history.
 | Report | What it shows |
 |---|---|
 | [canonical_bfx.json](../evidence/canonical_bfx.json) | Current BFX: decoder, importer, frontend, Mandelbrot |
-| [stream_runs.json](../evidence/stream_runs.json) | Streaming run packer |
+| [stream_runs.json](../evidence/stream_runs.json) | Retired streaming run packer (BFX `01`) |
 
 ### 🗃️ Migration and cleanup
 

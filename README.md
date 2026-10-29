@@ -27,7 +27,7 @@ build\bbc.exe check < hello.bf
 build\bbc.exe info < hello.bfx
 ```
 
-- `-O1` (default) packs runs and folds clear loops. `-O0` keeps every instruction.
+- `-O1` (default) folds straight code into offset instructions and simple counted loops into multiplies. `-O0` keeps every instruction.
 - Discard the output if the exit code isn't 0 ([exit codes](docs/25_NATIVE_COMPILE.md#-use)).
 - In PowerShell, wrap commands in `cmd /d /c "..."` so redirection stays binary.
 
@@ -110,10 +110,10 @@ fair same-platform comparison.
 
 ```text
 program.bf ──► Brainfuck passes ──► BFX ──► XAX importer ──► verify ──► lower ──► .exe / ELF
-              (filter, pack, optimize)        └──────── all inside bbc.exe ────────┘
+              (filter, fold)                  └──────── all inside bbc.exe ────────┘
 ```
 
-1. **Brainfuck passes** filter the source, pack runs and optimize safe loops.
+1. **Brainfuck passes** filter the source and fold straight code and simple loops.
 2. **The XAX importer** turns the BFX record into a verified semantic graph.
 3. **The XAX driver** binds, verifies, lowers and packages it for the target.
 
@@ -138,7 +138,7 @@ Details: [status and evidence](docs/05_STATUS.md)
 - [Execution profile](docs/01_BRAINFUCK_PROFILE.md) · [BFX format](docs/02_BFX_CONTRACT.md) · [Compile interface](docs/21_UNIFIED_COMPILATION.md) · [Native compile](docs/25_NATIVE_COMPILE.md)
 
 **Inside**
-- [XAX integration](docs/03_XAX_INTEGRATION.md) · [Bootstrap](docs/04_BOOTSTRAP.md) · [Optimization proofs](docs/07_OPTIMIZATION_PROOFS.md) · [Scalability](docs/16_SCALABILITY.md) · [Streaming](docs/17_STREAMING_COMPILATION.md) · [Clear-loop pass](docs/10_CLEAR_OPTIMIZATION.md)
+- [XAX integration](docs/03_XAX_INTEGRATION.md) · [Bootstrap](docs/04_BOOTSTRAP.md) · [Optimization proofs](docs/07_OPTIMIZATION_PROOFS.md) · [Scalability](docs/16_SCALABILITY.md) · [Streaming](docs/17_STREAMING_COMPILATION.md) · [Clear-loop pass](docs/10_FOLD_OPTIMIZATION.md)
 
 **Performance**
 - [Benchmarks](docs/08_BENCHMARKS.md) · [Performance plan](docs/06_PERFORMANCE_PLAN.md) · [Brainfry analysis](docs/09_BRAINFRY_ANALYSIS.md)

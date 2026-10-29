@@ -14,12 +14,12 @@ conversion, and the `.bfx` extension alone doesn't make a file valid.
 Each `.request` is exact bounded-compiler input; the matching `.bfx` is the
 complete expected answer, including error records.
 
-| Fixture | Status | Count | Checks |
+| Fixture | Status | Body bytes | Checks |
 |---|---|---|---|
 | [all-eight](all-eight.request) | 0 | 8 | All eight instructions survive |
 | [bad-close](bad-close.request) | 2 | — | Unmatched `]` |
 | [bad-open](bad-open.request) | 2 | — | Unmatched `[` |
-| [empty](empty.request) | 0 | 0 | Valid 10-byte empty module |
+| [empty](empty.request) | 0 | 0 | Valid 7-byte empty module |
 | [nested](nested.request) | 0 | 18 | Nested loops |
 | [raw-zero](raw-zero.request) | 0 | 2 | Literal NUL and FF are ignored |
 | [safe-annotations](safe-annotations.request) | 0 | 2 | Comment text is ignored |
@@ -55,11 +55,8 @@ Oversized text produces nothing.
 
 ## 🔁 Pass fixtures
 
-[clear-cases.json](clear-cases.json) (10) holds exact binary input/output
-pairs for `optimize.bf`, including negative rewrites, maximum counts and bad terminators. It
-needs a validated success record of up to 3,840 instructions plus `01`.
-
-The XAX decoder's 1,231 cases cover every id byte, every payload byte, old
-signatures (as rejections), framing, maximum count and depth, and alignments.
-
-📎 [canonical_bfx.json](../../evidence/canonical_bfx.json)
+[fold-cases.json](fold-cases.json) (19) holds exact binary input/output pairs for
+[`fold.bf`](../../compiler/fold.bf): segments, turning points, both edges, folded and
+unfolded loops, and I/O. Each input is validated primitive instructions plus a zero byte;
+each output is a BFX `02` body. Every pair was checked against an independent interpreter
+on tapes of 8, 64 and 1,024 cells.

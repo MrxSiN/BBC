@@ -70,55 +70,42 @@ rejected; its samples are kept.
 
 ---
 
-## 🧹 P1: clear loops and full wraps
+## 🪗 P1: offset and loop folding
 
-**Fix.** `[-]` and `[+]` become CLEAR. A run of 256 identical `+` or `-` disappears.
+**Fix.** [`fold.bf`](../compiler/fold.bf) turns each segment of `+ - < >` into one
+ADD per touched cell, CHECKs for unaccessed turning points and one MOVE, and each loop
+whose single-segment body returns to its counter and steps it by ±1 into
+`[ MUL… CLEAR ]` ([contract](10_FOLD_OPTIMIZATION.md), [BFX `02`](02_BFX_CONTRACT.md)).
 
-**Why it's safe.** A unit step reaches zero within 255 iterations with no other
-effects. 256 identical steps are the identity on a byte. Only complete,
-consecutive, same-direction groups are removed; nothing involving movement is dropped.
-Even-step loops like `[--]` are **not** touched, because they can loop forever.
+**Why it's safe.**
+- *Arithmetic.* Changes to one cell inside a segment commute; their sum mod 256 is
+  the net change, and nothing in a segment reads the pointer or I/O.
+- *Bounds.* A path first leaves the tape at an extreme, and every extreme is a turning
+  point or the end. Each gets an ADD, MUL, CHECK or MOVE at that offset, and every
+  checked offset lies on the original path, so the folded segment fails exactly when the
+  original does. With no I/O in the segment, failing at a check instead of at the first
+  crossing gives the same status and output; the tape after a failure is not observable.
+- *Loops.* Counter `x ≠ 0`, step −1: the body runs `x` times, adding `x·Δ` to each other
+  cell; step +1: `256 − x` times, adding `−x·Δ`. Both leave the counter 0. The guard keeps
+  every check conditional on entering the loop. Steps of ±2 or more and anything with a
+  nested loop, I/O or a moving counter are left alone: they may not terminate or may not
+  be affine.
 
-**Checks.** 359 native and 71 independent cases. 6,048 full-buffer decision calls
-across all 256 entry bytes, five alignments, EOF and failure order.
+**Checks.** 19 exact fixtures checked against an independent interpreter on three tape
+sizes; 3,300 random programs (2,921 terminating within budget all match, including long
+moves past both window edges and tapes of 8 cells); all 17 benchmark programs, run
+natively through the new XAX importer.
 
-📎 contract: [clear optimization](10_CLEAR_OPTIMIZATION.md)
-
----
-
-## ➕ P1: arithmetic powers
-
-**Fix.** A run of K identical `+` or `-` (K = 2…128, a power of two) becomes one
-opcode. Seven passes run from largest to smallest.
-
-**Why it's safe.** Modular arithmetic. Groups never overlap, and every non-arithmetic
-instruction keeps its order.
-
-**Checks.** 432 native properties, 72 independent cases and all 14 powers over
-every entry byte. 22,120 full-buffer calls.
-
-**Effect.** Native calls 1.43× faster on Android and 1.24× on Windows vs v2.
-Builds 1.09× / 1.14× faster.
-
-📎 implemented by [stream_runs.bf](../compiler/stream_runs.bf) · [streaming compilation](17_STREAMING_COMPILATION.md)
+📎 [fold.bf notes](../compiler/fold.bf.notes.md)
 
 ---
 
-## ➡️ P1: movement powers
+## 🗄️ Retired: clear pass, arithmetic and movement powers
 
-**Fix.** A run of identical moves (2…128) becomes one packed move.
-
-**Why it's safe.** A one-way run stays on the tape exactly when its endpoint does.
-On failure the original status and last valid cell are kept. Opposite moves are
-never merged: `<>` and `+[<>-]` stay as negative tests.
-
-**Checks.** 432 native properties, 72 independent cases, 1,164 cross-target
-records and 9,592 full-buffer calls.
-
-**Effect.** Smaller files and builds about 1.02× faster. No clear runtime win;
-the Android native-call aggregate was 0.93×.
-
-📎 implemented by [stream_runs.bf](../compiler/stream_runs.bf) · [streaming compilation](17_STREAMING_COMPILATION.md)
+Until 2026-10-29, O1 ran `stream_runs.bf` (power-of-two arithmetic and move opcodes
+`01`–`1C`) and the bounded `optimize.bf` clear pass (at most 3,840 instructions).
+Their proofs and measurements remain in git history and the evidence reports that name
+them. BFX `02` has no power opcodes; `fold.bf` subsumes both passes.
 
 ---
 
@@ -136,22 +123,11 @@ Android (1.360 → 1.302).
 
 ---
 
-## 🌊 Streaming identical runs
-
-The streaming run packer carries one opcode and a count across chunk boundaries,
-so a run split between chunks is never lost. Loops and I/O flush first. Movement
-keeps its first-crossing failure. Opposite moves and even-step loops are left
-alone. See the [stream_runs notes](../compiler/stream_runs.bf.notes.md).
-
----
-
 ## 🎛️ O0 / O1
 
-The [public entry](21_UNIFIED_COMPILATION.md) adds no new rewrite.
-
 - **O0** emits primitives.
-- **O1** packs arithmetic and movement runs, then runs the clear pass if the
-  result has 3,840 instructions or fewer.
+- **O1** runs `fold.bf` on the whole validated body in one call. If it fails or its body
+  does not fit the record, the O0 record is returned instead.
 
 Bracket errors stick across chunks while counting continues, so "too big" wins
-over "unmatched". No affine, scan or offset optimization is claimed.
+over "unmatched". Offset and multiply loops are folded; scan loops are not yet.

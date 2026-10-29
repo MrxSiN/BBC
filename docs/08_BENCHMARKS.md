@@ -8,6 +8,34 @@ Run on **2026-10-22**. Lower is better everywhere.
 
 ---
 
+## 🪗 BFX `02` and `fold.bf`, before/after (2026-10-29)
+
+Windows 11, Ryzen 9 5900HS. Medians: small programs 15 build and 15 run trials, large 5 and 10,
+interleaved. Every built program's output matched. Before = the 2 GiB tape `bbc.exe`;
+after = the same with `fold.bf` and the BFX `02` importer.
+
+📎 [fold_v2.json](../evidence/fold_v2.json)
+
+| O1, Windows x86-64 | Build before → after (ms) | Run before → after (ms) | Size before → after | Build RAM (MiB) |
+|---|---:|---:|---:|---:|
+| mandelbrot | 1,551 → **598** | 10,368 → **7,781** | 1.40 → **1.05** MB | 122 → **91** |
+| life | 258 → **159** | 2,864 → **66** | 378 → **306** KB | 40 → **34** |
+| factor | 283 → **154** | 928 → **477** | 438 → **352** KB | 44 → **37** |
+| bottles | 315 → **202** | 20 → 19 | 404 → **373** KB | 42 → 42 |
+| sierpinski | 56 → 58 | 17 → 17 | 68 → 73 KB | 18 → 18 |
+| 12 small programs (typical) | ~46 → ~50 | ~16 → ~15 | ~15 → ~43 KB | 16 → 17 |
+
+- 🏃 **Loops got cheap.** Life's inner loops are transfer/multiply loops and now run once
+  each: 43× faster. Factor 1.9×, Mandelbrot 1.3×.
+- 🔨 **Large builds 1.6–2.6× faster** with fewer, larger instructions.
+- 📦 **Regression: small executables grow ~28 KiB** (the decision's 254-node constant
+  pool enlarges the frame), and **large O0 builds are 38–71% slower** for the same reason.
+- ⚖️ Competitors still win every compute-heavy run: Mandelbrot is 0.34–0.96 s for
+  Awib, pablojorge and brainfry on the same host. The remaining cost is the Windows
+  backend keeping every value in memory.
+
+---
+
 ## 🪟 Native Windows and Pixel, before/after the 2 GiB tape (2026-10-29)
 
 First Windows-native and on-device numbers. Windows 11 on a Ryzen 9 5900HS and a Pixel 8 Pro;

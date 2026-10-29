@@ -41,7 +41,7 @@ build\bbc.exe compile windows-x86_64 program.exe < program.bf
 
 Everything runs inside one `bbc.exe` process:
 
-1. **Front:** `stream_chunks.bf`, `stream_runs.bf` and `optimize.bf`, then the
+1. **Front:** `stream_chunks.bf` and `fold.bf` (O1), then the
    strict BFX decoder and importer. A small framing function turns the decision
    into one expected-root edit record.
 2. **Edit:** binds the decision into the target's host build request.

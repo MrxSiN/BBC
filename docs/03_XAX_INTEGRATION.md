@@ -12,7 +12,7 @@ transactions. The [BFX spec](02_BFX_CONTRACT.md) is the contract between the two
 
 | Piece | Lives in | Job |
 |---|---|---|
-| `stream_chunks.bf`, `stream_runs.bf`, `optimize.bf` | BBC | Filter, validate and optimize source, in Brainfuck |
+| `stream_chunks.bf`, `fold.bf` | BBC | Filter, validate and fold source, in Brainfuck |
 | `compile.xax` / `compile_bfx` | XAX | The one public entry that drives those BF passes |
 | `bfx.xax` | XAX | The single strict BFX decoder |
 | `import_bfx.xax` | XAX | Turns a valid record into a verified decision store |
@@ -41,7 +41,7 @@ Return values pack length and status into one number:
 
 | Component | Returns |
 |---|---|
-| Decoder | `(count << 32) \| status` |
+| Decoder | `(body_bytes << 32) \| status` |
 | Importer | `(store_bytes << 32) \| status` |
 | Source and packing coordinators | `(record_bytes << 32) \| status` |
 

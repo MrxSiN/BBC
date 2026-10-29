@@ -25,12 +25,11 @@ path speaks the one [BFX format](02_BFX_CONTRACT.md).
 The [public entry](21_UNIFIED_COMPILATION.md) runs the O0/O1 passes for you.
 The pieces below are private bootstrap and reference parts.
 
-- **Bounded clear pass** (`optimize.bf`) takes a validated
-  success record of up to 3,840 instructions plus `01`, and emits BFX again.
-  Never feed it a failure. Validate every result.
-- **Streaming packing** handles bigger programs and already-packed opcodes.
-  Its private packet core is bootstrapped through native BF and XAX import, then
-  specialized by exact-root graph transactions.
+- **Fold pass** (`fold.bf`) takes validated primitive instructions plus a zero byte
+  and emits a BFX `02` body. Never feed it unvalidated source. Validate every result.
+- Each BF pass's core is bootstrapped through BBC's own O0 record and the XAX
+  importer, then bound into `compile_bfx` by exact-root graph transactions
+  ([XAX BFX 02](https://github.com/MrxSiN/XAX/blob/bbc/bfx-v2-fold/compiler/integration/bfx/BFX_V2.md)).
 
 ---
 

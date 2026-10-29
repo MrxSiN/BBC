@@ -3,7 +3,8 @@
 > How big a program BBC eats, and why the plate is fixed-size for now.
 
 One public entry, [`compile_bfx`](21_UNIFIED_COMPILATION.md), handles every size.
-Size never changes the [BFX format](02_BFX_CONTRACT.md) or the importer.
+Size never changes the [BFX format](02_BFX_CONTRACT.md) or the importer. BFX `02` has no
+count field, so the wire format itself no longer caps a program; the limits below are buffers.
 
 | Resource | Public streaming entry | Private bounded seed |
 |---|---:|---:|

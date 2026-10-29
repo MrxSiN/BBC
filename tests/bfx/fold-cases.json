@@ -1,0 +1,101 @@
+{
+  "format": "fold.bf input: filtered primitive instructions then a zero byte; output: the BFX v2 operation body (no header, no END)",
+  "check": "each output matches an independent primitive interpreter on tapes of 8, 64 and 1024 cells with empty and two-byte inputs, except nonterminating runs",
+  "cases": [
+    {
+      "name": "empty",
+      "input_hex": "00",
+      "output_hex": ""
+    },
+    {
+      "name": "add_runs",
+      "input_hex": "2b2b2b2d2d00",
+      "output_hex": "010001"
+    },
+    {
+      "name": "wrap_256",
+      "input_hex": "2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b00",
+      "output_hex": ""
+    },
+    {
+      "name": "moves",
+      "input_hex": "3e3e3e3c00",
+      "output_hex": "03030402"
+    },
+    {
+      "name": "turning_point",
+      "input_hex": "3e3e3e3c3c3c00",
+      "output_hex": "0303"
+    },
+    {
+      "name": "offset_add",
+      "input_hex": "3e2b3c00",
+      "output_hex": "010101"
+    },
+    {
+      "name": "decrement_clear",
+      "input_hex": "5b2d5d00",
+      "output_hex": "00"
+    },
+    {
+      "name": "increment_clear",
+      "input_hex": "5b2b5d00",
+      "output_hex": "00"
+    },
+    {
+      "name": "even_step_kept",
+      "input_hex": "5b2d2d5d00",
+      "output_hex": "5b0100fe5d"
+    },
+    {
+      "name": "transfer",
+      "input_hex": "5b2d3e2b3c5d00",
+      "output_hex": "5b020101005d"
+    },
+    {
+      "name": "multiply",
+      "input_hex": "5b2d3e2b2b2b3e2b2b3c3c5d00",
+      "output_hex": "5b020103020202005d"
+    },
+    {
+      "name": "incrementing_counter",
+      "input_hex": "5b2b3e2d3c5d00",
+      "output_hex": "5b020101005d"
+    },
+    {
+      "name": "nested_not_folded",
+      "input_hex": "5b2d3e5b2d5d3c5d00",
+      "output_hex": "5b0100ff04010004ff5d"
+    },
+    {
+      "name": "scan_kept",
+      "input_hex": "5b3e5d00",
+      "output_hex": "5b04015d"
+    },
+    {
+      "name": "io_breaks_segment",
+      "input_hex": "2b2e3e2c3c00",
+      "output_hex": "0100012e04012c04ff"
+    },
+    {
+      "name": "edge_right",
+      "input_hex": "3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e00",
+      "output_hex": "047f047f042e"
+    },
+    {
+      "name": "edge_left",
+      "input_hex": "3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c00",
+      "output_hex": "048004fe"
+    },
+    {
+      "name": "pending_open_then_output",
+      "input_hex": "5b2e5d00",
+      "output_hex": "5b2e5d"
+    },
+    {
+      "name": "moved_counter_not_folded",
+      "input_hex": "5b2d3e2b5d00",
+      "output_hex": "5b0100ff01010104015d"
+    }
+  ]
+}

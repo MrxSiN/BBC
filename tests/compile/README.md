@@ -20,7 +20,7 @@ The first two rows lock in the coordinator's cross-chunk error precedence.
 
 ## 🕳️ Depth 512
 
-`deep_nesting_512` has a `.bf` source and an expected O1 `.bfx`:
+`deep_nesting_512` has a `.bf` source and an expected O1 `.bfx` (BFX `02`, from `fold.bf`):
 
 - **Zero-entry** prints `01`.
 - **Active** enters all 512 loops, runs the innermost body three times and prints `03 02 01 00`.

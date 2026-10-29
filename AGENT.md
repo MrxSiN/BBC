@@ -37,9 +37,9 @@ Leave unrelated working-tree edits alone.
 - Read the [BFX spec](docs/02_BFX_CONTRACT.md), [profile](docs/01_BRAINFUCK_PROFILE.md),
   [bootstrap](docs/04_BOOTSTRAP.md) and [status](docs/05_STATUS.md) first.
   Keep semantics, framing, ownership and failures unless a tested change is intended.
-- One format: magic `42 46 58 00`, id `01`, u32 count, `.bfx`. Exactly that id is
-  emitted and accepted. No legacy decoder or fallback. All levels, sizes and
-  targets share it.
+- One format: magic `42 46 58 00`, id `02`, body, `FF` END, `.bfx`; no count field.
+  Exactly that id is emitted and accepted. No legacy decoder or fallback. All levels,
+  sizes and targets share it.
 - Keep interfaces narrow: the frontend knows nothing about XAX storage, native
   ABIs or OS APIs. Apply SRP, DRY, KISS and YAGNI. No speculative layers.
 - Change formats only through an explicit, unambiguous migration. Every target must
@@ -57,13 +57,13 @@ Leave unrelated working-tree edits alone.
 - **Required targets:** Android ARM64 and Windows x86-64. Linux is optional;
   cross-compiling alone is not target execution.
 - **Limits:** the bounded seed takes 65,533 bytes, 3,840 instructions and depth 255.
-  The public entry takes 1 MiB, 65,536 instructions before packing and depth 32,768.
+  The public entry takes 1 MiB, 65,536 instructions before folding and depth 32,768.
   These are fixed budgets, not growth. The program tape is 2,147,246,080 cells (2 GiB − 232 KiB),
   committed only as touched; input and output stay 65,536 bytes. The tape edge is
   XAX's x86-64 bound encoding ([XAX OI-52](https://github.com/MrxSiN/XAX/blob/main/XAX_OPEN_ISSUES.md)).
-- **Bounded passes** trust a complete validated success of up to 3,840 instructions
-  plus `01`. They don't validate untrusted input. Validate their output, and
-  discard failed prefixes.
+- **`fold.bf`** trusts validated primitive instructions plus a zero byte. It doesn't
+  validate untrusted input. XAX's decoder validates its output; discard failed prefixes.
+  `compile_bfx` falls back to the O0 record whenever folding fails or doesn't fit.
 - **Native compile.** `bbc.exe compile` is fully native and runs in one process: bind
   in-process, then the driver's edit, resolve and build. It commits its large
   views only when they're touched and checks each graph once per compile.
@@ -73,8 +73,8 @@ Leave unrelated working-tree edits alone.
 - **Biggest open costs:** generated-code speed on compute-heavy programs and build
   lowering ([benchmarks](docs/08_BENCHMARKS.md)).
 - **Still open:** Android off-main-thread worker for unbounded programs, Windows DLL
-  packaging, Android-hosted compiler, and affine/scan/offset optimizations. M8 is
-  not achieved.
+  packaging, Android-hosted compiler, scan-loop folding, a native backend register
+  allocator, and growable frontend/importer buffers. M8 is not achieved.
 - **ARM64 note:** XAX OI-49 (large composite returns) is still open. The importer
   avoids it with scratch outputs and small results.
 - **Preserve** full tape reset, rejected-length-before-reset, checked accesses and

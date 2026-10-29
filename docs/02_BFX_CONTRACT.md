@@ -2,96 +2,106 @@
 
 > BFX (Ballsdeep Brainfuck XAX), extension `.bfx`: the one record BBC hands to XAX.
 
-One format for every optimization level, source size and target. Numbers are
-unsigned little endian. What the program *does* is defined by the
-[Brainfuck profile](01_BRAINFUCK_PROFILE.md).
+One format for every optimization level, source size and target. What the
+program *does* is defined by the [Brainfuck profile](01_BRAINFUCK_PROFILE.md).
+The current format id is **`02`** (2026-10-29). Id `01` records are rejected
+outright: recompile old sources, don't patch headers.
 
 ---
 
 ## 🧱 Record
 
 ```text
-Success: 42 46 58 00 | 01 | 00     | count:u32 | count instruction bytes
-Failure: 42 46 58 00 | 01 | status
+Success: 42 46 58 00 | 02 | 00     | body | FF
+Failure: 42 46 58 00 | 02 | status
 ```
 
 | Bytes | Field | Value |
 |---|---|---|
 | 0–3 | Magic | `42 46 58 00` (`BFX` + NUL) |
-| 4 | Format id | Exactly `01` (the byte, not ASCII `1`) |
+| 4 | Format id | Exactly `02` (the byte, not ASCII `2`) |
 | 5 | Producer status | 0 = success, anything else = failure |
-| 6–9 | Instruction count | Success only |
-| 10+ | Instructions | Exactly `count` bytes |
+| 6 … n−2 | Body | Instructions, each an opcode byte and its operands |
+| n−1 | END | `FF`, the last byte of every success |
 
-- ✅ A success is exactly `10 + count` bytes. A failure is exactly 6 bytes.
-- 🚫 No padding, no extra fields, no trailing bytes, no other count widths.
-- 🧮 Check `10 + count` for overflow before comparing lengths.
+- ✅ A success is the 6-byte header, the body and `FF`; its body length is the
+  record length minus 7. A failure is exactly 6 bytes.
+- 📏 **No count field.** The record carries no width that could cap a program;
+  its length is whatever the transport delivered. The id `01` u32 count is gone.
+- 🚫 No padding, no extra fields, no trailing bytes after END.
 - 🗑️ A failure is a valid answer but never an importable program. Discard
   partial or failed output; file writes are not atomic.
 
 Producer failure codes: **1** missing or bad terminator, **2** unmatched
 brackets, **3** too big. Framing is checked first, then size, then brackets.
 
-Old layouts (3-byte magic, ids 01–05) are rejected outright. There is no
-fallback and no legacy decoder: recompile old sources, don't patch headers.
-
 ---
 
 ## 🔤 Instructions
 
-| Byte | Meaning |
+| Bytes | Meaning |
 |---|---|
 | ASCII `+ - > < . , [ ]` | The usual Brainfuck instruction |
 | `00` | CLEAR: set the current cell to 0 |
-| `01`–`07` | Add `2^n` (wraps) |
-| `08`–`0E` | Subtract `2^(n−7)` (wraps) |
-| `0F`–`15` | Move right `2^(n−14)` cells |
-| `16`–`1C` | Move left `2^(n−21)` cells |
+| `01 d k` | ADD: cell at `p+d` += `k` (wraps) |
+| `02 d k` | MUL: cell at `p+d` += cell at `p` × `k` (wraps) |
+| `03 d` | CHECK: `p+d` must lie on the tape |
+| `04 n` | MOVE: `p` += `n` |
+| `FF` | END, only as the record's last byte |
 
-Every other byte is invalid. The count includes every instruction, brackets and
-CLEAR too, and brackets must balance.
+`d` and `n` are signed bytes (−128…127), `k` an unsigned byte. Every other
+opcode is invalid, and an operand may not run past the body.
 
-- CLEAR is a real instruction, so a zero byte is never a terminator.
-- A packed move fails at the same first step its unit moves would, and the
-  pointer stays on the last valid cell.
-- Opposite moves never cancel. A loop that starts on zero runs nothing.
+- **Bounds.** ADD, MUL, CHECK and MOVE fail with status 1 (`POINTER_BOUNDS`)
+  when `p+d` (or `p+n`) is off the tape, before any effect of that instruction.
+  `<` and `>` keep their first-crossing rule; the pointer stays on the last valid cell.
+- **Why that is exact.** BBC only emits offset instructions inside a *segment*:
+  a stretch with no loop or input/output. Every point where the original path could
+  first leave the tape is a turning point or the segment's end, and each one gets an
+  ADD, MUL, CHECK or MOVE at that offset. A failure inside a segment is reported
+  before the segment's next input/output, so callers see the same status and output.
+- **MUL** reads the cell at `p`, which no instruction in its group changes.
+  BBC emits it only inside a guarded loop (`[ … 00 ]`), so the checks and products
+  happen exactly when the original loop would have run.
+- A loop that starts on zero runs nothing. Opposite moves never silently cancel:
+  their extremes stay checked.
 - A record carries no optimization level, size class, target or unsafe flags.
 
 ---
 
 ## ✔️ Validation
 
-The one XAX decoder checks length, magic, id, status, count, every opcode and
-bracket pairing **before** anything is imported. Until then the data is untrusted.
+The one XAX decoder checks length, magic, id, status, END, every opcode, every
+operand length and bracket pairing **before** anything is imported. Until then the
+data is untrusted. Operand bytes are never read as instructions.
 
 | Decoder status | Meaning |
 |---|---|
-| 1 | Bad framing or magic |
+| 1 | Bad framing, magic or END |
 | 2 | Unsupported id |
 | 3 | Producer reported failure |
 | 4 | Too big |
-| 5 | Invalid opcode |
+| 5 | Invalid opcode or truncated operand |
 | 6 | Unmatched brackets |
 
-These are separate from producer status codes.
+These are separate from producer status codes. XAX keeps runtime checks for every
+offset access; it never trusts a producer's claim that an access is in range.
 
 ---
 
 ## 📏 Budgets
 
-The count field could hold any u32. Today's importer accepts up to **65,536
-instructions**, so balanced nesting tops out at **32,768**. Bigger counts are
-rejected before any payload is read.
+The format has no size field. The remaining limits are buffers, not the wire
+format, and are listed in [scalability](16_SCALABILITY.md): today the importer's
+record view still accepts 65,536 body bytes and the public entry 1 MiB of source.
 
 | Component | Raw source | Instructions | Nesting |
 |---|---:|---:|---:|
-| Public entry (`stream_chunks.bf` + XAX) | 1,048,576 bytes | 65,536 before packing | 32,768 |
+| Public entry (`stream_chunks.bf` + `fold.bf` + XAX) | 1,048,576 bytes | 65,536 before folding | 32,768 |
 | Private bounded seed (`compiler.bf`) | 65,533 bytes | 3,840 | 255 |
 
-Both emit identical BFX. The compiled program's tape is 2,147,246,080 bytes, committed as
+Both emit BFX `02`. The compiled program's tape is 2,147,246,080 bytes, committed as
 touched ([XAX dynamic tape](https://github.com/MrxSiN/XAX/blob/main/compiler/integration/bfx/DYNAMIC_TAPE.md)).
-These are fixed budgets; growing them at runtime is not built yet
-([scalability](16_SCALABILITY.md)).
 
 ---
 
@@ -107,15 +117,11 @@ Users never see these; they exist for bootstrapping.
 - A missing terminator fails even at end of file.
 - The terminator catches truncation, not corruption.
 
-**Bounded passes.** They take a complete, already validated success record of
-up to 3,840 instructions, followed by `01`, and emit BFX again.
+**Fold pass.** [`fold.bf`](../compiler/fold.bf) reads validated primitive
+instructions followed by a zero byte and writes a BFX body; XAX frames it.
+It trusts its input and is never run on unvalidated source.
 
-- They trust the header and count; they are not decoders for untrusted input.
-- A bad terminator gives failure 1.
-- Their count goes through a 16-bit stage, so the top two count bytes are always 0.
-- Validate their output before publishing or importing it.
-
-The streaming coordinators use private BBCS/BBCR packets. Those are not BFX.
+The streaming coordinator uses private BBCS packets. Those are not BFX.
 
 ---
 
@@ -123,10 +129,11 @@ The streaming coordinators use private BBCS/BBCR packets. Those are not BFX.
 
 | Input | BFX bytes |
 |---|---|
-| Empty program | `42 46 58 00 01 00 00 00 00 00` |
-| `+` | `42 46 58 00 01 00 01 00 00 00 2B` |
-| One CLEAR | `42 46 58 00 01 00 01 00 00 00 00` |
-| Unmatched bracket | `42 46 58 00 01 02` |
-| Missing terminator | `42 46 58 00 01 01` |
+| Empty program | `42 46 58 00 02 00 FF` |
+| `+` (O0) | `42 46 58 00 02 00 2B FF` |
+| `+` (O1) | `42 46 58 00 02 00 01 00 01 FF` |
+| `[->+<]` (O1) | `42 46 58 00 02 00 5B 02 01 01 00 5D FF` |
+| Unmatched bracket | `42 46 58 00 02 02` |
+| Missing terminator | `42 46 58 00 02 01` |
 
 Binary fixture pairs: [tests/bfx](../tests/bfx/README.md).
