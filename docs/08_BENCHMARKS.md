@@ -8,6 +8,41 @@ Run on **2026-10-22**. Lower is better everywhere.
 
 ---
 
+## 🏆 Final Windows-native competitor run (2026-10-29)
+
+Windows 11, Ryzen 9 5900HS. Same 18 programs, all arms built and run natively. BBC before =
+the 2 GiB tape `bbc.exe`; after = `fold.bf`, BFX `02` and the program-sized constant pool
+(XAX `9a903d7`). Medians: small programs 15 build and 15 run trials, large 5 and 10,
+interleaved in shuffled order. Every BBC, brainfry, Awib and Brainfly output matched;
+pablojorge's did not on 14 programs with clang, 5 with rustc and 1 with gcc.
+
+📎 [final_benchmark_2026-10-29.json](../evidence/final_benchmark_2026-10-29.json)
+
+| Run time (ms) | BBC O1 before → after | brainfry | Awib gcc | Awib clang | pablojorge gcc | pablojorge rustc | Brainfly |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| mandelbrot | 10,262 → 7,329 | 952 | 336 | **333** | 552 | 642 | 1,041 |
+| life | 2,847 → 69 | 25 | **19** | 19 | 19 | 24 | 454 |
+| factor | 927 → 464 | 61 | 31 | **31** | 38 | 39 | 164 |
+| bottles | 19 → 21 | 27 | 17 | **17** | ❌ | 43 | 30 |
+| sierpinski | 16 → **16** | 18 | 17 | 17 | 17 | 22 | 20 |
+
+| Build time (ms) and size | BBC O1 before → after | brainfry | Awib gcc | Brainfly |
+|---|---:|---:|---:|---:|
+| mandelbrot | 1,532 → 608 · 1.40 → 1.04 MB | **19** · 60 KB | 1,168 · 75 KB | 13,276 · 976 KB |
+| life | 259 → 166 · 378 → 301 KB | **17** · 17 KB | 407 · 64 KB | 6,378 · 932 KB |
+| factor | 282 → 163 · 438 → 348 KB | **22** · 20 KB | 507 · 66 KB | 5,569 · 939 KB |
+| 12 small programs (geo-mean) | 46 → 47 · ~14 KB | **18** · 2.5 KB | 301 · 62 KB | ~4,600 · ~907 KB |
+
+- 🏃 **Run time:** BBC O1 now beats brainfry on bottles and sierpinski and ties small programs,
+  but loses every compute-heavy program: mandelbrot is 22× slower than Awib, factor 15×,
+  life 3.6×. The cause is the Windows backend keeping every value in memory.
+- 🔨 **Build time:** BBC is 4–6× faster than the C and Rust pipelines on small programs and
+  2–3× slower than brainfry. brainfry wins every build.
+- 🚫 **Not run:** bf-x86, abfc, bflang, Wilfred/bfc (need Linux or LLVM/MLIR dev libraries);
+  Android (no device). Mandelbrot O0 still declines (XAX OI-51).
+
+---
+
 ## 🪗 BFX `02` and `fold.bf`, before/after (2026-10-29)
 
 Windows 11, Ryzen 9 5900HS. Medians: small programs 15 build and 15 run trials, large 5 and 10,

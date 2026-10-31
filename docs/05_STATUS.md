@@ -57,7 +57,8 @@ were archived outside the repo on 2026-10-28 and remain in git history.
 
 | Report | What it shows |
 |---|---|
-| [fold_v2.json](../evidence/fold_v2.json) | **Current.** BFX `02` and `fold.bf`: Windows before/after, 52 verified builds and runs; raw samples |
+| [final_benchmark_2026-10-29.json](../evidence/final_benchmark_2026-10-29.json) | **Current.** Windows-native run vs brainfry, Awib, pablojorge and Brainfly: 18 programs, O0/O1, raw samples |
+| [fold_v2.json](../evidence/fold_v2.json) | BFX `02` and `fold.bf`: Windows before/after, 52 verified builds and runs; raw samples |
 | [dynamic_tape_benchmark_2026-10-29.json](../evidence/dynamic_tape_benchmark_2026-10-29.json) | Windows-native and Pixel before/after the 2 GiB tape, vs brainfry; raw samples |
 | [competitor_benchmark_2026-10-22.json](../evidence/competitor_benchmark_2026-10-22.json) | BBC vs 8 compilers under Wine on Linux: 18 programs, build, run, size, RAM |
 | [brainfly_brainfry_followup.json](../evidence/brainfly_brainfry_followup.json) | Brainfly correctness, brainfry optimizer defects |
