@@ -2,7 +2,7 @@
 
 > What works today, what doesn't yet, and where the proof lives.
 
-Updated **2026-10-29**.
+Updated **2026-10-31**.
 
 ---
 
@@ -26,11 +26,12 @@ Updated **2026-10-29**.
 
 ## 🚧 Not yet
 
-- 🐢 **Generated code is slow on heavy compute.** After folding, Mandelbrot takes 7.8 s on
-  Windows vs 0.34–0.96 s for the competitors: the Windows backend still keeps every value in
-  memory. Scan loops are not folded yet.
-- 📦 **Small executables grew** by about 28 KiB with BFX `02` (the decision's constant pool),
-  and large O0 builds are 38–71% slower ([fold_v2.json](../evidence/fold_v2.json)).
+- 🐢 **Heavy compute still trails.** With packed decision lengths (2026-10-31) the Windows
+  backend keeps values in registers: Mandelbrot O1 takes 1.08 s (was 7.66 s) vs 0.33–0.93 s
+  for the competitors, and large builds got slower (mandelbrot 0.57 → 1.30 s). Scan loops
+  are not folded yet ([benchmarks](08_BENCHMARKS.md#-packed-decision-lengths-2026-10-31)).
+- 📦 **Executables** shrank 5–8× with packed lengths (small programs about 8.6 KB); brainfry's
+  are still 3× smaller.
 - ⏱️ **Build time** is about 0.1 s for small programs under Wine; native competitors
   take 4–80 ms. Lowering is the biggest cost.
 - 📱 **Android:** no off-main-thread worker for unbounded programs; no
@@ -41,8 +42,9 @@ Updated **2026-10-29**.
 - 🧩 **XAX OI-49** (large ARM64 composite returns) is open; the importer avoids it.
 - 🏁 **Milestones:** M4 incomplete, M8 not achieved. No performance lead is claimed.
 - 📏 **Fixed limits remain** on source (1 MiB), instructions (65,536), nesting (32,768),
-  input/output (64 KiB), the importer's record view and the native driver: it declines
-  mandelbrot at O0 on Windows and factor O0 and mandelbrot on Android, and its 40 MB file
+  input/output (64 KiB), the importer's record view and the native driver: its verifier
+  declines mandelbrot's O0 decision on Windows, it declined factor O0 and mandelbrot on Android
+  (factor O0 not rechecked since packing), and its 40 MB file
   capacity. The tape edge is XAX's x86-64 bound encoding ([XAX OI-52](https://github.com/MrxSiN/XAX/blob/main/XAX_OPEN_ISSUES.md)).
 - 📚 **`bfc_call_v1`** shared libraries aren't migrated to the wider tape.
 
@@ -57,7 +59,8 @@ were archived outside the repo on 2026-10-28 and remain in git history.
 
 | Report | What it shows |
 |---|---|
-| [final_benchmark_2026-10-29.json](../evidence/final_benchmark_2026-10-29.json) | **Current.** Windows-native run vs brainfry, Awib, pablojorge and Brainfly: 18 programs, O0/O1, raw samples |
+| [packed_lengths_benchmark_2026-10-31.json](../evidence/packed_lengths_benchmark_2026-10-31.json) | **Current.** Packed decision lengths: before/after vs brainfry and Awib, 18 programs, raw samples, 170 differential cases |
+| [final_benchmark_2026-10-29.json](../evidence/final_benchmark_2026-10-29.json) | Windows-native run vs brainfry, Awib, pablojorge and Brainfly: 18 programs, O0/O1, raw samples |
 | [android_device_benchmark_2026-10-31.json](../evidence/android_device_benchmark_2026-10-31.json) | Pixel 8 Pro runs of the current build: every built program correct; mandelbrot and factor O0 decline at build |
 | [fold_v2.json](../evidence/fold_v2.json) | BFX `02` and `fold.bf`: Windows before/after, 52 verified builds and runs; raw samples |
 | [dynamic_tape_benchmark_2026-10-29.json](../evidence/dynamic_tape_benchmark_2026-10-29.json) | Windows-native and Pixel before/after the 2 GiB tape, vs brainfry; raw samples |

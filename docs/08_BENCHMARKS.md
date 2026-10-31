@@ -8,6 +8,43 @@ Run on **2026-10-22**. Lower is better everywhere.
 
 ---
 
+## ⚡ Packed decision lengths (2026-10-31)
+
+Windows 11, Ryzen 9 5900HS, all arms native, 15 build and 15 run trials in shuffled order.
+Before = the `bbc.exe` of the 2026-10-29 run below; after = decisions that take their two
+lengths as one argument, so XAX's Windows backend keeps values in registers
+([XAX PACKED_LENGTHS.md](https://github.com/MrxSiN/XAX/blob/4b06ce1/compiler/integration/bfx/PACKED_LENGTHS.md)).
+Every output matched; 170 differential cases (85 programs × O0/O1) match the previous build.
+
+📎 [packed_lengths_benchmark_2026-10-31.json](../evidence/packed_lengths_benchmark_2026-10-31.json)
+
+| Run time (ms) | BBC O0 before → after | BBC O1 before → after | brainfry | Awib gcc | Awib clang |
+|---|---:|---:|---:|---:|---:|
+| mandelbrot | ❌ declines | 7,661 → **1,080** | 933 | 329 | **325** |
+| factor | 2,037 → 203 | 467 → **84** | 58 | **28** | 28 |
+| life | 5,666 → 602 | 62 → **23** | 22 | **15** | 16 |
+| bottles | 23 → 15 | 15.5 → **13.5** | 24 | 14.0 | 13.9 |
+| sierpinski | 13.9 → 13.4 | 13.8 → **13.3** | 15.3 | 13.9 | 14.0 |
+
+| Build (ms) · size · build RAM | BBC O1 before → after | brainfry |
+|---|---:|---:|
+| mandelbrot | 566 → 1,303 · 1.05 MB → 137 KB · 91 → 142 MiB | **16** · 60 KB · 9 MiB |
+| factor | 149 → 208 · 352 → 47 KB · 37 → 40 MiB | **15** · 20 KB · 9 MiB |
+| life | 148 → 186 · 306 → 40 KB · 34 → 35 MiB | **15** · 17 KB · 9 MiB |
+| 13 small programs (geo-mean) | 43 → 40 · 43 → 8.6 KB · 17 → 16 MiB | **14** · 2.8 KB · 9 MiB |
+
+- 🏃 **Run time:** O1 mandelbrot is 7.1× faster, factor 5.5×, life 2.7×. BBC now beats
+  brainfry on bottles and sierpinski and is within 6% on life, but still trails it on
+  mandelbrot (1.16×) and factor (1.46×), and trails Awib by about 3×.
+- 📦 **Size:** executables are 5–8× smaller.
+- 🔨 **Build cost went up** on large programs (mandelbrot O1 2.3× slower to build, +51 MiB):
+  register allocation is the new work. Small builds are unchanged.
+- 🚫 Mandelbrot O0 still declines: XAX's native verifier declines its decision (XAX OI-51).
+- 📱 Android: packed `,[.,]` and factor O1 ran correctly on the Pixel 8 Pro, then the device
+  went offline; the full Android run is still to do.
+
+---
+
 ## 🏆 Final Windows-native competitor run (2026-10-29)
 
 Windows 11, Ryzen 9 5900HS. Same 18 programs, all arms built and run natively. BBC before =

@@ -43,7 +43,8 @@ is inside the driver's verifier rather than a table size the frontend could resp
 It is XAX's open native-coverage issue
 ([OI-51](https://github.com/MrxSiN/XAX/blob/main/XAX_OPEN_ISSUES.md)). Folding moves
 real programs under it: Mandelbrot's 11,451 instructions build at O1 (3,145 BFX
-instructions) but still decline at O0.
+instructions) but still decline at O0. Since packed decision lengths (2026-10-31) factor O0 builds on
+Windows, and the mandelbrot O0 decline is in the native verifier itself, before lowering.
 
 ---
 
