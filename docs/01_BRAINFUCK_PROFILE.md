@@ -40,8 +40,8 @@ run_decision(input) -> status + output
 
 - It borrows three separate 2,147,246,080-byte views: input (read-only), output and tape. Hosts
   reserve them and commit pages on first touch; input and output capacity stay 65,536.
-- Two 32-bit numbers give the real input length and the output space. Either can
-  be zero; neither can exceed its buffer.
+- One 64-bit number gives the real input length (low 32 bits) and the output space
+  (high 32 bits). Either can be zero; neither can exceed its buffer.
 - Every call starts at cell 0 on a zero tape: the decision clears cells 0–65,535 and the
   host provides a freshly reserved, zero tape. Bad lengths are rejected *before* the tape
   is touched.

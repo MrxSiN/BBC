@@ -48,6 +48,10 @@ Return values pack length and status into one number:
 Decisions borrow three 2,147,246,080-byte views (input, output, tape). Hosts reserve them
 and commit pages as touched; see
 [XAX dynamic tape](https://github.com/MrxSiN/XAX/blob/main/compiler/integration/bfx/DYNAMIC_TAPE.md).
+They take the input length and output capacity as one `bits<64>` argument
+(`input | capacity << 32`), so they have four machine arguments and XAX's Windows backend
+lowers them with its register allocator; see
+[XAX packed lengths](https://github.com/MrxSiN/XAX/blob/4b06ce1/compiler/integration/bfx/PACKED_LENGTHS.md).
 
 On any failure, discard every provisional buffer.
 

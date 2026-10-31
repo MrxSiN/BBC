@@ -68,9 +68,11 @@ Report the rejected ones too.
 ## 🧭 Next priorities
 
 1. **Lowering.** It is now the biggest build cost (about 40% of driver time on
-   small programs, most of it on big ones).
-2. **Generated code quality.** The [latest run](08_BENCHMARKS.md) shows BBC's
-   executables are far slower on compute-heavy programs.
+   small programs, most of it on big ones); register allocation made large builds
+   up to 2.3× slower (2026-10-31).
+2. **Generated code quality.** Values now stay in registers on Windows, but the
+   [latest run](08_BENCHMARKS.md#-packed-decision-lengths-2026-10-31) still has Awib ~3×
+   faster on Mandelbrot and factor.
 3. **Semantic loop optimizations.** Affine transfer, scans and general odd-step
    clears, each with a full equivalence proof.
 4. **Device runs.** New artifacts need execution on a real Pixel and Windows.

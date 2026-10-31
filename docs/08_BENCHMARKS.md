@@ -1,10 +1,10 @@
 # 🏁 Benchmarks
 
-> BBC against eight other Brainfuck compilers: build time, run time, file size and memory.
+> BBC against other Brainfuck compilers: build time, run time, file size and memory.
 
-Run on **2026-10-22**. Lower is better everywhere.
-
-📎 Raw data: [competitor_benchmark_2026-10-22.json](../evidence/competitor_benchmark_2026-10-22.json)
+Newest run first; each dated section is a snapshot of its own build. Lower is better everywhere.
+The current numbers are the [packed decision lengths](#-packed-decision-lengths-2026-10-31) run;
+older sections keep the figures and causes of their time.
 
 ---
 
@@ -156,6 +156,9 @@ every built program's output matched the reference interpreter.
 ---
 
 ## 🥊 The short version (2026-10-22, Wine on Linux)
+
+BBC against eight other compilers on 18 programs. 📎 Raw data:
+[competitor_benchmark_2026-10-22.json](../evidence/competitor_benchmark_2026-10-22.json)
 
 | | Winner | BBC |
 |---|---|---|
