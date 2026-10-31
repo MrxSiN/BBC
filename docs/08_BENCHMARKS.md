@@ -38,8 +38,21 @@ pablojorge's did not on 14 programs with clang, 5 with rustc and 1 with gcc.
   life 3.6×. The cause is the Windows backend keeping every value in memory.
 - 🔨 **Build time:** BBC is 4–6× faster than the C and Rust pipelines on small programs and
   2–3× slower than brainfry. brainfry wins every build.
-- 🚫 **Not run:** bf-x86, abfc, bflang, Wilfred/bfc (need Linux or LLVM/MLIR dev libraries);
-  Android (no device). Mandelbrot O0 still declines (XAX OI-51).
+- 🚫 **Not run:** bf-x86, abfc, bflang, Wilfred/bfc (need Linux or LLVM/MLIR dev libraries).
+  Mandelbrot O0 still declines (XAX OI-51).
+
+**Pixel 8 Pro, same `bbc.exe` (2026-10-31).** Built on Windows, run over adb; medians of 10
+runs. Every built program matched. 📎 [android_device_benchmark_2026-10-31.json](../evidence/android_device_benchmark_2026-10-31.json)
+
+| Pixel run (ms) | BBC O1 | brainfry |
+|---|---:|---:|
+| bottles | **59** | 71 |
+| factor | 255 | **242** |
+| life | 116 | **103** |
+| sierpinski | **51** | 53 |
+| mandelbrot | ❌ declines at build (O0 and O1) | 1,238 |
+
+Small programs sit at the ~45–50 ms adb process floor for both. Factor O0 also declines.
 
 ---
 
