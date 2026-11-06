@@ -59,7 +59,8 @@ were archived outside the repo on 2026-10-28 and remain in git history.
 
 | Report | What it shows |
 |---|---|
-| [packed_lengths_benchmark_2026-10-31.json](../evidence/packed_lengths_benchmark_2026-10-31.json) | **Current.** Packed decision lengths: before/after vs brainfry and Awib, 18 programs, raw samples, 170 differential cases |
+| [baseline_benchmark_2026-11-05.json](../evidence/baseline_benchmark_2026-11-05.json) | **Current baseline.** BBC O0/O1 vs brainfry, bf-x86 and Awib on one Linux host (Windows outputs under Wine), 8 programs, raw samples; hanoi and mandelbrot O0 decline in the native backend |
+| [packed_lengths_benchmark_2026-10-31.json](../evidence/packed_lengths_benchmark_2026-10-31.json) | Windows-native. Packed decision lengths: before/after vs brainfry and Awib, 18 programs, raw samples, 170 differential cases |
 | [final_benchmark_2026-10-29.json](../evidence/final_benchmark_2026-10-29.json) | Windows-native run vs brainfry, Awib, pablojorge and Brainfly: 18 programs, O0/O1, raw samples |
 | [android_device_benchmark_2026-10-31.json](../evidence/android_device_benchmark_2026-10-31.json) | Pixel 8 Pro runs of the current build: every built program correct; mandelbrot and factor O0 decline at build |
 | [fold_v2.json](../evidence/fold_v2.json) | BFX `02` and `fold.bf`: Windows before/after, 52 verified builds and runs; raw samples |

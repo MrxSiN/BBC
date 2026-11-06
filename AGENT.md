@@ -40,6 +40,11 @@ Leave unrelated working-tree edits alone.
 - One format: magic `42 46 58 00`, id `02`, body, `FF` END, `.bfx`; no count field.
   Exactly that id is emitted and accepted. No legacy decoder or fallback. All levels,
   sizes and targets share it.
+- **BBC's driver is always XAX's current production driver.** The XAX driver inside `bbc.exe`
+  (`compiler/integration/bfx/bbc.xax` in XAX) is the current `xax_compiler_driver_general.xax` plus
+  only the Windows hosting layer: process entry, file I/O and lazily committed views. Never patch a
+  separate driver copy. Whenever XAX's production driver changes (a new evolution ledger transaction or
+  seed rotation), rebuild BBC's driver from it, rebuild `bbc.exe`, and rerun BBC's checks before using it.
 - Keep interfaces narrow: the frontend knows nothing about XAX storage, native
   ABIs or OS APIs. Apply SRP, DRY, KISS and YAGNI. No speculative layers.
 - Change formats only through an explicit, unambiguous migration. Every target must
