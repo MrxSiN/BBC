@@ -3,8 +3,50 @@
 > BBC against other Brainfuck compilers: build time, run time, file size and memory.
 
 Newest run first; each dated section is a snapshot of its own build. Lower is better everywhere.
-The current numbers are the [packed decision lengths](#-packed-decision-lengths-2026-10-31) run;
-older sections keep the figures and causes of their time.
+The current Windows-native numbers are the [packed decision lengths](#-packed-decision-lengths-2026-10-31) run;
+the [2026-11-05 baseline](#-baseline-before-joint-bbcxax-optimization-2026-11-05) is the reference
+for the next optimization work. Older sections keep the figures and causes of their time.
+
+---
+
+## 📏 Baseline before joint BBC/XAX optimization (2026-11-05)
+
+One Linux host (Intel Xeon @ 2.10 GHz, 4 vCPU cloud container), BBC `cd67df4`, XAX `e4637b6`.
+BBC O0/O1 and brainfry's Windows target build Windows x86-64 executables and run them under
+Wine 9.0 (about a 0.46 s process floor); bf-x86 and Awib build Linux executables and run
+natively. Compare Windows rows only with Windows rows. Medians of 15 trials (5 for hanoi,
+factor and mandelbrot), shuffled per program; every timed output matched brainfry's
+interpreter. Eight programs, not byte-identical to the earlier 18-program set. A long
+single-threaded job shared the host for part of the run.
+
+📎 [baseline_benchmark_2026-11-05.json](../evidence/baseline_benchmark_2026-11-05.json)
+
+| Windows output, Wine (build / run, ms) | BBC O0 | BBC O1 | brainfry-win |
+|---|---:|---:|---:|
+| hello | 514 / 468 | 547 / 458 | **2.4** / 463 |
+| sierpinski | 567 / 485 | 540 / 480 | **1.8** / 472 |
+| squares | 528 / **445** | 567 / 470 | **2.4** / 460 |
+| numwarp | 696 / 497 | 666 / 486 | **2.5** / 470 |
+| life | 3,662 / **437** | 3,894 / 481 | **2.3** / 466 |
+| factor | 2,676 / 681 | 865 / 567 | **2.2** / 512 |
+| mandelbrot | ❌ declines | 2,534 / 2,385 | **3.1** / **2,376** |
+| hanoi | ❌ declines | ❌ declines | **6.8** / 552 |
+
+| Linux-native run (ms) | bf-x86 | brainfry | Awib gcc | Awib clang |
+|---|---:|---:|---:|---:|
+| mandelbrot | 806 | 1,766 | **497** | 636 |
+| factor | 48 | 41 | **15** | 15 |
+| hanoi | 53 | 71 | **2.3** | 2.2 |
+
+- 🏃 **Run time:** under Wine every small program sits at the process floor. Mandelbrot O1
+  ties brainfry's Windows output (2.39 vs 2.38 s); factor O1 is 11% slower.
+- 🔨 **Build time:** BBC takes 0.5–3.9 s per program; brainfry takes 2–7 ms.
+- 📦 **Size:** BBC O1 executables are 1.4–2.6× brainfry's Windows ones (mandelbrot 137 vs 60 KB).
+- 🚫 **Declines (exit 5):** hanoi at O0 and O1, mandelbrot at O0, in the native XAX backend.
+  hanoi's decision imports, binds, edits, verifies and resolves, then build declines; its
+  function has 12,142 blocks, 164,289 values and 109,279 block parameters, 70% single-source.
+- ⚠️ **life:** Awib and bf-x86 loop at end of input and time out (they don't read 0), so life
+  compares only BBC with brainfry.
 
 ---
 

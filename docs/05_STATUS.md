@@ -2,7 +2,7 @@
 
 > What works today, what doesn't yet, and where the proof lives.
 
-Updated **2026-10-31**.
+Updated **2026-11-05**.
 
 ---
 
@@ -43,7 +43,9 @@ Updated **2026-10-31**.
 - 🏁 **Milestones:** M4 incomplete, M8 not achieved. No performance lead is claimed.
 - 📏 **Fixed limits remain** on source (1 MiB), instructions (65,536), nesting (32,768),
   input/output (64 KiB), the importer's record view and the native driver: its verifier
-  declines mandelbrot's O0 decision on Windows, it declined factor O0 and mandelbrot on Android
+  declines mandelbrot's O0 decision on Windows, its build declines hanoi at O0 and O1
+  ([2026-11-05 baseline](08_BENCHMARKS.md#-baseline-before-joint-bbcxax-optimization-2026-11-05)),
+  it declined factor O0 and mandelbrot on Android
   (factor O0 not rechecked since packing), and its 40 MB file
   capacity. The tape edge is XAX's x86-64 bound encoding ([XAX OI-52](https://github.com/MrxSiN/XAX/blob/main/XAX_OPEN_ISSUES.md)).
 - 📚 **`bfc_call_v1`** shared libraries aren't migrated to the wider tape.

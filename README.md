@@ -103,7 +103,8 @@ More: [XAX integration](docs/03_XAX_INTEGRATION.md) · [native compile](docs/25_
 - ✅ 332 builds and 588 runs match an independent interpreter; the current build matches
   the previous one on 170 differential cases.
 - 🐢 Heavy compute still trails Awib by ~3×; scan loops aren't folded yet.
-- 🚫 Mandelbrot at O0 is declined by XAX's native verifier (XAX OI-51).
+- 🚫 Mandelbrot at O0 is declined by XAX's native verifier (XAX OI-51), and hanoi
+  (54 KB of source) is declined at O0 and O1 by the native build.
 - 🚧 Android worker thread, Windows DLLs and an Android-hosted compiler are open.
 
 Details: [status and evidence](docs/05_STATUS.md)
