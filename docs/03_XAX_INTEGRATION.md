@@ -75,7 +75,7 @@ full pipeline is in [native compilation](25_NATIVE_COMPILE.md).
    - **resolve** produces the build snapshot;
    - **build** verifies it, lowers it to machine code and packages it.
 
-The generic Python XAX SDK is used once, to bootstrap `bbc.exe` itself.
+`bbc.exe` itself is built by XAX's own pinned compiler from XAX's production driver (2026-11-07); the generic Python XAX SDK is no longer part of that build.
 
 ---
 

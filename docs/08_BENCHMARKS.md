@@ -3,9 +3,37 @@
 > BBC against other Brainfuck compilers: build time, run time, file size and memory.
 
 Newest run first; each dated section is a snapshot of its own build. Lower is better everywhere.
+The newest section is the [`bbc.exe` built by XAX's own compiler](#️-bbcexe-built-by-xaxs-own-compiler-2026-11-07).
 The current Windows-native numbers are the [packed decision lengths](#-packed-decision-lengths-2026-10-31) run;
 the [2026-11-05 baseline](#-baseline-before-joint-bbcxax-optimization-2026-11-05) is the reference
 for the next optimization work. Older sections keep the figures and causes of their time.
+
+---
+
+## 🏗️ `bbc.exe` built by XAX's own compiler (2026-11-07)
+
+One Linux host (4 vCPU cloud container), Wine 9.0. `bbc.exe` now holds XAX's production driver
+and is built by XAX's pinned compiler ([native compile](25_NATIVE_COMPILE.md)). Medians of 5
+trials per level, shuffled; every run's output matched the baseline's brainfry interpreter. Six of
+the baseline's programs (hello and life were not byte-identical copies). A long single-threaded
+XAX evidence job shared the host.
+
+📎 [production_driver_2026-11-07.json](../evidence/production_driver_2026-11-07.json)
+
+| Windows output, Wine (build / run, ms) | BBC O0 | BBC O1 |
+|---|---:|---:|
+| sierpinski | 115 / 33 | 165 / 33 |
+| squares | 117 / 33 | 165 / 33 |
+| numwarp | 266 / 65 | 215 / 33 |
+| factor | 1,871 / 215 | 516 / 115 |
+| mandelbrot | 14,924 / 3,328 | 1,921 / 1,571 |
+| hanoi | ❌ declines | 24,268 / 216 |
+
+- ✅ **Now builds:** mandelbrot O0 and hanoi O1, which declined in the baseline.
+- 🚫 **Still declines:** hanoi O0 (exit 5).
+- ⚠️ **Not an A/B run.** The old `bbc.exe` wasn't rebuilt here, and this session's Wine process
+  floor is about 30 ms against the baseline's 0.46 s, so don't compare these times with the
+  baseline's. No speed claim is made.
 
 ---
 

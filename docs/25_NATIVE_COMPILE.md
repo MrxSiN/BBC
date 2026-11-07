@@ -56,20 +56,43 @@ current production `xax_compiler_driver_general.xax` plus only the Windows hosti
 
 ---
 
+## 🏗️ Built by XAX's own compiler (2026-11-07)
+
+`bbc.exe`'s driver is XAX's current production driver plus only the Windows hosting layer.
+XAX rebuilds it with native transactions ([rebuild.sh](https://github.com/MrxSiN/XAX/blob/f57384a/compiler/integration/bfx/transactions/production_driver/native/rebuild.sh)),
+and XAX's pinned compiler seed builds `bbc.exe` from it in under 4 minutes (35,956,736 bytes).
+The Python generic SDK no longer takes part.
+
+- BBC's layer (entry, commands, compile front, exception handler) is taken from the previous
+  `bbc.xax`, without its graph proof cache.
+- XAX ledger 0019 was needed: BBC's compile front inlined more helper calls than one
+  function view holds (2^18 values), so the inliner now stops at 2^17.
+
+📎 [production_driver_2026-11-07.json](../evidence/production_driver_2026-11-07.json) ·
+XAX side: [COMPILE.md](https://github.com/MrxSiN/XAX/blob/f57384a/compiler/integration/bfx/COMPILE.md#bbcs-driver-is-the-production-driver-built-natively--2026-11-07)
+
+---
+
 ## ✅ Checks
 
-- **83 programs** at O0 and O1 on both targets: 332 builds and 588 runs, all
-  matching an independent interpreter in output bytes and exit code.
-- The programs: pilot programs, BBC tests, both depth-512 programs, negative loops,
-  60 random programs and capacity cases.
-- Rebuilt artifacts are byte-identical to ones that earlier ran on Windows 11 and
-  a Pixel 8 Pro.
-- Driver commands through `bbc.exe` match the standalone driver on all 141
-  regression stores.
-- Error paths exit 1, 4, 4, 3, 3 and leave no files behind.
+On the 2026-11-07 `bbc.exe` (Wine 9.0 and `qemu-aarch64` on one Linux host):
 
-> ⚠️ New runs used Wine 9.0 and `qemu-aarch64` on Linux. That is not real
-> Windows or device execution; byte identity with earlier device runs is the link.
+- **93 programs** at O0 and O1 on both targets: 370 of 372 builds and 486 runs, all
+  matching an independent interpreter in output bytes and exit code.
+- The programs: pilot programs, BBC tests, both depth-512 programs, 16 negative loops,
+  60 random programs and capacity cases.
+- ❌ **Declines (exit 5):** the depth-512 active-loop program on Android ARM64 at O0 and O1.
+  XAX's own compiler declines the same decision, so the limit is in XAX's ARM64 backend.
+  Windows builds and runs it.
+- Error paths exit 1, 4, 4, 3, 3 and leave no files behind.
+- mandelbrot at O0 and hanoi at O1, which used to decline, now build and match;
+  hanoi at O0 still declines.
+
+> ⚠️ Wine and `qemu-aarch64` are not real Windows or device execution, and these
+> artifacts have not run on Windows 11 or a Pixel yet: status BLOCKED for device runs.
+
+The previous `bbc.exe` (generic SDK, 2026-10-21) passed 83 programs, 332 builds and 588
+runs ([native_single_process.json](../evidence/native_single_process.json)).
 
 ---
 
