@@ -3,10 +3,92 @@
 > BBC against other Brainfuck compilers: build time, run time, file size and memory.
 
 Newest run first; each dated section is a snapshot of its own build. Lower is better everywhere.
-The newest section is [old against new `bbc.exe`](#️-old-against-new-bbcexe-2026-11-07).
+The newest section is [BBC against eight compilers again](#-bbc-against-eight-compilers-again-2026-11-07).
 The current Windows-native numbers are the [packed decision lengths](#-packed-decision-lengths-2026-10-31) run;
 the [2026-11-05 baseline](#-baseline-before-joint-bbcxax-optimization-2026-11-05) is the reference
 for the next optimization work. Older sections keep the figures and causes of their time.
+
+---
+
+## 🥊 BBC against eight compilers again (2026-11-07)
+
+The 2026-10-22 comparison repeated with the `bbc.exe` built from XAX's production driver (after ledger 0020), the same
+eight competitors at the same revisions, and the same 18 programs (sources by hash). Every competitor now builds here,
+including bflang (LLVM/MLIR 18), Wilfred/bfc (LLVM 14) and Brainfly (.NET 10 NativeAOT). One Linux host (4 vCPU cloud
+container), Wine 9.0. One validation run, then 5 build and 5 run trials per arm, interleaved, order rotated; medians
+per program, geometric means per group; every timed output matched brainfry's interpreter. factor's and life's inputs
+are new (the old ones are recorded only as hashes). The runner is outside both repositories, pinned by hash.
+
+📎 [competitor_benchmark_2026-11-07.json](../evidence/competitor_benchmark_2026-11-07.json)
+
+🍷 = Windows executable under Wine (about a 30 ms process floor); the others are native Linux. Compare Windows rows
+with Windows rows.
+
+### Small programs (12)
+
+| Compiler | ✅ | Build ms | Run ms | File | Build RAM | Run RAM |
+|---|---:|---:|---:|---:|---:|---:|
+| **BBC-O1** 🍷 | 12/12 | 114.0 | 31.9 | 8.9 KB | 47.1 MiB | 7.8 MiB |
+| **BBC-O0** 🍷 | 12/12 | 110.9 | 32.4 | 9.3 KB | 48.8 MiB | 7.8 MiB |
+| brainfry-win 🍷 | 12/12 | 2.3 | 30.0 | 2.9 KB | 2.2 MiB | 6.5 MiB |
+| brainfry | 12/12 | 2.2 | 1.0 | 1.2 KB | 2.2 MiB | 0.3 MiB |
+| bf-x86 | 12/12 | 1.6 | 1.0 | 264 B | 1.5 MiB | 0.3 MiB |
+| Awib | 12/12 | 62.8 | 1.6 | 15.7 KB | 22.6 MiB | 1.3 MiB |
+| bflang | 12/12 | 52.5 | 1.5 | 15.7 KB | 68.9 MiB | 1.3 MiB |
+| Wilfred/bfc | 12/12 | 64.7 | 1.5 | 15.7 KB | 64.6 MiB | 1.3 MiB |
+| pablojorge | 11/12 | 47.9 | 1.6 | 15.7 KB | 23.3 MiB | 1.3 MiB |
+| abfc | 12/12 | 12.5 | 1.7 | 13.3 KB | 4.5 MiB | 0.3 MiB |
+| Brainfly | 12/12 | 3,714.5 | 3.4 | 1,285.6 KB | 212.2 MiB | 3.5 MiB |
+
+### Large programs (5)
+
+| Compiler | ✅ | Build ms | Run ms | File | Build RAM | Run RAM |
+|---|---:|---:|---:|---:|---:|---:|
+| **BBC-O1** 🍷 | 5/5 | 487.5 | 94.9 | 41.4 KB | 79.1 MiB | 7.8 MiB |
+| **BBC-O0** 🍷 | 5/5 | 1,386.6 | 267.5 | 55.1 KB | 130.5 MiB | 7.8 MiB |
+| brainfry-win 🍷 | 5/5 | 2.8 | 87.3 | 17.6 KB | 2.4 MiB | 6.4 MiB |
+| brainfry | 5/5 | 2.6 | 19.9 | 15.1 KB | 2.4 MiB | 0.3 MiB |
+| bf-x86 | 5/5 | 1.8 | 38.3 | 4.1 KB | 1.6 MiB | 0.3 MiB |
+| Awib | 5/5 | 588.6 | 9.6 | 19.2 KB | 33.1 MiB | 1.3 MiB |
+| bflang | 5/5 | 564.6 | 14.3 | 21.2 KB | 78.0 MiB | 1.3 MiB |
+| Wilfred/bfc | 5/5 | 211.1 | 14.1 | 22.7 KB | 64.8 MiB | 1.4 MiB |
+| pablojorge | 5/5 | 251.9 | 12.1 | 19.3 KB | 39.7 MiB | 1.4 MiB |
+| abfc | 5/5 | 119.8 | 67.7 | 31.3 KB | 4.6 MiB | 0.3 MiB |
+| Brainfly | 5/5 | 10,269.4 | 83.0 | 1,301.0 KB | 288.2 MiB | 3.5 MiB |
+
+### Run time per large program (ms)
+
+| Program | BBC-O1 🍷 | BBC-O0 🍷 | brainfry-win 🍷 | brainfry | bf-x86 | Awib | bflang | Wilfred/bfc | pablojorge | abfc | Brainfly |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| mandelbrot | 1,634.8 | 3,450.3 | 1,465.7 | 1,445.2 | 698.7 | 448.6 | 925.4 | 927.8 | 897.7 | 1,025.5 | 1,331.0 |
+| bottles | 32.2 | 34.7 | 37.0 | 4.2 | 4.8 | 1.7 | 1.8 | 1.5 | 1.7 | 5.5 | 8.5 |
+| factor | 78.6 | 178.8 | 68.5 | 34.1 | 35.8 | 13.2 | 18.8 | 21.5 | 20.4 | 76.8 | 93.8 |
+| life | 62.1 | 2,004.3 | 42.9 | 10.9 | 532.1 | 5.2 | 11.9 | 12.1 | 5.4 | 1,664.3 | 960.2 |
+| sierpinski | 30.0 | 31.9 | 31.9 | 1.4 | 1.3 | 1.5 | 1.6 | 1.5 | 1.6 | 2.0 | 3.9 |
+
+### BBC O1 against each competitor (geometric mean of BBC ÷ competitor; below 1 is better for BBC)
+
+| Competitor | Programs | Run | Build | Size | Build RAM | Run RAM | Rulebook win |
+|---|---:|---:|---:|---:|---:|---:|---|
+| brainfry-win 🍷 | 17 | 1.07× | 71.95× | 2.81× | 24.06× | 1.21× | no |
+| brainfry | 17 | 18.69× | 74.50× | 5.44× | 24.10× | 28.54× | no |
+| bf-x86 | 17 | 15.35× | 104.38× | 24.07× | 35.03× | 28.54× | no |
+| Awib | 17 | 16.51× | 1.44× | 0.84× | 2.17× | 6.15× | no |
+| bflang | 17 | 14.77× | 1.66× | 0.81× | 0.77× | 6.16× | no |
+| Wilfred/bfc | 17 | 15.12× | 1.91× | 0.80× | 0.85× | 5.95× | no |
+| pablojorge | 16 | 15.05× | 2.23× | 0.85× | 2.01× | 5.98× | no |
+| abfc | 17 | 8.60× | 7.19× | 0.82× | 12.10× | 28.54× | no |
+| Brainfly | 17 | 5.06× | 0.03× | 0.01× | 0.24× | 2.25× | no |
+
+- 🏁 **No competitor beaten** under the [rulebook](06_PERFORMANCE_PLAN.md): build time alone fails every pairing but
+  Brainfly, and there BBC's run time fails.
+- 🍷 **Same platform:** against brainfry's Windows output BBC's run time is 1.07× over 17 programs: slower on
+  mandelbrot (+12%), factor (+15%) and life (+45%), faster on bottles and sierpinski. Builds take 72× as long.
+- 🐧 **Native arms:** their run times are not comparable with the Wine rows; on mandelbrot, where compute dominates
+  the process floor, Awib (gcc -O2) takes 449 ms against BBC's 1,635 ms.
+- ✅ **Correctness:** every arm built and ran every program except pablojorge on nested_math (uninitialized tape,
+  as before).
+- ⚠️ Wine on Linux only: not a Windows-native or device run.
 
 ---
 
