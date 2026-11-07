@@ -13,7 +13,7 @@ Updated **2026-11-07**.
 | **Compile** | `bbc.exe compile` turns Brainfuck into Windows x86-64 and Android ARM64 programs in one native process, no Python. Since 2026-11-07 `bbc.exe` holds XAX's current production driver and is built by XAX's own compiler ([native compile](25_NATIVE_COMPILE.md)) |
 | **Format** | One [BFX format](02_BFX_CONTRACT.md): magic `42 46 58 00`, id `02`, END byte, no count field. No fallback, no legacy decoder |
 | **Levels** | O0 keeps primitives; O1 runs [`fold.bf`](10_FOLD_OPTIMIZATION.md): offset instructions per straight segment, multiply and clear loops. O2/O3 don't exist yet |
-| **Correctness** | 93 programs × O0/O1 × 2 targets: 370 of 372 builds and 486 runs match an independent interpreter under Wine and `qemu-aarch64`; the depth-512 active-loop program declines on Android ARM64 ([2026-11-07](../evidence/production_driver_2026-11-07.json)) |
+| **Correctness** | 93 programs × O0/O1 × 2 targets: 372 of 372 builds and 488 runs match an independent interpreter under Wine and `qemu-aarch64` ([2026-11-07, after XAX ledger 0020](../evidence/production_driver_0020_2026-11-07.json)) |
 | **BFX `02`** | 26 programs × O0/O1 on Windows: 52 builds and runs match; Android builds only (no device attached) ([fold_v2.json](../evidence/fold_v2.json)) |
 | **Competitors** | All 18 [benchmark](08_BENCHMARKS.md) programs give correct output |
 | **Devices** | Earlier artifacts ran on a Pixel 8 Pro and Windows 11. The 2026-11-07 `bbc.exe` makes different bytes and has not run on a device yet (BLOCKED) |
@@ -43,8 +43,9 @@ Updated **2026-11-07**.
 - 🏁 **Milestones:** M4 incomplete, M8 not achieved. No performance lead is claimed.
 - 📏 **Fixed limits remain** on source (1 MiB), instructions (65,536), nesting (32,768),
   input/output (64 KiB), the importer's record view and the native driver: since
-  2026-11-07 mandelbrot O0 and hanoi O1 build on Windows, but hanoi O0 still declines, and
-  on Android ARM64 the depth-512 active-loop program declines in XAX's ARM64 backend
+  2026-11-07 mandelbrot O0 and hanoi O1 build on Windows and, since XAX ledger 0020, the
+  depth-512 active-loop program builds on Android ARM64, but hanoi O0 still declines (its
+  decision exceeds XAX's 4 MiB graph-body view and 2^18 values per function view)
   ([native compile](25_NATIVE_COMPILE.md#-checks)). Factor O0 and mandelbrot on Android
   are not rechecked. The tape edge is XAX's x86-64 bound encoding ([XAX OI-52](https://github.com/MrxSiN/XAX/blob/main/XAX_OPEN_ISSUES.md)).
 - 📚 **`bfc_call_v1`** shared libraries aren't migrated to the wider tape.
@@ -74,7 +75,8 @@ were archived outside the repo on 2026-10-28 and remain in git history.
 
 | Report | What it shows |
 |---|---|
-| [production_driver_2026-11-07.json](../evidence/production_driver_2026-11-07.json) | **Current.** `bbc.exe` from XAX's production driver, built by XAX's compiler: 93 programs, error paths, build and run samples (Wine, `qemu-aarch64`) |
+| [production_driver_0020_2026-11-07.json](../evidence/production_driver_0020_2026-11-07.json) | **Current.** `bbc.exe` rebuilt after XAX ledger 0020: 93 programs, 372 of 372 builds, 488 runs, error paths (Wine, `qemu-aarch64`) |
+| [production_driver_2026-11-07.json](../evidence/production_driver_2026-11-07.json) | Previous: `bbc.exe` from XAX's production driver, built by XAX's compiler: 93 programs, error paths, build and run samples (Wine, `qemu-aarch64`) |
 | [native_proof_cache.json](../evidence/native_proof_cache.json) | Each graph checked once per compile (previous `bbc.exe`) |
 | [native_lazy_views.json](../evidence/native_lazy_views.json) | Peak commit 3,398 → under 140 MiB |
 | [native_single_process.json](../evidence/native_single_process.json) | Driver inside `bbc.exe` |

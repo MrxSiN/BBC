@@ -60,30 +60,34 @@ current production `xax_compiler_driver_general.xax` plus only the Windows hosti
 
 `bbc.exe`'s driver is XAX's current production driver plus only the Windows hosting layer.
 XAX rebuilds it with native transactions ([rebuild.sh](https://github.com/MrxSiN/XAX/blob/f57384a/compiler/integration/bfx/transactions/production_driver/native/rebuild.sh)),
-and XAX's pinned compiler seed builds `bbc.exe` from it in under 4 minutes (35,956,736 bytes).
+and XAX's pinned compiler seed builds `bbc.exe` from it in about 5 minutes (35,964,416 bytes, after XAX ledger 0020).
 The Python generic SDK no longer takes part.
 
 - BBC's layer (entry, commands, compile front, exception handler) is taken from the previous
   `bbc.xax`, without its graph proof cache.
 - XAX ledger 0019 was needed: BBC's compile front inlined more helper calls than one
   function view holds (2^18 values), so the inliner now stops at 2^17.
+- XAX ledger 0020 fixed deep nesting in XAX's ARM64 backend: parameter aliases no longer
+  rescan every edge per round, and the interval pool is sized from liveness.
 
-📎 [production_driver_2026-11-07.json](../evidence/production_driver_2026-11-07.json) ·
+📎 [production_driver_0020_2026-11-07.json](../evidence/production_driver_0020_2026-11-07.json) (current),
+[production_driver_2026-11-07.json](../evidence/production_driver_2026-11-07.json) (after ledger 0019) ·
+XAX side, after ledger 0020: [COMPILE.md](https://github.com/MrxSiN/XAX/blob/754dd41/compiler/integration/bfx/COMPILE.md#bbcs-driver-after-ledger-0020-deep-nesting-on-android-arm64--2026-11-07) ·
 XAX side: [COMPILE.md](https://github.com/MrxSiN/XAX/blob/f57384a/compiler/integration/bfx/COMPILE.md#bbcs-driver-is-the-production-driver-built-natively--2026-11-07)
 
 ---
 
 ## ✅ Checks
 
-On the 2026-11-07 `bbc.exe` (Wine 9.0 and `qemu-aarch64` on one Linux host):
+On the `bbc.exe` rebuilt after XAX ledger 0020 (Wine 9.0 and `qemu-aarch64` on one Linux host):
 
-- **93 programs** at O0 and O1 on both targets: 370 of 372 builds and 486 runs, all
+- **93 programs** at O0 and O1 on both targets: 372 of 372 builds and 488 runs, all
   matching an independent interpreter in output bytes and exit code.
 - The programs: pilot programs, BBC tests, both depth-512 programs, 16 negative loops,
   60 random programs and capacity cases.
-- ❌ **Declines (exit 5):** the depth-512 active-loop program on Android ARM64 at O0 and O1.
-  XAX's own compiler declines the same decision, so the limit is in XAX's ARM64 backend.
-  Windows builds and runs it.
+- ✅ **Deep nesting on Android ARM64:** the depth-512 active-loop program builds (3.5 s at
+  O0, 6.9 s at O1) and runs correctly; it declined before ledger 0020. The depth-512 program's
+  Android build takes 0.5–0.7 s instead of 122 s.
 - Error paths exit 1, 4, 4, 3, 3 and leave no files behind.
 - mandelbrot at O0 and hanoi at O1, which used to decline, now build and match;
   hanoi at O0 still declines.
