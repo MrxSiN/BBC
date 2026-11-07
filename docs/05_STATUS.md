@@ -60,6 +60,7 @@ were archived outside the repo on 2026-10-28 and remain in git history.
 
 | Report | What it shows |
 |---|---|
+| [old_new_benchmark_2026-11-07.json](../evidence/old_new_benchmark_2026-11-07.json) | Old `bbc.exe` (rebuilt from the previous `bbc.xax`) vs the natively built one, interleaved under Wine, 6 programs, raw samples: identical executables where both build; builds 1.0–1.8× slower; mandelbrot O0 and hanoi O1 now build |
 | [baseline_benchmark_2026-11-05.json](../evidence/baseline_benchmark_2026-11-05.json) | **Current baseline.** BBC O0/O1 vs brainfry, bf-x86 and Awib on one Linux host (Windows outputs under Wine), 8 programs, raw samples; hanoi and mandelbrot O0 decline in the native backend |
 | [packed_lengths_benchmark_2026-10-31.json](../evidence/packed_lengths_benchmark_2026-10-31.json) | Windows-native. Packed decision lengths: before/after vs brainfry and Awib, 18 programs, raw samples, 170 differential cases |
 | [final_benchmark_2026-10-29.json](../evidence/final_benchmark_2026-10-29.json) | Windows-native run vs brainfry, Awib, pablojorge and Brainfly: 18 programs, O0/O1, raw samples |

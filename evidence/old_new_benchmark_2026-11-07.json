@@ -1,0 +1,586 @@
+{
+ "format": "bbc-benchmark-ab-v1",
+ "label": "MEASURED",
+ "date": "2026-11-07",
+ "purpose": "Side-by-side run of the previous bbc.exe and the bbc.exe built natively from XAX's production driver, on one host, interleaved.",
+ "host": {
+  "cpu": "4 vCPU cloud container (Linux x86-64)",
+  "os": "Linux 6.18.44-fc-v310 x86_64",
+  "wine": "wine-9.0 (Ubuntu 9.0~repack-4build3)"
+ },
+ "revisions": {
+  "bbc": "6424a4a",
+  "xax": "1afd16c"
+ },
+ "arms": {
+  "new": {
+   "bbc_exe_sha256": "6673557e740a1bc3f57663f4f32cdd8df173bdcd1d6c4c4b5538fa8eeaf0dcab",
+   "bytes": 35956736,
+   "bootstrap": "XAX's pinned seed builds integration/bfx/bbc.xax as rebuilt on 2026-11-07 from the production driver (production_driver_2026-11-07.json)."
+  },
+  "old": {
+   "bbc_exe_sha256": "31c7286cc454f484f6d6e7420868d637f534bc1fbef5413eab0fc8b2b4c006c7",
+   "bytes": 16007680,
+   "bootstrap": "Rebuilt here from XAX integration/bfx/bbc.xax at 6417125 (the store before the 2026-11-07 replacement) with the documented generic-SDK recipes: the driver recipe for functions in windows_helpers/driver.xax or absent from compile_windows.xax, the BBC recipe (11-parameter callee sites inlined) otherwise. Not byte-identical to the baseline's 83404a20... (16,005,632 bytes), as that record already says of its own rebuild."
+  }
+ },
+ "method": {
+  "programs": "sierpinski, squares, numwarp, factor, mandelbrot, hanoi: the baseline's sources (hashes in rows), the baseline's recorded stdin",
+  "trials": 5,
+  "order": "every (arm, level, trial) of a program in one order shuffled by the program's name, so the arms alternate",
+  "timing": "wall seconds per process under Wine; this host's Wine timer steps by about 16-50 ms, so values below 0.3 s are coarse",
+  "correctness": "every timed run's stdout SHA-256 and exit status equal the baseline record's brainfry interpreter result",
+  "driver": "XAX compiler/integration/bfx/transactions/production_driver/native/tools/bench.py (sha256 5c6ddbc2f2156bbfd3cf6dd679d6ddc896cfd918c588f425a72d8a77f25cd75a), outside BBC; it only runs commands and compares outputs",
+  "concurrency": "one single-threaded XAX analysis job (Python-hosted AArch64 program) shared the host during the whole run; both arms alternate, so both saw it"
+ },
+ "rows": [
+  {
+   "program": "sierpinski",
+   "source_sha256": "c97c94155f572f47e55b37bbf0d351300cfe78587c383c3558028dc261dbe5a6",
+   "arm": "new",
+   "compiler": "bbc-O0",
+   "status": "ok",
+   "build_s": [
+    0.1149,
+    0.1649,
+    0.1649,
+    0.1149,
+    0.1147
+   ],
+   "run_s": [
+    0.0324,
+    0.9237,
+    0.0325,
+    0.0326,
+    0.0646
+   ],
+   "exe_bytes": 9216,
+   "exe_sha256": "9220af94d2531298a560942114354dc2cb304bd7978e250195b5b0d6522060a5",
+   "build_s_median": 0.1149,
+   "run_s_median": 0.0326
+  },
+  {
+   "program": "sierpinski",
+   "source_sha256": "c97c94155f572f47e55b37bbf0d351300cfe78587c383c3558028dc261dbe5a6",
+   "arm": "new",
+   "compiler": "bbc-O1",
+   "status": "ok",
+   "build_s": [
+    19.2257,
+    0.1148,
+    0.1177,
+    0.1646,
+    0.1147
+   ],
+   "run_s": [
+    0.0327,
+    0.0324,
+    0.0323,
+    0.0326,
+    0.0323
+   ],
+   "exe_bytes": 9216,
+   "exe_sha256": "3332b38b9cd9583ac21462c42d0440cd77e6ea9ea7e639c63eba2acb5e73922f",
+   "build_s_median": 0.1177,
+   "run_s_median": 0.0324
+  },
+  {
+   "program": "sierpinski",
+   "source_sha256": "c97c94155f572f47e55b37bbf0d351300cfe78587c383c3558028dc261dbe5a6",
+   "arm": "old",
+   "compiler": "bbc-O0",
+   "status": "ok",
+   "build_s": [
+    0.1182,
+    0.1149,
+    0.1146,
+    0.1149,
+    0.115
+   ],
+   "run_s": [
+    0.0645,
+    0.0326,
+    0.0323,
+    0.065,
+    0.0326
+   ],
+   "exe_bytes": 9216,
+   "exe_sha256": "9220af94d2531298a560942114354dc2cb304bd7978e250195b5b0d6522060a5",
+   "build_s_median": 0.1149,
+   "run_s_median": 0.0326
+  },
+  {
+   "program": "sierpinski",
+   "source_sha256": "c97c94155f572f47e55b37bbf0d351300cfe78587c383c3558028dc261dbe5a6",
+   "arm": "old",
+   "compiler": "bbc-O1",
+   "status": "ok",
+   "build_s": [
+    0.1149,
+    0.1145,
+    0.1154,
+    0.1148,
+    0.1149
+   ],
+   "run_s": [
+    0.0328,
+    0.0651,
+    0.0327,
+    0.0647,
+    0.0647
+   ],
+   "exe_bytes": 9216,
+   "exe_sha256": "3332b38b9cd9583ac21462c42d0440cd77e6ea9ea7e639c63eba2acb5e73922f",
+   "build_s_median": 0.1149,
+   "run_s_median": 0.0647
+  },
+  {
+   "program": "squares",
+   "source_sha256": "0093f20958e4f70c9200928ef7aed83774040a458451d9e24cbfbad7baba0769",
+   "arm": "new",
+   "compiler": "bbc-O0",
+   "status": "ok",
+   "build_s": [
+    0.1151,
+    0.115,
+    0.116,
+    0.1149,
+    0.1652
+   ],
+   "run_s": [
+    0.0646,
+    0.0323,
+    0.0327,
+    0.0325,
+    0.0647
+   ],
+   "exe_bytes": 10752,
+   "exe_sha256": "9b4de938bd1ac01662263a8957c58196eee8485c03ee74e4cd5e6d5dc32ae88b",
+   "build_s_median": 0.1151,
+   "run_s_median": 0.0327
+  },
+  {
+   "program": "squares",
+   "source_sha256": "0093f20958e4f70c9200928ef7aed83774040a458451d9e24cbfbad7baba0769",
+   "arm": "new",
+   "compiler": "bbc-O1",
+   "status": "ok",
+   "build_s": [
+    0.1149,
+    0.1649,
+    0.1654,
+    0.1149,
+    0.1652
+   ],
+   "run_s": [
+    0.0647,
+    0.0325,
+    1.8233,
+    0.0324,
+    0.0647
+   ],
+   "exe_bytes": 10240,
+   "exe_sha256": "ad0dfd9f013d3584225dfcd3fd0afb9727712defb0f18889d5a15cdee1129a55",
+   "build_s_median": 0.1649,
+   "run_s_median": 0.0647
+  },
+  {
+   "program": "squares",
+   "source_sha256": "0093f20958e4f70c9200928ef7aed83774040a458451d9e24cbfbad7baba0769",
+   "arm": "old",
+   "compiler": "bbc-O0",
+   "status": "ok",
+   "build_s": [
+    0.1154,
+    0.1151,
+    0.1148,
+    0.115,
+    0.1148
+   ],
+   "run_s": [
+    0.0328,
+    0.0324,
+    0.0324,
+    0.0327,
+    0.0648
+   ],
+   "exe_bytes": 10752,
+   "exe_sha256": "9b4de938bd1ac01662263a8957c58196eee8485c03ee74e4cd5e6d5dc32ae88b",
+   "build_s_median": 0.115,
+   "run_s_median": 0.0327
+  },
+  {
+   "program": "squares",
+   "source_sha256": "0093f20958e4f70c9200928ef7aed83774040a458451d9e24cbfbad7baba0769",
+   "arm": "old",
+   "compiler": "bbc-O1",
+   "status": "ok",
+   "build_s": [
+    0.1149,
+    0.115,
+    0.1149,
+    0.1151,
+    0.1647
+   ],
+   "run_s": [
+    0.0326,
+    0.0646,
+    0.0324,
+    0.0649,
+    0.0322
+   ],
+   "exe_bytes": 10240,
+   "exe_sha256": "ad0dfd9f013d3584225dfcd3fd0afb9727712defb0f18889d5a15cdee1129a55",
+   "build_s_median": 0.115,
+   "run_s_median": 0.0326
+  },
+  {
+   "program": "numwarp",
+   "source_sha256": "b46e50abed6c95b10ed4d41c34a0dca9c56c3a9416ed1f66b1b955f2eefc1b89",
+   "arm": "new",
+   "compiler": "bbc-O0",
+   "status": "ok",
+   "build_s": [
+    0.2653,
+    0.3153,
+    0.2658,
+    0.3154,
+    0.2654
+   ],
+   "run_s": [
+    0.0326,
+    0.0325,
+    0.0329,
+    0.0325,
+    0.0324
+   ],
+   "exe_bytes": 22016,
+   "exe_sha256": "a275d9abc74ec960ed761de6b5c2df4786f51e10c554abf9ff02eaf2b029b9a5",
+   "build_s_median": 0.2658,
+   "run_s_median": 0.0325
+  },
+  {
+   "program": "numwarp",
+   "source_sha256": "b46e50abed6c95b10ed4d41c34a0dca9c56c3a9416ed1f66b1b955f2eefc1b89",
+   "arm": "new",
+   "compiler": "bbc-O1",
+   "status": "ok",
+   "build_s": [
+    0.2652,
+    0.3159,
+    0.2655,
+    0.2153,
+    0.2655
+   ],
+   "run_s": [
+    0.0649,
+    0.0648,
+    0.0325,
+    0.0647,
+    0.0327
+   ],
+   "exe_bytes": 25600,
+   "exe_sha256": "f836813b06bee422af384cba576960bf303326edad221b3a32fa12f7234d37ae",
+   "build_s_median": 0.2655,
+   "run_s_median": 0.0647
+  },
+  {
+   "program": "numwarp",
+   "source_sha256": "b46e50abed6c95b10ed4d41c34a0dca9c56c3a9416ed1f66b1b955f2eefc1b89",
+   "arm": "old",
+   "compiler": "bbc-O0",
+   "status": "ok",
+   "build_s": [
+    0.215,
+    0.2153,
+    0.2672,
+    0.2154,
+    0.2151
+   ],
+   "run_s": [
+    0.0647,
+    1.8711,
+    0.0648,
+    0.0325,
+    0.0327
+   ],
+   "exe_bytes": 22016,
+   "exe_sha256": "a275d9abc74ec960ed761de6b5c2df4786f51e10c554abf9ff02eaf2b029b9a5",
+   "build_s_median": 0.2153,
+   "run_s_median": 0.0647
+  },
+  {
+   "program": "numwarp",
+   "source_sha256": "b46e50abed6c95b10ed4d41c34a0dca9c56c3a9416ed1f66b1b955f2eefc1b89",
+   "arm": "old",
+   "compiler": "bbc-O1",
+   "status": "ok",
+   "build_s": [
+    0.1649,
+    0.1649,
+    0.1655,
+    0.1653,
+    0.1652
+   ],
+   "run_s": [
+    0.033,
+    0.0324,
+    0.0328,
+    0.0648,
+    0.0655
+   ],
+   "exe_bytes": 25600,
+   "exe_sha256": "f836813b06bee422af384cba576960bf303326edad221b3a32fa12f7234d37ae",
+   "build_s_median": 0.1652,
+   "run_s_median": 0.033
+  },
+  {
+   "program": "factor",
+   "source_sha256": "e95fc1e207cb91753abdd0777514ed0d7bceafca6a6e3b576f05a1163a84a9a7",
+   "arm": "new",
+   "compiler": "bbc-O0",
+   "status": "ok",
+   "build_s": [
+    1.7713,
+    1.8233,
+    1.8213,
+    1.9215,
+    1.8708
+   ],
+   "run_s": [
+    0.2151,
+    0.2152,
+    0.2155,
+    1.9742,
+    0.1651
+   ],
+   "exe_bytes": 75776,
+   "exe_sha256": "2a89adda8a1bc1f4400801af045b600820bf7bfd9373043a8a79c06a22f46b26",
+   "build_s_median": 1.8233,
+   "run_s_median": 0.2152
+  },
+  {
+   "program": "factor",
+   "source_sha256": "e95fc1e207cb91753abdd0777514ed0d7bceafca6a6e3b576f05a1163a84a9a7",
+   "arm": "new",
+   "compiler": "bbc-O1",
+   "status": "compile exit 1",
+   "build_s": [
+    0.6166,
+    0.5179,
+    0.5167,
+    0.5664
+   ],
+   "run_s": [
+    0.1151,
+    1.8726,
+    0.1153,
+    0.1151
+   ],
+   "exe_bytes": 46592,
+   "exe_sha256": "5666921318dad953c21c8829b277bc09fafa2d08c32484de272c992d97052a03",
+   "build_s_median": 0.5664,
+   "run_s_median": 0.1153
+  },
+  {
+   "program": "factor",
+   "source_sha256": "e95fc1e207cb91753abdd0777514ed0d7bceafca6a6e3b576f05a1163a84a9a7",
+   "arm": "old",
+   "compiler": "bbc-O0",
+   "status": "ok",
+   "build_s": [
+    3.5289,
+    1.6709,
+    1.7712,
+    1.5701,
+    1.6701
+   ],
+   "run_s": [
+    0.2153,
+    0.2165,
+    0.2154,
+    0.2154,
+    0.2155
+   ],
+   "exe_bytes": 75776,
+   "exe_sha256": "2a89adda8a1bc1f4400801af045b600820bf7bfd9373043a8a79c06a22f46b26",
+   "build_s_median": 1.6709,
+   "run_s_median": 0.2154
+  },
+  {
+   "program": "factor",
+   "source_sha256": "e95fc1e207cb91753abdd0777514ed0d7bceafca6a6e3b576f05a1163a84a9a7",
+   "arm": "old",
+   "compiler": "bbc-O1",
+   "status": "ok",
+   "build_s": [
+    0.3177,
+    0.316,
+    0.3156,
+    0.3159,
+    0.316
+   ],
+   "run_s": [
+    1.8715,
+    0.1153,
+    0.1151,
+    1.9266,
+    0.1148
+   ],
+   "exe_bytes": 46592,
+   "exe_sha256": "5666921318dad953c21c8829b277bc09fafa2d08c32484de272c992d97052a03",
+   "build_s_median": 0.316,
+   "run_s_median": 0.1153
+  },
+  {
+   "program": "mandelbrot",
+   "source_sha256": "f0f048e90855450fb06f2bea21f914f0d24e6b6c15fd050c68176ff794c6229e",
+   "arm": "new",
+   "compiler": "bbc-O0",
+   "status": "ok",
+   "build_s": [
+    14.4152,
+    15.1257,
+    14.3654,
+    15.3991,
+    16.3781
+   ],
+   "run_s": [
+    3.275,
+    5.1828,
+    3.251,
+    5.0839,
+    3.5763
+   ],
+   "exe_bytes": 206848,
+   "exe_sha256": "6139cef1cded7481102142e46de60822e4023fb095fb41f11809165b70135925",
+   "build_s_median": 15.1257,
+   "run_s_median": 3.5763
+  },
+  {
+   "program": "mandelbrot",
+   "source_sha256": "f0f048e90855450fb06f2bea21f914f0d24e6b6c15fd050c68176ff794c6229e",
+   "arm": "new",
+   "compiler": "bbc-O1",
+   "status": "ok",
+   "build_s": [
+    1.8207,
+    1.9217,
+    1.7698,
+    1.9208,
+    1.82
+   ],
+   "run_s": [
+    1.671,
+    1.6192,
+    3.1749,
+    1.6709,
+    1.5697
+   ],
+   "exe_bytes": 136704,
+   "exe_sha256": "9948314859bc31607def2412a94b2b2b8c6fda8c4fca8a3dbb47b06824dc21db",
+   "build_s_median": 1.8207,
+   "run_s_median": 1.6709
+  },
+  {
+   "program": "mandelbrot",
+   "source_sha256": "f0f048e90855450fb06f2bea21f914f0d24e6b6c15fd050c68176ff794c6229e",
+   "arm": "old",
+   "compiler": "bbc-O0",
+   "status": "compile exit 5",
+   "build_s": [],
+   "run_s": [],
+   "build_s_median": null,
+   "run_s_median": null
+  },
+  {
+   "program": "mandelbrot",
+   "source_sha256": "f0f048e90855450fb06f2bea21f914f0d24e6b6c15fd050c68176ff794c6229e",
+   "arm": "old",
+   "compiler": "bbc-O1",
+   "status": "ok",
+   "build_s": [
+    1.4189,
+    1.2688,
+    1.3703,
+    1.2691,
+    3.2255
+   ],
+   "run_s": [
+    1.4689,
+    1.6201,
+    1.5698,
+    1.5694,
+    1.6189
+   ],
+   "exe_bytes": 136704,
+   "exe_sha256": "9948314859bc31607def2412a94b2b2b8c6fda8c4fca8a3dbb47b06824dc21db",
+   "build_s_median": 1.3703,
+   "run_s_median": 1.5698
+  },
+  {
+   "program": "hanoi",
+   "source_sha256": "6bc0808a0e7e085a93de8f6a3cf82418a3f7e14eaf31acea9de80fc6ee50105a",
+   "arm": "new",
+   "compiler": "bbc-O0",
+   "status": "compile exit 5",
+   "build_s": [],
+   "run_s": [],
+   "build_s_median": null,
+   "run_s_median": null
+  },
+  {
+   "program": "hanoi",
+   "source_sha256": "6bc0808a0e7e085a93de8f6a3cf82418a3f7e14eaf31acea9de80fc6ee50105a",
+   "arm": "new",
+   "compiler": "bbc-O1",
+   "status": "ok",
+   "build_s": [
+    22.6371,
+    24.4244,
+    25.0105,
+    25.472,
+    25.6724
+   ],
+   "run_s": [
+    1.1187,
+    0.2166,
+    0.2153,
+    0.2155,
+    2.0233
+   ],
+   "exe_bytes": 450048,
+   "exe_sha256": "e6a678917362017174d2c8ed1c631371e5991c0c07c712f0a262f7d058fb23d6",
+   "build_s_median": 25.0105,
+   "run_s_median": 0.2166
+  },
+  {
+   "program": "hanoi",
+   "source_sha256": "6bc0808a0e7e085a93de8f6a3cf82418a3f7e14eaf31acea9de80fc6ee50105a",
+   "arm": "old",
+   "compiler": "bbc-O0",
+   "status": "compile exit 5",
+   "build_s": [],
+   "run_s": [],
+   "build_s_median": null,
+   "run_s_median": null
+  },
+  {
+   "program": "hanoi",
+   "source_sha256": "6bc0808a0e7e085a93de8f6a3cf82418a3f7e14eaf31acea9de80fc6ee50105a",
+   "arm": "old",
+   "compiler": "bbc-O1",
+   "status": "compile exit 5",
+   "build_s": [],
+   "run_s": [],
+   "build_s_median": null,
+   "run_s_median": null
+  }
+ ],
+ "findings": [
+  "Where both arms build a program, their executables are byte-identical (same SHA-256): run time is the same code; the run medians differ only by the timer's step.",
+  "Build time: the new bbc.exe takes 1.0-1.8x the old one's (factor O1 0.57 vs 0.32 s, mandelbrot O1 1.82 vs 1.37 s, factor O0 1.82 vs 1.67 s).",
+  "The new bbc.exe builds mandelbrot O0 (15.1 s) and hanoi O1 (25.0 s), which the old one declines (exit 5). Both decline hanoi O0.",
+  "Not a Windows-native or device run: Wine on Linux only."
+ ]
+}

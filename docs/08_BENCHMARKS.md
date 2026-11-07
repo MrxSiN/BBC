@@ -3,10 +3,41 @@
 > BBC against other Brainfuck compilers: build time, run time, file size and memory.
 
 Newest run first; each dated section is a snapshot of its own build. Lower is better everywhere.
-The newest section is the [`bbc.exe` built by XAX's own compiler](#️-bbcexe-built-by-xaxs-own-compiler-2026-11-07).
+The newest section is [old against new `bbc.exe`](#️-old-against-new-bbcexe-2026-11-07).
 The current Windows-native numbers are the [packed decision lengths](#-packed-decision-lengths-2026-10-31) run;
 the [2026-11-05 baseline](#-baseline-before-joint-bbcxax-optimization-2026-11-05) is the reference
 for the next optimization work. Older sections keep the figures and causes of their time.
+
+---
+
+## ⚖️ Old against new `bbc.exe` (2026-11-07)
+
+The A/B run the section below lacked. One Linux host (4 vCPU cloud container), Wine 9.0, both
+arms in one shuffled order per program, 5 trials per arm and level, every run's output and exit
+status checked against the baseline's brainfry interpreter. A single-threaded XAX analysis job
+shared the host for the whole run; the arms alternate, so both saw it.
+
+- **New:** the `bbc.exe` XAX's pinned compiler builds from the production driver (35,956,736 bytes).
+- **Old:** rebuilt here from XAX's previous `bbc.xax` (XAX `6417125`) with the documented
+  generic-SDK recipes (16,007,680 bytes). It is not byte-identical to the baseline's PE, which that
+  record already says of its own rebuild.
+
+📎 [old_new_benchmark_2026-11-07.json](../evidence/old_new_benchmark_2026-11-07.json)
+
+| Windows output, Wine (build ms, new / old) | O0 | O1 |
+|---|---:|---:|
+| sierpinski | 115 / 115 | 118 / 115 |
+| squares | 115 / 115 | 165 / 115 |
+| numwarp | 266 / 215 | 266 / 165 |
+| factor | 1,823 / 1,671 | 566 / 316 |
+| mandelbrot | 15,126 / ❌ declines | 1,821 / 1,370 |
+| hanoi | ❌ / ❌ declines | 25,011 / ❌ declines |
+
+- 🟰 **Run time:** wherever both arms build a program, the two executables are byte-identical,
+  so run time is the same code. (This host's Wine timer steps by about 16–50 ms.)
+- 🐢 **Build time:** the new `bbc.exe` takes 1.0–1.8× as long as the old one.
+- ✅ **Builds more:** mandelbrot O0 and hanoi O1 build only with the new one; hanoi O0 declines in both.
+- ⚠️ Wine on Linux only: not a Windows-native or device run.
 
 ---
 
@@ -33,7 +64,7 @@ XAX evidence job shared the host.
 - 🚫 **Still declines:** hanoi O0 (exit 5).
 - ⚠️ **Not an A/B run.** The old `bbc.exe` wasn't rebuilt here, and this session's Wine process
   floor is about 30 ms against the baseline's 0.46 s, so don't compare these times with the
-  baseline's. No speed claim is made.
+  baseline's. No speed claim is made. *The A/B run is [the section above](#️-old-against-new-bbcexe-2026-11-07).*
 
 ---
 
