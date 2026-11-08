@@ -56,6 +56,24 @@ current production `xax_compiler_driver_general.xax` plus only the Windows hosti
 
 ---
 
+## 📐 Rebuilt after XAX ledger 0023 (2026-11-08)
+
+XAX ledger 0023 made the number of values one function view may hold a run-time word instead of a constant in 18
+driver functions (still 262,144; the compiler behaves exactly as before). `bbc.xax` was rebuilt from the new production
+driver (root `1e253130…`) and `bbc.exe` from it (36,319,232 bytes).
+
+- **Checks** (Wine 9.0, `qemu-aarch64`): 93 programs × O0/O1 × 2 targets, 372 builds and 488 runs matching an
+  independent interpreter; the five error paths as before.
+- **Hanoi at O0** still declines: its decision has about 620,000 values, and raising the capacity also needs larger
+  XAX front-end regions, room for the tables and a new ARM64 liveness
+  ([XAX OI-54](https://github.com/MrxSiN/XAX/blob/7f898cc/XAX_OPEN_ISSUES.md)).
+
+📎 [production_driver_0023_2026-11-08.json](../evidence/production_driver_0023_2026-11-08.json) ·
+XAX side: [COMPILE.md](https://github.com/MrxSiN/XAX/blob/7f898cc/compiler/integration/bfx/COMPILE.md) ·
+[ADR-391](https://github.com/MrxSiN/XAX/blob/7f898cc/XAX_DECISIONS.md)
+
+---
+
 ## 🪓 Importer branches before each offset access (2026-11-08)
 
 XAX's importer inside `bbc.exe` now writes each ADD and MUL as two blocks: the address and its bounds test with a
