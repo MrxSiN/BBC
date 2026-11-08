@@ -13,7 +13,7 @@ Updated **2026-11-07**.
 | **Compile** | `bbc.exe compile` turns Brainfuck into Windows x86-64 and Android ARM64 programs in one native process, no Python. Since 2026-11-07 `bbc.exe` holds XAX's current production driver and is built by XAX's own compiler ([native compile](25_NATIVE_COMPILE.md)) |
 | **Format** | One [BFX format](02_BFX_CONTRACT.md): magic `42 46 58 00`, id `02`, END byte, no count field. No fallback, no legacy decoder |
 | **Levels** | O0 keeps primitives; O1 runs [`fold.bf`](10_FOLD_OPTIMIZATION.md): offset instructions per straight segment, multiply and clear loops. O2/O3 don't exist yet |
-| **Correctness** | 93 programs × O0/O1 × 2 targets: 372 of 372 builds and 488 runs match an independent interpreter under Wine and `qemu-aarch64` ([2026-11-07, after XAX ledger 0020](../evidence/production_driver_0020_2026-11-07.json)) |
+| **Correctness** | 93 programs × O0/O1 × 2 targets: 372 of 372 builds and 488 runs match an independent interpreter under Wine and `qemu-aarch64` ([2026-11-08, after XAX ledger 0022](../evidence/production_driver_0022_2026-11-08.json)) |
 | **BFX `02`** | 26 programs × O0/O1 on Windows: 52 builds and runs match; Android builds only (no device attached) ([fold_v2.json](../evidence/fold_v2.json)) |
 | **Competitors** | All 18 [benchmark](08_BENCHMARKS.md) programs give correct output |
 | **Devices** | Earlier artifacts ran on a Pixel 8 Pro and Windows 11. The 2026-11-07 `bbc.exe` makes different bytes and has not run on a device yet (BLOCKED) |
