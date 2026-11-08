@@ -78,7 +78,7 @@ Leave unrelated working-tree edits alone.
 - **Biggest open costs:** generated-code speed on compute-heavy programs and build
   lowering ([benchmarks](docs/08_BENCHMARKS.md)).
 - **Still open:** Android off-main-thread worker for unbounded programs, Windows DLL
-  packaging, Android-hosted compiler, scan-loop folding and growable frontend/importer
+  packaging, Android-hosted compiler and growable frontend/importer
   buffers. Decisions take packed lengths, so Windows builds use XAX's register path
   (2026-10-31). M8 is not achieved.
 - **ARM64 note:** XAX OI-49 (large composite returns) is still open. The importer

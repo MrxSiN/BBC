@@ -103,7 +103,7 @@ More: [XAX integration](docs/03_XAX_INTEGRATION.md) · [native compile](docs/25_
   XAX's current production driver and is built by XAX's own compiler (2026-11-07).
 - ✅ 372 of 372 builds and 488 runs match an independent interpreter under Wine and
   `qemu-aarch64`; the new build has not run on a Windows PC or a Pixel yet.
-- 🐢 Heavy compute still trails Awib by ~3×; scan loops aren't folded yet.
+- 🐢 Heavy compute still trails Awib (mandelbrot 1.15 s vs 0.35 s); scan loops already compile to tight loops, so no scan instruction is planned.
 - 🚫 hanoi (54 KB of source) is declined at O0 by XAX's native backend; mandelbrot O0,
   hanoi O1 and the depth-512 active-loop program on Android ARM64 now build.
 - 🚧 Android worker thread, Windows DLLs and an Android-hosted compiler are open.

@@ -28,8 +28,11 @@ Updated **2026-11-07**.
 
 - 🐢 **Heavy compute still trails.** With packed decision lengths (2026-10-31) the Windows
   backend keeps values in registers: Mandelbrot O1 takes 1.08 s (was 7.66 s) vs 0.33–0.93 s
-  for the competitors, and large builds got slower (mandelbrot 0.57 → 1.30 s). Scan loops
-  are not folded yet ([benchmarks](08_BENCHMARKS.md#-packed-decision-lengths-2026-10-31)).
+  for the competitors, and large builds got slower (mandelbrot 0.57 → 1.30 s). After XAX's
+  constant folding (2026-11-08) mandelbrot runs in 1.15 s under Wine, faster than brainfry's
+  Windows output (1.25 s) but not Awib (0.35 s native); factor and life still trail brainfry.
+  Scan loops already compile to tight loops, so no scan instruction is planned
+  ([benchmarks](08_BENCHMARKS.md#-bbc-against-eight-compilers-after-constant-folding-2026-11-08)).
 - 📦 **Executables** shrank 5–8× with packed lengths (small programs about 8.6 KB); brainfry's
   are still 3× smaller.
 - ⏱️ **Build time** is about 0.1 s for small programs under Wine; native competitors
@@ -61,7 +64,8 @@ were archived outside the repo on 2026-10-28 and remain in git history.
 
 | Report | What it shows |
 |---|---|
-| [competitor_benchmark_2026-11-07.json](../evidence/competitor_benchmark_2026-11-07.json) | **Current comparison.** BBC O0/O1 vs the eight pinned competitors, 18 programs, raw samples (Windows arms under Wine): no competitor beaten; same platform, run time 1.07× brainfry's Windows output, builds 72× |
+| [competitor_benchmark_2026-11-08.json](../evidence/competitor_benchmark_2026-11-08.json) | **Current comparison.** BBC O0/O1 after XAX's constant folding (ledger 0022) vs the eight pinned competitors, 18 programs, raw samples (Windows arms under Wine): no competitor beaten; same platform, mandelbrot now faster than brainfry's Windows output (1,147 vs 1,250 ms), factor and life slower, builds 73× |
+| [competitor_benchmark_2026-11-07.json](../evidence/competitor_benchmark_2026-11-07.json) | Superseded by 2026-11-08. BBC O0/O1 vs the eight pinned competitors, 18 programs, raw samples (Windows arms under Wine): no competitor beaten; same platform, run time 1.07× brainfry's Windows output, builds 72× |
 | [old_new_benchmark_2026-11-07.json](../evidence/old_new_benchmark_2026-11-07.json) | Old `bbc.exe` (rebuilt from the previous `bbc.xax`) vs the natively built one, interleaved under Wine, 6 programs, raw samples: identical executables where both build; builds 1.0–1.8× slower; mandelbrot O0 and hanoi O1 now build |
 | [baseline_benchmark_2026-11-05.json](../evidence/baseline_benchmark_2026-11-05.json) | **Current baseline.** BBC O0/O1 vs brainfry, bf-x86 and Awib on one Linux host (Windows outputs under Wine), 8 programs, raw samples; hanoi and mandelbrot O0 decline in the native backend |
 | [packed_lengths_benchmark_2026-10-31.json](../evidence/packed_lengths_benchmark_2026-10-31.json) | Windows-native. Packed decision lengths: before/after vs brainfry and Awib, 18 programs, raw samples, 170 differential cases |
@@ -76,7 +80,8 @@ were archived outside the repo on 2026-10-28 and remain in git history.
 
 | Report | What it shows |
 |---|---|
-| [production_driver_0020_2026-11-07.json](../evidence/production_driver_0020_2026-11-07.json) | **Current.** `bbc.exe` rebuilt after XAX ledger 0020: 93 programs, 372 of 372 builds, 488 runs, error paths (Wine, `qemu-aarch64`) |
+| [production_driver_0022_2026-11-08.json](../evidence/production_driver_0022_2026-11-08.json) | **Current driver.** bbc.exe rebuilt after XAX ledger 0022 (constant folding on x86-64): 372 of 372 compiles, 488 runs, no mismatch (Wine, qemu) |
+| [production_driver_0020_2026-11-07.json](../evidence/production_driver_0020_2026-11-07.json) | Superseded by 0022. `bbc.exe` rebuilt after XAX ledger 0020: 93 programs, 372 of 372 builds, 488 runs, error paths (Wine, `qemu-aarch64`) |
 | [production_driver_2026-11-07.json](../evidence/production_driver_2026-11-07.json) | Previous: `bbc.exe` from XAX's production driver, built by XAX's compiler: 93 programs, error paths, build and run samples (Wine, `qemu-aarch64`) |
 | [native_proof_cache.json](../evidence/native_proof_cache.json) | Each graph checked once per compile (previous `bbc.exe`) |
 | [native_lazy_views.json](../evidence/native_lazy_views.json) | Peak commit 3,398 → under 140 MiB |

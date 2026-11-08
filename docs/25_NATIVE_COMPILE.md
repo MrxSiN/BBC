@@ -56,7 +56,29 @@ current production `xax_compiler_driver_general.xax` plus only the Windows hosti
 
 ---
 
+## ⚙️ Rebuilt after XAX's constant folding (2026-11-08)
+
+XAX ledger 0022 changed its x86-64 register lowering: arithmetic on constants folds into constants, so the
+importer's offset and factor pool becomes immediates instead of spilled values, and a function now saves the
+callee-saved register of every constant it hoists. `bbc.xax` was rebuilt from the new production driver
+(17 min 36 s) and XAX's new seed built `bbc.exe` from it in 3 min 49 s (36,302,848 bytes).
+
+- **Checks** (Wine 9.0 and `qemu-aarch64` on one Linux host): the same 93 programs at O0 and O1 on both targets,
+  372 of 372 builds and 488 runs matching an independent interpreter; the five error paths exit 1, 4, 4, 3, 3 and
+  leave no files.
+- **Speed:** Windows executables only (the ARM64 backend is unchanged); see the
+  [2026-11-08 benchmark](08_BENCHMARKS.md#-bbc-against-eight-compilers-after-constant-folding-2026-11-08).
+- Hanoi at O0 still declines (XAX's graph limits).
+
+📎 [production_driver_0022_2026-11-08.json](../evidence/production_driver_0022_2026-11-08.json) ·
+XAX side: [COMPILE.md](https://github.com/MrxSiN/XAX/blob/fce1f35/compiler/integration/bfx/COMPILE.md#bbcs-driver-after-ledger-0022-constant-folding-on-x86-64--2026-11-08) ·
+[ADR-388](https://github.com/MrxSiN/XAX/blob/fce1f35/XAX_DECISIONS.md)
+
+---
+
 ## 🏗️ Built by XAX's own compiler (2026-11-07)
+
+Current figures: [rebuilt after XAX's constant folding](#️-rebuilt-after-xaxs-constant-folding-2026-11-08).
 
 `bbc.exe`'s driver is XAX's current production driver plus only the Windows hosting layer.
 XAX rebuilds it with native transactions ([rebuild.sh](https://github.com/MrxSiN/XAX/blob/f57384a/compiler/integration/bfx/transactions/production_driver/native/rebuild.sh)),
@@ -70,7 +92,7 @@ The Python generic SDK no longer takes part.
 - XAX ledger 0020 fixed deep nesting in XAX's ARM64 backend: parameter aliases no longer
   rescan every edge per round, and the interval pool is sized from liveness.
 
-📎 [production_driver_0020_2026-11-07.json](../evidence/production_driver_0020_2026-11-07.json) (current),
+📎 [production_driver_0020_2026-11-07.json](../evidence/production_driver_0020_2026-11-07.json) (after ledger 0020),
 [production_driver_2026-11-07.json](../evidence/production_driver_2026-11-07.json) (after ledger 0019) ·
 XAX side, after ledger 0020: [COMPILE.md](https://github.com/MrxSiN/XAX/blob/754dd41/compiler/integration/bfx/COMPILE.md#bbcs-driver-after-ledger-0020-deep-nesting-on-android-arm64--2026-11-07) ·
 XAX side: [COMPILE.md](https://github.com/MrxSiN/XAX/blob/f57384a/compiler/integration/bfx/COMPILE.md#bbcs-driver-is-the-production-driver-built-natively--2026-11-07)
