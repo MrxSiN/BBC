@@ -99,12 +99,14 @@ More: [XAX integration](docs/03_XAX_INTEGRATION.md) · [native compile](docs/25_
 
 ## 📊 Status
 
-- ✅ Native single-process compile for Windows x86-64 and Android ARM64.
-- ✅ 332 builds and 588 runs match an independent interpreter; the current build matches
-  the previous one on 170 differential cases.
-- 🐢 Heavy compute still trails Awib by ~3×; scan loops aren't folded yet.
-- 🚫 Mandelbrot at O0 is declined by XAX's native verifier (XAX OI-51), and hanoi
-  (54 KB of source) is declined at O0 and O1 by the native build.
+- ✅ Native single-process compile for Windows x86-64 and Android ARM64; `bbc.exe` holds
+  XAX's current production driver and is built by XAX's own compiler (2026-11-07).
+- ✅ 372 of 372 builds and 488 runs match an independent interpreter under Wine and
+  `qemu-aarch64`; the new build has not run on a Windows PC or a Pixel yet.
+- 🐢 Heavy compute still trails Awib (mandelbrot about 1.1 s under Wine vs 0.35 s native) but beats brainfry's Windows
+  output on mandelbrot; scan loops already compile to tight loops, so no scan instruction is planned.
+- 🚫 hanoi (54 KB of source) is declined at O0 by XAX's native backend (XAX OI-54); mandelbrot O0,
+  hanoi O1 and the depth-512 active-loop program on Android ARM64 now build.
 - 🚧 Android worker thread, Windows DLLs and an Android-hosted compiler are open.
 
 Details: [status and evidence](docs/05_STATUS.md)

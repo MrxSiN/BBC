@@ -1,0 +1,9695 @@
+{
+ "format": "bbc-competitor-benchmark-v2",
+ "date": "2026-11-07",
+ "label": "MEASURED",
+ "host": {
+  "platform": "Linux-6.18.44-fc-v310-x86_64-with-glibc2.39",
+  "cpu": "Intel(R) Xeon(R) Processor @ 2.10GHz",
+  "cores": 4
+ },
+ "trials": 5,
+ "tape_cells_brainfly": 65536,
+ "runner_sha256": "bff4a4cdbb26d8fc43d0e1eba7acb9abb173fd01d2955fc920a5e0d88c973120",
+ "peakrss_sha256": "2222627a23db6a3be2f7c2c0650aff9bd9e1ed60a950eb2bf2a0a1d5be1141fe",
+ "bbc_exe_sha256": "8bc0849f87fe471979dcdaf51d0a92595b033cfc415bbd305c614ad6110c0d6b",
+ "arms": {
+  "BBC-O1": "wine",
+  "BBC-O0": "wine",
+  "brainfry-win": "wine",
+  "brainfry": "native",
+  "bf-x86": "native",
+  "Awib": "native",
+  "bflang": "native",
+  "Wilfred/bfc": "native",
+  "pablojorge": "native",
+  "abfc": "native",
+  "Brainfly": "native"
+ },
+ "programs": {
+  "binary_echo": {
+   "source_sha256": "340d314681be0a516eb3ac4c915a7976ab0c8cc3c0a361e0342d6e7916d2fb9b",
+   "input_sha256": "89273d2f70b93285bb7ddb4bcee86a5347ca7159352e3cbdd20c23e9d1e507d3",
+   "expected_sha256": "89273d2f70b93285bb7ddb4bcee86a5347ca7159352e3cbdd20c23e9d1e507d3",
+   "reference_exit": 0,
+   "arms": {
+    "BBC-O1": {
+     "validation_build": [
+      0,
+      0.141077,
+      48112
+     ],
+     "validation_run": [
+      0,
+      0.031503,
+      7828
+     ],
+     "artifact_bytes": 8192,
+     "status": "ok",
+     "build_s": [
+      0.104314,
+      0.115484,
+      0.140026,
+      0.097529,
+      0.105344
+     ],
+     "build_rss_kib": [
+      48212,
+      48028,
+      48064,
+      47976,
+      48096
+     ],
+     "run_s": [
+      0.036524,
+      0.03537,
+      0.029863,
+      0.032607,
+      0.034474
+     ],
+     "run_rss_kib": [
+      7684,
+      8080,
+      7884,
+      7896,
+      8036
+     ],
+     "build_s_median": 0.105344,
+     "run_s_median": 0.034474,
+     "build_rss_kib_median": 48064,
+     "run_rss_kib_median": 7896
+    },
+    "BBC-O0": {
+     "validation_build": [
+      0,
+      0.09338,
+      48048
+     ],
+     "validation_run": [
+      0,
+      0.033673,
+      7892
+     ],
+     "artifact_bytes": 8192,
+     "status": "ok",
+     "build_s": [
+      0.113751,
+      0.099686,
+      0.105978,
+      0.110181,
+      0.099971
+     ],
+     "build_rss_kib": [
+      48112,
+      47928,
+      47952,
+      48108,
+      48152
+     ],
+     "run_s": [
+      0.029521,
+      0.034833,
+      0.027605,
+      0.028041,
+      0.029606
+     ],
+     "run_rss_kib": [
+      8036,
+      7928,
+      7916,
+      7876,
+      7952
+     ],
+     "build_s_median": 0.105978,
+     "run_s_median": 0.029521,
+     "build_rss_kib_median": 48108,
+     "run_rss_kib_median": 7928
+    },
+    "brainfry-win": {
+     "validation_build": [
+      0,
+      0.002194,
+      2252
+     ],
+     "validation_run": [
+      0,
+      0.032628,
+      6504
+     ],
+     "artifact_bytes": 3072,
+     "status": "ok",
+     "build_s": [
+      0.001545,
+      0.002475,
+      0.002458,
+      0.002668,
+      0.003977
+     ],
+     "build_rss_kib": [
+      2248,
+      2284,
+      2252,
+      2276,
+      2288
+     ],
+     "run_s": [
+      0.031824,
+      0.034004,
+      0.0286,
+      0.02511,
+      0.025164
+     ],
+     "run_rss_kib": [
+      6672,
+      6500,
+      6352,
+      6644,
+      6676
+     ],
+     "build_s_median": 0.002475,
+     "run_s_median": 0.0286,
+     "build_rss_kib_median": 2276,
+     "run_rss_kib_median": 6644
+    },
+    "brainfry": {
+     "validation_build": [
+      0,
+      0.001601,
+      2256
+     ],
+     "validation_run": [
+      0,
+      0.000498,
+      280
+     ],
+     "artifact_bytes": 1184,
+     "status": "ok",
+     "build_s": [
+      0.001441,
+      0.002526,
+      0.00267,
+      0.002497,
+      0.002846
+     ],
+     "build_rss_kib": [
+      2268,
+      2268,
+      2264,
+      2240,
+      2292
+     ],
+     "run_s": [
+      0.000549,
+      0.001035,
+      0.000863,
+      0.001029,
+      0.000996
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.002526,
+     "run_s_median": 0.000996,
+     "build_rss_kib_median": 2268,
+     "run_rss_kib_median": 280
+    },
+    "bf-x86": {
+     "validation_build": [
+      0,
+      0.001134,
+      1560
+     ],
+     "validation_run": [
+      0,
+      0.000594,
+      280
+     ],
+     "artifact_bytes": 225,
+     "status": "ok",
+     "build_s": [
+      0.001157,
+      0.001525,
+      0.001758,
+      0.001778,
+      0.001532
+     ],
+     "build_rss_kib": [
+      1560,
+      1556,
+      1560,
+      1560,
+      1560
+     ],
+     "run_s": [
+      0.0006,
+      0.000987,
+      0.000815,
+      0.00084,
+      0.000936
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.001532,
+     "run_s_median": 0.00084,
+     "build_rss_kib_median": 1560,
+     "run_rss_kib_median": 280
+    },
+    "Awib": {
+     "validation_build": [
+      0,
+      0.049505,
+      22476
+     ],
+     "validation_run": [
+      0,
+      0.001558,
+      1296
+     ],
+     "artifact_bytes": 16112,
+     "status": "ok",
+     "build_s": [
+      0.046338,
+      0.055007,
+      0.056862,
+      0.042005,
+      0.047295
+     ],
+     "build_rss_kib": [
+      22392,
+      22536,
+      22648,
+      22556,
+      22468
+     ],
+     "run_s": [
+      0.001334,
+      0.001523,
+      0.001565,
+      0.001258,
+      0.002184
+     ],
+     "run_rss_kib": [
+      1296,
+      1292,
+      1296,
+      1296,
+      1296
+     ],
+     "build_s_median": 0.047295,
+     "run_s_median": 0.001523,
+     "build_rss_kib_median": 22536,
+     "run_rss_kib_median": 1296
+    },
+    "bflang": {
+     "validation_build": [
+      0,
+      0.043419,
+      68152
+     ],
+     "validation_run": [
+      0,
+      0.001582,
+      1296
+     ],
+     "artifact_bytes": 16032,
+     "status": "ok",
+     "build_s": [
+      0.03916,
+      0.049222,
+      0.038088,
+      0.036607,
+      0.039904
+     ],
+     "build_rss_kib": [
+      68504,
+      68364,
+      68252,
+      68104,
+      68184
+     ],
+     "run_s": [
+      0.001362,
+      0.001751,
+      0.00153,
+      0.001573,
+      0.001523
+     ],
+     "run_rss_kib": [
+      1296,
+      1296,
+      1296,
+      1296,
+      1296
+     ],
+     "build_s_median": 0.03916,
+     "run_s_median": 0.00153,
+     "build_rss_kib_median": 68252,
+     "run_rss_kib_median": 1296
+    },
+    "Wilfred/bfc": {
+     "validation_build": [
+      0,
+      0.063573,
+      66140
+     ],
+     "validation_run": [
+      0,
+      0.001266,
+      1296
+     ],
+     "artifact_bytes": 16120,
+     "status": "ok",
+     "build_s": [
+      0.059562,
+      0.057418,
+      0.062917,
+      0.055555,
+      0.056824
+     ],
+     "build_rss_kib": [
+      66128,
+      66052,
+      66092,
+      66216,
+      66120
+     ],
+     "run_s": [
+      0.001298,
+      0.001382,
+      0.001362,
+      0.001754,
+      0.001634
+     ],
+     "run_rss_kib": [
+      1296,
+      1296,
+      1296,
+      1296,
+      1296
+     ],
+     "build_s_median": 0.057418,
+     "run_s_median": 0.001382,
+     "build_rss_kib_median": 66120,
+     "run_rss_kib_median": 1296
+    },
+    "pablojorge": {
+     "validation_build": [
+      0,
+      0.050573,
+      22712
+     ],
+     "validation_run": [
+      0,
+      0.001647,
+      1296
+     ],
+     "artifact_bytes": 16080,
+     "status": "ok",
+     "build_s": [
+      0.056522,
+      0.041473,
+      0.044638,
+      0.060283,
+      0.045796
+     ],
+     "build_rss_kib": [
+      22856,
+      22844,
+      22876,
+      22852,
+      22856
+     ],
+     "run_s": [
+      0.001243,
+      0.00165,
+      0.001395,
+      0.001577,
+      0.001256
+     ],
+     "run_rss_kib": [
+      1296,
+      1288,
+      1296,
+      1292,
+      1296
+     ],
+     "build_s_median": 0.045796,
+     "run_s_median": 0.001395,
+     "build_rss_kib_median": 22856,
+     "run_rss_kib_median": 1296
+    },
+    "abfc": {
+     "validation_build": [
+      0,
+      0.014685,
+      4652
+     ],
+     "validation_run": [
+      0,
+      0.001462,
+      280
+     ],
+     "artifact_bytes": 13416,
+     "status": "ok",
+     "build_s": [
+      0.012186,
+      0.011192,
+      0.011045,
+      0.013255,
+      0.014965
+     ],
+     "build_rss_kib": [
+      4676,
+      4684,
+      4508,
+      4544,
+      4536
+     ],
+     "run_s": [
+      0.001296,
+      0.0017,
+      0.001298,
+      0.001495,
+      0.001395
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.012186,
+     "run_s_median": 0.001395,
+     "build_rss_kib_median": 4544,
+     "run_rss_kib_median": 280
+    },
+    "Brainfly": {
+     "validation_build": [
+      0,
+      4.619707,
+      236412
+     ],
+     "validation_run": [
+      0,
+      0.002735,
+      3556
+     ],
+     "artifact_bytes": 1323760,
+     "status": "ok",
+     "build_s": [
+      3.965386,
+      4.018053,
+      4.39547,
+      3.909149,
+      4.299193
+     ],
+     "build_rss_kib": [
+      216560,
+      216856,
+      215896,
+      216048,
+      220380
+     ],
+     "run_s": [
+      0.002251,
+      0.002954,
+      0.002935,
+      0.002768,
+      0.003089
+     ],
+     "run_rss_kib": [
+      3564,
+      3572,
+      3548,
+      3548,
+      3568
+     ],
+     "build_s_median": 4.018053,
+     "run_s_median": 0.002935,
+     "build_rss_kib_median": 216560,
+     "run_rss_kib_median": 3564
+    }
+   }
+  },
+  "bottles": {
+   "source_sha256": "3c8b2dbae1cf6e12ba7968ec7b4363dcd3a4883133723ba3ce688d6b376cc5cb",
+   "input_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "expected_sha256": "ae4649badc3f1cb550ac02bf6736425eed0ebe7d4be579abd0dc6cb37219d47f",
+   "reference_exit": 0,
+   "arms": {
+    "BBC-O1": {
+     "validation_build": [
+      0,
+      0.497411,
+      80944
+     ],
+     "validation_run": [
+      0,
+      0.031143,
+      8016
+     ],
+     "artifact_bytes": 49152,
+     "status": "ok",
+     "build_s": [
+      0.59846,
+      0.455688,
+      0.570136,
+      0.494519,
+      0.515975
+     ],
+     "build_rss_kib": [
+      80940,
+      80932,
+      80772,
+      80956,
+      80884
+     ],
+     "run_s": [
+      0.040413,
+      0.033,
+      0.032226,
+      0.031462,
+      0.027666
+     ],
+     "run_rss_kib": [
+      8080,
+      8068,
+      8024,
+      8020,
+      8016
+     ],
+     "build_s_median": 0.515975,
+     "run_s_median": 0.032226,
+     "build_rss_kib_median": 80932,
+     "run_rss_kib_median": 8024
+    },
+    "BBC-O0": {
+     "validation_build": [
+      0,
+      1.451437,
+      120144
+     ],
+     "validation_run": [
+      0,
+      0.015862,
+      8052
+     ],
+     "artifact_bytes": 65024,
+     "status": "ok",
+     "build_s": [
+      1.437237,
+      1.588471,
+      1.289479,
+      1.367353,
+      1.265388
+     ],
+     "build_rss_kib": [
+      120044,
+      120112,
+      119996,
+      120032,
+      120144
+     ],
+     "run_s": [
+      0.042775,
+      0.032661,
+      0.034733,
+      0.036011,
+      0.031989
+     ],
+     "run_rss_kib": [
+      8028,
+      8068,
+      8044,
+      8044,
+      8036
+     ],
+     "build_s_median": 1.367353,
+     "run_s_median": 0.034733,
+     "build_rss_kib_median": 120044,
+     "run_rss_kib_median": 8044
+    },
+    "brainfry-win": {
+     "validation_build": [
+      0,
+      0.001799,
+      2360
+     ],
+     "validation_run": [
+      0,
+      0.03192,
+      6620
+     ],
+     "artifact_bytes": 22528,
+     "status": "ok",
+     "build_s": [
+      0.00189,
+      0.004024,
+      0.002418,
+      0.003522,
+      0.002575
+     ],
+     "build_rss_kib": [
+      2388,
+      2372,
+      2408,
+      2320,
+      2380
+     ],
+     "run_s": [
+      0.039893,
+      0.036968,
+      0.036909,
+      0.041508,
+      0.033531
+     ],
+     "run_rss_kib": [
+      6632,
+      6676,
+      6540,
+      6492,
+      6536
+     ],
+     "build_s_median": 0.002575,
+     "run_s_median": 0.036968,
+     "build_rss_kib_median": 2380,
+     "run_rss_kib_median": 6540
+    },
+    "brainfry": {
+     "validation_build": [
+      0,
+      0.001881,
+      2372
+     ],
+     "validation_run": [
+      0,
+      0.003849,
+      280
+     ],
+     "artifact_bytes": 20416,
+     "status": "ok",
+     "build_s": [
+      0.001852,
+      0.003389,
+      0.002628,
+      0.003683,
+      0.002445
+     ],
+     "build_rss_kib": [
+      2376,
+      2368,
+      2360,
+      2380,
+      2408
+     ],
+     "run_s": [
+      0.004225,
+      0.004214,
+      0.003794,
+      0.004383,
+      0.004493
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.002628,
+     "run_s_median": 0.004225,
+     "build_rss_kib_median": 2376,
+     "run_rss_kib_median": 280
+    },
+    "bf-x86": {
+     "validation_build": [
+      0,
+      0.001477,
+      1688
+     ],
+     "validation_run": [
+      0,
+      0.00404,
+      280
+     ],
+     "artifact_bytes": 5307,
+     "status": "ok",
+     "build_s": [
+      0.001335,
+      0.002279,
+      0.001828,
+      0.001812,
+      0.002357
+     ],
+     "build_rss_kib": [
+      1688,
+      1688,
+      1688,
+      1688,
+      1688
+     ],
+     "run_s": [
+      0.004797,
+      0.004784,
+      0.003883,
+      0.005653,
+      0.003963
+     ],
+     "run_rss_kib": [
+      280,
+      296,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.001828,
+     "run_s_median": 0.004784,
+     "build_rss_kib_median": 1688,
+     "run_rss_kib_median": 280
+    },
+    "Awib": {
+     "validation_build": [
+      0,
+      0.517753,
+      32396
+     ],
+     "validation_run": [
+      0,
+      0.001268,
+      1304
+     ],
+     "artifact_bytes": 20120,
+     "status": "ok",
+     "build_s": [
+      0.475144,
+      0.652704,
+      0.594425,
+      0.439755,
+      0.471701
+     ],
+     "build_rss_kib": [
+      32176,
+      32292,
+      32392,
+      32276,
+      32292
+     ],
+     "run_s": [
+      0.001458,
+      0.002156,
+      0.001721,
+      0.001884,
+      0.001629
+     ],
+     "run_rss_kib": [
+      1304,
+      1304,
+      1304,
+      1304,
+      1304
+     ],
+     "build_s_median": 0.475144,
+     "run_s_median": 0.001721,
+     "build_rss_kib_median": 32292,
+     "run_rss_kib_median": 1304
+    },
+    "bflang": {
+     "validation_build": [
+      0,
+      0.424207,
+      77480
+     ],
+     "validation_run": [
+      0,
+      0.001318,
+      1300
+     ],
+     "artifact_bytes": 20376,
+     "status": "ok",
+     "build_s": [
+      0.331988,
+      0.49305,
+      0.369238,
+      0.331974,
+      0.344909
+     ],
+     "build_rss_kib": [
+      77048,
+      77596,
+      77404,
+      77636,
+      76960
+     ],
+     "run_s": [
+      0.001475,
+      0.001894,
+      0.001845,
+      0.002301,
+      0.001788
+     ],
+     "run_rss_kib": [
+      1300,
+      1300,
+      1300,
+      1300,
+      1300
+     ],
+     "build_s_median": 0.344909,
+     "run_s_median": 0.001845,
+     "build_rss_kib_median": 77404,
+     "run_rss_kib_median": 1300
+    },
+    "Wilfred/bfc": {
+     "validation_build": [
+      0,
+      0.066131,
+      66092
+     ],
+     "validation_run": [
+      0,
+      0.001333,
+      1256
+     ],
+     "artifact_bytes": 28288,
+     "status": "ok",
+     "build_s": [
+      0.064066,
+      0.079083,
+      0.056989,
+      0.074856,
+      0.059109
+     ],
+     "build_rss_kib": [
+      66120,
+      66236,
+      66136,
+      66148,
+      66096
+     ],
+     "run_s": [
+      0.001326,
+      0.001808,
+      0.001451,
+      0.00205,
+      0.001478
+     ],
+     "run_rss_kib": [
+      1256,
+      1256,
+      1256,
+      1256,
+      1256
+     ],
+     "build_s_median": 0.064066,
+     "run_s_median": 0.001478,
+     "build_rss_kib_median": 66136,
+     "run_rss_kib_median": 1256
+    },
+    "pablojorge": {
+     "validation_build": [
+      0,
+      0.17514,
+      36892
+     ],
+     "validation_run": [
+      0,
+      0.001312,
+      1296
+     ],
+     "artifact_bytes": 16000,
+     "status": "ok",
+     "build_s": [
+      0.207014,
+      0.244153,
+      0.171603,
+      0.167835,
+      0.17631
+     ],
+     "build_rss_kib": [
+      36768,
+      36712,
+      36704,
+      36672,
+      36724
+     ],
+     "run_s": [
+      0.002326,
+      0.001797,
+      0.001493,
+      0.001668,
+      0.001501
+     ],
+     "run_rss_kib": [
+      1296,
+      1296,
+      1296,
+      1296,
+      1296
+     ],
+     "build_s_median": 0.17631,
+     "run_s_median": 0.001668,
+     "build_rss_kib_median": 36712,
+     "run_rss_kib_median": 1296
+    },
+    "abfc": {
+     "validation_build": [
+      0,
+      0.080305,
+      4616
+     ],
+     "validation_run": [
+      0,
+      0.005426,
+      280
+     ],
+     "artifact_bytes": 30584,
+     "status": "ok",
+     "build_s": [
+      0.084221,
+      0.079433,
+      0.087314,
+      0.076699,
+      0.085881
+     ],
+     "build_rss_kib": [
+      4628,
+      4508,
+      4596,
+      4636,
+      4636
+     ],
+     "run_s": [
+      0.006614,
+      0.006071,
+      0.005061,
+      0.005371,
+      0.005529
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.084221,
+     "run_s_median": 0.005529,
+     "build_rss_kib_median": 4628,
+     "run_rss_kib_median": 280
+    },
+    "Brainfly": {
+     "validation_build": [
+      0,
+      17.25083,
+      315440
+     ],
+     "validation_run": [
+      0,
+      0.011581,
+      3580
+     ],
+     "artifact_bytes": 1315280,
+     "status": "ok",
+     "build_s": [
+      17.0107,
+      16.19708,
+      15.304337,
+      14.452607,
+      15.441934
+     ],
+     "build_rss_kib": [
+      339428,
+      309340,
+      318492,
+      338508,
+      315820
+     ],
+     "run_s": [
+      0.008462,
+      0.008536,
+      0.008734,
+      0.01063,
+      0.007286
+     ],
+     "run_rss_kib": [
+      3632,
+      3560,
+      3508,
+      3508,
+      3572
+     ],
+     "build_s_median": 15.441934,
+     "run_s_median": 0.008536,
+     "build_rss_kib_median": 318492,
+     "run_rss_kib_median": 3560
+    }
+   }
+  },
+  "checksum_four": {
+   "source_sha256": "9c050b9965e8a4426aaef1dc93e9529eb7d7ae59e56fa1e3ff20b593e8d7d916",
+   "input_sha256": "b8acebbdbb55efd3d1fd27b7e1940a4809da3c305c22598a70ddf4c501f807e4",
+   "expected_sha256": "4c94485e0c21ae6c41ce1dfe7b6bfaceea5ab68e40a2476f50208e526f506080",
+   "reference_exit": 0,
+   "arms": {
+    "BBC-O1": {
+     "validation_build": [
+      0,
+      0.12427,
+      48284
+     ],
+     "validation_run": [
+      0,
+      0.031026,
+      7948
+     ],
+     "artifact_bytes": 9216,
+     "status": "ok",
+     "build_s": [
+      0.159333,
+      0.156568,
+      0.124847,
+      0.102504,
+      0.113376
+     ],
+     "build_rss_kib": [
+      48224,
+      48316,
+      48340,
+      48316,
+      48304
+     ],
+     "run_s": [
+      0.03038,
+      0.034293,
+      0.028282,
+      0.036649,
+      0.031583
+     ],
+     "run_rss_kib": [
+      7908,
+      7856,
+      8016,
+      7768,
+      7892
+     ],
+     "build_s_median": 0.124847,
+     "run_s_median": 0.031583,
+     "build_rss_kib_median": 48316,
+     "run_rss_kib_median": 7892
+    },
+    "BBC-O0": {
+     "validation_build": [
+      0,
+      0.119948,
+      48340
+     ],
+     "validation_run": [
+      0,
+      0.036498,
+      8080
+     ],
+     "artifact_bytes": 9728,
+     "status": "ok",
+     "build_s": [
+      0.10148,
+      0.078013,
+      0.100707,
+      0.098018,
+      0.089836
+     ],
+     "build_rss_kib": [
+      48360,
+      48296,
+      48128,
+      48300,
+      48412
+     ],
+     "run_s": [
+      0.029069,
+      0.038863,
+      0.033654,
+      0.031053,
+      0.031632
+     ],
+     "run_rss_kib": [
+      7884,
+      8036,
+      7824,
+      8080,
+      7900
+     ],
+     "build_s_median": 0.098018,
+     "run_s_median": 0.031632,
+     "build_rss_kib_median": 48300,
+     "run_rss_kib_median": 7900
+    },
+    "brainfry-win": {
+     "validation_build": [
+      0,
+      0.002026,
+      2188
+     ],
+     "validation_run": [
+      0,
+      0.027721,
+      6632
+     ],
+     "artifact_bytes": 3072,
+     "status": "ok",
+     "build_s": [
+      0.001726,
+      0.002469,
+      0.002114,
+      0.002601,
+      0.002589
+     ],
+     "build_rss_kib": [
+      2272,
+      2300,
+      2240,
+      2320,
+      2284
+     ],
+     "run_s": [
+      0.028624,
+      0.032175,
+      0.031939,
+      0.028543,
+      0.031237
+     ],
+     "run_rss_kib": [
+      6344,
+      6672,
+      6504,
+      6640,
+      6668
+     ],
+     "build_s_median": 0.002469,
+     "run_s_median": 0.031237,
+     "build_rss_kib_median": 2284,
+     "run_rss_kib_median": 6640
+    },
+    "brainfry": {
+     "validation_build": [
+      0,
+      0.001666,
+      2272
+     ],
+     "validation_run": [
+      0,
+      0.000618,
+      280
+     ],
+     "artifact_bytes": 1280,
+     "status": "ok",
+     "build_s": [
+      0.001574,
+      0.002531,
+      0.002072,
+      0.001845,
+      0.002595
+     ],
+     "build_rss_kib": [
+      2244,
+      2272,
+      2268,
+      2300,
+      2264
+     ],
+     "run_s": [
+      0.000469,
+      0.000851,
+      0.00108,
+      0.000837,
+      0.001009
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.002072,
+     "run_s_median": 0.000851,
+     "build_rss_kib_median": 2268,
+     "run_rss_kib_median": 280
+    },
+    "bf-x86": {
+     "validation_build": [
+      0,
+      0.001334,
+      1560
+     ],
+     "validation_run": [
+      0,
+      0.000456,
+      280
+     ],
+     "artifact_bytes": 233,
+     "status": "ok",
+     "build_s": [
+      0.001348,
+      0.002012,
+      0.001675,
+      0.001713,
+      0.001416
+     ],
+     "build_rss_kib": [
+      1556,
+      1560,
+      1560,
+      1560,
+      1560
+     ],
+     "run_s": [
+      0.000496,
+      0.000858,
+      0.000745,
+      0.000835,
+      0.000889
+     ],
+     "run_rss_kib": [
+      280,
+      296,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.001675,
+     "run_s_median": 0.000835,
+     "build_rss_kib_median": 1560,
+     "run_rss_kib_median": 280
+    },
+    "Awib": {
+     "validation_build": [
+      0,
+      0.047973,
+      22872
+     ],
+     "validation_run": [
+      0,
+      0.001614,
+      1296
+     ],
+     "artifact_bytes": 16112,
+     "status": "ok",
+     "build_s": [
+      0.054946,
+      0.057973,
+      0.053198,
+      0.054285,
+      0.051808
+     ],
+     "build_rss_kib": [
+      22996,
+      22964,
+      22948,
+      22964,
+      23040
+     ],
+     "run_s": [
+      0.001296,
+      0.001473,
+      0.00178,
+      0.001506,
+      0.001638
+     ],
+     "run_rss_kib": [
+      1292,
+      1296,
+      1296,
+      1292,
+      1296
+     ],
+     "build_s_median": 0.054285,
+     "run_s_median": 0.001506,
+     "build_rss_kib_median": 22964,
+     "run_rss_kib_median": 1296
+    },
+    "bflang": {
+     "validation_build": [
+      0,
+      0.04996,
+      70844
+     ],
+     "validation_run": [
+      0,
+      0.001415,
+      1292
+     ],
+     "artifact_bytes": 16064,
+     "status": "ok",
+     "build_s": [
+      0.051721,
+      0.05394,
+      0.050256,
+      0.048269,
+      0.052146
+     ],
+     "build_rss_kib": [
+      70848,
+      70772,
+      70860,
+      70652,
+      70548
+     ],
+     "run_s": [
+      0.001279,
+      0.001683,
+      0.001854,
+      0.002051,
+      0.001638
+     ],
+     "run_rss_kib": [
+      1296,
+      1292,
+      1296,
+      1292,
+      1296
+     ],
+     "build_s_median": 0.051721,
+     "run_s_median": 0.001683,
+     "build_rss_kib_median": 70772,
+     "run_rss_kib_median": 1296
+    },
+    "Wilfred/bfc": {
+     "validation_build": [
+      0,
+      0.069629,
+      66132
+     ],
+     "validation_run": [
+      0,
+      0.001242,
+      1296
+     ],
+     "artifact_bytes": 16120,
+     "status": "ok",
+     "build_s": [
+      0.059284,
+      0.062971,
+      0.063256,
+      0.059501,
+      0.057572
+     ],
+     "build_rss_kib": [
+      66128,
+      66096,
+      66120,
+      66088,
+      66132
+     ],
+     "run_s": [
+      0.001574,
+      0.001422,
+      0.001895,
+      0.001743,
+      0.002285
+     ],
+     "run_rss_kib": [
+      1296,
+      1296,
+      1296,
+      1296,
+      1296
+     ],
+     "build_s_median": 0.059501,
+     "run_s_median": 0.001743,
+     "build_rss_kib_median": 66120,
+     "run_rss_kib_median": 1296
+    },
+    "pablojorge": {
+     "validation_build": [
+      0,
+      0.063625,
+      23884
+     ],
+     "validation_run": [
+      0,
+      0.001683,
+      1296
+     ],
+     "artifact_bytes": 16080,
+     "status": "ok",
+     "build_s": [
+      0.0523,
+      0.055846,
+      0.051501,
+      0.042141,
+      0.049409
+     ],
+     "build_rss_kib": [
+      23860,
+      23884,
+      24004,
+      24012,
+      24008
+     ],
+     "run_s": [
+      0.00112,
+      0.001859,
+      0.001426,
+      0.001442,
+      0.001637
+     ],
+     "run_rss_kib": [
+      1296,
+      1296,
+      1296,
+      1296,
+      1296
+     ],
+     "build_s_median": 0.051501,
+     "run_s_median": 0.001442,
+     "build_rss_kib_median": 24004,
+     "run_rss_kib_median": 1296
+    },
+    "abfc": {
+     "validation_build": [
+      0,
+      0.014656,
+      4564
+     ],
+     "validation_run": [
+      0,
+      0.001186,
+      280
+     ],
+     "artifact_bytes": 13688,
+     "status": "ok",
+     "build_s": [
+      0.014046,
+      0.013526,
+      0.013209,
+      0.010383,
+      0.012081
+     ],
+     "build_rss_kib": [
+      4480,
+      4540,
+      4560,
+      4604,
+      4544
+     ],
+     "run_s": [
+      0.001084,
+      0.00147,
+      0.001493,
+      0.001689,
+      0.001486
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      296,
+      280
+     ],
+     "build_s_median": 0.013209,
+     "run_s_median": 0.001486,
+     "build_rss_kib_median": 4544,
+     "run_rss_kib_median": 280
+    },
+    "Brainfly": {
+     "validation_build": [
+      0,
+      4.299897,
+      236724
+     ],
+     "validation_run": [
+      0,
+      0.002735,
+      3508
+     ],
+     "artifact_bytes": 1323760,
+     "status": "ok",
+     "build_s": [
+      3.730563,
+      3.895008,
+      3.915894,
+      3.8156,
+      3.896688
+     ],
+     "build_rss_kib": [
+      216480,
+      216620,
+      216448,
+      216524,
+      216284
+     ],
+     "run_s": [
+      0.002264,
+      0.003356,
+      0.002978,
+      0.003299,
+      0.002901
+     ],
+     "run_rss_kib": [
+      3560,
+      3636,
+      3512,
+      3572,
+      3556
+     ],
+     "build_s_median": 3.895008,
+     "run_s_median": 0.002978,
+     "build_rss_kib_median": 216480,
+     "run_rss_kib_median": 3560
+    }
+   }
+  },
+  "clear_set": {
+   "source_sha256": "d02579ad3551dbbe32eb74026815a74227f7019dcdd51b76af794e9c3f9f30fe",
+   "input_sha256": "2bfc8165d8c8e9b6efc5746577bca4f24f93bb2fbb0b502c1b9b5c29241d5ccb",
+   "expected_sha256": "e77b9a9ae9e30b0dbdb6f510a264ef9de781501d7b6b92ae89eb059c5ab743db",
+   "reference_exit": 0,
+   "arms": {
+    "BBC-O1": {
+     "validation_build": [
+      0,
+      0.108917,
+      47968
+     ],
+     "validation_run": [
+      0,
+      0.029593,
+      7952
+     ],
+     "artifact_bytes": 8704,
+     "status": "ok",
+     "build_s": [
+      0.123722,
+      0.103967,
+      0.122069,
+      0.096388,
+      0.123726
+     ],
+     "build_rss_kib": [
+      47936,
+      48148,
+      48028,
+      48076,
+      48032
+     ],
+     "run_s": [
+      0.032754,
+      0.028119,
+      0.034763,
+      0.028263,
+      0.029632
+     ],
+     "run_rss_kib": [
+      7856,
+      8072,
+      7896,
+      8028,
+      7936
+     ],
+     "build_s_median": 0.122069,
+     "run_s_median": 0.029632,
+     "build_rss_kib_median": 48032,
+     "run_rss_kib_median": 7936
+    },
+    "BBC-O0": {
+     "validation_build": [
+      0,
+      0.116679,
+      53380
+     ],
+     "validation_run": [
+      0,
+      0.031159,
+      7888
+     ],
+     "artifact_bytes": 11776,
+     "status": "ok",
+     "build_s": [
+      0.148793,
+      0.141021,
+      0.144235,
+      0.109182,
+      0.152255
+     ],
+     "build_rss_kib": [
+      53256,
+      53264,
+      53380,
+      53264,
+      53420
+     ],
+     "run_s": [
+      0.014526,
+      0.031911,
+      0.034908,
+      0.033551,
+      0.028116
+     ],
+     "run_rss_kib": [
+      8076,
+      8076,
+      8036,
+      8040,
+      7896
+     ],
+     "build_s_median": 0.144235,
+     "run_s_median": 0.031911,
+     "build_rss_kib_median": 53264,
+     "run_rss_kib_median": 8040
+    },
+    "brainfry-win": {
+     "validation_build": [
+      0,
+      0.001328,
+      2284
+     ],
+     "validation_run": [
+      0,
+      0.023077,
+      6540
+     ],
+     "artifact_bytes": 2560,
+     "status": "ok",
+     "build_s": [
+      0.001506,
+      0.002536,
+      0.001683,
+      0.002366,
+      0.00174
+     ],
+     "build_rss_kib": [
+      2260,
+      2252,
+      2272,
+      2256,
+      2256
+     ],
+     "run_s": [
+      0.013741,
+      0.030735,
+      0.033477,
+      0.026044,
+      0.025398
+     ],
+     "run_rss_kib": [
+      6500,
+      6640,
+      6676,
+      6648,
+      6504
+     ],
+     "build_s_median": 0.00174,
+     "run_s_median": 0.026044,
+     "build_rss_kib_median": 2256,
+     "run_rss_kib_median": 6640
+    },
+    "brainfry": {
+     "validation_build": [
+      0,
+      0.002396,
+      2256
+     ],
+     "validation_run": [
+      0,
+      0.000417,
+      280
+     ],
+     "artifact_bytes": 1056,
+     "status": "ok",
+     "build_s": [
+      0.001501,
+      0.002221,
+      0.001794,
+      0.028744,
+      0.001856
+     ],
+     "build_rss_kib": [
+      2248,
+      2244,
+      2248,
+      2284,
+      2252
+     ],
+     "run_s": [
+      0.000515,
+      0.000764,
+      0.000991,
+      0.000848,
+      0.000784
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.001856,
+     "run_s_median": 0.000784,
+     "build_rss_kib_median": 2248,
+     "run_rss_kib_median": 280
+    },
+    "bf-x86": {
+     "validation_build": [
+      0,
+      0.001112,
+      1688
+     ],
+     "validation_run": [
+      0,
+      0.000414,
+      280
+     ],
+     "artifact_bytes": 223,
+     "status": "ok",
+     "build_s": [
+      0.00118,
+      0.001636,
+      0.001408,
+      0.001321,
+      0.001371
+     ],
+     "build_rss_kib": [
+      1560,
+      1688,
+      1560,
+      1688,
+      1560
+     ],
+     "run_s": [
+      0.000534,
+      0.000903,
+      0.000679,
+      0.001007,
+      0.000616
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.001371,
+     "run_s_median": 0.000679,
+     "build_rss_kib_median": 1560,
+     "run_rss_kib_median": 280
+    },
+    "Awib": {
+     "validation_build": [
+      0,
+      0.075365,
+      22988
+     ],
+     "validation_run": [
+      0,
+      0.001167,
+      1296
+     ],
+     "artifact_bytes": 16112,
+     "status": "ok",
+     "build_s": [
+      0.110743,
+      0.068299,
+      0.08574,
+      0.077479,
+      0.07336
+     ],
+     "build_rss_kib": [
+      22960,
+      23008,
+      22988,
+      22960,
+      23004
+     ],
+     "run_s": [
+      0.001052,
+      0.001389,
+      0.002016,
+      0.001396,
+      0.001106
+     ],
+     "run_rss_kib": [
+      1296,
+      1296,
+      1292,
+      1296,
+      1296
+     ],
+     "build_s_median": 0.077479,
+     "run_s_median": 0.001389,
+     "build_rss_kib_median": 22988,
+     "run_rss_kib_median": 1296
+    },
+    "bflang": {
+     "validation_build": [
+      0,
+      0.05836,
+      71204
+     ],
+     "validation_run": [
+      0,
+      0.001474,
+      1296
+     ],
+     "artifact_bytes": 16096,
+     "status": "ok",
+     "build_s": [
+      0.05651,
+      0.052336,
+      0.055032,
+      0.061234,
+      0.046464
+     ],
+     "build_rss_kib": [
+      71096,
+      70876,
+      70808,
+      71104,
+      70832
+     ],
+     "run_s": [
+      0.001007,
+      0.001296,
+      0.001441,
+      0.001624,
+      0.001943
+     ],
+     "run_rss_kib": [
+      1296,
+      1296,
+      1288,
+      1296,
+      1296
+     ],
+     "build_s_median": 0.055032,
+     "run_s_median": 0.001441,
+     "build_rss_kib_median": 70876,
+     "run_rss_kib_median": 1296
+    },
+    "Wilfred/bfc": {
+     "validation_build": [
+      0,
+      0.063229,
+      66084
+     ],
+     "validation_run": [
+      0,
+      0.001005,
+      1296
+     ],
+     "artifact_bytes": 16120,
+     "status": "ok",
+     "build_s": [
+      0.056104,
+      0.062431,
+      0.06833,
+      0.05818,
+      0.051383
+     ],
+     "build_rss_kib": [
+      66120,
+      66200,
+      66116,
+      66220,
+      66128
+     ],
+     "run_s": [
+      0.000998,
+      0.001285,
+      0.001502,
+      0.001273,
+      0.001391
+     ],
+     "run_rss_kib": [
+      1296,
+      1296,
+      1296,
+      1296,
+      1296
+     ],
+     "build_s_median": 0.05818,
+     "run_s_median": 0.001285,
+     "build_rss_kib_median": 66128,
+     "run_rss_kib_median": 1296
+    },
+    "pablojorge": {
+     "validation_build": [
+      0,
+      0.041828,
+      23752
+     ],
+     "validation_run": [
+      0,
+      0.001211,
+      1296
+     ],
+     "artifact_bytes": 16080,
+     "status": "ok",
+     "build_s": [
+      0.047207,
+      0.052234,
+      0.043028,
+      0.046022,
+      0.043006
+     ],
+     "build_rss_kib": [
+      23548,
+      23616,
+      23492,
+      23516,
+      23748
+     ],
+     "run_s": [
+      0.001024,
+      0.001784,
+      0.001943,
+      0.001501,
+      0.001145
+     ],
+     "run_rss_kib": [
+      1296,
+      1296,
+      1296,
+      1292,
+      1296
+     ],
+     "build_s_median": 0.046022,
+     "run_s_median": 0.001501,
+     "build_rss_kib_median": 23548,
+     "run_rss_kib_median": 1296
+    },
+    "abfc": {
+     "validation_build": [
+      0,
+      0.011813,
+      4596
+     ],
+     "validation_run": [
+      0,
+      0.001334,
+      280
+     ],
+     "artifact_bytes": 13552,
+     "status": "ok",
+     "build_s": [
+      0.011667,
+      0.011653,
+      0.011725,
+      0.012154,
+      0.012466
+     ],
+     "build_rss_kib": [
+      4616,
+      4668,
+      4612,
+      4656,
+      4620
+     ],
+     "run_s": [
+      0.001034,
+      0.001375,
+      0.001608,
+      0.002614,
+      0.001501
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.011725,
+     "run_s_median": 0.001501,
+     "build_rss_kib_median": 4620,
+     "run_rss_kib_median": 280
+    },
+    "Brainfly": {
+     "validation_build": [
+      0,
+      4.284691,
+      236440
+     ],
+     "validation_run": [
+      0,
+      0.003144,
+      3508
+     ],
+     "artifact_bytes": 1323760,
+     "status": "ok",
+     "build_s": [
+      3.92453,
+      4.708471,
+      3.816889,
+      3.636089,
+      3.615185
+     ],
+     "build_rss_kib": [
+      216476,
+      216296,
+      216376,
+      216432,
+      216272
+     ],
+     "run_s": [
+      0.002135,
+      0.002484,
+      0.003706,
+      0.003271,
+      0.003105
+     ],
+     "run_rss_kib": [
+      3648,
+      3488,
+      3548,
+      3564,
+      3508
+     ],
+     "build_s_median": 3.816889,
+     "run_s_median": 0.003105,
+     "build_rss_kib_median": 216376,
+     "run_rss_kib_median": 3548
+    }
+   }
+  },
+  "countdown_actions": {
+   "source_sha256": "533784e99acb5d9a069a1eb20b234ec63abe0c1106ef6a430dbe37b21ded0d98",
+   "input_sha256": "ca358758f6d27e6cf45272937977a748fd88391db679ceda7dc7bf1f005ee879",
+   "expected_sha256": "4bd00f01eadfdf639fdcd3c924c8935961df7f9ee44fcd4839da21bca5e65ffc",
+   "reference_exit": 0,
+   "arms": {
+    "BBC-O1": {
+     "validation_build": [
+      0,
+      0.095965,
+      47928
+     ],
+     "validation_run": [
+      0,
+      0.032581,
+      7836
+     ],
+     "artifact_bytes": 8192,
+     "status": "ok",
+     "build_s": [
+      0.100591,
+      0.108007,
+      0.098382,
+      0.098775,
+      0.142385
+     ],
+     "build_rss_kib": [
+      47860,
+      47944,
+      47844,
+      47784,
+      47976
+     ],
+     "run_s": [
+      0.029473,
+      0.033789,
+      0.03067,
+      0.034254,
+      0.035183
+     ],
+     "run_rss_kib": [
+      7832,
+      8048,
+      8080,
+      8072,
+      7900
+     ],
+     "build_s_median": 0.100591,
+     "run_s_median": 0.033789,
+     "build_rss_kib_median": 47860,
+     "run_rss_kib_median": 8048
+    },
+    "BBC-O0": {
+     "validation_build": [
+      0,
+      0.090107,
+      47940
+     ],
+     "validation_run": [
+      0,
+      0.032304,
+      7952
+     ],
+     "artifact_bytes": 8192,
+     "status": "ok",
+     "build_s": [
+      0.099269,
+      0.091942,
+      0.08567,
+      0.080387,
+      0.106396
+     ],
+     "build_rss_kib": [
+      47852,
+      47932,
+      47796,
+      47936,
+      47856
+     ],
+     "run_s": [
+      0.030484,
+      0.031133,
+      0.030985,
+      0.030924,
+      0.035475
+     ],
+     "run_rss_kib": [
+      7892,
+      8076,
+      8080,
+      8020,
+      7784
+     ],
+     "build_s_median": 0.091942,
+     "run_s_median": 0.030985,
+     "build_rss_kib_median": 47856,
+     "run_rss_kib_median": 8020
+    },
+    "brainfry-win": {
+     "validation_build": [
+      0,
+      0.001584,
+      2236
+     ],
+     "validation_run": [
+      0,
+      0.030728,
+      6616
+     ],
+     "artifact_bytes": 2560,
+     "status": "ok",
+     "build_s": [
+      0.00152,
+      0.001982,
+      0.002245,
+      0.0019,
+      0.002591
+     ],
+     "build_rss_kib": [
+      2256,
+      2248,
+      2264,
+      2284,
+      2256
+     ],
+     "run_s": [
+      0.029137,
+      0.028796,
+      0.032947,
+      0.03331,
+      0.039849
+     ],
+     "run_rss_kib": [
+      6532,
+      6620,
+      6428,
+      6484,
+      6608
+     ],
+     "build_s_median": 0.001982,
+     "run_s_median": 0.032947,
+     "build_rss_kib_median": 2256,
+     "run_rss_kib_median": 6532
+    },
+    "brainfry": {
+     "validation_build": [
+      0,
+      0.001335,
+      2264
+     ],
+     "validation_run": [
+      0,
+      0.000474,
+      280
+     ],
+     "artifact_bytes": 896,
+     "status": "ok",
+     "build_s": [
+      0.001364,
+      0.002142,
+      0.00205,
+      0.002158,
+      0.001936
+     ],
+     "build_rss_kib": [
+      2252,
+      2252,
+      2272,
+      2268,
+      2216
+     ],
+     "run_s": [
+      0.000556,
+      0.000906,
+      0.000907,
+      0.000638,
+      0.000797
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.00205,
+     "run_s_median": 0.000797,
+     "build_rss_kib_median": 2252,
+     "run_rss_kib_median": 280
+    },
+    "bf-x86": {
+     "validation_build": [
+      0,
+      0.00106,
+      1556
+     ],
+     "validation_run": [
+      0,
+      0.000465,
+      280
+     ],
+     "artifact_bytes": 196,
+     "status": "ok",
+     "build_s": [
+      0.001517,
+      0.001474,
+      0.001849,
+      0.001543,
+      0.001605
+     ],
+     "build_rss_kib": [
+      1560,
+      1560,
+      1560,
+      1560,
+      1560
+     ],
+     "run_s": [
+      0.000528,
+      0.000739,
+      0.000737,
+      0.00074,
+      0.000801
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.001543,
+     "run_s_median": 0.000739,
+     "build_rss_kib_median": 1560,
+     "run_rss_kib_median": 280
+    },
+    "Awib": {
+     "validation_build": [
+      0,
+      0.050978,
+      22748
+     ],
+     "validation_run": [
+      0,
+      0.001221,
+      1296
+     ],
+     "artifact_bytes": 16112,
+     "status": "ok",
+     "build_s": [
+      0.045586,
+      0.044284,
+      0.04903,
+      0.04341,
+      0.045713
+     ],
+     "build_rss_kib": [
+      22736,
+      22668,
+      22680,
+      22744,
+      22660
+     ],
+     "run_s": [
+      0.001247,
+      0.00142,
+      0.001427,
+      0.001879,
+      0.002117
+     ],
+     "run_rss_kib": [
+      1296,
+      1296,
+      1296,
+      1296,
+      1296
+     ],
+     "build_s_median": 0.045586,
+     "run_s_median": 0.001427,
+     "build_rss_kib_median": 22680,
+     "run_rss_kib_median": 1296
+    },
+    "bflang": {
+     "validation_build": [
+      0,
+      0.036167,
+      70760
+     ],
+     "validation_run": [
+      0,
+      0.001381,
+      1296
+     ],
+     "artifact_bytes": 16064,
+     "status": "ok",
+     "build_s": [
+      0.038711,
+      0.03941,
+      0.036086,
+      0.040525,
+      0.040546
+     ],
+     "build_rss_kib": [
+      70800,
+      70672,
+      70664,
+      70380,
+      70776
+     ],
+     "run_s": [
+      0.001153,
+      0.00125,
+      0.001593,
+      0.002506,
+      0.001766
+     ],
+     "run_rss_kib": [
+      1296,
+      1296,
+      1292,
+      1296,
+      1296
+     ],
+     "build_s_median": 0.03941,
+     "run_s_median": 0.001593,
+     "build_rss_kib_median": 70672,
+     "run_rss_kib_median": 1296
+    },
+    "Wilfred/bfc": {
+     "validation_build": [
+      0,
+      0.058644,
+      66096
+     ],
+     "validation_run": [
+      0,
+      0.001033,
+      1296
+     ],
+     "artifact_bytes": 16120,
+     "status": "ok",
+     "build_s": [
+      0.061964,
+      0.060337,
+      0.055524,
+      0.055888,
+      0.056285
+     ],
+     "build_rss_kib": [
+      66128,
+      66112,
+      66124,
+      66148,
+      66180
+     ],
+     "run_s": [
+      0.001071,
+      0.001309,
+      0.001507,
+      0.001543,
+      0.001372
+     ],
+     "run_rss_kib": [
+      1296,
+      1296,
+      1296,
+      1292,
+      1296
+     ],
+     "build_s_median": 0.056285,
+     "run_s_median": 0.001372,
+     "build_rss_kib_median": 66128,
+     "run_rss_kib_median": 1296
+    },
+    "pablojorge": {
+     "validation_build": [
+      0,
+      0.049293,
+      23664
+     ],
+     "validation_run": [
+      0,
+      0.001042,
+      1296
+     ],
+     "artifact_bytes": 16080,
+     "status": "ok",
+     "build_s": [
+      0.046446,
+      0.049933,
+      0.045613,
+      0.039294,
+      0.055601
+     ],
+     "build_rss_kib": [
+      23540,
+      23624,
+      23620,
+      23608,
+      23648
+     ],
+     "run_s": [
+      0.00126,
+      0.001309,
+      0.001464,
+      0.001577,
+      0.001584
+     ],
+     "run_rss_kib": [
+      1296,
+      1292,
+      1296,
+      1296,
+      1296
+     ],
+     "build_s_median": 0.046446,
+     "run_s_median": 0.001464,
+     "build_rss_kib_median": 23620,
+     "run_rss_kib_median": 1296
+    },
+    "abfc": {
+     "validation_build": [
+      0,
+      0.011212,
+      4532
+     ],
+     "validation_run": [
+      0,
+      0.000978,
+      280
+     ],
+     "artifact_bytes": 13480,
+     "status": "ok",
+     "build_s": [
+      0.011036,
+      0.011401,
+      0.01067,
+      0.010334,
+      0.014227
+     ],
+     "build_rss_kib": [
+      4652,
+      4652,
+      4652,
+      4564,
+      4696
+     ],
+     "run_s": [
+      0.001048,
+      0.001109,
+      0.001269,
+      0.001523,
+      0.001449
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.011036,
+     "run_s_median": 0.001269,
+     "build_rss_kib_median": 4652,
+     "run_rss_kib_median": 280
+    },
+    "Brainfly": {
+     "validation_build": [
+      0,
+      4.087797,
+      236456
+     ],
+     "validation_run": [
+      0,
+      0.002776,
+      3488
+     ],
+     "artifact_bytes": 1323776,
+     "status": "ok",
+     "build_s": [
+      3.639429,
+      4.1222,
+      3.714558,
+      3.584467,
+      3.846283
+     ],
+     "build_rss_kib": [
+      216496,
+      224744,
+      216588,
+      216500,
+      216292
+     ],
+     "run_s": [
+      0.002391,
+      0.002619,
+      0.002862,
+      0.003162,
+      0.002931
+     ],
+     "run_rss_kib": [
+      3536,
+      3500,
+      3496,
+      3484,
+      3560
+     ],
+     "build_s_median": 3.714558,
+     "run_s_median": 0.002862,
+     "build_rss_kib_median": 216500,
+     "run_rss_kib_median": 3500
+    }
+   }
+  },
+  "empty": {
+   "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "input_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "reference_exit": 0,
+   "arms": {
+    "BBC-O1": {
+     "validation_build": [
+      0,
+      0.128614,
+      47856
+     ],
+     "validation_run": [
+      0,
+      0.034806,
+      8024
+     ],
+     "artifact_bytes": 7168,
+     "status": "ok",
+     "build_s": [
+      0.131123,
+      0.098238,
+      0.107286,
+      0.099332,
+      0.101957
+     ],
+     "build_rss_kib": [
+      47844,
+      47864,
+      47848,
+      47900,
+      47788
+     ],
+     "run_s": [
+      0.029568,
+      0.034076,
+      0.033541,
+      0.034174,
+      0.036692
+     ],
+     "run_rss_kib": [
+      8044,
+      7900,
+      7944,
+      8016,
+      7896
+     ],
+     "build_s_median": 0.101957,
+     "run_s_median": 0.034076,
+     "build_rss_kib_median": 47848,
+     "run_rss_kib_median": 7944
+    },
+    "BBC-O0": {
+     "validation_build": [
+      0,
+      0.079253,
+      47940
+     ],
+     "validation_run": [
+      0,
+      0.032307,
+      7896
+     ],
+     "artifact_bytes": 7168,
+     "status": "ok",
+     "build_s": [
+      0.099561,
+      0.1222,
+      0.114575,
+      0.083321,
+      0.094468
+     ],
+     "build_rss_kib": [
+      47720,
+      47784,
+      47924,
+      47880,
+      47972
+     ],
+     "run_s": [
+      0.030171,
+      0.028478,
+      0.030993,
+      0.031141,
+      0.039272
+     ],
+     "run_rss_kib": [
+      8072,
+      8036,
+      8028,
+      8020,
+      8016
+     ],
+     "build_s_median": 0.099561,
+     "run_s_median": 0.030993,
+     "build_rss_kib_median": 47880,
+     "run_rss_kib_median": 8028
+    },
+    "brainfry-win": {
+     "validation_build": [
+      0,
+      0.001513,
+      2236
+     ],
+     "validation_run": [
+      0,
+      0.025027,
+      6616
+     ],
+     "artifact_bytes": 2560,
+     "status": "ok",
+     "build_s": [
+      0.001887,
+      0.002477,
+      0.002152,
+      0.001976,
+      0.00208
+     ],
+     "build_rss_kib": [
+      2268,
+      2252,
+      2256,
+      2264,
+      2296
+     ],
+     "run_s": [
+      0.027654,
+      0.029604,
+      0.033061,
+      0.028381,
+      0.029445
+     ],
+     "run_rss_kib": [
+      6628,
+      6612,
+      6544,
+      6616,
+      6636
+     ],
+     "build_s_median": 0.00208,
+     "run_s_median": 0.029445,
+     "build_rss_kib_median": 2264,
+     "run_rss_kib_median": 6616
+    },
+    "brainfry": {
+     "validation_build": [
+      0,
+      0.001272,
+      2284
+     ],
+     "validation_run": [
+      0,
+      0.000717,
+      280
+     ],
+     "artifact_bytes": 768,
+     "status": "ok",
+     "build_s": [
+      0.001536,
+      0.002065,
+      0.001943,
+      0.002386,
+      0.002532
+     ],
+     "build_rss_kib": [
+      2292,
+      2264,
+      2240,
+      2244,
+      2280
+     ],
+     "run_s": [
+      0.000613,
+      0.000429,
+      0.000461,
+      0.000383,
+      0.00044
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.002065,
+     "run_s_median": 0.00044,
+     "build_rss_kib_median": 2264,
+     "run_rss_kib_median": 280
+    },
+    "bf-x86": {
+     "validation_build": [
+      0,
+      0.001244,
+      1560
+     ],
+     "validation_run": [
+      0,
+      0.000468,
+      280
+     ],
+     "artifact_bytes": 165,
+     "status": "ok",
+     "build_s": [
+      0.001457,
+      0.001652,
+      0.001605,
+      0.001482,
+      0.001694
+     ],
+     "build_rss_kib": [
+      1560,
+      1560,
+      1560,
+      1560,
+      1560
+     ],
+     "run_s": [
+      0.000418,
+      0.000541,
+      0.000403,
+      0.00035,
+      0.000514
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.001605,
+     "run_s_median": 0.000418,
+     "build_rss_kib_median": 1560,
+     "run_rss_kib_median": 280
+    },
+    "Awib": {
+     "validation_build": [
+      0,
+      0.040186,
+      21108
+     ],
+     "validation_run": [
+      0,
+      0.001143,
+      1244
+     ],
+     "artifact_bytes": 15800,
+     "status": "ok",
+     "build_s": [
+      0.039921,
+      0.042582,
+      0.041089,
+      0.041129,
+      0.04598
+     ],
+     "build_rss_kib": [
+      21136,
+      21156,
+      21136,
+      21144,
+      21364
+     ],
+     "run_s": [
+      0.00144,
+      0.001148,
+      0.001016,
+      0.000973,
+      0.001441
+     ],
+     "run_rss_kib": [
+      1244,
+      1244,
+      1244,
+      1244,
+      1244
+     ],
+     "build_s_median": 0.041129,
+     "run_s_median": 0.001148,
+     "build_rss_kib_median": 21144,
+     "run_rss_kib_median": 1244
+    },
+    "bflang": {
+     "validation_build": [
+      0,
+      0.034044,
+      67460
+     ],
+     "validation_run": [
+      0,
+      0.001128,
+      1244
+     ],
+     "artifact_bytes": 15856,
+     "status": "ok",
+     "build_s": [
+      0.041945,
+      0.039117,
+      0.03527,
+      0.040056,
+      0.047435
+     ],
+     "build_rss_kib": [
+      67400,
+      67400,
+      67312,
+      67344,
+      67304
+     ],
+     "run_s": [
+      0.001378,
+      0.001377,
+      0.001435,
+      0.000924,
+      0.001272
+     ],
+     "run_rss_kib": [
+      1244,
+      1244,
+      1244,
+      1244,
+      1244
+     ],
+     "build_s_median": 0.040056,
+     "run_s_median": 0.001377,
+     "build_rss_kib_median": 67344,
+     "run_rss_kib_median": 1244
+    },
+    "Wilfred/bfc": {
+     "validation_build": [
+      0,
+      0.05884,
+      66116
+     ],
+     "validation_run": [
+      0,
+      0.001098,
+      1244
+     ],
+     "artifact_bytes": 15840,
+     "status": "ok",
+     "build_s": [
+      0.05961,
+      0.064053,
+      0.054447,
+      0.05087,
+      0.053012
+     ],
+     "build_rss_kib": [
+      66216,
+      66096,
+      66116,
+      66104,
+      66216
+     ],
+     "run_s": [
+      0.001052,
+      0.001283,
+      0.001007,
+      0.001168,
+      0.00116
+     ],
+     "run_rss_kib": [
+      1244,
+      1244,
+      1244,
+      1244,
+      1244
+     ],
+     "build_s_median": 0.054447,
+     "run_s_median": 0.00116,
+     "build_rss_kib_median": 66116,
+     "run_rss_kib_median": 1244
+    },
+    "pablojorge": {
+     "validation_build": [
+      0,
+      0.046136,
+      21836
+     ],
+     "validation_run": [
+      0,
+      0.001235,
+      1244
+     ],
+     "artifact_bytes": 15776,
+     "status": "ok",
+     "build_s": [
+      0.043685,
+      0.047193,
+      0.042986,
+      0.038857,
+      0.041238
+     ],
+     "build_rss_kib": [
+      21908,
+      21860,
+      21816,
+      21732,
+      21804
+     ],
+     "run_s": [
+      0.001051,
+      0.001295,
+      0.001053,
+      0.001337,
+      0.001106
+     ],
+     "run_rss_kib": [
+      1244,
+      1244,
+      1244,
+      1244,
+      1244
+     ],
+     "build_s_median": 0.042986,
+     "run_s_median": 0.001106,
+     "build_rss_kib_median": 21816,
+     "run_rss_kib_median": 1244
+    },
+    "abfc": {
+     "validation_build": [
+      0,
+      0.012087,
+      4504
+     ],
+     "validation_run": [
+      0,
+      0.001008,
+      280
+     ],
+     "artifact_bytes": 13416,
+     "status": "ok",
+     "build_s": [
+      0.012054,
+      0.013004,
+      0.011677,
+      0.010522,
+      0.010799
+     ],
+     "build_rss_kib": [
+      4572,
+      4588,
+      4548,
+      4544,
+      4680
+     ],
+     "run_s": [
+      0.000998,
+      0.001042,
+      0.001222,
+      0.000968,
+      0.001572
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.011677,
+     "run_s_median": 0.001042,
+     "build_rss_kib_median": 4572,
+     "run_rss_kib_median": 280
+    },
+    "Brainfly": {
+     "validation_build": [
+      0,
+      4.002727,
+      236632
+     ],
+     "validation_run": [
+      0,
+      0.002824,
+      3252
+     ],
+     "artifact_bytes": 1089008,
+     "status": "ok",
+     "build_s": [
+      3.680486,
+      3.490925,
+      3.475871,
+      3.460971,
+      3.323534
+     ],
+     "build_rss_kib": [
+      216084,
+      215980,
+      215936,
+      216560,
+      215660
+     ],
+     "run_s": [
+      0.003526,
+      0.002111,
+      0.002774,
+      0.002014,
+      0.002944
+     ],
+     "run_rss_kib": [
+      3248,
+      3264,
+      3236,
+      3412,
+      3324
+     ],
+     "build_s_median": 3.475871,
+     "run_s_median": 0.002774,
+     "build_rss_kib_median": 215980,
+     "run_rss_kib_median": 3264
+    }
+   }
+  },
+  "factor": {
+   "source_sha256": "e95fc1e207cb91753abdd0777514ed0d7bceafca6a6e3b576f05a1163a84a9a7",
+   "input_sha256": "c869e4280143cb2f2f93fc5a61854ebe3539e7206183de31ff1ff17fc77460fc",
+   "expected_sha256": "0a584e32da8ab6dfa3ce418f7f27cb218e980084a8bf677615389002d251b320",
+   "reference_exit": 0,
+   "arms": {
+    "BBC-O1": {
+     "validation_build": [
+      0,
+      0.458318,
+      78308
+     ],
+     "validation_run": [
+      0,
+      0.073754,
+      8020
+     ],
+     "artifact_bytes": 46592,
+     "status": "ok",
+     "build_s": [
+      0.459694,
+      0.414413,
+      0.559161,
+      0.477189,
+      0.436449
+     ],
+     "build_rss_kib": [
+      78416,
+      78420,
+      78276,
+      78288,
+      78360
+     ],
+     "run_s": [
+      0.096881,
+      0.078578,
+      0.067431,
+      0.085459,
+      0.069713
+     ],
+     "run_rss_kib": [
+      8084,
+      7868,
+      7900,
+      8072,
+      7912
+     ],
+     "build_s_median": 0.459694,
+     "run_s_median": 0.078578,
+     "build_rss_kib_median": 78360,
+     "run_rss_kib_median": 7912
+    },
+    "BBC-O0": {
+     "validation_build": [
+      0,
+      1.795629,
+      156100
+     ],
+     "validation_run": [
+      0,
+      0.177483,
+      8020
+     ],
+     "artifact_bytes": 75776,
+     "status": "ok",
+     "build_s": [
+      1.686935,
+      2.001912,
+      1.865826,
+      1.781214,
+      1.935607
+     ],
+     "build_rss_kib": [
+      156196,
+      156208,
+      156188,
+      156020,
+      156252
+     ],
+     "run_s": [
+      0.195956,
+      0.161283,
+      0.177153,
+      0.228915,
+      0.178838
+     ],
+     "run_rss_kib": [
+      8028,
+      8016,
+      8080,
+      7996,
+      8020
+     ],
+     "build_s_median": 1.865826,
+     "run_s_median": 0.178838,
+     "build_rss_kib_median": 156196,
+     "run_rss_kib_median": 8020
+    },
+    "brainfry-win": {
+     "validation_build": [
+      0,
+      0.001987,
+      2504
+     ],
+     "validation_run": [
+      0,
+      0.073544,
+      6424
+     ],
+     "artifact_bytes": 19968,
+     "status": "ok",
+     "build_s": [
+      0.001935,
+      0.002795,
+      0.00253,
+      0.003278,
+      0.004609
+     ],
+     "build_rss_kib": [
+      2512,
+      2504,
+      2468,
+      2504,
+      2512
+     ],
+     "run_s": [
+      0.068524,
+      0.066393,
+      0.068787,
+      0.062201,
+      0.074609
+     ],
+     "run_rss_kib": [
+      6628,
+      6532,
+      6628,
+      6544,
+      6620
+     ],
+     "build_s_median": 0.002795,
+     "run_s_median": 0.068524,
+     "build_rss_kib_median": 2504,
+     "run_rss_kib_median": 6620
+    },
+    "brainfry": {
+     "validation_build": [
+      0,
+      0.002053,
+      2524
+     ],
+     "validation_run": [
+      0,
+      0.027224,
+      280
+     ],
+     "artifact_bytes": 18384,
+     "status": "ok",
+     "build_s": [
+      0.00173,
+      0.002388,
+      0.002499,
+      0.00287,
+      0.002217
+     ],
+     "build_rss_kib": [
+      2512,
+      2512,
+      2448,
+      2504,
+      2536
+     ],
+     "run_s": [
+      0.039464,
+      0.030421,
+      0.027957,
+      0.035073,
+      0.034135
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      296,
+      280
+     ],
+     "build_s_median": 0.002388,
+     "run_s_median": 0.034135,
+     "build_rss_kib_median": 2512,
+     "run_rss_kib_median": 280
+    },
+    "bf-x86": {
+     "validation_build": [
+      0,
+      0.001285,
+      1688
+     ],
+     "validation_run": [
+      0,
+      0.030837,
+      280
+     ],
+     "artifact_bytes": 5140,
+     "status": "ok",
+     "build_s": [
+      0.001317,
+      0.001665,
+      0.001609,
+      0.002019,
+      0.001697
+     ],
+     "build_rss_kib": [
+      1688,
+      1688,
+      1688,
+      1688,
+      1688
+     ],
+     "run_s": [
+      0.04261,
+      0.033912,
+      0.031236,
+      0.039678,
+      0.035803
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.001665,
+     "run_s_median": 0.035803,
+     "build_rss_kib_median": 1688,
+     "run_rss_kib_median": 280
+    },
+    "Awib": {
+     "validation_build": [
+      0,
+      0.846711,
+      33576
+     ],
+     "validation_run": [
+      0,
+      0.017125,
+      1304
+     ],
+     "artifact_bytes": 20208,
+     "status": "ok",
+     "build_s": [
+      0.774492,
+      0.784436,
+      0.726094,
+      0.788755,
+      0.931093
+     ],
+     "build_rss_kib": [
+      33640,
+      33816,
+      33636,
+      33624,
+      33136
+     ],
+     "run_s": [
+      0.016054,
+      0.01033,
+      0.013913,
+      0.01254,
+      0.013158
+     ],
+     "run_rss_kib": [
+      1304,
+      1300,
+      1304,
+      1304,
+      1304
+     ],
+     "build_s_median": 0.784436,
+     "run_s_median": 0.013158,
+     "build_rss_kib_median": 33636,
+     "run_rss_kib_median": 1304
+    },
+    "bflang": {
+     "validation_build": [
+      0,
+      0.519769,
+      79360
+     ],
+     "validation_run": [
+      0,
+      0.018672,
+      1300
+     ],
+     "artifact_bytes": 20128,
+     "status": "ok",
+     "build_s": [
+      0.510747,
+      0.527083,
+      0.504877,
+      0.50115,
+      0.510952
+     ],
+     "build_rss_kib": [
+      78948,
+      78596,
+      78720,
+      78912,
+      78560
+     ],
+     "run_s": [
+      0.031604,
+      0.016933,
+      0.018801,
+      0.017962,
+      0.022621
+     ],
+     "run_rss_kib": [
+      1300,
+      1296,
+      1300,
+      1300,
+      1300
+     ],
+     "build_s_median": 0.510747,
+     "run_s_median": 0.018801,
+     "build_rss_kib_median": 78720,
+     "run_rss_kib_median": 1300
+    },
+    "Wilfred/bfc": {
+     "validation_build": [
+      0,
+      0.327284,
+      66112
+     ],
+     "validation_run": [
+      0,
+      0.01933,
+      1556
+     ],
+     "artifact_bytes": 20264,
+     "status": "ok",
+     "build_s": [
+      0.303074,
+      0.318191,
+      0.333087,
+      0.383626,
+      0.428339
+     ],
+     "build_rss_kib": [
+      66128,
+      66060,
+      66068,
+      66128,
+      66112
+     ],
+     "run_s": [
+      0.029915,
+      0.031148,
+      0.018382,
+      0.017594,
+      0.021467
+     ],
+     "run_rss_kib": [
+      1556,
+      1556,
+      1556,
+      1556,
+      1556
+     ],
+     "build_s_median": 0.333087,
+     "run_s_median": 0.021467,
+     "build_rss_kib_median": 66112,
+     "run_rss_kib_median": 1556
+    },
+    "pablojorge": {
+     "validation_build": [
+      0,
+      0.30804,
+      39472
+     ],
+     "validation_run": [
+      0,
+      0.026166,
+      1428
+     ],
+     "artifact_bytes": 20232,
+     "status": "ok",
+     "build_s": [
+      0.264177,
+      0.287101,
+      0.266444,
+      0.28072,
+      0.277203
+     ],
+     "build_rss_kib": [
+      39592,
+      39480,
+      39504,
+      39516,
+      39492
+     ],
+     "run_s": [
+      0.029376,
+      0.021574,
+      0.020104,
+      0.020362,
+      0.018558
+     ],
+     "run_rss_kib": [
+      1428,
+      1428,
+      1428,
+      1424,
+      1428
+     ],
+     "build_s_median": 0.277203,
+     "run_s_median": 0.020362,
+     "build_rss_kib_median": 39504,
+     "run_rss_kib_median": 1428
+    },
+    "abfc": {
+     "validation_build": [
+      0,
+      0.17416,
+      4680
+     ],
+     "validation_run": [
+      0,
+      0.076262,
+      280
+     ],
+     "artifact_bytes": 33152,
+     "status": "ok",
+     "build_s": [
+      0.153486,
+      0.135492,
+      0.154923,
+      0.189102,
+      0.179703
+     ],
+     "build_rss_kib": [
+      4688,
+      4736,
+      4792,
+      4724,
+      4712
+     ],
+     "run_s": [
+      0.077355,
+      0.077598,
+      0.059688,
+      0.076786,
+      0.076198
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.154923,
+     "run_s_median": 0.076786,
+     "build_rss_kib_median": 4724,
+     "run_rss_kib_median": 280
+    },
+    "Brainfly": {
+     "validation_build": [
+      0,
+      7.171597,
+      245500
+     ],
+     "validation_run": [
+      0,
+      0.070267,
+      3508
+     ],
+     "artifact_bytes": 1360640,
+     "status": "ok",
+     "build_s": [
+      6.448356,
+      6.637172,
+      6.824941,
+      7.224126,
+      6.912776
+     ],
+     "build_rss_kib": [
+      224624,
+      224124,
+      224500,
+      224424,
+      224612
+     ],
+     "run_s": [
+      0.10492,
+      0.077766,
+      0.095401,
+      0.089661,
+      0.093768
+     ],
+     "run_rss_kib": [
+      3548,
+      3572,
+      3568,
+      3536,
+      3508
+     ],
+     "build_s_median": 6.824941,
+     "run_s_median": 0.093768,
+     "build_rss_kib_median": 224500,
+     "run_rss_kib_median": 3548
+    }
+   }
+  },
+  "hello": {
+   "source_sha256": "2f8559490b324beade0f38e9663318d56acbf432f4f46bbe7e828f004f5b57cd",
+   "input_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "expected_sha256": "03ba204e50d126e4674c005e04d82e84c21366780af1f43bd54a37816b6ab340",
+   "reference_exit": 0,
+   "arms": {
+    "BBC-O1": {
+     "validation_build": [
+      0,
+      0.105872,
+      47936
+     ],
+     "validation_run": [
+      0,
+      0.029217,
+      8084
+     ],
+     "artifact_bytes": 8192,
+     "status": "ok",
+     "build_s": [
+      0.096557,
+      0.123589,
+      0.092929,
+      0.107548,
+      0.14112
+     ],
+     "build_rss_kib": [
+      48024,
+      47916,
+      48064,
+      47976,
+      47980
+     ],
+     "run_s": [
+      0.031366,
+      0.028989,
+      0.032856,
+      0.036251,
+      0.03266
+     ],
+     "run_rss_kib": [
+      7908,
+      7948,
+      7892,
+      7836,
+      7908
+     ],
+     "build_s_median": 0.107548,
+     "run_s_median": 0.03266,
+     "build_rss_kib_median": 47980,
+     "run_rss_kib_median": 7908
+    },
+    "BBC-O0": {
+     "validation_build": [
+      0,
+      0.123444,
+      48812
+     ],
+     "validation_run": [
+      0,
+      0.034044,
+      8076
+     ],
+     "artifact_bytes": 8704,
+     "status": "ok",
+     "build_s": [
+      0.098938,
+      0.111956,
+      0.102252,
+      0.089586,
+      0.128375
+     ],
+     "build_rss_kib": [
+      48852,
+      48796,
+      48852,
+      48808,
+      48640
+     ],
+     "run_s": [
+      0.033071,
+      0.030995,
+      0.036481,
+      0.027993,
+      0.038365
+     ],
+     "run_rss_kib": [
+      7912,
+      8060,
+      7884,
+      7948,
+      8040
+     ],
+     "build_s_median": 0.102252,
+     "run_s_median": 0.033071,
+     "build_rss_kib_median": 48808,
+     "run_rss_kib_median": 7948
+    },
+    "brainfry-win": {
+     "validation_build": [
+      0,
+      0.001768,
+      2256
+     ],
+     "validation_run": [
+      0,
+      0.030013,
+      6632
+     ],
+     "artifact_bytes": 3584,
+     "status": "ok",
+     "build_s": [
+      0.001597,
+      0.003711,
+      0.001876,
+      0.002394,
+      0.002882
+     ],
+     "build_rss_kib": [
+      2304,
+      2284,
+      2288,
+      2256,
+      2272
+     ],
+     "run_s": [
+      0.03018,
+      0.029315,
+      0.028262,
+      0.024705,
+      0.034037
+     ],
+     "run_rss_kib": [
+      6672,
+      6672,
+      6608,
+      6676,
+      6616
+     ],
+     "build_s_median": 0.002394,
+     "run_s_median": 0.029315,
+     "build_rss_kib_median": 2284,
+     "run_rss_kib_median": 6672
+    },
+    "brainfry": {
+     "validation_build": [
+      0,
+      0.001587,
+      2192
+     ],
+     "validation_run": [
+      0,
+      0.000441,
+      280
+     ],
+     "artifact_bytes": 1840,
+     "status": "ok",
+     "build_s": [
+      0.001695,
+      0.002216,
+      0.00206,
+      0.002324,
+      0.002292
+     ],
+     "build_rss_kib": [
+      2280,
+      2256,
+      2256,
+      2236,
+      2248
+     ],
+     "run_s": [
+      0.000478,
+      0.001005,
+      0.000777,
+      0.00084,
+      0.001105
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.002216,
+     "run_s_median": 0.00084,
+     "build_rss_kib_median": 2256,
+     "run_rss_kib_median": 280
+    },
+    "bf-x86": {
+     "validation_build": [
+      0,
+      0.001335,
+      1560
+     ],
+     "validation_run": [
+      0,
+      0.000543,
+      280
+     ],
+     "artifact_bytes": 378,
+     "status": "ok",
+     "build_s": [
+      0.001205,
+      0.001599,
+      0.001414,
+      0.002076,
+      0.001998
+     ],
+     "build_rss_kib": [
+      1560,
+      1560,
+      1560,
+      1560,
+      1560
+     ],
+     "run_s": [
+      0.000502,
+      0.000756,
+      0.000804,
+      0.001852,
+      0.001046
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.001599,
+     "run_s_median": 0.000804,
+     "build_rss_kib_median": 1560,
+     "run_rss_kib_median": 280
+    },
+    "Awib": {
+     "validation_build": [
+      0,
+      0.06791,
+      23384
+     ],
+     "validation_run": [
+      0,
+      0.001256,
+      1296
+     ],
+     "artifact_bytes": 16024,
+     "status": "ok",
+     "build_s": [
+      0.05877,
+      0.058783,
+      0.056412,
+      0.075229,
+      0.069727
+     ],
+     "build_rss_kib": [
+      23576,
+      23392,
+      23352,
+      23448,
+      23396
+     ],
+     "run_s": [
+      0.001228,
+      0.001883,
+      0.001424,
+      0.001505,
+      0.001904
+     ],
+     "run_rss_kib": [
+      1296,
+      1296,
+      1296,
+      1296,
+      1296
+     ],
+     "build_s_median": 0.058783,
+     "run_s_median": 0.001505,
+     "build_rss_kib_median": 23396,
+     "run_rss_kib_median": 1296
+    },
+    "bflang": {
+     "validation_build": [
+      0,
+      0.065442,
+      70528
+     ],
+     "validation_run": [
+      0,
+      0.001338,
+      1292
+     ],
+     "artifact_bytes": 16112,
+     "status": "ok",
+     "build_s": [
+      0.04649,
+      0.056882,
+      0.059871,
+      0.056447,
+      0.049366
+     ],
+     "build_rss_kib": [
+      70208,
+      70400,
+      70716,
+      70580,
+      70656
+     ],
+     "run_s": [
+      0.00151,
+      0.001624,
+      0.001522,
+      0.001525,
+      0.001659
+     ],
+     "run_rss_kib": [
+      1296,
+      1296,
+      1296,
+      1296,
+      1296
+     ],
+     "build_s_median": 0.056447,
+     "run_s_median": 0.001525,
+     "build_rss_kib_median": 70580,
+     "run_rss_kib_median": 1296
+    },
+    "Wilfred/bfc": {
+     "validation_build": [
+      0,
+      0.063186,
+      66128
+     ],
+     "validation_run": [
+      0,
+      0.002045,
+      1248
+     ],
+     "artifact_bytes": 16000,
+     "status": "ok",
+     "build_s": [
+      0.052747,
+      0.060106,
+      0.055883,
+      0.056723,
+      0.054545
+     ],
+     "build_rss_kib": [
+      66132,
+      66112,
+      66168,
+      66112,
+      66136
+     ],
+     "run_s": [
+      0.001406,
+      0.001403,
+      0.0013,
+      0.001362,
+      0.002088
+     ],
+     "run_rss_kib": [
+      1248,
+      1244,
+      1248,
+      1244,
+      1248
+     ],
+     "build_s_median": 0.055883,
+     "run_s_median": 0.001403,
+     "build_rss_kib_median": 66132,
+     "run_rss_kib_median": 1248
+    },
+    "pablojorge": {
+     "validation_build": [
+      0,
+      0.051793,
+      24496
+     ],
+     "validation_run": [
+      0,
+      0.001621,
+      1296
+     ],
+     "artifact_bytes": 16000,
+     "status": "ok",
+     "build_s": [
+      0.056996,
+      0.045479,
+      0.058375,
+      0.048832,
+      0.048957
+     ],
+     "build_rss_kib": [
+      24484,
+      24564,
+      24444,
+      24452,
+      24564
+     ],
+     "run_s": [
+      0.001896,
+      0.001845,
+      0.001251,
+      0.001381,
+      0.001904
+     ],
+     "run_rss_kib": [
+      1296,
+      1296,
+      1296,
+      1296,
+      1296
+     ],
+     "build_s_median": 0.048957,
+     "run_s_median": 0.001845,
+     "build_rss_kib_median": 24484,
+     "run_rss_kib_median": 1296
+    },
+    "abfc": {
+     "validation_build": [
+      0,
+      0.013095,
+      4612
+     ],
+     "validation_run": [
+      0,
+      0.001194,
+      280
+     ],
+     "artifact_bytes": 13480,
+     "status": "ok",
+     "build_s": [
+      0.013938,
+      0.011959,
+      0.012949,
+      0.015713,
+      0.011964
+     ],
+     "build_rss_kib": [
+      4564,
+      4504,
+      4648,
+      4680,
+      4668
+     ],
+     "run_s": [
+      0.001217,
+      0.001187,
+      0.001638,
+      0.001155,
+      0.001663
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.012949,
+     "run_s_median": 0.001217,
+     "build_rss_kib_median": 4648,
+     "run_rss_kib_median": 280
+    },
+    "Brainfly": {
+     "validation_build": [
+      0,
+      3.853169,
+      236120
+     ],
+     "validation_run": [
+      0,
+      0.002175,
+      3444
+     ],
+     "artifact_bytes": 1278384,
+     "status": "ok",
+     "build_s": [
+      3.728944,
+      3.719888,
+      3.615389,
+      3.642914,
+      3.970526
+     ],
+     "build_rss_kib": [
+      216664,
+      220612,
+      216868,
+      216364,
+      216620
+     ],
+     "run_s": [
+      0.002759,
+      0.002427,
+      0.002972,
+      0.002751,
+      0.003873
+     ],
+     "run_rss_kib": [
+      3432,
+      3480,
+      3548,
+      3444,
+      3528
+     ],
+     "build_s_median": 3.719888,
+     "run_s_median": 0.002759,
+     "build_rss_kib_median": 216664,
+     "run_rss_kib_median": 3480
+    }
+   }
+  },
+  "life": {
+   "source_sha256": "3a25761fa7ebe79e04819f0879b08798c7266e056e5f6b56a65eb9290affb8bb",
+   "input_sha256": "72ca24c73b09c6610d3fda033dbb9e86d102bcd4dff21367fdfdd415c7439f95",
+   "expected_sha256": "6e7ad2a1ffbe4fbf207d3c8290c731b79308d0a01b1605494faf6a111346dd5b",
+   "reference_exit": 0,
+   "arms": {
+    "BBC-O1": {
+     "validation_build": [
+      0,
+      0.415835,
+      73512
+     ],
+     "validation_run": [
+      0,
+      0.057659,
+      7920
+     ],
+     "artifact_bytes": 40448,
+     "status": "ok",
+     "build_s": [
+      0.395765,
+      0.395023,
+      0.399903,
+      0.411666,
+      0.484777
+     ],
+     "build_rss_kib": [
+      73352,
+      73556,
+      73440,
+      73400,
+      73588
+     ],
+     "run_s": [
+      0.060318,
+      0.054689,
+      0.062102,
+      0.064385,
+      0.067129
+     ],
+     "run_rss_kib": [
+      7976,
+      7936,
+      8068,
+      8024,
+      8028
+     ],
+     "build_s_median": 0.399903,
+     "run_s_median": 0.062102,
+     "build_rss_kib_median": 73440,
+     "run_rss_kib_median": 8024
+    },
+    "BBC-O0": {
+     "validation_build": [
+      0,
+      0.985959,
+      114260
+     ],
+     "validation_run": [
+      0,
+      1.846636,
+      8084
+     ],
+     "artifact_bytes": 52224,
+     "status": "ok",
+     "build_s": [
+      1.026577,
+      0.812962,
+      0.953264,
+      0.990623,
+      1.054052
+     ],
+     "build_rss_kib": [
+      114268,
+      114276,
+      114256,
+      114260,
+      114388
+     ],
+     "run_s": [
+      2.017749,
+      2.074281,
+      1.957879,
+      2.004335,
+      1.749791
+     ],
+     "run_rss_kib": [
+      7896,
+      7872,
+      8048,
+      7956,
+      7892
+     ],
+     "build_s_median": 0.990623,
+     "run_s_median": 2.004335,
+     "build_rss_kib_median": 114268,
+     "run_rss_kib_median": 7896
+    },
+    "brainfry-win": {
+     "validation_build": [
+      0,
+      0.001592,
+      2392
+     ],
+     "validation_run": [
+      0,
+      0.038322,
+      6632
+     ],
+     "artifact_bytes": 17408,
+     "status": "ok",
+     "build_s": [
+      0.001925,
+      0.00356,
+      0.002938,
+      0.002466,
+      0.002754
+     ],
+     "build_rss_kib": [
+      2388,
+      2380,
+      2396,
+      2376,
+      2392
+     ],
+     "run_s": [
+      0.052941,
+      0.048433,
+      0.041178,
+      0.042891,
+      0.042084
+     ],
+     "run_rss_kib": [
+      6520,
+      6480,
+      6484,
+      6492,
+      6544
+     ],
+     "build_s_median": 0.002754,
+     "run_s_median": 0.042891,
+     "build_rss_kib_median": 2388,
+     "run_rss_kib_median": 6492
+    },
+    "brainfry": {
+     "validation_build": [
+      0,
+      0.001666,
+      2408
+     ],
+     "validation_run": [
+      0,
+      0.010463,
+      280
+     ],
+     "artifact_bytes": 15568,
+     "status": "ok",
+     "build_s": [
+      0.001772,
+      0.002304,
+      0.002662,
+      0.00277,
+      0.003136
+     ],
+     "build_rss_kib": [
+      2412,
+      2392,
+      2388,
+      2404,
+      2404
+     ],
+     "run_s": [
+      0.017604,
+      0.010873,
+      0.010422,
+      0.010313,
+      0.010991
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.002662,
+     "run_s_median": 0.010873,
+     "build_rss_kib_median": 2404,
+     "run_rss_kib_median": 280
+    },
+    "bf-x86": {
+     "validation_build": [
+      0,
+      0.001824,
+      1688
+     ],
+     "validation_run": [
+      0,
+      0.475734,
+      280
+     ],
+     "artifact_bytes": 4853,
+     "status": "ok",
+     "build_s": [
+      0.001448,
+      0.001629,
+      0.001918,
+      0.001727,
+      0.001908
+     ],
+     "build_rss_kib": [
+      1688,
+      1688,
+      1688,
+      1688,
+      1688
+     ],
+     "run_s": [
+      0.533995,
+      0.509826,
+      0.54854,
+      0.464598,
+      0.532143
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.001727,
+     "run_s_median": 0.532143,
+     "build_rss_kib_median": 1688,
+     "run_rss_kib_median": 280
+    },
+    "Awib": {
+     "validation_build": [
+      0,
+      0.487707,
+      30032
+     ],
+     "validation_run": [
+      0,
+      0.00397,
+      1300
+     ],
+     "artifact_bytes": 16112,
+     "status": "ok",
+     "build_s": [
+      0.522496,
+      0.457643,
+      0.490321,
+      0.463915,
+      0.479059
+     ],
+     "build_rss_kib": [
+      29924,
+      29852,
+      30000,
+      30064,
+      30060
+     ],
+     "run_s": [
+      0.005404,
+      0.007161,
+      0.00444,
+      0.005199,
+      0.004699
+     ],
+     "run_rss_kib": [
+      1300,
+      1300,
+      1296,
+      1300,
+      1300
+     ],
+     "build_s_median": 0.479059,
+     "run_s_median": 0.005199,
+     "build_rss_kib_median": 30000,
+     "run_rss_kib_median": 1300
+    },
+    "bflang": {
+     "validation_build": [
+      0,
+      0.343157,
+      76924
+     ],
+     "validation_run": [
+      0,
+      0.011365,
+      1300
+     ],
+     "artifact_bytes": 20128,
+     "status": "ok",
+     "build_s": [
+      0.331551,
+      0.401416,
+      0.332653,
+      0.364208,
+      0.339631
+     ],
+     "build_rss_kib": [
+      77040,
+      76984,
+      77216,
+      76876,
+      76880
+     ],
+     "run_s": [
+      0.012777,
+      0.011891,
+      0.011563,
+      0.013771,
+      0.010823
+     ],
+     "run_rss_kib": [
+      1300,
+      1300,
+      1300,
+      1300,
+      1300
+     ],
+     "build_s_median": 0.339631,
+     "run_s_median": 0.011891,
+     "build_rss_kib_median": 76984,
+     "run_rss_kib_median": 1300
+    },
+    "Wilfred/bfc": {
+     "validation_build": [
+      0,
+      0.196199,
+      66228
+     ],
+     "validation_run": [
+      0,
+      0.010194,
+      1560
+     ],
+     "artifact_bytes": 20352,
+     "status": "ok",
+     "build_s": [
+      0.173886,
+      0.229658,
+      0.205111,
+      0.207582,
+      0.252595
+     ],
+     "build_rss_kib": [
+      66240,
+      66188,
+      66084,
+      66128,
+      66128
+     ],
+     "run_s": [
+      0.01228,
+      0.013512,
+      0.01169,
+      0.010411,
+      0.012107
+     ],
+     "run_rss_kib": [
+      1556,
+      1560,
+      1560,
+      1560,
+      1560
+     ],
+     "build_s_median": 0.207582,
+     "run_s_median": 0.012107,
+     "build_rss_kib_median": 66128,
+     "run_rss_kib_median": 1560
+    },
+    "pablojorge": {
+     "validation_build": [
+      0,
+      0.230884,
+      39828
+     ],
+     "validation_run": [
+      0,
+      0.007501,
+      1428
+     ],
+     "artifact_bytes": 20232,
+     "status": "ok",
+     "build_s": [
+      0.243624,
+      0.291858,
+      0.306176,
+      0.259026,
+      0.312517
+     ],
+     "build_rss_kib": [
+      39720,
+      39844,
+      39856,
+      39940,
+      39796
+     ],
+     "run_s": [
+      0.006564,
+      0.00518,
+      0.005353,
+      0.005662,
+      0.005054
+     ],
+     "run_rss_kib": [
+      1428,
+      1428,
+      1428,
+      1428,
+      1428
+     ],
+     "build_s_median": 0.291858,
+     "run_s_median": 0.005353,
+     "build_rss_kib_median": 39844,
+     "run_rss_kib_median": 1428
+    },
+    "abfc": {
+     "validation_build": [
+      0,
+      0.090628,
+      4692
+     ],
+     "validation_run": [
+      0,
+      1.664647,
+      280
+     ],
+     "artifact_bytes": 28256,
+     "status": "ok",
+     "build_s": [
+      0.081722,
+      0.118927,
+      0.094569,
+      0.110813,
+      0.098125
+     ],
+     "build_rss_kib": [
+      4744,
+      4816,
+      4748,
+      4752,
+      4740
+     ],
+     "run_s": [
+      1.682723,
+      1.689559,
+      1.651716,
+      1.664309,
+      1.643327
+     ],
+     "run_rss_kib": [
+      280,
+      296,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.098125,
+     "run_s_median": 1.664309,
+     "build_rss_kib_median": 4748,
+     "run_rss_kib_median": 280
+    },
+    "Brainfly": {
+     "validation_build": [
+      0,
+      9.460961,
+      245264
+     ],
+     "validation_run": [
+      0,
+      0.962718,
+      3504
+     ],
+     "artifact_bytes": 1348352,
+     "status": "ok",
+     "build_s": [
+      8.962482,
+      9.199493,
+      9.00744,
+      8.966355,
+      9.33151
+     ],
+     "build_rss_kib": [
+      224352,
+      239644,
+      250932,
+      235832,
+      240980
+     ],
+     "run_s": [
+      0.960175,
+      0.978607,
+      0.894653,
+      0.965037,
+      0.838413
+     ],
+     "run_rss_kib": [
+      3504,
+      3544,
+      3508,
+      3488,
+      3572
+     ],
+     "build_s_median": 9.00744,
+     "run_s_median": 0.960175,
+     "build_rss_kib_median": 239644,
+     "run_rss_kib_median": 3508
+    }
+   }
+  },
+  "mandelbrot": {
+   "source_sha256": "f0f048e90855450fb06f2bea21f914f0d24e6b6c15fd050c68176ff794c6229e",
+   "input_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "expected_sha256": "83a0aac65090b3b5e85c22337afac39d8ac17bfd88675f044b33bd55ca0c351b",
+   "reference_exit": 0,
+   "arms": {
+    "BBC-O1": {
+     "validation_build": [
+      0,
+      2.029313,
+      152104
+     ],
+     "validation_run": [
+      0,
+      1.676288,
+      8152
+     ],
+     "artifact_bytes": 136704,
+     "status": "ok",
+     "build_s": [
+      2.130078,
+      1.994399,
+      1.797,
+      2.10411,
+      2.013984
+     ],
+     "build_rss_kib": [
+      152124,
+      152128,
+      151960,
+      152108,
+      152060
+     ],
+     "run_s": [
+      1.736004,
+      1.567196,
+      1.634815,
+      1.483898,
+      1.637032
+     ],
+     "run_rss_kib": [
+      8144,
+      8156,
+      8160,
+      8164,
+      8192
+     ],
+     "build_s_median": 2.013984,
+     "run_s_median": 1.634815,
+     "build_rss_kib_median": 152108,
+     "run_rss_kib_median": 8160
+    },
+    "BBC-O0": {
+     "validation_build": [
+      0,
+      15.725104,
+      384572
+     ],
+     "validation_run": [
+      0,
+      3.496348,
+      8212
+     ],
+     "artifact_bytes": 206848,
+     "status": "ok",
+     "build_s": [
+      14.336683,
+      15.058007,
+      15.045148,
+      18.574099,
+      14.57911
+     ],
+     "build_rss_kib": [
+      384508,
+      384464,
+      384600,
+      384584,
+      384360
+     ],
+     "run_s": [
+      3.450318,
+      3.565927,
+      3.330429,
+      3.372903,
+      3.510244
+     ],
+     "run_rss_kib": [
+      8204,
+      8168,
+      8176,
+      8156,
+      8140
+     ],
+     "build_s_median": 15.045148,
+     "run_s_median": 3.450318,
+     "build_rss_kib_median": 384508,
+     "run_rss_kib_median": 8168
+    },
+    "brainfry-win": {
+     "validation_build": [
+      0,
+      0.002959,
+      3008
+     ],
+     "validation_run": [
+      0,
+      1.385772,
+      6488
+     ],
+     "artifact_bytes": 59904,
+     "status": "ok",
+     "build_s": [
+      0.003754,
+      0.003497,
+      0.003519,
+      0.007503,
+      0.003669
+     ],
+     "build_rss_kib": [
+      3056,
+      3036,
+      3028,
+      3092,
+      3008
+     ],
+     "run_s": [
+      1.605248,
+      1.503823,
+      1.465707,
+      1.409395,
+      1.457153
+     ],
+     "run_rss_kib": [
+      6500,
+      6496,
+      6620,
+      6628,
+      6488
+     ],
+     "build_s_median": 0.003669,
+     "run_s_median": 1.465707,
+     "build_rss_kib_median": 3036,
+     "run_rss_kib_median": 6500
+    },
+    "brainfry": {
+     "validation_build": [
+      0,
+      0.002642,
+      3032
+     ],
+     "validation_run": [
+      0,
+      1.31605,
+      280
+     ],
+     "artifact_bytes": 58416,
+     "status": "ok",
+     "build_s": [
+      0.003394,
+      0.003221,
+      0.003438,
+      0.003827,
+      0.00435
+     ],
+     "build_rss_kib": [
+      3040,
+      3028,
+      3052,
+      3036,
+      3008
+     ],
+     "run_s": [
+      1.382321,
+      1.48343,
+      1.445246,
+      1.454274,
+      1.367623
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.003438,
+     "run_s_median": 1.445246,
+     "build_rss_kib_median": 3036,
+     "run_rss_kib_median": 280
+    },
+    "bf-x86": {
+     "validation_build": [
+      0,
+      0.001796,
+      1816
+     ],
+     "validation_run": [
+      0,
+      0.714888,
+      280
+     ],
+     "artifact_bytes": 14452,
+     "status": "ok",
+     "build_s": [
+      0.002035,
+      0.002112,
+      0.002071,
+      0.003129,
+      0.002789
+     ],
+     "build_rss_kib": [
+      1816,
+      1816,
+      1816,
+      1816,
+      1816
+     ],
+     "run_s": [
+      0.490934,
+      0.608853,
+      0.698743,
+      0.945378,
+      0.715701
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.002112,
+     "run_s_median": 0.698743,
+     "build_rss_kib_median": 1816,
+     "run_rss_kib_median": 280
+    },
+    "Awib": {
+     "validation_build": [
+      0,
+      2.059059,
+      55124
+     ],
+     "validation_run": [
+      0,
+      0.42876,
+      1312
+     ],
+     "artifact_bytes": 28312,
+     "status": "ok",
+     "build_s": [
+      2.284099,
+      2.052225,
+      1.916754,
+      2.362267,
+      1.900625
+     ],
+     "build_rss_kib": [
+      55080,
+      55028,
+      55224,
+      55136,
+      54996
+     ],
+     "run_s": [
+      0.354657,
+      0.453743,
+      0.44862,
+      0.602622,
+      0.445826
+     ],
+     "run_rss_kib": [
+      1312,
+      1312,
+      1312,
+      1312,
+      1312
+     ],
+     "build_s_median": 2.052225,
+     "run_s_median": 0.44862,
+     "build_rss_kib_median": 55080,
+     "run_rss_kib_median": 1312
+    },
+    "bflang": {
+     "validation_build": [
+      0,
+      12.605676,
+      96508
+     ],
+     "validation_run": [
+      0,
+      0.916617,
+      1316
+     ],
+     "artifact_bytes": 36464,
+     "status": "ok",
+     "build_s": [
+      12.596752,
+      12.68303,
+      12.372107,
+      12.968562,
+      12.861358
+     ],
+     "build_rss_kib": [
+      96076,
+      95612,
+      97112,
+      96380,
+      96972
+     ],
+     "run_s": [
+      0.978701,
+      0.89682,
+      0.925413,
+      1.005529,
+      0.753675
+     ],
+     "run_rss_kib": [
+      1316,
+      1316,
+      1316,
+      1316,
+      1316
+     ],
+     "build_s_median": 12.68303,
+     "run_s_median": 0.925413,
+     "build_rss_kib_median": 96380,
+     "run_rss_kib_median": 1316
+    },
+    "Wilfred/bfc": {
+     "validation_build": [
+      0,
+      1.447832,
+      66984
+     ],
+     "validation_run": [
+      0,
+      0.87744,
+      1576
+     ],
+     "artifact_bytes": 36688,
+     "status": "ok",
+     "build_s": [
+      1.455121,
+      1.512807,
+      1.498611,
+      1.609105,
+      1.413477
+     ],
+     "build_rss_kib": [
+      67276,
+      67176,
+      67548,
+      67068,
+      67216
+     ],
+     "run_s": [
+      0.921395,
+      0.900204,
+      0.941734,
+      1.005361,
+      0.927764
+     ],
+     "run_rss_kib": [
+      1576,
+      1576,
+      1576,
+      1524,
+      1576
+     ],
+     "build_s_median": 1.498611,
+     "run_s_median": 0.927764,
+     "build_rss_kib_median": 67216,
+     "run_rss_kib_median": 1576
+    },
+    "pablojorge": {
+     "validation_build": [
+      0,
+      1.06306,
+      70808
+     ],
+     "validation_run": [
+      0,
+      1.010121,
+      1440
+     ],
+     "artifact_bytes": 28336,
+     "status": "ok",
+     "build_s": [
+      1.060393,
+      1.181536,
+      1.028331,
+      0.923441,
+      0.965091
+     ],
+     "build_rss_kib": [
+      70464,
+      70784,
+      70564,
+      70632,
+      70700
+     ],
+     "run_s": [
+      0.968651,
+      0.897665,
+      0.865861,
+      0.956395,
+      0.80515
+     ],
+     "run_rss_kib": [
+      1440,
+      1440,
+      1440,
+      1440,
+      1440
+     ],
+     "build_s_median": 1.028331,
+     "run_s_median": 0.897665,
+     "build_rss_kib_median": 70632,
+     "run_rss_kib_median": 1440
+    },
+    "abfc": {
+     "validation_build": [
+      0,
+      0.410241,
+      4980
+     ],
+     "validation_run": [
+      0,
+      1.045077,
+      280
+     ],
+     "artifact_bytes": 80544,
+     "status": "ok",
+     "build_s": [
+      0.398071,
+      0.451247,
+      0.419319,
+      0.413365,
+      0.355617
+     ],
+     "build_rss_kib": [
+      4972,
+      4964,
+      5024,
+      5148,
+      4956
+     ],
+     "run_s": [
+      0.900992,
+      1.025509,
+      1.099723,
+      1.133557,
+      0.930389
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.413365,
+     "run_s_median": 1.025509,
+     "build_rss_kib_median": 4972,
+     "run_rss_kib_median": 280
+    },
+    "Brainfly": {
+     "validation_build": [
+      0,
+      31.441412,
+      585380
+     ],
+     "validation_run": [
+      0,
+      1.394073,
+      3620
+     ],
+     "artifact_bytes": 1356224,
+     "status": "ok",
+     "build_s": [
+      30.153296,
+      29.114582,
+      29.826493,
+      31.795305,
+      29.504088
+     ],
+     "build_rss_kib": [
+      598460,
+      580636,
+      567636,
+      578296,
+      591580
+     ],
+     "run_s": [
+      1.331024,
+      1.326512,
+      1.395784,
+      1.320594,
+      1.537345
+     ],
+     "run_rss_kib": [
+      3508,
+      3528,
+      3572,
+      3644,
+      3492
+     ],
+     "build_s_median": 29.826493,
+     "run_s_median": 1.331024,
+     "build_rss_kib_median": 580636,
+     "run_rss_kib_median": 3528
+    }
+   }
+  },
+  "multi_transfer": {
+   "source_sha256": "924485f8ce7b030c93cbc15bf0ba034eb5c5063a720a129e44db1b10c6e904b8",
+   "input_sha256": "fb95aa98d6e6c5827a57ec17b978d647fcc01d98c357b7e64989af57339e9ac3",
+   "expected_sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+   "reference_exit": 0,
+   "arms": {
+    "BBC-O1": {
+     "validation_build": [
+      0,
+      0.121489,
+      48244
+     ],
+     "validation_run": [
+      0,
+      0.030856,
+      8036
+     ],
+     "artifact_bytes": 10240,
+     "status": "ok",
+     "build_s": [
+      0.101987,
+      0.106004,
+      0.126837,
+      0.11546,
+      0.117693
+     ],
+     "build_rss_kib": [
+      48192,
+      48184,
+      48232,
+      48252,
+      48104
+     ],
+     "run_s": [
+      0.029768,
+      0.028548,
+      0.034782,
+      0.02893,
+      0.028995
+     ],
+     "run_rss_kib": [
+      7940,
+      7952,
+      8028,
+      8028,
+      7812
+     ],
+     "build_s_median": 0.11546,
+     "run_s_median": 0.028995,
+     "build_rss_kib_median": 48192,
+     "run_rss_kib_median": 7952
+    },
+    "BBC-O0": {
+     "validation_build": [
+      0,
+      0.144462,
+      52604
+     ],
+     "validation_run": [
+      0,
+      0.030092,
+      8068
+     ],
+     "artifact_bytes": 11264,
+     "status": "ok",
+     "build_s": [
+      0.12789,
+      0.119313,
+      0.159519,
+      0.120245,
+      0.133329
+     ],
+     "build_rss_kib": [
+      52552,
+      52620,
+      52616,
+      52580,
+      52584
+     ],
+     "run_s": [
+      0.032417,
+      0.031597,
+      0.03281,
+      0.033172,
+      0.030742
+     ],
+     "run_rss_kib": [
+      8040,
+      8036,
+      8056,
+      8040,
+      7920
+     ],
+     "build_s_median": 0.12789,
+     "run_s_median": 0.032417,
+     "build_rss_kib_median": 52584,
+     "run_rss_kib_median": 8040
+    },
+    "brainfry-win": {
+     "validation_build": [
+      0,
+      0.001664,
+      2240
+     ],
+     "validation_run": [
+      0,
+      0.031361,
+      6612
+     ],
+     "artifact_bytes": 3072,
+     "status": "ok",
+     "build_s": [
+      0.001621,
+      0.002543,
+      0.002145,
+      0.002216,
+      0.002418
+     ],
+     "build_rss_kib": [
+      2284,
+      2264,
+      2252,
+      2256,
+      2292
+     ],
+     "run_s": [
+      0.03031,
+      0.02889,
+      0.033227,
+      0.030925,
+      0.029337
+     ],
+     "run_rss_kib": [
+      6668,
+      6632,
+      6632,
+      6664,
+      6620
+     ],
+     "build_s_median": 0.002216,
+     "run_s_median": 0.03031,
+     "build_rss_kib_median": 2264,
+     "run_rss_kib_median": 6632
+    },
+    "brainfry": {
+     "validation_build": [
+      0,
+      0.001608,
+      2248
+     ],
+     "validation_run": [
+      0,
+      0.000611,
+      280
+     ],
+     "artifact_bytes": 1264,
+     "status": "ok",
+     "build_s": [
+      0.001546,
+      0.002187,
+      0.002296,
+      0.002658,
+      0.002153
+     ],
+     "build_rss_kib": [
+      2268,
+      2296,
+      2268,
+      2248,
+      2236
+     ],
+     "run_s": [
+      0.000458,
+      0.001367,
+      0.000805,
+      0.000814,
+      0.000918
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.002187,
+     "run_s_median": 0.000814,
+     "build_rss_kib_median": 2268,
+     "run_rss_kib_median": 280
+    },
+    "bf-x86": {
+     "validation_build": [
+      0,
+      0.001829,
+      1560
+     ],
+     "validation_run": [
+      0,
+      0.000687,
+      280
+     ],
+     "artifact_bytes": 276,
+     "status": "ok",
+     "build_s": [
+      0.001833,
+      0.001694,
+      0.002076,
+      0.001626,
+      0.001687
+     ],
+     "build_rss_kib": [
+      1556,
+      1560,
+      1560,
+      1560,
+      1560
+     ],
+     "run_s": [
+      0.000657,
+      0.001118,
+      0.000722,
+      0.000942,
+      0.000834
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.001694,
+     "run_s_median": 0.000834,
+     "build_rss_kib_median": 1560,
+     "run_rss_kib_median": 280
+    },
+    "Awib": {
+     "validation_build": [
+      0,
+      0.068908,
+      23208
+     ],
+     "validation_run": [
+      0,
+      0.001163,
+      1296
+     ],
+     "artifact_bytes": 16112,
+     "status": "ok",
+     "build_s": [
+      0.075613,
+      0.071969,
+      0.092443,
+      0.069381,
+      0.083691
+     ],
+     "build_rss_kib": [
+      23136,
+      23252,
+      23060,
+      23240,
+      23292
+     ],
+     "run_s": [
+      0.001585,
+      0.002001,
+      0.001368,
+      0.004738,
+      0.001913
+     ],
+     "run_rss_kib": [
+      1296,
+      1296,
+      1296,
+      1296,
+      1296
+     ],
+     "build_s_median": 0.075613,
+     "run_s_median": 0.001913,
+     "build_rss_kib_median": 23240,
+     "run_rss_kib_median": 1296
+    },
+    "bflang": {
+     "validation_build": [
+      0,
+      0.071799,
+      71228
+     ],
+     "validation_run": [
+      0,
+      0.001577,
+      1296
+     ],
+     "artifact_bytes": 16136,
+     "status": "ok",
+     "build_s": [
+      0.060928,
+      0.055143,
+      0.082217,
+      0.05377,
+      0.069849
+     ],
+     "build_rss_kib": [
+      71272,
+      71392,
+      71072,
+      71684,
+      71020
+     ],
+     "run_s": [
+      0.001281,
+      0.001483,
+      0.00165,
+      0.001639,
+      0.001807
+     ],
+     "run_rss_kib": [
+      1296,
+      1296,
+      1296,
+      1296,
+      1296
+     ],
+     "build_s_median": 0.060928,
+     "run_s_median": 0.001639,
+     "build_rss_kib_median": 71272,
+     "run_rss_kib_median": 1296
+    },
+    "Wilfred/bfc": {
+     "validation_build": [
+      0,
+      0.064689,
+      66216
+     ],
+     "validation_run": [
+      0,
+      0.001491,
+      1296
+     ],
+     "artifact_bytes": 16120,
+     "status": "ok",
+     "build_s": [
+      0.0552,
+      0.061849,
+      0.070579,
+      0.066705,
+      0.059773
+     ],
+     "build_rss_kib": [
+      66212,
+      66216,
+      66212,
+      66124,
+      66132
+     ],
+     "run_s": [
+      0.001243,
+      0.001499,
+      0.00122,
+      0.001701,
+      0.001394
+     ],
+     "run_rss_kib": [
+      1296,
+      1296,
+      1296,
+      1296,
+      1296
+     ],
+     "build_s_median": 0.061849,
+     "run_s_median": 0.001394,
+     "build_rss_kib_median": 66212,
+     "run_rss_kib_median": 1296
+    },
+    "pablojorge": {
+     "validation_build": [
+      0,
+      0.043457,
+      23004
+     ],
+     "validation_run": [
+      0,
+      0.00112,
+      1296
+     ],
+     "artifact_bytes": 16080,
+     "status": "ok",
+     "build_s": [
+      0.042223,
+      0.042677,
+      0.038315,
+      0.04931,
+      0.045786
+     ],
+     "build_rss_kib": [
+      23004,
+      22964,
+      23060,
+      23032,
+      23104
+     ],
+     "run_s": [
+      0.001241,
+      0.001381,
+      0.001474,
+      0.001596,
+      0.001461
+     ],
+     "run_rss_kib": [
+      1296,
+      1296,
+      1296,
+      1296,
+      1296
+     ],
+     "build_s_median": 0.042677,
+     "run_s_median": 0.001461,
+     "build_rss_kib_median": 23032,
+     "run_rss_kib_median": 1296
+    },
+    "abfc": {
+     "validation_build": [
+      0,
+      0.014423,
+      4588
+     ],
+     "validation_run": [
+      0,
+      0.001492,
+      280
+     ],
+     "artifact_bytes": 13824,
+     "status": "ok",
+     "build_s": [
+      0.012817,
+      0.013312,
+      0.011413,
+      0.013666,
+      0.014279
+     ],
+     "build_rss_kib": [
+      4564,
+      4636,
+      4624,
+      4488,
+      4484
+     ],
+     "run_s": [
+      0.002207,
+      0.001418,
+      0.001693,
+      0.001722,
+      0.001478
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.013312,
+     "run_s_median": 0.001693,
+     "build_rss_kib_median": 4564,
+     "run_rss_kib_median": 280
+    },
+    "Brainfly": {
+     "validation_build": [
+      0,
+      4.750023,
+      254588
+     ],
+     "validation_run": [
+      0,
+      0.004003,
+      3556
+     ],
+     "artifact_bytes": 1323760,
+     "status": "ok",
+     "build_s": [
+      3.443545,
+      3.575776,
+      3.470983,
+      3.213235,
+      3.551896
+     ],
+     "build_rss_kib": [
+      216640,
+      216404,
+      216704,
+      216796,
+      220684
+     ],
+     "run_s": [
+      0.0028,
+      0.002988,
+      0.00311,
+      0.002855,
+      0.002998
+     ],
+     "run_rss_kib": [
+      3572,
+      3572,
+      3572,
+      3548,
+      3544
+     ],
+     "build_s_median": 3.470983,
+     "run_s_median": 0.002988,
+     "build_rss_kib_median": 216704,
+     "run_rss_kib_median": 3572
+    }
+   }
+  },
+  "nested_count": {
+   "source_sha256": "0ea1ddf14c2d4ade4962e8466e8bf0aab50ecc12db64a6a0d119d542f52cd1d5",
+   "input_sha256": "fb95aa98d6e6c5827a57ec17b978d647fcc01d98c357b7e64989af57339e9ac3",
+   "expected_sha256": "fb95aa98d6e6c5827a57ec17b978d647fcc01d98c357b7e64989af57339e9ac3",
+   "reference_exit": 0,
+   "arms": {
+    "BBC-O1": {
+     "validation_build": [
+      0,
+      0.100375,
+      47992
+     ],
+     "validation_run": [
+      0,
+      0.03404,
+      7904
+     ],
+     "artifact_bytes": 8704,
+     "status": "ok",
+     "build_s": [
+      0.146209,
+      0.100482,
+      0.101338,
+      0.104758,
+      0.106788
+     ],
+     "build_rss_kib": [
+      47984,
+      48060,
+      48072,
+      48092,
+      48092
+     ],
+     "run_s": [
+      0.029088,
+      0.041206,
+      0.033426,
+      0.02886,
+      0.027978
+     ],
+     "run_rss_kib": [
+      8024,
+      8076,
+      8048,
+      8084,
+      8044
+     ],
+     "build_s_median": 0.104758,
+     "run_s_median": 0.029088,
+     "build_rss_kib_median": 48072,
+     "run_rss_kib_median": 8048
+    },
+    "BBC-O0": {
+     "validation_build": [
+      0,
+      0.121614,
+      48004
+     ],
+     "validation_run": [
+      0,
+      0.034036,
+      7936
+     ],
+     "artifact_bytes": 8192,
+     "status": "ok",
+     "build_s": [
+      0.11614,
+      0.100417,
+      0.10827,
+      0.099899,
+      0.095612
+     ],
+     "build_rss_kib": [
+      48112,
+      48108,
+      48172,
+      48084,
+      48112
+     ],
+     "run_s": [
+      0.028585,
+      0.032508,
+      0.031648,
+      0.029983,
+      0.029233
+     ],
+     "run_rss_kib": [
+      8020,
+      8036,
+      7952,
+      8084,
+      7956
+     ],
+     "build_s_median": 0.100417,
+     "run_s_median": 0.029983,
+     "build_rss_kib_median": 48112,
+     "run_rss_kib_median": 8020
+    },
+    "brainfry-win": {
+     "validation_build": [
+      0,
+      0.002084,
+      2284
+     ],
+     "validation_run": [
+      0,
+      0.02967,
+      6672
+     ],
+     "artifact_bytes": 2560,
+     "status": "ok",
+     "build_s": [
+      0.001911,
+      0.00257,
+      0.002142,
+      0.002769,
+      0.002596
+     ],
+     "build_rss_kib": [
+      2232,
+      2280,
+      2248,
+      2288,
+      2256
+     ],
+     "run_s": [
+      0.028632,
+      0.033677,
+      0.032291,
+      0.03041,
+      0.031891
+     ],
+     "run_rss_kib": [
+      6652,
+      6484,
+      6608,
+      6628,
+      6496
+     ],
+     "build_s_median": 0.00257,
+     "run_s_median": 0.031891,
+     "build_rss_kib_median": 2256,
+     "run_rss_kib_median": 6608
+    },
+    "brainfry": {
+     "validation_build": [
+      0,
+      0.001472,
+      2272
+     ],
+     "validation_run": [
+      0,
+      0.000454,
+      280
+     ],
+     "artifact_bytes": 1040,
+     "status": "ok",
+     "build_s": [
+      0.002088,
+      0.002711,
+      0.002666,
+      0.002209,
+      0.002794
+     ],
+     "build_rss_kib": [
+      2280,
+      2256,
+      2288,
+      2252,
+      2300
+     ],
+     "run_s": [
+      0.000504,
+      0.001074,
+      0.000984,
+      0.000866,
+      0.000844
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.002666,
+     "run_s_median": 0.000866,
+     "build_rss_kib_median": 2280,
+     "run_rss_kib_median": 280
+    },
+    "bf-x86": {
+     "validation_build": [
+      0,
+      0.001283,
+      1560
+     ],
+     "validation_run": [
+      0,
+      0.00051,
+      280
+     ],
+     "artifact_bytes": 238,
+     "status": "ok",
+     "build_s": [
+      0.001497,
+      0.001825,
+      0.002177,
+      0.001955,
+      0.001865
+     ],
+     "build_rss_kib": [
+      1560,
+      1560,
+      1560,
+      1560,
+      1560
+     ],
+     "run_s": [
+      0.000574,
+      0.001072,
+      0.000861,
+      0.000892,
+      0.000695
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.001865,
+     "run_s_median": 0.000861,
+     "build_rss_kib_median": 1560,
+     "run_rss_kib_median": 280
+    },
+    "Awib": {
+     "validation_build": [
+      0,
+      0.052136,
+      23496
+     ],
+     "validation_run": [
+      0,
+      0.001235,
+      1296
+     ],
+     "artifact_bytes": 16112,
+     "status": "ok",
+     "build_s": [
+      0.065051,
+      0.063094,
+      0.048843,
+      0.060588,
+      0.048835
+     ],
+     "build_rss_kib": [
+      23440,
+      23464,
+      23480,
+      23468,
+      23416
+     ],
+     "run_s": [
+      0.001678,
+      0.00201,
+      0.001943,
+      0.001527,
+      0.001462
+     ],
+     "run_rss_kib": [
+      1296,
+      1296,
+      1296,
+      1296,
+      1296
+     ],
+     "build_s_median": 0.060588,
+     "run_s_median": 0.001678,
+     "build_rss_kib_median": 23464,
+     "run_rss_kib_median": 1296
+    },
+    "bflang": {
+     "validation_build": [
+      0,
+      0.04925,
+      70844
+     ],
+     "validation_run": [
+      0,
+      0.001578,
+      1296
+     ],
+     "artifact_bytes": 16064,
+     "status": "ok",
+     "build_s": [
+      0.059208,
+      0.051927,
+      0.050055,
+      0.053916,
+      0.048882
+     ],
+     "build_rss_kib": [
+      70756,
+      70704,
+      70788,
+      70880,
+      71136
+     ],
+     "run_s": [
+      0.001772,
+      0.001484,
+      0.001944,
+      0.001507,
+      0.001364
+     ],
+     "run_rss_kib": [
+      1296,
+      1296,
+      1296,
+      1296,
+      1296
+     ],
+     "build_s_median": 0.051927,
+     "run_s_median": 0.001507,
+     "build_rss_kib_median": 70788,
+     "run_rss_kib_median": 1296
+    },
+    "Wilfred/bfc": {
+     "validation_build": [
+      0,
+      0.068337,
+      66060
+     ],
+     "validation_run": [
+      0,
+      0.001231,
+      1292
+     ],
+     "artifact_bytes": 16120,
+     "status": "ok",
+     "build_s": [
+      0.07556,
+      0.065244,
+      0.062685,
+      0.066307,
+      0.066262
+     ],
+     "build_rss_kib": [
+      66128,
+      66096,
+      66140,
+      66108,
+      66096
+     ],
+     "run_s": [
+      0.001602,
+      0.001909,
+      0.001899,
+      0.001558,
+      0.001911
+     ],
+     "run_rss_kib": [
+      1296,
+      1296,
+      1296,
+      1296,
+      1296
+     ],
+     "build_s_median": 0.066262,
+     "run_s_median": 0.001899,
+     "build_rss_kib_median": 66108,
+     "run_rss_kib_median": 1296
+    },
+    "pablojorge": {
+     "validation_build": [
+      0,
+      0.048337,
+      23656
+     ],
+     "validation_run": [
+      0,
+      0.001195,
+      1296
+     ],
+     "artifact_bytes": 16080,
+     "status": "ok",
+     "build_s": [
+      0.046768,
+      0.041027,
+      0.047089,
+      0.053764,
+      0.055224
+     ],
+     "build_rss_kib": [
+      23648,
+      23772,
+      23716,
+      23772,
+      23660
+     ],
+     "run_s": [
+      0.001634,
+      0.001874,
+      0.001903,
+      0.001785,
+      0.001338
+     ],
+     "run_rss_kib": [
+      1296,
+      1296,
+      1296,
+      1296,
+      1296
+     ],
+     "build_s_median": 0.047089,
+     "run_s_median": 0.001785,
+     "build_rss_kib_median": 23716,
+     "run_rss_kib_median": 1296
+    },
+    "abfc": {
+     "validation_build": [
+      0,
+      0.0115,
+      4652
+     ],
+     "validation_run": [
+      0,
+      0.001339,
+      280
+     ],
+     "artifact_bytes": 13552,
+     "status": "ok",
+     "build_s": [
+      0.011624,
+      0.011649,
+      0.012131,
+      0.013098,
+      0.011494
+     ],
+     "build_rss_kib": [
+      4516,
+      4600,
+      4632,
+      4620,
+      4564
+     ],
+     "run_s": [
+      0.001205,
+      0.00143,
+      0.001693,
+      0.001584,
+      0.001223
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.011649,
+     "run_s_median": 0.00143,
+     "build_rss_kib_median": 4600,
+     "run_rss_kib_median": 280
+    },
+    "Brainfly": {
+     "validation_build": [
+      0,
+      4.129052,
+      236608
+     ],
+     "validation_run": [
+      0,
+      0.005684,
+      3536
+     ],
+     "artifact_bytes": 1323760,
+     "status": "ok",
+     "build_s": [
+      3.674646,
+      3.526922,
+      3.670391,
+      3.817498,
+      3.55255
+     ],
+     "build_rss_kib": [
+      216240,
+      216888,
+      216840,
+      216476,
+      216824
+     ],
+     "run_s": [
+      0.003043,
+      0.003016,
+      0.00326,
+      0.003051,
+      0.002549
+     ],
+     "run_rss_kib": [
+      3552,
+      3512,
+      3636,
+      3580,
+      3548
+     ],
+     "build_s_median": 3.670391,
+     "run_s_median": 0.003043,
+     "build_rss_kib_median": 216824,
+     "run_rss_kib_median": 3552
+    }
+   }
+  },
+  "nested_math": {
+   "source_sha256": "41645f3c3f8ccee8402151ff13ce7b62a3e27f49ff80cafe45cd7b3c24020001",
+   "input_sha256": "59c936897f0938d77b1052dd7f15e38912f4dac7a256583801329cbadbe78eee",
+   "expected_sha256": "c19a797fa1fd590cd2e5b42d1cf5f246e29b91684e2f87404b81dc345c7a56a0",
+   "reference_exit": 0,
+   "arms": {
+    "BBC-O1": {
+     "validation_build": [
+      0,
+      0.14509,
+      48344
+     ],
+     "validation_run": [
+      0,
+      0.027773,
+      8072
+     ],
+     "artifact_bytes": 10240,
+     "status": "ok",
+     "build_s": [
+      0.106993,
+      0.114263,
+      0.12362,
+      0.119518,
+      0.112541
+     ],
+     "build_rss_kib": [
+      48196,
+      48240,
+      48248,
+      48248,
+      48332
+     ],
+     "run_s": [
+      0.034011,
+      0.028396,
+      0.034489,
+      0.033973,
+      0.044185
+     ],
+     "run_rss_kib": [
+      8024,
+      8024,
+      8084,
+      8084,
+      7844
+     ],
+     "build_s_median": 0.114263,
+     "run_s_median": 0.034011,
+     "build_rss_kib_median": 48248,
+     "run_rss_kib_median": 8024
+    },
+    "BBC-O0": {
+     "validation_build": [
+      0,
+      0.152144,
+      56284
+     ],
+     "validation_run": [
+      0,
+      0.046994,
+      8060
+     ],
+     "artifact_bytes": 13824,
+     "status": "ok",
+     "build_s": [
+      0.141128,
+      0.154527,
+      0.178741,
+      0.145355,
+      0.1428
+     ],
+     "build_rss_kib": [
+      56152,
+      56236,
+      56240,
+      56204,
+      56228
+     ],
+     "run_s": [
+      0.043046,
+      0.049248,
+      0.050325,
+      0.04926,
+      0.041064
+     ],
+     "run_rss_kib": [
+      7912,
+      8020,
+      8040,
+      7848,
+      7932
+     ],
+     "build_s_median": 0.145355,
+     "run_s_median": 0.049248,
+     "build_rss_kib_median": 56228,
+     "run_rss_kib_median": 7932
+    },
+    "brainfry-win": {
+     "validation_build": [
+      0,
+      0.001445,
+      2236
+     ],
+     "validation_run": [
+      0,
+      0.034831,
+      6468
+     ],
+     "artifact_bytes": 3072,
+     "status": "ok",
+     "build_s": [
+      0.00264,
+      0.002146,
+      0.00279,
+      0.002365,
+      0.002462
+     ],
+     "build_rss_kib": [
+      2240,
+      2300,
+      2268,
+      2288,
+      2260
+     ],
+     "run_s": [
+      0.033762,
+      0.033573,
+      0.038963,
+      0.03656,
+      0.034377
+     ],
+     "run_rss_kib": [
+      6620,
+      6668,
+      6632,
+      6492,
+      6672
+     ],
+     "build_s_median": 0.002462,
+     "run_s_median": 0.034377,
+     "build_rss_kib_median": 2268,
+     "run_rss_kib_median": 6632
+    },
+    "brainfry": {
+     "validation_build": [
+      0,
+      0.001563,
+      2252
+     ],
+     "validation_run": [
+      0,
+      0.003602,
+      280
+     ],
+     "artifact_bytes": 1232,
+     "status": "ok",
+     "build_s": [
+      0.001662,
+      0.002104,
+      0.008249,
+      0.002866,
+      0.002153
+     ],
+     "build_rss_kib": [
+      2304,
+      2256,
+      2256,
+      2288,
+      2292
+     ],
+     "run_s": [
+      0.004832,
+      0.003801,
+      0.004636,
+      0.003124,
+      0.00324
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.002153,
+     "run_s_median": 0.003801,
+     "build_rss_kib_median": 2288,
+     "run_rss_kib_median": 280
+    },
+    "bf-x86": {
+     "validation_build": [
+      0,
+      0.001338,
+      1560
+     ],
+     "validation_run": [
+      0,
+      0.0066,
+      280
+     ],
+     "artifact_bytes": 279,
+     "status": "ok",
+     "build_s": [
+      0.001513,
+      0.001641,
+      0.003456,
+      0.001877,
+      0.001676
+     ],
+     "build_rss_kib": [
+      1688,
+      1560,
+      1560,
+      1688,
+      1688
+     ],
+     "run_s": [
+      0.006567,
+      0.009231,
+      0.008811,
+      0.011616,
+      0.006124
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.001676,
+     "run_s_median": 0.008811,
+     "build_rss_kib_median": 1688,
+     "run_rss_kib_median": 280
+    },
+    "Awib": {
+     "validation_build": [
+      0,
+      0.093791,
+      23512
+     ],
+     "validation_run": [
+      0,
+      0.001159,
+      1296
+     ],
+     "artifact_bytes": 16112,
+     "status": "ok",
+     "build_s": [
+      0.082618,
+      0.119289,
+      0.095721,
+      0.09435,
+      0.085159
+     ],
+     "build_rss_kib": [
+      23320,
+      23492,
+      23504,
+      23436,
+      23496
+     ],
+     "run_s": [
+      0.001359,
+      0.001748,
+      0.001658,
+      0.001662,
+      0.001712
+     ],
+     "run_rss_kib": [
+      1296,
+      1296,
+      1292,
+      1296,
+      1296
+     ],
+     "build_s_median": 0.09435,
+     "run_s_median": 0.001662,
+     "build_rss_kib_median": 23492,
+     "run_rss_kib_median": 1296
+    },
+    "bflang": {
+     "validation_build": [
+      0,
+      0.068399,
+      71008
+     ],
+     "validation_run": [
+      0,
+      0.001338,
+      1292
+     ],
+     "artifact_bytes": 16136,
+     "status": "ok",
+     "build_s": [
+      0.063975,
+      0.07532,
+      0.06147,
+      0.064587,
+      0.063748
+     ],
+     "build_rss_kib": [
+      71328,
+      71216,
+      70928,
+      70840,
+      71396
+     ],
+     "run_s": [
+      0.001295,
+      0.001712,
+      0.001495,
+      0.00213,
+      0.001611
+     ],
+     "run_rss_kib": [
+      1296,
+      1292,
+      1296,
+      1296,
+      1296
+     ],
+     "build_s_median": 0.063975,
+     "run_s_median": 0.001611,
+     "build_rss_kib_median": 71216,
+     "run_rss_kib_median": 1296
+    },
+    "Wilfred/bfc": {
+     "validation_build": [
+      0,
+      0.068657,
+      66128
+     ],
+     "validation_run": [
+      0,
+      0.001254,
+      1292
+     ],
+     "artifact_bytes": 16120,
+     "status": "ok",
+     "build_s": [
+      0.060543,
+      0.06519,
+      0.060307,
+      0.067809,
+      0.062037
+     ],
+     "build_rss_kib": [
+      66092,
+      66136,
+      66228,
+      66172,
+      66220
+     ],
+     "run_s": [
+      0.0015,
+      0.00154,
+      0.001537,
+      0.001855,
+      0.001716
+     ],
+     "run_rss_kib": [
+      1296,
+      1296,
+      1296,
+      1296,
+      1296
+     ],
+     "build_s_median": 0.062037,
+     "run_s_median": 0.00154,
+     "build_rss_kib_median": 66172,
+     "run_rss_kib_median": 1296
+    },
+    "pablojorge": {
+     "validation_build": [
+      0,
+      0.060275,
+      24208
+     ],
+     "validation_run": [
+      0,
+      0.001174,
+      1296
+     ],
+     "artifact_bytes": 16080,
+     "status": "mismatch (exit 0, 1 bytes vs 1)"
+    },
+    "abfc": {
+     "validation_build": [
+      0,
+      0.012655,
+      4592
+     ],
+     "validation_run": [
+      0,
+      0.013425,
+      280
+     ],
+     "artifact_bytes": 13616,
+     "status": "ok",
+     "build_s": [
+      0.01243,
+      0.011516,
+      0.012607,
+      0.013719,
+      0.013662
+     ],
+     "build_rss_kib": [
+      4536,
+      4612,
+      4656,
+      4620,
+      4656
+     ],
+     "run_s": [
+      0.011648,
+      0.01231,
+      0.012484,
+      0.013296,
+      0.010721
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.012607,
+     "run_s_median": 0.01231,
+     "build_rss_kib_median": 4620,
+     "run_rss_kib_median": 280
+    },
+    "Brainfly": {
+     "validation_build": [
+      0,
+      3.939608,
+      236696
+     ],
+     "validation_run": [
+      0,
+      0.013432,
+      3572
+     ],
+     "artifact_bytes": 1323760,
+     "status": "ok",
+     "build_s": [
+      3.467236,
+      3.597224,
+      3.636504,
+      3.594947,
+      3.493563
+     ],
+     "build_rss_kib": [
+      216576,
+      216500,
+      216404,
+      216772,
+      217160
+     ],
+     "run_s": [
+      0.013897,
+      0.014966,
+      0.014491,
+      0.013749,
+      0.010008
+     ],
+     "run_rss_kib": [
+      3536,
+      3568,
+      3608,
+      3560,
+      3636
+     ],
+     "build_s_median": 3.594947,
+     "run_s_median": 0.013897,
+     "build_rss_kib_median": 216576,
+     "run_rss_kib_median": 3568
+    }
+   }
+  },
+  "permit_flag": {
+   "source_sha256": "c2b2519e9f9ef8019022a2cdb3ee51a3c977f783bfe547b2bd948aab8eb570c7",
+   "input_sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+   "expected_sha256": "4bf5122f344554c53bde2ebb8cd2b7e3d1600ad631c385a5d7cce23c7785459a",
+   "reference_exit": 0,
+   "arms": {
+    "BBC-O1": {
+     "validation_build": [
+      0,
+      0.098397,
+      47980
+     ],
+     "validation_run": [
+      0,
+      0.027564,
+      8040
+     ],
+     "artifact_bytes": 8192,
+     "status": "ok",
+     "build_s": [
+      0.115514,
+      0.089845,
+      0.107176,
+      0.096037,
+      0.108738
+     ],
+     "build_rss_kib": [
+      47904,
+      48060,
+      48092,
+      48056,
+      47972
+     ],
+     "run_s": [
+      0.028071,
+      0.027749,
+      0.031179,
+      0.033457,
+      0.034435
+     ],
+     "run_rss_kib": [
+      7788,
+      7896,
+      8044,
+      8020,
+      8024
+     ],
+     "build_s_median": 0.107176,
+     "run_s_median": 0.031179,
+     "build_rss_kib_median": 48056,
+     "run_rss_kib_median": 8020
+    },
+    "BBC-O0": {
+     "validation_build": [
+      0,
+      0.080014,
+      48108
+     ],
+     "validation_run": [
+      0,
+      0.028525,
+      8036
+     ],
+     "artifact_bytes": 8192,
+     "status": "ok",
+     "build_s": [
+      0.095581,
+      0.097672,
+      0.092755,
+      0.094695,
+      0.102644
+     ],
+     "build_rss_kib": [
+      48116,
+      48072,
+      48024,
+      48112,
+      48060
+     ],
+     "run_s": [
+      0.026005,
+      0.029047,
+      0.03786,
+      0.029799,
+      0.033324
+     ],
+     "run_rss_kib": [
+      7908,
+      8080,
+      8028,
+      7944,
+      7900
+     ],
+     "build_s_median": 0.095581,
+     "run_s_median": 0.029799,
+     "build_rss_kib_median": 48072,
+     "run_rss_kib_median": 7944
+    },
+    "brainfry-win": {
+     "validation_build": [
+      0,
+      0.001475,
+      2264
+     ],
+     "validation_run": [
+      0,
+      0.02937,
+      6620
+     ],
+     "artifact_bytes": 2560,
+     "status": "ok",
+     "build_s": [
+      0.001575,
+      0.002917,
+      0.00252,
+      0.002328,
+      0.002662
+     ],
+     "build_rss_kib": [
+      2296,
+      2256,
+      2232,
+      2216,
+      2268
+     ],
+     "run_s": [
+      0.029445,
+      0.025266,
+      0.033071,
+      0.027257,
+      0.031897
+     ],
+     "run_rss_kib": [
+      6672,
+      6536,
+      6368,
+      6612,
+      6672
+     ],
+     "build_s_median": 0.00252,
+     "run_s_median": 0.029445,
+     "build_rss_kib_median": 2256,
+     "run_rss_kib_median": 6612
+    },
+    "brainfry": {
+     "validation_build": [
+      0,
+      0.001719,
+      2296
+     ],
+     "validation_run": [
+      0,
+      0.000545,
+      280
+     ],
+     "artifact_bytes": 1040,
+     "status": "ok",
+     "build_s": [
+      0.00162,
+      0.001945,
+      0.002541,
+      0.002216,
+      0.002392
+     ],
+     "build_rss_kib": [
+      2268,
+      2232,
+      2256,
+      2280,
+      2256
+     ],
+     "run_s": [
+      0.000502,
+      0.000774,
+      0.000865,
+      0.000699,
+      0.00105
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.002216,
+     "run_s_median": 0.000774,
+     "build_rss_kib_median": 2256,
+     "run_rss_kib_median": 280
+    },
+    "bf-x86": {
+     "validation_build": [
+      0,
+      0.001506,
+      1560
+     ],
+     "validation_run": [
+      0,
+      0.000469,
+      280
+     ],
+     "artifact_bytes": 221,
+     "status": "ok",
+     "build_s": [
+      0.001347,
+      0.001544,
+      0.001543,
+      0.001868,
+      0.001885
+     ],
+     "build_rss_kib": [
+      1560,
+      1560,
+      1560,
+      1560,
+      1560
+     ],
+     "run_s": [
+      0.000507,
+      0.000573,
+      0.000819,
+      0.000933,
+      0.001001
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      284,
+      280
+     ],
+     "build_s_median": 0.001544,
+     "run_s_median": 0.000819,
+     "build_rss_kib_median": 1560,
+     "run_rss_kib_median": 280
+    },
+    "Awib": {
+     "validation_build": [
+      0,
+      0.050172,
+      22616
+     ],
+     "validation_run": [
+      0,
+      0.001332,
+      1296
+     ],
+     "artifact_bytes": 16112,
+     "status": "ok",
+     "build_s": [
+      0.045356,
+      0.044379,
+      0.051616,
+      0.050126,
+      0.048747
+     ],
+     "build_rss_kib": [
+      22524,
+      22576,
+      22592,
+      22608,
+      22608
+     ],
+     "run_s": [
+      0.001081,
+      0.001342,
+      0.001531,
+      0.001541,
+      0.0014
+     ],
+     "run_rss_kib": [
+      1296,
+      1296,
+      1296,
+      1296,
+      1296
+     ],
+     "build_s_median": 0.048747,
+     "run_s_median": 0.0014,
+     "build_rss_kib_median": 22592,
+     "run_rss_kib_median": 1296
+    },
+    "bflang": {
+     "validation_build": [
+      0,
+      0.03972,
+      70004
+     ],
+     "validation_run": [
+      0,
+      0.001034,
+      1296
+     ],
+     "artifact_bytes": 16032,
+     "status": "ok",
+     "build_s": [
+      0.042832,
+      0.040313,
+      0.071111,
+      0.042438,
+      0.044654
+     ],
+     "build_rss_kib": [
+      70096,
+      70004,
+      69880,
+      70344,
+      69988
+     ],
+     "run_s": [
+      0.001199,
+      0.001532,
+      0.00143,
+      0.001582,
+      0.001656
+     ],
+     "run_rss_kib": [
+      1296,
+      1296,
+      1296,
+      1296,
+      1296
+     ],
+     "build_s_median": 0.042832,
+     "run_s_median": 0.001532,
+     "build_rss_kib_median": 70004,
+     "run_rss_kib_median": 1296
+    },
+    "Wilfred/bfc": {
+     "validation_build": [
+      0,
+      0.052744,
+      66136
+     ],
+     "validation_run": [
+      0,
+      0.001215,
+      1296
+     ],
+     "artifact_bytes": 16120,
+     "status": "ok",
+     "build_s": [
+      0.061329,
+      0.061569,
+      0.06548,
+      0.05398,
+      0.05961
+     ],
+     "build_rss_kib": [
+      66120,
+      66120,
+      66088,
+      66096,
+      66216
+     ],
+     "run_s": [
+      0.001052,
+      0.001563,
+      0.001702,
+      0.001388,
+      0.001513
+     ],
+     "run_rss_kib": [
+      1296,
+      1296,
+      1296,
+      1292,
+      1296
+     ],
+     "build_s_median": 0.061329,
+     "run_s_median": 0.001513,
+     "build_rss_kib_median": 66120,
+     "run_rss_kib_median": 1296
+    },
+    "pablojorge": {
+     "validation_build": [
+      0,
+      0.045302,
+      23684
+     ],
+     "validation_run": [
+      0,
+      0.00098,
+      1292
+     ],
+     "artifact_bytes": 16080,
+     "status": "ok",
+     "build_s": [
+      0.052486,
+      0.042692,
+      0.042118,
+      0.044913,
+      0.062112
+     ],
+     "build_rss_kib": [
+      23840,
+      23680,
+      23664,
+      23672,
+      23708
+     ],
+     "run_s": [
+      0.001162,
+      0.001172,
+      0.001716,
+      0.001658,
+      0.002484
+     ],
+     "run_rss_kib": [
+      1296,
+      1296,
+      1296,
+      1296,
+      1296
+     ],
+     "build_s_median": 0.044913,
+     "run_s_median": 0.001658,
+     "build_rss_kib_median": 23680,
+     "run_rss_kib_median": 1296
+    },
+    "abfc": {
+     "validation_build": [
+      0,
+      0.011085,
+      4580
+     ],
+     "validation_run": [
+      0,
+      0.001229,
+      280
+     ],
+     "artifact_bytes": 13552,
+     "status": "ok",
+     "build_s": [
+      0.010987,
+      0.012127,
+      0.010803,
+      0.011995,
+      0.011748
+     ],
+     "build_rss_kib": [
+      4696,
+      4696,
+      4592,
+      4684,
+      4612
+     ],
+     "run_s": [
+      0.001021,
+      0.00142,
+      0.001544,
+      0.001268,
+      0.001563
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.011748,
+     "run_s_median": 0.00142,
+     "build_rss_kib_median": 4684,
+     "run_rss_kib_median": 280
+    },
+    "Brainfly": {
+     "validation_build": [
+      0,
+      3.874824,
+      236872
+     ],
+     "validation_run": [
+      0,
+      0.002779,
+      3508
+     ],
+     "artifact_bytes": 1323760,
+     "status": "ok",
+     "build_s": [
+      3.513633,
+      3.404581,
+      3.34458,
+      3.366209,
+      3.511769
+     ],
+     "build_rss_kib": [
+      216580,
+      216312,
+      216544,
+      217184,
+      216688
+     ],
+     "run_s": [
+      0.002404,
+      0.002541,
+      0.002947,
+      0.003002,
+      0.003531
+     ],
+     "run_rss_kib": [
+      3556,
+      3668,
+      3544,
+      3572,
+      3572
+     ],
+     "build_s_median": 3.404581,
+     "run_s_median": 0.002947,
+     "build_rss_kib_median": 216580,
+     "run_rss_kib_median": 3572
+    }
+   }
+  },
+  "scan": {
+   "source_sha256": "2dfbb0157789c9909a9816015a752c1b25d52e7c6074cd0a28069f3f3d6ae704",
+   "input_sha256": "9652595f37edd08c51dfa26567e6cd76e6fa2709c3e578478ca398d316837a7a",
+   "expected_sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+   "reference_exit": 0,
+   "arms": {
+    "BBC-O1": {
+     "validation_build": [
+      0,
+      0.127862,
+      49476
+     ],
+     "validation_run": [
+      0,
+      0.029923,
+      8076
+     ],
+     "artifact_bytes": 12288,
+     "status": "ok",
+     "build_s": [
+      0.148092,
+      0.134768,
+      0.148429,
+      0.159021,
+      0.11587
+     ],
+     "build_rss_kib": [
+      49480,
+      49368,
+      49432,
+      49448,
+      49432
+     ],
+     "run_s": [
+      0.031595,
+      0.035514,
+      0.032321,
+      0.037054,
+      0.034897
+     ],
+     "run_rss_kib": [
+      7932,
+      8040,
+      8084,
+      8048,
+      8048
+     ],
+     "build_s_median": 0.148092,
+     "run_s_median": 0.034897,
+     "build_rss_kib_median": 49432,
+     "run_rss_kib_median": 8048
+    },
+    "BBC-O0": {
+     "validation_build": [
+      0,
+      0.11572,
+      49788
+     ],
+     "validation_run": [
+      0,
+      0.033015,
+      8044
+     ],
+     "artifact_bytes": 9728,
+     "status": "ok",
+     "build_s": [
+      0.114545,
+      0.093211,
+      0.10789,
+      0.108924,
+      0.111607
+     ],
+     "build_rss_kib": [
+      49840,
+      49924,
+      49876,
+      49800,
+      49752
+     ],
+     "run_s": [
+      0.02869,
+      0.030623,
+      0.034386,
+      0.035355,
+      0.033256
+     ],
+     "run_rss_kib": [
+      8076,
+      8044,
+      8024,
+      8084,
+      8036
+     ],
+     "build_s_median": 0.108924,
+     "run_s_median": 0.033256,
+     "build_rss_kib_median": 49840,
+     "run_rss_kib_median": 8044
+    },
+    "brainfry-win": {
+     "validation_build": [
+      0,
+      0.002174,
+      2296
+     ],
+     "validation_run": [
+      0,
+      0.032667,
+      6612
+     ],
+     "artifact_bytes": 5120,
+     "status": "ok",
+     "build_s": [
+      0.001605,
+      0.00221,
+      0.002972,
+      0.002977,
+      0.002655
+     ],
+     "build_rss_kib": [
+      2288,
+      2292,
+      2296,
+      2268,
+      2288
+     ],
+     "run_s": [
+      0.027923,
+      0.02734,
+      0.028184,
+      0.034855,
+      0.032464
+     ],
+     "run_rss_kib": [
+      6672,
+      6620,
+      6620,
+      6648,
+      6516
+     ],
+     "build_s_median": 0.002655,
+     "run_s_median": 0.028184,
+     "build_rss_kib_median": 2288,
+     "run_rss_kib_median": 6620
+    },
+    "brainfry": {
+     "validation_build": [
+      0,
+      0.001785,
+      2260
+     ],
+     "validation_run": [
+      0,
+      0.0005,
+      280
+     ],
+     "artifact_bytes": 3248,
+     "status": "ok",
+     "build_s": [
+      0.001576,
+      0.002453,
+      0.002687,
+      0.003178,
+      0.002494
+     ],
+     "build_rss_kib": [
+      2216,
+      2252,
+      2192,
+      2252,
+      2288
+     ],
+     "run_s": [
+      0.000521,
+      0.00084,
+      0.001205,
+      0.000895,
+      0.000929
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.002494,
+     "run_s_median": 0.000895,
+     "build_rss_kib_median": 2252,
+     "run_rss_kib_median": 280
+    },
+    "bf-x86": {
+     "validation_build": [
+      0,
+      0.001519,
+      1560
+     ],
+     "validation_run": [
+      0,
+      0.000643,
+      280
+     ],
+     "artifact_bytes": 713,
+     "status": "ok",
+     "build_s": [
+      0.001134,
+      0.001449,
+      0.001776,
+      0.002069,
+      0.001898
+     ],
+     "build_rss_kib": [
+      1560,
+      1560,
+      1560,
+      1560,
+      1560
+     ],
+     "run_s": [
+      0.000633,
+      0.001351,
+      0.000786,
+      0.00095,
+      0.000803
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.001776,
+     "run_s_median": 0.000803,
+     "build_rss_kib_median": 1560,
+     "run_rss_kib_median": 280
+    },
+    "Awib": {
+     "validation_build": [
+      0,
+      0.090805,
+      25264
+     ],
+     "validation_run": [
+      0,
+      0.001538,
+      1300
+     ],
+     "artifact_bytes": 16112,
+     "status": "ok",
+     "build_s": [
+      0.095512,
+      0.095365,
+      0.081781,
+      0.08373,
+      0.107388
+     ],
+     "build_rss_kib": [
+      24940,
+      25256,
+      25228,
+      25264,
+      25248
+     ],
+     "run_s": [
+      0.001232,
+      0.001476,
+      0.001701,
+      0.002021,
+      0.001987
+     ],
+     "run_rss_kib": [
+      1300,
+      1300,
+      1300,
+      1300,
+      1300
+     ],
+     "build_s_median": 0.095365,
+     "run_s_median": 0.001701,
+     "build_rss_kib_median": 25248,
+     "run_rss_kib_median": 1300
+    },
+    "bflang": {
+     "validation_build": [
+      0,
+      0.069494,
+      71636
+     ],
+     "validation_run": [
+      0,
+      0.001538,
+      1296
+     ],
+     "artifact_bytes": 16032,
+     "status": "ok",
+     "build_s": [
+      0.068372,
+      0.072474,
+      0.093515,
+      0.087315,
+      0.103508
+     ],
+     "build_rss_kib": [
+      71464,
+      71752,
+      71520,
+      71792,
+      71760
+     ],
+     "run_s": [
+      0.001378,
+      0.002174,
+      0.002088,
+      0.00145,
+      0.001492
+     ],
+     "run_rss_kib": [
+      1296,
+      1292,
+      1296,
+      1296,
+      1296
+     ],
+     "build_s_median": 0.087315,
+     "run_s_median": 0.001492,
+     "build_rss_kib_median": 71752,
+     "run_rss_kib_median": 1296
+    },
+    "Wilfred/bfc": {
+     "validation_build": [
+      0,
+      0.131255,
+      66124
+     ],
+     "validation_run": [
+      0,
+      0.0017,
+      1552
+     ],
+     "artifact_bytes": 16168,
+     "status": "ok",
+     "build_s": [
+      0.135737,
+      0.136903,
+      0.190786,
+      0.127621,
+      0.190728
+     ],
+     "build_rss_kib": [
+      66120,
+      66124,
+      66128,
+      66100,
+      66096
+     ],
+     "run_s": [
+      0.001377,
+      0.001626,
+      0.001618,
+      0.001728,
+      0.001604
+     ],
+     "run_rss_kib": [
+      1552,
+      1548,
+      1552,
+      1548,
+      1552
+     ],
+     "build_s_median": 0.136903,
+     "run_s_median": 0.001618,
+     "build_rss_kib_median": 66120,
+     "run_rss_kib_median": 1552
+    },
+    "pablojorge": {
+     "validation_build": [
+      0,
+      0.058275,
+      26768
+     ],
+     "validation_run": [
+      0,
+      0.001261,
+      1428
+     ],
+     "artifact_bytes": 16136,
+     "status": "ok",
+     "build_s": [
+      0.063136,
+      0.070437,
+      0.06729,
+      0.063425,
+      0.062478
+     ],
+     "build_rss_kib": [
+      26848,
+      26832,
+      26948,
+      26948,
+      26816
+     ],
+     "run_s": [
+      0.001286,
+      0.00218,
+      0.001768,
+      0.001747,
+      0.001459
+     ],
+     "run_rss_kib": [
+      1428,
+      1428,
+      1428,
+      1428,
+      1424
+     ],
+     "build_s_median": 0.063425,
+     "run_s_median": 0.001747,
+     "build_rss_kib_median": 26848,
+     "run_rss_kib_median": 1428
+    },
+    "abfc": {
+     "validation_build": [
+      0,
+      0.016532,
+      4672
+     ],
+     "validation_run": [
+      0,
+      0.001088,
+      280
+     ],
+     "artifact_bytes": 13752,
+     "status": "ok",
+     "build_s": [
+      0.01692,
+      0.017968,
+      0.016726,
+      0.016433,
+      0.016033
+     ],
+     "build_rss_kib": [
+      4564,
+      4636,
+      4420,
+      4524,
+      4636
+     ],
+     "run_s": [
+      0.001051,
+      0.001613,
+      0.001289,
+      0.001601,
+      0.001668
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.016726,
+     "run_s_median": 0.001601,
+     "build_rss_kib_median": 4564,
+     "run_rss_kib_median": 280
+    },
+    "Brainfly": {
+     "validation_build": [
+      0,
+      4.600397,
+      245124
+     ],
+     "validation_run": [
+      0,
+      0.00307,
+      3544
+     ],
+     "artifact_bytes": 1327856,
+     "status": "ok",
+     "build_s": [
+      4.17161,
+      4.537475,
+      4.130226,
+      4.413479,
+      4.330183
+     ],
+     "build_rss_kib": [
+      224680,
+      224716,
+      224544,
+      224704,
+      224872
+     ],
+     "run_s": [
+      0.002445,
+      0.002682,
+      0.003098,
+      0.003706,
+      0.003424
+     ],
+     "run_rss_kib": [
+      3560,
+      3624,
+      3484,
+      3580,
+      3576
+     ],
+     "build_s_median": 4.330183,
+     "run_s_median": 0.003098,
+     "build_rss_kib_median": 224704,
+     "run_rss_kib_median": 3576
+    }
+   }
+  },
+  "sierpinski": {
+   "source_sha256": "4b307cb6c5b73eb193813523b114f996f59ad112f21aa05bdac1509a1a73abf5",
+   "input_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "expected_sha256": "a46a563f1cc2f4b17dea932da3d0724a8dc3108487d9382d1a9fa5c4a217f9ca",
+   "reference_exit": 0,
+   "arms": {
+    "BBC-O1": {
+     "validation_build": [
+      0,
+      0.148863,
+      49176
+     ],
+     "validation_run": [
+      0,
+      0.033091,
+      8040
+     ],
+     "artifact_bytes": 10752,
+     "status": "ok",
+     "build_s": [
+      0.174386,
+      0.144158,
+      0.134415,
+      0.163175,
+      0.133181
+     ],
+     "build_rss_kib": [
+      49228,
+      49372,
+      49304,
+      49240,
+      49364
+     ],
+     "run_s": [
+      0.028946,
+      0.026917,
+      0.032845,
+      0.030273,
+      0.029976
+     ],
+     "run_rss_kib": [
+      8040,
+      7892,
+      7896,
+      8044,
+      7896
+     ],
+     "build_s_median": 0.144158,
+     "run_s_median": 0.029976,
+     "build_rss_kib_median": 49304,
+     "run_rss_kib_median": 7896
+    },
+    "BBC-O0": {
+     "validation_build": [
+      0,
+      0.128962,
+      51664
+     ],
+     "validation_run": [
+      0,
+      0.02983,
+      8028
+     ],
+     "artifact_bytes": 10752,
+     "status": "ok",
+     "build_s": [
+      0.153176,
+      0.123423,
+      0.134798,
+      0.13768,
+      0.125992
+     ],
+     "build_rss_kib": [
+      51672,
+      51664,
+      51664,
+      51688,
+      51716
+     ],
+     "run_s": [
+      0.032956,
+      0.031872,
+      0.032694,
+      0.02933,
+      0.029323
+     ],
+     "run_rss_kib": [
+      8016,
+      8048,
+      8080,
+      8064,
+      8020
+     ],
+     "build_s_median": 0.134798,
+     "run_s_median": 0.031872,
+     "build_rss_kib_median": 51672,
+     "run_rss_kib_median": 8048
+    },
+    "brainfry-win": {
+     "validation_build": [
+      0,
+      0.001587,
+      2272
+     ],
+     "validation_run": [
+      0,
+      0.030286,
+      6612
+     ],
+     "artifact_bytes": 4096,
+     "status": "ok",
+     "build_s": [
+      0.002077,
+      0.002221,
+      0.002309,
+      0.00201,
+      0.002466
+     ],
+     "build_rss_kib": [
+      2252,
+      2264,
+      2256,
+      2284,
+      2300
+     ],
+     "run_s": [
+      0.033056,
+      0.028813,
+      0.034908,
+      0.031902,
+      0.028744
+     ],
+     "run_rss_kib": [
+      6616,
+      6672,
+      6632,
+      6632,
+      6632
+     ],
+     "build_s_median": 0.002221,
+     "run_s_median": 0.031902,
+     "build_rss_kib_median": 2264,
+     "run_rss_kib_median": 6632
+    },
+    "brainfry": {
+     "validation_build": [
+      0,
+      0.001579,
+      2192
+     ],
+     "validation_run": [
+      0,
+      0.001016,
+      280
+     ],
+     "artifact_bytes": 2576,
+     "status": "ok",
+     "build_s": [
+      0.001611,
+      0.002768,
+      0.002064,
+      0.002299,
+      0.001923
+     ],
+     "build_rss_kib": [
+      2248,
+      2296,
+      2252,
+      2236,
+      2236
+     ],
+     "run_s": [
+      0.001172,
+      0.001519,
+      0.001375,
+      0.001218,
+      0.001597
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.002064,
+     "run_s_median": 0.001375,
+     "build_rss_kib_median": 2248,
+     "run_rss_kib_median": 280
+    },
+    "bf-x86": {
+     "validation_build": [
+      0,
+      0.001299,
+      1560
+     ],
+     "validation_run": [
+      0,
+      0.000949,
+      280
+     ],
+     "artifact_bytes": 644,
+     "status": "ok",
+     "build_s": [
+      0.001362,
+      0.001908,
+      0.001426,
+      0.001565,
+      0.001595
+     ],
+     "build_rss_kib": [
+      1560,
+      1560,
+      1560,
+      1560,
+      1560
+     ],
+     "run_s": [
+      0.001221,
+      0.001288,
+      0.00136,
+      0.001608,
+      0.001205
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.001565,
+     "run_s_median": 0.001288,
+     "build_rss_kib_median": 1560,
+     "run_rss_kib_median": 280
+    },
+    "Awib": {
+     "validation_build": [
+      0,
+      0.192909,
+      24800
+     ],
+     "validation_run": [
+      0,
+      0.001665,
+      1296
+     ],
+     "artifact_bytes": 16024,
+     "status": "ok",
+     "build_s": [
+      0.192761,
+      0.179255,
+      0.172765,
+      0.211918,
+      0.204852
+     ],
+     "build_rss_kib": [
+      24784,
+      24784,
+      24824,
+      24780,
+      24772
+     ],
+     "run_s": [
+      0.001607,
+      0.001655,
+      0.001516,
+      0.001505,
+      0.001535
+     ],
+     "run_rss_kib": [
+      1296,
+      1296,
+      1296,
+      1296,
+      1296
+     ],
+     "build_s_median": 0.192761,
+     "run_s_median": 0.001535,
+     "build_rss_kib_median": 24784,
+     "run_rss_kib_median": 1296
+    },
+    "bflang": {
+     "validation_build": [
+      0,
+      0.072338,
+      71660
+     ],
+     "validation_run": [
+      0,
+      0.001211,
+      1292
+     ],
+     "artifact_bytes": 15984,
+     "status": "ok",
+     "build_s": [
+      0.080312,
+      0.085407,
+      0.065595,
+      0.075608,
+      0.070406
+     ],
+     "build_rss_kib": [
+      71508,
+      72064,
+      71748,
+      71824,
+      71576
+     ],
+     "run_s": [
+      0.001629,
+      0.001545,
+      0.001338,
+      0.001572,
+      0.001618
+     ],
+     "run_rss_kib": [
+      1296,
+      1296,
+      1296,
+      1296,
+      1296
+     ],
+     "build_s_median": 0.075608,
+     "run_s_median": 0.001572,
+     "build_rss_kib_median": 71748,
+     "run_rss_kib_median": 1296
+    },
+    "Wilfred/bfc": {
+     "validation_build": [
+      0,
+      0.063137,
+      66104
+     ],
+     "validation_run": [
+      0,
+      0.001193,
+      1248
+     ],
+     "artifact_bytes": 16000,
+     "status": "ok",
+     "build_s": [
+      0.061127,
+      0.063281,
+      0.055185,
+      0.063203,
+      0.065192
+     ],
+     "build_rss_kib": [
+      66096,
+      66096,
+      66132,
+      66128,
+      66216
+     ],
+     "run_s": [
+      0.001572,
+      0.001544,
+      0.001642,
+      0.001365,
+      0.001525
+     ],
+     "run_rss_kib": [
+      1248,
+      1248,
+      1248,
+      1248,
+      1248
+     ],
+     "build_s_median": 0.063203,
+     "run_s_median": 0.001544,
+     "build_rss_kib_median": 66128,
+     "run_rss_kib_median": 1248
+    },
+    "pablojorge": {
+     "validation_build": [
+      0,
+      0.08201,
+      27060
+     ],
+     "validation_run": [
+      0,
+      0.00122,
+      1424
+     ],
+     "artifact_bytes": 16048,
+     "status": "ok",
+     "build_s": [
+      0.067644,
+      0.082562,
+      0.068555,
+      0.069105,
+      0.070991
+     ],
+     "build_rss_kib": [
+      27052,
+      27040,
+      27012,
+      27060,
+      27052
+     ],
+     "run_s": [
+      0.001102,
+      0.001728,
+      0.001606,
+      0.001905,
+      0.001298
+     ],
+     "run_rss_kib": [
+      1424,
+      1424,
+      1424,
+      1424,
+      1424
+     ],
+     "build_s_median": 0.069105,
+     "run_s_median": 0.001606,
+     "build_rss_kib_median": 27052,
+     "run_rss_kib_median": 1424
+    },
+    "abfc": {
+     "validation_build": [
+      0,
+      0.042357,
+      4688
+     ],
+     "validation_run": [
+      0,
+      0.00174,
+      280
+     ],
+     "artifact_bytes": 14640,
+     "status": "ok",
+     "build_s": [
+      0.048266,
+      0.040016,
+      0.052194,
+      0.046533,
+      0.044241
+     ],
+     "build_rss_kib": [
+      4508,
+      4600,
+      4652,
+      4608,
+      4664
+     ],
+     "run_s": [
+      0.001476,
+      0.001958,
+      0.002128,
+      0.001829,
+      0.001979
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.046533,
+     "run_s_median": 0.001958,
+     "build_rss_kib_median": 4608,
+     "run_rss_kib_median": 280
+    },
+    "Brainfly": {
+     "validation_build": [
+      0,
+      4.58089,
+      245260
+     ],
+     "validation_run": [
+      0,
+      0.003881,
+      3444
+     ],
+     "artifact_bytes": 1282480,
+     "status": "ok",
+     "build_s": [
+      3.957307,
+      4.086847,
+      4.132358,
+      4.033947,
+      4.007353
+     ],
+     "build_rss_kib": [
+      224856,
+      224964,
+      224920,
+      225232,
+      224752
+     ],
+     "run_s": [
+      0.00412,
+      0.003297,
+      0.004572,
+      0.003554,
+      0.003853
+     ],
+     "run_rss_kib": [
+      3544,
+      3552,
+      3552,
+      3500,
+      3532
+     ],
+     "build_s_median": 4.033947,
+     "run_s_median": 0.003853,
+     "build_rss_kib_median": 224920,
+     "run_rss_kib_median": 3544
+    }
+   }
+  },
+  "transfer_repeat": {
+   "source_sha256": "46e969679a900e5531111e6167abd3e1012a8ec31948d858157044faf661e349",
+   "input_sha256": "85f71b1edbf29ee22faaf2a817bc55f857d82f2cbdec2eb402f81e3eb6fb1bf6",
+   "expected_sha256": "7c5bd2d144fdde498406edcb9fe60ce65b0dfa5f2dd7a7617f505e3d46d68bdb",
+   "reference_exit": 0,
+   "arms": {
+    "BBC-O1": {
+     "validation_build": [
+      0,
+      0.109816,
+      48252
+     ],
+     "validation_run": [
+      0,
+      0.028226,
+      7892
+     ],
+     "artifact_bytes": 9728,
+     "status": "ok",
+     "build_s": [
+      0.150002,
+      0.135265,
+      0.106029,
+      0.10751,
+      0.125359
+     ],
+     "build_rss_kib": [
+      48208,
+      48172,
+      48208,
+      48200,
+      48240
+     ],
+     "run_s": [
+      0.03454,
+      0.032294,
+      0.02855,
+      0.031342,
+      0.028648
+     ],
+     "run_rss_kib": [
+      7932,
+      8028,
+      8072,
+      7912,
+      8020
+     ],
+     "build_s_median": 0.125359,
+     "run_s_median": 0.031342,
+     "build_rss_kib_median": 48208,
+     "run_rss_kib_median": 8020
+    },
+    "BBC-O0": {
+     "validation_build": [
+      0,
+      0.123723,
+      51816
+     ],
+     "validation_run": [
+      0,
+      0.029366,
+      8028
+     ],
+     "artifact_bytes": 10752,
+     "status": "ok",
+     "build_s": [
+      0.129817,
+      0.139353,
+      0.118263,
+      0.111444,
+      0.130855
+     ],
+     "build_rss_kib": [
+      51828,
+      51804,
+      51788,
+      51824,
+      51824
+     ],
+     "run_s": [
+      0.03027,
+      0.035107,
+      0.030769,
+      0.034081,
+      0.026525
+     ],
+     "run_rss_kib": [
+      7888,
+      7896,
+      7952,
+      7892,
+      8020
+     ],
+     "build_s_median": 0.129817,
+     "run_s_median": 0.030769,
+     "build_rss_kib_median": 51824,
+     "run_rss_kib_median": 7896
+    },
+    "brainfry-win": {
+     "validation_build": [
+      0,
+      0.001348,
+      2272
+     ],
+     "validation_run": [
+      0,
+      0.031846,
+      6672
+     ],
+     "artifact_bytes": 3072,
+     "status": "ok",
+     "build_s": [
+      0.00181,
+      0.002469,
+      0.002306,
+      0.002015,
+      0.00194
+     ],
+     "build_rss_kib": [
+      2192,
+      2256,
+      2236,
+      2284,
+      2268
+     ],
+     "run_s": [
+      0.027892,
+      0.028309,
+      0.028516,
+      0.028925,
+      0.02765
+     ],
+     "run_rss_kib": [
+      6616,
+      6648,
+      6632,
+      6488,
+      6664
+     ],
+     "build_s_median": 0.002015,
+     "run_s_median": 0.028309,
+     "build_rss_kib_median": 2256,
+     "run_rss_kib_median": 6632
+    },
+    "brainfry": {
+     "validation_build": [
+      0,
+      0.001556,
+      2248
+     ],
+     "validation_run": [
+      0,
+      0.000514,
+      280
+     ],
+     "artifact_bytes": 1184,
+     "status": "ok",
+     "build_s": [
+      0.002045,
+      0.002165,
+      0.002411,
+      0.002644,
+      0.002454
+     ],
+     "build_rss_kib": [
+      2248,
+      2280,
+      2276,
+      2284,
+      2300
+     ],
+     "run_s": [
+      0.000832,
+      0.00087,
+      0.001148,
+      0.000869,
+      0.00075
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.002411,
+     "run_s_median": 0.000869,
+     "build_rss_kib_median": 2280,
+     "run_rss_kib_median": 280
+    },
+    "bf-x86": {
+     "validation_build": [
+      0,
+      0.001241,
+      1560
+     ],
+     "validation_run": [
+      0,
+      0.000539,
+      280
+     ],
+     "artifact_bytes": 236,
+     "status": "ok",
+     "build_s": [
+      0.001719,
+      0.001694,
+      0.001747,
+      0.001854,
+      0.001481
+     ],
+     "build_rss_kib": [
+      1560,
+      1560,
+      1560,
+      1560,
+      1560
+     ],
+     "run_s": [
+      0.000463,
+      0.000988,
+      0.00068,
+      0.000776,
+      0.000804
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.001719,
+     "run_s_median": 0.000776,
+     "build_rss_kib_median": 1560,
+     "run_rss_kib_median": 280
+    },
+    "Awib": {
+     "validation_build": [
+      0,
+      0.076999,
+      23352
+     ],
+     "validation_run": [
+      0,
+      0.001153,
+      1296
+     ],
+     "artifact_bytes": 16112,
+     "status": "ok",
+     "build_s": [
+      0.086891,
+      0.07149,
+      0.073754,
+      0.075091,
+      0.06643
+     ],
+     "build_rss_kib": [
+      23288,
+      23308,
+      23376,
+      23380,
+      23296
+     ],
+     "run_s": [
+      0.0011,
+      0.001496,
+      0.001607,
+      0.001548,
+      0.001841
+     ],
+     "run_rss_kib": [
+      1296,
+      1296,
+      1296,
+      1296,
+      1296
+     ],
+     "build_s_median": 0.073754,
+     "run_s_median": 0.001548,
+     "build_rss_kib_median": 23308,
+     "run_rss_kib_median": 1296
+    },
+    "bflang": {
+     "validation_build": [
+      0,
+      0.057734,
+      70912
+     ],
+     "validation_run": [
+      0,
+      0.001168,
+      1296
+     ],
+     "artifact_bytes": 16136,
+     "status": "ok",
+     "build_s": [
+      0.05888,
+      0.060755,
+      0.058757,
+      0.07329,
+      0.05503
+     ],
+     "build_rss_kib": [
+      71204,
+      71176,
+      71104,
+      71048,
+      70796
+     ],
+     "run_s": [
+      0.001193,
+      0.001443,
+      0.001802,
+      0.001419,
+      0.0018
+     ],
+     "run_rss_kib": [
+      1296,
+      1292,
+      1296,
+      1296,
+      1296
+     ],
+     "build_s_median": 0.05888,
+     "run_s_median": 0.001443,
+     "build_rss_kib_median": 71104,
+     "run_rss_kib_median": 1296
+    },
+    "Wilfred/bfc": {
+     "validation_build": [
+      0,
+      0.062459,
+      66144
+     ],
+     "validation_run": [
+      0,
+      0.001148,
+      1296
+     ],
+     "artifact_bytes": 16120,
+     "status": "ok",
+     "build_s": [
+      0.062564,
+      0.073266,
+      0.069954,
+      0.083029,
+      0.066841
+     ],
+     "build_rss_kib": [
+      66128,
+      66112,
+      66208,
+      66096,
+      66084
+     ],
+     "run_s": [
+      0.001367,
+      0.001537,
+      0.001494,
+      0.001747,
+      0.001433
+     ],
+     "run_rss_kib": [
+      1296,
+      1292,
+      1296,
+      1296,
+      1296
+     ],
+     "build_s_median": 0.069954,
+     "run_s_median": 0.001494,
+     "build_rss_kib_median": 66112,
+     "run_rss_kib_median": 1296
+    },
+    "pablojorge": {
+     "validation_build": [
+      0,
+      0.044567,
+      23888
+     ],
+     "validation_run": [
+      0,
+      0.001496,
+      1296
+     ],
+     "artifact_bytes": 16080,
+     "status": "ok",
+     "build_s": [
+      0.047502,
+      0.056605,
+      0.056479,
+      0.045343,
+      0.048344
+     ],
+     "build_rss_kib": [
+      24016,
+      24016,
+      23924,
+      24008,
+      24004
+     ],
+     "run_s": [
+      0.00116,
+      0.001414,
+      0.001455,
+      0.003833,
+      0.001451
+     ],
+     "run_rss_kib": [
+      1296,
+      1296,
+      1296,
+      1296,
+      1296
+     ],
+     "build_s_median": 0.048344,
+     "run_s_median": 0.001451,
+     "build_rss_kib_median": 24008,
+     "run_rss_kib_median": 1296
+    },
+    "abfc": {
+     "validation_build": [
+      0,
+      0.0137,
+      4680
+     ],
+     "validation_run": [
+      0,
+      0.001327,
+      280
+     ],
+     "artifact_bytes": 13616,
+     "status": "ok",
+     "build_s": [
+      0.012534,
+      0.011735,
+      0.012895,
+      0.011392,
+      0.012863
+     ],
+     "build_rss_kib": [
+      4628,
+      4528,
+      4656,
+      4588,
+      4616
+     ],
+     "run_s": [
+      0.001262,
+      0.001734,
+      0.001637,
+      0.001443,
+      0.002206
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.012534,
+     "run_s_median": 0.001637,
+     "build_rss_kib_median": 4616,
+     "run_rss_kib_median": 280
+    },
+    "Brainfly": {
+     "validation_build": [
+      0,
+      3.972715,
+      237180
+     ],
+     "validation_run": [
+      0,
+      0.003139,
+      3552
+     ],
+     "artifact_bytes": 1323760,
+     "status": "ok",
+     "build_s": [
+      3.503564,
+      3.527263,
+      3.62463,
+      3.589252,
+      3.618073
+     ],
+     "build_rss_kib": [
+      215812,
+      216632,
+      216776,
+      216712,
+      216508
+     ],
+     "run_s": [
+      0.002429,
+      0.003106,
+      0.003777,
+      0.003036,
+      0.003
+     ],
+     "run_rss_kib": [
+      3620,
+      3572,
+      3668,
+      3636,
+      3508
+     ],
+     "build_s_median": 3.589252,
+     "run_s_median": 0.003036,
+     "build_rss_kib_median": 216632,
+     "run_rss_kib_median": 3620
+    }
+   }
+  },
+  "wrap": {
+   "source_sha256": "fa0877681a7998f576ef2a485ad6ad0cbc98e9f1f648bb9a4b58248c02a3bb56",
+   "input_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "expected_sha256": "942e1e2a66a427b6551732f758bc314f22b9cdec9365a3425c9184de299392b5",
+   "reference_exit": 0,
+   "arms": {
+    "BBC-O1": {
+     "validation_build": [
+      0,
+      0.108345,
+      48112
+     ],
+     "validation_run": [
+      0,
+      0.030948,
+      8028
+     ],
+     "artifact_bytes": 8192,
+     "status": "ok",
+     "build_s": [
+      0.100814,
+      0.101052,
+      0.128564,
+      0.101933,
+      0.09652
+     ],
+     "build_rss_kib": [
+      48084,
+      48020,
+      47996,
+      48116,
+      48108
+     ],
+     "run_s": [
+      0.036979,
+      0.031824,
+      0.036082,
+      0.030397,
+      0.029661
+     ],
+     "run_rss_kib": [
+      8060,
+      8024,
+      8020,
+      8040,
+      8080
+     ],
+     "build_s_median": 0.101052,
+     "run_s_median": 0.031824,
+     "build_rss_kib_median": 48084,
+     "run_rss_kib_median": 8040
+    },
+    "BBC-O0": {
+     "validation_build": [
+      0,
+      0.091132,
+      47932
+     ],
+     "validation_run": [
+      0,
+      0.02898,
+      8028
+     ],
+     "artifact_bytes": 7680,
+     "status": "ok",
+     "build_s": [
+      0.089998,
+      0.080959,
+      0.10905,
+      0.098843,
+      0.097309
+     ],
+     "build_rss_kib": [
+      47948,
+      47948,
+      47944,
+      47956,
+      48008
+     ],
+     "run_s": [
+      0.028437,
+      0.029104,
+      0.029626,
+      0.03203,
+      0.032471
+     ],
+     "run_rss_kib": [
+      8028,
+      8060,
+      8028,
+      8080,
+      7852
+     ],
+     "build_s_median": 0.097309,
+     "run_s_median": 0.029626,
+     "build_rss_kib_median": 47948,
+     "run_rss_kib_median": 8028
+    },
+    "brainfry-win": {
+     "validation_build": [
+      0,
+      0.001626,
+      2292
+     ],
+     "validation_run": [
+      0,
+      0.029144,
+      6480
+     ],
+     "artifact_bytes": 2560,
+     "status": "ok",
+     "build_s": [
+      0.001726,
+      0.002879,
+      0.002031,
+      0.002338,
+      0.002325
+     ],
+     "build_rss_kib": [
+      2288,
+      2268,
+      2292,
+      2240,
+      2280
+     ],
+     "run_s": [
+      0.029571,
+      0.030529,
+      0.033168,
+      0.029772,
+      0.027528
+     ],
+     "run_rss_kib": [
+      6664,
+      6584,
+      6628,
+      6656,
+      6484
+     ],
+     "build_s_median": 0.002325,
+     "run_s_median": 0.029772,
+     "build_rss_kib_median": 2280,
+     "run_rss_kib_median": 6628
+    },
+    "brainfry": {
+     "validation_build": [
+      0,
+      0.001579,
+      2280
+     ],
+     "validation_run": [
+      0,
+      0.000535,
+      280
+     ],
+     "artifact_bytes": 928,
+     "status": "ok",
+     "build_s": [
+      0.001539,
+      0.003218,
+      0.002356,
+      0.002265,
+      0.002038
+     ],
+     "build_rss_kib": [
+      2264,
+      2192,
+      2244,
+      2276,
+      2240
+     ],
+     "run_s": [
+      0.000508,
+      0.000911,
+      0.000932,
+      0.000919,
+      0.001006
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.002265,
+     "run_s_median": 0.000919,
+     "build_rss_kib_median": 2244,
+     "run_rss_kib_median": 280
+    },
+    "bf-x86": {
+     "validation_build": [
+      0,
+      0.001111,
+      1560
+     ],
+     "validation_run": [
+      0,
+      0.00044,
+      280
+     ],
+     "artifact_bytes": 198,
+     "status": "ok",
+     "build_s": [
+      0.001352,
+      0.002088,
+      0.001828,
+      0.001661,
+      0.001704
+     ],
+     "build_rss_kib": [
+      1560,
+      1560,
+      1560,
+      1560,
+      1560
+     ],
+     "run_s": [
+      0.000548,
+      0.000826,
+      0.001064,
+      0.000785,
+      0.000692
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.001704,
+     "run_s_median": 0.000785,
+     "build_rss_kib_median": 1560,
+     "run_rss_kib_median": 280
+    },
+    "Awib": {
+     "validation_build": [
+      0,
+      0.043291,
+      22468
+     ],
+     "validation_run": [
+      0,
+      0.001285,
+      1296
+     ],
+     "artifact_bytes": 16024,
+     "status": "ok",
+     "build_s": [
+      0.048712,
+      0.050697,
+      0.04156,
+      0.047728,
+      0.047385
+     ],
+     "build_rss_kib": [
+      22484,
+      22404,
+      22480,
+      22468,
+      22444
+     ],
+     "run_s": [
+      0.001189,
+      0.001667,
+      0.001474,
+      0.001925,
+      0.001555
+     ],
+     "run_rss_kib": [
+      1296,
+      1296,
+      1296,
+      1296,
+      1292
+     ],
+     "build_s_median": 0.047728,
+     "run_s_median": 0.001555,
+     "build_rss_kib_median": 22468,
+     "run_rss_kib_median": 1296
+    },
+    "bflang": {
+     "validation_build": [
+      0,
+      0.039875,
+      69552
+     ],
+     "validation_run": [
+      0,
+      0.001197,
+      1296
+     ],
+     "artifact_bytes": 16016,
+     "status": "ok",
+     "build_s": [
+      0.038279,
+      0.047361,
+      0.039751,
+      0.039045,
+      0.042614
+     ],
+     "build_rss_kib": [
+      69356,
+      69624,
+      69304,
+      69568,
+      69136
+     ],
+     "run_s": [
+      0.00158,
+      0.001565,
+      0.001887,
+      0.00163,
+      0.001519
+     ],
+     "run_rss_kib": [
+      1296,
+      1296,
+      1296,
+      1296,
+      1296
+     ],
+     "build_s_median": 0.039751,
+     "run_s_median": 0.00158,
+     "build_rss_kib_median": 69356,
+     "run_rss_kib_median": 1296
+    },
+    "Wilfred/bfc": {
+     "validation_build": [
+      0,
+      0.054578,
+      66128
+     ],
+     "validation_run": [
+      0,
+      0.001082,
+      1248
+     ],
+     "artifact_bytes": 16000,
+     "status": "ok",
+     "build_s": [
+      0.068692,
+      0.05831,
+      0.057995,
+      0.055808,
+      0.055104
+     ],
+     "build_rss_kib": [
+      66084,
+      66140,
+      66208,
+      66104,
+      66212
+     ],
+     "run_s": [
+      0.001549,
+      0.001534,
+      0.001874,
+      0.001659,
+      0.001486
+     ],
+     "run_rss_kib": [
+      1248,
+      1248,
+      1248,
+      1248,
+      1248
+     ],
+     "build_s_median": 0.057995,
+     "run_s_median": 0.001549,
+     "build_rss_kib_median": 66140,
+     "run_rss_kib_median": 1248
+    },
+    "pablojorge": {
+     "validation_build": [
+      0,
+      0.044401,
+      22748
+     ],
+     "validation_run": [
+      0,
+      0.001112,
+      1296
+     ],
+     "artifact_bytes": 16000,
+     "status": "ok",
+     "build_s": [
+      0.043155,
+      0.05266,
+      0.052776,
+      0.042618,
+      0.044796
+     ],
+     "build_rss_kib": [
+      22760,
+      22760,
+      22664,
+      22712,
+      22740
+     ],
+     "run_s": [
+      0.001321,
+      0.001461,
+      0.001694,
+      0.001553,
+      0.001741
+     ],
+     "run_rss_kib": [
+      1296,
+      1296,
+      1296,
+      1292,
+      1296
+     ],
+     "build_s_median": 0.044796,
+     "run_s_median": 0.001553,
+     "build_rss_kib_median": 22740,
+     "run_rss_kib_median": 1296
+    },
+    "abfc": {
+     "validation_build": [
+      0,
+      0.011381,
+      4608
+     ],
+     "validation_run": [
+      0,
+      0.001057,
+      280
+     ],
+     "artifact_bytes": 13416,
+     "status": "ok",
+     "build_s": [
+      0.012729,
+      0.011433,
+      0.011114,
+      0.011262,
+      0.011325
+     ],
+     "build_rss_kib": [
+      4620,
+      4572,
+      4508,
+      4632,
+      4572
+     ],
+     "run_s": [
+      0.001001,
+      0.001465,
+      0.001873,
+      0.001642,
+      0.001333
+     ],
+     "run_rss_kib": [
+      280,
+      280,
+      280,
+      280,
+      280
+     ],
+     "build_s_median": 0.011325,
+     "run_s_median": 0.001465,
+     "build_rss_kib_median": 4572,
+     "run_rss_kib_median": 280
+    },
+    "Brainfly": {
+     "validation_build": [
+      0,
+      3.844007,
+      236604
+     ],
+     "validation_run": [
+      0,
+      0.00247,
+      3508
+     ],
+     "artifact_bytes": 1278384,
+     "status": "ok",
+     "build_s": [
+      3.622646,
+      3.449486,
+      3.379921,
+      3.468867,
+      3.29325
+     ],
+     "build_rss_kib": [
+      216720,
+      216416,
+      216620,
+      216648,
+      216568
+     ],
+     "run_s": [
+      0.003428,
+      0.002891,
+      0.003119,
+      0.003071,
+      0.002645
+     ],
+     "run_rss_kib": [
+      3572,
+      3540,
+      3512,
+      3532,
+      3536
+     ],
+     "build_s_median": 3.449486,
+     "run_s_median": 0.003071,
+     "build_rss_kib_median": 216620,
+     "run_rss_kib_median": 3536
+    }
+   }
+  }
+ },
+ "purpose": "BBC (bbc.exe after XAX ledger 0020) against the eight pinned competitors of 2026-10-22, same 18 programs (sources by hash), on one Linux host",
+ "competitor_revisions": {
+  "awib": "f9f43a0",
+  "brainfry": "e55d457",
+  "bf-x86": "3a2feb2",
+  "bflang": "612c8eb",
+  "Brainfly": "2e1d1b5",
+  "pablojorge/brainfuck": "1539247",
+  "abfc": "ea8d26d",
+  "Wilfred/bfc": "2cd6a75"
+ },
+ "tools": {
+  "gcc": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "clang-18": "Ubuntu clang version 18.1.3 (1ubuntu1)",
+  "llvm-14": "14.0.6",
+  "rustc": "rustc 1.97.0 (2d8144b78 2026-07-07)",
+  "dotnet": "10.0.114",
+  "wine": "wine-9.0 (Ubuntu 9.0~repack-4build3)"
+ },
+ "method": {
+  "runner": "compete.py and peakrss.c outside both repositories (sha256 in runner_sha256, peakrss_sha256); analyze.py for the summaries",
+  "trials": "one validation build and run per arm (also the warmup), then 5 build and 5 run trials, interleaved across arms with the order rotated each trial; medians per program, geometric means per group",
+  "timing": "wall time fork..wait of one fresh process tree under a static launcher; peak RSS from RUSAGE_CHILDREN (launcher floor about 1.6 MiB)",
+  "correctness": "stdout bytes and exit 0 equal brainfry bfinterp's on the same input; a mismatching arm is not timed for that program",
+  "platforms": "BBC (-O1, -O0) and brainfry-win build Windows x86-64 executables and run under Wine 9.0 (persistent wineserver; about a 30 ms process floor); the others build and run natively on Linux x86-64. Compare Windows rows with Windows rows.",
+  "inputs": "the 2026-10-22 inputs where recoverable (from wide_reset_evidence.json); factor (133333333333) and life (a glider, 20 generations, q) are new because the old inputs are recorded only as hashes"
+ },
+ "summary": {
+  "per_arm": {
+   "small": {
+    "BBC-O1": {
+     "passed": "12/12",
+     "build": 0.11401641803565508,
+     "run": 0.03189508805274443,
+     "size": 9100.939323361783,
+     "build RSS": 48210.47062715757,
+     "run RSS": 7985.765314157307
+    },
+    "BBC-O0": {
+     "passed": "12/12",
+     "build": 0.11089261520404488,
+     "run": 0.03236366002760295,
+     "size": 9530.705171564285,
+     "build RSS": 50011.67628189576,
+     "run RSS": 7978.137084430135
+    },
+    "brainfry-win": {
+     "passed": "12/12",
+     "build": 0.002302248922054432,
+     "run": 0.029956642201351663,
+     "size": 3009.506741031821,
+     "build RSS": 2268.632709101039,
+     "run RSS": 6624.255521912056
+    },
+    "brainfry": {
+     "passed": "12/12",
+     "build": 0.0022487133879202956,
+     "run": 0.0009658992634977345,
+     "size": 1258.9958499496581,
+     "build RSS": 2263.292836954021,
+     "run RSS": 279.9999999999999
+    },
+    "bf-x86": {
+     "passed": "12/12",
+     "build": 0.0016365738851786362,
+     "run": 0.0009726839974566983,
+     "size": 264.43059428676986,
+     "build RSS": 1570.2853731350972,
+     "run RSS": 279.9999999999999
+    },
+    "Awib": {
+     "passed": "12/12",
+     "build": 0.06281045198880493,
+     "run": 0.001560947404438781,
+     "size": 16097.299844026162,
+     "build RSS": 23187.376984451363,
+     "run RSS": 1296.3328627247072
+    },
+    "bflang": {
+     "passed": "12/12",
+     "build": 0.0525086044805546,
+     "run": 0.0015463411921970206,
+     "size": 16076.608810470336,
+     "build RSS": 70547.72539894337,
+     "run RSS": 1296.000000000001
+    },
+    "Wilfred/bfc": {
+     "passed": "12/12",
+     "build": 0.06473349157284033,
+     "run": 0.001507372848668024,
+     "size": 16103.92726139878,
+     "build RSS": 66134.32729900678,
+     "run RSS": 1307.365916163305
+    },
+    "pablojorge": {
+     "passed": "11/12",
+     "build": 0.04792014662393984,
+     "run": 0.0015659190371166162,
+     "size": 16070.503112672086,
+     "build RSS": 23844.214948042187,
+     "run RSS": 1307.477981492183
+    },
+    "abfc": {
+     "passed": "12/12",
+     "build": 0.012511036579331471,
+     "run": 0.0017419883445926759,
+     "size": 13578.117454258712,
+     "build RSS": 4602.128097011371,
+     "run RSS": 279.9999999999999
+    },
+    "Brainfly": {
+     "passed": "12/12",
+     "build": 3.714536899483095,
+     "run": 0.003390173091327132,
+     "size": 1316427.2005641293,
+     "build RSS": 217256.97290026434,
+     "run RSS": 3553.828529030608
+    }
+   },
+   "large": {
+    "BBC-O1": {
+     "passed": "5/5",
+     "build": 0.48751657334050247,
+     "run": 0.0949229115726053,
+     "size": 42345.18314247382,
+     "build RSS": 81028.22321730196,
+     "run RSS": 8002.636367663056
+    },
+    "BBC-O0": {
+     "passed": "5/5",
+     "build": 1.38658986562655,
+     "run": 0.2674780634981194,
+     "size": 56431.71052726727,
+     "build RSS": 133603.89786126697,
+     "run RSS": 8034.733072400987
+    },
+    "brainfry-win": {
+     "passed": "5/5",
+     "build": 0.0027646735039911965,
+     "run": 0.08733332221289238,
+     "size": 18060.2754947026,
+     "build RSS": 2500.8333873536008,
+     "run RSS": 6556.535614818839
+    },
+    "brainfry": {
+     "passed": "5/5",
+     "build": 0.002598822750298537,
+     "run": 0.01989409083395905,
+     "size": 15446.291734855406,
+     "build RSS": 2501.3802803812764,
+     "run RSS": 279.9999999999999
+    },
+    "bf-x86": {
+     "passed": "5/5",
+     "build": 0.0017700201259122892,
+     "run": 0.03826436012687888,
+     "size": 4150.756566586941,
+     "build RSS": 1686.0542873978015,
+     "run RSS": 279.9999999999999
+    },
+    "Awib": {
+     "passed": "5/5",
+     "build": 0.588576858736279,
+     "run": 0.009589048519918299,
+     "size": 19706.452449913828,
+     "build RSS": 33856.119183631294,
+     "run RSS": 1303.1892065252487
+    },
+    "bflang": {
+     "passed": "5/5",
+     "build": 0.5646010597838425,
+     "run": 0.014309905552529454,
+     "size": 21699.713086192307,
+     "build RSS": 79837.90583269471,
+     "run RSS": 1302.3814130365229
+    },
+    "Wilfred/bfc": {
+     "passed": "5/5",
+     "build": 0.21113504186166127,
+     "run": 0.014064148037067818,
+     "size": 23287.11601571386,
+     "build RSS": 66342.57621556825,
+     "run RSS": 1430.7999812373334
+    },
+    "pablojorge": {
+     "passed": "5/5",
+     "build": 0.2518707727595448,
+     "run": 0.012125361943723333,
+     "size": 19714.75638950853,
+     "build RSS": 40607.157154218614,
+     "run RSS": 1402.1251507077807
+    },
+    "abfc": {
+     "passed": "5/5",
+     "build": 0.11975182568595956,
+     "run": 0.06766793943995933,
+     "size": 32043.341202476302,
+     "build RSS": 4734.2534897605365,
+     "run RSS": 279.9999999999999
+    },
+    "Brainfly": {
+     "passed": "5/5",
+     "build": 10.269442562595023,
+     "run": 0.08300970486731585,
+     "size": 1332261.114755511,
+     "build RSS": 295095.572417191,
+     "run RSS": 3537.5541523667107
+    }
+   },
+   "floor": {
+    "BBC-O1": {
+     "passed": "1/1",
+     "build": 0.10195700000000002,
+     "run": 0.034076,
+     "size": 7167.9999999999945,
+     "build RSS": 47847.99999999998,
+     "run RSS": 7943.999999999997
+    },
+    "BBC-O0": {
+     "passed": "1/1",
+     "build": 0.09956099999999998,
+     "run": 0.030992999999999996,
+     "size": 7167.9999999999945,
+     "build RSS": 47880.00000000001,
+     "run RSS": 8027.999999999993
+    },
+    "brainfry-win": {
+     "passed": "1/1",
+     "build": 0.0020799999999999994,
+     "run": 0.029445,
+     "size": 2560.0,
+     "build RSS": 2264.000000000001,
+     "run RSS": 6616.000000000001
+    },
+    "brainfry": {
+     "passed": "1/1",
+     "build": 0.0020650000000000004,
+     "run": 0.00044000000000000007,
+     "size": 768.0000000000001,
+     "build RSS": 2264.000000000001,
+     "run RSS": 279.9999999999999
+    },
+    "bf-x86": {
+     "passed": "1/1",
+     "build": 0.0016049999999999994,
+     "run": 0.0004180000000000002,
+     "size": 164.99999999999994,
+     "build RSS": 1560.0000000000005,
+     "run RSS": 279.9999999999999
+    },
+    "Awib": {
+     "passed": "1/1",
+     "build": 0.04112899999999999,
+     "run": 0.0011480000000000001,
+     "size": 15799.999999999995,
+     "build RSS": 21144.0,
+     "run RSS": 1244.0
+    },
+    "bflang": {
+     "passed": "1/1",
+     "build": 0.04005600000000001,
+     "run": 0.001377,
+     "size": 15856.00000000001,
+     "build RSS": 67344.00000000004,
+     "run RSS": 1244.0
+    },
+    "Wilfred/bfc": {
+     "passed": "1/1",
+     "build": 0.05444699999999999,
+     "run": 0.0011599999999999996,
+     "size": 15840.000000000007,
+     "build RSS": 66116.00000000003,
+     "run RSS": 1244.0
+    },
+    "pablojorge": {
+     "passed": "1/1",
+     "build": 0.04298600000000001,
+     "run": 0.0011059999999999998,
+     "size": 15776.000000000004,
+     "build RSS": 21815.999999999993,
+     "run RSS": 1244.0
+    },
+    "abfc": {
+     "passed": "1/1",
+     "build": 0.011677000000000003,
+     "run": 0.0010419999999999997,
+     "size": 13416.000000000007,
+     "build RSS": 4572.000000000004,
+     "run RSS": 279.9999999999999
+    },
+    "Brainfly": {
+     "passed": "1/1",
+     "build": 3.475871,
+     "run": 0.0027740000000000004,
+     "size": 1089007.9999999993,
+     "build RSS": 215980.00000000017,
+     "run RSS": 3263.9999999999973
+    }
+   }
+  },
+  "versus": {
+   "brainfry-win": {
+    "comparable_programs": 17,
+    "bbc_over_competitor_geomean": {
+     "build": 71.94985845338155,
+     "run": 1.0711889496721836,
+     "size": 2.80599949497598,
+     "build RSS": 24.057583283352777,
+     "run RSS": 1.2099337242878534
+    },
+    "run_ratio_by_group": {
+     "small": 1.0647083821465582,
+     "large": 1.0869037060242799
+    },
+    "rulebook_win": false
+   },
+   "brainfry": {
+    "comparable_programs": 17,
+    "bbc_over_competitor_geomean": {
+     "build": 74.49804680986246,
+     "run": 18.693494527302335,
+     "size": 5.435183770613801,
+     "build RSS": 24.096085538313236,
+     "run RSS": 28.538298904447238
+    },
+    "run_ratio_by_group": {
+     "small": 33.02113300847262,
+     "large": 4.771412394004589
+    },
+    "rulebook_win": false
+   },
+   "bf-x86": {
+    "comparable_programs": 17,
+    "bbc_over_competitor_geomean": {
+     "build": 104.37919753553432,
+     "run": 15.345977336107028,
+     "size": 24.06864523066073,
+     "build RSS": 35.02665470402477,
+     "run RSS": 28.538298904447238
+    },
+    "run_ratio_by_group": {
+     "small": 32.79080167468711,
+     "large": 2.4807134173380962
+    },
+    "rulebook_win": false
+   },
+   "Awib": {
+    "comparable_programs": 17,
+    "bbc_over_competitor_geomean": {
+     "build": 1.4411696247077463,
+     "run": 16.510679498686915,
+     "size": 0.8372997165389624,
+     "build RSS": 2.1670208952341765,
+     "run RSS": 6.154542513650464
+    },
+    "run_ratio_by_group": {
+     "small": 20.43315999119902,
+     "large": 9.899095971350247
+    },
+    "rulebook_win": false
+   },
+   "bflang": {
+    "comparable_programs": 17,
+    "bbc_over_competitor_geomean": {
+     "build": 1.6555639814410423,
+     "run": 14.774451397688074,
+     "size": 0.8146437506887634,
+     "build RSS": 0.7676771209805979,
+     "run RSS": 6.156780973753709
+    },
+    "run_ratio_by_group": {
+     "small": 20.626164661259747,
+     "large": 6.6333709348505465
+    },
+    "rulebook_win": false
+   },
+   "Wilfred/bfc": {
+    "comparable_programs": 17,
+    "bbc_over_competitor_geomean": {
+     "build": 1.9073213142106504,
+     "run": 15.119887495371978,
+     "size": 0.7969463615338289,
+     "build RSS": 0.8484668667645529,
+     "run RSS": 5.952027183849823
+    },
+    "run_ratio_by_group": {
+     "small": 21.159388721196766,
+     "large": 6.749282738095771
+    },
+    "rulebook_win": false
+   },
+   "pablojorge": {
+    "comparable_programs": 16,
+    "bbc_over_competitor_geomean": {
+     "build": 2.230379944898456,
+     "run": 15.046538516666434,
+     "size": 0.8526672679876272,
+     "build RSS": 2.013484448825555,
+     "run RSS": 5.977971025957649
+    },
+    "run_ratio_by_group": {
+     "small": 20.249697423500105,
+     "large": 7.8284600503609685
+    },
+    "rulebook_win": false
+   },
+   "abfc": {
+    "comparable_programs": 17,
+    "bbc_over_competitor_geomean": {
+     "build": 7.190228138178742,
+     "run": 8.60071005609691,
+     "size": 0.818386193620294,
+     "build RSS": 12.102892613853301,
+     "run RSS": 28.538298904447238
+    },
+    "run_ratio_by_group": {
+     "small": 18.309587519199138,
+     "large": 1.4027752634144988
+    },
+    "rulebook_win": false
+   },
+   "Brainfly": {
+    "comparable_programs": 17,
+    "bbc_over_competitor_geomean": {
+     "build": 0.03489495613111378,
+     "run": 5.061833880058345,
+     "size": 0.010828037509526276,
+     "build RSS": 0.23625188742324862,
+     "run RSS": 2.2515206287005385
+    },
+    "run_ratio_by_group": {
+     "small": 9.408100174690096,
+     "large": 1.1435158301590367
+    },
+    "rulebook_win": false
+   }
+  }
+ },
+ "findings": [
+  "No competitor is beaten under the rulebook (docs/06): build time alone fails every pairing but Brainfly, and Brainfly's run time and the Wine floor fail that one.",
+  "Same platform (both under Wine): BBC O1's run time is 1.07x brainfry-win's over 17 programs; mandelbrot 1,635 vs 1,466 ms, factor 78.6 vs 68.5 ms, life 62.1 vs 42.9 ms; bottles and sierpinski are faster. Builds take 72x as long; executables are 2.8x larger.",
+  "Native Linux arms are not comparable on run time with Wine arms: BBC's 30 ms is mostly the Wine process floor. On mandelbrot, where compute dominates, Awib (gcc -O2) takes 449 ms.",
+  "Every arm built and ran every program correctly except pablojorge on nested_math (its tape is not zero-initialized, as recorded on 2026-10-22).",
+  "Not Windows-native and not on a device."
+ ]
+}

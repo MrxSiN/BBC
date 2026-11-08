@@ -72,13 +72,13 @@ Leave unrelated working-tree edits alone.
 - **Native compile.** `bbc.exe compile` is fully native and runs in one process: bind
   in-process, then the driver's edit, resolve and build. It commits its large
   views only when they're touched and checks each graph once per compile.
-  [`bbc.exe`](docs/25_NATIVE_COMPILE.md) is bootstrapped once with the unchanged
-  generic SDK. Runs under Wine or qemu are not device runs; new artifacts need real
-  Pixel and Windows execution.
+  [`bbc.exe`](docs/25_NATIVE_COMPILE.md) is built by XAX's own pinned compiler from
+  the rebuilt driver, not by the generic SDK. Runs under Wine or qemu are not device
+  runs; new artifacts need real Pixel and Windows execution.
 - **Biggest open costs:** generated-code speed on compute-heavy programs and build
   lowering ([benchmarks](docs/08_BENCHMARKS.md)).
 - **Still open:** Android off-main-thread worker for unbounded programs, Windows DLL
-  packaging, Android-hosted compiler, scan-loop folding and growable frontend/importer
+  packaging, Android-hosted compiler and growable frontend/importer
   buffers. Decisions take packed lengths, so Windows builds use XAX's register path
   (2026-10-31). M8 is not achieved.
 - **ARM64 note:** XAX OI-49 (large composite returns) is still open. The importer

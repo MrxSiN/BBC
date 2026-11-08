@@ -2,7 +2,7 @@
 
 > What works today, what doesn't yet, and where the proof lives.
 
-Updated **2026-11-05**.
+Updated **2026-11-07**.
 
 ---
 
@@ -10,13 +10,13 @@ Updated **2026-11-05**.
 
 | Area | State |
 |---|---|
-| **Compile** | `bbc.exe compile` turns Brainfuck into Windows x86-64 and Android ARM64 programs in one native process, no Python ([native compile](25_NATIVE_COMPILE.md)) |
+| **Compile** | `bbc.exe compile` turns Brainfuck into Windows x86-64 and Android ARM64 programs in one native process, no Python. Since 2026-11-07 `bbc.exe` holds XAX's current production driver and is built by XAX's own compiler ([native compile](25_NATIVE_COMPILE.md)) |
 | **Format** | One [BFX format](02_BFX_CONTRACT.md): magic `42 46 58 00`, id `02`, END byte, no count field. No fallback, no legacy decoder |
 | **Levels** | O0 keeps primitives; O1 runs [`fold.bf`](10_FOLD_OPTIMIZATION.md): offset instructions per straight segment, multiply and clear loops. O2/O3 don't exist yet |
-| **Correctness** | 83 programs × O0/O1 × 2 targets: 332 builds and 588 runs match an independent interpreter |
+| **Correctness** | 93 programs × O0/O1 × 2 targets: 372 of 372 builds and 488 runs match an independent interpreter under Wine and `qemu-aarch64` ([2026-11-08, after XAX ledger 0023](../evidence/production_driver_0023_2026-11-08.json)) |
 | **BFX `02`** | 26 programs × O0/O1 on Windows: 52 builds and runs match; Android builds only (no device attached) ([fold_v2.json](../evidence/fold_v2.json)) |
 | **Competitors** | All 18 [benchmark](08_BENCHMARKS.md) programs give correct output |
-| **Devices** | Earlier artifacts ran on a Pixel 8 Pro and Windows 11; new builds reproduce them byte for byte |
+| **Devices** | Earlier artifacts ran on a Pixel 8 Pro and Windows 11. The 2026-11-07 `bbc.exe` makes different bytes and has not run on a device yet (BLOCKED) |
 | **Self-hosting** | Three identical native own-source frontend generations on each target |
 | **Tape** | 2,147,246,080 cells, committed as touched. A 130,050-cell walk runs natively on Windows 11 and on a Pixel 8 Pro at O0 and O1; both edges still fail at the first crossing ([XAX dynamic tape](https://github.com/MrxSiN/XAX/blob/main/compiler/integration/bfx/DYNAMIC_TAPE.md)) |
 
@@ -28,8 +28,11 @@ Updated **2026-11-05**.
 
 - 🐢 **Heavy compute still trails.** With packed decision lengths (2026-10-31) the Windows
   backend keeps values in registers: Mandelbrot O1 takes 1.08 s (was 7.66 s) vs 0.33–0.93 s
-  for the competitors, and large builds got slower (mandelbrot 0.57 → 1.30 s). Scan loops
-  are not folded yet ([benchmarks](08_BENCHMARKS.md#-packed-decision-lengths-2026-10-31)).
+  for the competitors, and large builds got slower (mandelbrot 0.57 → 1.30 s). After XAX's
+  constant folding (2026-11-08) mandelbrot runs in 1.15 s under Wine, faster than brainfry's
+  Windows output (1.25 s) but not Awib (0.35 s native); factor and life still trail brainfry.
+  Scan loops already compile to tight loops, so no scan instruction is planned
+  ([benchmarks](08_BENCHMARKS.md#-bbc-against-eight-compilers-after-constant-folding-2026-11-08)).
 - 📦 **Executables** shrank 5–8× with packed lengths (small programs about 8.6 KB); brainfry's
   are still 3× smaller.
 - ⏱️ **Build time** is about 0.1 s for small programs under Wine; native competitors
@@ -42,12 +45,13 @@ Updated **2026-11-05**.
 - 🧩 **XAX OI-49** (large ARM64 composite returns) is open; the importer avoids it.
 - 🏁 **Milestones:** M4 incomplete, M8 not achieved. No performance lead is claimed.
 - 📏 **Fixed limits remain** on source (1 MiB), instructions (65,536), nesting (32,768),
-  input/output (64 KiB), the importer's record view and the native driver: its verifier
-  declines mandelbrot's O0 decision on Windows, its build declines hanoi at O0 and O1
-  ([2026-11-05 baseline](08_BENCHMARKS.md#-baseline-before-joint-bbcxax-optimization-2026-11-05)),
-  it declined factor O0 and mandelbrot on Android
-  (factor O0 not rechecked since packing), and its 40 MB file
-  capacity. The tape edge is XAX's x86-64 bound encoding ([XAX OI-52](https://github.com/MrxSiN/XAX/blob/main/XAX_OPEN_ISSUES.md)).
+  input/output (64 KiB), the importer's record view and the native driver: since
+  2026-11-07 mandelbrot O0 and hanoi O1 build on Windows and, since XAX ledger 0020, the
+  depth-512 active-loop program builds on Android ARM64, but hanoi O0 still declines (its
+  decision, about 620,000 values, exceeds XAX's 4 MiB graph-body view and the 262,144 values per function view;
+  [XAX OI-54](https://github.com/MrxSiN/XAX/blob/7f898cc/XAX_OPEN_ISSUES.md) lists what lifting it needs)
+  ([native compile](25_NATIVE_COMPILE.md#-checks)). Factor O0 and mandelbrot on Android
+  are not rechecked. The tape edge is XAX's x86-64 bound encoding ([XAX OI-52](https://github.com/MrxSiN/XAX/blob/main/XAX_OPEN_ISSUES.md)).
 - 📚 **`bfc_call_v1`** shared libraries aren't migrated to the wider tape.
 
 ---
@@ -61,6 +65,9 @@ were archived outside the repo on 2026-10-28 and remain in git history.
 
 | Report | What it shows |
 |---|---|
+| [competitor_benchmark_2026-11-08.json](../evidence/competitor_benchmark_2026-11-08.json) | **Current comparison.** BBC O0/O1 after XAX's constant folding (ledger 0022) vs the eight pinned competitors, 18 programs, raw samples (Windows arms under Wine): no competitor beaten; same platform, mandelbrot now faster than brainfry's Windows output (1,147 vs 1,250 ms), factor and life slower, builds 73× |
+| [competitor_benchmark_2026-11-07.json](../evidence/competitor_benchmark_2026-11-07.json) | Superseded by 2026-11-08. BBC O0/O1 vs the eight pinned competitors, 18 programs, raw samples (Windows arms under Wine): no competitor beaten; same platform, run time 1.07× brainfry's Windows output, builds 72× |
+| [old_new_benchmark_2026-11-07.json](../evidence/old_new_benchmark_2026-11-07.json) | Old `bbc.exe` (rebuilt from the previous `bbc.xax`) vs the natively built one, interleaved under Wine, 6 programs, raw samples: identical executables where both build; builds 1.0–1.8× slower; mandelbrot O0 and hanoi O1 now build |
 | [baseline_benchmark_2026-11-05.json](../evidence/baseline_benchmark_2026-11-05.json) | **Current baseline.** BBC O0/O1 vs brainfry, bf-x86 and Awib on one Linux host (Windows outputs under Wine), 8 programs, raw samples; hanoi and mandelbrot O0 decline in the native backend |
 | [packed_lengths_benchmark_2026-10-31.json](../evidence/packed_lengths_benchmark_2026-10-31.json) | Windows-native. Packed decision lengths: before/after vs brainfry and Awib, 18 programs, raw samples, 170 differential cases |
 | [final_benchmark_2026-10-29.json](../evidence/final_benchmark_2026-10-29.json) | Windows-native run vs brainfry, Awib, pablojorge and Brainfly: 18 programs, O0/O1, raw samples |
@@ -74,7 +81,12 @@ were archived outside the repo on 2026-10-28 and remain in git history.
 
 | Report | What it shows |
 |---|---|
-| [native_proof_cache.json](../evidence/native_proof_cache.json) | Each graph checked once per compile |
+| [production_driver_0023_2026-11-08.json](../evidence/production_driver_0023_2026-11-08.json) | **Current driver.** `bbc.exe` rebuilt after XAX ledger 0023 (value capacity as a word, behaviour unchanged): 372 of 372 builds, 488 runs, no mismatch (Wine, qemu) |
+| [importer_split_2026-11-08.json](../evidence/importer_split_2026-11-08.json) | Superseded by 0023 (same importer). XAX's importer branches before each ADD/MUL access: 372 builds, 488 runs (one transient Wine mismatch, identical artifact, reruns pass); mandelbrot 1,198 → 1,092 ms under Wine |
+| [production_driver_0022_2026-11-08.json](../evidence/production_driver_0022_2026-11-08.json) | Superseded by importer_split. bbc.exe rebuilt after XAX ledger 0022 (constant folding on x86-64): 372 of 372 compiles, 488 runs, no mismatch (Wine, qemu) |
+| [production_driver_0020_2026-11-07.json](../evidence/production_driver_0020_2026-11-07.json) | Superseded by 0022. `bbc.exe` rebuilt after XAX ledger 0020: 93 programs, 372 of 372 builds, 488 runs, error paths (Wine, `qemu-aarch64`) |
+| [production_driver_2026-11-07.json](../evidence/production_driver_2026-11-07.json) | Previous: `bbc.exe` from XAX's production driver, built by XAX's compiler: 93 programs, error paths, build and run samples (Wine, `qemu-aarch64`) |
+| [native_proof_cache.json](../evidence/native_proof_cache.json) | Each graph checked once per compile (previous `bbc.exe`) |
 | [native_lazy_views.json](../evidence/native_lazy_views.json) | Peak commit 3,398 → under 140 MiB |
 | [native_single_process.json](../evidence/native_single_process.json) | Driver inside `bbc.exe` |
 | [native_compile.json](../evidence/native_compile.json) | Python-free source-to-executable path |

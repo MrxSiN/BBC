@@ -56,20 +56,106 @@ current production `xax_compiler_driver_general.xax` plus only the Windows hosti
 
 ---
 
+## 📐 Rebuilt after XAX ledger 0023 (2026-11-08)
+
+XAX ledger 0023 made the number of values one function view may hold a run-time word instead of a constant in 18
+driver functions (still 262,144; the compiler behaves exactly as before). `bbc.xax` was rebuilt from the new production
+driver (root `1e253130…`) and `bbc.exe` from it (36,319,232 bytes).
+
+- **Checks** (Wine 9.0, `qemu-aarch64`): 93 programs × O0/O1 × 2 targets, 372 builds and 488 runs matching an
+  independent interpreter; the five error paths as before.
+- **Hanoi at O0** still declines: its decision has about 620,000 values, and raising the capacity also needs larger
+  XAX front-end regions, room for the tables and a new ARM64 liveness
+  ([XAX OI-54](https://github.com/MrxSiN/XAX/blob/7f898cc/XAX_OPEN_ISSUES.md)).
+
+📎 [production_driver_0023_2026-11-08.json](../evidence/production_driver_0023_2026-11-08.json) ·
+XAX side: [COMPILE.md](https://github.com/MrxSiN/XAX/blob/7f898cc/compiler/integration/bfx/COMPILE.md) ·
+[ADR-391](https://github.com/MrxSiN/XAX/blob/7f898cc/XAX_DECISIONS.md)
+
+---
+
+## 🪓 Importer branches before each offset access (2026-11-08)
+
+XAX's importer inside `bbc.exe` now writes each ADD and MUL as two blocks: the address and its bounds test with a
+branch to the off-tape status, then the access itself. The masked single block it replaces cost an x86-64 ADD 15
+instructions; it is 8 now. BFX and the frontend are unchanged; a failing instruction touches no cell before it
+reports off-tape (it touched cell 0, which is not observable after a failure either way).
+
+- **Checks** (Wine 9.0, `qemu-aarch64`): 93 programs × O0/O1 × 2 targets, 372 builds and 488 runs; one O0 Windows
+  run mismatched on an artifact byte-identical to one that passed before, and three reruns passed (a transient Wine
+  run).
+- **Speed** (Wine, median of 7): mandelbrot 1,198 → 1,092 ms, factor 63 → 60 ms, life 50 → 46 ms. The same
+  constant fold for ARM64 measured no gain under qemu and was not applied.
+
+📎 [importer_split_2026-11-08.json](../evidence/importer_split_2026-11-08.json) ·
+XAX side: [importer_split/README.md](https://github.com/MrxSiN/XAX/blob/d5433c6/compiler/integration/bfx/transactions/production_driver/native/importer_split/README.md) ·
+[ADR-389](https://github.com/MrxSiN/XAX/blob/d5433c6/XAX_DECISIONS.md)
+
+---
+
+## ⚙️ Rebuilt after XAX's constant folding (2026-11-08)
+
+XAX ledger 0022 changed its x86-64 register lowering: arithmetic on constants folds into constants, so the
+importer's offset and factor pool becomes immediates instead of spilled values, and a function now saves the
+callee-saved register of every constant it hoists. `bbc.xax` was rebuilt from the new production driver
+(17 min 36 s) and XAX's new seed built `bbc.exe` from it in 3 min 49 s (36,302,848 bytes).
+
+- **Checks** (Wine 9.0 and `qemu-aarch64` on one Linux host): the same 93 programs at O0 and O1 on both targets,
+  372 of 372 builds and 488 runs matching an independent interpreter; the five error paths exit 1, 4, 4, 3, 3 and
+  leave no files.
+- **Speed:** Windows executables only (the ARM64 backend is unchanged); see the
+  [2026-11-08 benchmark](08_BENCHMARKS.md#-bbc-against-eight-compilers-after-constant-folding-2026-11-08).
+- Hanoi at O0 still declines (XAX's graph limits).
+
+📎 [production_driver_0022_2026-11-08.json](../evidence/production_driver_0022_2026-11-08.json) ·
+XAX side: [COMPILE.md](https://github.com/MrxSiN/XAX/blob/fce1f35/compiler/integration/bfx/COMPILE.md#bbcs-driver-after-ledger-0022-constant-folding-on-x86-64--2026-11-08) ·
+[ADR-388](https://github.com/MrxSiN/XAX/blob/fce1f35/XAX_DECISIONS.md)
+
+---
+
+## 🏗️ Built by XAX's own compiler (2026-11-07)
+
+Current figures: [rebuilt after XAX's constant folding](#️-rebuilt-after-xaxs-constant-folding-2026-11-08).
+
+`bbc.exe`'s driver is XAX's current production driver plus only the Windows hosting layer.
+XAX rebuilds it with native transactions ([rebuild.sh](https://github.com/MrxSiN/XAX/blob/f57384a/compiler/integration/bfx/transactions/production_driver/native/rebuild.sh)),
+and XAX's pinned compiler seed builds `bbc.exe` from it in about 5 minutes (35,964,416 bytes, after XAX ledger 0020).
+The Python generic SDK no longer takes part.
+
+- BBC's layer (entry, commands, compile front, exception handler) is taken from the previous
+  `bbc.xax`, without its graph proof cache.
+- XAX ledger 0019 was needed: BBC's compile front inlined more helper calls than one
+  function view holds (2^18 values), so the inliner now stops at 2^17.
+- XAX ledger 0020 fixed deep nesting in XAX's ARM64 backend: parameter aliases no longer
+  rescan every edge per round, and the interval pool is sized from liveness.
+
+📎 [production_driver_0020_2026-11-07.json](../evidence/production_driver_0020_2026-11-07.json) (after ledger 0020),
+[production_driver_2026-11-07.json](../evidence/production_driver_2026-11-07.json) (after ledger 0019) ·
+XAX side, after ledger 0020: [COMPILE.md](https://github.com/MrxSiN/XAX/blob/754dd41/compiler/integration/bfx/COMPILE.md#bbcs-driver-after-ledger-0020-deep-nesting-on-android-arm64--2026-11-07) ·
+XAX side: [COMPILE.md](https://github.com/MrxSiN/XAX/blob/f57384a/compiler/integration/bfx/COMPILE.md#bbcs-driver-is-the-production-driver-built-natively--2026-11-07)
+
+---
+
 ## ✅ Checks
 
-- **83 programs** at O0 and O1 on both targets: 332 builds and 588 runs, all
-  matching an independent interpreter in output bytes and exit code.
-- The programs: pilot programs, BBC tests, both depth-512 programs, negative loops,
-  60 random programs and capacity cases.
-- Rebuilt artifacts are byte-identical to ones that earlier ran on Windows 11 and
-  a Pixel 8 Pro.
-- Driver commands through `bbc.exe` match the standalone driver on all 141
-  regression stores.
-- Error paths exit 1, 4, 4, 3, 3 and leave no files behind.
+On the `bbc.exe` rebuilt after XAX ledger 0020 (Wine 9.0 and `qemu-aarch64` on one Linux host):
 
-> ⚠️ New runs used Wine 9.0 and `qemu-aarch64` on Linux. That is not real
-> Windows or device execution; byte identity with earlier device runs is the link.
+- **93 programs** at O0 and O1 on both targets: 372 of 372 builds and 488 runs, all
+  matching an independent interpreter in output bytes and exit code.
+- The programs: pilot programs, BBC tests, both depth-512 programs, 16 negative loops,
+  60 random programs and capacity cases.
+- ✅ **Deep nesting on Android ARM64:** the depth-512 active-loop program builds (3.5 s at
+  O0, 6.9 s at O1) and runs correctly; it declined before ledger 0020. The depth-512 program's
+  Android build takes 0.5–0.7 s instead of 122 s.
+- Error paths exit 1, 4, 4, 3, 3 and leave no files behind.
+- mandelbrot at O0 and hanoi at O1, which used to decline, now build and match;
+  hanoi at O0 still declines.
+
+> ⚠️ Wine and `qemu-aarch64` are not real Windows or device execution, and these
+> artifacts have not run on Windows 11 or a Pixel yet: status BLOCKED for device runs.
+
+The previous `bbc.exe` (generic SDK, 2026-10-21) passed 83 programs, 332 builds and 588
+runs ([native_single_process.json](../evidence/native_single_process.json)).
 
 ---
 
