@@ -56,6 +56,25 @@ current production `xax_compiler_driver_general.xax` plus only the Windows hosti
 
 ---
 
+## 🪓 Importer branches before each offset access (2026-11-08)
+
+XAX's importer inside `bbc.exe` now writes each ADD and MUL as two blocks: the address and its bounds test with a
+branch to the off-tape status, then the access itself. The masked single block it replaces cost an x86-64 ADD 15
+instructions; it is 8 now. BFX and the frontend are unchanged; a failing instruction touches no cell before it
+reports off-tape (it touched cell 0, which is not observable after a failure either way).
+
+- **Checks** (Wine 9.0, `qemu-aarch64`): 93 programs × O0/O1 × 2 targets, 372 builds and 488 runs; one O0 Windows
+  run mismatched on an artifact byte-identical to one that passed before, and three reruns passed (a transient Wine
+  run).
+- **Speed** (Wine, median of 7): mandelbrot 1,198 → 1,092 ms, factor 63 → 60 ms, life 50 → 46 ms. The same
+  constant fold for ARM64 measured no gain under qemu and was not applied.
+
+📎 [importer_split_2026-11-08.json](../evidence/importer_split_2026-11-08.json) ·
+XAX side: [importer_split/README.md](https://github.com/MrxSiN/XAX/blob/d5433c6/compiler/integration/bfx/transactions/production_driver/native/importer_split/README.md) ·
+[ADR-389](https://github.com/MrxSiN/XAX/blob/d5433c6/XAX_DECISIONS.md)
+
+---
+
 ## ⚙️ Rebuilt after XAX's constant folding (2026-11-08)
 
 XAX ledger 0022 changed its x86-64 register lowering: arithmetic on constants folds into constants, so the

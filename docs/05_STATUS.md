@@ -80,7 +80,8 @@ were archived outside the repo on 2026-10-28 and remain in git history.
 
 | Report | What it shows |
 |---|---|
-| [production_driver_0022_2026-11-08.json](../evidence/production_driver_0022_2026-11-08.json) | **Current driver.** bbc.exe rebuilt after XAX ledger 0022 (constant folding on x86-64): 372 of 372 compiles, 488 runs, no mismatch (Wine, qemu) |
+| [importer_split_2026-11-08.json](../evidence/importer_split_2026-11-08.json) | **Current driver.** XAX's importer branches before each ADD/MUL access: 372 builds, 488 runs (one transient Wine mismatch, identical artifact, reruns pass); mandelbrot 1,198 → 1,092 ms under Wine |
+| [production_driver_0022_2026-11-08.json](../evidence/production_driver_0022_2026-11-08.json) | Superseded by importer_split. bbc.exe rebuilt after XAX ledger 0022 (constant folding on x86-64): 372 of 372 compiles, 488 runs, no mismatch (Wine, qemu) |
 | [production_driver_0020_2026-11-07.json](../evidence/production_driver_0020_2026-11-07.json) | Superseded by 0022. `bbc.exe` rebuilt after XAX ledger 0020: 93 programs, 372 of 372 builds, 488 runs, error paths (Wine, `qemu-aarch64`) |
 | [production_driver_2026-11-07.json](../evidence/production_driver_2026-11-07.json) | Previous: `bbc.exe` from XAX's production driver, built by XAX's compiler: 93 programs, error paths, build and run samples (Wine, `qemu-aarch64`) |
 | [native_proof_cache.json](../evidence/native_proof_cache.json) | Each graph checked once per compile (previous `bbc.exe`) |
