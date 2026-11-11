@@ -56,6 +56,25 @@ current production `xax_compiler_driver_general.xax` plus only the Windows hosti
 
 ---
 
+## 📱 Rebuilt after XAX ledger 0025 (2026-11-11)
+
+XAX ledger 0025 keeps the copies of a branch that leaves a loop out of the loop in the ARM64 backend. `bbc.xax` was
+rebuilt from the new production driver (31 min 49 s, root `eabd31c1…`) and XAX's self-built compiler built `bbc.exe`
+from it (4 min 55 s, 36,319,744 bytes).
+
+- **Checks on hardware:** 18 programs × O0/O1 for Android ARM64, built on Windows 11 and run on a Pixel 8 Pro:
+  70 of 72 builds, 70 matching runs. The Wine and `qemu-aarch64` campaign was not rerun, and Windows outputs were
+  not rechecked.
+- **Speed:** mandelbrot 0.93×, factor 0.91× the cycles of the previous build
+  ([benchmarks](08_BENCHMARKS.md#-android-arm64-on-a-pixel-8-pro-2026-11-11)).
+- **`bbc.exe` crashes at start on real Windows 11** unless its header commits the stack
+  ([XAX OI-56](https://github.com/MrxSiN/XAX/blob/main/XAX_OPEN_ISSUES.md)).
+
+📎 [android_device_benchmark_2026-11-11.json](../evidence/android_device_benchmark_2026-11-11.json) ·
+XAX side: [ADR-394](https://github.com/MrxSiN/XAX/blob/main/XAX_DECISIONS.md)
+
+---
+
 ## 📐 Rebuilt after XAX ledger 0023 (2026-11-08)
 
 XAX ledger 0023 made the number of values one function view may hold a run-time word instead of a constant in 18

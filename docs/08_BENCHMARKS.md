@@ -3,11 +3,45 @@
 > BBC against other Brainfuck compilers: build time, run time, file size and memory.
 
 Newest run first; each dated section is a snapshot of its own build. Lower is better everywhere.
-The newest section is [BBC against eight compilers after constant folding](#-bbc-against-eight-compilers-after-constant-folding-2026-11-08);
+The newest section is [Android ARM64 on a Pixel 8 Pro](#-android-arm64-on-a-pixel-8-pro-2026-11-11); the newest Windows comparison is
+[BBC against eight compilers after constant folding](#-bbc-against-eight-compilers-after-constant-folding-2026-11-08);
 [BBC against eight compilers again](#-bbc-against-eight-compilers-again-2026-11-07) is the run before it.
 The current Windows-native numbers are the [packed decision lengths](#-packed-decision-lengths-2026-10-31) run;
 the [2026-11-05 baseline](#-baseline-before-joint-bbcxax-optimization-2026-11-05) is the reference
 for the next optimization work. Older sections keep the figures and causes of their time.
+
+---
+
+## 📱 Android ARM64 on a Pixel 8 Pro (2026-11-11)
+
+The first device runs of programs built by the natively built `bbc.exe`, before and after
+[XAX ledger 0025](https://github.com/MrxSiN/XAX/blob/main/compiler/bootstrap/evolution/native/0025/README.md): XAX's
+ARM64 backend no longer repeats, on every loop pass, a stack store that only the off-tape exit needs. `bbc.exe`
+builds on the Windows host; the programs run on the phone pinned to its Cortex-X3 core. brainfry (`e55d457`,
+`--target linux-aarch64`) is the outside arm. BFX, the frontend and the importer are unchanged.
+
+📎 [android_device_benchmark_2026-11-11.json](../evidence/android_device_benchmark_2026-11-11.json)
+
+| Program (O1) | Arm | Instructions (M) | Cycles (M) | Run ms | File |
+|---|---|---:|---:|---:|---:|
+| mandelbrot | BBC before | 11,992 | 2,863 | 1,171 | 67,944 |
+| | **BBC after** | 10,568 | 2,656 | 1,119 | 74,572 |
+| | brainfry | 10,115 | 3,027 | 1,229 | 56,320 |
+| factor | BBC before | 587.2 | 152.8 | 220 | 21,816 |
+| | **BBC after** | 525.3 | 139.3 | 209 | 23,608 |
+| | brainfry | 525.5 | 164.1 | 215 | 19,008 |
+| life | BBC before | 90.2 | 26.8 | 127 | 19,236 |
+| | **BBC after** | 82.0 | 26.1 | 127 | 20,724 |
+| | brainfry | 62.7 | 24.1 | 120 | 15,152 |
+
+- **Counts** are user-mode `simpleperf stat` (median of three; instruction counts repeat exactly). Run ms is the
+  median of 15 interleaved rounds and includes about 45 ms of process start.
+- **Result:** mandelbrot runs in 0.93× and factor in 0.91× the cycles of the build before; against brainfry on the
+  same core, 0.88× and 0.85×. Life still trails brainfry (1.09×). Files are 8–12% larger.
+- **Correctness:** 18 programs at O0 and O1, 70 of 72 builds with each compiler (mandelbrot O0 declines in both),
+  and every run on the phone matches the expected output with exit 0.
+- **Limits:** one phone, one session, on battery; `bbc.exe` ran from a copy with a patched stack commit
+  ([status](05_STATUS.md#-not-yet)); no milestone or lead is claimed from one device run.
 
 ---
 

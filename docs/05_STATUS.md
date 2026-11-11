@@ -2,7 +2,7 @@
 
 > What works today, what doesn't yet, and where the proof lives.
 
-Updated **2026-11-07**.
+Updated **2026-11-11**.
 
 ---
 
@@ -16,7 +16,7 @@ Updated **2026-11-07**.
 | **Correctness** | 93 programs × O0/O1 × 2 targets: 372 of 372 builds and 488 runs match an independent interpreter under Wine and `qemu-aarch64` ([2026-11-08, after XAX ledger 0023](../evidence/production_driver_0023_2026-11-08.json)) |
 | **BFX `02`** | 26 programs × O0/O1 on Windows: 52 builds and runs match; Android builds only (no device attached) ([fold_v2.json](../evidence/fold_v2.json)) |
 | **Competitors** | All 18 [benchmark](08_BENCHMARKS.md) programs give correct output |
-| **Devices** | Earlier artifacts ran on a Pixel 8 Pro and Windows 11. The 2026-11-07 `bbc.exe` makes different bytes and has not run on a device yet (BLOCKED) |
+| **Devices** | Android: 18 programs × O0/O1 built by the current `bbc.exe` run correctly on a Pixel 8 Pro (70 of 72 builds; mandelbrot O0 declines), and mandelbrot and factor now beat brainfry there ([2026-11-11](../evidence/android_device_benchmark_2026-11-11.json)). Windows 11: `bbc.exe` itself crashes at start ([XAX OI-56](https://github.com/MrxSiN/XAX/blob/main/XAX_OPEN_ISSUES.md)); see below |
 | **Self-hosting** | Three identical native own-source frontend generations on each target |
 | **Tape** | 2,147,246,080 cells, committed as touched. A 130,050-cell walk runs natively on Windows 11 and on a Pixel 8 Pro at O0 and O1; both edges still fail at the first crossing ([XAX dynamic tape](https://github.com/MrxSiN/XAX/blob/main/compiler/integration/bfx/DYNAMIC_TAPE.md)) |
 
@@ -25,6 +25,11 @@ Updated **2026-11-07**.
 ---
 
 ## 🚧 Not yet
+
+- 💥 **`bbc.exe` does not start on real Windows 11.** The natively built compiler takes a 78 KB stack frame
+  without a stack probe and faults (`0xC0000005`); Wine commits the whole stack, so every Wine check passes.
+  A copy with its header's stack commit raised works and made the 2026-11-11 device builds. The fix belongs in
+  XAX's Windows code generation ([XAX OI-56](https://github.com/MrxSiN/XAX/blob/main/XAX_OPEN_ISSUES.md)).
 
 - 🐢 **Heavy compute still trails.** With packed decision lengths (2026-10-31) the Windows
   backend keeps values in registers: Mandelbrot O1 takes 1.08 s (was 7.66 s) vs 0.33–0.93 s
@@ -65,6 +70,7 @@ were archived outside the repo on 2026-10-28 and remain in git history.
 
 | Report | What it shows |
 |---|---|
+| [android_device_benchmark_2026-11-11.json](../evidence/android_device_benchmark_2026-11-11.json) | **Pixel 8 Pro.** Android ARM64 output before and after XAX ledger 0025 vs brainfry: instructions, cycles, raw wall samples; 18 programs × O0/O1 checked on the device |
 | [competitor_benchmark_2026-11-08.json](../evidence/competitor_benchmark_2026-11-08.json) | **Current comparison.** BBC O0/O1 after XAX's constant folding (ledger 0022) vs the eight pinned competitors, 18 programs, raw samples (Windows arms under Wine): no competitor beaten; same platform, mandelbrot now faster than brainfry's Windows output (1,147 vs 1,250 ms), factor and life slower, builds 73× |
 | [competitor_benchmark_2026-11-07.json](../evidence/competitor_benchmark_2026-11-07.json) | Superseded by 2026-11-08. BBC O0/O1 vs the eight pinned competitors, 18 programs, raw samples (Windows arms under Wine): no competitor beaten; same platform, run time 1.07× brainfry's Windows output, builds 72× |
 | [old_new_benchmark_2026-11-07.json](../evidence/old_new_benchmark_2026-11-07.json) | Old `bbc.exe` (rebuilt from the previous `bbc.xax`) vs the natively built one, interleaved under Wine, 6 programs, raw samples: identical executables where both build; builds 1.0–1.8× slower; mandelbrot O0 and hanoi O1 now build |
