@@ -52,7 +52,7 @@ Everything runs inside one `bbc.exe` process:
 step verifies its own inputs; the edit record is never trusted. That driver is always XAX's
 current production `xax_compiler_driver_general.xax` plus only the Windows hosting layer
 (process entry, file I/O, lazily committed views). When the production driver changes,
-`bbc.exe` is rebuilt from it and BBC's checks rerun ([rules](../AGENT.md#-contracts)).
+`bbc.exe` is rebuilt from it and BBC's checks rerun ([rules](../AGENTS.md#-contracts)).
 
 ---
 
