@@ -125,4 +125,4 @@ Details: [status and evidence](docs/05_STATUS.md)
 - [Benchmarks](docs/08_BENCHMARKS.md) · [Performance plan](docs/06_PERFORMANCE_PLAN.md) · [Brainfry analysis](docs/09_BRAINFRY_ANALYSIS.md)
 
 **Contributing**
-- [Rules for maintainers](AGENT.md) · [Status](docs/05_STATUS.md)
+- [Rules for maintainers](AGENTS.md) · [Status](docs/05_STATUS.md)

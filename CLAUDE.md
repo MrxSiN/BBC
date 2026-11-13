@@ -1,4 +1,4 @@
-@AGENT.md
+@AGENTS.md
 
 ## Commits and pull requests
 
