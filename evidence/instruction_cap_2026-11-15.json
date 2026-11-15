@@ -1,0 +1,33 @@
+{
+ "format": "bbc-instruction-cap-evidence-v1",
+ "date": "2026-11-15",
+ "state": "EXECUTED on Windows 11 Pro 10.0.26300 (native, no emulator); no device run",
+ "issue": "https://github.com/MrxSiN/BBC/issues/4",
+ "upstream": "https://github.com/MrxSiN/XAX/issues/55",
+ "bbc_commit": "856b2d6672066a5b478e96ecc6da7a046a23ae2c",
+ "bbc_exe": {
+  "sha256": "de9a2c5f65312a493f615f5c06f90761a5d3bf1971f460fe37113c8a6a71e405",
+  "note": "the packed-lengths bbc.exe of 2026-10-31, the one available on this Windows host; older than the current ledger 0023/0025 driver, whose ledgers do not change compile_bfx's command budget"
+ },
+ "programs": {
+  "source": "https://github.com/MrxSiN/ThreadsHideAds/tree/cf28f66a259d2825b033094200543f2ce184a353/brainfuck/src",
+  "files": [
+   {"name": "core.bf", "bytes": 263995, "commands": 155368, "sha256": "892adff6dfe85c34de44a3131d19cb8828796566b2948d1c757f15703c7fa20d", "check_exit": 2},
+   {"name": "detect.bf", "bytes": 422927, "commands": 231216, "sha256": "92403b9f717bcdca11ae86d1158929c1924d6e54eaf2ae6f81667f422bf5cfca", "check_exit": 2},
+   {"name": "nested.bf", "bytes": 552729, "commands": 296307, "sha256": "4be26e0ddb2f25bbc31cac846d3702f313ab59ca69fc9867d56f6fc8d2387f1c", "check_exit": 2},
+   {"name": "pando.bf", "bytes": 200108, "commands": 113160, "sha256": "533bfcb8b016c8dc85ea92b90fc528056834db1c9010a8ed1fd2bec130d18256", "check_exit": 2},
+   {"name": "sanitize.bf", "bytes": 121654, "commands": 69343, "sha256": "98e44b7dca65b5fb8d7ba026c9cf8d09372d5ec328a1ef39b6caf4b9924f8d30", "check_exit": 2},
+   {"name": "text.bf", "bytes": 307211, "commands": 225546, "sha256": "dd79d12acc5103881377a7339a3fef6a9c319485b4fe7b045c4742d7134058a7", "check_exit": 2}
+  ],
+  "stderr": "BBC: resource limit exceeded"
+ },
+ "edge": [
+  {"source": "65,536 '+' bytes", "command": "bbc.exe check", "exit": 0},
+  {"source": "65,536 '+' bytes", "command": "bbc.exe emit-bfx -O1", "exit": 0, "bfx_bytes": 7},
+  {"source": "65,537 '+' bytes", "command": "bbc.exe check", "exit": 2},
+  {"source": "65,537 '+' bytes", "command": "bbc.exe emit-bfx -O1", "exit": 2, "bfx_bytes": 0}
+ ],
+ "commands": "cmd /d /c \"bbc.exe check < program.bf\"; commands counted as the bytes ><+-.,[] in each source",
+ "finding": "The cap is compile_bfx's pre-optimization capacity check in XAX compiler/integration/bfx/compile.xax, and the 65,546-byte record view it shares with the decoder, importer and packing coordinator. stream_chunks.bf and fold.bf have no total-count limit. Raising it is an XAX change: BLOCKED upstream on XAX#55, and native builds of decisions this large also meet XAX OI-54.",
+ "regression_check": "BLOCKED: no bbc.exe accepts more than 65,536 commands, so no O0/O1 run of the six programs could be made"
+}

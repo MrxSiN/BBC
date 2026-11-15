@@ -48,6 +48,24 @@ Windows, and the mandelbrot O0 decline is in the native verifier itself, before 
 
 ---
 
+## 🎚️ Raising the instruction budget
+
+BBC#4 asks for at least 300,000 commands before folding, for the six ThreadsHideAds
+policy programs (69,343 to 296,307 commands, all under 1 MiB). Measured 2026-11-15 on
+Windows: 65,536 `+` pass and 65,537 exit 2, even at O1, where they would fold to 7 bytes
+([evidence](../evidence/instruction_cap_2026-11-15.json)).
+
+- `stream_chunks.bf` counts per chunk and `fold.bf` sees the whole body; neither has a
+  total-count limit, so BBC's Brainfuck needs no change.
+- The budget is `compile_bfx`'s capacity check and the 65,546-byte record view it shares
+  with the decoder and importer ([XAX integration](03_XAX_INTEGRATION.md)). Both are XAX
+  code: blocked upstream on [XAX#55](https://github.com/MrxSiN/XAX/issues/55).
+- Native builds of decisions that large also meet XAX OI-54 (2^18 values per function view).
+- When XAX raises it, the overflow fixtures in [tests/compile](../tests/compile/README.md)
+  move to the new edge, and the six programs become the O0/O1 regression set.
+
+---
+
 ## 🌱 Growing at runtime
 
 Possible, but not built. It needs, at every layer, not just one constant:
