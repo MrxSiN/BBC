@@ -62,7 +62,7 @@ Leave unrelated working-tree edits alone.
 - **Required targets:** Android ARM64 and Windows x86-64. Linux is optional;
   cross-compiling alone is not target execution.
 - **Limits:** the bounded seed takes 65,533 bytes, 3,840 instructions and depth 255.
-  The public entry takes 1 MiB, 65,536 instructions before folding and depth 32,768.
+  The public entry takes 1 MiB, 1,048,576 instructions before folding and depth 32,768.
   These are fixed budgets, not growth. The program tape is 2,147,246,080 cells (2 GiB − 232 KiB),
   committed only as touched; input and output stay 65,536 bytes. The tape edge is
   XAX's x86-64 bound encoding ([XAX OI-52](https://github.com/MrxSiN/XAX/blob/main/XAX_OPEN_ISSUES.md)).

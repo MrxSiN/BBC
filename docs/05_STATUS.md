@@ -49,11 +49,11 @@ Updated **2026-11-11**.
 - 🐧 **Linux** is optional and not a target. Cross-compiling doesn't count.
 - 🧩 **XAX OI-49** (large ARM64 composite returns) is open; the importer avoids it.
 - 🏁 **Milestones:** M4 incomplete, M8 not achieved. No performance lead is claimed.
-- 📏 **Instruction budget** (65,536 before folding) rejects the ThreadsHideAds policies
-  (up to 296,307 commands, [BBC#4](https://github.com/MrxSiN/BBC/issues/4)). The check and the
-  record view sized for it are XAX's `compile_bfx`, so raising it is blocked upstream on
-  [XAX#55](https://github.com/MrxSiN/XAX/issues/55) ([scalability](16_SCALABILITY.md)).
-- 📏 **Fixed limits remain** on source (1 MiB), instructions (65,536), nesting (32,768),
+- 📏 **Instruction budget** is 1,048,576 before folding, the source limit, since XAX release 0037
+  ([XAX#55](https://github.com/MrxSiN/XAX/issues/55)): `check` and `emit-bfx` take the ThreadsHideAds
+  policies (up to 296,307 commands, [BBC#4](https://github.com/MrxSiN/BBC/issues/4)). Native O0
+  builds of decisions that large still meet XAX OI-54 ([scalability](16_SCALABILITY.md)).
+- 📏 **Fixed limits remain** on source (1 MiB), instructions (1,048,576), nesting (32,768),
   input/output (64 KiB), the importer's record view and the native driver: since
   2026-11-07 mandelbrot O0 and hanoi O1 build on Windows and, since XAX ledger 0020, the
   depth-512 active-loop program builds on Android ARM64, but hanoi O0 still declines (its
@@ -113,6 +113,7 @@ were archived outside the repo on 2026-10-28 and remain in git history.
 |---|---|
 | [canonical_bfx.json](../evidence/canonical_bfx.json) | Current BFX: decoder, importer, frontend, Mandelbrot |
 | [stream_runs.json](../evidence/stream_runs.json) | Retired streaming run packer (BFX `01`) |
+| [instruction_cap_2026-11-19.json](../evidence/instruction_cap_2026-11-19.json) | Windows-native, `bbc.exe` from XAX release 0037. The capacity fixtures at the new edge: 1,048,577 commands exit 2 even after an earlier bracket error; 1,048,576 commands with an unmatched bracket exit 1; at `check`, O0 and O1 |
 | [instruction_cap_2026-11-15.json](../evidence/instruction_cap_2026-11-15.json) | Windows-native. The six ThreadsHideAds programs (69,343–296,307 commands) exit 2; the edge is exactly 65,536; blocked on [XAX#55](https://github.com/MrxSiN/XAX/issues/55) |
 
 ### 🗃️ Migration and cleanup

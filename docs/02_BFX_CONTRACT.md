@@ -93,11 +93,11 @@ offset access; it never trusts a producer's claim that an access is in range.
 
 The format has no size field. The remaining limits are buffers, not the wire
 format, and are listed in [scalability](16_SCALABILITY.md): today the importer's
-record view still accepts 65,536 body bytes and the public entry 1 MiB of source.
+record view accepts 1,048,576 body bytes and the public entry 1 MiB of source.
 
 | Component | Raw source | Instructions | Nesting |
 |---|---:|---:|---:|
-| Public entry (`stream_chunks.bf` + `fold.bf` + XAX) | 1,048,576 bytes | 65,536 before folding | 32,768 |
+| Public entry (`stream_chunks.bf` + `fold.bf` + XAX) | 1,048,576 bytes | 1,048,576 before folding | 32,768 |
 | Private bounded seed (`compiler.bf`) | 65,533 bytes | 3,840 | 255 |
 
 Both emit BFX `02`. The compiled program's tape is 2,147,246,080 bytes, committed as
