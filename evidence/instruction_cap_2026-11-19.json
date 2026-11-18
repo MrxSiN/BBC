@@ -1,0 +1,22 @@
+{
+ "format": "bbc-instruction-cap-evidence-v1",
+ "date": "2026-11-19",
+ "state": "EXECUTED on Windows 11 Pro 10.0.26300 (native, no emulator); no device run",
+ "issue": "https://github.com/MrxSiN/BBC/issues/4",
+ "upstream": "https://github.com/MrxSiN/XAX/issues/55",
+ "xax_commit": "bfddb32",
+ "bbc_exe": {
+  "sha256": "4b73ad612bcf6243a5795c1d1680bb2cc432019f066194a0edc3c4000cc410d8",
+  "bytes": 36109312,
+  "note": "built by XAX release 0037's Windows seed 06ece4cf... from integration/bfx/bbc_request.xax; budget 1,048,576 commands before folding"
+ },
+ "fixtures": "tests/compile/*.request: the source of each case, given on stdin",
+ "runs": [
+  {"case": "overflow-after-close", "source": "] then 1,048,576 +", "commands": 1048577, "check": 2, "emit_bfx_O0": 2, "emit_bfx_O1": 2},
+  {"case": "overflow-before-open", "source": "1,048,576 + then [", "commands": 1048577, "check": 2, "emit_bfx_O0": 2, "emit_bfx_O1": 2},
+  {"case": "bracket-at-capacity", "source": "] then 1,048,575 +", "commands": 1048576, "check": 1, "emit_bfx_O0": 1, "emit_bfx_O1": 1},
+  {"case": "unclosed-at-capacity", "source": "1,048,575 + then [", "commands": 1048576, "check": 1, "emit_bfx_O0": 1, "emit_bfx_O1": 1}
+ ],
+ "meaning": "exit 2 is compile_bfx status 3 (too big), exit 1 is status 2 (brackets): too big beats an earlier bracket error, and capacity is fine at exactly 1,048,576",
+ "not_run": "the six ThreadsHideAds programs (no checkout on this host; XAX COMPILE.md 2026-11-18 records them passing check with the same budget); native bbc compile of them meets XAX OI-54"
+}

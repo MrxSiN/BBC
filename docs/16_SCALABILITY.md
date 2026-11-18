@@ -9,7 +9,7 @@ count field, so the wire format itself no longer caps a program; the limits belo
 | Resource | Public streaming entry | Private bounded seed |
 |---|---:|---:|
 | Raw source | 1,048,576 bytes | 65,533 bytes |
-| Instructions before optimization | 65,536 | 3,840 |
+| Instructions before optimization | 1,048,576 | 3,840 |
 | Balanced nesting | 32,768 | 255 |
 
 - **Bounded seed.** 16 tape cells per instruction, a one-byte depth, a u16
@@ -25,7 +25,7 @@ count field, so the wire format itself no longer caps a program; the limits belo
 
 ## 🧱 The native backend is the real ceiling today
 
-The frontend accepts 65,536 instructions, but the native XAX driver inside `bbc.exe`
+The frontend accepts 1,048,576 instructions, but the native XAX driver inside `bbc.exe`
 declines (exit 5) much smaller decisions. Measured 2026-10-29 with the BFX `02` `bbc.exe`
 on Windows, O0, by bisection on repeated patterns:
 
@@ -59,10 +59,14 @@ Windows: 65,536 `+` pass and 65,537 exit 2, even at O1, where they would fold to
   total-count limit, so BBC's Brainfuck needs no change.
 - The budget is `compile_bfx`'s capacity check and the 65,546-byte record view it shares
   with the decoder and importer ([XAX integration](03_XAX_INTEGRATION.md)). Both are XAX
-  code: blocked upstream on [XAX#55](https://github.com/MrxSiN/XAX/issues/55).
+  code: raised in XAX release 0037 ([XAX#55](https://github.com/MrxSiN/XAX/issues/55)).
 - Native builds of decisions that large also meet XAX OI-54 (2^18 values per function view).
-- When XAX raises it, the overflow fixtures in [tests/compile](../tests/compile/README.md)
-  move to the new edge, and the six programs become the O0/O1 regression set.
+
+**Raised (2026-11-19).** XAX release 0037 makes the budget 1,048,576, the 1 MiB source limit, so every
+source that fits the frame fits the budget. The overflow fixtures in [tests/compile](../tests/compile/README.md)
+moved to the new edge: 1,048,577 commands give status 3 even when a bracket error comes first, and
+1,048,576 commands with an unmatched bracket give status 2
+([evidence](../evidence/instruction_cap_2026-11-19.json)).
 
 ---
 

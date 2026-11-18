@@ -14,7 +14,8 @@ length 0; never publish their buffers.
 | Two exact-capacity cases | 2 (brackets) | Capacity is fine, brackets aren't |
 | Empty and binary cases | Exact valid BFX | Framing |
 
-The first two rows lock in the coordinator's cross-chunk error precedence.
+The first two rows lock in the coordinator's cross-chunk error precedence. The capacity cases sit at the
+1,048,576-command budget: 1,048,577 commands overflow, 1,048,576 fit (XAX release 0037).
 
 ---
 

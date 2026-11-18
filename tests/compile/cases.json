@@ -19,26 +19,26 @@
     },
     {
       "name": "overflow-after-close",
-      "frame_bytes": 65542,
-      "frame_sha256": "b10bd8c34057d99a43a0dba773bc020920903bf97f97bc7b93a6a3bba9474d34",
+      "frame_bytes": 1048582,
+      "frame_sha256": "5d15012b7dfaad2a420f31ab68d9b7f5ef52932bd56cc797760efef2b9f030f2",
       "status": 3
     },
     {
       "name": "overflow-before-open",
-      "frame_bytes": 65542,
-      "frame_sha256": "d3eb76266f2e9c87caedca9d422176d18cc076d48775d568112855809da8d0fa",
+      "frame_bytes": 1048582,
+      "frame_sha256": "584bf2fa7d444e00ef6e7022b52abdcf4b0e3c2e51af0d48fffcb26947f38393",
       "status": 3
     },
     {
       "name": "bracket-at-capacity",
-      "frame_bytes": 65541,
-      "frame_sha256": "e42937952b135ad485127bc0b910287d353c11b8abcccf78055f21d6eb37ca78",
+      "frame_bytes": 1048581,
+      "frame_sha256": "7a571233ada65bd19627f1b9c098a9369d0621da7c99928da91b59e39e7fa272",
       "status": 2
     },
     {
       "name": "unclosed-at-capacity",
-      "frame_bytes": 65541,
-      "frame_sha256": "e9c247d90b6beb51abf4623b4117b86c9ee7403fe527e36a1d06a8dc07ea4ab9",
+      "frame_bytes": 1048581,
+      "frame_sha256": "4ff07a141941ecf7527fa0b4f82625b20db85e7bb06dce5d52d0b716552ebe3a",
       "status": 2
     },
     {

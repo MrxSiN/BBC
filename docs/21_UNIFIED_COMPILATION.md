@@ -43,7 +43,7 @@ output/work 1,114,112 · tape/work 1,114,112 bytes.
   write the level (u32).
 - At offset 65,531, place `length:u32 | source | 01`. The actual frame length
   must equal the declared source length plus 5.
-- Accepts 0 to 1,048,576 source bytes, up to 65,536 commands and nesting up to 32,768 (see [scalability](16_SCALABILITY.md)).
+- Accepts 0 to 1,048,576 source bytes, up to 1,048,576 commands and nesting up to 32,768 (see [scalability](16_SCALABILITY.md)).
 
 Returns `(record_length << 32) | status`:
 

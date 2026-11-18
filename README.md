@@ -38,7 +38,7 @@ build\bbc.exe info < hello.bfx
 | | |
 |---|---|
 | Source size | 1 MiB |
-| Instructions (before folding) | 65,536 |
+| Instructions (before folding) | 1,048,576 |
 | Nesting depth | 32,768 |
 | Tape | 2,147,246,080 wrapping byte cells (2 GiB − 232 KiB), memory used only as touched |
 | Input, output | 65,536 bytes each |

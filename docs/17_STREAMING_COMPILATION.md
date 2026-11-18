@@ -16,7 +16,7 @@ everything else. No size tag, no second format.
 
 ## 🧭 Rules
 
-- 📐 Budgets: 1 MiB source, 32 KiB chunks, 65,536 instructions before folding,
+- 📐 Budgets: 1 MiB source, 32 KiB chunks, 1,048,576 instructions before folding,
   balanced nesting up to 32,768 ([scalability](16_SCALABILITY.md)).
 - ⏳ Tokens stay provisional until the whole source is valid. The BFX header and END
   are written only after that.
