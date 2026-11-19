@@ -57,7 +57,7 @@ Windows: 65,536 `+` pass and 65,537 exit 2, even at O1, where they would fold to
 
 - `stream_chunks.bf` counts per chunk and `fold.bf` sees the whole body; neither has a
   total-count limit, so BBC's Brainfuck needs no change.
-- The budget is `compile_bfx`'s capacity check and the 65,546-byte record view it shares
+- The budget is `compile_bfx`'s capacity check and the record view it shares
   with the decoder and importer ([XAX integration](03_XAX_INTEGRATION.md)). Both are XAX
   code: raised in XAX release 0037 ([XAX#55](https://github.com/MrxSiN/XAX/issues/55)).
 - Native builds of decisions that large also meet XAX OI-54 (2^18 values per function view).
@@ -67,6 +67,10 @@ source that fits the frame fits the budget. The overflow fixtures in [tests/comp
 moved to the new edge: 1,048,577 commands give status 3 even when a bracket error comes first, and
 1,048,576 commands with an unmatched bracket give status 2
 ([evidence](../evidence/instruction_cap_2026-11-19.json)).
+
+The six ThreadsHideAds programs now pass `check` and `emit-bfx` at O0 and O1. Their counts and record
+hashes are the [regression set](../tests/compile/threadshideads.json)
+([evidence](../evidence/xax_pin_0037_2026-11-19.json)).
 
 ---
 

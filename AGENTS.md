@@ -45,6 +45,8 @@ Leave unrelated working-tree edits alone.
   only the Windows hosting layer: process entry, file I/O and lazily committed views. Never patch a
   separate driver copy. Whenever XAX's production driver changes (a new evolution ledger transaction or
   seed rotation), rebuild BBC's driver from it, rebuild `bbc.exe`, and rerun BBC's checks before using it.
+  [`XAX_PIN.json`](XAX_PIN.json) is the one record of the XAX commit and the `bbc.exe` hash BBC uses;
+  move it by pull request once those checks pass.
 - Keep interfaces narrow: the frontend knows nothing about XAX storage, native
   ABIs or OS APIs. Apply SRP, DRY, KISS and YAGNI. No speculative layers.
 - Change formats only through an explicit, unambiguous migration. Every target must
