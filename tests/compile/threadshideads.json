@@ -1,0 +1,29 @@
+{
+ "interface": "bbc.exe check / emit-bfx / info",
+ "source": {
+  "repository": "https://github.com/MrxSiN/ThreadsHideAds",
+  "commit": "cf28f66a259d2825b033094200543f2ce184a353",
+  "directory": "brainfuck/src"
+ },
+ "expected": "check and emit-bfx exit 0 at O0 and O1; info gives the instruction counts below; the records hash as below",
+ "programs": [
+  {"name": "core", "source_bytes": 263995, "source_sha256": "892adff6dfe85c34de44a3131d19cb8828796566b2948d1c757f15703c7fa20d", "commands": 155368,
+   "O0": {"instructions": 155368, "record_bytes": 155375, "record_sha256": "6b1977e5e34a28f2ce6630028eeac11d0b5ff1dc18c4c5ea7540cfdfc10bc437"},
+   "O1": {"instructions": 26181, "record_bytes": 26188, "record_sha256": "49cf7d37ad7aa8ad4592e6a46c9f1b3a8233c7389cfc6c4716b910d75b3cf7c2"}},
+  {"name": "detect", "source_bytes": 422927, "source_sha256": "92403b9f717bcdca11ae86d1158929c1924d6e54eaf2ae6f81667f422bf5cfca", "commands": 231216,
+   "O0": {"instructions": 231216, "record_bytes": 231223, "record_sha256": "d37be8a82ab96660d2c0c2efc9ea8df3c4aa803f59784c567246c1839fbae211"},
+   "O1": {"instructions": 26283, "record_bytes": 26290, "record_sha256": "fbac703dbca43fc69543eeec817dee070d360c852ce244b4bb8e24c81e067a0e"}},
+  {"name": "nested", "source_bytes": 552729, "source_sha256": "4be26e0ddb2f25bbc31cac846d3702f313ab59ca69fc9867d56f6fc8d2387f1c", "commands": 296307,
+   "O0": {"instructions": 296307, "record_bytes": 296314, "record_sha256": "09ef3a28181ea51c927cc27b08f813fbb83d2c91a6ff68a2abcf0b737c6dd361"},
+   "O1": {"instructions": 37061, "record_bytes": 37068, "record_sha256": "1b680601b71199c47e67f858d5c0b9386dd6ef24435b68fa779ce995128638c5"}},
+  {"name": "pando", "source_bytes": 200108, "source_sha256": "533bfcb8b016c8dc85ea92b90fc528056834db1c9010a8ed1fd2bec130d18256", "commands": 113160,
+   "O0": {"instructions": 113160, "record_bytes": 113167, "record_sha256": "a0b51784850e621aea1c218c6725a87a0d288a58fba0e6247f51837b6bf8130b"},
+   "O1": {"instructions": 14830, "record_bytes": 14837, "record_sha256": "6a25a48299eaddd4b1c9827a8a9f81e8ea64459382958fd32729d858ee1cef00"}},
+  {"name": "sanitize", "source_bytes": 121654, "source_sha256": "98e44b7dca65b5fb8d7ba026c9cf8d09372d5ec328a1ef39b6caf4b9924f8d30", "commands": 69343,
+   "O0": {"instructions": 69343, "record_bytes": 69350, "record_sha256": "ed83471dae2b11d790eb46aaead6feee54e726af132603dadd407076194c6e6f"},
+   "O1": {"instructions": 9077, "record_bytes": 9084, "record_sha256": "c20ac8506009a629171e522a8eea9efe01a4675658787e06fd66f5f74f86c27f"}},
+  {"name": "text", "source_bytes": 307211, "source_sha256": "dd79d12acc5103881377a7339a3fef6a9c319485b4fe7b045c4742d7134058a7", "commands": 225546,
+   "O0": {"instructions": 225546, "record_bytes": 225553, "record_sha256": "ec596116780947a14dcf38775801bae2662afebb473d1db37106d0c56d62c747"},
+   "O1": {"instructions": 104371, "record_bytes": 104378, "record_sha256": "f01cf9d01f97e71d0379c98217b6242bcf41b2fc2139b36891ed7dc5e7aa6e84"}}
+ ]
+}

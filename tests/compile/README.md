@@ -29,3 +29,13 @@ The first two rows lock in the coordinator's cross-chunk error precedence. The c
 Both pass the native frontend at O0 and O1, and their Android builds run on a Pixel 8 Pro
 ([native Android lowering](../../evidence/native_android_lowering.json)). O0 keeps primitives,
 so its record differs from O1 while using the same BFX format.
+
+---
+
+## 🧵 Large real programs
+
+[threadshideads.json](threadshideads.json) is the O0/O1 regression set for the
+[budget](../../docs/16_SCALABILITY.md): ThreadsHideAds' six policy programs (69,343 to 296,307
+commands), named by commit and SHA-256 rather than copied here. Each must pass `check` and
+`emit-bfx` at O0 and O1 with the instruction counts and record hashes listed. O0 keeps every
+command; O1 folds them to 9,077–104,371 instructions.

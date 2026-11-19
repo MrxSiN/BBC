@@ -1,0 +1,56 @@
+{
+ "format": "bbc-xax-pin-evidence-v1",
+ "date": "2026-11-19",
+ "issue": "https://github.com/MrxSiN/BBC/issues/4",
+ "upstream": "https://github.com/MrxSiN/XAX/issues/55",
+ "pin": "XAX_PIN.json",
+ "xax_commit": "0f6ff99323c5f6c5314f688c5f885dfba23731bc",
+ "xax_note": "XAX main after the release 0037 merge (bfddb32, PRs #105 and #107); nothing under compiler/integration/bfx, the seeds or RELEASES changed between bfddb32 and this commit",
+ "bbc_exe": {
+  "state": "EXECUTED on Windows 11 Pro 10.0.26300, native",
+  "steps": "xaxc-windows-x86_64.exe resolve compiler/integration/bfx/bbc_request.xax <snapshot>; build <snapshot> bbc.exe <provenance>; both exit 0, 221 s",
+  "compiler_sha256": "06ece4cf0d52f956259366fc4b50917e948577ba1481611e23f60f38017261c2",
+  "sha256": "4b73ad612bcf6243a5795c1d1680bb2cc432019f066194a0edc3c4000cc410d8",
+  "bytes": 36109312,
+  "note": "byte for byte the bbc.exe XAX's release 0037 records"
+ },
+ "capacity_fixtures": {
+  "state": "EXECUTED on Windows 11, native; source from each tests/compile/*.request on stdin",
+  "meaning": "exit 2 is compile_bfx status 3 (too big), exit 1 is status 2 (brackets); failed calls wrote 0 bytes",
+  "runs": [
+   {"case": "overflow-after-close", "commands": 1048577, "check": 2, "emit_bfx_O0": 2, "emit_bfx_O1": 2},
+   {"case": "overflow-before-open", "commands": 1048577, "check": 2, "emit_bfx_O0": 2, "emit_bfx_O1": 2},
+   {"case": "bracket-at-capacity", "commands": 1048576, "check": 1, "emit_bfx_O0": 1, "emit_bfx_O1": 1},
+   {"case": "unclosed-at-capacity", "commands": 1048576, "check": 1, "emit_bfx_O0": 1, "emit_bfx_O1": 1},
+   {"case": "empty", "check": 0, "emit_bfx_O0": 0, "emit_bfx_O1": 0},
+   {"case": "binary", "check": 0, "emit_bfx_O0": 0, "emit_bfx_O1": 0},
+   {"case": "deep_nesting_512", "check": 0, "emit_bfx_O0": 0, "emit_bfx_O1": 0, "O1_record_equals": "tests/compile/deep_nesting_512.bfx"},
+   {"case": "deep_nesting_512_active", "check": 0, "emit_bfx_O0": 0, "emit_bfx_O1": 0, "O1_record_equals": "tests/compile/deep_nesting_512_active.bfx"}
+  ]
+ },
+ "threadshideads": {
+  "state": "EXECUTED on Windows 11, native",
+  "set": "tests/compile/threadshideads.json (ThreadsHideAds cf28f66, brainfuck/src)",
+  "result": "all six: check 0, emit-bfx -O0 and -O1 exit 0, info on each record gives the instruction count in the set, and every record hash equals the set's",
+  "instructions": {
+   "core": {"commands": 155368, "O0": 155368, "O1": 26181},
+   "detect": {"commands": 231216, "O0": 231216, "O1": 26283},
+   "nested": {"commands": 296307, "O0": 296307, "O1": 37061},
+   "pando": {"commands": 113160, "O0": 113160, "O1": 14830},
+   "sanitize": {"commands": 69343, "O0": 69343, "O1": 9077},
+   "text": {"commands": 225546, "O0": 225546, "O1": 104371}
+  },
+  "matches_xax": "the O1 counts equal XAX's (compiler/integration/bfx/COMPILE.md, 2026-11-18)",
+  "not_run": "bbc compile of these programs (native build meets XAX OI-54)"
+ },
+ "check_py": {
+  "state": "EXECUTED in WSL 2 (Ubuntu 24.04, kernel 6.18.58.1-microsoft-standard-WSL2, Python 3.12.3) on the same host; Windows outputs ran as Windows processes through WSL interop, Android outputs under qemu-aarch64 8.2.2; not device runs",
+  "driver": "XAX compiler/integration/bfx/transactions/production_driver/native/tools/check.py at 0f6ff99 (sha256 c550a04aafcbc99765a20ae8b2aa19c348918a32ee86cead4f8c27b4482a10fd), --bbc this checkout",
+  "wine": "a throwaway shim outside both repositories: make the named file executable, then exec it",
+  "summary": {"programs": 93, "compiles": 372, "passed": 372, "executions": 488, "execution_mismatches": 0, "error_paths_passed": 5, "error_paths": 5},
+  "seconds": 209,
+  "results_json_sha256": "298b3eb5cf690df72ef38bd5c135fc3c2792d181ff99aed447796604b8f0e9ef",
+  "discarded_run": "a first run with a shim that did not set the exec bit gave exit 126 for every Windows output (186 of 372 rows); the harness, not bbc.exe, so it was fixed and rerun"
+ },
+ "not_run": "Pixel and real Windows device runs of new outputs; Android outputs ran only under qemu"
+}

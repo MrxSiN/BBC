@@ -31,11 +31,11 @@ alive. Raw native pointers alone prove nothing.
 
 | Component | Views (bytes, in argument order) |
 |---|---|
-| Public `compile_bfx` | source/work 1,114,112 · record 65,546 · output/work 1,114,112 · tape/work 1,114,112 |
-| Decoder | record 65,546 (read-only) · scratch 524,288 · plus logical length |
-| Importer | record 65,546 (read-only) · scratch 524,288 · arena 536,870,912 · hash scratch 2,048 |
+| Public `compile_bfx` | source/work 1,114,112 · record 1,048,586 · output/work 1,114,112 · tape/work 1,114,112 |
+| Decoder | record 1,048,586 (read-only) · scratch 8,388,608 · plus logical length |
+| Importer | record 1,048,586 (read-only) · scratch 8,388,608 · arena 536,870,912 · hash scratch 2,048 |
 | Source coordinator | same four views as `compile_bfx` |
-| Packing coordinator | record 65,546 · input, output and tape work 1,114,112 each |
+| Packing coordinator | record 1,048,586 · input, output and tape work 1,114,112 each |
 
 Return values pack length and status into one number:
 

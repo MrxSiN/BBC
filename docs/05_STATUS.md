@@ -113,6 +113,7 @@ were archived outside the repo on 2026-10-28 and remain in git history.
 |---|---|
 | [canonical_bfx.json](../evidence/canonical_bfx.json) | Current BFX: decoder, importer, frontend, Mandelbrot |
 | [stream_runs.json](../evidence/stream_runs.json) | Retired streaming run packer (BFX `01`) |
+| [xax_pin_0037_2026-11-19.json](../evidence/xax_pin_0037_2026-11-19.json) | **Current pin.** XAX `0f6ff99` (release 0037), `bbc.exe` `4b73ad61…` rebuilt byte for byte. Capacity fixtures and the six ThreadsHideAds programs at O0/O1 on Windows; `check.py` 372 of 372 compiles, 488 runs, 0 mismatches (WSL interop and qemu) |
 | [instruction_cap_2026-11-19.json](../evidence/instruction_cap_2026-11-19.json) | Windows-native, `bbc.exe` from XAX release 0037. The capacity fixtures at the new edge: 1,048,577 commands exit 2 even after an earlier bracket error; 1,048,576 commands with an unmatched bracket exit 1; at `check`, O0 and O1 |
 | [instruction_cap_2026-11-15.json](../evidence/instruction_cap_2026-11-15.json) | Windows-native. The six ThreadsHideAds programs (69,343–296,307 commands) exit 2; the edge is exactly 65,536; blocked on [XAX#55](https://github.com/MrxSiN/XAX/issues/55) |
 

@@ -36,7 +36,7 @@ To build executables, use [`bbc compile`](25_NATIVE_COMPILE.md).
 
 ## 🔌 The typed API
 
-Four separate writable views: source/work 1,114,112 · record 65,546 ·
+Four separate writable views: source/work 1,114,112 · record 1,048,586 ·
 output/work 1,114,112 · tape/work 1,114,112 bytes.
 
 - At source/work offset 0, write the actual frame length (u32). At offset 4,
