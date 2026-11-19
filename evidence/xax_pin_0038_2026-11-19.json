@@ -1,0 +1,188 @@
+{
+ "format": "bbc-xax-pin-evidence-v1",
+ "date": "2026-11-19",
+ "pin": "XAX_PIN.json",
+ "xax_commit": "c3fdaabd9226f2c14bb09907b16cf5725a53b9e2",
+ "xax_note": "XAX main after the release 0038 merge (MrxSiN/XAX#130): 64-bit checked offsets (OI-52 R2); BBC's driver follows the three 0038 driver transactions",
+ "bbc_exe": {
+  "state": "EXECUTED on Windows 11 Pro 10.0.26300, native",
+  "steps": "xaxc-windows-x86_64.exe resolve compiler/integration/bfx/bbc_request.xax <snapshot>; build <snapshot> bbc.exe <provenance>; both exit 0, 226 s",
+  "compiler_sha256": "1aa1f9dca30c4989162089f96368d44c7d3dddcfd8c1c4cb605b1a036b8a976a",
+  "sha256": "0ec701ee135663e9fe4868bf1dd13cc40ab0c2ec72cffb9846878ef5acdaa084",
+  "bytes": 36110336
+ },
+ "xax_check": {
+  "state": "EXECUTED (WSL 2 driving the Windows bbc.exe through interop; qemu-aarch64 for Android outputs)",
+  "tool": "XAX compiler/integration/bfx/transactions/production_driver/native/tools/check.py",
+  "result": {
+   "programs": 93,
+   "compiles": 372,
+   "passed": 372,
+   "executions": 488,
+   "execution_mismatches": 0,
+   "error_paths": 5,
+   "error_paths_passed": 5
+  }
+ },
+ "capacity_fixtures": {
+  "state": "EXECUTED on Windows 11, native; source from each tests/compile/*.request on stdin",
+  "meaning": "exit 2 is compile_bfx status 3 (too big), exit 1 is status 2 (brackets)",
+  "runs": [
+   {
+    "case": "binary",
+    "commands": 3,
+    "check": 0,
+    "emit_bfx_O0": 0,
+    "emit_bfx_O1": 0
+   },
+   {
+    "case": "bracket-at-capacity",
+    "commands": 1048576,
+    "check": 1,
+    "emit_bfx_O0": 1,
+    "emit_bfx_O1": 1
+   },
+   {
+    "case": "deep_nesting_512",
+    "commands": 1026,
+    "check": 0,
+    "emit_bfx_O0": 0,
+    "emit_bfx_O1": 0,
+    "O1_record_equals_bfx": true
+   },
+   {
+    "case": "deep_nesting_512_active",
+    "commands": 1030,
+    "check": 0,
+    "emit_bfx_O0": 0,
+    "emit_bfx_O1": 0,
+    "O1_record_equals_bfx": true
+   },
+   {
+    "case": "empty",
+    "commands": 0,
+    "check": 0,
+    "emit_bfx_O0": 0,
+    "emit_bfx_O1": 0
+   },
+   {
+    "case": "overflow-after-close",
+    "commands": 1048577,
+    "check": 2,
+    "emit_bfx_O0": 2,
+    "emit_bfx_O1": 2
+   },
+   {
+    "case": "overflow-before-open",
+    "commands": 1048577,
+    "check": 2,
+    "emit_bfx_O0": 2,
+    "emit_bfx_O1": 2
+   },
+   {
+    "case": "unclosed-at-capacity",
+    "commands": 1048576,
+    "check": 1,
+    "emit_bfx_O0": 1,
+    "emit_bfx_O1": 1
+   }
+  ]
+ },
+ "threadshideads": {
+  "state": "EXECUTED on Windows 11, native",
+  "set": "tests/compile/threadshideads.json (ThreadsHideAds cf28f66, brainfuck/src)",
+  "all_match": true,
+  "runs": [
+   {
+    "name": "core",
+    "source_ok": true,
+    "check": 0,
+    "O0": {
+     "exit": 0,
+     "info_exit": 0,
+     "matches_set": true
+    },
+    "O1": {
+     "exit": 0,
+     "info_exit": 0,
+     "matches_set": true
+    }
+   },
+   {
+    "name": "detect",
+    "source_ok": true,
+    "check": 0,
+    "O0": {
+     "exit": 0,
+     "info_exit": 0,
+     "matches_set": true
+    },
+    "O1": {
+     "exit": 0,
+     "info_exit": 0,
+     "matches_set": true
+    }
+   },
+   {
+    "name": "nested",
+    "source_ok": true,
+    "check": 0,
+    "O0": {
+     "exit": 0,
+     "info_exit": 0,
+     "matches_set": true
+    },
+    "O1": {
+     "exit": 0,
+     "info_exit": 0,
+     "matches_set": true
+    }
+   },
+   {
+    "name": "pando",
+    "source_ok": true,
+    "check": 0,
+    "O0": {
+     "exit": 0,
+     "info_exit": 0,
+     "matches_set": true
+    },
+    "O1": {
+     "exit": 0,
+     "info_exit": 0,
+     "matches_set": true
+    }
+   },
+   {
+    "name": "sanitize",
+    "source_ok": true,
+    "check": 0,
+    "O0": {
+     "exit": 0,
+     "info_exit": 0,
+     "matches_set": true
+    },
+    "O1": {
+     "exit": 0,
+     "info_exit": 0,
+     "matches_set": true
+    }
+   },
+   {
+    "name": "text",
+    "source_ok": true,
+    "check": 0,
+    "O0": {
+     "exit": 0,
+     "info_exit": 0,
+     "matches_set": true
+    },
+    "O1": {
+     "exit": 0,
+     "info_exit": 0,
+     "matches_set": true
+    }
+   }
+  ]
+ }
+}
