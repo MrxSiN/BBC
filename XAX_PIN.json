@@ -1,13 +1,13 @@
 {
  "format": "bbc-xax-pin-v1",
  "repository": "https://github.com/MrxSiN/XAX",
- "commit": "c3fdaabd9226f2c14bb09907b16cf5725a53b9e2",
- "release": "0038",
+ "commit": "a134f2466810f77768a69e327884795707633d67",
+ "release": "0039",
  "bbc_exe": {
   "request": "compiler/integration/bfx/bbc_request.xax",
   "compiler": "compiler/bootstrap/windows/xaxc-windows-x86_64.exe",
-  "compiler_sha256": "1aa1f9dca30c4989162089f96368d44c7d3dddcfd8c1c4cb605b1a036b8a976a",
-  "sha256": "0ec701ee135663e9fe4868bf1dd13cc40ab0c2ec72cffb9846878ef5acdaa084",
-  "bytes": 36110336
+  "compiler_sha256": "d4a433dbaf7c02743c964497d68dd86ac898f352cb0a7b1e507586daddb7728b",
+  "sha256": "a3a1c70c67538c790d2eadb1e25b9d796c7daa7b1c8d699f9a1ae33d15d55ca3",
+  "bytes": 36111872
  }
 }
