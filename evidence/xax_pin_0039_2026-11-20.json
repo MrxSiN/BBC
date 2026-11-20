@@ -1,0 +1,205 @@
+{
+ "format": "bbc-xax-pin-evidence-v1",
+ "date": "2026-11-20",
+ "pin": "XAX_PIN.json",
+ "xax_commit": "a134f2466810f77768a69e327884795707633d67",
+ "xax_note": "XAX main after the release 0039 merge (MrxSiN/XAX#144): OI-54 step 1, four front-end limits lifted (ADR-413); BBC's driver follows the eleven 0039 driver transactions",
+ "bbc_exe": {
+  "state": "EXECUTED on Windows 11 Pro 10.0.26300, native (the Windows seed run through WSL interop)",
+  "steps": "xaxc-windows-x86_64.exe resolve compiler/integration/bfx/bbc_request.xax <snapshot>; build <snapshot> bbc.exe <provenance>; both exit 0, about 4 min",
+  "compiler_sha256": "d4a433dbaf7c02743c964497d68dd86ac898f352cb0a7b1e507586daddb7728b",
+  "request_sha256": "abef10e377bdc5b3bf7c2806f8822b86c1b58239af4f7b5959497dff9ad3e79d",
+  "sha256": "a3a1c70c67538c790d2eadb1e25b9d796c7daa7b1c8d699f9a1ae33d15d55ca3",
+  "bytes": 36111872
+ },
+ "xax_check": {
+  "state": "EXECUTED (WSL 2 driving the Windows bbc.exe through interop; qemu-aarch64 for Android outputs)",
+  "tool": "XAX compiler/integration/bfx/transactions/production_driver/native/tools/check.py",
+  "result": {
+   "programs": 93,
+   "compiles": 372,
+   "passed": 372,
+   "executions": 488,
+   "execution_mismatches": 0,
+   "error_paths": 5,
+   "error_paths_passed": 5
+  }
+ },
+ "capacity_fixtures": {
+  "state": "EXECUTED on Windows 11, native; source from each tests/compile/*.request on stdin",
+  "meaning": "exit 2 is compile_bfx status 3 (too big), exit 1 is status 2 (brackets)",
+  "runs": [
+   {
+    "case": "binary",
+    "commands": 3,
+    "check": 0,
+    "emit_bfx_O0": 0,
+    "emit_bfx_O1": 0
+   },
+   {
+    "case": "bracket-at-capacity",
+    "commands": 1048576,
+    "check": 1,
+    "emit_bfx_O0": 1,
+    "emit_bfx_O1": 1
+   },
+   {
+    "case": "deep_nesting_512",
+    "commands": 1026,
+    "check": 0,
+    "emit_bfx_O0": 0,
+    "emit_bfx_O1": 0,
+    "O1_record_equals_bfx": true
+   },
+   {
+    "case": "deep_nesting_512_active",
+    "commands": 1030,
+    "check": 0,
+    "emit_bfx_O0": 0,
+    "emit_bfx_O1": 0,
+    "O1_record_equals_bfx": true
+   },
+   {
+    "case": "empty",
+    "commands": 0,
+    "check": 0,
+    "emit_bfx_O0": 0,
+    "emit_bfx_O1": 0
+   },
+   {
+    "case": "overflow-after-close",
+    "commands": 1048577,
+    "check": 2,
+    "emit_bfx_O0": 2,
+    "emit_bfx_O1": 2
+   },
+   {
+    "case": "overflow-before-open",
+    "commands": 1048577,
+    "check": 2,
+    "emit_bfx_O0": 2,
+    "emit_bfx_O1": 2
+   },
+   {
+    "case": "unclosed-at-capacity",
+    "commands": 1048576,
+    "check": 1,
+    "emit_bfx_O0": 1,
+    "emit_bfx_O1": 1
+   }
+  ],
+  "note": "identical to release 0038"
+ },
+ "threadshideads": {
+  "state": "EXECUTED on Windows 11, native",
+  "set": "tests/compile/threadshideads.json (ThreadsHideAds cf28f66, brainfuck/src)",
+  "all_match": true,
+  "runs": [
+   {
+    "name": "core",
+    "source_ok": true,
+    "check": 0,
+    "O0": {
+     "exit": 0,
+     "info_exit": 0,
+     "matches_set": true
+    },
+    "O1": {
+     "exit": 0,
+     "info_exit": 0,
+     "matches_set": true
+    }
+   },
+   {
+    "name": "detect",
+    "source_ok": true,
+    "check": 0,
+    "O0": {
+     "exit": 0,
+     "info_exit": 0,
+     "matches_set": true
+    },
+    "O1": {
+     "exit": 0,
+     "info_exit": 0,
+     "matches_set": true
+    }
+   },
+   {
+    "name": "nested",
+    "source_ok": true,
+    "check": 0,
+    "O0": {
+     "exit": 0,
+     "info_exit": 0,
+     "matches_set": true
+    },
+    "O1": {
+     "exit": 0,
+     "info_exit": 0,
+     "matches_set": true
+    }
+   },
+   {
+    "name": "pando",
+    "source_ok": true,
+    "check": 0,
+    "O0": {
+     "exit": 0,
+     "info_exit": 0,
+     "matches_set": true
+    },
+    "O1": {
+     "exit": 0,
+     "info_exit": 0,
+     "matches_set": true
+    }
+   },
+   {
+    "name": "sanitize",
+    "source_ok": true,
+    "check": 0,
+    "O0": {
+     "exit": 0,
+     "info_exit": 0,
+     "matches_set": true
+    },
+    "O1": {
+     "exit": 0,
+     "info_exit": 0,
+     "matches_set": true
+    }
+   },
+   {
+    "name": "text",
+    "source_ok": true,
+    "check": 0,
+    "O0": {
+     "exit": 0,
+     "info_exit": 0,
+     "matches_set": true
+    },
+    "O1": {
+     "exit": 0,
+     "info_exit": 0,
+     "matches_set": true
+    }
+   }
+  ]
+ },
+ "hanoi": {
+  "state": "EXECUTED on Windows 11, native",
+  "O1": {
+   "exit": 0,
+   "seconds": 23.5,
+   "peak_commit_mb": 499,
+   "peak_commit_mb_0038": 495
+  },
+  "O0": {
+   "exit": 5,
+   "seconds": "4.6 to 8.1 (host load)",
+   "meaning": "the front end now accepts the 7.25 MB decision; the native x86-64 backend declines it (XAX OI-54 step 2)"
+  },
+  "cfg_view_note": "the CFG program's view is 1 GiB since 0039; BBC reserves it and commits pages on use: peak commit for hanoi -O1 is 499 MB, against 495 MB with the 0038 bbc.exe"
+ }
+}
