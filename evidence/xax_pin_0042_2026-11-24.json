@@ -1,0 +1,204 @@
+{
+ "format": "bbc-xax-pin-evidence-v1",
+ "date": "2026-11-24",
+ "pin": "XAX_PIN.json",
+ "xax_commit": "d8c2c61970a4a73fe626d024eb149fc209d24f95",
+ "xax_note": "XAX main after the release 0042 merge (MrxSiN/XAX#171): native carrier replacement by CID (#135), the legacy Wasm32 offset check (OI-62), the x86-64 container sized from the image (OI-54 step 2 part 1); BBC's driver follows the four 0042 driver transactions",
+ "bbc_exe": {
+  "state": "EXECUTED on Windows 11 Pro 10.0.26300, native (the Windows seed run through WSL interop)",
+  "steps": "xaxc-windows-x86_64.exe resolve compiler/integration/bfx/bbc_request.xax <snapshot>; build <snapshot> bbc.exe <provenance>; both exit 0",
+  "compiler_sha256": "4d361a393804ef09351311948c7920a9e332e6b4ef9f7e3a00813656316a4134",
+  "request_sha256": "08210ad0924975e04d5125efa5f4cc87f94f42dfe8c1a9cb5349dc90730cf892",
+  "sha256": "92b24c61c390faf1810c1a9d8e9c0f6ed4492d76b38f9391d6ea5c73f1757ebe",
+  "bytes": 36151296
+ },
+ "xax_check": {
+  "state": "EXECUTED (WSL 2 driving the Windows bbc.exe through interop; qemu-aarch64 for Android outputs)",
+  "tool": "XAX compiler/integration/bfx/transactions/production_driver/native/tools/check.py",
+  "result": {
+   "programs": 93,
+   "compiles": 372,
+   "passed": 372,
+   "executions": 488,
+   "execution_mismatches": 0,
+   "error_paths_passed": 5,
+   "error_paths": 5
+  }
+ },
+ "capacity_fixtures": {
+  "state": "EXECUTED on Windows 11, native; source from each tests/compile/*.request on stdin",
+  "meaning": "exit 2 is compile_bfx status 3 (too big), exit 1 is status 2 (brackets)",
+  "runs": [
+   {
+    "case": "binary",
+    "commands": 3,
+    "check": 0,
+    "emit_bfx_O0": 0,
+    "emit_bfx_O1": 0
+   },
+   {
+    "case": "bracket-at-capacity",
+    "commands": 1048576,
+    "check": 1,
+    "emit_bfx_O0": 1,
+    "emit_bfx_O1": 1
+   },
+   {
+    "case": "deep_nesting_512",
+    "commands": 1026,
+    "check": 0,
+    "emit_bfx_O0": 0,
+    "emit_bfx_O1": 0,
+    "O1_record_equals_bfx": true
+   },
+   {
+    "case": "deep_nesting_512_active",
+    "commands": 1030,
+    "check": 0,
+    "emit_bfx_O0": 0,
+    "emit_bfx_O1": 0,
+    "O1_record_equals_bfx": true
+   },
+   {
+    "case": "empty",
+    "commands": 0,
+    "check": 0,
+    "emit_bfx_O0": 0,
+    "emit_bfx_O1": 0
+   },
+   {
+    "case": "overflow-after-close",
+    "commands": 1048577,
+    "check": 2,
+    "emit_bfx_O0": 2,
+    "emit_bfx_O1": 2
+   },
+   {
+    "case": "overflow-before-open",
+    "commands": 1048577,
+    "check": 2,
+    "emit_bfx_O0": 2,
+    "emit_bfx_O1": 2
+   },
+   {
+    "case": "unclosed-at-capacity",
+    "commands": 1048576,
+    "check": 1,
+    "emit_bfx_O0": 1,
+    "emit_bfx_O1": 1
+   }
+  ],
+  "note": "identical to releases 0039, 0040 and 0041"
+ },
+ "threadshideads": {
+  "state": "EXECUTED on Windows 11, native",
+  "set": "tests/compile/threadshideads.json (ThreadsHideAds cf28f66, brainfuck/src)",
+  "all_match": true,
+  "runs": [
+   {
+    "name": "core",
+    "source_ok": true,
+    "check": 0,
+    "O0": {
+     "exit": 0,
+     "info_exit": 0,
+     "matches_set": true
+    },
+    "O1": {
+     "exit": 0,
+     "info_exit": 0,
+     "matches_set": true
+    }
+   },
+   {
+    "name": "detect",
+    "source_ok": true,
+    "check": 0,
+    "O0": {
+     "exit": 0,
+     "info_exit": 0,
+     "matches_set": true
+    },
+    "O1": {
+     "exit": 0,
+     "info_exit": 0,
+     "matches_set": true
+    }
+   },
+   {
+    "name": "nested",
+    "source_ok": true,
+    "check": 0,
+    "O0": {
+     "exit": 0,
+     "info_exit": 0,
+     "matches_set": true
+    },
+    "O1": {
+     "exit": 0,
+     "info_exit": 0,
+     "matches_set": true
+    }
+   },
+   {
+    "name": "pando",
+    "source_ok": true,
+    "check": 0,
+    "O0": {
+     "exit": 0,
+     "info_exit": 0,
+     "matches_set": true
+    },
+    "O1": {
+     "exit": 0,
+     "info_exit": 0,
+     "matches_set": true
+    }
+   },
+   {
+    "name": "sanitize",
+    "source_ok": true,
+    "check": 0,
+    "O0": {
+     "exit": 0,
+     "info_exit": 0,
+     "matches_set": true
+    },
+    "O1": {
+     "exit": 0,
+     "info_exit": 0,
+     "matches_set": true
+    }
+   },
+   {
+    "name": "text",
+    "source_ok": true,
+    "check": 0,
+    "O0": {
+     "exit": 0,
+     "info_exit": 0,
+     "matches_set": true
+    },
+    "O1": {
+     "exit": 0,
+     "info_exit": 0,
+     "matches_set": true
+    }
+   }
+  ]
+ },
+ "hanoi": {
+  "state": "EXECUTED on Windows 11, native",
+  "O1": {
+   "exit": 0,
+   "seconds": 24.2,
+   "run_exit": 0,
+   "output_bytes": 19090
+  },
+  "O0": {
+   "exit": 5,
+   "seconds": 8.1,
+   "meaning": "declined by the native x86-64 backend (XAX OI-54 step 2 part 2, release 0043)"
+  }
+ }
+}
