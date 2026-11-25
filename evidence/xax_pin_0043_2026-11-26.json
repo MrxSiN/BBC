@@ -1,0 +1,220 @@
+{
+ "format": "bbc-xax-pin-evidence-v1",
+ "date": "2026-11-26",
+ "pin": "XAX_PIN.json",
+ "xax_commit": "631bef29ca73821d16d7c07d1d7f82f8042c6dd3",
+ "xax_note": "XAX main after the release 0043 merge (MrxSiN/XAX#195): native verify rejects a snapshot whose package or signature reference is missing (ledger 0043); BBC's driver follows that one driver transaction",
+ "bbc_exe": {
+  "state": "EXECUTED on Windows 11 Pro 10.0.26300, native (the Windows seed run through WSL interop)",
+  "steps": "xaxc-windows-x86_64.exe resolve compiler/integration/bfx/bbc_request.xax <snapshot>; build <snapshot> bbc.exe <provenance>; both exit 0",
+  "compiler_sha256": "f95af7862e4029f8cbc42bcb487f621a1be5907d6e4985edf627813557839b28",
+  "request_sha256": "026307326d3929af7a87f3a6bb7ee0d7470c8b6e18ccc30c2d4bef7b31770036",
+  "sha256": "4521cc64330291cbe21d91ec8877ae66c789cb6c37e2931bc288851a2ab9dccf",
+  "bytes": 36152832,
+  "seconds": 281
+ },
+ "xax_check": {
+  "state": "EXECUTED (WSL 2 driving the Windows bbc.exe through interop; qemu-aarch64 for Android outputs)",
+  "tool": "XAX compiler/integration/bfx/transactions/production_driver/native/tools/check.py (at the release 0043 tree)",
+  "result": {
+   "programs": 93,
+   "compiles": 372,
+   "passed": 372,
+   "executions": 488,
+   "execution_mismatches": 0,
+   "error_paths_passed": 5,
+   "error_paths": 5
+  }
+ },
+ "xax_native_check": {
+  "state": "EXECUTED on Windows 11, native; Android programs on the Pixel 8 Pro (Android 17) over wireless adb",
+  "tool": "XAX compiler/integration/bfx/transactions/production_driver/native/tools/xax_bbc_check_windows.xax (MrxSiN/XAX#191), built with the 0042 Windows seed",
+  "seconds": 232,
+  "result": {
+   "android_runner": "device",
+   "programs": 93,
+   "compiles": 372,
+   "passed": 372,
+   "executions": 488,
+   "execution_mismatches": 0,
+   "error_paths_passed": 5,
+   "error_paths": 5
+  }
+ },
+ "capacity_fixtures": {
+  "state": "EXECUTED on Windows 11, native; source from each tests/compile/*.request on stdin",
+  "meaning": "exit 2 is compile_bfx status 3 (too big), exit 1 is status 2 (brackets)",
+  "runs": [
+   {
+    "case": "binary",
+    "commands": 3,
+    "check": 0,
+    "emit_bfx_O0": 0,
+    "emit_bfx_O1": 0
+   },
+   {
+    "case": "bracket-at-capacity",
+    "commands": 1048576,
+    "check": 1,
+    "emit_bfx_O0": 1,
+    "emit_bfx_O1": 1
+   },
+   {
+    "case": "deep_nesting_512",
+    "commands": 1026,
+    "check": 0,
+    "emit_bfx_O0": 0,
+    "emit_bfx_O1": 0,
+    "O1_record_equals_bfx": true
+   },
+   {
+    "case": "deep_nesting_512_active",
+    "commands": 1030,
+    "check": 0,
+    "emit_bfx_O0": 0,
+    "emit_bfx_O1": 0,
+    "O1_record_equals_bfx": true
+   },
+   {
+    "case": "empty",
+    "commands": 0,
+    "check": 0,
+    "emit_bfx_O0": 0,
+    "emit_bfx_O1": 0
+   },
+   {
+    "case": "overflow-after-close",
+    "commands": 1048577,
+    "check": 2,
+    "emit_bfx_O0": 2,
+    "emit_bfx_O1": 2
+   },
+   {
+    "case": "overflow-before-open",
+    "commands": 1048577,
+    "check": 2,
+    "emit_bfx_O0": 2,
+    "emit_bfx_O1": 2
+   },
+   {
+    "case": "unclosed-at-capacity",
+    "commands": 1048576,
+    "check": 1,
+    "emit_bfx_O0": 1,
+    "emit_bfx_O1": 1
+   }
+  ],
+  "note": "identical to releases 0039, 0040, 0041 and 0042"
+ },
+ "threadshideads": {
+  "state": "EXECUTED on Windows 11, native",
+  "set": "tests/compile/threadshideads.json (ThreadsHideAds cf28f66, brainfuck/src)",
+  "all_match": true,
+  "runs": [
+   {
+    "name": "core",
+    "source_ok": true,
+    "check": 0,
+    "O0": {
+     "exit": 0,
+     "info_exit": 0,
+     "matches_set": true
+    },
+    "O1": {
+     "exit": 0,
+     "info_exit": 0,
+     "matches_set": true
+    }
+   },
+   {
+    "name": "detect",
+    "source_ok": true,
+    "check": 0,
+    "O0": {
+     "exit": 0,
+     "info_exit": 0,
+     "matches_set": true
+    },
+    "O1": {
+     "exit": 0,
+     "info_exit": 0,
+     "matches_set": true
+    }
+   },
+   {
+    "name": "nested",
+    "source_ok": true,
+    "check": 0,
+    "O0": {
+     "exit": 0,
+     "info_exit": 0,
+     "matches_set": true
+    },
+    "O1": {
+     "exit": 0,
+     "info_exit": 0,
+     "matches_set": true
+    }
+   },
+   {
+    "name": "pando",
+    "source_ok": true,
+    "check": 0,
+    "O0": {
+     "exit": 0,
+     "info_exit": 0,
+     "matches_set": true
+    },
+    "O1": {
+     "exit": 0,
+     "info_exit": 0,
+     "matches_set": true
+    }
+   },
+   {
+    "name": "sanitize",
+    "source_ok": true,
+    "check": 0,
+    "O0": {
+     "exit": 0,
+     "info_exit": 0,
+     "matches_set": true
+    },
+    "O1": {
+     "exit": 0,
+     "info_exit": 0,
+     "matches_set": true
+    }
+   },
+   {
+    "name": "text",
+    "source_ok": true,
+    "check": 0,
+    "O0": {
+     "exit": 0,
+     "info_exit": 0,
+     "matches_set": true
+    },
+    "O1": {
+     "exit": 0,
+     "info_exit": 0,
+     "matches_set": true
+    }
+   }
+  ]
+ },
+ "hanoi": {
+  "state": "EXECUTED on Windows 11, native (source sha256 7547bf47...)",
+  "O1": {
+   "exit": 0,
+   "seconds": 21.7,
+   "run_exit": 0,
+   "output_bytes": 19090
+  },
+  "O0": {
+   "exit": 5,
+   "seconds": 6.6,
+   "meaning": "declined by the native x86-64 backend (XAX OI-54 step 2 part 2; ADR-423 amendment 4)"
+  }
+ }
+}
